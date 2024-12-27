@@ -1,0 +1,15 @@
+version: v2
+
+clean: true
+
+plugins:
+     # Generate code for Go
+     #buf generate
+  - local: protoc-gen-go
+    out: golang
+    opt: paths=source_relative
+  - local: protoc-gen-connect-go
+    out: golang
+    opt: paths=source_relative
+
+   

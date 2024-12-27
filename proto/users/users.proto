@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+option go_package="github.com/az58740/connect-microservices-proto/golang/users;users";
+
+package users;
+
+//import "google/protobuf/empty.proto";
+
+
+// Enum for user status
+enum UserStatus {
+    USER_STATUS_UNSPECIFIED = 0; // Default value
+    USER_STATUS_ACTIVE = 1;                   // User is active and can log in
+    USER_STATUS_INACTIVE = 2;                 // User has been deactivated
+    USER_STATUS_SUSPENDED = 3;                // User is temporarily suspended
+    USER_STATUS_DELETED = 4;                  // User account has been deleted
+}
+// Message for system
+message Service{
+    string service_id = 1;         // Unique identifier for the system
+    string service_name=2;                 // Name of the system
+}
+// Message for role actions
+message Permissions {
+    string permission_id = 1;         // Unique identifier for the role actions
+    string Permission_name=2;                 // Name of the role action
+}
+// Message for user roles
+message Role{
+    string role_id = 1;          // Unique identifier for the user role
+    string role_name=2;                  // Name of the user role
+    repeated Permissions permissions=3; //Role actions
+}
+// Message representing a user profile
+message UserProfile {
+    string first_name = 1;        // First name of the user
+    string last_name = 2;         // Last name of the user
+    string email = 3;             // Email address of the user
+    string phone_number = 4;      // Phone number of the user
+    string country = 5;           // Country of the user
+    string province = 6;          // Province/state of the user
+    string city = 7;              // City where the user resides
+    string address_line_1 = 8;    // First line of the address
+    string address_line_2 = 9;    // Second line of the address (optional)
+    string zip_code = 10;         // Zip/postal code
+}
+
+// Message representing a user
+message User {
+    string user_id = 1;              // Unique identifier for the user
+    UserProfile profile = 2;         // The user's profile information
+    repeated Role user_roles = 3;        // Type of user (Admin, Regular, Guest)
+    repeated Service user_services=4;  //Which systems user active on
+    UserStatus user_status = 5;      // Current status of the user
+    string username = 6;             // Username for user can be email
+    string password_hash =7;        // Hash of the user's password
+    string created_at = 8;           // Timestamp for when user was created
+    string updated_at = 9;           // Timestamp for when user was last updated
+}
+
+// Message for creating a new user request
+message CreateUserRequest {
+    User user = 1;               // User details to create
+}
+
+// Message for creating a new user response
+message CreateUserResponse {
+    string user_id = 1;          // ID of the created user
+    string message = 2;          // Confirmation message
+}
+
+// Message for updating user details
+message UpdateUserRequest {
+    string user_id = 1;          // ID of the user to update
+    UserProfile profile = 2;     // Updated profile information
+    UserStatus user_status = 3;  // Updated status of the user
+}
+
+// Message for updating user response
+message UpdateUserResponse {
+    string message = 1;          // Confirmation message
+}
+
+// Message for retrieving user details by user ID
+message GetUserRequest {
+    string user_id = 1;          // ID of the user to retrieve
+    string username = 2;         // Username for user can be email
+    string password = 3;         //user's password
+}
+
+// Message for user detail response
+message GetUserResponse {
+    User user = 1;               // User information retrieved
+}
+
+// Message for listing users with pagination
+message UsersListRequest {
+    int32 page = 1;              // Page number for pagination
+    int32 page_size = 2;         // Number of users per page
+}
+
+// Message for list users response
+message UsersListResponse {
+    repeated User users = 1;     // List of users
+    int32 total_count = 2;       // Total number of users in the system
+}
+
+// // Message for deleting a user request
+message DeleteUserRequest {
+    string user_id = 1;          // ID of the user to delete
+}
+
+// // Message for deleting a user response
+message DeleteUserResponse {
+    string message = 1;          // Confirmation message
+}
+
+//User Managment Service
+service UsersService {
+    rpc GetUser(GetUserRequest) returns (GetUserResponse) {};
+    rpc CreateUser(stream CreateUserRequest) returns (CreateUserResponse) {};
+    rpc UpdateUser(stream UpdateUserRequest) returns (UpdateUserResponse) {};
+    rpc UsersList(UsersListRequest) returns (stream UsersListResponse) {};
+} 
