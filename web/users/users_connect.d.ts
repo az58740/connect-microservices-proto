@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateUserRequest, CreateUserResponse, GetUserRequest, GetUserResponse, UpdateUserRequest, UpdateUserResponse, UsersListRequest, UsersListResponse } from "./users_pb.js";
+import { CreateUserRequest, CreateUserResponse, DeleteUserRequest, DeleteUserResponse, GetUserRequest, GetUserResponse, ListUsersRequest, ListUsersResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -30,7 +30,7 @@ export declare const UsersService: {
       readonly name: "CreateUser",
       readonly I: typeof CreateUserRequest,
       readonly O: typeof CreateUserResponse,
-      readonly kind: MethodKind.ClientStreaming,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc users.UsersService.UpdateUser
@@ -39,16 +39,25 @@ export declare const UsersService: {
       readonly name: "UpdateUser",
       readonly I: typeof UpdateUserRequest,
       readonly O: typeof UpdateUserResponse,
-      readonly kind: MethodKind.ClientStreaming,
+      readonly kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc users.UsersService.UsersList
+     * @generated from rpc users.UsersService.ListUsers
      */
-    readonly usersList: {
-      readonly name: "UsersList",
-      readonly I: typeof UsersListRequest,
-      readonly O: typeof UsersListResponse,
-      readonly kind: MethodKind.ServerStreaming,
+    readonly listUsers: {
+      readonly name: "ListUsers",
+      readonly I: typeof ListUsersRequest,
+      readonly O: typeof ListUsersResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.DeleteUser
+     */
+    readonly deleteUser: {
+      readonly name: "DeleteUser",
+      readonly I: typeof DeleteUserRequest,
+      readonly O: typeof DeleteUserResponse,
+      readonly kind: MethodKind.Unary,
     },
   }
 };

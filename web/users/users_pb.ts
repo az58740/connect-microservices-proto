@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file users/users.proto.
  */
 export const file_users_users: GenFile = /*@__PURE__*/
-  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMwoHU2VydmljZRISCgpzZXJ2aWNlX2lkGAEgASgJEhQKDHNlcnZpY2VfbmFtZRgCIAEoCSI9CgtQZXJtaXNzaW9ucxIVCg1wZXJtaXNzaW9uX2lkGAEgASgJEhcKD3Blcm1pc3Npb25fbmFtZRgCIAEoCSJTCgRSb2xlEg8KB3JvbGVfaWQYASABKAkSEQoJcm9sZV9uYW1lGAIgASgJEicKC3Blcm1pc3Npb25zGAMgAygLMhIudXNlcnMuUGVybWlzc2lvbnMiRgoQQ29udHJhY3RpbmdQYXJ0eRIXCg9vcmdhbml6YXRpb25faWQYASABKAkSGQoRb3JnYW5pemF0aW9uX25hbWUYAiABKAkiuAEKC1VzZXJQcm9maWxlEhEKCWZ1bGxfbmFtZRgBIAEoCRINCgVlbWFpbBgCIAEoCRIUCgxwaG9uZV9udW1iZXIYAyABKAkSDwoHY291bnRyeRgEIAEoCRIQCghwcm92aW5jZRgFIAEoCRIMCgRjaXR5GAYgASgJEhYKDmFkZHJlc3NfbGluZV8xGAcgASgJEhYKDmFkZHJlc3NfbGluZV8yGAggASgJEhAKCHppcF9jb2RlGAkgASgJIukCCgRVc2VyEg8KB3VzZXJfaWQYASABKAkSIwoHcHJvZmlsZRgCIAEoCzISLnVzZXJzLlVzZXJQcm9maWxlEh8KCnVzZXJfcm9sZXMYAyADKAsyCy51c2Vycy5Sb2xlEiUKDXVzZXJfc2VydmljZXMYBCADKAsyDi51c2Vycy5TZXJ2aWNlEiYKC3VzZXJfc3RhdHVzGAUgASgOMhEudXNlcnMuVXNlclN0YXR1cxIyChF1c2VyX29yZ2FuaXphdGlvbhgGIAEoCzIXLnVzZXJzLkNvbnRyYWN0aW5nUGFydHkSEAoIdXNlcm5hbWUYByABKAkSFQoNcGFzc3dvcmRfaGFzaBgIIAEoCRIuCgpjcmVhdGVkX2F0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgp1cGRhdGVkX2F0GAogASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIuChFDcmVhdGVVc2VyUmVxdWVzdBIZCgR1c2VyGAEgASgLMgsudXNlcnMuVXNlciI2ChJDcmVhdGVVc2VyUmVzcG9uc2USDwoHdXNlcl9pZBgBIAEoCRIPCgdtZXNzYWdlGAIgASgJImMKEVVwZGF0ZVVzZXJSZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSEAoIcGFzc3dvcmQYAyABKAkSGQoEdXNlchgEIAEoCzILLnVzZXJzLlVzZXIiJQoSVXBkYXRlVXNlclJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiRQoOR2V0VXNlclJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRIQCgh1c2VybmFtZRgCIAEoCRIQCghwYXNzd29yZBgDIAEoCSIsCg9HZXRVc2VyUmVzcG9uc2USGQoEdXNlchgBIAEoCzILLnVzZXJzLlVzZXIiMwoQVXNlcnNMaXN0UmVxdWVzdBIMCgRwYWdlGAEgASgFEhEKCXBhZ2Vfc2l6ZRgCIAEoBSJEChFVc2Vyc0xpc3RSZXNwb25zZRIaCgV1c2VycxgBIAMoCzILLnVzZXJzLlVzZXISEwoLdG90YWxfY291bnQYAiABKAUiJAoRRGVsZXRlVXNlclJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCSIlChJEZWxldGVVc2VyUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSqPAQoKVXNlclN0YXR1cxIbChdVU0VSX1NUQVRVU19VTlNQRUNJRklFRBAAEhYKElVTRVJfU1RBVFVTX0FDVElWRRABEhgKFFVTRVJfU1RBVFVTX0lOQUNUSVZFEAISGQoVVVNFUl9TVEFUVVNfU1VTUEVOREVEEAMSFwoTVVNFUl9TVEFUVVNfREVMRVRFRBAEMpQCCgxVc2Vyc1NlcnZpY2USOAoHR2V0VXNlchIVLnVzZXJzLkdldFVzZXJSZXF1ZXN0GhYudXNlcnMuR2V0VXNlclJlc3BvbnNlEkMKCkNyZWF0ZVVzZXISGC51c2Vycy5DcmVhdGVVc2VyUmVxdWVzdBoZLnVzZXJzLkNyZWF0ZVVzZXJSZXNwb25zZSgBEkMKClVwZGF0ZVVzZXISGC51c2Vycy5VcGRhdGVVc2VyUmVxdWVzdBoZLnVzZXJzLlVwZGF0ZVVzZXJSZXNwb25zZSgBEkAKCVVzZXJzTGlzdBIXLnVzZXJzLlVzZXJzTGlzdFJlcXVlc3QaGC51c2Vycy5Vc2Vyc0xpc3RSZXNwb25zZTABQkNaQWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3VzZXJzO3VzZXJzYgZwcm90bzM", [file_google_protobuf_timestamp]);
+  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMwoHU2VydmljZRISCgpzZXJ2aWNlX2lkGAEgASgJEhQKDHNlcnZpY2VfbmFtZRgCIAEoCSI8CgpQZXJtaXNzaW9uEhUKDXBlcm1pc3Npb25faWQYASABKAkSFwoPcGVybWlzc2lvbl9uYW1lGAIgASgJIlIKBFJvbGUSDwoHcm9sZV9pZBgBIAEoCRIRCglyb2xlX25hbWUYAiABKAkSJgoLcGVybWlzc2lvbnMYAyADKAsyES51c2Vycy5QZXJtaXNzaW9uIkYKEENvbnRyYWN0aW5nUGFydHkSFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJEhkKEW9yZ2FuaXphdGlvbl9uYW1lGAIgASgJIrgBCgtVc2VyUHJvZmlsZRIRCglmdWxsX25hbWUYASABKAkSDQoFZW1haWwYAiABKAkSFAoMcGhvbmVfbnVtYmVyGAMgASgJEg8KB2NvdW50cnkYBCABKAkSEAoIcHJvdmluY2UYBSABKAkSDAoEY2l0eRgGIAEoCRIWCg5hZGRyZXNzX2xpbmVfMRgHIAEoCRIWCg5hZGRyZXNzX2xpbmVfMhgIIAEoCRIQCgh6aXBfY29kZRgJIAEoCSLVAgoEVXNlchIPCgd1c2VyX2lkGAEgASgJEiMKB3Byb2ZpbGUYAiABKAsyEi51c2Vycy5Vc2VyUHJvZmlsZRIaCgVyb2xlcxgDIAMoCzILLnVzZXJzLlJvbGUSIAoIc2VydmljZXMYBCADKAsyDi51c2Vycy5TZXJ2aWNlEiEKBnN0YXR1cxgFIAEoDjIRLnVzZXJzLlVzZXJTdGF0dXMSLQoMb3JnYW5pemF0aW9uGAYgASgLMhcudXNlcnMuQ29udHJhY3RpbmdQYXJ0eRIQCgh1c2VybmFtZRgHIAEoCRIVCg1wYXNzd29yZF9oYXNoGAggASgJEi4KCmNyZWF0ZWRfYXQYCSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIi4KEUNyZWF0ZVVzZXJSZXF1ZXN0EhkKBHVzZXIYASABKAsyCy51c2Vycy5Vc2VyIjYKEkNyZWF0ZVVzZXJSZXNwb25zZRIPCgd1c2VyX2lkGAEgASgJEg8KB21lc3NhZ2UYAiABKAkiYwoRVXBkYXRlVXNlclJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRIQCgh1c2VybmFtZRgCIAEoCRIQCghwYXNzd29yZBgDIAEoCRIZCgR1c2VyGAQgASgLMgsudXNlcnMuVXNlciIlChJVcGRhdGVVc2VyUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSIhCg5HZXRVc2VyUmVxdWVzdBIPCgd1c2VyX2lkGAEgASgJIiwKD0dldFVzZXJSZXNwb25zZRIZCgR1c2VyGAEgASgLMgsudXNlcnMuVXNlciI5ChBMaXN0VXNlcnNSZXF1ZXN0EhEKCXBhZ2Vfc2l6ZRgBIAEoBRISCgpwYWdlX3Rva2VuGAIgASgJIl0KEUxpc3RVc2Vyc1Jlc3BvbnNlEhoKBXVzZXJzGAEgAygLMgsudXNlcnMuVXNlchIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkSEwoLdG90YWxfY291bnQYAyABKAUiJAoRRGVsZXRlVXNlclJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCSIlChJEZWxldGVVc2VyUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSqPAQoKVXNlclN0YXR1cxIbChdVU0VSX1NUQVRVU19VTlNQRUNJRklFRBAAEhYKElVTRVJfU1RBVFVTX0FDVElWRRABEhgKFFVTRVJfU1RBVFVTX0lOQUNUSVZFEAISGQoVVVNFUl9TVEFUVVNfU1VTUEVOREVEEAMSFwoTVVNFUl9TVEFUVVNfREVMRVRFRBAEMtECCgxVc2Vyc1NlcnZpY2USOAoHR2V0VXNlchIVLnVzZXJzLkdldFVzZXJSZXF1ZXN0GhYudXNlcnMuR2V0VXNlclJlc3BvbnNlEkEKCkNyZWF0ZVVzZXISGC51c2Vycy5DcmVhdGVVc2VyUmVxdWVzdBoZLnVzZXJzLkNyZWF0ZVVzZXJSZXNwb25zZRJBCgpVcGRhdGVVc2VyEhgudXNlcnMuVXBkYXRlVXNlclJlcXVlc3QaGS51c2Vycy5VcGRhdGVVc2VyUmVzcG9uc2USPgoJTGlzdFVzZXJzEhcudXNlcnMuTGlzdFVzZXJzUmVxdWVzdBoYLnVzZXJzLkxpc3RVc2Vyc1Jlc3BvbnNlEkEKCkRlbGV0ZVVzZXISGC51c2Vycy5EZWxldGVVc2VyUmVxdWVzdBoZLnVzZXJzLkRlbGV0ZVVzZXJSZXNwb25zZUJDWkFnaXRodWIuY29tL2F6NTg3NDAvY29ubmVjdC1taWNyb3NlcnZpY2VzLXByb3RvL2dvbGFuZy91c2Vyczt1c2Vyc2IGcHJvdG8z", [file_google_protobuf_timestamp]);
 
 /**
  * Message for system or service
@@ -45,18 +45,18 @@ export const ServiceSchema: GenMessage<Service> = /*@__PURE__*/
 /**
  * Message for role permissions
  *
- * @generated from message users.Permissions
+ * @generated from message users.Permission
  */
-export type Permissions = Message<"users.Permissions"> & {
+export type Permission = Message<"users.Permission"> & {
   /**
-   * Unique identifier for the role action
+   * Unique identifier for the permission
    *
    * @generated from field: string permission_id = 1;
    */
   permissionId: string;
 
   /**
-   * Name of the role action
+   * Name of the permission
    *
    * @generated from field: string permission_name = 2;
    */
@@ -64,10 +64,10 @@ export type Permissions = Message<"users.Permissions"> & {
 };
 
 /**
- * Describes the message users.Permissions.
- * Use `create(PermissionsSchema)` to create a new message.
+ * Describes the message users.Permission.
+ * Use `create(PermissionSchema)` to create a new message.
  */
-export const PermissionsSchema: GenMessage<Permissions> = /*@__PURE__*/
+export const PermissionSchema: GenMessage<Permission> = /*@__PURE__*/
   messageDesc(file_users_users, 1);
 
 /**
@@ -91,11 +91,11 @@ export type Role = Message<"users.Role"> & {
   roleName: string;
 
   /**
-   * Role actions
+   * List of permissions associated with the role
    *
-   * @generated from field: repeated users.Permissions permissions = 3;
+   * @generated from field: repeated users.Permission permissions = 3;
    */
-  permissions: Permissions[];
+  permissions: Permission[];
 };
 
 /**
@@ -231,32 +231,32 @@ export type User = Message<"users.User"> & {
   profile?: UserProfile;
 
   /**
-   * Roles assigned to the user (Admin, Regular, Guest)
+   * Roles assigned to the user
    *
-   * @generated from field: repeated users.Role user_roles = 3;
+   * @generated from field: repeated users.Role roles = 3;
    */
-  userRoles: Role[];
+  roles: Role[];
 
   /**
    * Services the user has access to
    *
-   * @generated from field: repeated users.Service user_services = 4;
+   * @generated from field: repeated users.Service services = 4;
    */
-  userServices: Service[];
+  services: Service[];
 
   /**
    * Current status of the user
    *
-   * @generated from field: users.UserStatus user_status = 5;
+   * @generated from field: users.UserStatus status = 5;
    */
-  userStatus: UserStatus;
+  status: UserStatus;
 
   /**
    * Organization or contracting party
    *
-   * @generated from field: users.ContractingParty user_organization = 6;
+   * @generated from field: users.ContractingParty organization = 6;
    */
-  userOrganization?: ContractingParty;
+  organization?: ContractingParty;
 
   /**
    * Username (can be email)
@@ -266,7 +266,7 @@ export type User = Message<"users.User"> & {
   username: string;
 
   /**
-   * Hash of the user's password
+   * Hash of the user's password (sensitive, avoid exposing in responses)
    *
    * @generated from field: string password_hash = 8;
    */
@@ -418,20 +418,6 @@ export type GetUserRequest = Message<"users.GetUserRequest"> & {
    * @generated from field: string user_id = 1;
    */
   userId: string;
-
-  /**
-   * Username (can be email)
-   *
-   * @generated from field: string username = 2;
-   */
-  username: string;
-
-  /**
-   * User's password (for authentication)
-   *
-   * @generated from field: string password = 3;
-   */
-  password: string;
 };
 
 /**
@@ -465,37 +451,37 @@ export const GetUserResponseSchema: GenMessage<GetUserResponse> = /*@__PURE__*/
 /**
  * Message for listing users with pagination
  *
- * @generated from message users.UsersListRequest
+ * @generated from message users.ListUsersRequest
  */
-export type UsersListRequest = Message<"users.UsersListRequest"> & {
-  /**
-   * Page number for pagination
-   *
-   * @generated from field: int32 page = 1;
-   */
-  page: number;
-
+export type ListUsersRequest = Message<"users.ListUsersRequest"> & {
   /**
    * Number of users per page
    *
-   * @generated from field: int32 page_size = 2;
+   * @generated from field: int32 page_size = 1;
    */
   pageSize: number;
+
+  /**
+   * Token for pagination (optional)
+   *
+   * @generated from field: string page_token = 2;
+   */
+  pageToken: string;
 };
 
 /**
- * Describes the message users.UsersListRequest.
- * Use `create(UsersListRequestSchema)` to create a new message.
+ * Describes the message users.ListUsersRequest.
+ * Use `create(ListUsersRequestSchema)` to create a new message.
  */
-export const UsersListRequestSchema: GenMessage<UsersListRequest> = /*@__PURE__*/
+export const ListUsersRequestSchema: GenMessage<ListUsersRequest> = /*@__PURE__*/
   messageDesc(file_users_users, 12);
 
 /**
  * Message for list users response
  *
- * @generated from message users.UsersListResponse
+ * @generated from message users.ListUsersResponse
  */
-export type UsersListResponse = Message<"users.UsersListResponse"> & {
+export type ListUsersResponse = Message<"users.ListUsersResponse"> & {
   /**
    * List of users
    *
@@ -504,18 +490,25 @@ export type UsersListResponse = Message<"users.UsersListResponse"> & {
   users: User[];
 
   /**
+   * Token for the next page (optional)
+   *
+   * @generated from field: string next_page_token = 2;
+   */
+  nextPageToken: string;
+
+  /**
    * Total number of users in the system
    *
-   * @generated from field: int32 total_count = 2;
+   * @generated from field: int32 total_count = 3;
    */
   totalCount: number;
 };
 
 /**
- * Describes the message users.UsersListResponse.
- * Use `create(UsersListResponseSchema)` to create a new message.
+ * Describes the message users.ListUsersResponse.
+ * Use `create(ListUsersResponseSchema)` to create a new message.
  */
-export const UsersListResponseSchema: GenMessage<UsersListResponse> = /*@__PURE__*/
+export const ListUsersResponseSchema: GenMessage<ListUsersResponse> = /*@__PURE__*/
   messageDesc(file_users_users, 13);
 
 /**
@@ -626,7 +619,7 @@ export const UsersService: GenService<{
    * @generated from rpc users.UsersService.CreateUser
    */
   createUser: {
-    methodKind: "client_streaming";
+    methodKind: "unary";
     input: typeof CreateUserRequestSchema;
     output: typeof CreateUserResponseSchema;
   },
@@ -634,17 +627,25 @@ export const UsersService: GenService<{
    * @generated from rpc users.UsersService.UpdateUser
    */
   updateUser: {
-    methodKind: "client_streaming";
+    methodKind: "unary";
     input: typeof UpdateUserRequestSchema;
     output: typeof UpdateUserResponseSchema;
   },
   /**
-   * @generated from rpc users.UsersService.UsersList
+   * @generated from rpc users.UsersService.ListUsers
    */
-  usersList: {
-    methodKind: "server_streaming";
-    input: typeof UsersListRequestSchema;
-    output: typeof UsersListResponseSchema;
+  listUsers: {
+    methodKind: "unary";
+    input: typeof ListUsersRequestSchema;
+    output: typeof ListUsersResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.DeleteUser
+   */
+  deleteUser: {
+    methodKind: "unary";
+    input: typeof DeleteUserRequestSchema;
+    output: typeof DeleteUserResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_users_users, 0);

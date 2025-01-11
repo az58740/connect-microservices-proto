@@ -4,7 +4,6 @@ option go_package = "github.com/az58740/connect-microservices-proto/golang/users
 
 package users;
 
-//import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";  // For handling timestamps
 
 // Enum for user status
@@ -23,16 +22,16 @@ message Service {
 }
 
 // Message for role permissions
-message Permissions {
-    string permission_id = 1;    // Unique identifier for the role action
-    string permission_name = 2;  // Name of the role action
+message Permission {
+    string permission_id = 1;    // Unique identifier for the permission
+    string permission_name = 2;  // Name of the permission
 }
 
 // Message for user roles
 message Role {
     string role_id = 1;          // Unique identifier for the user role
     string role_name = 2;        // Name of the user role
-    repeated Permissions permissions = 3;  // Role actions
+    repeated Permission permissions = 3;  // List of permissions associated with the role
 }
 
 // Message for contracting party or organization
@@ -58,13 +57,13 @@ message UserProfile {
 message User {
     string user_id = 1;                  // Unique identifier for the user
     UserProfile profile = 2;             // The user's profile information
-    repeated Role user_roles = 3;        // Roles assigned to the user (Admin, Regular, Guest)
-    repeated Service user_services = 4;  // Services the user has access to
-    UserStatus user_status = 5;          // Current status of the user
-    ContractingParty user_organization = 6; // Organization or contracting party
+    repeated Role roles = 3;             // Roles assigned to the user
+    repeated Service services = 4;       // Services the user has access to
+    UserStatus status = 5;               // Current status of the user
+    ContractingParty organization = 6;   // Organization or contracting party
     string username = 7;                 // Username (can be email)
-    string password_hash = 8;            // Hash of the user's password
-    google.protobuf.Timestamp created_at = 9; // Timestamp for when user was created
+    string password_hash = 8;            // Hash of the user's password (sensitive, avoid exposing in responses)
+    google.protobuf.Timestamp created_at = 9;  // Timestamp for when user was created
     google.protobuf.Timestamp updated_at = 10; // Timestamp for last update
 }
 
@@ -95,8 +94,6 @@ message UpdateUserResponse {
 // Message for retrieving user details by user ID
 message GetUserRequest {
     string user_id = 1;  // ID of the user to retrieve
-    string username = 2; // Username (can be email)
-    string password = 3; // User's password (for authentication)
 }
 
 // Message for user detail response
@@ -105,15 +102,16 @@ message GetUserResponse {
 }
 
 // Message for listing users with pagination
-message UsersListRequest {
-    int32 page = 1;         // Page number for pagination
-    int32 page_size = 2;    // Number of users per page
+message ListUsersRequest {
+    int32 page_size = 1;         // Number of users per page
+    string page_token = 2;       // Token for pagination (optional)
 }
 
 // Message for list users response
-message UsersListResponse {
-    repeated User users = 1;  // List of users
-    int32 total_count = 2;    // Total number of users in the system
+message ListUsersResponse {
+    repeated User users = 1;     // List of users
+    string next_page_token = 2;  // Token for the next page (optional)
+    int32 total_count = 3;       // Total number of users in the system
 }
 
 // Message for deleting a user request
@@ -129,7 +127,8 @@ message DeleteUserResponse {
 // User Management Service
 service UsersService {
     rpc GetUser(GetUserRequest) returns (GetUserResponse); 
-    rpc CreateUser(stream CreateUserRequest) returns (CreateUserResponse); 
-    rpc UpdateUser(stream UpdateUserRequest) returns (UpdateUserResponse); 
-    rpc UsersList(UsersListRequest) returns (stream UsersListResponse); 
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse); 
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse); 
+    rpc ListUsers(ListUsersRequest) returns (ListUsersResponse); 
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse); 
 }

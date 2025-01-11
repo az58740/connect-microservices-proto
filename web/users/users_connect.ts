@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateUserRequest, CreateUserResponse, GetUserRequest, GetUserResponse, UpdateUserRequest, UpdateUserResponse, UsersListRequest, UsersListResponse } from "./users_pb.js";
+import { CreateUserRequest, CreateUserResponse, DeleteUserRequest, DeleteUserResponse, GetUserRequest, GetUserResponse, ListUsersRequest, ListUsersResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -30,7 +30,7 @@ export const UsersService = {
       name: "CreateUser",
       I: CreateUserRequest,
       O: CreateUserResponse,
-      kind: MethodKind.ClientStreaming,
+      kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc users.UsersService.UpdateUser
@@ -39,16 +39,25 @@ export const UsersService = {
       name: "UpdateUser",
       I: UpdateUserRequest,
       O: UpdateUserResponse,
-      kind: MethodKind.ClientStreaming,
+      kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc users.UsersService.UsersList
+     * @generated from rpc users.UsersService.ListUsers
      */
-    usersList: {
-      name: "UsersList",
-      I: UsersListRequest,
-      O: UsersListResponse,
-      kind: MethodKind.ServerStreaming,
+    listUsers: {
+      name: "ListUsers",
+      I: ListUsersRequest,
+      O: ListUsersResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.DeleteUser
+     */
+    deleteUser: {
+      name: "DeleteUser",
+      I: DeleteUserRequest,
+      O: DeleteUserResponse,
+      kind: MethodKind.Unary,
     },
   }
 } as const;

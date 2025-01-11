@@ -41,18 +41,18 @@ export declare const ServiceSchema: GenMessage<Service>;
 /**
  * Message for role permissions
  *
- * @generated from message users.Permissions
+ * @generated from message users.Permission
  */
-export declare type Permissions = Message<"users.Permissions"> & {
+export declare type Permission = Message<"users.Permission"> & {
   /**
-   * Unique identifier for the role action
+   * Unique identifier for the permission
    *
    * @generated from field: string permission_id = 1;
    */
   permissionId: string;
 
   /**
-   * Name of the role action
+   * Name of the permission
    *
    * @generated from field: string permission_name = 2;
    */
@@ -60,10 +60,10 @@ export declare type Permissions = Message<"users.Permissions"> & {
 };
 
 /**
- * Describes the message users.Permissions.
- * Use `create(PermissionsSchema)` to create a new message.
+ * Describes the message users.Permission.
+ * Use `create(PermissionSchema)` to create a new message.
  */
-export declare const PermissionsSchema: GenMessage<Permissions>;
+export declare const PermissionSchema: GenMessage<Permission>;
 
 /**
  * Message for user roles
@@ -86,11 +86,11 @@ export declare type Role = Message<"users.Role"> & {
   roleName: string;
 
   /**
-   * Role actions
+   * List of permissions associated with the role
    *
-   * @generated from field: repeated users.Permissions permissions = 3;
+   * @generated from field: repeated users.Permission permissions = 3;
    */
-  permissions: Permissions[];
+  permissions: Permission[];
 };
 
 /**
@@ -223,32 +223,32 @@ export declare type User = Message<"users.User"> & {
   profile?: UserProfile;
 
   /**
-   * Roles assigned to the user (Admin, Regular, Guest)
+   * Roles assigned to the user
    *
-   * @generated from field: repeated users.Role user_roles = 3;
+   * @generated from field: repeated users.Role roles = 3;
    */
-  userRoles: Role[];
+  roles: Role[];
 
   /**
    * Services the user has access to
    *
-   * @generated from field: repeated users.Service user_services = 4;
+   * @generated from field: repeated users.Service services = 4;
    */
-  userServices: Service[];
+  services: Service[];
 
   /**
    * Current status of the user
    *
-   * @generated from field: users.UserStatus user_status = 5;
+   * @generated from field: users.UserStatus status = 5;
    */
-  userStatus: UserStatus;
+  status: UserStatus;
 
   /**
    * Organization or contracting party
    *
-   * @generated from field: users.ContractingParty user_organization = 6;
+   * @generated from field: users.ContractingParty organization = 6;
    */
-  userOrganization?: ContractingParty;
+  organization?: ContractingParty;
 
   /**
    * Username (can be email)
@@ -258,7 +258,7 @@ export declare type User = Message<"users.User"> & {
   username: string;
 
   /**
-   * Hash of the user's password
+   * Hash of the user's password (sensitive, avoid exposing in responses)
    *
    * @generated from field: string password_hash = 8;
    */
@@ -405,20 +405,6 @@ export declare type GetUserRequest = Message<"users.GetUserRequest"> & {
    * @generated from field: string user_id = 1;
    */
   userId: string;
-
-  /**
-   * Username (can be email)
-   *
-   * @generated from field: string username = 2;
-   */
-  username: string;
-
-  /**
-   * User's password (for authentication)
-   *
-   * @generated from field: string password = 3;
-   */
-  password: string;
 };
 
 /**
@@ -450,36 +436,36 @@ export declare const GetUserResponseSchema: GenMessage<GetUserResponse>;
 /**
  * Message for listing users with pagination
  *
- * @generated from message users.UsersListRequest
+ * @generated from message users.ListUsersRequest
  */
-export declare type UsersListRequest = Message<"users.UsersListRequest"> & {
-  /**
-   * Page number for pagination
-   *
-   * @generated from field: int32 page = 1;
-   */
-  page: number;
-
+export declare type ListUsersRequest = Message<"users.ListUsersRequest"> & {
   /**
    * Number of users per page
    *
-   * @generated from field: int32 page_size = 2;
+   * @generated from field: int32 page_size = 1;
    */
   pageSize: number;
+
+  /**
+   * Token for pagination (optional)
+   *
+   * @generated from field: string page_token = 2;
+   */
+  pageToken: string;
 };
 
 /**
- * Describes the message users.UsersListRequest.
- * Use `create(UsersListRequestSchema)` to create a new message.
+ * Describes the message users.ListUsersRequest.
+ * Use `create(ListUsersRequestSchema)` to create a new message.
  */
-export declare const UsersListRequestSchema: GenMessage<UsersListRequest>;
+export declare const ListUsersRequestSchema: GenMessage<ListUsersRequest>;
 
 /**
  * Message for list users response
  *
- * @generated from message users.UsersListResponse
+ * @generated from message users.ListUsersResponse
  */
-export declare type UsersListResponse = Message<"users.UsersListResponse"> & {
+export declare type ListUsersResponse = Message<"users.ListUsersResponse"> & {
   /**
    * List of users
    *
@@ -488,18 +474,25 @@ export declare type UsersListResponse = Message<"users.UsersListResponse"> & {
   users: User[];
 
   /**
+   * Token for the next page (optional)
+   *
+   * @generated from field: string next_page_token = 2;
+   */
+  nextPageToken: string;
+
+  /**
    * Total number of users in the system
    *
-   * @generated from field: int32 total_count = 2;
+   * @generated from field: int32 total_count = 3;
    */
   totalCount: number;
 };
 
 /**
- * Describes the message users.UsersListResponse.
- * Use `create(UsersListResponseSchema)` to create a new message.
+ * Describes the message users.ListUsersResponse.
+ * Use `create(ListUsersResponseSchema)` to create a new message.
  */
-export declare const UsersListResponseSchema: GenMessage<UsersListResponse>;
+export declare const ListUsersResponseSchema: GenMessage<ListUsersResponse>;
 
 /**
  * Message for deleting a user request
@@ -606,7 +599,7 @@ export declare const UsersService: GenService<{
    * @generated from rpc users.UsersService.CreateUser
    */
   createUser: {
-    methodKind: "client_streaming";
+    methodKind: "unary";
     input: typeof CreateUserRequestSchema;
     output: typeof CreateUserResponseSchema;
   },
@@ -614,17 +607,25 @@ export declare const UsersService: GenService<{
    * @generated from rpc users.UsersService.UpdateUser
    */
   updateUser: {
-    methodKind: "client_streaming";
+    methodKind: "unary";
     input: typeof UpdateUserRequestSchema;
     output: typeof UpdateUserResponseSchema;
   },
   /**
-   * @generated from rpc users.UsersService.UsersList
+   * @generated from rpc users.UsersService.ListUsers
    */
-  usersList: {
-    methodKind: "server_streaming";
-    input: typeof UsersListRequestSchema;
-    output: typeof UsersListResponseSchema;
+  listUsers: {
+    methodKind: "unary";
+    input: typeof ListUsersRequestSchema;
+    output: typeof ListUsersResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.DeleteUser
+   */
+  deleteUser: {
+    methodKind: "unary";
+    input: typeof DeleteUserRequestSchema;
+    output: typeof DeleteUserResponseSchema;
   },
 }>;
 
