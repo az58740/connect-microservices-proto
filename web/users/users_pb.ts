@@ -4,16 +4,18 @@
 
 import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
 import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { Timestamp } from "@bufbuild/protobuf/wkt";
+import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file users/users.proto.
  */
 export const file_users_users: GenFile = /*@__PURE__*/
-  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMwoHU2VydmljZRISCgpzZXJ2aWNlX2lkGAEgASgJEhQKDHNlcnZpY2VfbmFtZRgCIAEoCSI9CgtQZXJtaXNzaW9ucxIVCg1wZXJtaXNzaW9uX2lkGAEgASgJEhcKD1Blcm1pc3Npb25fbmFtZRgCIAEoCSJTCgRSb2xlEg8KB3JvbGVfaWQYASABKAkSEQoJcm9sZV9uYW1lGAIgASgJEicKC3Blcm1pc3Npb25zGAMgAygLMhIudXNlcnMuUGVybWlzc2lvbnMizAEKC1VzZXJQcm9maWxlEhIKCmZpcnN0X25hbWUYASABKAkSEQoJbGFzdF9uYW1lGAIgASgJEg0KBWVtYWlsGAMgASgJEhQKDHBob25lX251bWJlchgEIAEoCRIPCgdjb3VudHJ5GAUgASgJEhAKCHByb3ZpbmNlGAYgASgJEgwKBGNpdHkYByABKAkSFgoOYWRkcmVzc19saW5lXzEYCCABKAkSFgoOYWRkcmVzc19saW5lXzIYCSABKAkSEAoIemlwX2NvZGUYCiABKAki/QEKBFVzZXISDwoHdXNlcl9pZBgBIAEoCRIjCgdwcm9maWxlGAIgASgLMhIudXNlcnMuVXNlclByb2ZpbGUSHwoKdXNlcl9yb2xlcxgDIAMoCzILLnVzZXJzLlJvbGUSJQoNdXNlcl9zZXJ2aWNlcxgEIAMoCzIOLnVzZXJzLlNlcnZpY2USJgoLdXNlcl9zdGF0dXMYBSABKA4yES51c2Vycy5Vc2VyU3RhdHVzEhAKCHVzZXJuYW1lGAYgASgJEhUKDXBhc3N3b3JkX2hhc2gYByABKAkSEgoKY3JlYXRlZF9hdBgIIAEoCRISCgp1cGRhdGVkX2F0GAkgASgJIi4KEUNyZWF0ZVVzZXJSZXF1ZXN0EhkKBHVzZXIYASABKAsyCy51c2Vycy5Vc2VyIjYKEkNyZWF0ZVVzZXJSZXNwb25zZRIPCgd1c2VyX2lkGAEgASgJEg8KB21lc3NhZ2UYAiABKAkicQoRVXBkYXRlVXNlclJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRIjCgdwcm9maWxlGAIgASgLMhIudXNlcnMuVXNlclByb2ZpbGUSJgoLdXNlcl9zdGF0dXMYAyABKA4yES51c2Vycy5Vc2VyU3RhdHVzIiUKElVwZGF0ZVVzZXJSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIkUKDkdldFVzZXJSZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSEAoIcGFzc3dvcmQYAyABKAkiLAoPR2V0VXNlclJlc3BvbnNlEhkKBHVzZXIYASABKAsyCy51c2Vycy5Vc2VyIjMKEFVzZXJzTGlzdFJlcXVlc3QSDAoEcGFnZRgBIAEoBRIRCglwYWdlX3NpemUYAiABKAUiRAoRVXNlcnNMaXN0UmVzcG9uc2USGgoFdXNlcnMYASADKAsyCy51c2Vycy5Vc2VyEhMKC3RvdGFsX2NvdW50GAIgASgFIiQKEURlbGV0ZVVzZXJSZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkiJQoSRGVsZXRlVXNlclJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkqjwEKClVzZXJTdGF0dXMSGwoXVVNFUl9TVEFUVVNfVU5TUEVDSUZJRUQQABIWChJVU0VSX1NUQVRVU19BQ1RJVkUQARIYChRVU0VSX1NUQVRVU19JTkFDVElWRRACEhkKFVVTRVJfU1RBVFVTX1NVU1BFTkRFRBADEhcKE1VTRVJfU1RBVFVTX0RFTEVURUQQBDKcAgoMVXNlcnNTZXJ2aWNlEjoKB0dldFVzZXISFS51c2Vycy5HZXRVc2VyUmVxdWVzdBoWLnVzZXJzLkdldFVzZXJSZXNwb25zZSIAEkUKCkNyZWF0ZVVzZXISGC51c2Vycy5DcmVhdGVVc2VyUmVxdWVzdBoZLnVzZXJzLkNyZWF0ZVVzZXJSZXNwb25zZSIAKAESRQoKVXBkYXRlVXNlchIYLnVzZXJzLlVwZGF0ZVVzZXJSZXF1ZXN0GhkudXNlcnMuVXBkYXRlVXNlclJlc3BvbnNlIgAoARJCCglVc2Vyc0xpc3QSFy51c2Vycy5Vc2Vyc0xpc3RSZXF1ZXN0GhgudXNlcnMuVXNlcnNMaXN0UmVzcG9uc2UiADABQkNaQWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3VzZXJzO3VzZXJzYgZwcm90bzM");
+  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMwoHU2VydmljZRISCgpzZXJ2aWNlX2lkGAEgASgJEhQKDHNlcnZpY2VfbmFtZRgCIAEoCSI9CgtQZXJtaXNzaW9ucxIVCg1wZXJtaXNzaW9uX2lkGAEgASgJEhcKD3Blcm1pc3Npb25fbmFtZRgCIAEoCSJTCgRSb2xlEg8KB3JvbGVfaWQYASABKAkSEQoJcm9sZV9uYW1lGAIgASgJEicKC3Blcm1pc3Npb25zGAMgAygLMhIudXNlcnMuUGVybWlzc2lvbnMiRgoQQ29udHJhY3RpbmdQYXJ0eRIXCg9vcmdhbml6YXRpb25faWQYASABKAkSGQoRb3JnYW5pemF0aW9uX25hbWUYAiABKAkiuAEKC1VzZXJQcm9maWxlEhEKCWZ1bGxfbmFtZRgBIAEoCRINCgVlbWFpbBgCIAEoCRIUCgxwaG9uZV9udW1iZXIYAyABKAkSDwoHY291bnRyeRgEIAEoCRIQCghwcm92aW5jZRgFIAEoCRIMCgRjaXR5GAYgASgJEhYKDmFkZHJlc3NfbGluZV8xGAcgASgJEhYKDmFkZHJlc3NfbGluZV8yGAggASgJEhAKCHppcF9jb2RlGAkgASgJIukCCgRVc2VyEg8KB3VzZXJfaWQYASABKAkSIwoHcHJvZmlsZRgCIAEoCzISLnVzZXJzLlVzZXJQcm9maWxlEh8KCnVzZXJfcm9sZXMYAyADKAsyCy51c2Vycy5Sb2xlEiUKDXVzZXJfc2VydmljZXMYBCADKAsyDi51c2Vycy5TZXJ2aWNlEiYKC3VzZXJfc3RhdHVzGAUgASgOMhEudXNlcnMuVXNlclN0YXR1cxIyChF1c2VyX29yZ2FuaXphdGlvbhgGIAEoCzIXLnVzZXJzLkNvbnRyYWN0aW5nUGFydHkSEAoIdXNlcm5hbWUYByABKAkSFQoNcGFzc3dvcmRfaGFzaBgIIAEoCRIuCgpjcmVhdGVkX2F0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgp1cGRhdGVkX2F0GAogASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIuChFDcmVhdGVVc2VyUmVxdWVzdBIZCgR1c2VyGAEgASgLMgsudXNlcnMuVXNlciI2ChJDcmVhdGVVc2VyUmVzcG9uc2USDwoHdXNlcl9pZBgBIAEoCRIPCgdtZXNzYWdlGAIgASgJImMKEVVwZGF0ZVVzZXJSZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSEAoIcGFzc3dvcmQYAyABKAkSGQoEdXNlchgEIAEoCzILLnVzZXJzLlVzZXIiJQoSVXBkYXRlVXNlclJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiRQoOR2V0VXNlclJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRIQCgh1c2VybmFtZRgCIAEoCRIQCghwYXNzd29yZBgDIAEoCSIsCg9HZXRVc2VyUmVzcG9uc2USGQoEdXNlchgBIAEoCzILLnVzZXJzLlVzZXIiMwoQVXNlcnNMaXN0UmVxdWVzdBIMCgRwYWdlGAEgASgFEhEKCXBhZ2Vfc2l6ZRgCIAEoBSJEChFVc2Vyc0xpc3RSZXNwb25zZRIaCgV1c2VycxgBIAMoCzILLnVzZXJzLlVzZXISEwoLdG90YWxfY291bnQYAiABKAUiJAoRRGVsZXRlVXNlclJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCSIlChJEZWxldGVVc2VyUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSqPAQoKVXNlclN0YXR1cxIbChdVU0VSX1NUQVRVU19VTlNQRUNJRklFRBAAEhYKElVTRVJfU1RBVFVTX0FDVElWRRABEhgKFFVTRVJfU1RBVFVTX0lOQUNUSVZFEAISGQoVVVNFUl9TVEFUVVNfU1VTUEVOREVEEAMSFwoTVVNFUl9TVEFUVVNfREVMRVRFRBAEMpQCCgxVc2Vyc1NlcnZpY2USOAoHR2V0VXNlchIVLnVzZXJzLkdldFVzZXJSZXF1ZXN0GhYudXNlcnMuR2V0VXNlclJlc3BvbnNlEkMKCkNyZWF0ZVVzZXISGC51c2Vycy5DcmVhdGVVc2VyUmVxdWVzdBoZLnVzZXJzLkNyZWF0ZVVzZXJSZXNwb25zZSgBEkMKClVwZGF0ZVVzZXISGC51c2Vycy5VcGRhdGVVc2VyUmVxdWVzdBoZLnVzZXJzLlVwZGF0ZVVzZXJSZXNwb25zZSgBEkAKCVVzZXJzTGlzdBIXLnVzZXJzLlVzZXJzTGlzdFJlcXVlc3QaGC51c2Vycy5Vc2Vyc0xpc3RSZXNwb25zZTABQkNaQWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3VzZXJzO3VzZXJzYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
- * Message for system
+ * Message for system or service
  *
  * @generated from message users.Service
  */
@@ -41,13 +43,13 @@ export const ServiceSchema: GenMessage<Service> = /*@__PURE__*/
   messageDesc(file_users_users, 0);
 
 /**
- * Message for role actions
+ * Message for role permissions
  *
  * @generated from message users.Permissions
  */
 export type Permissions = Message<"users.Permissions"> & {
   /**
-   * Unique identifier for the role actions
+   * Unique identifier for the role action
    *
    * @generated from field: string permission_id = 1;
    */
@@ -56,9 +58,9 @@ export type Permissions = Message<"users.Permissions"> & {
   /**
    * Name of the role action
    *
-   * @generated from field: string Permission_name = 2;
+   * @generated from field: string permission_name = 2;
    */
-  PermissionName: string;
+  permissionName: string;
 };
 
 /**
@@ -104,78 +106,99 @@ export const RoleSchema: GenMessage<Role> = /*@__PURE__*/
   messageDesc(file_users_users, 2);
 
 /**
+ * Message for contracting party or organization
+ *
+ * @generated from message users.ContractingParty
+ */
+export type ContractingParty = Message<"users.ContractingParty"> & {
+  /**
+   * Unique identifier for the organization
+   *
+   * @generated from field: string organization_id = 1;
+   */
+  organizationId: string;
+
+  /**
+   * Name of the organization
+   *
+   * @generated from field: string organization_name = 2;
+   */
+  organizationName: string;
+};
+
+/**
+ * Describes the message users.ContractingParty.
+ * Use `create(ContractingPartySchema)` to create a new message.
+ */
+export const ContractingPartySchema: GenMessage<ContractingParty> = /*@__PURE__*/
+  messageDesc(file_users_users, 3);
+
+/**
  * Message representing a user profile
  *
  * @generated from message users.UserProfile
  */
 export type UserProfile = Message<"users.UserProfile"> & {
   /**
-   * First name of the user
+   * First and last name of the user
    *
-   * @generated from field: string first_name = 1;
+   * @generated from field: string full_name = 1;
    */
-  firstName: string;
-
-  /**
-   * Last name of the user
-   *
-   * @generated from field: string last_name = 2;
-   */
-  lastName: string;
+  fullName: string;
 
   /**
    * Email address of the user
    *
-   * @generated from field: string email = 3;
+   * @generated from field: string email = 2;
    */
   email: string;
 
   /**
    * Phone number of the user
    *
-   * @generated from field: string phone_number = 4;
+   * @generated from field: string phone_number = 3;
    */
   phoneNumber: string;
 
   /**
    * Country of the user
    *
-   * @generated from field: string country = 5;
+   * @generated from field: string country = 4;
    */
   country: string;
 
   /**
    * Province/state of the user
    *
-   * @generated from field: string province = 6;
+   * @generated from field: string province = 5;
    */
   province: string;
 
   /**
    * City where the user resides
    *
-   * @generated from field: string city = 7;
+   * @generated from field: string city = 6;
    */
   city: string;
 
   /**
    * First line of the address
    *
-   * @generated from field: string address_line_1 = 8;
+   * @generated from field: string address_line_1 = 7;
    */
   addressLine1: string;
 
   /**
    * Second line of the address (optional)
    *
-   * @generated from field: string address_line_2 = 9;
+   * @generated from field: string address_line_2 = 8;
    */
   addressLine2: string;
 
   /**
    * Zip/postal code
    *
-   * @generated from field: string zip_code = 10;
+   * @generated from field: string zip_code = 9;
    */
   zipCode: string;
 };
@@ -185,7 +208,7 @@ export type UserProfile = Message<"users.UserProfile"> & {
  * Use `create(UserProfileSchema)` to create a new message.
  */
 export const UserProfileSchema: GenMessage<UserProfile> = /*@__PURE__*/
-  messageDesc(file_users_users, 3);
+  messageDesc(file_users_users, 4);
 
 /**
  * Message representing a user
@@ -208,14 +231,14 @@ export type User = Message<"users.User"> & {
   profile?: UserProfile;
 
   /**
-   * Type of user (Admin, Regular, Guest)
+   * Roles assigned to the user (Admin, Regular, Guest)
    *
    * @generated from field: repeated users.Role user_roles = 3;
    */
   userRoles: Role[];
 
   /**
-   * Which systems user active on
+   * Services the user has access to
    *
    * @generated from field: repeated users.Service user_services = 4;
    */
@@ -229,32 +252,39 @@ export type User = Message<"users.User"> & {
   userStatus: UserStatus;
 
   /**
-   * Username for user can be email
+   * Organization or contracting party
    *
-   * @generated from field: string username = 6;
+   * @generated from field: users.ContractingParty user_organization = 6;
+   */
+  userOrganization?: ContractingParty;
+
+  /**
+   * Username (can be email)
+   *
+   * @generated from field: string username = 7;
    */
   username: string;
 
   /**
    * Hash of the user's password
    *
-   * @generated from field: string password_hash = 7;
+   * @generated from field: string password_hash = 8;
    */
   passwordHash: string;
 
   /**
    * Timestamp for when user was created
    *
-   * @generated from field: string created_at = 8;
+   * @generated from field: google.protobuf.Timestamp created_at = 9;
    */
-  createdAt: string;
+  createdAt?: Timestamp;
 
   /**
-   * Timestamp for when user was last updated
+   * Timestamp for last update
    *
-   * @generated from field: string updated_at = 9;
+   * @generated from field: google.protobuf.Timestamp updated_at = 10;
    */
-  updatedAt: string;
+  updatedAt?: Timestamp;
 };
 
 /**
@@ -262,7 +292,7 @@ export type User = Message<"users.User"> & {
  * Use `create(UserSchema)` to create a new message.
  */
 export const UserSchema: GenMessage<User> = /*@__PURE__*/
-  messageDesc(file_users_users, 4);
+  messageDesc(file_users_users, 5);
 
 /**
  * Message for creating a new user request
@@ -283,7 +313,7 @@ export type CreateUserRequest = Message<"users.CreateUserRequest"> & {
  * Use `create(CreateUserRequestSchema)` to create a new message.
  */
 export const CreateUserRequestSchema: GenMessage<CreateUserRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 5);
+  messageDesc(file_users_users, 6);
 
 /**
  * Message for creating a new user response
@@ -311,7 +341,7 @@ export type CreateUserResponse = Message<"users.CreateUserResponse"> & {
  * Use `create(CreateUserResponseSchema)` to create a new message.
  */
 export const CreateUserResponseSchema: GenMessage<CreateUserResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 6);
+  messageDesc(file_users_users, 7);
 
 /**
  * Message for updating user details
@@ -320,25 +350,32 @@ export const CreateUserResponseSchema: GenMessage<CreateUserResponse> = /*@__PUR
  */
 export type UpdateUserRequest = Message<"users.UpdateUserRequest"> & {
   /**
-   * ID of the user to update
+   * ID of the user to retrieve
    *
    * @generated from field: string user_id = 1;
    */
   userId: string;
 
   /**
-   * Updated profile information
+   * Username (can be email)
    *
-   * @generated from field: users.UserProfile profile = 2;
+   * @generated from field: string username = 2;
    */
-  profile?: UserProfile;
+  username: string;
 
   /**
-   * Updated status of the user
+   * User's password (for authentication)
    *
-   * @generated from field: users.UserStatus user_status = 3;
+   * @generated from field: string password = 3;
    */
-  userStatus: UserStatus;
+  password: string;
+
+  /**
+   * Updated user 
+   *
+   * @generated from field: users.User user = 4;
+   */
+  user?: User;
 };
 
 /**
@@ -346,7 +383,7 @@ export type UpdateUserRequest = Message<"users.UpdateUserRequest"> & {
  * Use `create(UpdateUserRequestSchema)` to create a new message.
  */
 export const UpdateUserRequestSchema: GenMessage<UpdateUserRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 7);
+  messageDesc(file_users_users, 8);
 
 /**
  * Message for updating user response
@@ -367,7 +404,7 @@ export type UpdateUserResponse = Message<"users.UpdateUserResponse"> & {
  * Use `create(UpdateUserResponseSchema)` to create a new message.
  */
 export const UpdateUserResponseSchema: GenMessage<UpdateUserResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 8);
+  messageDesc(file_users_users, 9);
 
 /**
  * Message for retrieving user details by user ID
@@ -383,14 +420,14 @@ export type GetUserRequest = Message<"users.GetUserRequest"> & {
   userId: string;
 
   /**
-   * Username for user can be email
+   * Username (can be email)
    *
    * @generated from field: string username = 2;
    */
   username: string;
 
   /**
-   * user's password
+   * User's password (for authentication)
    *
    * @generated from field: string password = 3;
    */
@@ -402,7 +439,7 @@ export type GetUserRequest = Message<"users.GetUserRequest"> & {
  * Use `create(GetUserRequestSchema)` to create a new message.
  */
 export const GetUserRequestSchema: GenMessage<GetUserRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 9);
+  messageDesc(file_users_users, 10);
 
 /**
  * Message for user detail response
@@ -423,7 +460,7 @@ export type GetUserResponse = Message<"users.GetUserResponse"> & {
  * Use `create(GetUserResponseSchema)` to create a new message.
  */
 export const GetUserResponseSchema: GenMessage<GetUserResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 10);
+  messageDesc(file_users_users, 11);
 
 /**
  * Message for listing users with pagination
@@ -451,7 +488,7 @@ export type UsersListRequest = Message<"users.UsersListRequest"> & {
  * Use `create(UsersListRequestSchema)` to create a new message.
  */
 export const UsersListRequestSchema: GenMessage<UsersListRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 11);
+  messageDesc(file_users_users, 12);
 
 /**
  * Message for list users response
@@ -479,10 +516,10 @@ export type UsersListResponse = Message<"users.UsersListResponse"> & {
  * Use `create(UsersListResponseSchema)` to create a new message.
  */
 export const UsersListResponseSchema: GenMessage<UsersListResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 12);
+  messageDesc(file_users_users, 13);
 
 /**
- * // Message for deleting a user request
+ * Message for deleting a user request
  *
  * @generated from message users.DeleteUserRequest
  */
@@ -500,10 +537,10 @@ export type DeleteUserRequest = Message<"users.DeleteUserRequest"> & {
  * Use `create(DeleteUserRequestSchema)` to create a new message.
  */
 export const DeleteUserRequestSchema: GenMessage<DeleteUserRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 13);
+  messageDesc(file_users_users, 14);
 
 /**
- * // Message for deleting a user response
+ * Message for deleting a user response
  *
  * @generated from message users.DeleteUserResponse
  */
@@ -521,7 +558,7 @@ export type DeleteUserResponse = Message<"users.DeleteUserResponse"> & {
  * Use `create(DeleteUserResponseSchema)` to create a new message.
  */
 export const DeleteUserResponseSchema: GenMessage<DeleteUserResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 14);
+  messageDesc(file_users_users, 15);
 
 /**
  * Enum for user status
@@ -572,7 +609,7 @@ export const UserStatusSchema: GenEnum<UserStatus> = /*@__PURE__*/
   enumDesc(file_users_users, 0);
 
 /**
- * User Managment Service
+ * User Management Service
  *
  * @generated from service users.UsersService
  */

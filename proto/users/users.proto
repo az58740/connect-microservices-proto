@@ -1,124 +1,135 @@
 syntax = "proto3";
 
-option go_package="github.com/az58740/connect-microservices-proto/golang/users;users";
+option go_package = "github.com/az58740/connect-microservices-proto/golang/users;users";
 
 package users;
 
 //import "google/protobuf/empty.proto";
-
+import "google/protobuf/timestamp.proto";  // For handling timestamps
 
 // Enum for user status
 enum UserStatus {
     USER_STATUS_UNSPECIFIED = 0; // Default value
-    USER_STATUS_ACTIVE = 1;                   // User is active and can log in
-    USER_STATUS_INACTIVE = 2;                 // User has been deactivated
-    USER_STATUS_SUSPENDED = 3;                // User is temporarily suspended
-    USER_STATUS_DELETED = 4;                  // User account has been deleted
+    USER_STATUS_ACTIVE = 1;      // User is active and can log in
+    USER_STATUS_INACTIVE = 2;    // User has been deactivated
+    USER_STATUS_SUSPENDED = 3;   // User is temporarily suspended
+    USER_STATUS_DELETED = 4;     // User account has been deleted
 }
-// Message for system
-message Service{
-    string service_id = 1;         // Unique identifier for the system
-    string service_name=2;                 // Name of the system
+
+// Message for system or service
+message Service {
+    string service_id = 1;       // Unique identifier for the system
+    string service_name = 2;     // Name of the system
 }
-// Message for role actions
+
+// Message for role permissions
 message Permissions {
-    string permission_id = 1;         // Unique identifier for the role actions
-    string Permission_name=2;                 // Name of the role action
+    string permission_id = 1;    // Unique identifier for the role action
+    string permission_name = 2;  // Name of the role action
 }
+
 // Message for user roles
-message Role{
+message Role {
     string role_id = 1;          // Unique identifier for the user role
-    string role_name=2;                  // Name of the user role
-    repeated Permissions permissions=3; //Role actions
+    string role_name = 2;        // Name of the user role
+    repeated Permissions permissions = 3;  // Role actions
 }
+
+// Message for contracting party or organization
+message ContractingParty {
+    string organization_id = 1;   // Unique identifier for the organization
+    string organization_name = 2; // Name of the organization
+}
+
 // Message representing a user profile
 message UserProfile {
-    string first_name = 1;        // First name of the user
-    string last_name = 2;         // Last name of the user
-    string email = 3;             // Email address of the user
-    string phone_number = 4;      // Phone number of the user
-    string country = 5;           // Country of the user
-    string province = 6;          // Province/state of the user
-    string city = 7;              // City where the user resides
-    string address_line_1 = 8;    // First line of the address
-    string address_line_2 = 9;    // Second line of the address (optional)
-    string zip_code = 10;         // Zip/postal code
+    string full_name = 1;        // First and last name of the user
+    string email = 2;            // Email address of the user
+    string phone_number = 3;     // Phone number of the user
+    string country = 4;          // Country of the user
+    string province = 5;         // Province/state of the user
+    string city = 6;             // City where the user resides
+    string address_line_1 = 7;   // First line of the address
+    string address_line_2 = 8;   // Second line of the address (optional)
+    string zip_code = 9;         // Zip/postal code
 }
 
 // Message representing a user
 message User {
-    string user_id = 1;              // Unique identifier for the user
-    UserProfile profile = 2;         // The user's profile information
-    repeated Role user_roles = 3;        // Type of user (Admin, Regular, Guest)
-    repeated Service user_services=4;  //Which systems user active on
-    UserStatus user_status = 5;      // Current status of the user
-    string username = 6;             // Username for user can be email
-    string password_hash =7;        // Hash of the user's password
-    string created_at = 8;           // Timestamp for when user was created
-    string updated_at = 9;           // Timestamp for when user was last updated
+    string user_id = 1;                  // Unique identifier for the user
+    UserProfile profile = 2;             // The user's profile information
+    repeated Role user_roles = 3;        // Roles assigned to the user (Admin, Regular, Guest)
+    repeated Service user_services = 4;  // Services the user has access to
+    UserStatus user_status = 5;          // Current status of the user
+    ContractingParty user_organization = 6; // Organization or contracting party
+    string username = 7;                 // Username (can be email)
+    string password_hash = 8;            // Hash of the user's password
+    google.protobuf.Timestamp created_at = 9; // Timestamp for when user was created
+    google.protobuf.Timestamp updated_at = 10; // Timestamp for last update
 }
 
 // Message for creating a new user request
 message CreateUserRequest {
-    User user = 1;               // User details to create
+    User user = 1; // User details to create
 }
 
 // Message for creating a new user response
 message CreateUserResponse {
-    string user_id = 1;          // ID of the created user
-    string message = 2;          // Confirmation message
+    string user_id = 1;  // ID of the created user
+    string message = 2;  // Confirmation message
 }
 
 // Message for updating user details
 message UpdateUserRequest {
-    string user_id = 1;          // ID of the user to update
-    UserProfile profile = 2;     // Updated profile information
-    UserStatus user_status = 3;  // Updated status of the user
+    string user_id = 1;  // ID of the user to retrieve
+    string username = 2; // Username (can be email)
+    string password = 3; // User's password (for authentication)
+    User user = 4;       //Updated user 
 }
 
 // Message for updating user response
 message UpdateUserResponse {
-    string message = 1;          // Confirmation message
+    string message = 1; // Confirmation message
 }
 
 // Message for retrieving user details by user ID
 message GetUserRequest {
-    string user_id = 1;          // ID of the user to retrieve
-    string username = 2;         // Username for user can be email
-    string password = 3;         //user's password
+    string user_id = 1;  // ID of the user to retrieve
+    string username = 2; // Username (can be email)
+    string password = 3; // User's password (for authentication)
 }
 
 // Message for user detail response
 message GetUserResponse {
-    User user = 1;               // User information retrieved
+    User user = 1; // User information retrieved
 }
 
 // Message for listing users with pagination
 message UsersListRequest {
-    int32 page = 1;              // Page number for pagination
-    int32 page_size = 2;         // Number of users per page
+    int32 page = 1;         // Page number for pagination
+    int32 page_size = 2;    // Number of users per page
 }
 
 // Message for list users response
 message UsersListResponse {
-    repeated User users = 1;     // List of users
-    int32 total_count = 2;       // Total number of users in the system
+    repeated User users = 1;  // List of users
+    int32 total_count = 2;    // Total number of users in the system
 }
 
-// // Message for deleting a user request
+// Message for deleting a user request
 message DeleteUserRequest {
-    string user_id = 1;          // ID of the user to delete
+    string user_id = 1; // ID of the user to delete
 }
 
-// // Message for deleting a user response
+// Message for deleting a user response
 message DeleteUserResponse {
-    string message = 1;          // Confirmation message
+    string message = 1;  // Confirmation message
 }
 
-//User Managment Service
+// User Management Service
 service UsersService {
-    rpc GetUser(GetUserRequest) returns (GetUserResponse) {};
-    rpc CreateUser(stream CreateUserRequest) returns (CreateUserResponse) {};
-    rpc UpdateUser(stream UpdateUserRequest) returns (UpdateUserResponse) {};
-    rpc UsersList(UsersListRequest) returns (stream UsersListResponse) {};
-} 
+    rpc GetUser(GetUserRequest) returns (GetUserResponse); 
+    rpc CreateUser(stream CreateUserRequest) returns (CreateUserResponse); 
+    rpc UpdateUser(stream UpdateUserRequest) returns (UpdateUserResponse); 
+    rpc UsersList(UsersListRequest) returns (stream UsersListResponse); 
+}

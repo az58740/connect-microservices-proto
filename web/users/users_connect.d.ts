@@ -7,7 +7,7 @@ import { CreateUserRequest, CreateUserResponse, GetUserRequest, GetUserResponse,
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
- * User Managment Service
+ * User Management Service
  *
  * @generated from service users.UsersService
  */

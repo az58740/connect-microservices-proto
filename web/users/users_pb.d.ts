@@ -4,6 +4,7 @@
 
 import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
 import type { Message } from "@bufbuild/protobuf";
+import type { Timestamp } from "@bufbuild/protobuf/wkt";
 
 /**
  * Describes the file users/users.proto.
@@ -11,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
 export declare const file_users_users: GenFile;
 
 /**
- * Message for system
+ * Message for system or service
  *
  * @generated from message users.Service
  */
@@ -38,13 +39,13 @@ export declare type Service = Message<"users.Service"> & {
 export declare const ServiceSchema: GenMessage<Service>;
 
 /**
- * Message for role actions
+ * Message for role permissions
  *
  * @generated from message users.Permissions
  */
 export declare type Permissions = Message<"users.Permissions"> & {
   /**
-   * Unique identifier for the role actions
+   * Unique identifier for the role action
    *
    * @generated from field: string permission_id = 1;
    */
@@ -53,9 +54,9 @@ export declare type Permissions = Message<"users.Permissions"> & {
   /**
    * Name of the role action
    *
-   * @generated from field: string Permission_name = 2;
+   * @generated from field: string permission_name = 2;
    */
-  PermissionName: string;
+  permissionName: string;
 };
 
 /**
@@ -99,78 +100,98 @@ export declare type Role = Message<"users.Role"> & {
 export declare const RoleSchema: GenMessage<Role>;
 
 /**
+ * Message for contracting party or organization
+ *
+ * @generated from message users.ContractingParty
+ */
+export declare type ContractingParty = Message<"users.ContractingParty"> & {
+  /**
+   * Unique identifier for the organization
+   *
+   * @generated from field: string organization_id = 1;
+   */
+  organizationId: string;
+
+  /**
+   * Name of the organization
+   *
+   * @generated from field: string organization_name = 2;
+   */
+  organizationName: string;
+};
+
+/**
+ * Describes the message users.ContractingParty.
+ * Use `create(ContractingPartySchema)` to create a new message.
+ */
+export declare const ContractingPartySchema: GenMessage<ContractingParty>;
+
+/**
  * Message representing a user profile
  *
  * @generated from message users.UserProfile
  */
 export declare type UserProfile = Message<"users.UserProfile"> & {
   /**
-   * First name of the user
+   * First and last name of the user
    *
-   * @generated from field: string first_name = 1;
+   * @generated from field: string full_name = 1;
    */
-  firstName: string;
-
-  /**
-   * Last name of the user
-   *
-   * @generated from field: string last_name = 2;
-   */
-  lastName: string;
+  fullName: string;
 
   /**
    * Email address of the user
    *
-   * @generated from field: string email = 3;
+   * @generated from field: string email = 2;
    */
   email: string;
 
   /**
    * Phone number of the user
    *
-   * @generated from field: string phone_number = 4;
+   * @generated from field: string phone_number = 3;
    */
   phoneNumber: string;
 
   /**
    * Country of the user
    *
-   * @generated from field: string country = 5;
+   * @generated from field: string country = 4;
    */
   country: string;
 
   /**
    * Province/state of the user
    *
-   * @generated from field: string province = 6;
+   * @generated from field: string province = 5;
    */
   province: string;
 
   /**
    * City where the user resides
    *
-   * @generated from field: string city = 7;
+   * @generated from field: string city = 6;
    */
   city: string;
 
   /**
    * First line of the address
    *
-   * @generated from field: string address_line_1 = 8;
+   * @generated from field: string address_line_1 = 7;
    */
   addressLine1: string;
 
   /**
    * Second line of the address (optional)
    *
-   * @generated from field: string address_line_2 = 9;
+   * @generated from field: string address_line_2 = 8;
    */
   addressLine2: string;
 
   /**
    * Zip/postal code
    *
-   * @generated from field: string zip_code = 10;
+   * @generated from field: string zip_code = 9;
    */
   zipCode: string;
 };
@@ -202,14 +223,14 @@ export declare type User = Message<"users.User"> & {
   profile?: UserProfile;
 
   /**
-   * Type of user (Admin, Regular, Guest)
+   * Roles assigned to the user (Admin, Regular, Guest)
    *
    * @generated from field: repeated users.Role user_roles = 3;
    */
   userRoles: Role[];
 
   /**
-   * Which systems user active on
+   * Services the user has access to
    *
    * @generated from field: repeated users.Service user_services = 4;
    */
@@ -223,32 +244,39 @@ export declare type User = Message<"users.User"> & {
   userStatus: UserStatus;
 
   /**
-   * Username for user can be email
+   * Organization or contracting party
    *
-   * @generated from field: string username = 6;
+   * @generated from field: users.ContractingParty user_organization = 6;
+   */
+  userOrganization?: ContractingParty;
+
+  /**
+   * Username (can be email)
+   *
+   * @generated from field: string username = 7;
    */
   username: string;
 
   /**
    * Hash of the user's password
    *
-   * @generated from field: string password_hash = 7;
+   * @generated from field: string password_hash = 8;
    */
   passwordHash: string;
 
   /**
    * Timestamp for when user was created
    *
-   * @generated from field: string created_at = 8;
+   * @generated from field: google.protobuf.Timestamp created_at = 9;
    */
-  createdAt: string;
+  createdAt?: Timestamp;
 
   /**
-   * Timestamp for when user was last updated
+   * Timestamp for last update
    *
-   * @generated from field: string updated_at = 9;
+   * @generated from field: google.protobuf.Timestamp updated_at = 10;
    */
-  updatedAt: string;
+  updatedAt?: Timestamp;
 };
 
 /**
@@ -311,25 +339,32 @@ export declare const CreateUserResponseSchema: GenMessage<CreateUserResponse>;
  */
 export declare type UpdateUserRequest = Message<"users.UpdateUserRequest"> & {
   /**
-   * ID of the user to update
+   * ID of the user to retrieve
    *
    * @generated from field: string user_id = 1;
    */
   userId: string;
 
   /**
-   * Updated profile information
+   * Username (can be email)
    *
-   * @generated from field: users.UserProfile profile = 2;
+   * @generated from field: string username = 2;
    */
-  profile?: UserProfile;
+  username: string;
 
   /**
-   * Updated status of the user
+   * User's password (for authentication)
    *
-   * @generated from field: users.UserStatus user_status = 3;
+   * @generated from field: string password = 3;
    */
-  userStatus: UserStatus;
+  password: string;
+
+  /**
+   * Updated user 
+   *
+   * @generated from field: users.User user = 4;
+   */
+  user?: User;
 };
 
 /**
@@ -372,14 +407,14 @@ export declare type GetUserRequest = Message<"users.GetUserRequest"> & {
   userId: string;
 
   /**
-   * Username for user can be email
+   * Username (can be email)
    *
    * @generated from field: string username = 2;
    */
   username: string;
 
   /**
-   * user's password
+   * User's password (for authentication)
    *
    * @generated from field: string password = 3;
    */
@@ -467,7 +502,7 @@ export declare type UsersListResponse = Message<"users.UsersListResponse"> & {
 export declare const UsersListResponseSchema: GenMessage<UsersListResponse>;
 
 /**
- * // Message for deleting a user request
+ * Message for deleting a user request
  *
  * @generated from message users.DeleteUserRequest
  */
@@ -487,7 +522,7 @@ export declare type DeleteUserRequest = Message<"users.DeleteUserRequest"> & {
 export declare const DeleteUserRequestSchema: GenMessage<DeleteUserRequest>;
 
 /**
- * // Message for deleting a user response
+ * Message for deleting a user response
  *
  * @generated from message users.DeleteUserResponse
  */
@@ -554,7 +589,7 @@ export enum UserStatus {
 export declare const UserStatusSchema: GenEnum<UserStatus>;
 
 /**
- * User Managment Service
+ * User Management Service
  *
  * @generated from service users.UsersService
  */
