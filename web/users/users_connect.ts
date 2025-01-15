@@ -3,11 +3,11 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateUserRequest, CreateUserResponse, DeleteUserRequest, DeleteUserResponse, GetUserRequest, GetUserResponse, ListUsersRequest, ListUsersResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
+import { GetUserRequest, GetUserResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, LogoutRequest, LogoutResponse, RegisterRequest, RegisterResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
- * User Management Service
+ * Service for managing users (authentication, user details, and user roles).
  *
  * @generated from service users.UsersService
  */
@@ -15,6 +15,45 @@ export const UsersService = {
   typeName: "users.UsersService",
   methods: {
     /**
+     * Auth-related methods
+     *
+     * Register a new user.
+     *
+     * @generated from rpc users.UsersService.RegisterUser
+     */
+    registerUser: {
+      name: "RegisterUser",
+      I: RegisterRequest,
+      O: RegisterResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Log a user in.
+     *
+     * @generated from rpc users.UsersService.LoginUser
+     */
+    loginUser: {
+      name: "LoginUser",
+      I: LoginRequest,
+      O: LoginResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Log a user out.
+     *
+     * @generated from rpc users.UsersService.LogoutUser
+     */
+    logoutUser: {
+      name: "LogoutUser",
+      I: LogoutRequest,
+      O: LogoutResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * User management methods
+     *
+     * Retrieve user details by ID.
+     *
      * @generated from rpc users.UsersService.GetUser
      */
     getUser: {
@@ -24,15 +63,8 @@ export const UsersService = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc users.UsersService.CreateUser
-     */
-    createUser: {
-      name: "CreateUser",
-      I: CreateUserRequest,
-      O: CreateUserResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
+     * Update a user's details.
+     *
      * @generated from rpc users.UsersService.UpdateUser
      */
     updateUser: {
@@ -42,21 +74,14 @@ export const UsersService = {
       kind: MethodKind.Unary,
     },
     /**
+     * List users with pagination and filtering.
+     *
      * @generated from rpc users.UsersService.ListUsers
      */
     listUsers: {
       name: "ListUsers",
       I: ListUsersRequest,
       O: ListUsersResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * @generated from rpc users.UsersService.DeleteUser
-     */
-    deleteUser: {
-      name: "DeleteUser",
-      I: DeleteUserRequest,
-      O: DeleteUserResponse,
       kind: MethodKind.Unary,
     },
   }

@@ -9,20 +9,20 @@ import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
  * Describes the file users/users.proto.
  */
 export const file_users_users = /*@__PURE__*/
-  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMwoHU2VydmljZRISCgpzZXJ2aWNlX2lkGAEgASgJEhQKDHNlcnZpY2VfbmFtZRgCIAEoCSI8CgpQZXJtaXNzaW9uEhUKDXBlcm1pc3Npb25faWQYASABKAkSFwoPcGVybWlzc2lvbl9uYW1lGAIgASgJIlIKBFJvbGUSDwoHcm9sZV9pZBgBIAEoCRIRCglyb2xlX25hbWUYAiABKAkSJgoLcGVybWlzc2lvbnMYAyADKAsyES51c2Vycy5QZXJtaXNzaW9uIkYKEENvbnRyYWN0aW5nUGFydHkSFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJEhkKEW9yZ2FuaXphdGlvbl9uYW1lGAIgASgJIrgBCgtVc2VyUHJvZmlsZRIRCglmdWxsX25hbWUYASABKAkSDQoFZW1haWwYAiABKAkSFAoMcGhvbmVfbnVtYmVyGAMgASgJEg8KB2NvdW50cnkYBCABKAkSEAoIcHJvdmluY2UYBSABKAkSDAoEY2l0eRgGIAEoCRIWCg5hZGRyZXNzX2xpbmVfMRgHIAEoCRIWCg5hZGRyZXNzX2xpbmVfMhgIIAEoCRIQCgh6aXBfY29kZRgJIAEoCSLVAgoEVXNlchIPCgd1c2VyX2lkGAEgASgJEiMKB3Byb2ZpbGUYAiABKAsyEi51c2Vycy5Vc2VyUHJvZmlsZRIaCgVyb2xlcxgDIAMoCzILLnVzZXJzLlJvbGUSIAoIc2VydmljZXMYBCADKAsyDi51c2Vycy5TZXJ2aWNlEiEKBnN0YXR1cxgFIAEoDjIRLnVzZXJzLlVzZXJTdGF0dXMSLQoMb3JnYW5pemF0aW9uGAYgASgLMhcudXNlcnMuQ29udHJhY3RpbmdQYXJ0eRIQCgh1c2VybmFtZRgHIAEoCRIVCg1wYXNzd29yZF9oYXNoGAggASgJEi4KCmNyZWF0ZWRfYXQYCSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIi4KEUNyZWF0ZVVzZXJSZXF1ZXN0EhkKBHVzZXIYASABKAsyCy51c2Vycy5Vc2VyIjYKEkNyZWF0ZVVzZXJSZXNwb25zZRIPCgd1c2VyX2lkGAEgASgJEg8KB21lc3NhZ2UYAiABKAkiYwoRVXBkYXRlVXNlclJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRIQCgh1c2VybmFtZRgCIAEoCRIQCghwYXNzd29yZBgDIAEoCRIZCgR1c2VyGAQgASgLMgsudXNlcnMuVXNlciIlChJVcGRhdGVVc2VyUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSIhCg5HZXRVc2VyUmVxdWVzdBIPCgd1c2VyX2lkGAEgASgJIiwKD0dldFVzZXJSZXNwb25zZRIZCgR1c2VyGAEgASgLMgsudXNlcnMuVXNlciI5ChBMaXN0VXNlcnNSZXF1ZXN0EhEKCXBhZ2Vfc2l6ZRgBIAEoBRISCgpwYWdlX3Rva2VuGAIgASgJIl0KEUxpc3RVc2Vyc1Jlc3BvbnNlEhoKBXVzZXJzGAEgAygLMgsudXNlcnMuVXNlchIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkSEwoLdG90YWxfY291bnQYAyABKAUiJAoRRGVsZXRlVXNlclJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCSIlChJEZWxldGVVc2VyUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSqPAQoKVXNlclN0YXR1cxIbChdVU0VSX1NUQVRVU19VTlNQRUNJRklFRBAAEhYKElVTRVJfU1RBVFVTX0FDVElWRRABEhgKFFVTRVJfU1RBVFVTX0lOQUNUSVZFEAISGQoVVVNFUl9TVEFUVVNfU1VTUEVOREVEEAMSFwoTVVNFUl9TVEFUVVNfREVMRVRFRBAEMtECCgxVc2Vyc1NlcnZpY2USOAoHR2V0VXNlchIVLnVzZXJzLkdldFVzZXJSZXF1ZXN0GhYudXNlcnMuR2V0VXNlclJlc3BvbnNlEkEKCkNyZWF0ZVVzZXISGC51c2Vycy5DcmVhdGVVc2VyUmVxdWVzdBoZLnVzZXJzLkNyZWF0ZVVzZXJSZXNwb25zZRJBCgpVcGRhdGVVc2VyEhgudXNlcnMuVXBkYXRlVXNlclJlcXVlc3QaGS51c2Vycy5VcGRhdGVVc2VyUmVzcG9uc2USPgoJTGlzdFVzZXJzEhcudXNlcnMuTGlzdFVzZXJzUmVxdWVzdBoYLnVzZXJzLkxpc3RVc2Vyc1Jlc3BvbnNlEkEKCkRlbGV0ZVVzZXISGC51c2Vycy5EZWxldGVVc2VyUmVxdWVzdBoZLnVzZXJzLkRlbGV0ZVVzZXJSZXNwb25zZUJDWkFnaXRodWIuY29tL2F6NTg3NDAvY29ubmVjdC1taWNyb3NlcnZpY2VzLXByb3RvL2dvbGFuZy91c2Vyczt1c2Vyc2IGcHJvdG8z", [file_google_protobuf_timestamp]);
-
-/**
- * Describes the message users.Service.
- * Use `create(ServiceSchema)` to create a new message.
- */
-export const ServiceSchema = /*@__PURE__*/
-  messageDesc(file_users_users, 0);
+  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMwoKUGVybWlzc2lvbhIVCg1wZXJtaXNzaW9uX2lkGAEgASgJEg4KBmFjdGlvbhgDIAEoCSI2CghSZXNvdXJjZRITCgtyZXNvdXJjZV9pZBgBIAEoCRIVCg1yZXNvdXJjZV9uYW1lGAIgASgJIooBCgRSb2xlEg8KB3JvbGVfaWQYASABKAkSEQoJcm9sZV9uYW1lGAIgASgJEiEKCHJlc291cmNlGAMgASgLMg8udXNlcnMuUmVzb3VyY2USEwoLZGVzY3JpcHRpb24YBCABKAkSJgoLcGVybWlzc2lvbnMYBSADKAsyES51c2Vycy5QZXJtaXNzaW9uIkIKEU9yZ2FuaXphdGlvbkdyb3VwEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkibwoQQ29udHJhY3RpbmdQYXJ0eRIXCg9vcmdhbml6YXRpb25faWQYASABKAkSGQoRb3JnYW5pemF0aW9uX25hbWUYAiABKAkSJwoFZ3JvdXAYAyABKAsyGC51c2Vycy5Pcmdhbml6YXRpb25Hcm91cCK4AQoLVXNlclByb2ZpbGUSEQoJZnVsbF9uYW1lGAEgASgJEg0KBWVtYWlsGAIgASgJEhQKDHBob25lX251bWJlchgDIAEoCRIPCgdjb3VudHJ5GAQgASgJEhAKCHByb3ZpbmNlGAUgASgJEgwKBGNpdHkYBiABKAkSFgoOYWRkcmVzc19saW5lXzEYByABKAkSFgoOYWRkcmVzc19saW5lXzIYCCABKAkSEAoIemlwX2NvZGUYCSABKAkiswIKBFVzZXISDwoHdXNlcl9pZBgBIAEoCRIjCgdwcm9maWxlGAIgASgLMhIudXNlcnMuVXNlclByb2ZpbGUSGgoFcm9sZXMYAyADKAsyCy51c2Vycy5Sb2xlEiEKBnN0YXR1cxgEIAEoDjIRLnVzZXJzLlVzZXJTdGF0dXMSLQoMb3JnYW5pemF0aW9uGAUgASgLMhcudXNlcnMuQ29udHJhY3RpbmdQYXJ0eRIQCgh1c2VybmFtZRgGIAEoCRIVCg1wYXNzd29yZF9oYXNoGAcgASgJEi4KCmNyZWF0ZWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYCSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIlcKClBhZ2luYXRpb24SDAoEcGFnZRgBIAEoBRIRCglwYWdlX3NpemUYAiABKAUSDwoHc29ydF9ieRgDIAEoCRIXCg9zb3J0X2Rlc2NlbmRpbmcYBCABKAgiYgoKVXNlckZpbHRlchIPCgd1c2VyX2lkGAEgASgJEhAKCHVzZXJuYW1lGAIgASgJEhAKCHBhc3N3b3JkGAMgASgJEg0KBWVtYWlsGAQgASgJEhAKCHJvbGVfaWRzGAUgAygJIi8KClJvbGVGaWx0ZXISIQoIcmVzb3VyY2UYASABKAsyDy51c2Vycy5SZXNvdXJjZSJnCg9SZWdpc3RlclJlcXVlc3QSDAoEbmFtZRgBIAEoCRINCgVlbWFpbBgCIAEoCRITCgtwaG9uZW51bWJlchgDIAEoCRIQCgh1c2VybmFtZRgEIAEoCRIQCghwYXNzd29yZBgFIAEoCSI0ChBSZWdpc3RlclJlc3BvbnNlEg8KB3VzZXJfaWQYASABKAkSDwoHbWVzc2FnZRgCIAEoCSIyCgxMb2dpblJlcXVlc3QSEAoIdXNlcm5hbWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAkiLwoNTG9naW5SZXNwb25zZRINCgV0b2tlbhgBIAEoCRIPCgdzdWNjZXNzGAIgASgIIiAKDUxvZ291dFJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCSIhCg5Mb2dvdXRSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIIiEKDkdldFVzZXJSZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkiLAoPR2V0VXNlclJlc3BvbnNlEhkKBHVzZXIYASABKAsyCy51c2Vycy5Vc2VyIj8KEVVwZGF0ZVVzZXJSZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkSGQoEdXNlchgCIAEoCzILLnVzZXJzLlVzZXIiJQoSVXBkYXRlVXNlclJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiXAoQTGlzdFVzZXJzUmVxdWVzdBIlCgpwYWdpbmF0aW9uGAEgASgLMhEudXNlcnMuUGFnaW5hdGlvbhIhCgZmaWx0ZXIYAiABKAsyES51c2Vycy5Vc2VyRmlsdGVyIl0KEUxpc3RVc2Vyc1Jlc3BvbnNlEhoKBXVzZXJzGAEgAygLMgsudXNlcnMuVXNlchIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkSEwoLdG90YWxfY291bnQYAyABKAUqjwEKClVzZXJTdGF0dXMSGwoXVVNFUl9TVEFUVVNfVU5TUEVDSUZJRUQQABIWChJVU0VSX1NUQVRVU19BQ1RJVkUQARIYChRVU0VSX1NUQVRVU19JTkFDVElWRRACEhkKFVVTRVJfU1RBVFVTX1NVU1BFTkRFRBADEhcKE1VTRVJfU1RBVFVTX0RFTEVURUQQBDL/AgoMVXNlcnNTZXJ2aWNlEj8KDFJlZ2lzdGVyVXNlchIWLnVzZXJzLlJlZ2lzdGVyUmVxdWVzdBoXLnVzZXJzLlJlZ2lzdGVyUmVzcG9uc2USNgoJTG9naW5Vc2VyEhMudXNlcnMuTG9naW5SZXF1ZXN0GhQudXNlcnMuTG9naW5SZXNwb25zZRI5CgpMb2dvdXRVc2VyEhQudXNlcnMuTG9nb3V0UmVxdWVzdBoVLnVzZXJzLkxvZ291dFJlc3BvbnNlEjgKB0dldFVzZXISFS51c2Vycy5HZXRVc2VyUmVxdWVzdBoWLnVzZXJzLkdldFVzZXJSZXNwb25zZRJBCgpVcGRhdGVVc2VyEhgudXNlcnMuVXBkYXRlVXNlclJlcXVlc3QaGS51c2Vycy5VcGRhdGVVc2VyUmVzcG9uc2USPgoJTGlzdFVzZXJzEhcudXNlcnMuTGlzdFVzZXJzUmVxdWVzdBoYLnVzZXJzLkxpc3RVc2Vyc1Jlc3BvbnNlQkNaQWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3VzZXJzO3VzZXJzYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
  * Describes the message users.Permission.
  * Use `create(PermissionSchema)` to create a new message.
  */
 export const PermissionSchema = /*@__PURE__*/
+  messageDesc(file_users_users, 0);
+
+/**
+ * Describes the message users.Resource.
+ * Use `create(ResourceSchema)` to create a new message.
+ */
+export const ResourceSchema = /*@__PURE__*/
   messageDesc(file_users_users, 1);
 
 /**
@@ -33,95 +33,137 @@ export const RoleSchema = /*@__PURE__*/
   messageDesc(file_users_users, 2);
 
 /**
+ * Describes the message users.OrganizationGroup.
+ * Use `create(OrganizationGroupSchema)` to create a new message.
+ */
+export const OrganizationGroupSchema = /*@__PURE__*/
+  messageDesc(file_users_users, 3);
+
+/**
  * Describes the message users.ContractingParty.
  * Use `create(ContractingPartySchema)` to create a new message.
  */
 export const ContractingPartySchema = /*@__PURE__*/
-  messageDesc(file_users_users, 3);
+  messageDesc(file_users_users, 4);
 
 /**
  * Describes the message users.UserProfile.
  * Use `create(UserProfileSchema)` to create a new message.
  */
 export const UserProfileSchema = /*@__PURE__*/
-  messageDesc(file_users_users, 4);
+  messageDesc(file_users_users, 5);
 
 /**
  * Describes the message users.User.
  * Use `create(UserSchema)` to create a new message.
  */
 export const UserSchema = /*@__PURE__*/
-  messageDesc(file_users_users, 5);
-
-/**
- * Describes the message users.CreateUserRequest.
- * Use `create(CreateUserRequestSchema)` to create a new message.
- */
-export const CreateUserRequestSchema = /*@__PURE__*/
   messageDesc(file_users_users, 6);
 
 /**
- * Describes the message users.CreateUserResponse.
- * Use `create(CreateUserResponseSchema)` to create a new message.
+ * Describes the message users.Pagination.
+ * Use `create(PaginationSchema)` to create a new message.
  */
-export const CreateUserResponseSchema = /*@__PURE__*/
+export const PaginationSchema = /*@__PURE__*/
   messageDesc(file_users_users, 7);
 
 /**
- * Describes the message users.UpdateUserRequest.
- * Use `create(UpdateUserRequestSchema)` to create a new message.
+ * Describes the message users.UserFilter.
+ * Use `create(UserFilterSchema)` to create a new message.
  */
-export const UpdateUserRequestSchema = /*@__PURE__*/
+export const UserFilterSchema = /*@__PURE__*/
   messageDesc(file_users_users, 8);
 
 /**
- * Describes the message users.UpdateUserResponse.
- * Use `create(UpdateUserResponseSchema)` to create a new message.
+ * Describes the message users.RoleFilter.
+ * Use `create(RoleFilterSchema)` to create a new message.
  */
-export const UpdateUserResponseSchema = /*@__PURE__*/
+export const RoleFilterSchema = /*@__PURE__*/
   messageDesc(file_users_users, 9);
+
+/**
+ * Describes the message users.RegisterRequest.
+ * Use `create(RegisterRequestSchema)` to create a new message.
+ */
+export const RegisterRequestSchema = /*@__PURE__*/
+  messageDesc(file_users_users, 10);
+
+/**
+ * Describes the message users.RegisterResponse.
+ * Use `create(RegisterResponseSchema)` to create a new message.
+ */
+export const RegisterResponseSchema = /*@__PURE__*/
+  messageDesc(file_users_users, 11);
+
+/**
+ * Describes the message users.LoginRequest.
+ * Use `create(LoginRequestSchema)` to create a new message.
+ */
+export const LoginRequestSchema = /*@__PURE__*/
+  messageDesc(file_users_users, 12);
+
+/**
+ * Describes the message users.LoginResponse.
+ * Use `create(LoginResponseSchema)` to create a new message.
+ */
+export const LoginResponseSchema = /*@__PURE__*/
+  messageDesc(file_users_users, 13);
+
+/**
+ * Describes the message users.LogoutRequest.
+ * Use `create(LogoutRequestSchema)` to create a new message.
+ */
+export const LogoutRequestSchema = /*@__PURE__*/
+  messageDesc(file_users_users, 14);
+
+/**
+ * Describes the message users.LogoutResponse.
+ * Use `create(LogoutResponseSchema)` to create a new message.
+ */
+export const LogoutResponseSchema = /*@__PURE__*/
+  messageDesc(file_users_users, 15);
 
 /**
  * Describes the message users.GetUserRequest.
  * Use `create(GetUserRequestSchema)` to create a new message.
  */
 export const GetUserRequestSchema = /*@__PURE__*/
-  messageDesc(file_users_users, 10);
+  messageDesc(file_users_users, 16);
 
 /**
  * Describes the message users.GetUserResponse.
  * Use `create(GetUserResponseSchema)` to create a new message.
  */
 export const GetUserResponseSchema = /*@__PURE__*/
-  messageDesc(file_users_users, 11);
+  messageDesc(file_users_users, 17);
+
+/**
+ * Describes the message users.UpdateUserRequest.
+ * Use `create(UpdateUserRequestSchema)` to create a new message.
+ */
+export const UpdateUserRequestSchema = /*@__PURE__*/
+  messageDesc(file_users_users, 18);
+
+/**
+ * Describes the message users.UpdateUserResponse.
+ * Use `create(UpdateUserResponseSchema)` to create a new message.
+ */
+export const UpdateUserResponseSchema = /*@__PURE__*/
+  messageDesc(file_users_users, 19);
 
 /**
  * Describes the message users.ListUsersRequest.
  * Use `create(ListUsersRequestSchema)` to create a new message.
  */
 export const ListUsersRequestSchema = /*@__PURE__*/
-  messageDesc(file_users_users, 12);
+  messageDesc(file_users_users, 20);
 
 /**
  * Describes the message users.ListUsersResponse.
  * Use `create(ListUsersResponseSchema)` to create a new message.
  */
 export const ListUsersResponseSchema = /*@__PURE__*/
-  messageDesc(file_users_users, 13);
-
-/**
- * Describes the message users.DeleteUserRequest.
- * Use `create(DeleteUserRequestSchema)` to create a new message.
- */
-export const DeleteUserRequestSchema = /*@__PURE__*/
-  messageDesc(file_users_users, 14);
-
-/**
- * Describes the message users.DeleteUserResponse.
- * Use `create(DeleteUserResponseSchema)` to create a new message.
- */
-export const DeleteUserResponseSchema = /*@__PURE__*/
-  messageDesc(file_users_users, 15);
+  messageDesc(file_users_users, 21);
 
 /**
  * Describes the enum users.UserStatus.
@@ -130,7 +172,7 @@ export const UserStatusSchema = /*@__PURE__*/
   enumDesc(file_users_users, 0);
 
 /**
- * Enum for user status
+ * Enum for user status, which can be one of several states for the user account.
  *
  * @generated from enum users.UserStatus
  */
@@ -138,7 +180,7 @@ export const UserStatus = /*@__PURE__*/
   tsEnum(UserStatusSchema);
 
 /**
- * User Management Service
+ * Service for managing users (authentication, user details, and user roles).
  *
  * @generated from service users.UsersService
  */

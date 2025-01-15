@@ -3,11 +3,11 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateUserRequest, CreateUserResponse, DeleteUserRequest, DeleteUserResponse, GetUserRequest, GetUserResponse, ListUsersRequest, ListUsersResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
+import { GetUserRequest, GetUserResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, LogoutRequest, LogoutResponse, RegisterRequest, RegisterResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
- * User Management Service
+ * Service for managing users (authentication, user details, and user roles).
  *
  * @generated from service users.UsersService
  */
@@ -15,6 +15,45 @@ export declare const UsersService: {
   readonly typeName: "users.UsersService",
   readonly methods: {
     /**
+     * Auth-related methods
+     *
+     * Register a new user.
+     *
+     * @generated from rpc users.UsersService.RegisterUser
+     */
+    readonly registerUser: {
+      readonly name: "RegisterUser",
+      readonly I: typeof RegisterRequest,
+      readonly O: typeof RegisterResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * Log a user in.
+     *
+     * @generated from rpc users.UsersService.LoginUser
+     */
+    readonly loginUser: {
+      readonly name: "LoginUser",
+      readonly I: typeof LoginRequest,
+      readonly O: typeof LoginResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * Log a user out.
+     *
+     * @generated from rpc users.UsersService.LogoutUser
+     */
+    readonly logoutUser: {
+      readonly name: "LogoutUser",
+      readonly I: typeof LogoutRequest,
+      readonly O: typeof LogoutResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * User management methods
+     *
+     * Retrieve user details by ID.
+     *
      * @generated from rpc users.UsersService.GetUser
      */
     readonly getUser: {
@@ -24,15 +63,8 @@ export declare const UsersService: {
       readonly kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc users.UsersService.CreateUser
-     */
-    readonly createUser: {
-      readonly name: "CreateUser",
-      readonly I: typeof CreateUserRequest,
-      readonly O: typeof CreateUserResponse,
-      readonly kind: MethodKind.Unary,
-    },
-    /**
+     * Update a user's details.
+     *
      * @generated from rpc users.UsersService.UpdateUser
      */
     readonly updateUser: {
@@ -42,21 +74,14 @@ export declare const UsersService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * List users with pagination and filtering.
+     *
      * @generated from rpc users.UsersService.ListUsers
      */
     readonly listUsers: {
       readonly name: "ListUsers",
       readonly I: typeof ListUsersRequest,
       readonly O: typeof ListUsersResponse,
-      readonly kind: MethodKind.Unary,
-    },
-    /**
-     * @generated from rpc users.UsersService.DeleteUser
-     */
-    readonly deleteUser: {
-      readonly name: "DeleteUser",
-      readonly I: typeof DeleteUserRequest,
-      readonly O: typeof DeleteUserResponse,
       readonly kind: MethodKind.Unary,
     },
   }
