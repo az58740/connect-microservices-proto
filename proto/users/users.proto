@@ -90,7 +90,8 @@ message UserFilter {
     string username = 2;                  // Filter by username (e.g., login name).
     string password = 3;                  // Filter by password (not recommended for real-world use).
     string email = 4;                     // Filter by email address.
-    repeated string role_ids = 5;         // Filter by assigned role IDs.
+    string role_ids = 5;                  // Filter by assigned role IDs.
+    string organization_id=6;             // Filter by organization ID.
 }
 
 // Filter criteria for listing roles by associated resource.
