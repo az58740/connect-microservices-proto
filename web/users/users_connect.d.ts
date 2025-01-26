@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { GetUserRequest, GetUserResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, LogoutRequest, LogoutResponse, RegisterRequest, RegisterResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
+import { ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -36,41 +36,6 @@ export declare const UsersService: {
       readonly name: "LoginUser",
       readonly I: typeof LoginRequest,
       readonly O: typeof LoginResponse,
-      readonly kind: MethodKind.Unary,
-    },
-    /**
-     * Log a user out.
-     *
-     * @generated from rpc users.UsersService.LogoutUser
-     */
-    readonly logoutUser: {
-      readonly name: "LogoutUser",
-      readonly I: typeof LogoutRequest,
-      readonly O: typeof LogoutResponse,
-      readonly kind: MethodKind.Unary,
-    },
-    /**
-     * User management methods
-     *
-     * Retrieve user details by ID.
-     *
-     * @generated from rpc users.UsersService.GetUser
-     */
-    readonly getUser: {
-      readonly name: "GetUser",
-      readonly I: typeof GetUserRequest,
-      readonly O: typeof GetUserResponse,
-      readonly kind: MethodKind.Unary,
-    },
-    /**
-     * Update a user's details.
-     *
-     * @generated from rpc users.UsersService.UpdateUser
-     */
-    readonly updateUser: {
-      readonly name: "UpdateUser",
-      readonly I: typeof UpdateUserRequest,
-      readonly O: typeof UpdateUserResponse,
       readonly kind: MethodKind.Unary,
     },
     /**

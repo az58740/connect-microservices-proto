@@ -38,12 +38,6 @@ const (
 	UsersServiceRegisterUserProcedure = "/users.UsersService/RegisterUser"
 	// UsersServiceLoginUserProcedure is the fully-qualified name of the UsersService's LoginUser RPC.
 	UsersServiceLoginUserProcedure = "/users.UsersService/LoginUser"
-	// UsersServiceLogoutUserProcedure is the fully-qualified name of the UsersService's LogoutUser RPC.
-	UsersServiceLogoutUserProcedure = "/users.UsersService/LogoutUser"
-	// UsersServiceGetUserProcedure is the fully-qualified name of the UsersService's GetUser RPC.
-	UsersServiceGetUserProcedure = "/users.UsersService/GetUser"
-	// UsersServiceUpdateUserProcedure is the fully-qualified name of the UsersService's UpdateUser RPC.
-	UsersServiceUpdateUserProcedure = "/users.UsersService/UpdateUser"
 	// UsersServiceListUsersProcedure is the fully-qualified name of the UsersService's ListUsers RPC.
 	UsersServiceListUsersProcedure = "/users.UsersService/ListUsers"
 )
@@ -53,9 +47,6 @@ var (
 	usersServiceServiceDescriptor            = users.File_users_users_proto.Services().ByName("UsersService")
 	usersServiceRegisterUserMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("RegisterUser")
 	usersServiceLoginUserMethodDescriptor    = usersServiceServiceDescriptor.Methods().ByName("LoginUser")
-	usersServiceLogoutUserMethodDescriptor   = usersServiceServiceDescriptor.Methods().ByName("LogoutUser")
-	usersServiceGetUserMethodDescriptor      = usersServiceServiceDescriptor.Methods().ByName("GetUser")
-	usersServiceUpdateUserMethodDescriptor   = usersServiceServiceDescriptor.Methods().ByName("UpdateUser")
 	usersServiceListUsersMethodDescriptor    = usersServiceServiceDescriptor.Methods().ByName("ListUsers")
 )
 
@@ -64,10 +55,6 @@ type UsersServiceClient interface {
 	// Auth-related methods
 	RegisterUser(context.Context, *connect.Request[users.RegisterRequest]) (*connect.Response[users.RegisterResponse], error)
 	LoginUser(context.Context, *connect.Request[users.LoginRequest]) (*connect.Response[users.LoginResponse], error)
-	LogoutUser(context.Context, *connect.Request[users.LogoutRequest]) (*connect.Response[users.LogoutResponse], error)
-	// User management methods
-	GetUser(context.Context, *connect.Request[users.GetUserRequest]) (*connect.Response[users.GetUserResponse], error)
-	UpdateUser(context.Context, *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error)
 	ListUsers(context.Context, *connect.Request[users.ListUsersRequest]) (*connect.Response[users.ListUsersResponse], error)
 }
 
@@ -93,24 +80,6 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceLoginUserMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		logoutUser: connect.NewClient[users.LogoutRequest, users.LogoutResponse](
-			httpClient,
-			baseURL+UsersServiceLogoutUserProcedure,
-			connect.WithSchema(usersServiceLogoutUserMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		getUser: connect.NewClient[users.GetUserRequest, users.GetUserResponse](
-			httpClient,
-			baseURL+UsersServiceGetUserProcedure,
-			connect.WithSchema(usersServiceGetUserMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		updateUser: connect.NewClient[users.UpdateUserRequest, users.UpdateUserResponse](
-			httpClient,
-			baseURL+UsersServiceUpdateUserProcedure,
-			connect.WithSchema(usersServiceUpdateUserMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
 		listUsers: connect.NewClient[users.ListUsersRequest, users.ListUsersResponse](
 			httpClient,
 			baseURL+UsersServiceListUsersProcedure,
@@ -124,9 +93,6 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 type usersServiceClient struct {
 	registerUser *connect.Client[users.RegisterRequest, users.RegisterResponse]
 	loginUser    *connect.Client[users.LoginRequest, users.LoginResponse]
-	logoutUser   *connect.Client[users.LogoutRequest, users.LogoutResponse]
-	getUser      *connect.Client[users.GetUserRequest, users.GetUserResponse]
-	updateUser   *connect.Client[users.UpdateUserRequest, users.UpdateUserResponse]
 	listUsers    *connect.Client[users.ListUsersRequest, users.ListUsersResponse]
 }
 
@@ -140,21 +106,6 @@ func (c *usersServiceClient) LoginUser(ctx context.Context, req *connect.Request
 	return c.loginUser.CallUnary(ctx, req)
 }
 
-// LogoutUser calls users.UsersService.LogoutUser.
-func (c *usersServiceClient) LogoutUser(ctx context.Context, req *connect.Request[users.LogoutRequest]) (*connect.Response[users.LogoutResponse], error) {
-	return c.logoutUser.CallUnary(ctx, req)
-}
-
-// GetUser calls users.UsersService.GetUser.
-func (c *usersServiceClient) GetUser(ctx context.Context, req *connect.Request[users.GetUserRequest]) (*connect.Response[users.GetUserResponse], error) {
-	return c.getUser.CallUnary(ctx, req)
-}
-
-// UpdateUser calls users.UsersService.UpdateUser.
-func (c *usersServiceClient) UpdateUser(ctx context.Context, req *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error) {
-	return c.updateUser.CallUnary(ctx, req)
-}
-
 // ListUsers calls users.UsersService.ListUsers.
 func (c *usersServiceClient) ListUsers(ctx context.Context, req *connect.Request[users.ListUsersRequest]) (*connect.Response[users.ListUsersResponse], error) {
 	return c.listUsers.CallUnary(ctx, req)
@@ -165,10 +116,6 @@ type UsersServiceHandler interface {
 	// Auth-related methods
 	RegisterUser(context.Context, *connect.Request[users.RegisterRequest]) (*connect.Response[users.RegisterResponse], error)
 	LoginUser(context.Context, *connect.Request[users.LoginRequest]) (*connect.Response[users.LoginResponse], error)
-	LogoutUser(context.Context, *connect.Request[users.LogoutRequest]) (*connect.Response[users.LogoutResponse], error)
-	// User management methods
-	GetUser(context.Context, *connect.Request[users.GetUserRequest]) (*connect.Response[users.GetUserResponse], error)
-	UpdateUser(context.Context, *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error)
 	ListUsers(context.Context, *connect.Request[users.ListUsersRequest]) (*connect.Response[users.ListUsersResponse], error)
 }
 
@@ -190,24 +137,6 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceLoginUserMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	usersServiceLogoutUserHandler := connect.NewUnaryHandler(
-		UsersServiceLogoutUserProcedure,
-		svc.LogoutUser,
-		connect.WithSchema(usersServiceLogoutUserMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	usersServiceGetUserHandler := connect.NewUnaryHandler(
-		UsersServiceGetUserProcedure,
-		svc.GetUser,
-		connect.WithSchema(usersServiceGetUserMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	usersServiceUpdateUserHandler := connect.NewUnaryHandler(
-		UsersServiceUpdateUserProcedure,
-		svc.UpdateUser,
-		connect.WithSchema(usersServiceUpdateUserMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
 	usersServiceListUsersHandler := connect.NewUnaryHandler(
 		UsersServiceListUsersProcedure,
 		svc.ListUsers,
@@ -220,12 +149,6 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 			usersServiceRegisterUserHandler.ServeHTTP(w, r)
 		case UsersServiceLoginUserProcedure:
 			usersServiceLoginUserHandler.ServeHTTP(w, r)
-		case UsersServiceLogoutUserProcedure:
-			usersServiceLogoutUserHandler.ServeHTTP(w, r)
-		case UsersServiceGetUserProcedure:
-			usersServiceGetUserHandler.ServeHTTP(w, r)
-		case UsersServiceUpdateUserProcedure:
-			usersServiceUpdateUserHandler.ServeHTTP(w, r)
 		case UsersServiceListUsersProcedure:
 			usersServiceListUsersHandler.ServeHTTP(w, r)
 		default:
@@ -243,18 +166,6 @@ func (UnimplementedUsersServiceHandler) RegisterUser(context.Context, *connect.R
 
 func (UnimplementedUsersServiceHandler) LoginUser(context.Context, *connect.Request[users.LoginRequest]) (*connect.Response[users.LoginResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.LoginUser is not implemented"))
-}
-
-func (UnimplementedUsersServiceHandler) LogoutUser(context.Context, *connect.Request[users.LogoutRequest]) (*connect.Response[users.LogoutResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.LogoutUser is not implemented"))
-}
-
-func (UnimplementedUsersServiceHandler) GetUser(context.Context, *connect.Request[users.GetUserRequest]) (*connect.Response[users.GetUserResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.GetUser is not implemented"))
-}
-
-func (UnimplementedUsersServiceHandler) UpdateUser(context.Context, *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.UpdateUser is not implemented"))
 }
 
 func (UnimplementedUsersServiceHandler) ListUsers(context.Context, *connect.Request[users.ListUsersRequest]) (*connect.Response[users.ListUsersResponse], error) {

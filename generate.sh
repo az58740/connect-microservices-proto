@@ -8,3 +8,7 @@ else
     echo "Using buf generate, using buf.gen.go.yaml"
     buf generate --template buf.gen.go.yaml
 fi
+
+# bash 
+#./generate.sh npx buf generate
+#./generate.sh buf generate

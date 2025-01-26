@@ -411,9 +411,23 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
   /**
    * Filter by assigned role IDs.
    *
-   * @generated from field: repeated string role_ids = 5;
+   * @generated from field: string role_ids = 5;
    */
-  roleIds: string[];
+  roleIds: string;
+
+  /**
+   * Filter by organization ID.
+   *
+   * @generated from field: string organization_id = 6;
+   */
+  organizationId: string;
+
+  /**
+   * Filter by user statuse.
+   *
+   * @generated from field: string user_statuse = 7;
+   */
+  userStatuse: string;
 };
 
 /**
@@ -833,38 +847,6 @@ export declare const UsersService: GenService<{
     methodKind: "unary";
     input: typeof LoginRequestSchema;
     output: typeof LoginResponseSchema;
-  },
-  /**
-   * Log a user out.
-   *
-   * @generated from rpc users.UsersService.LogoutUser
-   */
-  logoutUser: {
-    methodKind: "unary";
-    input: typeof LogoutRequestSchema;
-    output: typeof LogoutResponseSchema;
-  },
-  /**
-   * User management methods
-   *
-   * Retrieve user details by ID.
-   *
-   * @generated from rpc users.UsersService.GetUser
-   */
-  getUser: {
-    methodKind: "unary";
-    input: typeof GetUserRequestSchema;
-    output: typeof GetUserResponseSchema;
-  },
-  /**
-   * Update a user's details.
-   *
-   * @generated from rpc users.UsersService.UpdateUser
-   */
-  updateUser: {
-    methodKind: "unary";
-    input: typeof UpdateUserRequestSchema;
-    output: typeof UpdateUserResponseSchema;
   },
   /**
    * List users with pagination and filtering.

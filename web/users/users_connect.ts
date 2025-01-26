@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { GetUserRequest, GetUserResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, LogoutRequest, LogoutResponse, RegisterRequest, RegisterResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
+import { ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -36,41 +36,6 @@ export const UsersService = {
       name: "LoginUser",
       I: LoginRequest,
       O: LoginResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * Log a user out.
-     *
-     * @generated from rpc users.UsersService.LogoutUser
-     */
-    logoutUser: {
-      name: "LogoutUser",
-      I: LogoutRequest,
-      O: LogoutResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * User management methods
-     *
-     * Retrieve user details by ID.
-     *
-     * @generated from rpc users.UsersService.GetUser
-     */
-    getUser: {
-      name: "GetUser",
-      I: GetUserRequest,
-      O: GetUserResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * Update a user's details.
-     *
-     * @generated from rpc users.UsersService.UpdateUser
-     */
-    updateUser: {
-      name: "UpdateUser",
-      I: UpdateUserRequest,
-      O: UpdateUserResponse,
       kind: MethodKind.Unary,
     },
     /**
