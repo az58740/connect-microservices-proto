@@ -92,6 +92,7 @@ message UserFilter {
     string email = 4;                     // Filter by email address.
     string role_ids = 5;                  // Filter by assigned role IDs.
     string organization_id=6;             // Filter by organization ID.
+    string user_statuse=7;                // Filter by user statuse.
 }
 
 // Filter criteria for listing roles by associated resource.
@@ -175,10 +176,5 @@ service UsersService {
     // Auth-related methods
     rpc RegisterUser (RegisterRequest) returns (RegisterResponse);  // Register a new user.
     rpc LoginUser (LoginRequest) returns (LoginResponse);          // Log a user in.
-    rpc LogoutUser (LogoutRequest) returns (LogoutResponse);       // Log a user out.
-
-    // User management methods
-    rpc GetUser (GetUserRequest) returns (GetUserResponse);        // Retrieve user details by ID.
-    rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse); // Update a user's details.
     rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);  // List users with pagination and filtering.
 }
