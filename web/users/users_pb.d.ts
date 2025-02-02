@@ -559,14 +559,14 @@ export declare type LoginResponse = Message<"users.LoginResponse"> & {
   /**
    * Authentication token that can be used for subsequent requests.
    *
-   * @generated from field: string token = 3;
+   * @generated from field: string token = 1;
    */
   token: string;
 
   /**
    * Whether the login was successful or not.
    *
-   * @generated from field: bool success = 4;
+   * @generated from field: bool success = 2;
    */
   success: boolean;
 };
