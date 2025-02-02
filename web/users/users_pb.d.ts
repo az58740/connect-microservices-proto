@@ -4,7 +4,6 @@
 
 import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
 import type { Message } from "@bufbuild/protobuf";
-import type { Timestamp } from "@bufbuild/protobuf/wkt";
 
 /**
  * Describes the file users/users.proto.
@@ -311,20 +310,6 @@ export declare type User = Message<"users.User"> & {
    * @generated from field: string password_hash = 7;
    */
   passwordHash: string;
-
-  /**
-   * Timestamp of when the user was created.
-   *
-   * @generated from field: google.protobuf.Timestamp created_at = 8;
-   */
-  createdAt?: Timestamp;
-
-  /**
-   * Timestamp of the last update to the user's record.
-   *
-   * @generated from field: google.protobuf.Timestamp updated_at = 9;
-   */
-  updatedAt?: Timestamp;
 };
 
 /**
@@ -762,9 +747,9 @@ export declare type ListUsersResponse = Message<"users.ListUsersResponse"> & {
   /**
    * Total number of users in the system.
    *
-   * @generated from field: int32 total_count = 3;
+   * @generated from field: int32 next_page = 3;
    */
-  totalCount: number;
+  nextPage: number;
 };
 
 /**

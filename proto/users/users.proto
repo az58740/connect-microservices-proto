@@ -4,7 +4,6 @@ option go_package = "github.com/az58740/connect-microservices-proto/golang/users
 
 package users;
 
-import "google/protobuf/timestamp.proto";  // Import for handling timestamp fields
 
 // Enum for user status, which can be one of several states for the user account.
 enum UserStatus {
@@ -72,8 +71,6 @@ message User {
     ContractingParty organization = 5;   // Organization or contracting party the user belongs to.
     string username = 6;                 // Username (could be the email address).
     string password_hash = 7;            // The hashed password (for security).
-    google.protobuf.Timestamp created_at = 8;  // Timestamp of when the user was created.
-    google.protobuf.Timestamp updated_at = 9; // Timestamp of the last update to the user's record.
 }
 
 // Pagination options for listing users or roles.
@@ -168,7 +165,7 @@ message ListUsersRequest {
 message ListUsersResponse {
     repeated User users = 1;     // List of users retrieved.
     string next_page_token = 2;  // Token for the next page of results (optional).
-    int32 total_count = 3;       // Total number of users in the system.
+    int32 next_page = 3;       // Total number of users in the system.
 }
 
 // Service for managing users (authentication, user details, and user roles).
