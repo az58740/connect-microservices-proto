@@ -121,8 +121,6 @@ message LoginRequest {
 
 // Response after successful login with authentication token.
 message LoginResponse {
-    string user_id = 1;  // ID of the user who is logging.
-    string name = 2;      // Full name of the user.
     string token = 3;    // Authentication token that can be used for subsequent requests.
     bool success = 4;    // Whether the login was successful or not.
 }

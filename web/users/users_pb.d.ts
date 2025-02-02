@@ -557,20 +557,6 @@ export declare const LoginRequestSchema: GenMessage<LoginRequest>;
  */
 export declare type LoginResponse = Message<"users.LoginResponse"> & {
   /**
-   * ID of the user who is logging.
-   *
-   * @generated from field: string user_id = 1;
-   */
-  userId: string;
-
-  /**
-   * Full name of the user.
-   *
-   * @generated from field: string name = 2;
-   */
-  name: string;
-
-  /**
    * Authentication token that can be used for subsequent requests.
    *
    * @generated from field: string token = 3;
