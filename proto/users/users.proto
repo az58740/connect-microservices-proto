@@ -60,6 +60,7 @@ message UserProfile {
     string address_line_1 = 7;   // First line of the user's address.
     string address_line_2 = 8;   // Second line of the user's address (optional).
     string zip_code = 9;         // Zip or postal code of the user's address.
+    string gender =10;           // Gender of the user
 }
 
 // Represents a user in the system, including their roles, status, and profile.
@@ -121,8 +122,9 @@ message LoginRequest {
 // Response after successful login with authentication token.
 message LoginResponse {
     string user_id = 1;  // ID of the user who is logging.
-    string token = 2;    // Authentication token that can be used for subsequent requests.
-    bool success = 3;    // Whether the login was successful or not.
+    string name = 2;      // Full name of the user.
+    string token = 3;    // Authentication token that can be used for subsequent requests.
+    bool success = 4;    // Whether the login was successful or not.
 }
 
 // Request to log out a user.

@@ -248,6 +248,13 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
    * @generated from field: string zip_code = 9;
    */
   zipCode: string;
+
+  /**
+   * Gender of the user
+   *
+   * @generated from field: string gender = 10;
+   */
+  gender: string;
 };
 
 /**
@@ -557,16 +564,23 @@ export declare type LoginResponse = Message<"users.LoginResponse"> & {
   userId: string;
 
   /**
+   * Full name of the user.
+   *
+   * @generated from field: string name = 2;
+   */
+  name: string;
+
+  /**
    * Authentication token that can be used for subsequent requests.
    *
-   * @generated from field: string token = 2;
+   * @generated from field: string token = 3;
    */
   token: string;
 
   /**
    * Whether the login was successful or not.
    *
-   * @generated from field: bool success = 3;
+   * @generated from field: bool success = 4;
    */
   success: boolean;
 };
