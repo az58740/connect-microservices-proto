@@ -78,19 +78,18 @@ message User {
 message Pagination {
     int32 page = 1;                     // Page number (starting from 1).
     int32 page_size = 2;                // Number of items to return per page.
-    string sort_by = 3;                 // Field by which to sort the results (e.g., "username").
-    bool sort_descending = 4;           // Whether to sort the results in descending order.
+    optional string sort_by = 3;        // Field by which to sort the results (e.g., "username").
+    optional bool sort_descending = 4;           // Whether to sort the results in descending order.
 }
 
 // Filter criteria for listing users based on different parameters.
 message UserFilter {
     string user_id = 1;                   // Filter by user ID.
     string username = 2;                  // Filter by username (e.g., login name).
-    string password = 3;                  // Filter by password (not recommended for real-world use).
-    string email = 4;                     // Filter by email address.
-    string role_ids = 5;                  // Filter by assigned role IDs.
-    string organization_id=6;             // Filter by organization ID.
-    string user_statuse=7;                // Filter by user statuse.
+    string email = 3;                     // Filter by email address.
+    string role_ids = 4;                  // Filter by assigned role IDs.
+    string organization_id = 5;             // Filter by organization ID.
+    string user_statuse = 6;                // Filter by user statuse.
 }
 
 // Filter criteria for listing roles by associated resource.
@@ -166,7 +165,7 @@ message ListUsersRequest {
 message ListUsersResponse {
     repeated User users = 1;     // List of users retrieved.
     string next_page_token = 2;  // Token for the next page of results (optional).
-    int32 totalPages  = 3;       // Total number of users in the system.
+    int32 total_pages = 3;       // Total number of users in the system.
 }
 
 // Service for managing users (authentication, user details, and user roles).
