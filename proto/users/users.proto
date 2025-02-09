@@ -166,7 +166,7 @@ message ListUsersRequest {
 message ListUsersResponse {
     repeated User users = 1;     // List of users retrieved.
     string next_page_token = 2;  // Token for the next page of results (optional).
-    int32 next_page = 3;       // Total number of users in the system.
+    int32 totalPages  = 3;       // Total number of users in the system.
 }
 
 // Service for managing users (authentication, user details, and user roles).

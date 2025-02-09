@@ -754,9 +754,9 @@ export declare type ListUsersResponse = Message<"users.ListUsersResponse"> & {
   /**
    * Total number of users in the system.
    *
-   * @generated from field: int32 next_page = 3;
+   * @generated from field: int32 totalPages = 3;
    */
-  nextPage: number;
+  totalPages: number;
 };
 
 /**
