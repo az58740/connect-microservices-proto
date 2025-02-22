@@ -40,22 +40,68 @@ const (
 	UsersServiceLoginUserProcedure = "/users.UsersService/LoginUser"
 	// UsersServiceListUsersProcedure is the fully-qualified name of the UsersService's ListUsers RPC.
 	UsersServiceListUsersProcedure = "/users.UsersService/ListUsers"
+	// UsersServiceUpdateUserProcedure is the fully-qualified name of the UsersService's UpdateUser RPC.
+	UsersServiceUpdateUserProcedure = "/users.UsersService/UpdateUser"
+	// UsersServiceCreatOrganizationGroupProcedure is the fully-qualified name of the UsersService's
+	// CreatOrganizationGroup RPC.
+	UsersServiceCreatOrganizationGroupProcedure = "/users.UsersService/CreatOrganizationGroup"
+	// UsersServiceUpdateOrganizationGroupProcedure is the fully-qualified name of the UsersService's
+	// UpdateOrganizationGroup RPC.
+	UsersServiceUpdateOrganizationGroupProcedure = "/users.UsersService/UpdateOrganizationGroup"
+	// UsersServiceDeleteOrganizationGroupProcedure is the fully-qualified name of the UsersService's
+	// DeleteOrganizationGroup RPC.
+	UsersServiceDeleteOrganizationGroupProcedure = "/users.UsersService/DeleteOrganizationGroup"
+	// UsersServiceListOrganizationGroupProcedure is the fully-qualified name of the UsersService's
+	// ListOrganizationGroup RPC.
+	UsersServiceListOrganizationGroupProcedure = "/users.UsersService/ListOrganizationGroup"
+	// UsersServiceCreatOrganizationProcedure is the fully-qualified name of the UsersService's
+	// CreatOrganization RPC.
+	UsersServiceCreatOrganizationProcedure = "/users.UsersService/CreatOrganization"
+	// UsersServiceUpdateOrganizationProcedure is the fully-qualified name of the UsersService's
+	// UpdateOrganization RPC.
+	UsersServiceUpdateOrganizationProcedure = "/users.UsersService/UpdateOrganization"
+	// UsersServiceDeleteOrganizationProcedure is the fully-qualified name of the UsersService's
+	// DeleteOrganization RPC.
+	UsersServiceDeleteOrganizationProcedure = "/users.UsersService/DeleteOrganization"
+	// UsersServiceListOrganizationProcedure is the fully-qualified name of the UsersService's
+	// ListOrganization RPC.
+	UsersServiceListOrganizationProcedure = "/users.UsersService/ListOrganization"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
-	usersServiceServiceDescriptor            = users.File_users_users_proto.Services().ByName("UsersService")
-	usersServiceRegisterUserMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("RegisterUser")
-	usersServiceLoginUserMethodDescriptor    = usersServiceServiceDescriptor.Methods().ByName("LoginUser")
-	usersServiceListUsersMethodDescriptor    = usersServiceServiceDescriptor.Methods().ByName("ListUsers")
+	usersServiceServiceDescriptor                       = users.File_users_users_proto.Services().ByName("UsersService")
+	usersServiceRegisterUserMethodDescriptor            = usersServiceServiceDescriptor.Methods().ByName("RegisterUser")
+	usersServiceLoginUserMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("LoginUser")
+	usersServiceListUsersMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("ListUsers")
+	usersServiceUpdateUserMethodDescriptor              = usersServiceServiceDescriptor.Methods().ByName("UpdateUser")
+	usersServiceCreatOrganizationGroupMethodDescriptor  = usersServiceServiceDescriptor.Methods().ByName("CreatOrganizationGroup")
+	usersServiceUpdateOrganizationGroupMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("UpdateOrganizationGroup")
+	usersServiceDeleteOrganizationGroupMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("DeleteOrganizationGroup")
+	usersServiceListOrganizationGroupMethodDescriptor   = usersServiceServiceDescriptor.Methods().ByName("ListOrganizationGroup")
+	usersServiceCreatOrganizationMethodDescriptor       = usersServiceServiceDescriptor.Methods().ByName("CreatOrganization")
+	usersServiceUpdateOrganizationMethodDescriptor      = usersServiceServiceDescriptor.Methods().ByName("UpdateOrganization")
+	usersServiceDeleteOrganizationMethodDescriptor      = usersServiceServiceDescriptor.Methods().ByName("DeleteOrganization")
+	usersServiceListOrganizationMethodDescriptor        = usersServiceServiceDescriptor.Methods().ByName("ListOrganization")
 )
 
 // UsersServiceClient is a client for the users.UsersService service.
 type UsersServiceClient interface {
-	// Auth-related methods
+	// User-related methods
 	RegisterUser(context.Context, *connect.Request[users.RegisterRequest]) (*connect.Response[users.RegisterResponse], error)
 	LoginUser(context.Context, *connect.Request[users.LoginRequest]) (*connect.Response[users.LoginResponse], error)
 	ListUsers(context.Context, *connect.Request[users.ListUsersRequest]) (*connect.Response[users.ListUsersResponse], error)
+	UpdateUser(context.Context, *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error)
+	// Organization Group related methods
+	CreatOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error)
+	UpdateOrganizationGroup(context.Context, *connect.Request[users.UpdateOrganizationGroupRequest]) (*connect.Response[users.UpdateOrganizationGroupResponse], error)
+	DeleteOrganizationGroup(context.Context, *connect.Request[users.DeleteOrganizationRequest]) (*connect.Response[users.DeleteOrganizationResponse], error)
+	ListOrganizationGroup(context.Context, *connect.Request[users.ListOrganizationGroupRequest]) (*connect.Response[users.ListOrganizationGroupResponse], error)
+	// Organization  related methods
+	CreatOrganization(context.Context, *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error)
+	UpdateOrganization(context.Context, *connect.Request[users.UpdateOrganizationRequest]) (*connect.Response[users.UpdateOrganizationResponse], error)
+	DeleteOrganization(context.Context, *connect.Request[users.DeleteOrganizationGroupRequest]) (*connect.Response[users.DeleteOrganizationGroupResponse], error)
+	ListOrganization(context.Context, *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error)
 }
 
 // NewUsersServiceClient constructs a client for the users.UsersService service. By default, it uses
@@ -86,14 +132,77 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceListUsersMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		updateUser: connect.NewClient[users.UpdateUserRequest, users.UpdateUserResponse](
+			httpClient,
+			baseURL+UsersServiceUpdateUserProcedure,
+			connect.WithSchema(usersServiceUpdateUserMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		creatOrganizationGroup: connect.NewClient[users.CreateOrganizationGroupRequest, users.CreateOrganizationGroupResponse](
+			httpClient,
+			baseURL+UsersServiceCreatOrganizationGroupProcedure,
+			connect.WithSchema(usersServiceCreatOrganizationGroupMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		updateOrganizationGroup: connect.NewClient[users.UpdateOrganizationGroupRequest, users.UpdateOrganizationGroupResponse](
+			httpClient,
+			baseURL+UsersServiceUpdateOrganizationGroupProcedure,
+			connect.WithSchema(usersServiceUpdateOrganizationGroupMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		deleteOrganizationGroup: connect.NewClient[users.DeleteOrganizationRequest, users.DeleteOrganizationResponse](
+			httpClient,
+			baseURL+UsersServiceDeleteOrganizationGroupProcedure,
+			connect.WithSchema(usersServiceDeleteOrganizationGroupMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		listOrganizationGroup: connect.NewClient[users.ListOrganizationGroupRequest, users.ListOrganizationGroupResponse](
+			httpClient,
+			baseURL+UsersServiceListOrganizationGroupProcedure,
+			connect.WithSchema(usersServiceListOrganizationGroupMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		creatOrganization: connect.NewClient[users.CreateOrganizationRequest, users.CreateOrganizationResponse](
+			httpClient,
+			baseURL+UsersServiceCreatOrganizationProcedure,
+			connect.WithSchema(usersServiceCreatOrganizationMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		updateOrganization: connect.NewClient[users.UpdateOrganizationRequest, users.UpdateOrganizationResponse](
+			httpClient,
+			baseURL+UsersServiceUpdateOrganizationProcedure,
+			connect.WithSchema(usersServiceUpdateOrganizationMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		deleteOrganization: connect.NewClient[users.DeleteOrganizationGroupRequest, users.DeleteOrganizationGroupResponse](
+			httpClient,
+			baseURL+UsersServiceDeleteOrganizationProcedure,
+			connect.WithSchema(usersServiceDeleteOrganizationMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		listOrganization: connect.NewClient[users.ListOrganizationRequest, users.ListOrganizationResponse](
+			httpClient,
+			baseURL+UsersServiceListOrganizationProcedure,
+			connect.WithSchema(usersServiceListOrganizationMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // usersServiceClient implements UsersServiceClient.
 type usersServiceClient struct {
-	registerUser *connect.Client[users.RegisterRequest, users.RegisterResponse]
-	loginUser    *connect.Client[users.LoginRequest, users.LoginResponse]
-	listUsers    *connect.Client[users.ListUsersRequest, users.ListUsersResponse]
+	registerUser            *connect.Client[users.RegisterRequest, users.RegisterResponse]
+	loginUser               *connect.Client[users.LoginRequest, users.LoginResponse]
+	listUsers               *connect.Client[users.ListUsersRequest, users.ListUsersResponse]
+	updateUser              *connect.Client[users.UpdateUserRequest, users.UpdateUserResponse]
+	creatOrganizationGroup  *connect.Client[users.CreateOrganizationGroupRequest, users.CreateOrganizationGroupResponse]
+	updateOrganizationGroup *connect.Client[users.UpdateOrganizationGroupRequest, users.UpdateOrganizationGroupResponse]
+	deleteOrganizationGroup *connect.Client[users.DeleteOrganizationRequest, users.DeleteOrganizationResponse]
+	listOrganizationGroup   *connect.Client[users.ListOrganizationGroupRequest, users.ListOrganizationGroupResponse]
+	creatOrganization       *connect.Client[users.CreateOrganizationRequest, users.CreateOrganizationResponse]
+	updateOrganization      *connect.Client[users.UpdateOrganizationRequest, users.UpdateOrganizationResponse]
+	deleteOrganization      *connect.Client[users.DeleteOrganizationGroupRequest, users.DeleteOrganizationGroupResponse]
+	listOrganization        *connect.Client[users.ListOrganizationRequest, users.ListOrganizationResponse]
 }
 
 // RegisterUser calls users.UsersService.RegisterUser.
@@ -111,12 +220,68 @@ func (c *usersServiceClient) ListUsers(ctx context.Context, req *connect.Request
 	return c.listUsers.CallUnary(ctx, req)
 }
 
+// UpdateUser calls users.UsersService.UpdateUser.
+func (c *usersServiceClient) UpdateUser(ctx context.Context, req *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error) {
+	return c.updateUser.CallUnary(ctx, req)
+}
+
+// CreatOrganizationGroup calls users.UsersService.CreatOrganizationGroup.
+func (c *usersServiceClient) CreatOrganizationGroup(ctx context.Context, req *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error) {
+	return c.creatOrganizationGroup.CallUnary(ctx, req)
+}
+
+// UpdateOrganizationGroup calls users.UsersService.UpdateOrganizationGroup.
+func (c *usersServiceClient) UpdateOrganizationGroup(ctx context.Context, req *connect.Request[users.UpdateOrganizationGroupRequest]) (*connect.Response[users.UpdateOrganizationGroupResponse], error) {
+	return c.updateOrganizationGroup.CallUnary(ctx, req)
+}
+
+// DeleteOrganizationGroup calls users.UsersService.DeleteOrganizationGroup.
+func (c *usersServiceClient) DeleteOrganizationGroup(ctx context.Context, req *connect.Request[users.DeleteOrganizationRequest]) (*connect.Response[users.DeleteOrganizationResponse], error) {
+	return c.deleteOrganizationGroup.CallUnary(ctx, req)
+}
+
+// ListOrganizationGroup calls users.UsersService.ListOrganizationGroup.
+func (c *usersServiceClient) ListOrganizationGroup(ctx context.Context, req *connect.Request[users.ListOrganizationGroupRequest]) (*connect.Response[users.ListOrganizationGroupResponse], error) {
+	return c.listOrganizationGroup.CallUnary(ctx, req)
+}
+
+// CreatOrganization calls users.UsersService.CreatOrganization.
+func (c *usersServiceClient) CreatOrganization(ctx context.Context, req *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error) {
+	return c.creatOrganization.CallUnary(ctx, req)
+}
+
+// UpdateOrganization calls users.UsersService.UpdateOrganization.
+func (c *usersServiceClient) UpdateOrganization(ctx context.Context, req *connect.Request[users.UpdateOrganizationRequest]) (*connect.Response[users.UpdateOrganizationResponse], error) {
+	return c.updateOrganization.CallUnary(ctx, req)
+}
+
+// DeleteOrganization calls users.UsersService.DeleteOrganization.
+func (c *usersServiceClient) DeleteOrganization(ctx context.Context, req *connect.Request[users.DeleteOrganizationGroupRequest]) (*connect.Response[users.DeleteOrganizationGroupResponse], error) {
+	return c.deleteOrganization.CallUnary(ctx, req)
+}
+
+// ListOrganization calls users.UsersService.ListOrganization.
+func (c *usersServiceClient) ListOrganization(ctx context.Context, req *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error) {
+	return c.listOrganization.CallUnary(ctx, req)
+}
+
 // UsersServiceHandler is an implementation of the users.UsersService service.
 type UsersServiceHandler interface {
-	// Auth-related methods
+	// User-related methods
 	RegisterUser(context.Context, *connect.Request[users.RegisterRequest]) (*connect.Response[users.RegisterResponse], error)
 	LoginUser(context.Context, *connect.Request[users.LoginRequest]) (*connect.Response[users.LoginResponse], error)
 	ListUsers(context.Context, *connect.Request[users.ListUsersRequest]) (*connect.Response[users.ListUsersResponse], error)
+	UpdateUser(context.Context, *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error)
+	// Organization Group related methods
+	CreatOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error)
+	UpdateOrganizationGroup(context.Context, *connect.Request[users.UpdateOrganizationGroupRequest]) (*connect.Response[users.UpdateOrganizationGroupResponse], error)
+	DeleteOrganizationGroup(context.Context, *connect.Request[users.DeleteOrganizationRequest]) (*connect.Response[users.DeleteOrganizationResponse], error)
+	ListOrganizationGroup(context.Context, *connect.Request[users.ListOrganizationGroupRequest]) (*connect.Response[users.ListOrganizationGroupResponse], error)
+	// Organization  related methods
+	CreatOrganization(context.Context, *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error)
+	UpdateOrganization(context.Context, *connect.Request[users.UpdateOrganizationRequest]) (*connect.Response[users.UpdateOrganizationResponse], error)
+	DeleteOrganization(context.Context, *connect.Request[users.DeleteOrganizationGroupRequest]) (*connect.Response[users.DeleteOrganizationGroupResponse], error)
+	ListOrganization(context.Context, *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error)
 }
 
 // NewUsersServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -143,6 +308,60 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceListUsersMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	usersServiceUpdateUserHandler := connect.NewUnaryHandler(
+		UsersServiceUpdateUserProcedure,
+		svc.UpdateUser,
+		connect.WithSchema(usersServiceUpdateUserMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceCreatOrganizationGroupHandler := connect.NewUnaryHandler(
+		UsersServiceCreatOrganizationGroupProcedure,
+		svc.CreatOrganizationGroup,
+		connect.WithSchema(usersServiceCreatOrganizationGroupMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceUpdateOrganizationGroupHandler := connect.NewUnaryHandler(
+		UsersServiceUpdateOrganizationGroupProcedure,
+		svc.UpdateOrganizationGroup,
+		connect.WithSchema(usersServiceUpdateOrganizationGroupMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceDeleteOrganizationGroupHandler := connect.NewUnaryHandler(
+		UsersServiceDeleteOrganizationGroupProcedure,
+		svc.DeleteOrganizationGroup,
+		connect.WithSchema(usersServiceDeleteOrganizationGroupMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceListOrganizationGroupHandler := connect.NewUnaryHandler(
+		UsersServiceListOrganizationGroupProcedure,
+		svc.ListOrganizationGroup,
+		connect.WithSchema(usersServiceListOrganizationGroupMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceCreatOrganizationHandler := connect.NewUnaryHandler(
+		UsersServiceCreatOrganizationProcedure,
+		svc.CreatOrganization,
+		connect.WithSchema(usersServiceCreatOrganizationMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceUpdateOrganizationHandler := connect.NewUnaryHandler(
+		UsersServiceUpdateOrganizationProcedure,
+		svc.UpdateOrganization,
+		connect.WithSchema(usersServiceUpdateOrganizationMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceDeleteOrganizationHandler := connect.NewUnaryHandler(
+		UsersServiceDeleteOrganizationProcedure,
+		svc.DeleteOrganization,
+		connect.WithSchema(usersServiceDeleteOrganizationMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceListOrganizationHandler := connect.NewUnaryHandler(
+		UsersServiceListOrganizationProcedure,
+		svc.ListOrganization,
+		connect.WithSchema(usersServiceListOrganizationMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/users.UsersService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case UsersServiceRegisterUserProcedure:
@@ -151,6 +370,24 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 			usersServiceLoginUserHandler.ServeHTTP(w, r)
 		case UsersServiceListUsersProcedure:
 			usersServiceListUsersHandler.ServeHTTP(w, r)
+		case UsersServiceUpdateUserProcedure:
+			usersServiceUpdateUserHandler.ServeHTTP(w, r)
+		case UsersServiceCreatOrganizationGroupProcedure:
+			usersServiceCreatOrganizationGroupHandler.ServeHTTP(w, r)
+		case UsersServiceUpdateOrganizationGroupProcedure:
+			usersServiceUpdateOrganizationGroupHandler.ServeHTTP(w, r)
+		case UsersServiceDeleteOrganizationGroupProcedure:
+			usersServiceDeleteOrganizationGroupHandler.ServeHTTP(w, r)
+		case UsersServiceListOrganizationGroupProcedure:
+			usersServiceListOrganizationGroupHandler.ServeHTTP(w, r)
+		case UsersServiceCreatOrganizationProcedure:
+			usersServiceCreatOrganizationHandler.ServeHTTP(w, r)
+		case UsersServiceUpdateOrganizationProcedure:
+			usersServiceUpdateOrganizationHandler.ServeHTTP(w, r)
+		case UsersServiceDeleteOrganizationProcedure:
+			usersServiceDeleteOrganizationHandler.ServeHTTP(w, r)
+		case UsersServiceListOrganizationProcedure:
+			usersServiceListOrganizationHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -170,4 +407,40 @@ func (UnimplementedUsersServiceHandler) LoginUser(context.Context, *connect.Requ
 
 func (UnimplementedUsersServiceHandler) ListUsers(context.Context, *connect.Request[users.ListUsersRequest]) (*connect.Response[users.ListUsersResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.ListUsers is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) UpdateUser(context.Context, *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.UpdateUser is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) CreatOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CreatOrganizationGroup is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) UpdateOrganizationGroup(context.Context, *connect.Request[users.UpdateOrganizationGroupRequest]) (*connect.Response[users.UpdateOrganizationGroupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.UpdateOrganizationGroup is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) DeleteOrganizationGroup(context.Context, *connect.Request[users.DeleteOrganizationRequest]) (*connect.Response[users.DeleteOrganizationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.DeleteOrganizationGroup is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) ListOrganizationGroup(context.Context, *connect.Request[users.ListOrganizationGroupRequest]) (*connect.Response[users.ListOrganizationGroupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.ListOrganizationGroup is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) CreatOrganization(context.Context, *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CreatOrganization is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) UpdateOrganization(context.Context, *connect.Request[users.UpdateOrganizationRequest]) (*connect.Response[users.UpdateOrganizationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.UpdateOrganization is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) DeleteOrganization(context.Context, *connect.Request[users.DeleteOrganizationGroupRequest]) (*connect.Response[users.DeleteOrganizationGroupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.DeleteOrganization is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) ListOrganization(context.Context, *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.ListOrganization is not implemented"))
 }

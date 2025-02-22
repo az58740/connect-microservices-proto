@@ -10,7 +10,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file users/users.proto.
  */
 export const file_users_users: GenFile = /*@__PURE__*/
-  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMwoKUGVybWlzc2lvbhIVCg1wZXJtaXNzaW9uX2lkGAEgASgJEg4KBmFjdGlvbhgDIAEoCSI2CghSZXNvdXJjZRITCgtyZXNvdXJjZV9pZBgBIAEoCRIVCg1yZXNvdXJjZV9uYW1lGAIgASgJIooBCgRSb2xlEg8KB3JvbGVfaWQYASABKAkSEQoJcm9sZV9uYW1lGAIgASgJEiEKCHJlc291cmNlGAMgASgLMg8udXNlcnMuUmVzb3VyY2USEwoLZGVzY3JpcHRpb24YBCABKAkSJgoLcGVybWlzc2lvbnMYBSADKAsyES51c2Vycy5QZXJtaXNzaW9uIkIKEU9yZ2FuaXphdGlvbkdyb3VwEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkibwoQQ29udHJhY3RpbmdQYXJ0eRIXCg9vcmdhbml6YXRpb25faWQYASABKAkSGQoRb3JnYW5pemF0aW9uX25hbWUYAiABKAkSJwoFZ3JvdXAYAyABKAsyGC51c2Vycy5Pcmdhbml6YXRpb25Hcm91cCLIAQoLVXNlclByb2ZpbGUSEQoJZnVsbF9uYW1lGAEgASgJEg0KBWVtYWlsGAIgASgJEhQKDHBob25lX251bWJlchgDIAEoCRIPCgdjb3VudHJ5GAQgASgJEhAKCHByb3ZpbmNlGAUgASgJEgwKBGNpdHkYBiABKAkSFgoOYWRkcmVzc19saW5lXzEYByABKAkSFgoOYWRkcmVzc19saW5lXzIYCCABKAkSEAoIemlwX2NvZGUYCSABKAkSDgoGZ2VuZGVyGAogASgJItMBCgRVc2VyEg8KB3VzZXJfaWQYASABKAkSIwoHcHJvZmlsZRgCIAEoCzISLnVzZXJzLlVzZXJQcm9maWxlEhoKBXJvbGVzGAMgAygLMgsudXNlcnMuUm9sZRIhCgZzdGF0dXMYBCABKA4yES51c2Vycy5Vc2VyU3RhdHVzEi0KDG9yZ2FuaXphdGlvbhgFIAEoCzIXLnVzZXJzLkNvbnRyYWN0aW5nUGFydHkSEAoIdXNlcm5hbWUYBiABKAkSFQoNcGFzc3dvcmRfaGFzaBgHIAEoCSKBAQoKUGFnaW5hdGlvbhIMCgRwYWdlGAEgASgFEhEKCXBhZ2Vfc2l6ZRgCIAEoBRIUCgdzb3J0X2J5GAMgASgJSACIAQESHAoPc29ydF9kZXNjZW5kaW5nGAQgASgISAGIAQFCCgoIX3NvcnRfYnlCEgoQX3NvcnRfZGVzY2VuZGluZyJ/CgpVc2VyRmlsdGVyEg8KB3VzZXJfaWQYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSDQoFZW1haWwYAyABKAkSEAoIcm9sZV9pZHMYBCABKAkSFwoPb3JnYW5pemF0aW9uX2lkGAUgASgJEhQKDHVzZXJfc3RhdHVzZRgGIAEoCSIvCgpSb2xlRmlsdGVyEiEKCHJlc291cmNlGAEgASgLMg8udXNlcnMuUmVzb3VyY2UiZwoPUmVnaXN0ZXJSZXF1ZXN0EgwKBG5hbWUYASABKAkSDQoFZW1haWwYAiABKAkSEwoLcGhvbmVudW1iZXIYAyABKAkSEAoIdXNlcm5hbWUYBCABKAkSEAoIcGFzc3dvcmQYBSABKAkiNAoQUmVnaXN0ZXJSZXNwb25zZRIPCgd1c2VyX2lkGAEgASgJEg8KB21lc3NhZ2UYAiABKAkiMgoMTG9naW5SZXF1ZXN0EhAKCHVzZXJuYW1lGAEgASgJEhAKCHBhc3N3b3JkGAIgASgJIi8KDUxvZ2luUmVzcG9uc2USDQoFdG9rZW4YASABKAkSDwoHc3VjY2VzcxgCIAEoCCIgCg1Mb2dvdXRSZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkiIQoOTG9nb3V0UmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCCIhCg5HZXRVc2VyUmVxdWVzdBIPCgd1c2VyX2lkGAEgASgJIiwKD0dldFVzZXJSZXNwb25zZRIZCgR1c2VyGAEgASgLMgsudXNlcnMuVXNlciI/ChFVcGRhdGVVc2VyUmVxdWVzdBIPCgd1c2VyX2lkGAEgASgJEhkKBHVzZXIYAiABKAsyCy51c2Vycy5Vc2VyIiUKElVwZGF0ZVVzZXJSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIlwKEExpc3RVc2Vyc1JlcXVlc3QSJQoKcGFnaW5hdGlvbhgBIAEoCzIRLnVzZXJzLlBhZ2luYXRpb24SIQoGZmlsdGVyGAIgASgLMhEudXNlcnMuVXNlckZpbHRlciJdChFMaXN0VXNlcnNSZXNwb25zZRIaCgV1c2VycxgBIAMoCzILLnVzZXJzLlVzZXISFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJEhMKC3RvdGFsX3BhZ2VzGAMgASgFKo8BCgpVc2VyU3RhdHVzEhsKF1VTRVJfU1RBVFVTX1VOU1BFQ0lGSUVEEAASFgoSVVNFUl9TVEFUVVNfQUNUSVZFEAESGAoUVVNFUl9TVEFUVVNfSU5BQ1RJVkUQAhIZChVVU0VSX1NUQVRVU19TVVNQRU5ERUQQAxIXChNVU0VSX1NUQVRVU19ERUxFVEVEEAQyxwEKDFVzZXJzU2VydmljZRI/CgxSZWdpc3RlclVzZXISFi51c2Vycy5SZWdpc3RlclJlcXVlc3QaFy51c2Vycy5SZWdpc3RlclJlc3BvbnNlEjYKCUxvZ2luVXNlchITLnVzZXJzLkxvZ2luUmVxdWVzdBoULnVzZXJzLkxvZ2luUmVzcG9uc2USPgoJTGlzdFVzZXJzEhcudXNlcnMuTGlzdFVzZXJzUmVxdWVzdBoYLnVzZXJzLkxpc3RVc2Vyc1Jlc3BvbnNlQkNaQWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3VzZXJzO3VzZXJzYgZwcm90bzM");
+  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMwoKUGVybWlzc2lvbhIVCg1wZXJtaXNzaW9uX2lkGAEgASgJEg4KBmFjdGlvbhgCIAEoCSI2CghSZXNvdXJjZRITCgtyZXNvdXJjZV9pZBgBIAEoCRIVCg1yZXNvdXJjZV9uYW1lGAIgASgJIooBCgRSb2xlEg8KB3JvbGVfaWQYASABKAkSEQoJcm9sZV9uYW1lGAIgASgJEiEKCHJlc291cmNlGAMgASgLMg8udXNlcnMuUmVzb3VyY2USEwoLZGVzY3JpcHRpb24YBCABKAkSJgoLcGVybWlzc2lvbnMYBSADKAsyES51c2Vycy5QZXJtaXNzaW9uIkIKEU9yZ2FuaXphdGlvbkdyb3VwEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkihAEKEENvbnRyYWN0aW5nUGFydHkSFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJEhkKEW9yZ2FuaXphdGlvbl9uYW1lGAIgASgJEhMKC2Rlc2NyaXB0aW9uGAMgASgJEicKBWdyb3VwGAQgASgLMhgudXNlcnMuT3JnYW5pemF0aW9uR3JvdXAiyAEKC1VzZXJQcm9maWxlEhEKCWZ1bGxfbmFtZRgBIAEoCRINCgVlbWFpbBgCIAEoCRIUCgxwaG9uZV9udW1iZXIYAyABKAkSDwoHY291bnRyeRgEIAEoCRIQCghwcm92aW5jZRgFIAEoCRIMCgRjaXR5GAYgASgJEhYKDmFkZHJlc3NfbGluZV8xGAcgASgJEhYKDmFkZHJlc3NfbGluZV8yGAggASgJEhAKCHppcF9jb2RlGAkgASgJEg4KBmdlbmRlchgKIAEoCSLyAQoEVXNlchIPCgd1c2VyX2lkGAEgASgJEiMKB3Byb2ZpbGUYAiABKAsyEi51c2Vycy5Vc2VyUHJvZmlsZRIaCgVyb2xlcxgDIAMoCzILLnVzZXJzLlJvbGUSIQoGc3RhdHVzGAQgASgOMhEudXNlcnMuVXNlclN0YXR1cxItCgxvcmdhbml6YXRpb24YBSABKAsyFy51c2Vycy5Db250cmFjdGluZ1BhcnR5EhAKCHVzZXJuYW1lGAYgASgJEhUKDXBhc3N3b3JkX2hhc2gYByABKAkSHQoEdHlwZRgIIAEoDjIPLnVzZXJzLlVzZXJUeXBlIoEBCgpQYWdpbmF0aW9uEgwKBHBhZ2UYASABKAUSEQoJcGFnZV9zaXplGAIgASgFEhQKB3NvcnRfYnkYAyABKAlIAIgBARIcCg9zb3J0X2Rlc2NlbmRpbmcYBCABKAhIAYgBAUIKCghfc29ydF9ieUISChBfc29ydF9kZXNjZW5kaW5nIsMBCgpVc2VyRmlsdGVyEg8KB3VzZXJfaWQYASABKAkSEAoIdXNlcm5hbWUYAiABKAkSDQoFZW1haWwYAyABKAkSEAoIcm9sZV9pZHMYBCABKAkSFwoPb3JnYW5pemF0aW9uX2lkGAUgASgJEhQKDHVzZXJfc3RhdHVzZRgGIAEoCRIPCgdjb3VudHJ5GAcgASgJEhAKCHByb3ZpbmNlGAggASgJEgwKBGNpdHkYCSABKAkSEQoJdXNlcl90eXBlGAogASgJIi8KClJvbGVGaWx0ZXISIQoIcmVzb3VyY2UYASABKAsyDy51c2Vycy5SZXNvdXJjZSJnCg9SZWdpc3RlclJlcXVlc3QSDAoEbmFtZRgBIAEoCRINCgVlbWFpbBgCIAEoCRITCgtwaG9uZW51bWJlchgDIAEoCRIQCgh1c2VybmFtZRgEIAEoCRIQCghwYXNzd29yZBgFIAEoCSI0ChBSZWdpc3RlclJlc3BvbnNlEg8KB3VzZXJfaWQYASABKAkSDwoHbWVzc2FnZRgCIAEoCSIyCgxMb2dpblJlcXVlc3QSEAoIdXNlcm5hbWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAkiLwoNTG9naW5SZXNwb25zZRINCgV0b2tlbhgBIAEoCRIPCgdzdWNjZXNzGAIgASgIIiAKDUxvZ291dFJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCSIhCg5Mb2dvdXRSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIIi4KEVVwZGF0ZVVzZXJSZXF1ZXN0EhkKBHVzZXIYASABKAsyCy51c2Vycy5Vc2VyIiUKElVwZGF0ZVVzZXJSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIlwKEExpc3RVc2Vyc1JlcXVlc3QSJQoKcGFnaW5hdGlvbhgBIAEoCzIRLnVzZXJzLlBhZ2luYXRpb24SIQoGZmlsdGVyGAIgASgLMhEudXNlcnMuVXNlckZpbHRlciJdChFMaXN0VXNlcnNSZXNwb25zZRIaCgV1c2VycxgBIAMoCzILLnVzZXJzLlVzZXISFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJEhMKC3RvdGFsX3BhZ2VzGAMgASgFIkMKHkNyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBIMCgRuYW1lGAEgASgJEhMKC2Rlc2NyaXB0aW9uGAIgASgJIjIKH0NyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSJJCh5VcGRhdGVPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QSJwoFZ3JvdXAYASABKAsyGC51c2Vycy5Pcmdhbml6YXRpb25Hcm91cCIyCh9VcGRhdGVPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiMgoeRGVsZXRlT3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0EhAKCGdyb3VwX2lkGAEgASgJIjIKH0RlbGV0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSJlChdPcmdhbml6YXRpb25Hcm91cEZpbHRlchIVCghncm91cF9pZBgBIAEoCUgAiAEBEhcKCmdyb3VwX25hbWUYAiABKAlIAYgBAUILCglfZ3JvdXBfaWRCDQoLX2dyb3VwX25hbWUiTgocTGlzdE9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBIuCgZmaWx0ZXIYASABKAsyHi51c2Vycy5Pcmdhbml6YXRpb25Hcm91cEZpbHRlciJJCh1MaXN0T3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRIoCgZncm91cHMYASADKAsyGC51c2Vycy5Pcmdhbml6YXRpb25Hcm91cCJyChlDcmVhdGVPcmdhbml6YXRpb25SZXF1ZXN0EhkKEW9yZ2FuaXphdGlvbl9uYW1lGAEgASgJEiEKFG9yZ2FuaXphdGlvbmdyb3VwX2lkGAIgASgJSACIAQFCFwoVX29yZ2FuaXphdGlvbmdyb3VwX2lkIkYKGkNyZWF0ZU9yZ2FuaXphdGlvblJlc3BvbnNlEhcKD29yZ2FuaXphdGlvbl9pZBgBIAEoCRIPCgdtZXNzYWdlGAIgASgJIkoKGVVwZGF0ZU9yZ2FuaXphdGlvblJlcXVlc3QSLQoMb3JnYW5pemF0aW9uGAEgASgLMhcudXNlcnMuQ29udHJhY3RpbmdQYXJ0eSItChpVcGRhdGVPcmdhbml6YXRpb25SZXNwb25zZRIPCgdtZXNzYWdlGAIgASgJIjQKGURlbGV0ZU9yZ2FuaXphdGlvblJlcXVlc3QSFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJIi0KGkRlbGV0ZU9yZ2FuaXphdGlvblJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiggEKEk9yZ2FuaXphdGlvbkZpbHRlchIcCg9vcmdhbml6YXRpb25faWQYASABKAlIAIgBARIhChRvcmdhbml6YXRpb25ncm91cF9pZBgCIAEoCUgBiAEBQhIKEF9vcmdhbml6YXRpb25faWRCFwoVX29yZ2FuaXphdGlvbmdyb3VwX2lkIkQKF0xpc3RPcmdhbml6YXRpb25SZXF1ZXN0EikKBmZpbHRlchgBIAEoCzIZLnVzZXJzLk9yZ2FuaXphdGlvbkZpbHRlciJKChhMaXN0T3JnYW5pemF0aW9uUmVzcG9uc2USLgoNb3JnYW5pemF0aW9ucxgBIAMoCzIXLnVzZXJzLkNvbnRyYWN0aW5nUGFydHkqjwEKClVzZXJTdGF0dXMSGwoXVVNFUl9TVEFUVVNfVU5TUEVDSUZJRUQQABIWChJVU0VSX1NUQVRVU19BQ1RJVkUQARIYChRVU0VSX1NUQVRVU19JTkFDVElWRRACEhkKFVVTRVJfU1RBVFVTX1NVU1BFTkRFRBADEhcKE1VTRVJfU1RBVFVTX0RFTEVURUQQBCo+CghVc2VyVHlwZRIVChFVU0VSX1R5cGVfREVGQVVMVBAAEhsKF1VTRVJfVHlwZV9DT05UUkFDVFBBUlRZEAEykAgKDFVzZXJzU2VydmljZRI/CgxSZWdpc3RlclVzZXISFi51c2Vycy5SZWdpc3RlclJlcXVlc3QaFy51c2Vycy5SZWdpc3RlclJlc3BvbnNlEjYKCUxvZ2luVXNlchITLnVzZXJzLkxvZ2luUmVxdWVzdBoULnVzZXJzLkxvZ2luUmVzcG9uc2USPgoJTGlzdFVzZXJzEhcudXNlcnMuTGlzdFVzZXJzUmVxdWVzdBoYLnVzZXJzLkxpc3RVc2Vyc1Jlc3BvbnNlEkEKClVwZGF0ZVVzZXISGC51c2Vycy5VcGRhdGVVc2VyUmVxdWVzdBoZLnVzZXJzLlVwZGF0ZVVzZXJSZXNwb25zZRJnChZDcmVhdE9yZ2FuaXphdGlvbkdyb3VwEiUudXNlcnMuQ3JlYXRlT3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0GiYudXNlcnMuQ3JlYXRlT3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRJoChdVcGRhdGVPcmdhbml6YXRpb25Hcm91cBIlLnVzZXJzLlVwZGF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBomLnVzZXJzLlVwZGF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USXgoXRGVsZXRlT3JnYW5pemF0aW9uR3JvdXASIC51c2Vycy5EZWxldGVPcmdhbml6YXRpb25SZXF1ZXN0GiEudXNlcnMuRGVsZXRlT3JnYW5pemF0aW9uUmVzcG9uc2USYgoVTGlzdE9yZ2FuaXphdGlvbkdyb3VwEiMudXNlcnMuTGlzdE9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBokLnVzZXJzLkxpc3RPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlElgKEUNyZWF0T3JnYW5pemF0aW9uEiAudXNlcnMuQ3JlYXRlT3JnYW5pemF0aW9uUmVxdWVzdBohLnVzZXJzLkNyZWF0ZU9yZ2FuaXphdGlvblJlc3BvbnNlElkKElVwZGF0ZU9yZ2FuaXphdGlvbhIgLnVzZXJzLlVwZGF0ZU9yZ2FuaXphdGlvblJlcXVlc3QaIS51c2Vycy5VcGRhdGVPcmdhbml6YXRpb25SZXNwb25zZRJjChJEZWxldGVPcmdhbml6YXRpb24SJS51c2Vycy5EZWxldGVPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QaJi51c2Vycy5EZWxldGVPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlElMKEExpc3RPcmdhbml6YXRpb24SHi51c2Vycy5MaXN0T3JnYW5pemF0aW9uUmVxdWVzdBofLnVzZXJzLkxpc3RPcmdhbml6YXRpb25SZXNwb25zZUJDWkFnaXRodWIuY29tL2F6NTg3NDAvY29ubmVjdC1taWNyb3NlcnZpY2VzLXByb3RvL2dvbGFuZy91c2Vyczt1c2Vyc2IGcHJvdG8z");
 
 /**
  * Message for defining a permission related to user roles.
@@ -28,7 +28,7 @@ export type Permission = Message<"users.Permission"> & {
   /**
    * The action that this permission grants (e.g., "create", "read", "update", "delete").
    *
-   * @generated from field: string action = 3;
+   * @generated from field: string action = 2;
    */
   action: string;
 };
@@ -173,9 +173,16 @@ export type ContractingParty = Message<"users.ContractingParty"> & {
   organizationName: string;
 
   /**
+   * Description of the organization .
+   *
+   * @generated from field: string description = 3;
+   */
+  description: string;
+
+  /**
    * Group to which the organization belongs.
    *
-   * @generated from field: users.OrganizationGroup group = 3;
+   * @generated from field: users.OrganizationGroup group = 4;
    */
   group?: OrganizationGroup;
 };
@@ -325,6 +332,13 @@ export type User = Message<"users.User"> & {
    * @generated from field: string password_hash = 7;
    */
   passwordHash: string;
+
+  /**
+   * The user type
+   *
+   * @generated from field: users.UserType type = 8;
+   */
+  type: UserType;
 };
 
 /**
@@ -423,6 +437,34 @@ export type UserFilter = Message<"users.UserFilter"> & {
    * @generated from field: string user_statuse = 6;
    */
   userStatuse: string;
+
+  /**
+   * Filter by geolocation country
+   *
+   * @generated from field: string country = 7;
+   */
+  country: string;
+
+  /**
+   * Filter by geolocation  province
+   *
+   * @generated from field: string province = 8;
+   */
+  province: string;
+
+  /**
+   * Filter by geolocation  city
+   *
+   * @generated from field: string city = 9;
+   */
+  city: string;
+
+  /**
+   * Filter by user type
+   *
+   * @generated from field: string user_type = 10;
+   */
+  userType: string;
 };
 
 /**
@@ -629,64 +671,15 @@ export const LogoutResponseSchema: GenMessage<LogoutResponse> = /*@__PURE__*/
   messageDesc(file_users_users, 15);
 
 /**
- * Request to retrieve user details by user ID.
- *
- * @generated from message users.GetUserRequest
- */
-export type GetUserRequest = Message<"users.GetUserRequest"> & {
-  /**
-   * ID of the user to retrieve.
-   *
-   * @generated from field: string user_id = 1;
-   */
-  userId: string;
-};
-
-/**
- * Describes the message users.GetUserRequest.
- * Use `create(GetUserRequestSchema)` to create a new message.
- */
-export const GetUserRequestSchema: GenMessage<GetUserRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 16);
-
-/**
- * Response containing the details of a user.
- *
- * @generated from message users.GetUserResponse
- */
-export type GetUserResponse = Message<"users.GetUserResponse"> & {
-  /**
-   * The user information retrieved from the system.
-   *
-   * @generated from field: users.User user = 1;
-   */
-  user?: User;
-};
-
-/**
- * Describes the message users.GetUserResponse.
- * Use `create(GetUserResponseSchema)` to create a new message.
- */
-export const GetUserResponseSchema: GenMessage<GetUserResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 17);
-
-/**
  * Request to update a user's details.
  *
  * @generated from message users.UpdateUserRequest
  */
 export type UpdateUserRequest = Message<"users.UpdateUserRequest"> & {
   /**
-   * ID of the user to update.
-   *
-   * @generated from field: string user_id = 1;
-   */
-  userId: string;
-
-  /**
    * Updated user information.
    *
-   * @generated from field: users.User user = 2;
+   * @generated from field: users.User user = 1;
    */
   user?: User;
 };
@@ -696,7 +689,7 @@ export type UpdateUserRequest = Message<"users.UpdateUserRequest"> & {
  * Use `create(UpdateUserRequestSchema)` to create a new message.
  */
 export const UpdateUserRequestSchema: GenMessage<UpdateUserRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 18);
+  messageDesc(file_users_users, 16);
 
 /**
  * Response after updating a user's details.
@@ -717,7 +710,7 @@ export type UpdateUserResponse = Message<"users.UpdateUserResponse"> & {
  * Use `create(UpdateUserResponseSchema)` to create a new message.
  */
 export const UpdateUserResponseSchema: GenMessage<UpdateUserResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 19);
+  messageDesc(file_users_users, 17);
 
 /**
  * Request to list users with pagination and filtering.
@@ -745,7 +738,7 @@ export type ListUsersRequest = Message<"users.ListUsersRequest"> & {
  * Use `create(ListUsersRequestSchema)` to create a new message.
  */
 export const ListUsersRequestSchema: GenMessage<ListUsersRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 20);
+  messageDesc(file_users_users, 18);
 
 /**
  * Response for listing users.
@@ -780,7 +773,342 @@ export type ListUsersResponse = Message<"users.ListUsersResponse"> & {
  * Use `create(ListUsersResponseSchema)` to create a new message.
  */
 export const ListUsersResponseSchema: GenMessage<ListUsersResponse> = /*@__PURE__*/
+  messageDesc(file_users_users, 19);
+
+/**
+ * Organization Group related message
+ *
+ * @generated from message users.CreateOrganizationGroupRequest
+ */
+export type CreateOrganizationGroupRequest = Message<"users.CreateOrganizationGroupRequest"> & {
+  /**
+   * @generated from field: string name = 1;
+   */
+  name: string;
+
+  /**
+   * @generated from field: string description = 2;
+   */
+  description: string;
+};
+
+/**
+ * Describes the message users.CreateOrganizationGroupRequest.
+ * Use `create(CreateOrganizationGroupRequestSchema)` to create a new message.
+ */
+export const CreateOrganizationGroupRequestSchema: GenMessage<CreateOrganizationGroupRequest> = /*@__PURE__*/
+  messageDesc(file_users_users, 20);
+
+/**
+ * @generated from message users.CreateOrganizationGroupResponse
+ */
+export type CreateOrganizationGroupResponse = Message<"users.CreateOrganizationGroupResponse"> & {
+  /**
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.CreateOrganizationGroupResponse.
+ * Use `create(CreateOrganizationGroupResponseSchema)` to create a new message.
+ */
+export const CreateOrganizationGroupResponseSchema: GenMessage<CreateOrganizationGroupResponse> = /*@__PURE__*/
   messageDesc(file_users_users, 21);
+
+/**
+ * @generated from message users.UpdateOrganizationGroupRequest
+ */
+export type UpdateOrganizationGroupRequest = Message<"users.UpdateOrganizationGroupRequest"> & {
+  /**
+   * @generated from field: users.OrganizationGroup group = 1;
+   */
+  group?: OrganizationGroup;
+};
+
+/**
+ * Describes the message users.UpdateOrganizationGroupRequest.
+ * Use `create(UpdateOrganizationGroupRequestSchema)` to create a new message.
+ */
+export const UpdateOrganizationGroupRequestSchema: GenMessage<UpdateOrganizationGroupRequest> = /*@__PURE__*/
+  messageDesc(file_users_users, 22);
+
+/**
+ * @generated from message users.UpdateOrganizationGroupResponse
+ */
+export type UpdateOrganizationGroupResponse = Message<"users.UpdateOrganizationGroupResponse"> & {
+  /**
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.UpdateOrganizationGroupResponse.
+ * Use `create(UpdateOrganizationGroupResponseSchema)` to create a new message.
+ */
+export const UpdateOrganizationGroupResponseSchema: GenMessage<UpdateOrganizationGroupResponse> = /*@__PURE__*/
+  messageDesc(file_users_users, 23);
+
+/**
+ * @generated from message users.DeleteOrganizationGroupRequest
+ */
+export type DeleteOrganizationGroupRequest = Message<"users.DeleteOrganizationGroupRequest"> & {
+  /**
+   * @generated from field: string group_id = 1;
+   */
+  groupId: string;
+};
+
+/**
+ * Describes the message users.DeleteOrganizationGroupRequest.
+ * Use `create(DeleteOrganizationGroupRequestSchema)` to create a new message.
+ */
+export const DeleteOrganizationGroupRequestSchema: GenMessage<DeleteOrganizationGroupRequest> = /*@__PURE__*/
+  messageDesc(file_users_users, 24);
+
+/**
+ * @generated from message users.DeleteOrganizationGroupResponse
+ */
+export type DeleteOrganizationGroupResponse = Message<"users.DeleteOrganizationGroupResponse"> & {
+  /**
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.DeleteOrganizationGroupResponse.
+ * Use `create(DeleteOrganizationGroupResponseSchema)` to create a new message.
+ */
+export const DeleteOrganizationGroupResponseSchema: GenMessage<DeleteOrganizationGroupResponse> = /*@__PURE__*/
+  messageDesc(file_users_users, 25);
+
+/**
+ * @generated from message users.OrganizationGroupFilter
+ */
+export type OrganizationGroupFilter = Message<"users.OrganizationGroupFilter"> & {
+  /**
+   * @generated from field: optional string group_id = 1;
+   */
+  groupId?: string;
+
+  /**
+   * @generated from field: optional string group_name = 2;
+   */
+  groupName?: string;
+};
+
+/**
+ * Describes the message users.OrganizationGroupFilter.
+ * Use `create(OrganizationGroupFilterSchema)` to create a new message.
+ */
+export const OrganizationGroupFilterSchema: GenMessage<OrganizationGroupFilter> = /*@__PURE__*/
+  messageDesc(file_users_users, 26);
+
+/**
+ * @generated from message users.ListOrganizationGroupRequest
+ */
+export type ListOrganizationGroupRequest = Message<"users.ListOrganizationGroupRequest"> & {
+  /**
+   * @generated from field: users.OrganizationGroupFilter filter = 1;
+   */
+  filter?: OrganizationGroupFilter;
+};
+
+/**
+ * Describes the message users.ListOrganizationGroupRequest.
+ * Use `create(ListOrganizationGroupRequestSchema)` to create a new message.
+ */
+export const ListOrganizationGroupRequestSchema: GenMessage<ListOrganizationGroupRequest> = /*@__PURE__*/
+  messageDesc(file_users_users, 27);
+
+/**
+ * @generated from message users.ListOrganizationGroupResponse
+ */
+export type ListOrganizationGroupResponse = Message<"users.ListOrganizationGroupResponse"> & {
+  /**
+   * @generated from field: repeated users.OrganizationGroup groups = 1;
+   */
+  groups: OrganizationGroup[];
+};
+
+/**
+ * Describes the message users.ListOrganizationGroupResponse.
+ * Use `create(ListOrganizationGroupResponseSchema)` to create a new message.
+ */
+export const ListOrganizationGroupResponseSchema: GenMessage<ListOrganizationGroupResponse> = /*@__PURE__*/
+  messageDesc(file_users_users, 28);
+
+/**
+ * Organization or contractparty related message
+ *
+ * @generated from message users.CreateOrganizationRequest
+ */
+export type CreateOrganizationRequest = Message<"users.CreateOrganizationRequest"> & {
+  /**
+   * @generated from field: string organization_name = 1;
+   */
+  organizationName: string;
+
+  /**
+   * @generated from field: optional string organizationgroup_id = 2;
+   */
+  organizationgroupId?: string;
+};
+
+/**
+ * Describes the message users.CreateOrganizationRequest.
+ * Use `create(CreateOrganizationRequestSchema)` to create a new message.
+ */
+export const CreateOrganizationRequestSchema: GenMessage<CreateOrganizationRequest> = /*@__PURE__*/
+  messageDesc(file_users_users, 29);
+
+/**
+ * @generated from message users.CreateOrganizationResponse
+ */
+export type CreateOrganizationResponse = Message<"users.CreateOrganizationResponse"> & {
+  /**
+   * @generated from field: string organization_id = 1;
+   */
+  organizationId: string;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.CreateOrganizationResponse.
+ * Use `create(CreateOrganizationResponseSchema)` to create a new message.
+ */
+export const CreateOrganizationResponseSchema: GenMessage<CreateOrganizationResponse> = /*@__PURE__*/
+  messageDesc(file_users_users, 30);
+
+/**
+ * @generated from message users.UpdateOrganizationRequest
+ */
+export type UpdateOrganizationRequest = Message<"users.UpdateOrganizationRequest"> & {
+  /**
+   * @generated from field: users.ContractingParty organization = 1;
+   */
+  organization?: ContractingParty;
+};
+
+/**
+ * Describes the message users.UpdateOrganizationRequest.
+ * Use `create(UpdateOrganizationRequestSchema)` to create a new message.
+ */
+export const UpdateOrganizationRequestSchema: GenMessage<UpdateOrganizationRequest> = /*@__PURE__*/
+  messageDesc(file_users_users, 31);
+
+/**
+ * @generated from message users.UpdateOrganizationResponse
+ */
+export type UpdateOrganizationResponse = Message<"users.UpdateOrganizationResponse"> & {
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.UpdateOrganizationResponse.
+ * Use `create(UpdateOrganizationResponseSchema)` to create a new message.
+ */
+export const UpdateOrganizationResponseSchema: GenMessage<UpdateOrganizationResponse> = /*@__PURE__*/
+  messageDesc(file_users_users, 32);
+
+/**
+ * @generated from message users.DeleteOrganizationRequest
+ */
+export type DeleteOrganizationRequest = Message<"users.DeleteOrganizationRequest"> & {
+  /**
+   * @generated from field: string organization_id = 1;
+   */
+  organizationId: string;
+};
+
+/**
+ * Describes the message users.DeleteOrganizationRequest.
+ * Use `create(DeleteOrganizationRequestSchema)` to create a new message.
+ */
+export const DeleteOrganizationRequestSchema: GenMessage<DeleteOrganizationRequest> = /*@__PURE__*/
+  messageDesc(file_users_users, 33);
+
+/**
+ * @generated from message users.DeleteOrganizationResponse
+ */
+export type DeleteOrganizationResponse = Message<"users.DeleteOrganizationResponse"> & {
+  /**
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.DeleteOrganizationResponse.
+ * Use `create(DeleteOrganizationResponseSchema)` to create a new message.
+ */
+export const DeleteOrganizationResponseSchema: GenMessage<DeleteOrganizationResponse> = /*@__PURE__*/
+  messageDesc(file_users_users, 34);
+
+/**
+ * @generated from message users.OrganizationFilter
+ */
+export type OrganizationFilter = Message<"users.OrganizationFilter"> & {
+  /**
+   * @generated from field: optional string organization_id = 1;
+   */
+  organizationId?: string;
+
+  /**
+   * @generated from field: optional string organizationgroup_id = 2;
+   */
+  organizationgroupId?: string;
+};
+
+/**
+ * Describes the message users.OrganizationFilter.
+ * Use `create(OrganizationFilterSchema)` to create a new message.
+ */
+export const OrganizationFilterSchema: GenMessage<OrganizationFilter> = /*@__PURE__*/
+  messageDesc(file_users_users, 35);
+
+/**
+ * @generated from message users.ListOrganizationRequest
+ */
+export type ListOrganizationRequest = Message<"users.ListOrganizationRequest"> & {
+  /**
+   * @generated from field: users.OrganizationFilter filter = 1;
+   */
+  filter?: OrganizationFilter;
+};
+
+/**
+ * Describes the message users.ListOrganizationRequest.
+ * Use `create(ListOrganizationRequestSchema)` to create a new message.
+ */
+export const ListOrganizationRequestSchema: GenMessage<ListOrganizationRequest> = /*@__PURE__*/
+  messageDesc(file_users_users, 36);
+
+/**
+ * @generated from message users.ListOrganizationResponse
+ */
+export type ListOrganizationResponse = Message<"users.ListOrganizationResponse"> & {
+  /**
+   * @generated from field: repeated users.ContractingParty organizations = 1;
+   */
+  organizations: ContractingParty[];
+};
+
+/**
+ * Describes the message users.ListOrganizationResponse.
+ * Use `create(ListOrganizationResponseSchema)` to create a new message.
+ */
+export const ListOrganizationResponseSchema: GenMessage<ListOrganizationResponse> = /*@__PURE__*/
+  messageDesc(file_users_users, 37);
 
 /**
  * Enum for user status, which can be one of several states for the user account.
@@ -831,13 +1159,38 @@ export const UserStatusSchema: GenEnum<UserStatus> = /*@__PURE__*/
   enumDesc(file_users_users, 0);
 
 /**
+ * @generated from enum users.UserType
+ */
+export enum UserType {
+  /**
+   * Default value.
+   *
+   * @generated from enum value: USER_Type_DEFAULT = 0;
+   */
+  DEFAULT = 0,
+
+  /**
+   * User as contract party .
+   *
+   * @generated from enum value: USER_Type_CONTRACTPARTY = 1;
+   */
+  CONTRACTPARTY = 1,
+}
+
+/**
+ * Describes the enum users.UserType.
+ */
+export const UserTypeSchema: GenEnum<UserType> = /*@__PURE__*/
+  enumDesc(file_users_users, 1);
+
+/**
  * Service for managing users (authentication, user details, and user roles).
  *
  * @generated from service users.UsersService
  */
 export const UsersService: GenService<{
   /**
-   * Auth-related methods
+   * User-related methods
    *
    * Register a new user.
    *
@@ -867,6 +1220,84 @@ export const UsersService: GenService<{
     methodKind: "unary";
     input: typeof ListUsersRequestSchema;
     output: typeof ListUsersResponseSchema;
+  },
+  /**
+   * Update user
+   *
+   * @generated from rpc users.UsersService.UpdateUser
+   */
+  updateUser: {
+    methodKind: "unary";
+    input: typeof UpdateUserRequestSchema;
+    output: typeof UpdateUserResponseSchema;
+  },
+  /**
+   * Organization Group related methods
+   *
+   * @generated from rpc users.UsersService.CreatOrganizationGroup
+   */
+  creatOrganizationGroup: {
+    methodKind: "unary";
+    input: typeof CreateOrganizationGroupRequestSchema;
+    output: typeof CreateOrganizationGroupResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.UpdateOrganizationGroup
+   */
+  updateOrganizationGroup: {
+    methodKind: "unary";
+    input: typeof UpdateOrganizationGroupRequestSchema;
+    output: typeof UpdateOrganizationGroupResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.DeleteOrganizationGroup
+   */
+  deleteOrganizationGroup: {
+    methodKind: "unary";
+    input: typeof DeleteOrganizationRequestSchema;
+    output: typeof DeleteOrganizationResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.ListOrganizationGroup
+   */
+  listOrganizationGroup: {
+    methodKind: "unary";
+    input: typeof ListOrganizationGroupRequestSchema;
+    output: typeof ListOrganizationGroupResponseSchema;
+  },
+  /**
+   * Organization  related methods
+   *
+   * @generated from rpc users.UsersService.CreatOrganization
+   */
+  creatOrganization: {
+    methodKind: "unary";
+    input: typeof CreateOrganizationRequestSchema;
+    output: typeof CreateOrganizationResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.UpdateOrganization
+   */
+  updateOrganization: {
+    methodKind: "unary";
+    input: typeof UpdateOrganizationRequestSchema;
+    output: typeof UpdateOrganizationResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.DeleteOrganization
+   */
+  deleteOrganization: {
+    methodKind: "unary";
+    input: typeof DeleteOrganizationGroupRequestSchema;
+    output: typeof DeleteOrganizationGroupResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.ListOrganization
+   */
+  listOrganization: {
+    methodKind: "unary";
+    input: typeof ListOrganizationRequestSchema;
+    output: typeof ListOrganizationResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_users_users, 0);

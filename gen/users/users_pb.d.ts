@@ -26,7 +26,7 @@ export declare type Permission = Message<"users.Permission"> & {
   /**
    * The action that this permission grants (e.g., "create", "read", "update", "delete").
    *
-   * @generated from field: string action = 3;
+   * @generated from field: string action = 2;
    */
   action: string;
 };
@@ -167,9 +167,16 @@ export declare type ContractingParty = Message<"users.ContractingParty"> & {
   organizationName: string;
 
   /**
+   * Description of the organization .
+   *
+   * @generated from field: string description = 3;
+   */
+  description: string;
+
+  /**
    * Group to which the organization belongs.
    *
-   * @generated from field: users.OrganizationGroup group = 3;
+   * @generated from field: users.OrganizationGroup group = 4;
    */
   group?: OrganizationGroup;
 };
@@ -317,6 +324,13 @@ export declare type User = Message<"users.User"> & {
    * @generated from field: string password_hash = 7;
    */
   passwordHash: string;
+
+  /**
+   * The user type
+   *
+   * @generated from field: users.UserType type = 8;
+   */
+  type: UserType;
 };
 
 /**
@@ -413,6 +427,34 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
    * @generated from field: string user_statuse = 6;
    */
   userStatuse: string;
+
+  /**
+   * Filter by geolocation country
+   *
+   * @generated from field: string country = 7;
+   */
+  country: string;
+
+  /**
+   * Filter by geolocation  province
+   *
+   * @generated from field: string province = 8;
+   */
+  province: string;
+
+  /**
+   * Filter by geolocation  city
+   *
+   * @generated from field: string city = 9;
+   */
+  city: string;
+
+  /**
+   * Filter by user type
+   *
+   * @generated from field: string user_type = 10;
+   */
+  userType: string;
 };
 
 /**
@@ -611,62 +653,15 @@ export declare type LogoutResponse = Message<"users.LogoutResponse"> & {
 export declare const LogoutResponseSchema: GenMessage<LogoutResponse>;
 
 /**
- * Request to retrieve user details by user ID.
- *
- * @generated from message users.GetUserRequest
- */
-export declare type GetUserRequest = Message<"users.GetUserRequest"> & {
-  /**
-   * ID of the user to retrieve.
-   *
-   * @generated from field: string user_id = 1;
-   */
-  userId: string;
-};
-
-/**
- * Describes the message users.GetUserRequest.
- * Use `create(GetUserRequestSchema)` to create a new message.
- */
-export declare const GetUserRequestSchema: GenMessage<GetUserRequest>;
-
-/**
- * Response containing the details of a user.
- *
- * @generated from message users.GetUserResponse
- */
-export declare type GetUserResponse = Message<"users.GetUserResponse"> & {
-  /**
-   * The user information retrieved from the system.
-   *
-   * @generated from field: users.User user = 1;
-   */
-  user?: User;
-};
-
-/**
- * Describes the message users.GetUserResponse.
- * Use `create(GetUserResponseSchema)` to create a new message.
- */
-export declare const GetUserResponseSchema: GenMessage<GetUserResponse>;
-
-/**
  * Request to update a user's details.
  *
  * @generated from message users.UpdateUserRequest
  */
 export declare type UpdateUserRequest = Message<"users.UpdateUserRequest"> & {
   /**
-   * ID of the user to update.
-   *
-   * @generated from field: string user_id = 1;
-   */
-  userId: string;
-
-  /**
    * Updated user information.
    *
-   * @generated from field: users.User user = 2;
+   * @generated from field: users.User user = 1;
    */
   user?: User;
 };
@@ -759,6 +754,323 @@ export declare type ListUsersResponse = Message<"users.ListUsersResponse"> & {
 export declare const ListUsersResponseSchema: GenMessage<ListUsersResponse>;
 
 /**
+ * Organization Group related message
+ *
+ * @generated from message users.CreateOrganizationGroupRequest
+ */
+export declare type CreateOrganizationGroupRequest = Message<"users.CreateOrganizationGroupRequest"> & {
+  /**
+   * @generated from field: string name = 1;
+   */
+  name: string;
+
+  /**
+   * @generated from field: string description = 2;
+   */
+  description: string;
+};
+
+/**
+ * Describes the message users.CreateOrganizationGroupRequest.
+ * Use `create(CreateOrganizationGroupRequestSchema)` to create a new message.
+ */
+export declare const CreateOrganizationGroupRequestSchema: GenMessage<CreateOrganizationGroupRequest>;
+
+/**
+ * @generated from message users.CreateOrganizationGroupResponse
+ */
+export declare type CreateOrganizationGroupResponse = Message<"users.CreateOrganizationGroupResponse"> & {
+  /**
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.CreateOrganizationGroupResponse.
+ * Use `create(CreateOrganizationGroupResponseSchema)` to create a new message.
+ */
+export declare const CreateOrganizationGroupResponseSchema: GenMessage<CreateOrganizationGroupResponse>;
+
+/**
+ * @generated from message users.UpdateOrganizationGroupRequest
+ */
+export declare type UpdateOrganizationGroupRequest = Message<"users.UpdateOrganizationGroupRequest"> & {
+  /**
+   * @generated from field: users.OrganizationGroup group = 1;
+   */
+  group?: OrganizationGroup;
+};
+
+/**
+ * Describes the message users.UpdateOrganizationGroupRequest.
+ * Use `create(UpdateOrganizationGroupRequestSchema)` to create a new message.
+ */
+export declare const UpdateOrganizationGroupRequestSchema: GenMessage<UpdateOrganizationGroupRequest>;
+
+/**
+ * @generated from message users.UpdateOrganizationGroupResponse
+ */
+export declare type UpdateOrganizationGroupResponse = Message<"users.UpdateOrganizationGroupResponse"> & {
+  /**
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.UpdateOrganizationGroupResponse.
+ * Use `create(UpdateOrganizationGroupResponseSchema)` to create a new message.
+ */
+export declare const UpdateOrganizationGroupResponseSchema: GenMessage<UpdateOrganizationGroupResponse>;
+
+/**
+ * @generated from message users.DeleteOrganizationGroupRequest
+ */
+export declare type DeleteOrganizationGroupRequest = Message<"users.DeleteOrganizationGroupRequest"> & {
+  /**
+   * @generated from field: string group_id = 1;
+   */
+  groupId: string;
+};
+
+/**
+ * Describes the message users.DeleteOrganizationGroupRequest.
+ * Use `create(DeleteOrganizationGroupRequestSchema)` to create a new message.
+ */
+export declare const DeleteOrganizationGroupRequestSchema: GenMessage<DeleteOrganizationGroupRequest>;
+
+/**
+ * @generated from message users.DeleteOrganizationGroupResponse
+ */
+export declare type DeleteOrganizationGroupResponse = Message<"users.DeleteOrganizationGroupResponse"> & {
+  /**
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.DeleteOrganizationGroupResponse.
+ * Use `create(DeleteOrganizationGroupResponseSchema)` to create a new message.
+ */
+export declare const DeleteOrganizationGroupResponseSchema: GenMessage<DeleteOrganizationGroupResponse>;
+
+/**
+ * @generated from message users.OrganizationGroupFilter
+ */
+export declare type OrganizationGroupFilter = Message<"users.OrganizationGroupFilter"> & {
+  /**
+   * @generated from field: optional string group_id = 1;
+   */
+  groupId?: string;
+
+  /**
+   * @generated from field: optional string group_name = 2;
+   */
+  groupName?: string;
+};
+
+/**
+ * Describes the message users.OrganizationGroupFilter.
+ * Use `create(OrganizationGroupFilterSchema)` to create a new message.
+ */
+export declare const OrganizationGroupFilterSchema: GenMessage<OrganizationGroupFilter>;
+
+/**
+ * @generated from message users.ListOrganizationGroupRequest
+ */
+export declare type ListOrganizationGroupRequest = Message<"users.ListOrganizationGroupRequest"> & {
+  /**
+   * @generated from field: users.OrganizationGroupFilter filter = 1;
+   */
+  filter?: OrganizationGroupFilter;
+};
+
+/**
+ * Describes the message users.ListOrganizationGroupRequest.
+ * Use `create(ListOrganizationGroupRequestSchema)` to create a new message.
+ */
+export declare const ListOrganizationGroupRequestSchema: GenMessage<ListOrganizationGroupRequest>;
+
+/**
+ * @generated from message users.ListOrganizationGroupResponse
+ */
+export declare type ListOrganizationGroupResponse = Message<"users.ListOrganizationGroupResponse"> & {
+  /**
+   * @generated from field: repeated users.OrganizationGroup groups = 1;
+   */
+  groups: OrganizationGroup[];
+};
+
+/**
+ * Describes the message users.ListOrganizationGroupResponse.
+ * Use `create(ListOrganizationGroupResponseSchema)` to create a new message.
+ */
+export declare const ListOrganizationGroupResponseSchema: GenMessage<ListOrganizationGroupResponse>;
+
+/**
+ * Organization or contractparty related message
+ *
+ * @generated from message users.CreateOrganizationRequest
+ */
+export declare type CreateOrganizationRequest = Message<"users.CreateOrganizationRequest"> & {
+  /**
+   * @generated from field: string organization_name = 1;
+   */
+  organizationName: string;
+
+  /**
+   * @generated from field: optional string organizationgroup_id = 2;
+   */
+  organizationgroupId?: string;
+};
+
+/**
+ * Describes the message users.CreateOrganizationRequest.
+ * Use `create(CreateOrganizationRequestSchema)` to create a new message.
+ */
+export declare const CreateOrganizationRequestSchema: GenMessage<CreateOrganizationRequest>;
+
+/**
+ * @generated from message users.CreateOrganizationResponse
+ */
+export declare type CreateOrganizationResponse = Message<"users.CreateOrganizationResponse"> & {
+  /**
+   * @generated from field: string organization_id = 1;
+   */
+  organizationId: string;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.CreateOrganizationResponse.
+ * Use `create(CreateOrganizationResponseSchema)` to create a new message.
+ */
+export declare const CreateOrganizationResponseSchema: GenMessage<CreateOrganizationResponse>;
+
+/**
+ * @generated from message users.UpdateOrganizationRequest
+ */
+export declare type UpdateOrganizationRequest = Message<"users.UpdateOrganizationRequest"> & {
+  /**
+   * @generated from field: users.ContractingParty organization = 1;
+   */
+  organization?: ContractingParty;
+};
+
+/**
+ * Describes the message users.UpdateOrganizationRequest.
+ * Use `create(UpdateOrganizationRequestSchema)` to create a new message.
+ */
+export declare const UpdateOrganizationRequestSchema: GenMessage<UpdateOrganizationRequest>;
+
+/**
+ * @generated from message users.UpdateOrganizationResponse
+ */
+export declare type UpdateOrganizationResponse = Message<"users.UpdateOrganizationResponse"> & {
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.UpdateOrganizationResponse.
+ * Use `create(UpdateOrganizationResponseSchema)` to create a new message.
+ */
+export declare const UpdateOrganizationResponseSchema: GenMessage<UpdateOrganizationResponse>;
+
+/**
+ * @generated from message users.DeleteOrganizationRequest
+ */
+export declare type DeleteOrganizationRequest = Message<"users.DeleteOrganizationRequest"> & {
+  /**
+   * @generated from field: string organization_id = 1;
+   */
+  organizationId: string;
+};
+
+/**
+ * Describes the message users.DeleteOrganizationRequest.
+ * Use `create(DeleteOrganizationRequestSchema)` to create a new message.
+ */
+export declare const DeleteOrganizationRequestSchema: GenMessage<DeleteOrganizationRequest>;
+
+/**
+ * @generated from message users.DeleteOrganizationResponse
+ */
+export declare type DeleteOrganizationResponse = Message<"users.DeleteOrganizationResponse"> & {
+  /**
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.DeleteOrganizationResponse.
+ * Use `create(DeleteOrganizationResponseSchema)` to create a new message.
+ */
+export declare const DeleteOrganizationResponseSchema: GenMessage<DeleteOrganizationResponse>;
+
+/**
+ * @generated from message users.OrganizationFilter
+ */
+export declare type OrganizationFilter = Message<"users.OrganizationFilter"> & {
+  /**
+   * @generated from field: optional string organization_id = 1;
+   */
+  organizationId?: string;
+
+  /**
+   * @generated from field: optional string organizationgroup_id = 2;
+   */
+  organizationgroupId?: string;
+};
+
+/**
+ * Describes the message users.OrganizationFilter.
+ * Use `create(OrganizationFilterSchema)` to create a new message.
+ */
+export declare const OrganizationFilterSchema: GenMessage<OrganizationFilter>;
+
+/**
+ * @generated from message users.ListOrganizationRequest
+ */
+export declare type ListOrganizationRequest = Message<"users.ListOrganizationRequest"> & {
+  /**
+   * @generated from field: users.OrganizationFilter filter = 1;
+   */
+  filter?: OrganizationFilter;
+};
+
+/**
+ * Describes the message users.ListOrganizationRequest.
+ * Use `create(ListOrganizationRequestSchema)` to create a new message.
+ */
+export declare const ListOrganizationRequestSchema: GenMessage<ListOrganizationRequest>;
+
+/**
+ * @generated from message users.ListOrganizationResponse
+ */
+export declare type ListOrganizationResponse = Message<"users.ListOrganizationResponse"> & {
+  /**
+   * @generated from field: repeated users.ContractingParty organizations = 1;
+   */
+  organizations: ContractingParty[];
+};
+
+/**
+ * Describes the message users.ListOrganizationResponse.
+ * Use `create(ListOrganizationResponseSchema)` to create a new message.
+ */
+export declare const ListOrganizationResponseSchema: GenMessage<ListOrganizationResponse>;
+
+/**
  * Enum for user status, which can be one of several states for the user account.
  *
  * @generated from enum users.UserStatus
@@ -806,13 +1118,37 @@ export enum UserStatus {
 export declare const UserStatusSchema: GenEnum<UserStatus>;
 
 /**
+ * @generated from enum users.UserType
+ */
+export enum UserType {
+  /**
+   * Default value.
+   *
+   * @generated from enum value: USER_Type_DEFAULT = 0;
+   */
+  DEFAULT = 0,
+
+  /**
+   * User as contract party .
+   *
+   * @generated from enum value: USER_Type_CONTRACTPARTY = 1;
+   */
+  CONTRACTPARTY = 1,
+}
+
+/**
+ * Describes the enum users.UserType.
+ */
+export declare const UserTypeSchema: GenEnum<UserType>;
+
+/**
  * Service for managing users (authentication, user details, and user roles).
  *
  * @generated from service users.UsersService
  */
 export declare const UsersService: GenService<{
   /**
-   * Auth-related methods
+   * User-related methods
    *
    * Register a new user.
    *
@@ -842,6 +1178,84 @@ export declare const UsersService: GenService<{
     methodKind: "unary";
     input: typeof ListUsersRequestSchema;
     output: typeof ListUsersResponseSchema;
+  },
+  /**
+   * Update user
+   *
+   * @generated from rpc users.UsersService.UpdateUser
+   */
+  updateUser: {
+    methodKind: "unary";
+    input: typeof UpdateUserRequestSchema;
+    output: typeof UpdateUserResponseSchema;
+  },
+  /**
+   * Organization Group related methods
+   *
+   * @generated from rpc users.UsersService.CreatOrganizationGroup
+   */
+  creatOrganizationGroup: {
+    methodKind: "unary";
+    input: typeof CreateOrganizationGroupRequestSchema;
+    output: typeof CreateOrganizationGroupResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.UpdateOrganizationGroup
+   */
+  updateOrganizationGroup: {
+    methodKind: "unary";
+    input: typeof UpdateOrganizationGroupRequestSchema;
+    output: typeof UpdateOrganizationGroupResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.DeleteOrganizationGroup
+   */
+  deleteOrganizationGroup: {
+    methodKind: "unary";
+    input: typeof DeleteOrganizationRequestSchema;
+    output: typeof DeleteOrganizationResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.ListOrganizationGroup
+   */
+  listOrganizationGroup: {
+    methodKind: "unary";
+    input: typeof ListOrganizationGroupRequestSchema;
+    output: typeof ListOrganizationGroupResponseSchema;
+  },
+  /**
+   * Organization  related methods
+   *
+   * @generated from rpc users.UsersService.CreatOrganization
+   */
+  creatOrganization: {
+    methodKind: "unary";
+    input: typeof CreateOrganizationRequestSchema;
+    output: typeof CreateOrganizationResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.UpdateOrganization
+   */
+  updateOrganization: {
+    methodKind: "unary";
+    input: typeof UpdateOrganizationRequestSchema;
+    output: typeof UpdateOrganizationResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.DeleteOrganization
+   */
+  deleteOrganization: {
+    methodKind: "unary";
+    input: typeof DeleteOrganizationGroupRequestSchema;
+    output: typeof DeleteOrganizationGroupResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.ListOrganization
+   */
+  listOrganization: {
+    methodKind: "unary";
+    input: typeof ListOrganizationRequestSchema;
+    output: typeof ListOrganizationResponseSchema;
   },
 }>;
 

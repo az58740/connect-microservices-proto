@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from "./users_pb.js";
+import { CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -15,7 +15,7 @@ export declare const UsersService: {
   readonly typeName: "users.UsersService",
   readonly methods: {
     /**
-     * Auth-related methods
+     * User-related methods
      *
      * Register a new user.
      *
@@ -47,6 +47,93 @@ export declare const UsersService: {
       readonly name: "ListUsers",
       readonly I: typeof ListUsersRequest,
       readonly O: typeof ListUsersResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * Update user
+     *
+     * @generated from rpc users.UsersService.UpdateUser
+     */
+    readonly updateUser: {
+      readonly name: "UpdateUser",
+      readonly I: typeof UpdateUserRequest,
+      readonly O: typeof UpdateUserResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * Organization Group related methods
+     *
+     * @generated from rpc users.UsersService.CreatOrganizationGroup
+     */
+    readonly creatOrganizationGroup: {
+      readonly name: "CreatOrganizationGroup",
+      readonly I: typeof CreateOrganizationGroupRequest,
+      readonly O: typeof CreateOrganizationGroupResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.UpdateOrganizationGroup
+     */
+    readonly updateOrganizationGroup: {
+      readonly name: "UpdateOrganizationGroup",
+      readonly I: typeof UpdateOrganizationGroupRequest,
+      readonly O: typeof UpdateOrganizationGroupResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.DeleteOrganizationGroup
+     */
+    readonly deleteOrganizationGroup: {
+      readonly name: "DeleteOrganizationGroup",
+      readonly I: typeof DeleteOrganizationRequest,
+      readonly O: typeof DeleteOrganizationResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.ListOrganizationGroup
+     */
+    readonly listOrganizationGroup: {
+      readonly name: "ListOrganizationGroup",
+      readonly I: typeof ListOrganizationGroupRequest,
+      readonly O: typeof ListOrganizationGroupResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * Organization  related methods
+     *
+     * @generated from rpc users.UsersService.CreatOrganization
+     */
+    readonly creatOrganization: {
+      readonly name: "CreatOrganization",
+      readonly I: typeof CreateOrganizationRequest,
+      readonly O: typeof CreateOrganizationResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.UpdateOrganization
+     */
+    readonly updateOrganization: {
+      readonly name: "UpdateOrganization",
+      readonly I: typeof UpdateOrganizationRequest,
+      readonly O: typeof UpdateOrganizationResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.DeleteOrganization
+     */
+    readonly deleteOrganization: {
+      readonly name: "DeleteOrganization",
+      readonly I: typeof DeleteOrganizationGroupRequest,
+      readonly O: typeof DeleteOrganizationGroupResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.ListOrganization
+     */
+    readonly listOrganization: {
+      readonly name: "ListOrganization",
+      readonly I: typeof ListOrganizationRequest,
+      readonly O: typeof ListOrganizationResponse,
       readonly kind: MethodKind.Unary,
     },
   }
