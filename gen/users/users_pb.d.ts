@@ -576,6 +576,13 @@ export declare type RegisterRequest = Message<"users.RegisterRequest"> & {
    * @generated from field: string password = 5;
    */
   password: string;
+
+  /**
+   * Gender of user
+   *
+   * @generated from field: string gender = 6;
+   */
+  gender: string;
 };
 
 /**
