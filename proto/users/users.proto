@@ -65,6 +65,7 @@ message UserProfile {
     string address_line_2 = 8;   // Second line of the user's address (optional).
     string zip_code = 9;         // Zip or postal code of the user's address.
     string gender =10;           // Gender of the user
+    string img=11;               // User image address
 }
 
 // Represents a user in the system, including their roles, status, and profile.
@@ -105,6 +106,17 @@ message UserFilter {
 message RoleFilter {
     Resource resource = 1;                // Filter by resource associated with the role (e.g., "user", "order").
 }
+// Filter criteria for listing Organization Group by associated resource.
+message OrganizationGroupFilter {
+    optional string group_id = 1;
+    optional string group_name = 2;
+  }
+  // Filter criteria for listing Contract Party by associated resource.
+  message OrganizationFilter {
+    optional string organization_id=1;
+    optional string organizationgroup_id=2;
+}
+
 
 // Message for registering a new user (sign up).
 message RegisterRequest {
@@ -185,10 +197,7 @@ message DeleteOrganizationGroupRequest {
 message DeleteOrganizationGroupResponse {
     string message =1;
 }
-message OrganizationGroupFilter {
-    optional string group_id = 1;
-    optional string group_name = 2;
-  }
+
 message ListOrganizationGroupRequest {
     OrganizationGroupFilter filter =1;   
 }
@@ -215,10 +224,6 @@ message DeleteOrganizationRequest {
 }
 message DeleteOrganizationResponse {
     string message =1;
-}
-message OrganizationFilter {
-    optional string organization_id=1;
-    optional string organizationgroup_id=2;
 }
 message ListOrganizationRequest{
     OrganizationFilter filter=1;
