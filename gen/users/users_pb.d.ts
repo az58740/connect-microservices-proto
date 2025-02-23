@@ -262,6 +262,13 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
    * @generated from field: string gender = 10;
    */
   gender: string;
+
+  /**
+   * User image address
+   *
+   * @generated from field: string img = 11;
+   */
+  img: string;
 };
 
 /**
@@ -482,6 +489,52 @@ export declare type RoleFilter = Message<"users.RoleFilter"> & {
  * Use `create(RoleFilterSchema)` to create a new message.
  */
 export declare const RoleFilterSchema: GenMessage<RoleFilter>;
+
+/**
+ * Filter criteria for listing Organization Group by associated resource.
+ *
+ * @generated from message users.OrganizationGroupFilter
+ */
+export declare type OrganizationGroupFilter = Message<"users.OrganizationGroupFilter"> & {
+  /**
+   * @generated from field: optional string group_id = 1;
+   */
+  groupId?: string;
+
+  /**
+   * @generated from field: optional string group_name = 2;
+   */
+  groupName?: string;
+};
+
+/**
+ * Describes the message users.OrganizationGroupFilter.
+ * Use `create(OrganizationGroupFilterSchema)` to create a new message.
+ */
+export declare const OrganizationGroupFilterSchema: GenMessage<OrganizationGroupFilter>;
+
+/**
+ * Filter criteria for listing Contract Party by associated resource.
+ *
+ * @generated from message users.OrganizationFilter
+ */
+export declare type OrganizationFilter = Message<"users.OrganizationFilter"> & {
+  /**
+   * @generated from field: optional string organization_id = 1;
+   */
+  organizationId?: string;
+
+  /**
+   * @generated from field: optional string organizationgroup_id = 2;
+   */
+  organizationgroupId?: string;
+};
+
+/**
+ * Describes the message users.OrganizationFilter.
+ * Use `create(OrganizationFilterSchema)` to create a new message.
+ */
+export declare const OrganizationFilterSchema: GenMessage<OrganizationFilter>;
 
 /**
  * Message for registering a new user (sign up).
@@ -857,27 +910,6 @@ export declare type DeleteOrganizationGroupResponse = Message<"users.DeleteOrgan
 export declare const DeleteOrganizationGroupResponseSchema: GenMessage<DeleteOrganizationGroupResponse>;
 
 /**
- * @generated from message users.OrganizationGroupFilter
- */
-export declare type OrganizationGroupFilter = Message<"users.OrganizationGroupFilter"> & {
-  /**
-   * @generated from field: optional string group_id = 1;
-   */
-  groupId?: string;
-
-  /**
-   * @generated from field: optional string group_name = 2;
-   */
-  groupName?: string;
-};
-
-/**
- * Describes the message users.OrganizationGroupFilter.
- * Use `create(OrganizationGroupFilterSchema)` to create a new message.
- */
-export declare const OrganizationGroupFilterSchema: GenMessage<OrganizationGroupFilter>;
-
-/**
  * @generated from message users.ListOrganizationGroupRequest
  */
 export declare type ListOrganizationGroupRequest = Message<"users.ListOrganizationGroupRequest"> & {
@@ -1016,27 +1048,6 @@ export declare type DeleteOrganizationResponse = Message<"users.DeleteOrganizati
  * Use `create(DeleteOrganizationResponseSchema)` to create a new message.
  */
 export declare const DeleteOrganizationResponseSchema: GenMessage<DeleteOrganizationResponse>;
-
-/**
- * @generated from message users.OrganizationFilter
- */
-export declare type OrganizationFilter = Message<"users.OrganizationFilter"> & {
-  /**
-   * @generated from field: optional string organization_id = 1;
-   */
-  organizationId?: string;
-
-  /**
-   * @generated from field: optional string organizationgroup_id = 2;
-   */
-  organizationgroupId?: string;
-};
-
-/**
- * Describes the message users.OrganizationFilter.
- * Use `create(OrganizationFilterSchema)` to create a new message.
- */
-export declare const OrganizationFilterSchema: GenMessage<OrganizationFilter>;
 
 /**
  * @generated from message users.ListOrganizationRequest
