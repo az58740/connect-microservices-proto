@@ -963,6 +963,11 @@ export declare type CreateOrganizationRequest = Message<"users.CreateOrganizatio
    * @generated from field: optional string organizationgroup_id = 2;
    */
   organizationgroupId?: string;
+
+  /**
+   * @generated from field: optional string description = 3;
+   */
+  description?: string;
 };
 
 /**

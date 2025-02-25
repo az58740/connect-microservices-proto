@@ -209,6 +209,7 @@ message ListOrganizationGroupResponse {
 message CreateOrganizationRequest {
 string organization_name=1;
 optional string organizationgroup_id=2;
+optional string description=3;
 }
 message CreateOrganizationResponse {
     string organization_id=1;
