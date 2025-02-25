@@ -1235,8 +1235,8 @@ export declare const UsersService: GenService<{
    */
   deleteOrganizationGroup: {
     methodKind: "unary";
-    input: typeof DeleteOrganizationRequestSchema;
-    output: typeof DeleteOrganizationResponseSchema;
+    input: typeof DeleteOrganizationGroupRequestSchema;
+    output: typeof DeleteOrganizationGroupResponseSchema;
   },
   /**
    * @generated from rpc users.UsersService.ListOrganizationGroup

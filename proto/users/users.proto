@@ -244,7 +244,7 @@ service UsersService {
     // Organization Group related methods
     rpc CreatOrganizationGroup(CreateOrganizationGroupRequest) returns (CreateOrganizationGroupResponse);
     rpc UpdateOrganizationGroup(UpdateOrganizationGroupRequest) returns (UpdateOrganizationGroupResponse);
-    rpc DeleteOrganizationGroup(DeleteOrganizationRequest) returns (DeleteOrganizationResponse);
+    rpc DeleteOrganizationGroup(DeleteOrganizationGroupRequest) returns (DeleteOrganizationGroupResponse);
     rpc ListOrganizationGroup(ListOrganizationGroupRequest) returns (ListOrganizationGroupResponse);
 
     // Organization  related methods
