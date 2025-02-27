@@ -42,9 +42,9 @@ const (
 	UsersServiceListUsersProcedure = "/users.UsersService/ListUsers"
 	// UsersServiceUpdateUserProcedure is the fully-qualified name of the UsersService's UpdateUser RPC.
 	UsersServiceUpdateUserProcedure = "/users.UsersService/UpdateUser"
-	// UsersServiceCreatOrganizationGroupProcedure is the fully-qualified name of the UsersService's
-	// CreatOrganizationGroup RPC.
-	UsersServiceCreatOrganizationGroupProcedure = "/users.UsersService/CreatOrganizationGroup"
+	// UsersServiceCreateOrganizationGroupProcedure is the fully-qualified name of the UsersService's
+	// CreateOrganizationGroup RPC.
+	UsersServiceCreateOrganizationGroupProcedure = "/users.UsersService/CreateOrganizationGroup"
 	// UsersServiceUpdateOrganizationGroupProcedure is the fully-qualified name of the UsersService's
 	// UpdateOrganizationGroup RPC.
 	UsersServiceUpdateOrganizationGroupProcedure = "/users.UsersService/UpdateOrganizationGroup"
@@ -54,9 +54,9 @@ const (
 	// UsersServiceListOrganizationGroupProcedure is the fully-qualified name of the UsersService's
 	// ListOrganizationGroup RPC.
 	UsersServiceListOrganizationGroupProcedure = "/users.UsersService/ListOrganizationGroup"
-	// UsersServiceCreatOrganizationProcedure is the fully-qualified name of the UsersService's
-	// CreatOrganization RPC.
-	UsersServiceCreatOrganizationProcedure = "/users.UsersService/CreatOrganization"
+	// UsersServiceCreateOrganizationProcedure is the fully-qualified name of the UsersService's
+	// CreateOrganization RPC.
+	UsersServiceCreateOrganizationProcedure = "/users.UsersService/CreateOrganization"
 	// UsersServiceUpdateOrganizationProcedure is the fully-qualified name of the UsersService's
 	// UpdateOrganization RPC.
 	UsersServiceUpdateOrganizationProcedure = "/users.UsersService/UpdateOrganization"
@@ -75,11 +75,11 @@ var (
 	usersServiceLoginUserMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("LoginUser")
 	usersServiceListUsersMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("ListUsers")
 	usersServiceUpdateUserMethodDescriptor              = usersServiceServiceDescriptor.Methods().ByName("UpdateUser")
-	usersServiceCreatOrganizationGroupMethodDescriptor  = usersServiceServiceDescriptor.Methods().ByName("CreatOrganizationGroup")
+	usersServiceCreateOrganizationGroupMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("CreateOrganizationGroup")
 	usersServiceUpdateOrganizationGroupMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("UpdateOrganizationGroup")
 	usersServiceDeleteOrganizationGroupMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("DeleteOrganizationGroup")
 	usersServiceListOrganizationGroupMethodDescriptor   = usersServiceServiceDescriptor.Methods().ByName("ListOrganizationGroup")
-	usersServiceCreatOrganizationMethodDescriptor       = usersServiceServiceDescriptor.Methods().ByName("CreatOrganization")
+	usersServiceCreateOrganizationMethodDescriptor      = usersServiceServiceDescriptor.Methods().ByName("CreateOrganization")
 	usersServiceUpdateOrganizationMethodDescriptor      = usersServiceServiceDescriptor.Methods().ByName("UpdateOrganization")
 	usersServiceDeleteOrganizationMethodDescriptor      = usersServiceServiceDescriptor.Methods().ByName("DeleteOrganization")
 	usersServiceListOrganizationMethodDescriptor        = usersServiceServiceDescriptor.Methods().ByName("ListOrganization")
@@ -93,12 +93,12 @@ type UsersServiceClient interface {
 	ListUsers(context.Context, *connect.Request[users.ListUsersRequest]) (*connect.Response[users.ListUsersResponse], error)
 	UpdateUser(context.Context, *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error)
 	// Organization Group related methods
-	CreatOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error)
+	CreateOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error)
 	UpdateOrganizationGroup(context.Context, *connect.Request[users.UpdateOrganizationGroupRequest]) (*connect.Response[users.UpdateOrganizationGroupResponse], error)
 	DeleteOrganizationGroup(context.Context, *connect.Request[users.DeleteOrganizationGroupRequest]) (*connect.Response[users.DeleteOrganizationGroupResponse], error)
 	ListOrganizationGroup(context.Context, *connect.Request[users.ListOrganizationGroupRequest]) (*connect.Response[users.ListOrganizationGroupResponse], error)
 	// Organization  related methods
-	CreatOrganization(context.Context, *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error)
+	CreateOrganization(context.Context, *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error)
 	UpdateOrganization(context.Context, *connect.Request[users.UpdateOrganizationRequest]) (*connect.Response[users.UpdateOrganizationResponse], error)
 	DeleteOrganization(context.Context, *connect.Request[users.DeleteOrganizationRequest]) (*connect.Response[users.DeleteOrganizationResponse], error)
 	ListOrganization(context.Context, *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error)
@@ -138,10 +138,10 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceUpdateUserMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		creatOrganizationGroup: connect.NewClient[users.CreateOrganizationGroupRequest, users.CreateOrganizationGroupResponse](
+		createOrganizationGroup: connect.NewClient[users.CreateOrganizationGroupRequest, users.CreateOrganizationGroupResponse](
 			httpClient,
-			baseURL+UsersServiceCreatOrganizationGroupProcedure,
-			connect.WithSchema(usersServiceCreatOrganizationGroupMethodDescriptor),
+			baseURL+UsersServiceCreateOrganizationGroupProcedure,
+			connect.WithSchema(usersServiceCreateOrganizationGroupMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		updateOrganizationGroup: connect.NewClient[users.UpdateOrganizationGroupRequest, users.UpdateOrganizationGroupResponse](
@@ -162,10 +162,10 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceListOrganizationGroupMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		creatOrganization: connect.NewClient[users.CreateOrganizationRequest, users.CreateOrganizationResponse](
+		createOrganization: connect.NewClient[users.CreateOrganizationRequest, users.CreateOrganizationResponse](
 			httpClient,
-			baseURL+UsersServiceCreatOrganizationProcedure,
-			connect.WithSchema(usersServiceCreatOrganizationMethodDescriptor),
+			baseURL+UsersServiceCreateOrganizationProcedure,
+			connect.WithSchema(usersServiceCreateOrganizationMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		updateOrganization: connect.NewClient[users.UpdateOrganizationRequest, users.UpdateOrganizationResponse](
@@ -195,11 +195,11 @@ type usersServiceClient struct {
 	loginUser               *connect.Client[users.LoginRequest, users.LoginResponse]
 	listUsers               *connect.Client[users.ListUsersRequest, users.ListUsersResponse]
 	updateUser              *connect.Client[users.UpdateUserRequest, users.UpdateUserResponse]
-	creatOrganizationGroup  *connect.Client[users.CreateOrganizationGroupRequest, users.CreateOrganizationGroupResponse]
+	createOrganizationGroup *connect.Client[users.CreateOrganizationGroupRequest, users.CreateOrganizationGroupResponse]
 	updateOrganizationGroup *connect.Client[users.UpdateOrganizationGroupRequest, users.UpdateOrganizationGroupResponse]
 	deleteOrganizationGroup *connect.Client[users.DeleteOrganizationGroupRequest, users.DeleteOrganizationGroupResponse]
 	listOrganizationGroup   *connect.Client[users.ListOrganizationGroupRequest, users.ListOrganizationGroupResponse]
-	creatOrganization       *connect.Client[users.CreateOrganizationRequest, users.CreateOrganizationResponse]
+	createOrganization      *connect.Client[users.CreateOrganizationRequest, users.CreateOrganizationResponse]
 	updateOrganization      *connect.Client[users.UpdateOrganizationRequest, users.UpdateOrganizationResponse]
 	deleteOrganization      *connect.Client[users.DeleteOrganizationRequest, users.DeleteOrganizationResponse]
 	listOrganization        *connect.Client[users.ListOrganizationRequest, users.ListOrganizationResponse]
@@ -225,9 +225,9 @@ func (c *usersServiceClient) UpdateUser(ctx context.Context, req *connect.Reques
 	return c.updateUser.CallUnary(ctx, req)
 }
 
-// CreatOrganizationGroup calls users.UsersService.CreatOrganizationGroup.
-func (c *usersServiceClient) CreatOrganizationGroup(ctx context.Context, req *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error) {
-	return c.creatOrganizationGroup.CallUnary(ctx, req)
+// CreateOrganizationGroup calls users.UsersService.CreateOrganizationGroup.
+func (c *usersServiceClient) CreateOrganizationGroup(ctx context.Context, req *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error) {
+	return c.createOrganizationGroup.CallUnary(ctx, req)
 }
 
 // UpdateOrganizationGroup calls users.UsersService.UpdateOrganizationGroup.
@@ -245,9 +245,9 @@ func (c *usersServiceClient) ListOrganizationGroup(ctx context.Context, req *con
 	return c.listOrganizationGroup.CallUnary(ctx, req)
 }
 
-// CreatOrganization calls users.UsersService.CreatOrganization.
-func (c *usersServiceClient) CreatOrganization(ctx context.Context, req *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error) {
-	return c.creatOrganization.CallUnary(ctx, req)
+// CreateOrganization calls users.UsersService.CreateOrganization.
+func (c *usersServiceClient) CreateOrganization(ctx context.Context, req *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error) {
+	return c.createOrganization.CallUnary(ctx, req)
 }
 
 // UpdateOrganization calls users.UsersService.UpdateOrganization.
@@ -273,12 +273,12 @@ type UsersServiceHandler interface {
 	ListUsers(context.Context, *connect.Request[users.ListUsersRequest]) (*connect.Response[users.ListUsersResponse], error)
 	UpdateUser(context.Context, *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error)
 	// Organization Group related methods
-	CreatOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error)
+	CreateOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error)
 	UpdateOrganizationGroup(context.Context, *connect.Request[users.UpdateOrganizationGroupRequest]) (*connect.Response[users.UpdateOrganizationGroupResponse], error)
 	DeleteOrganizationGroup(context.Context, *connect.Request[users.DeleteOrganizationGroupRequest]) (*connect.Response[users.DeleteOrganizationGroupResponse], error)
 	ListOrganizationGroup(context.Context, *connect.Request[users.ListOrganizationGroupRequest]) (*connect.Response[users.ListOrganizationGroupResponse], error)
 	// Organization  related methods
-	CreatOrganization(context.Context, *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error)
+	CreateOrganization(context.Context, *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error)
 	UpdateOrganization(context.Context, *connect.Request[users.UpdateOrganizationRequest]) (*connect.Response[users.UpdateOrganizationResponse], error)
 	DeleteOrganization(context.Context, *connect.Request[users.DeleteOrganizationRequest]) (*connect.Response[users.DeleteOrganizationResponse], error)
 	ListOrganization(context.Context, *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error)
@@ -314,10 +314,10 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceUpdateUserMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	usersServiceCreatOrganizationGroupHandler := connect.NewUnaryHandler(
-		UsersServiceCreatOrganizationGroupProcedure,
-		svc.CreatOrganizationGroup,
-		connect.WithSchema(usersServiceCreatOrganizationGroupMethodDescriptor),
+	usersServiceCreateOrganizationGroupHandler := connect.NewUnaryHandler(
+		UsersServiceCreateOrganizationGroupProcedure,
+		svc.CreateOrganizationGroup,
+		connect.WithSchema(usersServiceCreateOrganizationGroupMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceUpdateOrganizationGroupHandler := connect.NewUnaryHandler(
@@ -338,10 +338,10 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceListOrganizationGroupMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	usersServiceCreatOrganizationHandler := connect.NewUnaryHandler(
-		UsersServiceCreatOrganizationProcedure,
-		svc.CreatOrganization,
-		connect.WithSchema(usersServiceCreatOrganizationMethodDescriptor),
+	usersServiceCreateOrganizationHandler := connect.NewUnaryHandler(
+		UsersServiceCreateOrganizationProcedure,
+		svc.CreateOrganization,
+		connect.WithSchema(usersServiceCreateOrganizationMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceUpdateOrganizationHandler := connect.NewUnaryHandler(
@@ -372,16 +372,16 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 			usersServiceListUsersHandler.ServeHTTP(w, r)
 		case UsersServiceUpdateUserProcedure:
 			usersServiceUpdateUserHandler.ServeHTTP(w, r)
-		case UsersServiceCreatOrganizationGroupProcedure:
-			usersServiceCreatOrganizationGroupHandler.ServeHTTP(w, r)
+		case UsersServiceCreateOrganizationGroupProcedure:
+			usersServiceCreateOrganizationGroupHandler.ServeHTTP(w, r)
 		case UsersServiceUpdateOrganizationGroupProcedure:
 			usersServiceUpdateOrganizationGroupHandler.ServeHTTP(w, r)
 		case UsersServiceDeleteOrganizationGroupProcedure:
 			usersServiceDeleteOrganizationGroupHandler.ServeHTTP(w, r)
 		case UsersServiceListOrganizationGroupProcedure:
 			usersServiceListOrganizationGroupHandler.ServeHTTP(w, r)
-		case UsersServiceCreatOrganizationProcedure:
-			usersServiceCreatOrganizationHandler.ServeHTTP(w, r)
+		case UsersServiceCreateOrganizationProcedure:
+			usersServiceCreateOrganizationHandler.ServeHTTP(w, r)
 		case UsersServiceUpdateOrganizationProcedure:
 			usersServiceUpdateOrganizationHandler.ServeHTTP(w, r)
 		case UsersServiceDeleteOrganizationProcedure:
@@ -413,8 +413,8 @@ func (UnimplementedUsersServiceHandler) UpdateUser(context.Context, *connect.Req
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.UpdateUser is not implemented"))
 }
 
-func (UnimplementedUsersServiceHandler) CreatOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CreatOrganizationGroup is not implemented"))
+func (UnimplementedUsersServiceHandler) CreateOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CreateOrganizationGroup is not implemented"))
 }
 
 func (UnimplementedUsersServiceHandler) UpdateOrganizationGroup(context.Context, *connect.Request[users.UpdateOrganizationGroupRequest]) (*connect.Response[users.UpdateOrganizationGroupResponse], error) {
@@ -429,8 +429,8 @@ func (UnimplementedUsersServiceHandler) ListOrganizationGroup(context.Context, *
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.ListOrganizationGroup is not implemented"))
 }
 
-func (UnimplementedUsersServiceHandler) CreatOrganization(context.Context, *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CreatOrganization is not implemented"))
+func (UnimplementedUsersServiceHandler) CreateOrganization(context.Context, *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CreateOrganization is not implemented"))
 }
 
 func (UnimplementedUsersServiceHandler) UpdateOrganization(context.Context, *connect.Request[users.UpdateOrganizationRequest]) (*connect.Response[users.UpdateOrganizationResponse], error) {

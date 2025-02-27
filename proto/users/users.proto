@@ -242,13 +242,13 @@ service UsersService {
     rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);   //Update user
 
     // Organization Group related methods
-    rpc CreatOrganizationGroup(CreateOrganizationGroupRequest) returns (CreateOrganizationGroupResponse);
+    rpc CreateOrganizationGroup(CreateOrganizationGroupRequest) returns (CreateOrganizationGroupResponse);
     rpc UpdateOrganizationGroup(UpdateOrganizationGroupRequest) returns (UpdateOrganizationGroupResponse);
     rpc DeleteOrganizationGroup(DeleteOrganizationGroupRequest) returns (DeleteOrganizationGroupResponse);
     rpc ListOrganizationGroup(ListOrganizationGroupRequest) returns (ListOrganizationGroupResponse);
 
     // Organization  related methods
-    rpc CreatOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
+    rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
     rpc UpdateOrganization(UpdateOrganizationRequest) returns (UpdateOrganizationResponse);
     rpc DeleteOrganization(DeleteOrganizationRequest) returns (DeleteOrganizationResponse);
     rpc ListOrganization(ListOrganizationRequest) returns (ListOrganizationResponse);

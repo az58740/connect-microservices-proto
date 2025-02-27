@@ -63,10 +63,10 @@ export const UsersService = {
     /**
      * Organization Group related methods
      *
-     * @generated from rpc users.UsersService.CreatOrganizationGroup
+     * @generated from rpc users.UsersService.CreateOrganizationGroup
      */
-    creatOrganizationGroup: {
-      name: "CreatOrganizationGroup",
+    createOrganizationGroup: {
+      name: "CreateOrganizationGroup",
       I: CreateOrganizationGroupRequest,
       O: CreateOrganizationGroupResponse,
       kind: MethodKind.Unary,
@@ -101,10 +101,10 @@ export const UsersService = {
     /**
      * Organization  related methods
      *
-     * @generated from rpc users.UsersService.CreatOrganization
+     * @generated from rpc users.UsersService.CreateOrganization
      */
-    creatOrganization: {
-      name: "CreatOrganization",
+    createOrganization: {
+      name: "CreateOrganization",
       I: CreateOrganizationRequest,
       O: CreateOrganizationResponse,
       kind: MethodKind.Unary,

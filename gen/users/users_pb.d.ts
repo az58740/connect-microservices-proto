@@ -1215,9 +1215,9 @@ export declare const UsersService: GenService<{
   /**
    * Organization Group related methods
    *
-   * @generated from rpc users.UsersService.CreatOrganizationGroup
+   * @generated from rpc users.UsersService.CreateOrganizationGroup
    */
-  creatOrganizationGroup: {
+  createOrganizationGroup: {
     methodKind: "unary";
     input: typeof CreateOrganizationGroupRequestSchema;
     output: typeof CreateOrganizationGroupResponseSchema;
@@ -1249,9 +1249,9 @@ export declare const UsersService: GenService<{
   /**
    * Organization  related methods
    *
-   * @generated from rpc users.UsersService.CreatOrganization
+   * @generated from rpc users.UsersService.CreateOrganization
    */
-  creatOrganization: {
+  createOrganization: {
     methodKind: "unary";
     input: typeof CreateOrganizationRequestSchema;
     output: typeof CreateOrganizationResponseSchema;

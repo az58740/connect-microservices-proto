@@ -63,10 +63,10 @@ export declare const UsersService: {
     /**
      * Organization Group related methods
      *
-     * @generated from rpc users.UsersService.CreatOrganizationGroup
+     * @generated from rpc users.UsersService.CreateOrganizationGroup
      */
-    readonly creatOrganizationGroup: {
-      readonly name: "CreatOrganizationGroup",
+    readonly createOrganizationGroup: {
+      readonly name: "CreateOrganizationGroup",
       readonly I: typeof CreateOrganizationGroupRequest,
       readonly O: typeof CreateOrganizationGroupResponse,
       readonly kind: MethodKind.Unary,
@@ -101,10 +101,10 @@ export declare const UsersService: {
     /**
      * Organization  related methods
      *
-     * @generated from rpc users.UsersService.CreatOrganization
+     * @generated from rpc users.UsersService.CreateOrganization
      */
-    readonly creatOrganization: {
-      readonly name: "CreatOrganization",
+    readonly createOrganization: {
+      readonly name: "CreateOrganization",
       readonly I: typeof CreateOrganizationRequest,
       readonly O: typeof CreateOrganizationResponse,
       readonly kind: MethodKind.Unary,
