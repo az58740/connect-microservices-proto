@@ -4,6 +4,7 @@
 
 import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
 import type { Message } from "@bufbuild/protobuf";
+import type { Timestamp } from "@bufbuild/protobuf/wkt";
 
 /**
  * Describes the file users/users.proto.
@@ -179,6 +180,13 @@ export declare type ContractingParty = Message<"users.ContractingParty"> & {
    * @generated from field: users.OrganizationGroup group = 4;
    */
   group?: OrganizationGroup;
+
+  /**
+   * Type of organization
+   *
+   * @generated from field: users.OrganizationType type = 5;
+   */
+  type: OrganizationType;
 };
 
 /**
@@ -194,79 +202,86 @@ export declare const ContractingPartySchema: GenMessage<ContractingParty>;
  */
 export declare type UserProfile = Message<"users.UserProfile"> & {
   /**
+   * Unique identifier for the user.
+   *
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
    * Full name of the user (first and last name).
    *
-   * @generated from field: string full_name = 1;
+   * @generated from field: string full_name = 2;
    */
   fullName: string;
 
   /**
    * Email address of the user.
    *
-   * @generated from field: string email = 2;
+   * @generated from field: string email = 3;
    */
   email: string;
 
   /**
    * Phone number of the user.
    *
-   * @generated from field: string phone_number = 3;
+   * @generated from field: string phone_number = 4;
    */
   phoneNumber: string;
 
   /**
    * Country where the user resides.
    *
-   * @generated from field: string country = 4;
+   * @generated from field: string country = 5;
    */
   country: string;
 
   /**
    * Province or state of the user.
    *
-   * @generated from field: string province = 5;
+   * @generated from field: string province = 6;
    */
   province: string;
 
   /**
    * City where the user resides.
    *
-   * @generated from field: string city = 6;
+   * @generated from field: string city = 7;
    */
   city: string;
 
   /**
    * First line of the user's address.
    *
-   * @generated from field: string address_line_1 = 7;
+   * @generated from field: string address_line_1 = 8;
    */
   addressLine1: string;
 
   /**
    * Second line of the user's address (optional).
    *
-   * @generated from field: string address_line_2 = 8;
+   * @generated from field: string address_line_2 = 9;
    */
   addressLine2: string;
 
   /**
    * Zip or postal code of the user's address.
    *
-   * @generated from field: string zip_code = 9;
+   * @generated from field: string zip_code = 10;
    */
   zipCode: string;
 
   /**
    * Gender of the user
    *
-   * @generated from field: string gender = 10;
+   * @generated from field: string gender = 11;
    */
   gender: string;
 
   /**
    * User image address
    *
-   * @generated from field: string img = 11;
+   * @generated from field: string img = 12;
    */
   img: string;
 };
@@ -333,11 +348,32 @@ export declare type User = Message<"users.User"> & {
   passwordHash: string;
 
   /**
-   * The user type
+   * The user type.
    *
    * @generated from field: users.UserType type = 8;
    */
   type: UserType;
+
+  /**
+   * a small Description about
+   *
+   * @generated from field: string description = 9;
+   */
+  description: string;
+
+  /**
+   * Date and time when the user was created.
+   *
+   * @generated from field: google.protobuf.Timestamp created_at = 10;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * Date and time when the user was deleted.
+   *
+   * @generated from field: google.protobuf.Timestamp deleted_at = 11;
+   */
+  deletedAt?: Timestamp;
 };
 
 /**
@@ -462,6 +498,13 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
    * @generated from field: string user_type = 10;
    */
   userType: string;
+
+  /**
+   * Filter  by organization group 
+   *
+   * @generated from field: string group_id = 11;
+   */
+  groupId: string;
 };
 
 /**
@@ -1163,6 +1206,51 @@ export enum UserType {
  * Describes the enum users.UserType.
  */
 export declare const UserTypeSchema: GenEnum<UserType>;
+
+/**
+ * @generated from enum users.OrganizationType
+ */
+export enum OrganizationType {
+  /**
+   * Default value.
+   *
+   * @generated from enum value: ORG_Type_DEFAULT = 0;
+   */
+  ORG_Type_DEFAULT = 0,
+
+  /**
+   * Sports Group.
+   *
+   * @generated from enum value: SPORTS_GROUP = 1;
+   */
+  SPORTS_GROUP = 1,
+
+  /**
+   * Recreational Centers.
+   *
+   * @generated from enum value: RECREATIONAL_CENTERS = 2;
+   */
+  RECREATIONAL_CENTERS = 2,
+
+  /**
+   * Sales Centers.
+   *
+   * @generated from enum value: SALES_CENTERS = 3;
+   */
+  SALES_CENTERS = 3,
+
+  /**
+   * Medical Services.
+   *
+   * @generated from enum value: MEDICAL_SERVICES = 4;
+   */
+  MEDICAL_SERVICES = 4,
+}
+
+/**
+ * Describes the enum users.OrganizationType.
+ */
+export declare const OrganizationTypeSchema: GenEnum<OrganizationType>;
 
 /**
  * Service for managing users (authentication, user details, and user roles).

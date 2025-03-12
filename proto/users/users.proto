@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+
 option go_package = "github.com/az58740/connect-microservices-proto/golang/users;users"; // Go package path for generated code
 
 package users;
@@ -16,6 +18,13 @@ enum UserStatus {
 enum UserType {
     USER_Type_DEFAULT= 0;        // Default value.
     USER_Type_CONTRACTPARTY = 1; // User as contract party .
+}
+enum OrganizationType {
+    ORG_Type_DEFAULT = 0;       // Default value.
+    SPORTS_GROUP = 1;           //Sports Group.
+    RECREATIONAL_CENTERS = 2;   // Recreational Centers.
+    SALES_CENTERS = 3;          // Sales Centers.
+    MEDICAL_SERVICES = 4;       // Medical Services.
 }
 // Message for defining a permission related to user roles.
 message Permission {
@@ -49,23 +58,25 @@ message OrganizationGroup {
 message ContractingParty {
     string organization_id = 1;   // Unique identifier for the organization.
     string organization_name = 2; // Name of the organization.
-    string description = 3;     // Description of the organization .
+    string description = 3;       // Description of the organization .
     OrganizationGroup group = 4;  // Group to which the organization belongs.
+    OrganizationType type=5;      //Type of organization
 }
 
 // Represents a user's profile, which contains personal and contact information.
 message UserProfile {
-    string full_name = 1;        // Full name of the user (first and last name).
-    string email = 2;            // Email address of the user.
-    string phone_number = 3;     // Phone number of the user.
-    string country = 4;          // Country where the user resides.
-    string province = 5;         // Province or state of the user.
-    string city = 6;             // City where the user resides.
-    string address_line_1 = 7;   // First line of the user's address.
-    string address_line_2 = 8;   // Second line of the user's address (optional).
-    string zip_code = 9;         // Zip or postal code of the user's address.
-    string gender =10;           // Gender of the user
-    string img=11;               // User image address
+    string user_id = 1;                  // Unique identifier for the user.
+    string full_name = 2;        // Full name of the user (first and last name).
+    string email = 3;            // Email address of the user.
+    string phone_number = 4;     // Phone number of the user.
+    string country =5;          // Country where the user resides.
+    string province = 6;         // Province or state of the user.
+    string city = 7;             // City where the user resides.
+    string address_line_1 = 8;   // First line of the user's address.
+    string address_line_2 = 9;   // Second line of the user's address (optional).
+    string zip_code = 10;         // Zip or postal code of the user's address.
+    string gender =11;           // Gender of the user
+    string img=12;               // User image address
 }
 
 // Represents a user in the system, including their roles, status, and profile.
@@ -77,8 +88,12 @@ message User {
     ContractingParty organization = 5;   // Organization or contracting party the user belongs to.
     string username = 6;                 // Username (could be the email address).
     string password_hash = 7;            // The hashed password (for security).
-    UserType type=8;                     //The user type
+    UserType type = 8;                   // The user type.
+    string description=9;                 //a small Description about
+    google.protobuf.Timestamp created_at = 10;  // Date and time when the user was created.
+    google.protobuf.Timestamp deleted_at = 11; // Date and time when the user was deleted.
 }
+
 
 // Pagination options for listing users or roles.
 message Pagination {
@@ -100,6 +115,7 @@ message UserFilter {
     string province=8;                    // Filter by geolocation  province
     string city=9;                        // Filter by geolocation  city
     string user_type=10;                  // Filter by user type
+    string group_id=11;                   // Filter  by organization group 
 }
 
 // Filter criteria for listing roles by associated resource.
