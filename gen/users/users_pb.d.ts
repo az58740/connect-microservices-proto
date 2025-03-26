@@ -272,16 +272,9 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
   zipCode: string;
 
   /**
-   * Gender of the user
-   *
-   * @generated from field: string gender = 11;
-   */
-  gender: string;
-
-  /**
    * User image address
    *
-   * @generated from field: string img = 12;
+   * @generated from field: string img = 11;
    */
   img: string;
 };
@@ -374,6 +367,13 @@ export declare type User = Message<"users.User"> & {
    * @generated from field: google.protobuf.Timestamp deleted_at = 11;
    */
   deletedAt?: Timestamp;
+
+  /**
+   * User Gender
+   *
+   * @generated from field: users.UserGender gender = 12;
+   */
+  gender: UserGender;
 };
 
 /**
@@ -1206,6 +1206,30 @@ export enum UserType {
  * Describes the enum users.UserType.
  */
 export declare const UserTypeSchema: GenEnum<UserType>;
+
+/**
+ * @generated from enum users.UserGender
+ */
+export enum UserGender {
+  /**
+   * Default value mail.
+   *
+   * @generated from enum value: USER_Gender_Male = 0;
+   */
+  Male = 0,
+
+  /**
+   * Femail
+   *
+   * @generated from enum value: USER_Gender_Female = 1;
+   */
+  Female = 1,
+}
+
+/**
+ * Describes the enum users.UserGender.
+ */
+export declare const UserGenderSchema: GenEnum<UserGender>;
 
 /**
  * @generated from enum users.OrganizationType
