@@ -145,7 +145,7 @@ message RegisterRequest {
     string phonenumber = 3; // User's phone number.
     string username = 4;  // Chosen username for the user.
     string password = 5;  // Plaintext password (which will be hashed before storing).
-    string gender=6;       //Gender of user
+    UserGender gender=6;       //Gender of user
 }
 
 // Response after creating a new user.

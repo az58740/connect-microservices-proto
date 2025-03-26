@@ -623,9 +623,9 @@ export declare type RegisterRequest = Message<"users.RegisterRequest"> & {
   /**
    * Gender of user
    *
-   * @generated from field: string gender = 6;
+   * @generated from field: users.UserGender gender = 6;
    */
-  gender: string;
+  gender: UserGender;
 };
 
 /**
