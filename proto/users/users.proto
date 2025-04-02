@@ -97,7 +97,20 @@ message User {
     google.protobuf.Timestamp deleted_at = 11; // Date and time when the user was deleted.
     UserGender gender=12;                      //User Gender
 }
-
+//Represents a geolocation in system maby country,province or city
+message Geolocation{
+    string en=1; //Geolocation enghlish name
+    string fa=2; //Geolocation farsi name
+} 
+message GeolocationFilter{
+    string en=1;
+}
+message GetGeolocationRequest{
+GeolocationFilter filter=1;
+}
+message GetGeolocationResponse{
+    repeated Geolocation locations=1;
+}
 
 // Pagination options for listing users or roles.
 message Pagination {
@@ -273,6 +286,8 @@ service UsersService {
     rpc DeleteOrganization(DeleteOrganizationRequest) returns (DeleteOrganizationResponse);
     rpc ListOrganization(ListOrganizationRequest) returns (ListOrganizationResponse);
 
-
-
+    //geolocation related methods
+    rpc GetCountries(GetGeolocationRequest) returns (GetGeolocationResponse);
+    rpc GetProvinces(GetGeolocationRequest) returns (GetGeolocationResponse);
+    rpc GetCities(GetGeolocationRequest) returns (GetGeolocationResponse);
 }

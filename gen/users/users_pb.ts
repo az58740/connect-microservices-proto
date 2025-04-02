@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file users/users.proto.
  */
 export const file_users_users: GenFile = /*@__PURE__*/
-  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMwoKUGVybWlzc2lvbhIVCg1wZXJtaXNzaW9uX2lkGAEgASgJEg4KBmFjdGlvbhgCIAEoCSI2CghSZXNvdXJjZRITCgtyZXNvdXJjZV9pZBgBIAEoCRIVCg1yZXNvdXJjZV9uYW1lGAIgASgJIooBCgRSb2xlEg8KB3JvbGVfaWQYASABKAkSEQoJcm9sZV9uYW1lGAIgASgJEiEKCHJlc291cmNlGAMgASgLMg8udXNlcnMuUmVzb3VyY2USEwoLZGVzY3JpcHRpb24YBCABKAkSJgoLcGVybWlzc2lvbnMYBSADKAsyES51c2Vycy5QZXJtaXNzaW9uIkIKEU9yZ2FuaXphdGlvbkdyb3VwEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkiqwEKEENvbnRyYWN0aW5nUGFydHkSFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJEhkKEW9yZ2FuaXphdGlvbl9uYW1lGAIgASgJEhMKC2Rlc2NyaXB0aW9uGAMgASgJEicKBWdyb3VwGAQgASgLMhgudXNlcnMuT3JnYW5pemF0aW9uR3JvdXASJQoEdHlwZRgFIAEoDjIXLnVzZXJzLk9yZ2FuaXphdGlvblR5cGUi1gEKC1VzZXJQcm9maWxlEg8KB3VzZXJfaWQYASABKAkSEQoJZnVsbF9uYW1lGAIgASgJEg0KBWVtYWlsGAMgASgJEhQKDHBob25lX251bWJlchgEIAEoCRIPCgdjb3VudHJ5GAUgASgJEhAKCHByb3ZpbmNlGAYgASgJEgwKBGNpdHkYByABKAkSFgoOYWRkcmVzc19saW5lXzEYCCABKAkSFgoOYWRkcmVzc19saW5lXzIYCSABKAkSEAoIemlwX2NvZGUYCiABKAkSCwoDaW1nGAsgASgJIooDCgRVc2VyEg8KB3VzZXJfaWQYASABKAkSIwoHcHJvZmlsZRgCIAEoCzISLnVzZXJzLlVzZXJQcm9maWxlEhoKBXJvbGVzGAMgAygLMgsudXNlcnMuUm9sZRIhCgZzdGF0dXMYBCABKA4yES51c2Vycy5Vc2VyU3RhdHVzEi0KDG9yZ2FuaXphdGlvbhgFIAEoCzIXLnVzZXJzLkNvbnRyYWN0aW5nUGFydHkSEAoIdXNlcm5hbWUYBiABKAkSFQoNcGFzc3dvcmRfaGFzaBgHIAEoCRIdCgR0eXBlGAggASgOMg8udXNlcnMuVXNlclR5cGUSEwoLZGVzY3JpcHRpb24YCSABKAkSLgoKY3JlYXRlZF9hdBgKIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKZGVsZXRlZF9hdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASIQoGZ2VuZGVyGAwgASgOMhEudXNlcnMuVXNlckdlbmRlciKBAQoKUGFnaW5hdGlvbhIMCgRwYWdlGAEgASgFEhEKCXBhZ2Vfc2l6ZRgCIAEoBRIUCgdzb3J0X2J5GAMgASgJSACIAQESHAoPc29ydF9kZXNjZW5kaW5nGAQgASgISAGIAQFCCgoIX3NvcnRfYnlCEgoQX3NvcnRfZGVzY2VuZGluZyLVAQoKVXNlckZpbHRlchIPCgd1c2VyX2lkGAEgASgJEhAKCHVzZXJuYW1lGAIgASgJEg0KBWVtYWlsGAMgASgJEhAKCHJvbGVfaWRzGAQgASgJEhcKD29yZ2FuaXphdGlvbl9pZBgFIAEoCRIUCgx1c2VyX3N0YXR1c2UYBiABKAkSDwoHY291bnRyeRgHIAEoCRIQCghwcm92aW5jZRgIIAEoCRIMCgRjaXR5GAkgASgJEhEKCXVzZXJfdHlwZRgKIAEoCRIQCghncm91cF9pZBgLIAEoCSIvCgpSb2xlRmlsdGVyEiEKCHJlc291cmNlGAEgASgLMg8udXNlcnMuUmVzb3VyY2UiZQoXT3JnYW5pemF0aW9uR3JvdXBGaWx0ZXISFQoIZ3JvdXBfaWQYASABKAlIAIgBARIXCgpncm91cF9uYW1lGAIgASgJSAGIAQFCCwoJX2dyb3VwX2lkQg0KC19ncm91cF9uYW1lIoIBChJPcmdhbml6YXRpb25GaWx0ZXISHAoPb3JnYW5pemF0aW9uX2lkGAEgASgJSACIAQESIQoUb3JnYW5pemF0aW9uZ3JvdXBfaWQYAiABKAlIAYgBAUISChBfb3JnYW5pemF0aW9uX2lkQhcKFV9vcmdhbml6YXRpb25ncm91cF9pZCKKAQoPUmVnaXN0ZXJSZXF1ZXN0EgwKBG5hbWUYASABKAkSDQoFZW1haWwYAiABKAkSEwoLcGhvbmVudW1iZXIYAyABKAkSEAoIdXNlcm5hbWUYBCABKAkSEAoIcGFzc3dvcmQYBSABKAkSIQoGZ2VuZGVyGAYgASgOMhEudXNlcnMuVXNlckdlbmRlciI0ChBSZWdpc3RlclJlc3BvbnNlEg8KB3VzZXJfaWQYASABKAkSDwoHbWVzc2FnZRgCIAEoCSIyCgxMb2dpblJlcXVlc3QSEAoIdXNlcm5hbWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAkiLwoNTG9naW5SZXNwb25zZRINCgV0b2tlbhgBIAEoCRIPCgdzdWNjZXNzGAIgASgIIiAKDUxvZ291dFJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCSIhCg5Mb2dvdXRSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIIi4KEVVwZGF0ZVVzZXJSZXF1ZXN0EhkKBHVzZXIYASABKAsyCy51c2Vycy5Vc2VyIiUKElVwZGF0ZVVzZXJSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIlwKEExpc3RVc2Vyc1JlcXVlc3QSJQoKcGFnaW5hdGlvbhgBIAEoCzIRLnVzZXJzLlBhZ2luYXRpb24SIQoGZmlsdGVyGAIgASgLMhEudXNlcnMuVXNlckZpbHRlciJdChFMaXN0VXNlcnNSZXNwb25zZRIaCgV1c2VycxgBIAMoCzILLnVzZXJzLlVzZXISFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJEhMKC3RvdGFsX3BhZ2VzGAMgASgFIkMKHkNyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBIMCgRuYW1lGAEgASgJEhMKC2Rlc2NyaXB0aW9uGAIgASgJIjIKH0NyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSJJCh5VcGRhdGVPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QSJwoFZ3JvdXAYASABKAsyGC51c2Vycy5Pcmdhbml6YXRpb25Hcm91cCIyCh9VcGRhdGVPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiMgoeRGVsZXRlT3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0EhAKCGdyb3VwX2lkGAEgASgJIjIKH0RlbGV0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSJOChxMaXN0T3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0Ei4KBmZpbHRlchgBIAEoCzIeLnVzZXJzLk9yZ2FuaXphdGlvbkdyb3VwRmlsdGVyIkkKHUxpc3RPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlEigKBmdyb3VwcxgBIAMoCzIYLnVzZXJzLk9yZ2FuaXphdGlvbkdyb3VwIpwBChlDcmVhdGVPcmdhbml6YXRpb25SZXF1ZXN0EhkKEW9yZ2FuaXphdGlvbl9uYW1lGAEgASgJEiEKFG9yZ2FuaXphdGlvbmdyb3VwX2lkGAIgASgJSACIAQESGAoLZGVzY3JpcHRpb24YAyABKAlIAYgBAUIXChVfb3JnYW5pemF0aW9uZ3JvdXBfaWRCDgoMX2Rlc2NyaXB0aW9uIkYKGkNyZWF0ZU9yZ2FuaXphdGlvblJlc3BvbnNlEhcKD29yZ2FuaXphdGlvbl9pZBgBIAEoCRIPCgdtZXNzYWdlGAIgASgJIkoKGVVwZGF0ZU9yZ2FuaXphdGlvblJlcXVlc3QSLQoMb3JnYW5pemF0aW9uGAEgASgLMhcudXNlcnMuQ29udHJhY3RpbmdQYXJ0eSItChpVcGRhdGVPcmdhbml6YXRpb25SZXNwb25zZRIPCgdtZXNzYWdlGAIgASgJIjQKGURlbGV0ZU9yZ2FuaXphdGlvblJlcXVlc3QSFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJIi0KGkRlbGV0ZU9yZ2FuaXphdGlvblJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiRAoXTGlzdE9yZ2FuaXphdGlvblJlcXVlc3QSKQoGZmlsdGVyGAEgASgLMhkudXNlcnMuT3JnYW5pemF0aW9uRmlsdGVyIkoKGExpc3RPcmdhbml6YXRpb25SZXNwb25zZRIuCg1vcmdhbml6YXRpb25zGAEgAygLMhcudXNlcnMuQ29udHJhY3RpbmdQYXJ0eSqPAQoKVXNlclN0YXR1cxIbChdVU0VSX1NUQVRVU19VTlNQRUNJRklFRBAAEhYKElVTRVJfU1RBVFVTX0FDVElWRRABEhgKFFVTRVJfU1RBVFVTX0lOQUNUSVZFEAISGQoVVVNFUl9TVEFUVVNfU1VTUEVOREVEEAMSFwoTVVNFUl9TVEFUVVNfREVMRVRFRBAEKj4KCFVzZXJUeXBlEhUKEVVTRVJfVHlwZV9ERUZBVUxUEAASGwoXVVNFUl9UeXBlX0NPTlRSQUNUUEFSVFkQASo6CgpVc2VyR2VuZGVyEhQKEFVTRVJfR2VuZGVyX01hbGUQABIWChJVU0VSX0dlbmRlcl9GZW1hbGUQASp9ChBPcmdhbml6YXRpb25UeXBlEhQKEE9SR19UeXBlX0RFRkFVTFQQABIQCgxTUE9SVFNfR1JPVVAQARIYChRSRUNSRUFUSU9OQUxfQ0VOVEVSUxACEhEKDVNBTEVTX0NFTlRFUlMQAxIUChBNRURJQ0FMX1NFUlZJQ0VTEAQykggKDFVzZXJzU2VydmljZRI/CgxSZWdpc3RlclVzZXISFi51c2Vycy5SZWdpc3RlclJlcXVlc3QaFy51c2Vycy5SZWdpc3RlclJlc3BvbnNlEjYKCUxvZ2luVXNlchITLnVzZXJzLkxvZ2luUmVxdWVzdBoULnVzZXJzLkxvZ2luUmVzcG9uc2USPgoJTGlzdFVzZXJzEhcudXNlcnMuTGlzdFVzZXJzUmVxdWVzdBoYLnVzZXJzLkxpc3RVc2Vyc1Jlc3BvbnNlEkEKClVwZGF0ZVVzZXISGC51c2Vycy5VcGRhdGVVc2VyUmVxdWVzdBoZLnVzZXJzLlVwZGF0ZVVzZXJSZXNwb25zZRJoChdDcmVhdGVPcmdhbml6YXRpb25Hcm91cBIlLnVzZXJzLkNyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBomLnVzZXJzLkNyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USaAoXVXBkYXRlT3JnYW5pemF0aW9uR3JvdXASJS51c2Vycy5VcGRhdGVPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QaJi51c2Vycy5VcGRhdGVPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlEmgKF0RlbGV0ZU9yZ2FuaXphdGlvbkdyb3VwEiUudXNlcnMuRGVsZXRlT3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0GiYudXNlcnMuRGVsZXRlT3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRJiChVMaXN0T3JnYW5pemF0aW9uR3JvdXASIy51c2Vycy5MaXN0T3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0GiQudXNlcnMuTGlzdE9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USWQoSQ3JlYXRlT3JnYW5pemF0aW9uEiAudXNlcnMuQ3JlYXRlT3JnYW5pemF0aW9uUmVxdWVzdBohLnVzZXJzLkNyZWF0ZU9yZ2FuaXphdGlvblJlc3BvbnNlElkKElVwZGF0ZU9yZ2FuaXphdGlvbhIgLnVzZXJzLlVwZGF0ZU9yZ2FuaXphdGlvblJlcXVlc3QaIS51c2Vycy5VcGRhdGVPcmdhbml6YXRpb25SZXNwb25zZRJZChJEZWxldGVPcmdhbml6YXRpb24SIC51c2Vycy5EZWxldGVPcmdhbml6YXRpb25SZXF1ZXN0GiEudXNlcnMuRGVsZXRlT3JnYW5pemF0aW9uUmVzcG9uc2USUwoQTGlzdE9yZ2FuaXphdGlvbhIeLnVzZXJzLkxpc3RPcmdhbml6YXRpb25SZXF1ZXN0Gh8udXNlcnMuTGlzdE9yZ2FuaXphdGlvblJlc3BvbnNlQkNaQWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3VzZXJzO3VzZXJzYgZwcm90bzM", [file_google_protobuf_timestamp]);
+  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMwoKUGVybWlzc2lvbhIVCg1wZXJtaXNzaW9uX2lkGAEgASgJEg4KBmFjdGlvbhgCIAEoCSI2CghSZXNvdXJjZRITCgtyZXNvdXJjZV9pZBgBIAEoCRIVCg1yZXNvdXJjZV9uYW1lGAIgASgJIooBCgRSb2xlEg8KB3JvbGVfaWQYASABKAkSEQoJcm9sZV9uYW1lGAIgASgJEiEKCHJlc291cmNlGAMgASgLMg8udXNlcnMuUmVzb3VyY2USEwoLZGVzY3JpcHRpb24YBCABKAkSJgoLcGVybWlzc2lvbnMYBSADKAsyES51c2Vycy5QZXJtaXNzaW9uIkIKEU9yZ2FuaXphdGlvbkdyb3VwEgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkiqwEKEENvbnRyYWN0aW5nUGFydHkSFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJEhkKEW9yZ2FuaXphdGlvbl9uYW1lGAIgASgJEhMKC2Rlc2NyaXB0aW9uGAMgASgJEicKBWdyb3VwGAQgASgLMhgudXNlcnMuT3JnYW5pemF0aW9uR3JvdXASJQoEdHlwZRgFIAEoDjIXLnVzZXJzLk9yZ2FuaXphdGlvblR5cGUi1gEKC1VzZXJQcm9maWxlEg8KB3VzZXJfaWQYASABKAkSEQoJZnVsbF9uYW1lGAIgASgJEg0KBWVtYWlsGAMgASgJEhQKDHBob25lX251bWJlchgEIAEoCRIPCgdjb3VudHJ5GAUgASgJEhAKCHByb3ZpbmNlGAYgASgJEgwKBGNpdHkYByABKAkSFgoOYWRkcmVzc19saW5lXzEYCCABKAkSFgoOYWRkcmVzc19saW5lXzIYCSABKAkSEAoIemlwX2NvZGUYCiABKAkSCwoDaW1nGAsgASgJIooDCgRVc2VyEg8KB3VzZXJfaWQYASABKAkSIwoHcHJvZmlsZRgCIAEoCzISLnVzZXJzLlVzZXJQcm9maWxlEhoKBXJvbGVzGAMgAygLMgsudXNlcnMuUm9sZRIhCgZzdGF0dXMYBCABKA4yES51c2Vycy5Vc2VyU3RhdHVzEi0KDG9yZ2FuaXphdGlvbhgFIAEoCzIXLnVzZXJzLkNvbnRyYWN0aW5nUGFydHkSEAoIdXNlcm5hbWUYBiABKAkSFQoNcGFzc3dvcmRfaGFzaBgHIAEoCRIdCgR0eXBlGAggASgOMg8udXNlcnMuVXNlclR5cGUSEwoLZGVzY3JpcHRpb24YCSABKAkSLgoKY3JlYXRlZF9hdBgKIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKZGVsZXRlZF9hdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASIQoGZ2VuZGVyGAwgASgOMhEudXNlcnMuVXNlckdlbmRlciIlCgtHZW9sb2NhdGlvbhIKCgJlbhgBIAEoCRIKCgJmYRgCIAEoCSIfChFHZW9sb2NhdGlvbkZpbHRlchIKCgJlbhgBIAEoCSJBChVHZXRHZW9sb2NhdGlvblJlcXVlc3QSKAoGZmlsdGVyGAEgASgLMhgudXNlcnMuR2VvbG9jYXRpb25GaWx0ZXIiPwoWR2V0R2VvbG9jYXRpb25SZXNwb25zZRIlCglsb2NhdGlvbnMYASADKAsyEi51c2Vycy5HZW9sb2NhdGlvbiKBAQoKUGFnaW5hdGlvbhIMCgRwYWdlGAEgASgFEhEKCXBhZ2Vfc2l6ZRgCIAEoBRIUCgdzb3J0X2J5GAMgASgJSACIAQESHAoPc29ydF9kZXNjZW5kaW5nGAQgASgISAGIAQFCCgoIX3NvcnRfYnlCEgoQX3NvcnRfZGVzY2VuZGluZyLVAQoKVXNlckZpbHRlchIPCgd1c2VyX2lkGAEgASgJEhAKCHVzZXJuYW1lGAIgASgJEg0KBWVtYWlsGAMgASgJEhAKCHJvbGVfaWRzGAQgASgJEhcKD29yZ2FuaXphdGlvbl9pZBgFIAEoCRIUCgx1c2VyX3N0YXR1c2UYBiABKAkSDwoHY291bnRyeRgHIAEoCRIQCghwcm92aW5jZRgIIAEoCRIMCgRjaXR5GAkgASgJEhEKCXVzZXJfdHlwZRgKIAEoCRIQCghncm91cF9pZBgLIAEoCSIvCgpSb2xlRmlsdGVyEiEKCHJlc291cmNlGAEgASgLMg8udXNlcnMuUmVzb3VyY2UiZQoXT3JnYW5pemF0aW9uR3JvdXBGaWx0ZXISFQoIZ3JvdXBfaWQYASABKAlIAIgBARIXCgpncm91cF9uYW1lGAIgASgJSAGIAQFCCwoJX2dyb3VwX2lkQg0KC19ncm91cF9uYW1lIoIBChJPcmdhbml6YXRpb25GaWx0ZXISHAoPb3JnYW5pemF0aW9uX2lkGAEgASgJSACIAQESIQoUb3JnYW5pemF0aW9uZ3JvdXBfaWQYAiABKAlIAYgBAUISChBfb3JnYW5pemF0aW9uX2lkQhcKFV9vcmdhbml6YXRpb25ncm91cF9pZCKKAQoPUmVnaXN0ZXJSZXF1ZXN0EgwKBG5hbWUYASABKAkSDQoFZW1haWwYAiABKAkSEwoLcGhvbmVudW1iZXIYAyABKAkSEAoIdXNlcm5hbWUYBCABKAkSEAoIcGFzc3dvcmQYBSABKAkSIQoGZ2VuZGVyGAYgASgOMhEudXNlcnMuVXNlckdlbmRlciI0ChBSZWdpc3RlclJlc3BvbnNlEg8KB3VzZXJfaWQYASABKAkSDwoHbWVzc2FnZRgCIAEoCSIyCgxMb2dpblJlcXVlc3QSEAoIdXNlcm5hbWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAkiLwoNTG9naW5SZXNwb25zZRINCgV0b2tlbhgBIAEoCRIPCgdzdWNjZXNzGAIgASgIIiAKDUxvZ291dFJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCSIhCg5Mb2dvdXRSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIIi4KEVVwZGF0ZVVzZXJSZXF1ZXN0EhkKBHVzZXIYASABKAsyCy51c2Vycy5Vc2VyIiUKElVwZGF0ZVVzZXJSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIlwKEExpc3RVc2Vyc1JlcXVlc3QSJQoKcGFnaW5hdGlvbhgBIAEoCzIRLnVzZXJzLlBhZ2luYXRpb24SIQoGZmlsdGVyGAIgASgLMhEudXNlcnMuVXNlckZpbHRlciJdChFMaXN0VXNlcnNSZXNwb25zZRIaCgV1c2VycxgBIAMoCzILLnVzZXJzLlVzZXISFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJEhMKC3RvdGFsX3BhZ2VzGAMgASgFIkMKHkNyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBIMCgRuYW1lGAEgASgJEhMKC2Rlc2NyaXB0aW9uGAIgASgJIjIKH0NyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSJJCh5VcGRhdGVPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QSJwoFZ3JvdXAYASABKAsyGC51c2Vycy5Pcmdhbml6YXRpb25Hcm91cCIyCh9VcGRhdGVPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiMgoeRGVsZXRlT3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0EhAKCGdyb3VwX2lkGAEgASgJIjIKH0RlbGV0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSJOChxMaXN0T3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0Ei4KBmZpbHRlchgBIAEoCzIeLnVzZXJzLk9yZ2FuaXphdGlvbkdyb3VwRmlsdGVyIkkKHUxpc3RPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlEigKBmdyb3VwcxgBIAMoCzIYLnVzZXJzLk9yZ2FuaXphdGlvbkdyb3VwIpwBChlDcmVhdGVPcmdhbml6YXRpb25SZXF1ZXN0EhkKEW9yZ2FuaXphdGlvbl9uYW1lGAEgASgJEiEKFG9yZ2FuaXphdGlvbmdyb3VwX2lkGAIgASgJSACIAQESGAoLZGVzY3JpcHRpb24YAyABKAlIAYgBAUIXChVfb3JnYW5pemF0aW9uZ3JvdXBfaWRCDgoMX2Rlc2NyaXB0aW9uIkYKGkNyZWF0ZU9yZ2FuaXphdGlvblJlc3BvbnNlEhcKD29yZ2FuaXphdGlvbl9pZBgBIAEoCRIPCgdtZXNzYWdlGAIgASgJIkoKGVVwZGF0ZU9yZ2FuaXphdGlvblJlcXVlc3QSLQoMb3JnYW5pemF0aW9uGAEgASgLMhcudXNlcnMuQ29udHJhY3RpbmdQYXJ0eSItChpVcGRhdGVPcmdhbml6YXRpb25SZXNwb25zZRIPCgdtZXNzYWdlGAIgASgJIjQKGURlbGV0ZU9yZ2FuaXphdGlvblJlcXVlc3QSFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJIi0KGkRlbGV0ZU9yZ2FuaXphdGlvblJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiRAoXTGlzdE9yZ2FuaXphdGlvblJlcXVlc3QSKQoGZmlsdGVyGAEgASgLMhkudXNlcnMuT3JnYW5pemF0aW9uRmlsdGVyIkoKGExpc3RPcmdhbml6YXRpb25SZXNwb25zZRIuCg1vcmdhbml6YXRpb25zGAEgAygLMhcudXNlcnMuQ29udHJhY3RpbmdQYXJ0eSqPAQoKVXNlclN0YXR1cxIbChdVU0VSX1NUQVRVU19VTlNQRUNJRklFRBAAEhYKElVTRVJfU1RBVFVTX0FDVElWRRABEhgKFFVTRVJfU1RBVFVTX0lOQUNUSVZFEAISGQoVVVNFUl9TVEFUVVNfU1VTUEVOREVEEAMSFwoTVVNFUl9TVEFUVVNfREVMRVRFRBAEKj4KCFVzZXJUeXBlEhUKEVVTRVJfVHlwZV9ERUZBVUxUEAASGwoXVVNFUl9UeXBlX0NPTlRSQUNUUEFSVFkQASo6CgpVc2VyR2VuZGVyEhQKEFVTRVJfR2VuZGVyX01hbGUQABIWChJVU0VSX0dlbmRlcl9GZW1hbGUQASp9ChBPcmdhbml6YXRpb25UeXBlEhQKEE9SR19UeXBlX0RFRkFVTFQQABIQCgxTUE9SVFNfR1JPVVAQARIYChRSRUNSRUFUSU9OQUxfQ0VOVEVSUxACEhEKDVNBTEVTX0NFTlRFUlMQAxIUChBNRURJQ0FMX1NFUlZJQ0VTEAQy9gkKDFVzZXJzU2VydmljZRI/CgxSZWdpc3RlclVzZXISFi51c2Vycy5SZWdpc3RlclJlcXVlc3QaFy51c2Vycy5SZWdpc3RlclJlc3BvbnNlEjYKCUxvZ2luVXNlchITLnVzZXJzLkxvZ2luUmVxdWVzdBoULnVzZXJzLkxvZ2luUmVzcG9uc2USPgoJTGlzdFVzZXJzEhcudXNlcnMuTGlzdFVzZXJzUmVxdWVzdBoYLnVzZXJzLkxpc3RVc2Vyc1Jlc3BvbnNlEkEKClVwZGF0ZVVzZXISGC51c2Vycy5VcGRhdGVVc2VyUmVxdWVzdBoZLnVzZXJzLlVwZGF0ZVVzZXJSZXNwb25zZRJoChdDcmVhdGVPcmdhbml6YXRpb25Hcm91cBIlLnVzZXJzLkNyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBomLnVzZXJzLkNyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USaAoXVXBkYXRlT3JnYW5pemF0aW9uR3JvdXASJS51c2Vycy5VcGRhdGVPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QaJi51c2Vycy5VcGRhdGVPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlEmgKF0RlbGV0ZU9yZ2FuaXphdGlvbkdyb3VwEiUudXNlcnMuRGVsZXRlT3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0GiYudXNlcnMuRGVsZXRlT3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRJiChVMaXN0T3JnYW5pemF0aW9uR3JvdXASIy51c2Vycy5MaXN0T3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0GiQudXNlcnMuTGlzdE9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USWQoSQ3JlYXRlT3JnYW5pemF0aW9uEiAudXNlcnMuQ3JlYXRlT3JnYW5pemF0aW9uUmVxdWVzdBohLnVzZXJzLkNyZWF0ZU9yZ2FuaXphdGlvblJlc3BvbnNlElkKElVwZGF0ZU9yZ2FuaXphdGlvbhIgLnVzZXJzLlVwZGF0ZU9yZ2FuaXphdGlvblJlcXVlc3QaIS51c2Vycy5VcGRhdGVPcmdhbml6YXRpb25SZXNwb25zZRJZChJEZWxldGVPcmdhbml6YXRpb24SIC51c2Vycy5EZWxldGVPcmdhbml6YXRpb25SZXF1ZXN0GiEudXNlcnMuRGVsZXRlT3JnYW5pemF0aW9uUmVzcG9uc2USUwoQTGlzdE9yZ2FuaXphdGlvbhIeLnVzZXJzLkxpc3RPcmdhbml6YXRpb25SZXF1ZXN0Gh8udXNlcnMuTGlzdE9yZ2FuaXphdGlvblJlc3BvbnNlEksKDEdldENvdW50cmllcxIcLnVzZXJzLkdldEdlb2xvY2F0aW9uUmVxdWVzdBodLnVzZXJzLkdldEdlb2xvY2F0aW9uUmVzcG9uc2USSwoMR2V0UHJvdmluY2VzEhwudXNlcnMuR2V0R2VvbG9jYXRpb25SZXF1ZXN0Gh0udXNlcnMuR2V0R2VvbG9jYXRpb25SZXNwb25zZRJICglHZXRDaXRpZXMSHC51c2Vycy5HZXRHZW9sb2NhdGlvblJlcXVlc3QaHS51c2Vycy5HZXRHZW9sb2NhdGlvblJlc3BvbnNlQkNaQWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3VzZXJzO3VzZXJzYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
  * Message for defining a permission related to user roles.
@@ -393,6 +393,85 @@ export const UserSchema: GenMessage<User> = /*@__PURE__*/
   messageDesc(file_users_users, 6);
 
 /**
+ * Represents a geolocation in system maby country,province or city
+ *
+ * @generated from message users.Geolocation
+ */
+export type Geolocation = Message<"users.Geolocation"> & {
+  /**
+   * Geolocation enghlish name
+   *
+   * @generated from field: string en = 1;
+   */
+  en: string;
+
+  /**
+   * Geolocation farsi name
+   *
+   * @generated from field: string fa = 2;
+   */
+  fa: string;
+};
+
+/**
+ * Describes the message users.Geolocation.
+ * Use `create(GeolocationSchema)` to create a new message.
+ */
+export const GeolocationSchema: GenMessage<Geolocation> = /*@__PURE__*/
+  messageDesc(file_users_users, 7);
+
+/**
+ * @generated from message users.GeolocationFilter
+ */
+export type GeolocationFilter = Message<"users.GeolocationFilter"> & {
+  /**
+   * @generated from field: string en = 1;
+   */
+  en: string;
+};
+
+/**
+ * Describes the message users.GeolocationFilter.
+ * Use `create(GeolocationFilterSchema)` to create a new message.
+ */
+export const GeolocationFilterSchema: GenMessage<GeolocationFilter> = /*@__PURE__*/
+  messageDesc(file_users_users, 8);
+
+/**
+ * @generated from message users.GetGeolocationRequest
+ */
+export type GetGeolocationRequest = Message<"users.GetGeolocationRequest"> & {
+  /**
+   * @generated from field: users.GeolocationFilter filter = 1;
+   */
+  filter?: GeolocationFilter;
+};
+
+/**
+ * Describes the message users.GetGeolocationRequest.
+ * Use `create(GetGeolocationRequestSchema)` to create a new message.
+ */
+export const GetGeolocationRequestSchema: GenMessage<GetGeolocationRequest> = /*@__PURE__*/
+  messageDesc(file_users_users, 9);
+
+/**
+ * @generated from message users.GetGeolocationResponse
+ */
+export type GetGeolocationResponse = Message<"users.GetGeolocationResponse"> & {
+  /**
+   * @generated from field: repeated users.Geolocation locations = 1;
+   */
+  locations: Geolocation[];
+};
+
+/**
+ * Describes the message users.GetGeolocationResponse.
+ * Use `create(GetGeolocationResponseSchema)` to create a new message.
+ */
+export const GetGeolocationResponseSchema: GenMessage<GetGeolocationResponse> = /*@__PURE__*/
+  messageDesc(file_users_users, 10);
+
+/**
  * Pagination options for listing users or roles.
  *
  * @generated from message users.Pagination
@@ -432,7 +511,7 @@ export type Pagination = Message<"users.Pagination"> & {
  * Use `create(PaginationSchema)` to create a new message.
  */
 export const PaginationSchema: GenMessage<Pagination> = /*@__PURE__*/
-  messageDesc(file_users_users, 7);
+  messageDesc(file_users_users, 11);
 
 /**
  * Filter criteria for listing users based on different parameters.
@@ -523,7 +602,7 @@ export type UserFilter = Message<"users.UserFilter"> & {
  * Use `create(UserFilterSchema)` to create a new message.
  */
 export const UserFilterSchema: GenMessage<UserFilter> = /*@__PURE__*/
-  messageDesc(file_users_users, 8);
+  messageDesc(file_users_users, 12);
 
 /**
  * Filter criteria for listing roles by associated resource.
@@ -544,7 +623,7 @@ export type RoleFilter = Message<"users.RoleFilter"> & {
  * Use `create(RoleFilterSchema)` to create a new message.
  */
 export const RoleFilterSchema: GenMessage<RoleFilter> = /*@__PURE__*/
-  messageDesc(file_users_users, 9);
+  messageDesc(file_users_users, 13);
 
 /**
  * Filter criteria for listing Organization Group by associated resource.
@@ -568,7 +647,7 @@ export type OrganizationGroupFilter = Message<"users.OrganizationGroupFilter"> &
  * Use `create(OrganizationGroupFilterSchema)` to create a new message.
  */
 export const OrganizationGroupFilterSchema: GenMessage<OrganizationGroupFilter> = /*@__PURE__*/
-  messageDesc(file_users_users, 10);
+  messageDesc(file_users_users, 14);
 
 /**
  * Filter criteria for listing Contract Party by associated resource.
@@ -592,7 +671,7 @@ export type OrganizationFilter = Message<"users.OrganizationFilter"> & {
  * Use `create(OrganizationFilterSchema)` to create a new message.
  */
 export const OrganizationFilterSchema: GenMessage<OrganizationFilter> = /*@__PURE__*/
-  messageDesc(file_users_users, 11);
+  messageDesc(file_users_users, 15);
 
 /**
  * Message for registering a new user (sign up).
@@ -648,7 +727,7 @@ export type RegisterRequest = Message<"users.RegisterRequest"> & {
  * Use `create(RegisterRequestSchema)` to create a new message.
  */
 export const RegisterRequestSchema: GenMessage<RegisterRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 12);
+  messageDesc(file_users_users, 16);
 
 /**
  * Response after creating a new user.
@@ -676,7 +755,7 @@ export type RegisterResponse = Message<"users.RegisterResponse"> & {
  * Use `create(RegisterResponseSchema)` to create a new message.
  */
 export const RegisterResponseSchema: GenMessage<RegisterResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 13);
+  messageDesc(file_users_users, 17);
 
 /**
  * Request to authenticate a user during login.
@@ -704,7 +783,7 @@ export type LoginRequest = Message<"users.LoginRequest"> & {
  * Use `create(LoginRequestSchema)` to create a new message.
  */
 export const LoginRequestSchema: GenMessage<LoginRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 14);
+  messageDesc(file_users_users, 18);
 
 /**
  * Response after successful login with authentication token.
@@ -732,7 +811,7 @@ export type LoginResponse = Message<"users.LoginResponse"> & {
  * Use `create(LoginResponseSchema)` to create a new message.
  */
 export const LoginResponseSchema: GenMessage<LoginResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 15);
+  messageDesc(file_users_users, 19);
 
 /**
  * Request to log out a user.
@@ -753,7 +832,7 @@ export type LogoutRequest = Message<"users.LogoutRequest"> & {
  * Use `create(LogoutRequestSchema)` to create a new message.
  */
 export const LogoutRequestSchema: GenMessage<LogoutRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 16);
+  messageDesc(file_users_users, 20);
 
 /**
  * Response after logging out.
@@ -774,7 +853,7 @@ export type LogoutResponse = Message<"users.LogoutResponse"> & {
  * Use `create(LogoutResponseSchema)` to create a new message.
  */
 export const LogoutResponseSchema: GenMessage<LogoutResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 17);
+  messageDesc(file_users_users, 21);
 
 /**
  * Request to update a user's details.
@@ -795,7 +874,7 @@ export type UpdateUserRequest = Message<"users.UpdateUserRequest"> & {
  * Use `create(UpdateUserRequestSchema)` to create a new message.
  */
 export const UpdateUserRequestSchema: GenMessage<UpdateUserRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 18);
+  messageDesc(file_users_users, 22);
 
 /**
  * Response after updating a user's details.
@@ -816,7 +895,7 @@ export type UpdateUserResponse = Message<"users.UpdateUserResponse"> & {
  * Use `create(UpdateUserResponseSchema)` to create a new message.
  */
 export const UpdateUserResponseSchema: GenMessage<UpdateUserResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 19);
+  messageDesc(file_users_users, 23);
 
 /**
  * Request to list users with pagination and filtering.
@@ -844,7 +923,7 @@ export type ListUsersRequest = Message<"users.ListUsersRequest"> & {
  * Use `create(ListUsersRequestSchema)` to create a new message.
  */
 export const ListUsersRequestSchema: GenMessage<ListUsersRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 20);
+  messageDesc(file_users_users, 24);
 
 /**
  * Response for listing users.
@@ -879,7 +958,7 @@ export type ListUsersResponse = Message<"users.ListUsersResponse"> & {
  * Use `create(ListUsersResponseSchema)` to create a new message.
  */
 export const ListUsersResponseSchema: GenMessage<ListUsersResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 21);
+  messageDesc(file_users_users, 25);
 
 /**
  * Organization Group related message
@@ -903,7 +982,7 @@ export type CreateOrganizationGroupRequest = Message<"users.CreateOrganizationGr
  * Use `create(CreateOrganizationGroupRequestSchema)` to create a new message.
  */
 export const CreateOrganizationGroupRequestSchema: GenMessage<CreateOrganizationGroupRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 22);
+  messageDesc(file_users_users, 26);
 
 /**
  * @generated from message users.CreateOrganizationGroupResponse
@@ -920,7 +999,7 @@ export type CreateOrganizationGroupResponse = Message<"users.CreateOrganizationG
  * Use `create(CreateOrganizationGroupResponseSchema)` to create a new message.
  */
 export const CreateOrganizationGroupResponseSchema: GenMessage<CreateOrganizationGroupResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 23);
+  messageDesc(file_users_users, 27);
 
 /**
  * @generated from message users.UpdateOrganizationGroupRequest
@@ -937,7 +1016,7 @@ export type UpdateOrganizationGroupRequest = Message<"users.UpdateOrganizationGr
  * Use `create(UpdateOrganizationGroupRequestSchema)` to create a new message.
  */
 export const UpdateOrganizationGroupRequestSchema: GenMessage<UpdateOrganizationGroupRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 24);
+  messageDesc(file_users_users, 28);
 
 /**
  * @generated from message users.UpdateOrganizationGroupResponse
@@ -954,7 +1033,7 @@ export type UpdateOrganizationGroupResponse = Message<"users.UpdateOrganizationG
  * Use `create(UpdateOrganizationGroupResponseSchema)` to create a new message.
  */
 export const UpdateOrganizationGroupResponseSchema: GenMessage<UpdateOrganizationGroupResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 25);
+  messageDesc(file_users_users, 29);
 
 /**
  * @generated from message users.DeleteOrganizationGroupRequest
@@ -971,7 +1050,7 @@ export type DeleteOrganizationGroupRequest = Message<"users.DeleteOrganizationGr
  * Use `create(DeleteOrganizationGroupRequestSchema)` to create a new message.
  */
 export const DeleteOrganizationGroupRequestSchema: GenMessage<DeleteOrganizationGroupRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 26);
+  messageDesc(file_users_users, 30);
 
 /**
  * @generated from message users.DeleteOrganizationGroupResponse
@@ -988,7 +1067,7 @@ export type DeleteOrganizationGroupResponse = Message<"users.DeleteOrganizationG
  * Use `create(DeleteOrganizationGroupResponseSchema)` to create a new message.
  */
 export const DeleteOrganizationGroupResponseSchema: GenMessage<DeleteOrganizationGroupResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 27);
+  messageDesc(file_users_users, 31);
 
 /**
  * @generated from message users.ListOrganizationGroupRequest
@@ -1005,7 +1084,7 @@ export type ListOrganizationGroupRequest = Message<"users.ListOrganizationGroupR
  * Use `create(ListOrganizationGroupRequestSchema)` to create a new message.
  */
 export const ListOrganizationGroupRequestSchema: GenMessage<ListOrganizationGroupRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 28);
+  messageDesc(file_users_users, 32);
 
 /**
  * @generated from message users.ListOrganizationGroupResponse
@@ -1022,7 +1101,7 @@ export type ListOrganizationGroupResponse = Message<"users.ListOrganizationGroup
  * Use `create(ListOrganizationGroupResponseSchema)` to create a new message.
  */
 export const ListOrganizationGroupResponseSchema: GenMessage<ListOrganizationGroupResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 29);
+  messageDesc(file_users_users, 33);
 
 /**
  * Organization or contractparty related message
@@ -1051,7 +1130,7 @@ export type CreateOrganizationRequest = Message<"users.CreateOrganizationRequest
  * Use `create(CreateOrganizationRequestSchema)` to create a new message.
  */
 export const CreateOrganizationRequestSchema: GenMessage<CreateOrganizationRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 30);
+  messageDesc(file_users_users, 34);
 
 /**
  * @generated from message users.CreateOrganizationResponse
@@ -1073,7 +1152,7 @@ export type CreateOrganizationResponse = Message<"users.CreateOrganizationRespon
  * Use `create(CreateOrganizationResponseSchema)` to create a new message.
  */
 export const CreateOrganizationResponseSchema: GenMessage<CreateOrganizationResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 31);
+  messageDesc(file_users_users, 35);
 
 /**
  * @generated from message users.UpdateOrganizationRequest
@@ -1090,7 +1169,7 @@ export type UpdateOrganizationRequest = Message<"users.UpdateOrganizationRequest
  * Use `create(UpdateOrganizationRequestSchema)` to create a new message.
  */
 export const UpdateOrganizationRequestSchema: GenMessage<UpdateOrganizationRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 32);
+  messageDesc(file_users_users, 36);
 
 /**
  * @generated from message users.UpdateOrganizationResponse
@@ -1107,7 +1186,7 @@ export type UpdateOrganizationResponse = Message<"users.UpdateOrganizationRespon
  * Use `create(UpdateOrganizationResponseSchema)` to create a new message.
  */
 export const UpdateOrganizationResponseSchema: GenMessage<UpdateOrganizationResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 33);
+  messageDesc(file_users_users, 37);
 
 /**
  * @generated from message users.DeleteOrganizationRequest
@@ -1124,7 +1203,7 @@ export type DeleteOrganizationRequest = Message<"users.DeleteOrganizationRequest
  * Use `create(DeleteOrganizationRequestSchema)` to create a new message.
  */
 export const DeleteOrganizationRequestSchema: GenMessage<DeleteOrganizationRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 34);
+  messageDesc(file_users_users, 38);
 
 /**
  * @generated from message users.DeleteOrganizationResponse
@@ -1141,7 +1220,7 @@ export type DeleteOrganizationResponse = Message<"users.DeleteOrganizationRespon
  * Use `create(DeleteOrganizationResponseSchema)` to create a new message.
  */
 export const DeleteOrganizationResponseSchema: GenMessage<DeleteOrganizationResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 35);
+  messageDesc(file_users_users, 39);
 
 /**
  * @generated from message users.ListOrganizationRequest
@@ -1158,7 +1237,7 @@ export type ListOrganizationRequest = Message<"users.ListOrganizationRequest"> &
  * Use `create(ListOrganizationRequestSchema)` to create a new message.
  */
 export const ListOrganizationRequestSchema: GenMessage<ListOrganizationRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 36);
+  messageDesc(file_users_users, 40);
 
 /**
  * @generated from message users.ListOrganizationResponse
@@ -1175,7 +1254,7 @@ export type ListOrganizationResponse = Message<"users.ListOrganizationResponse">
  * Use `create(ListOrganizationResponseSchema)` to create a new message.
  */
 export const ListOrganizationResponseSchema: GenMessage<ListOrganizationResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 37);
+  messageDesc(file_users_users, 41);
 
 /**
  * Enum for user status, which can be one of several states for the user account.
@@ -1436,6 +1515,32 @@ export const UsersService: GenService<{
     methodKind: "unary";
     input: typeof ListOrganizationRequestSchema;
     output: typeof ListOrganizationResponseSchema;
+  },
+  /**
+   * geolocation related methods
+   *
+   * @generated from rpc users.UsersService.GetCountries
+   */
+  getCountries: {
+    methodKind: "unary";
+    input: typeof GetGeolocationRequestSchema;
+    output: typeof GetGeolocationResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.GetProvinces
+   */
+  getProvinces: {
+    methodKind: "unary";
+    input: typeof GetGeolocationRequestSchema;
+    output: typeof GetGeolocationResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.GetCities
+   */
+  getCities: {
+    methodKind: "unary";
+    input: typeof GetGeolocationRequestSchema;
+    output: typeof GetGeolocationResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_users_users, 0);

@@ -66,6 +66,14 @@ const (
 	// UsersServiceListOrganizationProcedure is the fully-qualified name of the UsersService's
 	// ListOrganization RPC.
 	UsersServiceListOrganizationProcedure = "/users.UsersService/ListOrganization"
+	// UsersServiceGetCountriesProcedure is the fully-qualified name of the UsersService's GetCountries
+	// RPC.
+	UsersServiceGetCountriesProcedure = "/users.UsersService/GetCountries"
+	// UsersServiceGetProvincesProcedure is the fully-qualified name of the UsersService's GetProvinces
+	// RPC.
+	UsersServiceGetProvincesProcedure = "/users.UsersService/GetProvinces"
+	// UsersServiceGetCitiesProcedure is the fully-qualified name of the UsersService's GetCities RPC.
+	UsersServiceGetCitiesProcedure = "/users.UsersService/GetCities"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
@@ -83,6 +91,9 @@ var (
 	usersServiceUpdateOrganizationMethodDescriptor      = usersServiceServiceDescriptor.Methods().ByName("UpdateOrganization")
 	usersServiceDeleteOrganizationMethodDescriptor      = usersServiceServiceDescriptor.Methods().ByName("DeleteOrganization")
 	usersServiceListOrganizationMethodDescriptor        = usersServiceServiceDescriptor.Methods().ByName("ListOrganization")
+	usersServiceGetCountriesMethodDescriptor            = usersServiceServiceDescriptor.Methods().ByName("GetCountries")
+	usersServiceGetProvincesMethodDescriptor            = usersServiceServiceDescriptor.Methods().ByName("GetProvinces")
+	usersServiceGetCitiesMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("GetCities")
 )
 
 // UsersServiceClient is a client for the users.UsersService service.
@@ -102,6 +113,10 @@ type UsersServiceClient interface {
 	UpdateOrganization(context.Context, *connect.Request[users.UpdateOrganizationRequest]) (*connect.Response[users.UpdateOrganizationResponse], error)
 	DeleteOrganization(context.Context, *connect.Request[users.DeleteOrganizationRequest]) (*connect.Response[users.DeleteOrganizationResponse], error)
 	ListOrganization(context.Context, *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error)
+	// geolocation related methods
+	GetCountries(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
+	GetProvinces(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
+	GetCities(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
 }
 
 // NewUsersServiceClient constructs a client for the users.UsersService service. By default, it uses
@@ -186,6 +201,24 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceListOrganizationMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		getCountries: connect.NewClient[users.GetGeolocationRequest, users.GetGeolocationResponse](
+			httpClient,
+			baseURL+UsersServiceGetCountriesProcedure,
+			connect.WithSchema(usersServiceGetCountriesMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		getProvinces: connect.NewClient[users.GetGeolocationRequest, users.GetGeolocationResponse](
+			httpClient,
+			baseURL+UsersServiceGetProvincesProcedure,
+			connect.WithSchema(usersServiceGetProvincesMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		getCities: connect.NewClient[users.GetGeolocationRequest, users.GetGeolocationResponse](
+			httpClient,
+			baseURL+UsersServiceGetCitiesProcedure,
+			connect.WithSchema(usersServiceGetCitiesMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -203,6 +236,9 @@ type usersServiceClient struct {
 	updateOrganization      *connect.Client[users.UpdateOrganizationRequest, users.UpdateOrganizationResponse]
 	deleteOrganization      *connect.Client[users.DeleteOrganizationRequest, users.DeleteOrganizationResponse]
 	listOrganization        *connect.Client[users.ListOrganizationRequest, users.ListOrganizationResponse]
+	getCountries            *connect.Client[users.GetGeolocationRequest, users.GetGeolocationResponse]
+	getProvinces            *connect.Client[users.GetGeolocationRequest, users.GetGeolocationResponse]
+	getCities               *connect.Client[users.GetGeolocationRequest, users.GetGeolocationResponse]
 }
 
 // RegisterUser calls users.UsersService.RegisterUser.
@@ -265,6 +301,21 @@ func (c *usersServiceClient) ListOrganization(ctx context.Context, req *connect.
 	return c.listOrganization.CallUnary(ctx, req)
 }
 
+// GetCountries calls users.UsersService.GetCountries.
+func (c *usersServiceClient) GetCountries(ctx context.Context, req *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error) {
+	return c.getCountries.CallUnary(ctx, req)
+}
+
+// GetProvinces calls users.UsersService.GetProvinces.
+func (c *usersServiceClient) GetProvinces(ctx context.Context, req *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error) {
+	return c.getProvinces.CallUnary(ctx, req)
+}
+
+// GetCities calls users.UsersService.GetCities.
+func (c *usersServiceClient) GetCities(ctx context.Context, req *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error) {
+	return c.getCities.CallUnary(ctx, req)
+}
+
 // UsersServiceHandler is an implementation of the users.UsersService service.
 type UsersServiceHandler interface {
 	// User-related methods
@@ -282,6 +333,10 @@ type UsersServiceHandler interface {
 	UpdateOrganization(context.Context, *connect.Request[users.UpdateOrganizationRequest]) (*connect.Response[users.UpdateOrganizationResponse], error)
 	DeleteOrganization(context.Context, *connect.Request[users.DeleteOrganizationRequest]) (*connect.Response[users.DeleteOrganizationResponse], error)
 	ListOrganization(context.Context, *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error)
+	// geolocation related methods
+	GetCountries(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
+	GetProvinces(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
+	GetCities(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
 }
 
 // NewUsersServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -362,6 +417,24 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceListOrganizationMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	usersServiceGetCountriesHandler := connect.NewUnaryHandler(
+		UsersServiceGetCountriesProcedure,
+		svc.GetCountries,
+		connect.WithSchema(usersServiceGetCountriesMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceGetProvincesHandler := connect.NewUnaryHandler(
+		UsersServiceGetProvincesProcedure,
+		svc.GetProvinces,
+		connect.WithSchema(usersServiceGetProvincesMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceGetCitiesHandler := connect.NewUnaryHandler(
+		UsersServiceGetCitiesProcedure,
+		svc.GetCities,
+		connect.WithSchema(usersServiceGetCitiesMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/users.UsersService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case UsersServiceRegisterUserProcedure:
@@ -388,6 +461,12 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 			usersServiceDeleteOrganizationHandler.ServeHTTP(w, r)
 		case UsersServiceListOrganizationProcedure:
 			usersServiceListOrganizationHandler.ServeHTTP(w, r)
+		case UsersServiceGetCountriesProcedure:
+			usersServiceGetCountriesHandler.ServeHTTP(w, r)
+		case UsersServiceGetProvincesProcedure:
+			usersServiceGetProvincesHandler.ServeHTTP(w, r)
+		case UsersServiceGetCitiesProcedure:
+			usersServiceGetCitiesHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -443,4 +522,16 @@ func (UnimplementedUsersServiceHandler) DeleteOrganization(context.Context, *con
 
 func (UnimplementedUsersServiceHandler) ListOrganization(context.Context, *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.ListOrganization is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) GetCountries(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.GetCountries is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) GetProvinces(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.GetProvinces is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) GetCities(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.GetCities is not implemented"))
 }

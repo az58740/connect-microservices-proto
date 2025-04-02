@@ -383,6 +383,81 @@ export declare type User = Message<"users.User"> & {
 export declare const UserSchema: GenMessage<User>;
 
 /**
+ * Represents a geolocation in system maby country,province or city
+ *
+ * @generated from message users.Geolocation
+ */
+export declare type Geolocation = Message<"users.Geolocation"> & {
+  /**
+   * Geolocation enghlish name
+   *
+   * @generated from field: string en = 1;
+   */
+  en: string;
+
+  /**
+   * Geolocation farsi name
+   *
+   * @generated from field: string fa = 2;
+   */
+  fa: string;
+};
+
+/**
+ * Describes the message users.Geolocation.
+ * Use `create(GeolocationSchema)` to create a new message.
+ */
+export declare const GeolocationSchema: GenMessage<Geolocation>;
+
+/**
+ * @generated from message users.GeolocationFilter
+ */
+export declare type GeolocationFilter = Message<"users.GeolocationFilter"> & {
+  /**
+   * @generated from field: string en = 1;
+   */
+  en: string;
+};
+
+/**
+ * Describes the message users.GeolocationFilter.
+ * Use `create(GeolocationFilterSchema)` to create a new message.
+ */
+export declare const GeolocationFilterSchema: GenMessage<GeolocationFilter>;
+
+/**
+ * @generated from message users.GetGeolocationRequest
+ */
+export declare type GetGeolocationRequest = Message<"users.GetGeolocationRequest"> & {
+  /**
+   * @generated from field: users.GeolocationFilter filter = 1;
+   */
+  filter?: GeolocationFilter;
+};
+
+/**
+ * Describes the message users.GetGeolocationRequest.
+ * Use `create(GetGeolocationRequestSchema)` to create a new message.
+ */
+export declare const GetGeolocationRequestSchema: GenMessage<GetGeolocationRequest>;
+
+/**
+ * @generated from message users.GetGeolocationResponse
+ */
+export declare type GetGeolocationResponse = Message<"users.GetGeolocationResponse"> & {
+  /**
+   * @generated from field: repeated users.Geolocation locations = 1;
+   */
+  locations: Geolocation[];
+};
+
+/**
+ * Describes the message users.GetGeolocationResponse.
+ * Use `create(GetGeolocationResponseSchema)` to create a new message.
+ */
+export declare const GetGeolocationResponseSchema: GenMessage<GetGeolocationResponse>;
+
+/**
  * Pagination options for listing users or roles.
  *
  * @generated from message users.Pagination
@@ -1391,6 +1466,32 @@ export declare const UsersService: GenService<{
     methodKind: "unary";
     input: typeof ListOrganizationRequestSchema;
     output: typeof ListOrganizationResponseSchema;
+  },
+  /**
+   * geolocation related methods
+   *
+   * @generated from rpc users.UsersService.GetCountries
+   */
+  getCountries: {
+    methodKind: "unary";
+    input: typeof GetGeolocationRequestSchema;
+    output: typeof GetGeolocationResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.GetProvinces
+   */
+  getProvinces: {
+    methodKind: "unary";
+    input: typeof GetGeolocationRequestSchema;
+    output: typeof GetGeolocationResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.GetCities
+   */
+  getCities: {
+    methodKind: "unary";
+    input: typeof GetGeolocationRequestSchema;
+    output: typeof GetGeolocationResponseSchema;
   },
 }>;
 

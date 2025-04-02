@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
+import { CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, GetGeolocationRequest, GetGeolocationResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -134,6 +134,35 @@ export declare const UsersService: {
       readonly name: "ListOrganization",
       readonly I: typeof ListOrganizationRequest,
       readonly O: typeof ListOrganizationResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * geolocation related methods
+     *
+     * @generated from rpc users.UsersService.GetCountries
+     */
+    readonly getCountries: {
+      readonly name: "GetCountries",
+      readonly I: typeof GetGeolocationRequest,
+      readonly O: typeof GetGeolocationResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.GetProvinces
+     */
+    readonly getProvinces: {
+      readonly name: "GetProvinces",
+      readonly I: typeof GetGeolocationRequest,
+      readonly O: typeof GetGeolocationResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.GetCities
+     */
+    readonly getCities: {
+      readonly name: "GetCities",
+      readonly I: typeof GetGeolocationRequest,
+      readonly O: typeof GetGeolocationResponse,
       readonly kind: MethodKind.Unary,
     },
   }

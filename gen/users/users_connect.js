@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
+import { CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, GetGeolocationRequest, GetGeolocationResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -134,6 +134,35 @@ export const UsersService = {
       name: "ListOrganization",
       I: ListOrganizationRequest,
       O: ListOrganizationResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * geolocation related methods
+     *
+     * @generated from rpc users.UsersService.GetCountries
+     */
+    getCountries: {
+      name: "GetCountries",
+      I: GetGeolocationRequest,
+      O: GetGeolocationResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.GetProvinces
+     */
+    getProvinces: {
+      name: "GetProvinces",
+      I: GetGeolocationRequest,
+      O: GetGeolocationResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.GetCities
+     */
+    getCities: {
+      name: "GetCities",
+      I: GetGeolocationRequest,
+      O: GetGeolocationResponse,
       kind: MethodKind.Unary,
     },
   }
