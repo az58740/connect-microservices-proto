@@ -139,6 +139,13 @@ export declare type OrganizationGroup = Message<"users.OrganizationGroup"> & {
    * @generated from field: string description = 3;
    */
   description: string;
+
+  /**
+   * Current status of the contract party group (active, inactive, etc.).
+   *
+   * @generated from field: users.UserStatus status = 4;
+   */
+  status: UserStatus;
 };
 
 /**
@@ -187,6 +194,13 @@ export declare type ContractingParty = Message<"users.ContractingParty"> & {
    * @generated from field: users.OrganizationType type = 5;
    */
   type: OrganizationType;
+
+  /**
+   * Current status of the contract party (active, inactive, etc.).
+   *
+   * @generated from field: users.UserStatus status = 6;
+   */
+  status: UserStatus;
 };
 
 /**
@@ -623,6 +637,13 @@ export declare type OrganizationGroupFilter = Message<"users.OrganizationGroupFi
    * @generated from field: optional string group_name = 2;
    */
   groupName?: string;
+
+  /**
+   * Filter by  statuse.
+   *
+   * @generated from field: optional string group_statuse = 3;
+   */
+  groupStatuse?: string;
 };
 
 /**
@@ -646,6 +667,11 @@ export declare type OrganizationFilter = Message<"users.OrganizationFilter"> & {
    * @generated from field: optional string organizationgroup_id = 2;
    */
   organizationgroupId?: string;
+
+  /**
+   * @generated from field: optional string organization_statuse = 3;
+   */
+  organizationStatuse?: string;
 };
 
 /**
