@@ -972,6 +972,11 @@ export declare type CreateOrganizationGroupRequest = Message<"users.CreateOrgani
    * @generated from field: string description = 2;
    */
   description: string;
+
+  /**
+   * @generated from field: users.UserStatus status = 3;
+   */
+  status: UserStatus;
 };
 
 /**

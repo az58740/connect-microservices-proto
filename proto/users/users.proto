@@ -155,8 +155,6 @@ message OrganizationGroupFilter {
     optional string organizationgroup_id=2;
     optional  string organization_statuse = 3;  
 }
-
-
 // Message for registering a new user (sign up).
 message RegisterRequest {
     string name = 1;      // Full name of the user.
@@ -221,6 +219,7 @@ message ListUsersResponse {
 message CreateOrganizationGroupRequest {
     string name =1;
     string description=2;
+    UserStatus status=3;
 }
 message CreateOrganizationGroupResponse {
     string message =1;
