@@ -84,6 +84,7 @@ message UserProfile {
     string address_line_2 = 9;   // Second line of the user's address (optional).
     string zip_code = 10;         // Zip or postal code of the user's address.
     string img=11;               // User image address
+    UserGender gender=12;                      //User Gender
 }
 
 // Represents a user in the system, including their roles, status, and profile.
@@ -99,7 +100,6 @@ message User {
     string description=9;                 //a small Description about
     google.protobuf.Timestamp created_at = 10;  // Date and time when the user was created.
     google.protobuf.Timestamp deleted_at = 11; // Date and time when the user was deleted.
-    UserGender gender=12;                      //User Gender
 }
 //Represents a geolocation in system maby country,province or city
 message Geolocation{

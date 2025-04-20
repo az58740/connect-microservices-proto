@@ -291,6 +291,13 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
    * @generated from field: string img = 11;
    */
   img: string;
+
+  /**
+   * User Gender
+   *
+   * @generated from field: users.UserGender gender = 12;
+   */
+  gender: UserGender;
 };
 
 /**
@@ -381,13 +388,6 @@ export declare type User = Message<"users.User"> & {
    * @generated from field: google.protobuf.Timestamp deleted_at = 11;
    */
   deletedAt?: Timestamp;
-
-  /**
-   * User Gender
-   *
-   * @generated from field: users.UserGender gender = 12;
-   */
-  gender: UserGender;
 };
 
 /**
