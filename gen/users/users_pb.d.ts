@@ -237,7 +237,7 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
   email: string;
 
   /**
-   * Phone number of the user.
+   * mobile number of the user.
    *
    * @generated from field: string phone_number = 4;
    */
@@ -298,6 +298,13 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
    * @generated from field: users.UserGender gender = 12;
    */
   gender: UserGender;
+
+  /**
+   * phone number for reservation
+   *
+   * @generated from field: string phonenumber_reservation = 13;
+   */
+  phonenumberReservation: string;
 };
 
 /**

@@ -76,7 +76,7 @@ message UserProfile {
     string user_id = 1;                  // Unique identifier for the user.
     string full_name = 2;        // Full name of the user (first and last name).
     string email = 3;            // Email address of the user.
-    string phone_number = 4;     // Phone number of the user.
+    string phone_number = 4;     // mobile number of the user.
     string country =5;          // Country where the user resides.
     string province = 6;         // Province or state of the user.
     string city = 7;             // City where the user resides.
@@ -84,7 +84,8 @@ message UserProfile {
     string address_line_2 = 9;   // Second line of the user's address (optional).
     string zip_code = 10;         // Zip or postal code of the user's address.
     string img=11;               // User image address
-    UserGender gender=12;                      //User Gender
+    UserGender gender=12;         //User Gender
+    string  phonenumber_reservation=13;        //phone number for reservation
 }
 
 // Represents a user in the system, including their roles, status, and profile.
