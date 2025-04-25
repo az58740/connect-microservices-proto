@@ -32,20 +32,20 @@ enum OrganizationType {
 }
 // Message for defining a permission related to user roles.
 message Permission {
-    string permission_id = 1;    // Unique identifier for the permission.
+    string permissionId = 1;    // Unique identifier for the permission.
     string action = 2;           // The action that this permission grants (e.g., "create", "read", "update", "delete").
 }
 
 // Message for representing a resource (e.g., "user", "order", "payment") that roles can be associated with.
 message Resource {
-   string resource_id = 1;   // Unique identifier for the resource.
-   string resource_name = 2;  // Name of the resource.
+   string resourceId = 1;   // Unique identifier for the resource.
+   string resourceName = 2;  // Name of the resource.
 }
 
 // Message for defining a user role.
 message Role {
-    string role_id = 1;          // Unique identifier for the user role.
-    string role_name = 2;        // Name of the role (e.g., "Admin", "User").
+    string roleId = 1;          // Unique identifier for the user role.
+    string roleName = 2;        // Name of the role (e.g., "Admin", "User").
     Resource resource = 3;       // The resource that the role applies to (e.g., "user", "order").
     string description = 4;      // Description of the role and its responsibilities.
     repeated Permission permissions = 5;  // List of permissions associated with this role.
@@ -62,8 +62,8 @@ message OrganizationGroup {
 
 // Represents a contracting party or organization.
 message ContractingParty {
-    string organization_id = 1;   // Unique identifier for the organization.
-    string organization_name = 2; // Name of the organization.
+    string organizationId = 1;   // Unique identifier for the organization.
+    string organizationName = 2; // Name of the organization.
     string description = 3;       // Description of the organization .
     OrganizationGroup group = 4;  // Group to which the organization belongs.
     OrganizationType type=5;      //Type of organization
@@ -73,33 +73,33 @@ message ContractingParty {
 
 // Represents a user's profile, which contains personal and contact information.
 message UserProfile {
-    string full_name = 1;        // Full name of the user (first and last name).
+    string fullName = 1;        // Full name of the user (first and last name).
     string email = 2;            // Email address of the user.
-    string phone_number = 3;     // mobile number of the user.
+    string phoneNumber = 3;     // mobile number of the user.
     string country = 4;          // Country where the user resides.
     string province = 5;         // Province or state of the user.
     string city = 6;             // City where the user resides.
-    string address_line_1 = 7;   // First line of the user's address.
-    string address_line_2 = 8;   // Second line of the user's address (optional).
-    string zip_code = 9;         // Zip or postal code of the user's address.
+    string addressLine1 = 7;   // First line of the user's address.
+    string addressLine2 = 8;   // Second line of the user's address (optional).
+    string zipCode = 9;         // Zip or postal code of the user's address.
     string img= 10;               // User image address
     UserGender gender= 11;         //User Gender
-    string  phonenumber_reservation= 12;        //phone number for reservation
+    string  phonenumberReservation= 12;        //phone number for reservation
 }
 
 // Represents a user in the system, including their roles, status, and profile.
 message User {
-    string user_id = 1;                  // Unique identifier for the user.
+    string userId = 1;                  // Unique identifier for the user.
     UserProfile profile = 2;             // The user's profile details.
     repeated Role roles = 3;             // List of roles assigned to the user.
     UserStatus status = 4;               // Current status of the user (active, inactive, etc.).
     ContractingParty organization = 5;   // Organization or contracting party the user belongs to.
     string username = 6;                 // Username (could be the email address).
-    string password_hash = 7;            // The hashed password (for security).
+    string passwordHash = 7;            // The hashed password (for security).
     UserType type = 8;                   // The user type.
     string description=9;                 //a small Description about
-    google.protobuf.Timestamp created_at = 10;  // Date and time when the user was created.
-    google.protobuf.Timestamp deleted_at = 11; // Date and time when the user was deleted.
+    google.protobuf.Timestamp createdAt = 10;  // Date and time when the user was created.
+    google.protobuf.Timestamp deletedAt = 11; // Date and time when the user was deleted.
 }
 //Represents a geolocation in system maby country,province or city
 message Geolocation{

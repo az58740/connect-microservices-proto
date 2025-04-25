@@ -20,7 +20,7 @@ export declare type Permission = Message<"users.Permission"> & {
   /**
    * Unique identifier for the permission.
    *
-   * @generated from field: string permission_id = 1;
+   * @generated from field: string permissionId = 1;
    */
   permissionId: string;
 
@@ -47,14 +47,14 @@ export declare type Resource = Message<"users.Resource"> & {
   /**
    * Unique identifier for the resource.
    *
-   * @generated from field: string resource_id = 1;
+   * @generated from field: string resourceId = 1;
    */
   resourceId: string;
 
   /**
    * Name of the resource.
    *
-   * @generated from field: string resource_name = 2;
+   * @generated from field: string resourceName = 2;
    */
   resourceName: string;
 };
@@ -74,14 +74,14 @@ export declare type Role = Message<"users.Role"> & {
   /**
    * Unique identifier for the user role.
    *
-   * @generated from field: string role_id = 1;
+   * @generated from field: string roleId = 1;
    */
   roleId: string;
 
   /**
    * Name of the role (e.g., "Admin", "User").
    *
-   * @generated from field: string role_name = 2;
+   * @generated from field: string roleName = 2;
    */
   roleName: string;
 
@@ -163,14 +163,14 @@ export declare type ContractingParty = Message<"users.ContractingParty"> & {
   /**
    * Unique identifier for the organization.
    *
-   * @generated from field: string organization_id = 1;
+   * @generated from field: string organizationId = 1;
    */
   organizationId: string;
 
   /**
    * Name of the organization.
    *
-   * @generated from field: string organization_name = 2;
+   * @generated from field: string organizationName = 2;
    */
   organizationName: string;
 
@@ -218,7 +218,7 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
   /**
    * Full name of the user (first and last name).
    *
-   * @generated from field: string full_name = 1;
+   * @generated from field: string fullName = 1;
    */
   fullName: string;
 
@@ -232,7 +232,7 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
   /**
    * mobile number of the user.
    *
-   * @generated from field: string phone_number = 3;
+   * @generated from field: string phoneNumber = 3;
    */
   phoneNumber: string;
 
@@ -260,21 +260,21 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
   /**
    * First line of the user's address.
    *
-   * @generated from field: string address_line_1 = 7;
+   * @generated from field: string addressLine1 = 7;
    */
   addressLine1: string;
 
   /**
    * Second line of the user's address (optional).
    *
-   * @generated from field: string address_line_2 = 8;
+   * @generated from field: string addressLine2 = 8;
    */
   addressLine2: string;
 
   /**
    * Zip or postal code of the user's address.
    *
-   * @generated from field: string zip_code = 9;
+   * @generated from field: string zipCode = 9;
    */
   zipCode: string;
 
@@ -295,7 +295,7 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
   /**
    * phone number for reservation
    *
-   * @generated from field: string phonenumber_reservation = 12;
+   * @generated from field: string phonenumberReservation = 12;
    */
   phonenumberReservation: string;
 };
@@ -315,7 +315,7 @@ export declare type User = Message<"users.User"> & {
   /**
    * Unique identifier for the user.
    *
-   * @generated from field: string user_id = 1;
+   * @generated from field: string userId = 1;
    */
   userId: string;
 
@@ -357,7 +357,7 @@ export declare type User = Message<"users.User"> & {
   /**
    * The hashed password (for security).
    *
-   * @generated from field: string password_hash = 7;
+   * @generated from field: string passwordHash = 7;
    */
   passwordHash: string;
 
@@ -378,14 +378,14 @@ export declare type User = Message<"users.User"> & {
   /**
    * Date and time when the user was created.
    *
-   * @generated from field: google.protobuf.Timestamp created_at = 10;
+   * @generated from field: google.protobuf.Timestamp createdAt = 10;
    */
   createdAt?: Timestamp;
 
   /**
    * Date and time when the user was deleted.
    *
-   * @generated from field: google.protobuf.Timestamp deleted_at = 11;
+   * @generated from field: google.protobuf.Timestamp deletedAt = 11;
    */
   deletedAt?: Timestamp;
 };
