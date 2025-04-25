@@ -216,93 +216,86 @@ export declare const ContractingPartySchema: GenMessage<ContractingParty>;
  */
 export declare type UserProfile = Message<"users.UserProfile"> & {
   /**
-   * Unique identifier for the user.
-   *
-   * @generated from field: string user_id = 1;
-   */
-  userId: string;
-
-  /**
    * Full name of the user (first and last name).
    *
-   * @generated from field: string full_name = 2;
+   * @generated from field: string full_name = 1;
    */
   fullName: string;
 
   /**
    * Email address of the user.
    *
-   * @generated from field: string email = 3;
+   * @generated from field: string email = 2;
    */
   email: string;
 
   /**
    * mobile number of the user.
    *
-   * @generated from field: string phone_number = 4;
+   * @generated from field: string phone_number = 3;
    */
   phoneNumber: string;
 
   /**
    * Country where the user resides.
    *
-   * @generated from field: string country = 5;
+   * @generated from field: string country = 4;
    */
   country: string;
 
   /**
    * Province or state of the user.
    *
-   * @generated from field: string province = 6;
+   * @generated from field: string province = 5;
    */
   province: string;
 
   /**
    * City where the user resides.
    *
-   * @generated from field: string city = 7;
+   * @generated from field: string city = 6;
    */
   city: string;
 
   /**
    * First line of the user's address.
    *
-   * @generated from field: string address_line_1 = 8;
+   * @generated from field: string address_line_1 = 7;
    */
   addressLine1: string;
 
   /**
    * Second line of the user's address (optional).
    *
-   * @generated from field: string address_line_2 = 9;
+   * @generated from field: string address_line_2 = 8;
    */
   addressLine2: string;
 
   /**
    * Zip or postal code of the user's address.
    *
-   * @generated from field: string zip_code = 10;
+   * @generated from field: string zip_code = 9;
    */
   zipCode: string;
 
   /**
    * User image address
    *
-   * @generated from field: string img = 11;
+   * @generated from field: string img = 10;
    */
   img: string;
 
   /**
    * User Gender
    *
-   * @generated from field: users.UserGender gender = 12;
+   * @generated from field: users.UserGender gender = 11;
    */
   gender: UserGender;
 
   /**
    * phone number for reservation
    *
-   * @generated from field: string phonenumber_reservation = 13;
+   * @generated from field: string phonenumber_reservation = 12;
    */
   phonenumberReservation: string;
 };

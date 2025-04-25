@@ -73,19 +73,18 @@ message ContractingParty {
 
 // Represents a user's profile, which contains personal and contact information.
 message UserProfile {
-    string user_id = 1;                  // Unique identifier for the user.
-    string full_name = 2;        // Full name of the user (first and last name).
-    string email = 3;            // Email address of the user.
-    string phone_number = 4;     // mobile number of the user.
-    string country =5;          // Country where the user resides.
-    string province = 6;         // Province or state of the user.
-    string city = 7;             // City where the user resides.
-    string address_line_1 = 8;   // First line of the user's address.
-    string address_line_2 = 9;   // Second line of the user's address (optional).
-    string zip_code = 10;         // Zip or postal code of the user's address.
-    string img=11;               // User image address
-    UserGender gender=12;         //User Gender
-    string  phonenumber_reservation=13;        //phone number for reservation
+    string full_name = 1;        // Full name of the user (first and last name).
+    string email = 2;            // Email address of the user.
+    string phone_number = 3;     // mobile number of the user.
+    string country = 4;          // Country where the user resides.
+    string province = 5;         // Province or state of the user.
+    string city = 6;             // City where the user resides.
+    string address_line_1 = 7;   // First line of the user's address.
+    string address_line_2 = 8;   // Second line of the user's address (optional).
+    string zip_code = 9;         // Zip or postal code of the user's address.
+    string img= 10;               // User image address
+    UserGender gender= 11;         //User Gender
+    string  phonenumber_reservation= 12;        //phone number for reservation
 }
 
 // Represents a user in the system, including their roles, status, and profile.
