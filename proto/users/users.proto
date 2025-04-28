@@ -103,21 +103,6 @@ message UserProfile {
     UserGender gender= 11;         //User Gender
     string  phonenumberReservation= 12;        //phone number for reservation
 }
-
-// Represents a user in the system, including their roles, status, and profile.
-message User {
-    string userId = 1;                  // Unique identifier for the user.
-    UserProfile profile = 2;             // The user's profile details.
-    repeated Role roles = 3;             // List of roles assigned to the user.
-    UserStatus status = 4;               // Current status of the user (active, inactive, etc.).
-    ContractingParty organization = 5;   // Organization or contracting party the user belongs to.
-    string username = 6;                 // Username (could be the email address).
-    string passwordHash = 7;            // The hashed password (for security).
-    UserType type = 8;                   // The user type.
-    string description=9;                 //a small Description about
-    google.protobuf.Timestamp createdAt = 10;  // Date and time when the user was created.
-    google.protobuf.Timestamp deletedAt = 11; // Date and time when the user was deleted.
-}
 message Contract {
     string contractId = 1;                    // شناسه یکتا برای قرارداد | Unique identifier for the contract
     string employerId = 2;                    // آیدی کارفرما (User.userId) | Employer's user ID
@@ -135,6 +120,22 @@ message Contract {
     string contractRequestFileUrl = 14;       // مسیر فایل تقاضا | URL or path to the request file (e.g., PDF, DOCX)
     string signedContractFileUrl = 15;        // مسیر فایل قرارداد امضا شده | URL or path to the signed contract file
 }
+
+// Represents a user in the system, including their roles, status, and profile.
+message User {
+    string userId = 1;                  // Unique identifier for the user.
+    UserProfile profile = 2;             // The user's profile details.
+    repeated Role roles = 3;             // List of roles assigned to the user.
+    UserStatus status = 4;               // Current status of the user (active, inactive, etc.).
+    ContractingParty organization = 5;   // Organization or contracting party the user belongs to.
+    string username = 6;                 // Username (could be the email address).
+    string passwordHash = 7;            // The hashed password (for security).
+    UserType type = 8;     
+    repeated Contract userContracts=9;              // The user contract.
+    google.protobuf.Timestamp createdAt = 10;  // Date and time when the user was created.
+    google.protobuf.Timestamp deletedAt = 11; // Date and time when the user was deleted.
+}
+
 
 
 //Represents a geolocation in system maby country,province or city

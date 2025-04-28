@@ -307,96 +307,6 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
 export declare const UserProfileSchema: GenMessage<UserProfile>;
 
 /**
- * Represents a user in the system, including their roles, status, and profile.
- *
- * @generated from message users.User
- */
-export declare type User = Message<"users.User"> & {
-  /**
-   * Unique identifier for the user.
-   *
-   * @generated from field: string userId = 1;
-   */
-  userId: string;
-
-  /**
-   * The user's profile details.
-   *
-   * @generated from field: users.UserProfile profile = 2;
-   */
-  profile?: UserProfile;
-
-  /**
-   * List of roles assigned to the user.
-   *
-   * @generated from field: repeated users.Role roles = 3;
-   */
-  roles: Role[];
-
-  /**
-   * Current status of the user (active, inactive, etc.).
-   *
-   * @generated from field: users.UserStatus status = 4;
-   */
-  status: UserStatus;
-
-  /**
-   * Organization or contracting party the user belongs to.
-   *
-   * @generated from field: users.ContractingParty organization = 5;
-   */
-  organization?: ContractingParty;
-
-  /**
-   * Username (could be the email address).
-   *
-   * @generated from field: string username = 6;
-   */
-  username: string;
-
-  /**
-   * The hashed password (for security).
-   *
-   * @generated from field: string passwordHash = 7;
-   */
-  passwordHash: string;
-
-  /**
-   * The user type.
-   *
-   * @generated from field: users.UserType type = 8;
-   */
-  type: UserType;
-
-  /**
-   * a small Description about
-   *
-   * @generated from field: string description = 9;
-   */
-  description: string;
-
-  /**
-   * Date and time when the user was created.
-   *
-   * @generated from field: google.protobuf.Timestamp createdAt = 10;
-   */
-  createdAt?: Timestamp;
-
-  /**
-   * Date and time when the user was deleted.
-   *
-   * @generated from field: google.protobuf.Timestamp deletedAt = 11;
-   */
-  deletedAt?: Timestamp;
-};
-
-/**
- * Describes the message users.User.
- * Use `create(UserSchema)` to create a new message.
- */
-export declare const UserSchema: GenMessage<User>;
-
-/**
  * @generated from message users.Contract
  */
 export declare type Contract = Message<"users.Contract"> & {
@@ -511,6 +421,94 @@ export declare type Contract = Message<"users.Contract"> & {
  * Use `create(ContractSchema)` to create a new message.
  */
 export declare const ContractSchema: GenMessage<Contract>;
+
+/**
+ * Represents a user in the system, including their roles, status, and profile.
+ *
+ * @generated from message users.User
+ */
+export declare type User = Message<"users.User"> & {
+  /**
+   * Unique identifier for the user.
+   *
+   * @generated from field: string userId = 1;
+   */
+  userId: string;
+
+  /**
+   * The user's profile details.
+   *
+   * @generated from field: users.UserProfile profile = 2;
+   */
+  profile?: UserProfile;
+
+  /**
+   * List of roles assigned to the user.
+   *
+   * @generated from field: repeated users.Role roles = 3;
+   */
+  roles: Role[];
+
+  /**
+   * Current status of the user (active, inactive, etc.).
+   *
+   * @generated from field: users.UserStatus status = 4;
+   */
+  status: UserStatus;
+
+  /**
+   * Organization or contracting party the user belongs to.
+   *
+   * @generated from field: users.ContractingParty organization = 5;
+   */
+  organization?: ContractingParty;
+
+  /**
+   * Username (could be the email address).
+   *
+   * @generated from field: string username = 6;
+   */
+  username: string;
+
+  /**
+   * The hashed password (for security).
+   *
+   * @generated from field: string passwordHash = 7;
+   */
+  passwordHash: string;
+
+  /**
+   * @generated from field: users.UserType type = 8;
+   */
+  type: UserType;
+
+  /**
+   * The user contract.
+   *
+   * @generated from field: repeated users.Contract userContracts = 9;
+   */
+  userContracts: Contract[];
+
+  /**
+   * Date and time when the user was created.
+   *
+   * @generated from field: google.protobuf.Timestamp createdAt = 10;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * Date and time when the user was deleted.
+   *
+   * @generated from field: google.protobuf.Timestamp deletedAt = 11;
+   */
+  deletedAt?: Timestamp;
+};
+
+/**
+ * Describes the message users.User.
+ * Use `create(UserSchema)` to create a new message.
+ */
+export declare const UserSchema: GenMessage<User>;
 
 /**
  * Represents a geolocation in system maby country,province or city
