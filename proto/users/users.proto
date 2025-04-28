@@ -16,12 +16,18 @@ enum UserStatus {
     USER_STATUS_DELETED = 4;     // User account has been deleted.
 }
 enum UserType {
-    USER_Type_DEFAULT= 0;        // Default value.
-    USER_Type_CONTRACTPARTY = 1; // User as contract party .
+    USER_TYPE_DEFAULT = 0;             // کاربر عادی پیش فرض | Default normal user
+    USER_TYPE_ADMIN = 1;                // ادمین سیستم | System administrator
+    USER_TYPE_CONTRACT_PARTY = 2;       // طرف قرارداد عمومی | General contracting party
+    USER_TYPE_CONTRACT_EMPLOYEE = 3;    // کارمند طرف قرارداد | Employee of the contracting party
+    USER_TYPE_CONTRACT_EMPLOYER = 4;    // کارفرمای طرف قرارداد | Employer of the contracting party
+    USER_TYPE_CONTRACT_APPLICANT = 5;   // متقاضی قرارداد (درخواست دهنده) | Applicant for a contract
 }
+
 enum UserGender {
     USER_Gender_Male= 0;        // Default value mail.
     USER_Gender_Female = 1; // Femail
+    USER_Gender_Other = 2 ;// Other
 }
 enum OrganizationType {
     ORG_Type_DEFAULT = 0;       // Default value.
@@ -30,6 +36,17 @@ enum OrganizationType {
     SALES_CENTERS = 3;          // Sales Centers.
     MEDICAL_SERVICES = 4;       // Medical Services.
 }
+enum ContractStatus {
+    CONTRACT_STATUS_UNSPECIFIED = 0; // Default unspecified status.
+    CONTRACT_STATUS_PENDING = 1;     // Contract is created and awaiting review.
+    CONTRACT_STATUS_APPROVED = 2;    // Contract has been approved by employer.
+    CONTRACT_STATUS_REJECTED = 3;    // Contract was rejected.
+    CONTRACT_STATUS_SIGNED = 4;      // Contract has been signed by both parties.
+    CONTRACT_STATUS_ACTIVE = 5;      // Contract is active and in effect.
+    CONTRACT_STATUS_COMPLETED = 6;   // Contract has been fulfilled/completed.
+    CONTRACT_STATUS_TERMINATED = 7;  // Contract has been terminated before completion.
+}
+
 // Message for defining a permission related to user roles.
 message Permission {
     string permissionId = 1;    // Unique identifier for the permission.
@@ -101,6 +118,25 @@ message User {
     google.protobuf.Timestamp createdAt = 10;  // Date and time when the user was created.
     google.protobuf.Timestamp deletedAt = 11; // Date and time when the user was deleted.
 }
+message Contract {
+    string contractId = 1;                    // شناسه یکتا برای قرارداد | Unique identifier for the contract
+    string employerId = 2;                    // آیدی کارفرما (User.userId) | Employer's user ID
+    string employeeId = 3;                    // آیدی متقاضی (User.userId) | Employee's (candidate's) user ID
+    string title = 4;                         // عنوان قرارداد | Title of the contract
+    string description = 5;                   // توضیح کوتاه درباره قرارداد | Short general description about the contract
+    double amount = 6;                        // مبلغ قرارداد (اختیاری) | Contract amount (optional)
+    string currency = 7;                      // واحد پول (IRR, USD و غیره) | Currency of the amount (IRR, USD, etc.)
+    ContractStatus status = 8;                // وضعیت فعلی قرارداد | Current status of the contract
+    google.protobuf.Timestamp startDate = 9;  // تاریخ شروع قرارداد | Start date of the contract
+    google.protobuf.Timestamp endDate = 10;   // تاریخ پایان قرارداد | End date of the contract
+    string terms = 11;                        // مفاد یا شرایط دقیق قرارداد | Full legal terms and conditions
+    google.protobuf.Timestamp createdAt = 12; // زمان ایجاد قرارداد | Creation timestamp
+    google.protobuf.Timestamp updatedAt = 13; // زمان آخرین بروزرسانی قرارداد | Last updated timestamp
+    string contractRequestFileUrl = 14;       // مسیر فایل تقاضا | URL or path to the request file (e.g., PDF, DOCX)
+    string signedContractFileUrl = 15;        // مسیر فایل قرارداد امضا شده | URL or path to the signed contract file
+}
+
+
 //Represents a geolocation in system maby country,province or city
 message Geolocation{
     string en=1; //Geolocation enghlish name

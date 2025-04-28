@@ -80,19 +80,31 @@ func (UserStatus) EnumDescriptor() ([]byte, []int) {
 type UserType int32
 
 const (
-	UserType_USER_Type_DEFAULT       UserType = 0 // Default value.
-	UserType_USER_Type_CONTRACTPARTY UserType = 1 // User as contract party .
+	UserType_USER_TYPE_DEFAULT            UserType = 0 // کاربر عادی پیش فرض | Default normal user
+	UserType_USER_TYPE_ADMIN              UserType = 1 // ادمین سیستم | System administrator
+	UserType_USER_TYPE_CONTRACT_PARTY     UserType = 2 // طرف قرارداد عمومی | General contracting party
+	UserType_USER_TYPE_CONTRACT_EMPLOYEE  UserType = 3 // کارمند طرف قرارداد | Employee of the contracting party
+	UserType_USER_TYPE_CONTRACT_EMPLOYER  UserType = 4 // کارفرمای طرف قرارداد | Employer of the contracting party
+	UserType_USER_TYPE_CONTRACT_APPLICANT UserType = 5 // متقاضی قرارداد (درخواست دهنده) | Applicant for a contract
 )
 
 // Enum value maps for UserType.
 var (
 	UserType_name = map[int32]string{
-		0: "USER_Type_DEFAULT",
-		1: "USER_Type_CONTRACTPARTY",
+		0: "USER_TYPE_DEFAULT",
+		1: "USER_TYPE_ADMIN",
+		2: "USER_TYPE_CONTRACT_PARTY",
+		3: "USER_TYPE_CONTRACT_EMPLOYEE",
+		4: "USER_TYPE_CONTRACT_EMPLOYER",
+		5: "USER_TYPE_CONTRACT_APPLICANT",
 	}
 	UserType_value = map[string]int32{
-		"USER_Type_DEFAULT":       0,
-		"USER_Type_CONTRACTPARTY": 1,
+		"USER_TYPE_DEFAULT":            0,
+		"USER_TYPE_ADMIN":              1,
+		"USER_TYPE_CONTRACT_PARTY":     2,
+		"USER_TYPE_CONTRACT_EMPLOYEE":  3,
+		"USER_TYPE_CONTRACT_EMPLOYER":  4,
+		"USER_TYPE_CONTRACT_APPLICANT": 5,
 	}
 )
 
@@ -128,6 +140,7 @@ type UserGender int32
 const (
 	UserGender_USER_Gender_Male   UserGender = 0 // Default value mail.
 	UserGender_USER_Gender_Female UserGender = 1 // Femail
+	UserGender_USER_Gender_Other  UserGender = 2 // Other
 )
 
 // Enum value maps for UserGender.
@@ -135,10 +148,12 @@ var (
 	UserGender_name = map[int32]string{
 		0: "USER_Gender_Male",
 		1: "USER_Gender_Female",
+		2: "USER_Gender_Other",
 	}
 	UserGender_value = map[string]int32{
 		"USER_Gender_Male":   0,
 		"USER_Gender_Female": 1,
+		"USER_Gender_Other":  2,
 	}
 )
 
@@ -222,6 +237,70 @@ func (x OrganizationType) Number() protoreflect.EnumNumber {
 // Deprecated: Use OrganizationType.Descriptor instead.
 func (OrganizationType) EnumDescriptor() ([]byte, []int) {
 	return file_users_users_proto_rawDescGZIP(), []int{3}
+}
+
+type ContractStatus int32
+
+const (
+	ContractStatus_CONTRACT_STATUS_UNSPECIFIED ContractStatus = 0 // Default unspecified status.
+	ContractStatus_CONTRACT_STATUS_PENDING     ContractStatus = 1 // Contract is created and awaiting review.
+	ContractStatus_CONTRACT_STATUS_APPROVED    ContractStatus = 2 // Contract has been approved by employer.
+	ContractStatus_CONTRACT_STATUS_REJECTED    ContractStatus = 3 // Contract was rejected.
+	ContractStatus_CONTRACT_STATUS_SIGNED      ContractStatus = 4 // Contract has been signed by both parties.
+	ContractStatus_CONTRACT_STATUS_ACTIVE      ContractStatus = 5 // Contract is active and in effect.
+	ContractStatus_CONTRACT_STATUS_COMPLETED   ContractStatus = 6 // Contract has been fulfilled/completed.
+	ContractStatus_CONTRACT_STATUS_TERMINATED  ContractStatus = 7 // Contract has been terminated before completion.
+)
+
+// Enum value maps for ContractStatus.
+var (
+	ContractStatus_name = map[int32]string{
+		0: "CONTRACT_STATUS_UNSPECIFIED",
+		1: "CONTRACT_STATUS_PENDING",
+		2: "CONTRACT_STATUS_APPROVED",
+		3: "CONTRACT_STATUS_REJECTED",
+		4: "CONTRACT_STATUS_SIGNED",
+		5: "CONTRACT_STATUS_ACTIVE",
+		6: "CONTRACT_STATUS_COMPLETED",
+		7: "CONTRACT_STATUS_TERMINATED",
+	}
+	ContractStatus_value = map[string]int32{
+		"CONTRACT_STATUS_UNSPECIFIED": 0,
+		"CONTRACT_STATUS_PENDING":     1,
+		"CONTRACT_STATUS_APPROVED":    2,
+		"CONTRACT_STATUS_REJECTED":    3,
+		"CONTRACT_STATUS_SIGNED":      4,
+		"CONTRACT_STATUS_ACTIVE":      5,
+		"CONTRACT_STATUS_COMPLETED":   6,
+		"CONTRACT_STATUS_TERMINATED":  7,
+	}
+)
+
+func (x ContractStatus) Enum() *ContractStatus {
+	p := new(ContractStatus)
+	*p = x
+	return p
+}
+
+func (x ContractStatus) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ContractStatus) Descriptor() protoreflect.EnumDescriptor {
+	return file_users_users_proto_enumTypes[4].Descriptor()
+}
+
+func (ContractStatus) Type() protoreflect.EnumType {
+	return &file_users_users_proto_enumTypes[4]
+}
+
+func (x ContractStatus) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ContractStatus.Descriptor instead.
+func (ContractStatus) EnumDescriptor() ([]byte, []int) {
+	return file_users_users_proto_rawDescGZIP(), []int{4}
 }
 
 // Message for defining a permission related to user roles.
@@ -802,7 +881,7 @@ func (x *User) GetType() UserType {
 	if x != nil {
 		return x.Type
 	}
-	return UserType_USER_Type_DEFAULT
+	return UserType_USER_TYPE_DEFAULT
 }
 
 func (x *User) GetDescription() string {
@@ -826,6 +905,163 @@ func (x *User) GetDeletedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type Contract struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ContractId             string                 `protobuf:"bytes,1,opt,name=contractId,proto3" json:"contractId,omitempty"`                          // شناسه یکتا برای قرارداد | Unique identifier for the contract
+	EmployerId             string                 `protobuf:"bytes,2,opt,name=employerId,proto3" json:"employerId,omitempty"`                          // آیدی کارفرما (User.userId) | Employer's user ID
+	EmployeeId             string                 `protobuf:"bytes,3,opt,name=employeeId,proto3" json:"employeeId,omitempty"`                          // آیدی متقاضی (User.userId) | Employee's (candidate's) user ID
+	Title                  string                 `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`                                    // عنوان قرارداد | Title of the contract
+	Description            string                 `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`                        // توضیح کوتاه درباره قرارداد | Short general description about the contract
+	Amount                 float64                `protobuf:"fixed64,6,opt,name=amount,proto3" json:"amount,omitempty"`                                // مبلغ قرارداد (اختیاری) | Contract amount (optional)
+	Currency               string                 `protobuf:"bytes,7,opt,name=currency,proto3" json:"currency,omitempty"`                              // واحد پول (IRR, USD و غیره) | Currency of the amount (IRR, USD, etc.)
+	Status                 ContractStatus         `protobuf:"varint,8,opt,name=status,proto3,enum=users.ContractStatus" json:"status,omitempty"`       // وضعیت فعلی قرارداد | Current status of the contract
+	StartDate              *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=startDate,proto3" json:"startDate,omitempty"`                            // تاریخ شروع قرارداد | Start date of the contract
+	EndDate                *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=endDate,proto3" json:"endDate,omitempty"`                               // تاریخ پایان قرارداد | End date of the contract
+	Terms                  string                 `protobuf:"bytes,11,opt,name=terms,proto3" json:"terms,omitempty"`                                   // مفاد یا شرایط دقیق قرارداد | Full legal terms and conditions
+	CreatedAt              *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=createdAt,proto3" json:"createdAt,omitempty"`                           // زمان ایجاد قرارداد | Creation timestamp
+	UpdatedAt              *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`                           // زمان آخرین بروزرسانی قرارداد | Last updated timestamp
+	ContractRequestFileUrl string                 `protobuf:"bytes,14,opt,name=contractRequestFileUrl,proto3" json:"contractRequestFileUrl,omitempty"` // مسیر فایل تقاضا | URL or path to the request file (e.g., PDF, DOCX)
+	SignedContractFileUrl  string                 `protobuf:"bytes,15,opt,name=signedContractFileUrl,proto3" json:"signedContractFileUrl,omitempty"`   // مسیر فایل قرارداد امضا شده | URL or path to the signed contract file
+}
+
+func (x *Contract) Reset() {
+	*x = Contract{}
+	mi := &file_users_users_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Contract) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Contract) ProtoMessage() {}
+
+func (x *Contract) ProtoReflect() protoreflect.Message {
+	mi := &file_users_users_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Contract.ProtoReflect.Descriptor instead.
+func (*Contract) Descriptor() ([]byte, []int) {
+	return file_users_users_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *Contract) GetContractId() string {
+	if x != nil {
+		return x.ContractId
+	}
+	return ""
+}
+
+func (x *Contract) GetEmployerId() string {
+	if x != nil {
+		return x.EmployerId
+	}
+	return ""
+}
+
+func (x *Contract) GetEmployeeId() string {
+	if x != nil {
+		return x.EmployeeId
+	}
+	return ""
+}
+
+func (x *Contract) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *Contract) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *Contract) GetAmount() float64 {
+	if x != nil {
+		return x.Amount
+	}
+	return 0
+}
+
+func (x *Contract) GetCurrency() string {
+	if x != nil {
+		return x.Currency
+	}
+	return ""
+}
+
+func (x *Contract) GetStatus() ContractStatus {
+	if x != nil {
+		return x.Status
+	}
+	return ContractStatus_CONTRACT_STATUS_UNSPECIFIED
+}
+
+func (x *Contract) GetStartDate() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartDate
+	}
+	return nil
+}
+
+func (x *Contract) GetEndDate() *timestamppb.Timestamp {
+	if x != nil {
+		return x.EndDate
+	}
+	return nil
+}
+
+func (x *Contract) GetTerms() string {
+	if x != nil {
+		return x.Terms
+	}
+	return ""
+}
+
+func (x *Contract) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Contract) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Contract) GetContractRequestFileUrl() string {
+	if x != nil {
+		return x.ContractRequestFileUrl
+	}
+	return ""
+}
+
+func (x *Contract) GetSignedContractFileUrl() string {
+	if x != nil {
+		return x.SignedContractFileUrl
+	}
+	return ""
+}
+
 //Represents a geolocation in system maby country,province or city
 type Geolocation struct {
 	state         protoimpl.MessageState
@@ -838,7 +1074,7 @@ type Geolocation struct {
 
 func (x *Geolocation) Reset() {
 	*x = Geolocation{}
-	mi := &file_users_users_proto_msgTypes[7]
+	mi := &file_users_users_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -850,7 +1086,7 @@ func (x *Geolocation) String() string {
 func (*Geolocation) ProtoMessage() {}
 
 func (x *Geolocation) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[7]
+	mi := &file_users_users_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -863,7 +1099,7 @@ func (x *Geolocation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Geolocation.ProtoReflect.Descriptor instead.
 func (*Geolocation) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{7}
+	return file_users_users_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Geolocation) GetEn() string {
@@ -890,7 +1126,7 @@ type GeolocationFilter struct {
 
 func (x *GeolocationFilter) Reset() {
 	*x = GeolocationFilter{}
-	mi := &file_users_users_proto_msgTypes[8]
+	mi := &file_users_users_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -902,7 +1138,7 @@ func (x *GeolocationFilter) String() string {
 func (*GeolocationFilter) ProtoMessage() {}
 
 func (x *GeolocationFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[8]
+	mi := &file_users_users_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -915,7 +1151,7 @@ func (x *GeolocationFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GeolocationFilter.ProtoReflect.Descriptor instead.
 func (*GeolocationFilter) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{8}
+	return file_users_users_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GeolocationFilter) GetEn() string {
@@ -935,7 +1171,7 @@ type GetGeolocationRequest struct {
 
 func (x *GetGeolocationRequest) Reset() {
 	*x = GetGeolocationRequest{}
-	mi := &file_users_users_proto_msgTypes[9]
+	mi := &file_users_users_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -947,7 +1183,7 @@ func (x *GetGeolocationRequest) String() string {
 func (*GetGeolocationRequest) ProtoMessage() {}
 
 func (x *GetGeolocationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[9]
+	mi := &file_users_users_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -960,7 +1196,7 @@ func (x *GetGeolocationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGeolocationRequest.ProtoReflect.Descriptor instead.
 func (*GetGeolocationRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{9}
+	return file_users_users_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetGeolocationRequest) GetFilter() *GeolocationFilter {
@@ -980,7 +1216,7 @@ type GetGeolocationResponse struct {
 
 func (x *GetGeolocationResponse) Reset() {
 	*x = GetGeolocationResponse{}
-	mi := &file_users_users_proto_msgTypes[10]
+	mi := &file_users_users_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -992,7 +1228,7 @@ func (x *GetGeolocationResponse) String() string {
 func (*GetGeolocationResponse) ProtoMessage() {}
 
 func (x *GetGeolocationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[10]
+	mi := &file_users_users_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1005,7 +1241,7 @@ func (x *GetGeolocationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGeolocationResponse.ProtoReflect.Descriptor instead.
 func (*GetGeolocationResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{10}
+	return file_users_users_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetGeolocationResponse) GetLocations() []*Geolocation {
@@ -1029,7 +1265,7 @@ type Pagination struct {
 
 func (x *Pagination) Reset() {
 	*x = Pagination{}
-	mi := &file_users_users_proto_msgTypes[11]
+	mi := &file_users_users_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1041,7 +1277,7 @@ func (x *Pagination) String() string {
 func (*Pagination) ProtoMessage() {}
 
 func (x *Pagination) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[11]
+	mi := &file_users_users_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1054,7 +1290,7 @@ func (x *Pagination) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Pagination.ProtoReflect.Descriptor instead.
 func (*Pagination) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{11}
+	return file_users_users_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *Pagination) GetPage() int32 {
@@ -1106,7 +1342,7 @@ type UserFilter struct {
 
 func (x *UserFilter) Reset() {
 	*x = UserFilter{}
-	mi := &file_users_users_proto_msgTypes[12]
+	mi := &file_users_users_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1118,7 +1354,7 @@ func (x *UserFilter) String() string {
 func (*UserFilter) ProtoMessage() {}
 
 func (x *UserFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[12]
+	mi := &file_users_users_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1131,7 +1367,7 @@ func (x *UserFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserFilter.ProtoReflect.Descriptor instead.
 func (*UserFilter) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{12}
+	return file_users_users_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *UserFilter) GetUserId() string {
@@ -1222,7 +1458,7 @@ type RoleFilter struct {
 
 func (x *RoleFilter) Reset() {
 	*x = RoleFilter{}
-	mi := &file_users_users_proto_msgTypes[13]
+	mi := &file_users_users_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1234,7 +1470,7 @@ func (x *RoleFilter) String() string {
 func (*RoleFilter) ProtoMessage() {}
 
 func (x *RoleFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[13]
+	mi := &file_users_users_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1247,7 +1483,7 @@ func (x *RoleFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RoleFilter.ProtoReflect.Descriptor instead.
 func (*RoleFilter) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{13}
+	return file_users_users_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *RoleFilter) GetResource() *Resource {
@@ -1270,7 +1506,7 @@ type OrganizationGroupFilter struct {
 
 func (x *OrganizationGroupFilter) Reset() {
 	*x = OrganizationGroupFilter{}
-	mi := &file_users_users_proto_msgTypes[14]
+	mi := &file_users_users_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1282,7 +1518,7 @@ func (x *OrganizationGroupFilter) String() string {
 func (*OrganizationGroupFilter) ProtoMessage() {}
 
 func (x *OrganizationGroupFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[14]
+	mi := &file_users_users_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1295,7 +1531,7 @@ func (x *OrganizationGroupFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrganizationGroupFilter.ProtoReflect.Descriptor instead.
 func (*OrganizationGroupFilter) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{14}
+	return file_users_users_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *OrganizationGroupFilter) GetGroupId() string {
@@ -1332,7 +1568,7 @@ type OrganizationFilter struct {
 
 func (x *OrganizationFilter) Reset() {
 	*x = OrganizationFilter{}
-	mi := &file_users_users_proto_msgTypes[15]
+	mi := &file_users_users_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1344,7 +1580,7 @@ func (x *OrganizationFilter) String() string {
 func (*OrganizationFilter) ProtoMessage() {}
 
 func (x *OrganizationFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[15]
+	mi := &file_users_users_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1357,7 +1593,7 @@ func (x *OrganizationFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrganizationFilter.ProtoReflect.Descriptor instead.
 func (*OrganizationFilter) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{15}
+	return file_users_users_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *OrganizationFilter) GetOrganizationId() string {
@@ -1397,7 +1633,7 @@ type RegisterRequest struct {
 
 func (x *RegisterRequest) Reset() {
 	*x = RegisterRequest{}
-	mi := &file_users_users_proto_msgTypes[16]
+	mi := &file_users_users_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1409,7 +1645,7 @@ func (x *RegisterRequest) String() string {
 func (*RegisterRequest) ProtoMessage() {}
 
 func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[16]
+	mi := &file_users_users_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1422,7 +1658,7 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{16}
+	return file_users_users_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *RegisterRequest) GetName() string {
@@ -1479,7 +1715,7 @@ type RegisterResponse struct {
 
 func (x *RegisterResponse) Reset() {
 	*x = RegisterResponse{}
-	mi := &file_users_users_proto_msgTypes[17]
+	mi := &file_users_users_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1491,7 +1727,7 @@ func (x *RegisterResponse) String() string {
 func (*RegisterResponse) ProtoMessage() {}
 
 func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[17]
+	mi := &file_users_users_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1504,7 +1740,7 @@ func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterResponse.ProtoReflect.Descriptor instead.
 func (*RegisterResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{17}
+	return file_users_users_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *RegisterResponse) GetUserId() string {
@@ -1533,7 +1769,7 @@ type LoginRequest struct {
 
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
-	mi := &file_users_users_proto_msgTypes[18]
+	mi := &file_users_users_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1545,7 +1781,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[18]
+	mi := &file_users_users_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1558,7 +1794,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{18}
+	return file_users_users_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *LoginRequest) GetUsername() string {
@@ -1587,7 +1823,7 @@ type LoginResponse struct {
 
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
-	mi := &file_users_users_proto_msgTypes[19]
+	mi := &file_users_users_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1599,7 +1835,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[19]
+	mi := &file_users_users_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1612,7 +1848,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{19}
+	return file_users_users_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *LoginResponse) GetToken() string {
@@ -1640,7 +1876,7 @@ type LogoutRequest struct {
 
 func (x *LogoutRequest) Reset() {
 	*x = LogoutRequest{}
-	mi := &file_users_users_proto_msgTypes[20]
+	mi := &file_users_users_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1652,7 +1888,7 @@ func (x *LogoutRequest) String() string {
 func (*LogoutRequest) ProtoMessage() {}
 
 func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[20]
+	mi := &file_users_users_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1665,7 +1901,7 @@ func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
 func (*LogoutRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{20}
+	return file_users_users_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *LogoutRequest) GetUserId() string {
@@ -1686,7 +1922,7 @@ type LogoutResponse struct {
 
 func (x *LogoutResponse) Reset() {
 	*x = LogoutResponse{}
-	mi := &file_users_users_proto_msgTypes[21]
+	mi := &file_users_users_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1698,7 +1934,7 @@ func (x *LogoutResponse) String() string {
 func (*LogoutResponse) ProtoMessage() {}
 
 func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[21]
+	mi := &file_users_users_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1711,7 +1947,7 @@ func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
 func (*LogoutResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{21}
+	return file_users_users_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *LogoutResponse) GetSuccess() bool {
@@ -1732,7 +1968,7 @@ type UpdateUserRequest struct {
 
 func (x *UpdateUserRequest) Reset() {
 	*x = UpdateUserRequest{}
-	mi := &file_users_users_proto_msgTypes[22]
+	mi := &file_users_users_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1744,7 +1980,7 @@ func (x *UpdateUserRequest) String() string {
 func (*UpdateUserRequest) ProtoMessage() {}
 
 func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[22]
+	mi := &file_users_users_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1757,7 +1993,7 @@ func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserRequest.ProtoReflect.Descriptor instead.
 func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{22}
+	return file_users_users_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *UpdateUserRequest) GetUser() *User {
@@ -1778,7 +2014,7 @@ type UpdateUserResponse struct {
 
 func (x *UpdateUserResponse) Reset() {
 	*x = UpdateUserResponse{}
-	mi := &file_users_users_proto_msgTypes[23]
+	mi := &file_users_users_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1790,7 +2026,7 @@ func (x *UpdateUserResponse) String() string {
 func (*UpdateUserResponse) ProtoMessage() {}
 
 func (x *UpdateUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[23]
+	mi := &file_users_users_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1803,7 +2039,7 @@ func (x *UpdateUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserResponse.ProtoReflect.Descriptor instead.
 func (*UpdateUserResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{23}
+	return file_users_users_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *UpdateUserResponse) GetMessage() string {
@@ -1825,7 +2061,7 @@ type ListUsersRequest struct {
 
 func (x *ListUsersRequest) Reset() {
 	*x = ListUsersRequest{}
-	mi := &file_users_users_proto_msgTypes[24]
+	mi := &file_users_users_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1837,7 +2073,7 @@ func (x *ListUsersRequest) String() string {
 func (*ListUsersRequest) ProtoMessage() {}
 
 func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[24]
+	mi := &file_users_users_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1850,7 +2086,7 @@ func (x *ListUsersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersRequest.ProtoReflect.Descriptor instead.
 func (*ListUsersRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{24}
+	return file_users_users_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ListUsersRequest) GetPagination() *Pagination {
@@ -1880,7 +2116,7 @@ type ListUsersResponse struct {
 
 func (x *ListUsersResponse) Reset() {
 	*x = ListUsersResponse{}
-	mi := &file_users_users_proto_msgTypes[25]
+	mi := &file_users_users_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1892,7 +2128,7 @@ func (x *ListUsersResponse) String() string {
 func (*ListUsersResponse) ProtoMessage() {}
 
 func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[25]
+	mi := &file_users_users_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1905,7 +2141,7 @@ func (x *ListUsersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUsersResponse.ProtoReflect.Descriptor instead.
 func (*ListUsersResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{25}
+	return file_users_users_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ListUsersResponse) GetUsers() []*User {
@@ -1942,7 +2178,7 @@ type CreateOrganizationGroupRequest struct {
 
 func (x *CreateOrganizationGroupRequest) Reset() {
 	*x = CreateOrganizationGroupRequest{}
-	mi := &file_users_users_proto_msgTypes[26]
+	mi := &file_users_users_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1954,7 +2190,7 @@ func (x *CreateOrganizationGroupRequest) String() string {
 func (*CreateOrganizationGroupRequest) ProtoMessage() {}
 
 func (x *CreateOrganizationGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[26]
+	mi := &file_users_users_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1967,7 +2203,7 @@ func (x *CreateOrganizationGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateOrganizationGroupRequest.ProtoReflect.Descriptor instead.
 func (*CreateOrganizationGroupRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{26}
+	return file_users_users_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *CreateOrganizationGroupRequest) GetName() string {
@@ -2001,7 +2237,7 @@ type CreateOrganizationGroupResponse struct {
 
 func (x *CreateOrganizationGroupResponse) Reset() {
 	*x = CreateOrganizationGroupResponse{}
-	mi := &file_users_users_proto_msgTypes[27]
+	mi := &file_users_users_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2013,7 +2249,7 @@ func (x *CreateOrganizationGroupResponse) String() string {
 func (*CreateOrganizationGroupResponse) ProtoMessage() {}
 
 func (x *CreateOrganizationGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[27]
+	mi := &file_users_users_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2026,7 +2262,7 @@ func (x *CreateOrganizationGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateOrganizationGroupResponse.ProtoReflect.Descriptor instead.
 func (*CreateOrganizationGroupResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{27}
+	return file_users_users_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *CreateOrganizationGroupResponse) GetMessage() string {
@@ -2046,7 +2282,7 @@ type UpdateOrganizationGroupRequest struct {
 
 func (x *UpdateOrganizationGroupRequest) Reset() {
 	*x = UpdateOrganizationGroupRequest{}
-	mi := &file_users_users_proto_msgTypes[28]
+	mi := &file_users_users_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2058,7 +2294,7 @@ func (x *UpdateOrganizationGroupRequest) String() string {
 func (*UpdateOrganizationGroupRequest) ProtoMessage() {}
 
 func (x *UpdateOrganizationGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[28]
+	mi := &file_users_users_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2071,7 +2307,7 @@ func (x *UpdateOrganizationGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateOrganizationGroupRequest.ProtoReflect.Descriptor instead.
 func (*UpdateOrganizationGroupRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{28}
+	return file_users_users_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *UpdateOrganizationGroupRequest) GetGroup() *OrganizationGroup {
@@ -2091,7 +2327,7 @@ type UpdateOrganizationGroupResponse struct {
 
 func (x *UpdateOrganizationGroupResponse) Reset() {
 	*x = UpdateOrganizationGroupResponse{}
-	mi := &file_users_users_proto_msgTypes[29]
+	mi := &file_users_users_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2103,7 +2339,7 @@ func (x *UpdateOrganizationGroupResponse) String() string {
 func (*UpdateOrganizationGroupResponse) ProtoMessage() {}
 
 func (x *UpdateOrganizationGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[29]
+	mi := &file_users_users_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2116,7 +2352,7 @@ func (x *UpdateOrganizationGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateOrganizationGroupResponse.ProtoReflect.Descriptor instead.
 func (*UpdateOrganizationGroupResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{29}
+	return file_users_users_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *UpdateOrganizationGroupResponse) GetMessage() string {
@@ -2136,7 +2372,7 @@ type DeleteOrganizationGroupRequest struct {
 
 func (x *DeleteOrganizationGroupRequest) Reset() {
 	*x = DeleteOrganizationGroupRequest{}
-	mi := &file_users_users_proto_msgTypes[30]
+	mi := &file_users_users_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2148,7 +2384,7 @@ func (x *DeleteOrganizationGroupRequest) String() string {
 func (*DeleteOrganizationGroupRequest) ProtoMessage() {}
 
 func (x *DeleteOrganizationGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[30]
+	mi := &file_users_users_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2161,7 +2397,7 @@ func (x *DeleteOrganizationGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteOrganizationGroupRequest.ProtoReflect.Descriptor instead.
 func (*DeleteOrganizationGroupRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{30}
+	return file_users_users_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *DeleteOrganizationGroupRequest) GetGroupId() string {
@@ -2181,7 +2417,7 @@ type DeleteOrganizationGroupResponse struct {
 
 func (x *DeleteOrganizationGroupResponse) Reset() {
 	*x = DeleteOrganizationGroupResponse{}
-	mi := &file_users_users_proto_msgTypes[31]
+	mi := &file_users_users_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2193,7 +2429,7 @@ func (x *DeleteOrganizationGroupResponse) String() string {
 func (*DeleteOrganizationGroupResponse) ProtoMessage() {}
 
 func (x *DeleteOrganizationGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[31]
+	mi := &file_users_users_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2206,7 +2442,7 @@ func (x *DeleteOrganizationGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteOrganizationGroupResponse.ProtoReflect.Descriptor instead.
 func (*DeleteOrganizationGroupResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{31}
+	return file_users_users_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *DeleteOrganizationGroupResponse) GetMessage() string {
@@ -2226,7 +2462,7 @@ type ListOrganizationGroupRequest struct {
 
 func (x *ListOrganizationGroupRequest) Reset() {
 	*x = ListOrganizationGroupRequest{}
-	mi := &file_users_users_proto_msgTypes[32]
+	mi := &file_users_users_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2238,7 +2474,7 @@ func (x *ListOrganizationGroupRequest) String() string {
 func (*ListOrganizationGroupRequest) ProtoMessage() {}
 
 func (x *ListOrganizationGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[32]
+	mi := &file_users_users_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2251,7 +2487,7 @@ func (x *ListOrganizationGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListOrganizationGroupRequest.ProtoReflect.Descriptor instead.
 func (*ListOrganizationGroupRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{32}
+	return file_users_users_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *ListOrganizationGroupRequest) GetFilter() *OrganizationGroupFilter {
@@ -2271,7 +2507,7 @@ type ListOrganizationGroupResponse struct {
 
 func (x *ListOrganizationGroupResponse) Reset() {
 	*x = ListOrganizationGroupResponse{}
-	mi := &file_users_users_proto_msgTypes[33]
+	mi := &file_users_users_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2283,7 +2519,7 @@ func (x *ListOrganizationGroupResponse) String() string {
 func (*ListOrganizationGroupResponse) ProtoMessage() {}
 
 func (x *ListOrganizationGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[33]
+	mi := &file_users_users_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2296,7 +2532,7 @@ func (x *ListOrganizationGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListOrganizationGroupResponse.ProtoReflect.Descriptor instead.
 func (*ListOrganizationGroupResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{33}
+	return file_users_users_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *ListOrganizationGroupResponse) GetGroups() []*OrganizationGroup {
@@ -2319,7 +2555,7 @@ type CreateOrganizationRequest struct {
 
 func (x *CreateOrganizationRequest) Reset() {
 	*x = CreateOrganizationRequest{}
-	mi := &file_users_users_proto_msgTypes[34]
+	mi := &file_users_users_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2331,7 +2567,7 @@ func (x *CreateOrganizationRequest) String() string {
 func (*CreateOrganizationRequest) ProtoMessage() {}
 
 func (x *CreateOrganizationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[34]
+	mi := &file_users_users_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2344,7 +2580,7 @@ func (x *CreateOrganizationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateOrganizationRequest.ProtoReflect.Descriptor instead.
 func (*CreateOrganizationRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{34}
+	return file_users_users_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *CreateOrganizationRequest) GetOrganizationName() string {
@@ -2379,7 +2615,7 @@ type CreateOrganizationResponse struct {
 
 func (x *CreateOrganizationResponse) Reset() {
 	*x = CreateOrganizationResponse{}
-	mi := &file_users_users_proto_msgTypes[35]
+	mi := &file_users_users_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2391,7 +2627,7 @@ func (x *CreateOrganizationResponse) String() string {
 func (*CreateOrganizationResponse) ProtoMessage() {}
 
 func (x *CreateOrganizationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[35]
+	mi := &file_users_users_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2404,7 +2640,7 @@ func (x *CreateOrganizationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateOrganizationResponse.ProtoReflect.Descriptor instead.
 func (*CreateOrganizationResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{35}
+	return file_users_users_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *CreateOrganizationResponse) GetOrganizationId() string {
@@ -2431,7 +2667,7 @@ type UpdateOrganizationRequest struct {
 
 func (x *UpdateOrganizationRequest) Reset() {
 	*x = UpdateOrganizationRequest{}
-	mi := &file_users_users_proto_msgTypes[36]
+	mi := &file_users_users_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2443,7 +2679,7 @@ func (x *UpdateOrganizationRequest) String() string {
 func (*UpdateOrganizationRequest) ProtoMessage() {}
 
 func (x *UpdateOrganizationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[36]
+	mi := &file_users_users_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2456,7 +2692,7 @@ func (x *UpdateOrganizationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateOrganizationRequest.ProtoReflect.Descriptor instead.
 func (*UpdateOrganizationRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{36}
+	return file_users_users_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *UpdateOrganizationRequest) GetOrganization() *ContractingParty {
@@ -2476,7 +2712,7 @@ type UpdateOrganizationResponse struct {
 
 func (x *UpdateOrganizationResponse) Reset() {
 	*x = UpdateOrganizationResponse{}
-	mi := &file_users_users_proto_msgTypes[37]
+	mi := &file_users_users_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2488,7 +2724,7 @@ func (x *UpdateOrganizationResponse) String() string {
 func (*UpdateOrganizationResponse) ProtoMessage() {}
 
 func (x *UpdateOrganizationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[37]
+	mi := &file_users_users_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2501,7 +2737,7 @@ func (x *UpdateOrganizationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateOrganizationResponse.ProtoReflect.Descriptor instead.
 func (*UpdateOrganizationResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{37}
+	return file_users_users_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *UpdateOrganizationResponse) GetMessage() string {
@@ -2521,7 +2757,7 @@ type DeleteOrganizationRequest struct {
 
 func (x *DeleteOrganizationRequest) Reset() {
 	*x = DeleteOrganizationRequest{}
-	mi := &file_users_users_proto_msgTypes[38]
+	mi := &file_users_users_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2533,7 +2769,7 @@ func (x *DeleteOrganizationRequest) String() string {
 func (*DeleteOrganizationRequest) ProtoMessage() {}
 
 func (x *DeleteOrganizationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[38]
+	mi := &file_users_users_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2546,7 +2782,7 @@ func (x *DeleteOrganizationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteOrganizationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteOrganizationRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{38}
+	return file_users_users_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *DeleteOrganizationRequest) GetOrganizationId() string {
@@ -2566,7 +2802,7 @@ type DeleteOrganizationResponse struct {
 
 func (x *DeleteOrganizationResponse) Reset() {
 	*x = DeleteOrganizationResponse{}
-	mi := &file_users_users_proto_msgTypes[39]
+	mi := &file_users_users_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2578,7 +2814,7 @@ func (x *DeleteOrganizationResponse) String() string {
 func (*DeleteOrganizationResponse) ProtoMessage() {}
 
 func (x *DeleteOrganizationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[39]
+	mi := &file_users_users_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2591,7 +2827,7 @@ func (x *DeleteOrganizationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteOrganizationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteOrganizationResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{39}
+	return file_users_users_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *DeleteOrganizationResponse) GetMessage() string {
@@ -2611,7 +2847,7 @@ type ListOrganizationRequest struct {
 
 func (x *ListOrganizationRequest) Reset() {
 	*x = ListOrganizationRequest{}
-	mi := &file_users_users_proto_msgTypes[40]
+	mi := &file_users_users_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2623,7 +2859,7 @@ func (x *ListOrganizationRequest) String() string {
 func (*ListOrganizationRequest) ProtoMessage() {}
 
 func (x *ListOrganizationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[40]
+	mi := &file_users_users_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2636,7 +2872,7 @@ func (x *ListOrganizationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListOrganizationRequest.ProtoReflect.Descriptor instead.
 func (*ListOrganizationRequest) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{40}
+	return file_users_users_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *ListOrganizationRequest) GetFilter() *OrganizationFilter {
@@ -2656,7 +2892,7 @@ type ListOrganizationResponse struct {
 
 func (x *ListOrganizationResponse) Reset() {
 	*x = ListOrganizationResponse{}
-	mi := &file_users_users_proto_msgTypes[41]
+	mi := &file_users_users_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2668,7 +2904,7 @@ func (x *ListOrganizationResponse) String() string {
 func (*ListOrganizationResponse) ProtoMessage() {}
 
 func (x *ListOrganizationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[41]
+	mi := &file_users_users_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2681,7 +2917,7 @@ func (x *ListOrganizationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListOrganizationResponse.ProtoReflect.Descriptor instead.
 func (*ListOrganizationResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{41}
+	return file_users_users_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *ListOrganizationResponse) GetOrganizations() []*ContractingParty {
@@ -2798,7 +3034,46 @@ var file_users_users_proto_rawDesc = []byte{
 	0x12, 0x38, 0x0a, 0x09, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x41, 0x74, 0x18, 0x0b, 0x20,
 	0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52,
-	0x09, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22, 0x2d, 0x0a, 0x0b, 0x47, 0x65,
+	0x09, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22, 0xed, 0x04, 0x0a, 0x08, 0x43,
+	0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x12, 0x1e, 0x0a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72,
+	0x61, 0x63, 0x74, 0x49, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x63, 0x6f, 0x6e,
+	0x74, 0x72, 0x61, 0x63, 0x74, 0x49, 0x64, 0x12, 0x1e, 0x0a, 0x0a, 0x65, 0x6d, 0x70, 0x6c, 0x6f,
+	0x79, 0x65, 0x72, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x65, 0x6d, 0x70,
+	0x6c, 0x6f, 0x79, 0x65, 0x72, 0x49, 0x64, 0x12, 0x1e, 0x0a, 0x0a, 0x65, 0x6d, 0x70, 0x6c, 0x6f,
+	0x79, 0x65, 0x65, 0x49, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x65, 0x6d, 0x70,
+	0x6c, 0x6f, 0x79, 0x65, 0x65, 0x49, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x20, 0x0a,
+	0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12,
+	0x16, 0x0a, 0x06, 0x61, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x01, 0x52,
+	0x06, 0x61, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x63, 0x75, 0x72, 0x72, 0x65,
+	0x6e, 0x63, 0x79, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x63, 0x75, 0x72, 0x72, 0x65,
+	0x6e, 0x63, 0x79, 0x12, 0x2d, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x08, 0x20,
+	0x01, 0x28, 0x0e, 0x32, 0x15, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x74,
+	0x72, 0x61, 0x63, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74,
+	0x75, 0x73, 0x12, 0x38, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x44, 0x61, 0x74, 0x65, 0x18,
+	0x09, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d,
+	0x70, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x44, 0x61, 0x74, 0x65, 0x12, 0x34, 0x0a, 0x07,
+	0x65, 0x6e, 0x64, 0x44, 0x61, 0x74, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e,
+	0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x44, 0x61,
+	0x74, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x65, 0x72, 0x6d, 0x73, 0x18, 0x0b, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x05, 0x74, 0x65, 0x72, 0x6d, 0x73, 0x12, 0x38, 0x0a, 0x09, 0x63, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x64, 0x41, 0x74, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69,
+	0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64,
+	0x41, 0x74, 0x12, 0x38, 0x0a, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x18,
+	0x0d, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d,
+	0x70, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x36, 0x0a, 0x16,
+	0x63, 0x6f, 0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x46,
+	0x69, 0x6c, 0x65, 0x55, 0x72, 0x6c, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x09, 0x52, 0x16, 0x63, 0x6f,
+	0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x46, 0x69, 0x6c,
+	0x65, 0x55, 0x72, 0x6c, 0x12, 0x34, 0x0a, 0x15, 0x73, 0x69, 0x67, 0x6e, 0x65, 0x64, 0x43, 0x6f,
+	0x6e, 0x74, 0x72, 0x61, 0x63, 0x74, 0x46, 0x69, 0x6c, 0x65, 0x55, 0x72, 0x6c, 0x18, 0x0f, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x15, 0x73, 0x69, 0x67, 0x6e, 0x65, 0x64, 0x43, 0x6f, 0x6e, 0x74, 0x72,
+	0x61, 0x63, 0x74, 0x46, 0x69, 0x6c, 0x65, 0x55, 0x72, 0x6c, 0x22, 0x2d, 0x0a, 0x0b, 0x47, 0x65,
 	0x6f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x65, 0x6e, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x65, 0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x66, 0x61, 0x18,
 	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x66, 0x61, 0x22, 0x23, 0x0a, 0x11, 0x47, 0x65, 0x6f,
@@ -3022,107 +3297,132 @@ var file_users_users_proto_rawDesc = []byte{
 	0x56, 0x45, 0x10, 0x02, 0x12, 0x19, 0x0a, 0x15, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x53, 0x54, 0x41,
 	0x54, 0x55, 0x53, 0x5f, 0x53, 0x55, 0x53, 0x50, 0x45, 0x4e, 0x44, 0x45, 0x44, 0x10, 0x03, 0x12,
 	0x17, 0x0a, 0x13, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x44,
-	0x45, 0x4c, 0x45, 0x54, 0x45, 0x44, 0x10, 0x04, 0x2a, 0x3e, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72,
-	0x54, 0x79, 0x70, 0x65, 0x12, 0x15, 0x0a, 0x11, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x54, 0x79, 0x70,
-	0x65, 0x5f, 0x44, 0x45, 0x46, 0x41, 0x55, 0x4c, 0x54, 0x10, 0x00, 0x12, 0x1b, 0x0a, 0x17, 0x55,
-	0x53, 0x45, 0x52, 0x5f, 0x54, 0x79, 0x70, 0x65, 0x5f, 0x43, 0x4f, 0x4e, 0x54, 0x52, 0x41, 0x43,
-	0x54, 0x50, 0x41, 0x52, 0x54, 0x59, 0x10, 0x01, 0x2a, 0x3a, 0x0a, 0x0a, 0x55, 0x73, 0x65, 0x72,
-	0x47, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x12, 0x14, 0x0a, 0x10, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x47,
-	0x65, 0x6e, 0x64, 0x65, 0x72, 0x5f, 0x4d, 0x61, 0x6c, 0x65, 0x10, 0x00, 0x12, 0x16, 0x0a, 0x12,
-	0x55, 0x53, 0x45, 0x52, 0x5f, 0x47, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x5f, 0x46, 0x65, 0x6d, 0x61,
-	0x6c, 0x65, 0x10, 0x01, 0x2a, 0x7d, 0x0a, 0x10, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x54, 0x79, 0x70, 0x65, 0x12, 0x14, 0x0a, 0x10, 0x4f, 0x52, 0x47, 0x5f,
-	0x54, 0x79, 0x70, 0x65, 0x5f, 0x44, 0x45, 0x46, 0x41, 0x55, 0x4c, 0x54, 0x10, 0x00, 0x12, 0x10,
-	0x0a, 0x0c, 0x53, 0x50, 0x4f, 0x52, 0x54, 0x53, 0x5f, 0x47, 0x52, 0x4f, 0x55, 0x50, 0x10, 0x01,
-	0x12, 0x18, 0x0a, 0x14, 0x52, 0x45, 0x43, 0x52, 0x45, 0x41, 0x54, 0x49, 0x4f, 0x4e, 0x41, 0x4c,
-	0x5f, 0x43, 0x45, 0x4e, 0x54, 0x45, 0x52, 0x53, 0x10, 0x02, 0x12, 0x11, 0x0a, 0x0d, 0x53, 0x41,
-	0x4c, 0x45, 0x53, 0x5f, 0x43, 0x45, 0x4e, 0x54, 0x45, 0x52, 0x53, 0x10, 0x03, 0x12, 0x14, 0x0a,
-	0x10, 0x4d, 0x45, 0x44, 0x49, 0x43, 0x41, 0x4c, 0x5f, 0x53, 0x45, 0x52, 0x56, 0x49, 0x43, 0x45,
-	0x53, 0x10, 0x04, 0x32, 0xf6, 0x09, 0x0a, 0x0c, 0x55, 0x73, 0x65, 0x72, 0x73, 0x53, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x12, 0x3f, 0x0a, 0x0c, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72,
-	0x55, 0x73, 0x65, 0x72, 0x12, 0x16, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x52, 0x65, 0x67,
-	0x69, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x75,
-	0x73, 0x65, 0x72, 0x73, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x36, 0x0a, 0x09, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x55, 0x73,
-	0x65, 0x72, 0x12, 0x13, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e,
-	0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3e, 0x0a,
-	0x09, 0x4c, 0x69, 0x73, 0x74, 0x55, 0x73, 0x65, 0x72, 0x73, 0x12, 0x17, 0x2e, 0x75, 0x73, 0x65,
-	0x72, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x55, 0x73, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74,
-	0x55, 0x73, 0x65, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x41, 0x0a,
-	0x0a, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x12, 0x18, 0x2e, 0x75, 0x73,
+	0x45, 0x4c, 0x45, 0x54, 0x45, 0x44, 0x10, 0x04, 0x2a, 0xb8, 0x01, 0x0a, 0x08, 0x55, 0x73, 0x65,
+	0x72, 0x54, 0x79, 0x70, 0x65, 0x12, 0x15, 0x0a, 0x11, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x54, 0x59,
+	0x50, 0x45, 0x5f, 0x44, 0x45, 0x46, 0x41, 0x55, 0x4c, 0x54, 0x10, 0x00, 0x12, 0x13, 0x0a, 0x0f,
+	0x55, 0x53, 0x45, 0x52, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x41, 0x44, 0x4d, 0x49, 0x4e, 0x10,
+	0x01, 0x12, 0x1c, 0x0a, 0x18, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x43,
+	0x4f, 0x4e, 0x54, 0x52, 0x41, 0x43, 0x54, 0x5f, 0x50, 0x41, 0x52, 0x54, 0x59, 0x10, 0x02, 0x12,
+	0x1f, 0x0a, 0x1b, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x43, 0x4f, 0x4e,
+	0x54, 0x52, 0x41, 0x43, 0x54, 0x5f, 0x45, 0x4d, 0x50, 0x4c, 0x4f, 0x59, 0x45, 0x45, 0x10, 0x03,
+	0x12, 0x1f, 0x0a, 0x1b, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x43, 0x4f,
+	0x4e, 0x54, 0x52, 0x41, 0x43, 0x54, 0x5f, 0x45, 0x4d, 0x50, 0x4c, 0x4f, 0x59, 0x45, 0x52, 0x10,
+	0x04, 0x12, 0x20, 0x0a, 0x1c, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x43,
+	0x4f, 0x4e, 0x54, 0x52, 0x41, 0x43, 0x54, 0x5f, 0x41, 0x50, 0x50, 0x4c, 0x49, 0x43, 0x41, 0x4e,
+	0x54, 0x10, 0x05, 0x2a, 0x51, 0x0a, 0x0a, 0x55, 0x73, 0x65, 0x72, 0x47, 0x65, 0x6e, 0x64, 0x65,
+	0x72, 0x12, 0x14, 0x0a, 0x10, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x47, 0x65, 0x6e, 0x64, 0x65, 0x72,
+	0x5f, 0x4d, 0x61, 0x6c, 0x65, 0x10, 0x00, 0x12, 0x16, 0x0a, 0x12, 0x55, 0x53, 0x45, 0x52, 0x5f,
+	0x47, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x5f, 0x46, 0x65, 0x6d, 0x61, 0x6c, 0x65, 0x10, 0x01, 0x12,
+	0x15, 0x0a, 0x11, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x47, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x5f, 0x4f,
+	0x74, 0x68, 0x65, 0x72, 0x10, 0x02, 0x2a, 0x7d, 0x0a, 0x10, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69,
+	0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x54, 0x79, 0x70, 0x65, 0x12, 0x14, 0x0a, 0x10, 0x4f, 0x52,
+	0x47, 0x5f, 0x54, 0x79, 0x70, 0x65, 0x5f, 0x44, 0x45, 0x46, 0x41, 0x55, 0x4c, 0x54, 0x10, 0x00,
+	0x12, 0x10, 0x0a, 0x0c, 0x53, 0x50, 0x4f, 0x52, 0x54, 0x53, 0x5f, 0x47, 0x52, 0x4f, 0x55, 0x50,
+	0x10, 0x01, 0x12, 0x18, 0x0a, 0x14, 0x52, 0x45, 0x43, 0x52, 0x45, 0x41, 0x54, 0x49, 0x4f, 0x4e,
+	0x41, 0x4c, 0x5f, 0x43, 0x45, 0x4e, 0x54, 0x45, 0x52, 0x53, 0x10, 0x02, 0x12, 0x11, 0x0a, 0x0d,
+	0x53, 0x41, 0x4c, 0x45, 0x53, 0x5f, 0x43, 0x45, 0x4e, 0x54, 0x45, 0x52, 0x53, 0x10, 0x03, 0x12,
+	0x14, 0x0a, 0x10, 0x4d, 0x45, 0x44, 0x49, 0x43, 0x41, 0x4c, 0x5f, 0x53, 0x45, 0x52, 0x56, 0x49,
+	0x43, 0x45, 0x53, 0x10, 0x04, 0x2a, 0x81, 0x02, 0x0a, 0x0e, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x61,
+	0x63, 0x74, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x1f, 0x0a, 0x1b, 0x43, 0x4f, 0x4e, 0x54,
+	0x52, 0x41, 0x43, 0x54, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x55, 0x4e, 0x53, 0x50,
+	0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x1b, 0x0a, 0x17, 0x43, 0x4f, 0x4e,
+	0x54, 0x52, 0x41, 0x43, 0x54, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x50, 0x45, 0x4e,
+	0x44, 0x49, 0x4e, 0x47, 0x10, 0x01, 0x12, 0x1c, 0x0a, 0x18, 0x43, 0x4f, 0x4e, 0x54, 0x52, 0x41,
+	0x43, 0x54, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x41, 0x50, 0x50, 0x52, 0x4f, 0x56,
+	0x45, 0x44, 0x10, 0x02, 0x12, 0x1c, 0x0a, 0x18, 0x43, 0x4f, 0x4e, 0x54, 0x52, 0x41, 0x43, 0x54,
+	0x5f, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x52, 0x45, 0x4a, 0x45, 0x43, 0x54, 0x45, 0x44,
+	0x10, 0x03, 0x12, 0x1a, 0x0a, 0x16, 0x43, 0x4f, 0x4e, 0x54, 0x52, 0x41, 0x43, 0x54, 0x5f, 0x53,
+	0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x53, 0x49, 0x47, 0x4e, 0x45, 0x44, 0x10, 0x04, 0x12, 0x1a,
+	0x0a, 0x16, 0x43, 0x4f, 0x4e, 0x54, 0x52, 0x41, 0x43, 0x54, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x55,
+	0x53, 0x5f, 0x41, 0x43, 0x54, 0x49, 0x56, 0x45, 0x10, 0x05, 0x12, 0x1d, 0x0a, 0x19, 0x43, 0x4f,
+	0x4e, 0x54, 0x52, 0x41, 0x43, 0x54, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x43, 0x4f,
+	0x4d, 0x50, 0x4c, 0x45, 0x54, 0x45, 0x44, 0x10, 0x06, 0x12, 0x1e, 0x0a, 0x1a, 0x43, 0x4f, 0x4e,
+	0x54, 0x52, 0x41, 0x43, 0x54, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x54, 0x45, 0x52,
+	0x4d, 0x49, 0x4e, 0x41, 0x54, 0x45, 0x44, 0x10, 0x07, 0x32, 0xf6, 0x09, 0x0a, 0x0c, 0x55, 0x73,
+	0x65, 0x72, 0x73, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x3f, 0x0a, 0x0c, 0x52, 0x65,
+	0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x12, 0x16, 0x2e, 0x75, 0x73, 0x65,
+	0x72, 0x73, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x17, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73,
+	0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x36, 0x0a, 0x09, 0x4c,
+	0x6f, 0x67, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x12, 0x13, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73,
+	0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e,
+	0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x3e, 0x0a, 0x09, 0x4c, 0x69, 0x73, 0x74, 0x55, 0x73, 0x65, 0x72, 0x73,
+	0x12, 0x17, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x55, 0x73, 0x65,
+	0x72, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x75, 0x73, 0x65, 0x72,
+	0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x55, 0x73, 0x65, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x41, 0x0a, 0x0a, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65,
+	0x72, 0x12, 0x18, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x19, 0x2e, 0x75, 0x73,
 	0x65, 0x72, 0x73, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x19, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x55, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x12, 0x68, 0x0a, 0x17, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69,
-	0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x25, 0x2e, 0x75, 0x73,
-	0x65, 0x72, 0x73, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69,
-	0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x26, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f,
-	0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x68, 0x0a, 0x17, 0x55, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x25, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x55, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e, 0x75,
-	0x73, 0x65, 0x72, 0x73, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e,
-	0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x68, 0x0a, 0x17, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72,
-	0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12,
-	0x25, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72,
-	0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x44,
-	0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f,
-	0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x62,
-	0x0a, 0x15, 0x4c, 0x69, 0x73, 0x74, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x23, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e,
-	0x4c, 0x69, 0x73, 0x74, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x75,
-	0x73, 0x65, 0x72, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x59, 0x0a, 0x12, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61,
-	0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x20, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x68, 0x0a, 0x17, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x12, 0x25, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73,
 	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x75, 0x73, 0x65,
-	0x72, 0x73, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x59, 0x0a,
-	0x12, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x12, 0x20, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x55, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x59, 0x0a, 0x12, 0x44, 0x65, 0x6c, 0x65,
+	0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x68, 0x0a, 0x17, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69,
+	0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x25, 0x2e, 0x75, 0x73,
+	0x65, 0x72, 0x73, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69,
+	0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x26, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f,
+	0x75, 0x70, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x68, 0x0a, 0x17, 0x44, 0x65,
+	0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x25, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x44, 0x65,
+	0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e, 0x75,
+	0x73, 0x65, 0x72, 0x73, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e,
+	0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x62, 0x0a, 0x15, 0x4c, 0x69, 0x73, 0x74, 0x4f, 0x72, 0x67, 0x61,
+	0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x23, 0x2e,
+	0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69,
+	0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x24, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4f,
+	0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x59, 0x0a, 0x12, 0x43, 0x72, 0x65, 0x61,
 	0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x20,
-	0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72, 0x67,
+	0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67,
 	0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x21, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f,
+	0x1a, 0x21, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f,
 	0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x12, 0x53, 0x0a, 0x10, 0x4c, 0x69, 0x73, 0x74, 0x4f, 0x72, 0x67, 0x61, 0x6e,
-	0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1e, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e,
-	0x4c, 0x69, 0x73, 0x74, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e,
-	0x4c, 0x69, 0x73, 0x74, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4b, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x43,
-	0x6f, 0x75, 0x6e, 0x74, 0x72, 0x69, 0x65, 0x73, 0x12, 0x1c, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73,
-	0x2e, 0x47, 0x65, 0x74, 0x47, 0x65, 0x6f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x47,
-	0x65, 0x74, 0x47, 0x65, 0x6f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4b, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x76,
-	0x69, 0x6e, 0x63, 0x65, 0x73, 0x12, 0x1c, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x47, 0x65,
+	0x6e, 0x73, 0x65, 0x12, 0x59, 0x0a, 0x12, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67,
+	0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x20, 0x2e, 0x75, 0x73, 0x65, 0x72,
+	0x73, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x75, 0x73,
+	0x65, 0x72, 0x73, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69,
+	0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x59,
+	0x0a, 0x12, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x12, 0x20, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x44, 0x65, 0x6c,
+	0x65, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x44,
+	0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x53, 0x0a, 0x10, 0x4c, 0x69, 0x73,
+	0x74, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1e, 0x2e,
+	0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69,
+	0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e,
+	0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69,
+	0x7a, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4b,
+	0x0a, 0x0c, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x69, 0x65, 0x73, 0x12, 0x1c,
+	0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x47, 0x65, 0x6f, 0x6c, 0x6f, 0x63,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x75,
+	0x73, 0x65, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x47, 0x65, 0x6f, 0x6c, 0x6f, 0x63, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4b, 0x0a, 0x0c, 0x47,
+	0x65, 0x74, 0x50, 0x72, 0x6f, 0x76, 0x69, 0x6e, 0x63, 0x65, 0x73, 0x12, 0x1c, 0x2e, 0x75, 0x73,
+	0x65, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x47, 0x65, 0x6f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x75, 0x73, 0x65, 0x72,
+	0x73, 0x2e, 0x47, 0x65, 0x74, 0x47, 0x65, 0x6f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x48, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x43,
+	0x69, 0x74, 0x69, 0x65, 0x73, 0x12, 0x1c, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x47, 0x65,
 	0x74, 0x47, 0x65, 0x6f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x47,
 	0x65, 0x6f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x48, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x43, 0x69, 0x74, 0x69, 0x65, 0x73, 0x12,
-	0x1c, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x47, 0x65, 0x6f, 0x6c, 0x6f,
-	0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e,
-	0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x47, 0x65, 0x6f, 0x6c, 0x6f, 0x63, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x43, 0x5a, 0x41,
-	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x7a, 0x35, 0x38, 0x37,
-	0x34, 0x30, 0x2f, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x2d, 0x6d, 0x69, 0x63, 0x72, 0x6f,
-	0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67,
-	0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x73, 0x3b, 0x75, 0x73, 0x65, 0x72,
-	0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x65, 0x42, 0x43, 0x5a, 0x41, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d,
+	0x2f, 0x61, 0x7a, 0x35, 0x38, 0x37, 0x34, 0x30, 0x2f, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74,
+	0x2d, 0x6d, 0x69, 0x63, 0x72, 0x6f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2d, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x75, 0x73, 0x65, 0x72,
+	0x73, 0x3b, 0x75, 0x73, 0x65, 0x72, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -3137,122 +3437,129 @@ func file_users_users_proto_rawDescGZIP() []byte {
 	return file_users_users_proto_rawDescData
 }
 
-var file_users_users_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_users_users_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
+var file_users_users_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
+var file_users_users_proto_msgTypes = make([]protoimpl.MessageInfo, 43)
 var file_users_users_proto_goTypes = []any{
 	(UserStatus)(0),                         // 0: users.UserStatus
 	(UserType)(0),                           // 1: users.UserType
 	(UserGender)(0),                         // 2: users.UserGender
 	(OrganizationType)(0),                   // 3: users.OrganizationType
-	(*Permission)(nil),                      // 4: users.Permission
-	(*Resource)(nil),                        // 5: users.Resource
-	(*Role)(nil),                            // 6: users.Role
-	(*OrganizationGroup)(nil),               // 7: users.OrganizationGroup
-	(*ContractingParty)(nil),                // 8: users.ContractingParty
-	(*UserProfile)(nil),                     // 9: users.UserProfile
-	(*User)(nil),                            // 10: users.User
-	(*Geolocation)(nil),                     // 11: users.Geolocation
-	(*GeolocationFilter)(nil),               // 12: users.GeolocationFilter
-	(*GetGeolocationRequest)(nil),           // 13: users.GetGeolocationRequest
-	(*GetGeolocationResponse)(nil),          // 14: users.GetGeolocationResponse
-	(*Pagination)(nil),                      // 15: users.Pagination
-	(*UserFilter)(nil),                      // 16: users.UserFilter
-	(*RoleFilter)(nil),                      // 17: users.RoleFilter
-	(*OrganizationGroupFilter)(nil),         // 18: users.OrganizationGroupFilter
-	(*OrganizationFilter)(nil),              // 19: users.OrganizationFilter
-	(*RegisterRequest)(nil),                 // 20: users.RegisterRequest
-	(*RegisterResponse)(nil),                // 21: users.RegisterResponse
-	(*LoginRequest)(nil),                    // 22: users.LoginRequest
-	(*LoginResponse)(nil),                   // 23: users.LoginResponse
-	(*LogoutRequest)(nil),                   // 24: users.LogoutRequest
-	(*LogoutResponse)(nil),                  // 25: users.LogoutResponse
-	(*UpdateUserRequest)(nil),               // 26: users.UpdateUserRequest
-	(*UpdateUserResponse)(nil),              // 27: users.UpdateUserResponse
-	(*ListUsersRequest)(nil),                // 28: users.ListUsersRequest
-	(*ListUsersResponse)(nil),               // 29: users.ListUsersResponse
-	(*CreateOrganizationGroupRequest)(nil),  // 30: users.CreateOrganizationGroupRequest
-	(*CreateOrganizationGroupResponse)(nil), // 31: users.CreateOrganizationGroupResponse
-	(*UpdateOrganizationGroupRequest)(nil),  // 32: users.UpdateOrganizationGroupRequest
-	(*UpdateOrganizationGroupResponse)(nil), // 33: users.UpdateOrganizationGroupResponse
-	(*DeleteOrganizationGroupRequest)(nil),  // 34: users.DeleteOrganizationGroupRequest
-	(*DeleteOrganizationGroupResponse)(nil), // 35: users.DeleteOrganizationGroupResponse
-	(*ListOrganizationGroupRequest)(nil),    // 36: users.ListOrganizationGroupRequest
-	(*ListOrganizationGroupResponse)(nil),   // 37: users.ListOrganizationGroupResponse
-	(*CreateOrganizationRequest)(nil),       // 38: users.CreateOrganizationRequest
-	(*CreateOrganizationResponse)(nil),      // 39: users.CreateOrganizationResponse
-	(*UpdateOrganizationRequest)(nil),       // 40: users.UpdateOrganizationRequest
-	(*UpdateOrganizationResponse)(nil),      // 41: users.UpdateOrganizationResponse
-	(*DeleteOrganizationRequest)(nil),       // 42: users.DeleteOrganizationRequest
-	(*DeleteOrganizationResponse)(nil),      // 43: users.DeleteOrganizationResponse
-	(*ListOrganizationRequest)(nil),         // 44: users.ListOrganizationRequest
-	(*ListOrganizationResponse)(nil),        // 45: users.ListOrganizationResponse
-	(*timestamppb.Timestamp)(nil),           // 46: google.protobuf.Timestamp
+	(ContractStatus)(0),                     // 4: users.ContractStatus
+	(*Permission)(nil),                      // 5: users.Permission
+	(*Resource)(nil),                        // 6: users.Resource
+	(*Role)(nil),                            // 7: users.Role
+	(*OrganizationGroup)(nil),               // 8: users.OrganizationGroup
+	(*ContractingParty)(nil),                // 9: users.ContractingParty
+	(*UserProfile)(nil),                     // 10: users.UserProfile
+	(*User)(nil),                            // 11: users.User
+	(*Contract)(nil),                        // 12: users.Contract
+	(*Geolocation)(nil),                     // 13: users.Geolocation
+	(*GeolocationFilter)(nil),               // 14: users.GeolocationFilter
+	(*GetGeolocationRequest)(nil),           // 15: users.GetGeolocationRequest
+	(*GetGeolocationResponse)(nil),          // 16: users.GetGeolocationResponse
+	(*Pagination)(nil),                      // 17: users.Pagination
+	(*UserFilter)(nil),                      // 18: users.UserFilter
+	(*RoleFilter)(nil),                      // 19: users.RoleFilter
+	(*OrganizationGroupFilter)(nil),         // 20: users.OrganizationGroupFilter
+	(*OrganizationFilter)(nil),              // 21: users.OrganizationFilter
+	(*RegisterRequest)(nil),                 // 22: users.RegisterRequest
+	(*RegisterResponse)(nil),                // 23: users.RegisterResponse
+	(*LoginRequest)(nil),                    // 24: users.LoginRequest
+	(*LoginResponse)(nil),                   // 25: users.LoginResponse
+	(*LogoutRequest)(nil),                   // 26: users.LogoutRequest
+	(*LogoutResponse)(nil),                  // 27: users.LogoutResponse
+	(*UpdateUserRequest)(nil),               // 28: users.UpdateUserRequest
+	(*UpdateUserResponse)(nil),              // 29: users.UpdateUserResponse
+	(*ListUsersRequest)(nil),                // 30: users.ListUsersRequest
+	(*ListUsersResponse)(nil),               // 31: users.ListUsersResponse
+	(*CreateOrganizationGroupRequest)(nil),  // 32: users.CreateOrganizationGroupRequest
+	(*CreateOrganizationGroupResponse)(nil), // 33: users.CreateOrganizationGroupResponse
+	(*UpdateOrganizationGroupRequest)(nil),  // 34: users.UpdateOrganizationGroupRequest
+	(*UpdateOrganizationGroupResponse)(nil), // 35: users.UpdateOrganizationGroupResponse
+	(*DeleteOrganizationGroupRequest)(nil),  // 36: users.DeleteOrganizationGroupRequest
+	(*DeleteOrganizationGroupResponse)(nil), // 37: users.DeleteOrganizationGroupResponse
+	(*ListOrganizationGroupRequest)(nil),    // 38: users.ListOrganizationGroupRequest
+	(*ListOrganizationGroupResponse)(nil),   // 39: users.ListOrganizationGroupResponse
+	(*CreateOrganizationRequest)(nil),       // 40: users.CreateOrganizationRequest
+	(*CreateOrganizationResponse)(nil),      // 41: users.CreateOrganizationResponse
+	(*UpdateOrganizationRequest)(nil),       // 42: users.UpdateOrganizationRequest
+	(*UpdateOrganizationResponse)(nil),      // 43: users.UpdateOrganizationResponse
+	(*DeleteOrganizationRequest)(nil),       // 44: users.DeleteOrganizationRequest
+	(*DeleteOrganizationResponse)(nil),      // 45: users.DeleteOrganizationResponse
+	(*ListOrganizationRequest)(nil),         // 46: users.ListOrganizationRequest
+	(*ListOrganizationResponse)(nil),        // 47: users.ListOrganizationResponse
+	(*timestamppb.Timestamp)(nil),           // 48: google.protobuf.Timestamp
 }
 var file_users_users_proto_depIdxs = []int32{
-	5,  // 0: users.Role.resource:type_name -> users.Resource
-	4,  // 1: users.Role.permissions:type_name -> users.Permission
+	6,  // 0: users.Role.resource:type_name -> users.Resource
+	5,  // 1: users.Role.permissions:type_name -> users.Permission
 	0,  // 2: users.OrganizationGroup.status:type_name -> users.UserStatus
-	7,  // 3: users.ContractingParty.group:type_name -> users.OrganizationGroup
+	8,  // 3: users.ContractingParty.group:type_name -> users.OrganizationGroup
 	3,  // 4: users.ContractingParty.type:type_name -> users.OrganizationType
 	0,  // 5: users.ContractingParty.status:type_name -> users.UserStatus
 	2,  // 6: users.UserProfile.gender:type_name -> users.UserGender
-	9,  // 7: users.User.profile:type_name -> users.UserProfile
-	6,  // 8: users.User.roles:type_name -> users.Role
+	10, // 7: users.User.profile:type_name -> users.UserProfile
+	7,  // 8: users.User.roles:type_name -> users.Role
 	0,  // 9: users.User.status:type_name -> users.UserStatus
-	8,  // 10: users.User.organization:type_name -> users.ContractingParty
+	9,  // 10: users.User.organization:type_name -> users.ContractingParty
 	1,  // 11: users.User.type:type_name -> users.UserType
-	46, // 12: users.User.createdAt:type_name -> google.protobuf.Timestamp
-	46, // 13: users.User.deletedAt:type_name -> google.protobuf.Timestamp
-	12, // 14: users.GetGeolocationRequest.filter:type_name -> users.GeolocationFilter
-	11, // 15: users.GetGeolocationResponse.locations:type_name -> users.Geolocation
-	5,  // 16: users.RoleFilter.resource:type_name -> users.Resource
-	2,  // 17: users.RegisterRequest.gender:type_name -> users.UserGender
-	10, // 18: users.UpdateUserRequest.user:type_name -> users.User
-	15, // 19: users.ListUsersRequest.pagination:type_name -> users.Pagination
-	16, // 20: users.ListUsersRequest.filter:type_name -> users.UserFilter
-	10, // 21: users.ListUsersResponse.users:type_name -> users.User
-	0,  // 22: users.CreateOrganizationGroupRequest.status:type_name -> users.UserStatus
-	7,  // 23: users.UpdateOrganizationGroupRequest.group:type_name -> users.OrganizationGroup
-	18, // 24: users.ListOrganizationGroupRequest.filter:type_name -> users.OrganizationGroupFilter
-	7,  // 25: users.ListOrganizationGroupResponse.groups:type_name -> users.OrganizationGroup
-	8,  // 26: users.UpdateOrganizationRequest.organization:type_name -> users.ContractingParty
-	19, // 27: users.ListOrganizationRequest.filter:type_name -> users.OrganizationFilter
-	8,  // 28: users.ListOrganizationResponse.organizations:type_name -> users.ContractingParty
-	20, // 29: users.UsersService.RegisterUser:input_type -> users.RegisterRequest
-	22, // 30: users.UsersService.LoginUser:input_type -> users.LoginRequest
-	28, // 31: users.UsersService.ListUsers:input_type -> users.ListUsersRequest
-	26, // 32: users.UsersService.UpdateUser:input_type -> users.UpdateUserRequest
-	30, // 33: users.UsersService.CreateOrganizationGroup:input_type -> users.CreateOrganizationGroupRequest
-	32, // 34: users.UsersService.UpdateOrganizationGroup:input_type -> users.UpdateOrganizationGroupRequest
-	34, // 35: users.UsersService.DeleteOrganizationGroup:input_type -> users.DeleteOrganizationGroupRequest
-	36, // 36: users.UsersService.ListOrganizationGroup:input_type -> users.ListOrganizationGroupRequest
-	38, // 37: users.UsersService.CreateOrganization:input_type -> users.CreateOrganizationRequest
-	40, // 38: users.UsersService.UpdateOrganization:input_type -> users.UpdateOrganizationRequest
-	42, // 39: users.UsersService.DeleteOrganization:input_type -> users.DeleteOrganizationRequest
-	44, // 40: users.UsersService.ListOrganization:input_type -> users.ListOrganizationRequest
-	13, // 41: users.UsersService.GetCountries:input_type -> users.GetGeolocationRequest
-	13, // 42: users.UsersService.GetProvinces:input_type -> users.GetGeolocationRequest
-	13, // 43: users.UsersService.GetCities:input_type -> users.GetGeolocationRequest
-	21, // 44: users.UsersService.RegisterUser:output_type -> users.RegisterResponse
-	23, // 45: users.UsersService.LoginUser:output_type -> users.LoginResponse
-	29, // 46: users.UsersService.ListUsers:output_type -> users.ListUsersResponse
-	27, // 47: users.UsersService.UpdateUser:output_type -> users.UpdateUserResponse
-	31, // 48: users.UsersService.CreateOrganizationGroup:output_type -> users.CreateOrganizationGroupResponse
-	33, // 49: users.UsersService.UpdateOrganizationGroup:output_type -> users.UpdateOrganizationGroupResponse
-	35, // 50: users.UsersService.DeleteOrganizationGroup:output_type -> users.DeleteOrganizationGroupResponse
-	37, // 51: users.UsersService.ListOrganizationGroup:output_type -> users.ListOrganizationGroupResponse
-	39, // 52: users.UsersService.CreateOrganization:output_type -> users.CreateOrganizationResponse
-	41, // 53: users.UsersService.UpdateOrganization:output_type -> users.UpdateOrganizationResponse
-	43, // 54: users.UsersService.DeleteOrganization:output_type -> users.DeleteOrganizationResponse
-	45, // 55: users.UsersService.ListOrganization:output_type -> users.ListOrganizationResponse
-	14, // 56: users.UsersService.GetCountries:output_type -> users.GetGeolocationResponse
-	14, // 57: users.UsersService.GetProvinces:output_type -> users.GetGeolocationResponse
-	14, // 58: users.UsersService.GetCities:output_type -> users.GetGeolocationResponse
-	44, // [44:59] is the sub-list for method output_type
-	29, // [29:44] is the sub-list for method input_type
-	29, // [29:29] is the sub-list for extension type_name
-	29, // [29:29] is the sub-list for extension extendee
-	0,  // [0:29] is the sub-list for field type_name
+	48, // 12: users.User.createdAt:type_name -> google.protobuf.Timestamp
+	48, // 13: users.User.deletedAt:type_name -> google.protobuf.Timestamp
+	4,  // 14: users.Contract.status:type_name -> users.ContractStatus
+	48, // 15: users.Contract.startDate:type_name -> google.protobuf.Timestamp
+	48, // 16: users.Contract.endDate:type_name -> google.protobuf.Timestamp
+	48, // 17: users.Contract.createdAt:type_name -> google.protobuf.Timestamp
+	48, // 18: users.Contract.updatedAt:type_name -> google.protobuf.Timestamp
+	14, // 19: users.GetGeolocationRequest.filter:type_name -> users.GeolocationFilter
+	13, // 20: users.GetGeolocationResponse.locations:type_name -> users.Geolocation
+	6,  // 21: users.RoleFilter.resource:type_name -> users.Resource
+	2,  // 22: users.RegisterRequest.gender:type_name -> users.UserGender
+	11, // 23: users.UpdateUserRequest.user:type_name -> users.User
+	17, // 24: users.ListUsersRequest.pagination:type_name -> users.Pagination
+	18, // 25: users.ListUsersRequest.filter:type_name -> users.UserFilter
+	11, // 26: users.ListUsersResponse.users:type_name -> users.User
+	0,  // 27: users.CreateOrganizationGroupRequest.status:type_name -> users.UserStatus
+	8,  // 28: users.UpdateOrganizationGroupRequest.group:type_name -> users.OrganizationGroup
+	20, // 29: users.ListOrganizationGroupRequest.filter:type_name -> users.OrganizationGroupFilter
+	8,  // 30: users.ListOrganizationGroupResponse.groups:type_name -> users.OrganizationGroup
+	9,  // 31: users.UpdateOrganizationRequest.organization:type_name -> users.ContractingParty
+	21, // 32: users.ListOrganizationRequest.filter:type_name -> users.OrganizationFilter
+	9,  // 33: users.ListOrganizationResponse.organizations:type_name -> users.ContractingParty
+	22, // 34: users.UsersService.RegisterUser:input_type -> users.RegisterRequest
+	24, // 35: users.UsersService.LoginUser:input_type -> users.LoginRequest
+	30, // 36: users.UsersService.ListUsers:input_type -> users.ListUsersRequest
+	28, // 37: users.UsersService.UpdateUser:input_type -> users.UpdateUserRequest
+	32, // 38: users.UsersService.CreateOrganizationGroup:input_type -> users.CreateOrganizationGroupRequest
+	34, // 39: users.UsersService.UpdateOrganizationGroup:input_type -> users.UpdateOrganizationGroupRequest
+	36, // 40: users.UsersService.DeleteOrganizationGroup:input_type -> users.DeleteOrganizationGroupRequest
+	38, // 41: users.UsersService.ListOrganizationGroup:input_type -> users.ListOrganizationGroupRequest
+	40, // 42: users.UsersService.CreateOrganization:input_type -> users.CreateOrganizationRequest
+	42, // 43: users.UsersService.UpdateOrganization:input_type -> users.UpdateOrganizationRequest
+	44, // 44: users.UsersService.DeleteOrganization:input_type -> users.DeleteOrganizationRequest
+	46, // 45: users.UsersService.ListOrganization:input_type -> users.ListOrganizationRequest
+	15, // 46: users.UsersService.GetCountries:input_type -> users.GetGeolocationRequest
+	15, // 47: users.UsersService.GetProvinces:input_type -> users.GetGeolocationRequest
+	15, // 48: users.UsersService.GetCities:input_type -> users.GetGeolocationRequest
+	23, // 49: users.UsersService.RegisterUser:output_type -> users.RegisterResponse
+	25, // 50: users.UsersService.LoginUser:output_type -> users.LoginResponse
+	31, // 51: users.UsersService.ListUsers:output_type -> users.ListUsersResponse
+	29, // 52: users.UsersService.UpdateUser:output_type -> users.UpdateUserResponse
+	33, // 53: users.UsersService.CreateOrganizationGroup:output_type -> users.CreateOrganizationGroupResponse
+	35, // 54: users.UsersService.UpdateOrganizationGroup:output_type -> users.UpdateOrganizationGroupResponse
+	37, // 55: users.UsersService.DeleteOrganizationGroup:output_type -> users.DeleteOrganizationGroupResponse
+	39, // 56: users.UsersService.ListOrganizationGroup:output_type -> users.ListOrganizationGroupResponse
+	41, // 57: users.UsersService.CreateOrganization:output_type -> users.CreateOrganizationResponse
+	43, // 58: users.UsersService.UpdateOrganization:output_type -> users.UpdateOrganizationResponse
+	45, // 59: users.UsersService.DeleteOrganization:output_type -> users.DeleteOrganizationResponse
+	47, // 60: users.UsersService.ListOrganization:output_type -> users.ListOrganizationResponse
+	16, // 61: users.UsersService.GetCountries:output_type -> users.GetGeolocationResponse
+	16, // 62: users.UsersService.GetProvinces:output_type -> users.GetGeolocationResponse
+	16, // 63: users.UsersService.GetCities:output_type -> users.GetGeolocationResponse
+	49, // [49:64] is the sub-list for method output_type
+	34, // [34:49] is the sub-list for method input_type
+	34, // [34:34] is the sub-list for extension type_name
+	34, // [34:34] is the sub-list for extension extendee
+	0,  // [0:34] is the sub-list for field type_name
 }
 
 func init() { file_users_users_proto_init() }
@@ -3260,17 +3567,17 @@ func file_users_users_proto_init() {
 	if File_users_users_proto != nil {
 		return
 	}
-	file_users_users_proto_msgTypes[11].OneofWrappers = []any{}
-	file_users_users_proto_msgTypes[14].OneofWrappers = []any{}
+	file_users_users_proto_msgTypes[12].OneofWrappers = []any{}
 	file_users_users_proto_msgTypes[15].OneofWrappers = []any{}
-	file_users_users_proto_msgTypes[34].OneofWrappers = []any{}
+	file_users_users_proto_msgTypes[16].OneofWrappers = []any{}
+	file_users_users_proto_msgTypes[35].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_users_users_proto_rawDesc,
-			NumEnums:      4,
-			NumMessages:   42,
+			NumEnums:      5,
+			NumMessages:   43,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

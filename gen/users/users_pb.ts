@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file users/users.proto.
  */
 export const file_users_users: GenFile = /*@__PURE__*/
-  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMgoKUGVybWlzc2lvbhIUCgxwZXJtaXNzaW9uSWQYASABKAkSDgoGYWN0aW9uGAIgASgJIjQKCFJlc291cmNlEhIKCnJlc291cmNlSWQYASABKAkSFAoMcmVzb3VyY2VOYW1lGAIgASgJIogBCgRSb2xlEg4KBnJvbGVJZBgBIAEoCRIQCghyb2xlTmFtZRgCIAEoCRIhCghyZXNvdXJjZRgDIAEoCzIPLnVzZXJzLlJlc291cmNlEhMKC2Rlc2NyaXB0aW9uGAQgASgJEiYKC3Blcm1pc3Npb25zGAUgAygLMhEudXNlcnMuUGVybWlzc2lvbiJlChFPcmdhbml6YXRpb25Hcm91cBIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEhMKC2Rlc2NyaXB0aW9uGAMgASgJEiEKBnN0YXR1cxgEIAEoDjIRLnVzZXJzLlVzZXJTdGF0dXMizAEKEENvbnRyYWN0aW5nUGFydHkSFgoOb3JnYW5pemF0aW9uSWQYASABKAkSGAoQb3JnYW5pemF0aW9uTmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRInCgVncm91cBgEIAEoCzIYLnVzZXJzLk9yZ2FuaXphdGlvbkdyb3VwEiUKBHR5cGUYBSABKA4yFy51c2Vycy5Pcmdhbml6YXRpb25UeXBlEiEKBnN0YXR1cxgGIAEoDjIRLnVzZXJzLlVzZXJTdGF0dXMigQIKC1VzZXJQcm9maWxlEhAKCGZ1bGxOYW1lGAEgASgJEg0KBWVtYWlsGAIgASgJEhMKC3Bob25lTnVtYmVyGAMgASgJEg8KB2NvdW50cnkYBCABKAkSEAoIcHJvdmluY2UYBSABKAkSDAoEY2l0eRgGIAEoCRIUCgxhZGRyZXNzTGluZTEYByABKAkSFAoMYWRkcmVzc0xpbmUyGAggASgJEg8KB3ppcENvZGUYCSABKAkSCwoDaW1nGAogASgJEiEKBmdlbmRlchgLIAEoDjIRLnVzZXJzLlVzZXJHZW5kZXISHgoWcGhvbmVudW1iZXJSZXNlcnZhdGlvbhgMIAEoCSLjAgoEVXNlchIOCgZ1c2VySWQYASABKAkSIwoHcHJvZmlsZRgCIAEoCzISLnVzZXJzLlVzZXJQcm9maWxlEhoKBXJvbGVzGAMgAygLMgsudXNlcnMuUm9sZRIhCgZzdGF0dXMYBCABKA4yES51c2Vycy5Vc2VyU3RhdHVzEi0KDG9yZ2FuaXphdGlvbhgFIAEoCzIXLnVzZXJzLkNvbnRyYWN0aW5nUGFydHkSEAoIdXNlcm5hbWUYBiABKAkSFAoMcGFzc3dvcmRIYXNoGAcgASgJEh0KBHR5cGUYCCABKA4yDy51c2Vycy5Vc2VyVHlwZRITCgtkZXNjcmlwdGlvbhgJIAEoCRItCgljcmVhdGVkQXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi0KCWRlbGV0ZWRBdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiJQoLR2VvbG9jYXRpb24SCgoCZW4YASABKAkSCgoCZmEYAiABKAkiHwoRR2VvbG9jYXRpb25GaWx0ZXISCgoCZW4YASABKAkiQQoVR2V0R2VvbG9jYXRpb25SZXF1ZXN0EigKBmZpbHRlchgBIAEoCzIYLnVzZXJzLkdlb2xvY2F0aW9uRmlsdGVyIj8KFkdldEdlb2xvY2F0aW9uUmVzcG9uc2USJQoJbG9jYXRpb25zGAEgAygLMhIudXNlcnMuR2VvbG9jYXRpb24igQEKClBhZ2luYXRpb24SDAoEcGFnZRgBIAEoBRIRCglwYWdlX3NpemUYAiABKAUSFAoHc29ydF9ieRgDIAEoCUgAiAEBEhwKD3NvcnRfZGVzY2VuZGluZxgEIAEoCEgBiAEBQgoKCF9zb3J0X2J5QhIKEF9zb3J0X2Rlc2NlbmRpbmci1QEKClVzZXJGaWx0ZXISDwoHdXNlcl9pZBgBIAEoCRIQCgh1c2VybmFtZRgCIAEoCRINCgVlbWFpbBgDIAEoCRIQCghyb2xlX2lkcxgEIAEoCRIXCg9vcmdhbml6YXRpb25faWQYBSABKAkSFAoMdXNlcl9zdGF0dXNlGAYgASgJEg8KB2NvdW50cnkYByABKAkSEAoIcHJvdmluY2UYCCABKAkSDAoEY2l0eRgJIAEoCRIRCgl1c2VyX3R5cGUYCiABKAkSEAoIZ3JvdXBfaWQYCyABKAkiLwoKUm9sZUZpbHRlchIhCghyZXNvdXJjZRgBIAEoCzIPLnVzZXJzLlJlc291cmNlIpMBChdPcmdhbml6YXRpb25Hcm91cEZpbHRlchIVCghncm91cF9pZBgBIAEoCUgAiAEBEhcKCmdyb3VwX25hbWUYAiABKAlIAYgBARIaCg1ncm91cF9zdGF0dXNlGAMgASgJSAKIAQFCCwoJX2dyb3VwX2lkQg0KC19ncm91cF9uYW1lQhAKDl9ncm91cF9zdGF0dXNlIr4BChJPcmdhbml6YXRpb25GaWx0ZXISHAoPb3JnYW5pemF0aW9uX2lkGAEgASgJSACIAQESIQoUb3JnYW5pemF0aW9uZ3JvdXBfaWQYAiABKAlIAYgBARIhChRvcmdhbml6YXRpb25fc3RhdHVzZRgDIAEoCUgCiAEBQhIKEF9vcmdhbml6YXRpb25faWRCFwoVX29yZ2FuaXphdGlvbmdyb3VwX2lkQhcKFV9vcmdhbml6YXRpb25fc3RhdHVzZSKKAQoPUmVnaXN0ZXJSZXF1ZXN0EgwKBG5hbWUYASABKAkSDQoFZW1haWwYAiABKAkSEwoLcGhvbmVudW1iZXIYAyABKAkSEAoIdXNlcm5hbWUYBCABKAkSEAoIcGFzc3dvcmQYBSABKAkSIQoGZ2VuZGVyGAYgASgOMhEudXNlcnMuVXNlckdlbmRlciI0ChBSZWdpc3RlclJlc3BvbnNlEg8KB3VzZXJfaWQYASABKAkSDwoHbWVzc2FnZRgCIAEoCSIyCgxMb2dpblJlcXVlc3QSEAoIdXNlcm5hbWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAkiLwoNTG9naW5SZXNwb25zZRINCgV0b2tlbhgBIAEoCRIPCgdzdWNjZXNzGAIgASgIIiAKDUxvZ291dFJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCSIhCg5Mb2dvdXRSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIIi4KEVVwZGF0ZVVzZXJSZXF1ZXN0EhkKBHVzZXIYASABKAsyCy51c2Vycy5Vc2VyIiUKElVwZGF0ZVVzZXJSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIlwKEExpc3RVc2Vyc1JlcXVlc3QSJQoKcGFnaW5hdGlvbhgBIAEoCzIRLnVzZXJzLlBhZ2luYXRpb24SIQoGZmlsdGVyGAIgASgLMhEudXNlcnMuVXNlckZpbHRlciJdChFMaXN0VXNlcnNSZXNwb25zZRIaCgV1c2VycxgBIAMoCzILLnVzZXJzLlVzZXISFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJEhMKC3RvdGFsX3BhZ2VzGAMgASgFImYKHkNyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBIMCgRuYW1lGAEgASgJEhMKC2Rlc2NyaXB0aW9uGAIgASgJEiEKBnN0YXR1cxgDIAEoDjIRLnVzZXJzLlVzZXJTdGF0dXMiMgofQ3JlYXRlT3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIkkKHlVwZGF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBInCgVncm91cBgBIAEoCzIYLnVzZXJzLk9yZ2FuaXphdGlvbkdyb3VwIjIKH1VwZGF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSIyCh5EZWxldGVPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QSEAoIZ3JvdXBfaWQYASABKAkiMgofRGVsZXRlT3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIk4KHExpc3RPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QSLgoGZmlsdGVyGAEgASgLMh4udXNlcnMuT3JnYW5pemF0aW9uR3JvdXBGaWx0ZXIiSQodTGlzdE9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USKAoGZ3JvdXBzGAEgAygLMhgudXNlcnMuT3JnYW5pemF0aW9uR3JvdXAinAEKGUNyZWF0ZU9yZ2FuaXphdGlvblJlcXVlc3QSGQoRb3JnYW5pemF0aW9uX25hbWUYASABKAkSIQoUb3JnYW5pemF0aW9uZ3JvdXBfaWQYAiABKAlIAIgBARIYCgtkZXNjcmlwdGlvbhgDIAEoCUgBiAEBQhcKFV9vcmdhbml6YXRpb25ncm91cF9pZEIOCgxfZGVzY3JpcHRpb24iRgoaQ3JlYXRlT3JnYW5pemF0aW9uUmVzcG9uc2USFwoPb3JnYW5pemF0aW9uX2lkGAEgASgJEg8KB21lc3NhZ2UYAiABKAkiSgoZVXBkYXRlT3JnYW5pemF0aW9uUmVxdWVzdBItCgxvcmdhbml6YXRpb24YASABKAsyFy51c2Vycy5Db250cmFjdGluZ1BhcnR5Ii0KGlVwZGF0ZU9yZ2FuaXphdGlvblJlc3BvbnNlEg8KB21lc3NhZ2UYAiABKAkiNAoZRGVsZXRlT3JnYW5pemF0aW9uUmVxdWVzdBIXCg9vcmdhbml6YXRpb25faWQYASABKAkiLQoaRGVsZXRlT3JnYW5pemF0aW9uUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSJEChdMaXN0T3JnYW5pemF0aW9uUmVxdWVzdBIpCgZmaWx0ZXIYASABKAsyGS51c2Vycy5Pcmdhbml6YXRpb25GaWx0ZXIiSgoYTGlzdE9yZ2FuaXphdGlvblJlc3BvbnNlEi4KDW9yZ2FuaXphdGlvbnMYASADKAsyFy51c2Vycy5Db250cmFjdGluZ1BhcnR5Ko8BCgpVc2VyU3RhdHVzEhsKF1VTRVJfU1RBVFVTX1VOU1BFQ0lGSUVEEAASFgoSVVNFUl9TVEFUVVNfQUNUSVZFEAESGAoUVVNFUl9TVEFUVVNfSU5BQ1RJVkUQAhIZChVVU0VSX1NUQVRVU19TVVNQRU5ERUQQAxIXChNVU0VSX1NUQVRVU19ERUxFVEVEEAQqPgoIVXNlclR5cGUSFQoRVVNFUl9UeXBlX0RFRkFVTFQQABIbChdVU0VSX1R5cGVfQ09OVFJBQ1RQQVJUWRABKjoKClVzZXJHZW5kZXISFAoQVVNFUl9HZW5kZXJfTWFsZRAAEhYKElVTRVJfR2VuZGVyX0ZlbWFsZRABKn0KEE9yZ2FuaXphdGlvblR5cGUSFAoQT1JHX1R5cGVfREVGQVVMVBAAEhAKDFNQT1JUU19HUk9VUBABEhgKFFJFQ1JFQVRJT05BTF9DRU5URVJTEAISEQoNU0FMRVNfQ0VOVEVSUxADEhQKEE1FRElDQUxfU0VSVklDRVMQBDL2CQoMVXNlcnNTZXJ2aWNlEj8KDFJlZ2lzdGVyVXNlchIWLnVzZXJzLlJlZ2lzdGVyUmVxdWVzdBoXLnVzZXJzLlJlZ2lzdGVyUmVzcG9uc2USNgoJTG9naW5Vc2VyEhMudXNlcnMuTG9naW5SZXF1ZXN0GhQudXNlcnMuTG9naW5SZXNwb25zZRI+CglMaXN0VXNlcnMSFy51c2Vycy5MaXN0VXNlcnNSZXF1ZXN0GhgudXNlcnMuTGlzdFVzZXJzUmVzcG9uc2USQQoKVXBkYXRlVXNlchIYLnVzZXJzLlVwZGF0ZVVzZXJSZXF1ZXN0GhkudXNlcnMuVXBkYXRlVXNlclJlc3BvbnNlEmgKF0NyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwEiUudXNlcnMuQ3JlYXRlT3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0GiYudXNlcnMuQ3JlYXRlT3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRJoChdVcGRhdGVPcmdhbml6YXRpb25Hcm91cBIlLnVzZXJzLlVwZGF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBomLnVzZXJzLlVwZGF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USaAoXRGVsZXRlT3JnYW5pemF0aW9uR3JvdXASJS51c2Vycy5EZWxldGVPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QaJi51c2Vycy5EZWxldGVPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlEmIKFUxpc3RPcmdhbml6YXRpb25Hcm91cBIjLnVzZXJzLkxpc3RPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QaJC51c2Vycy5MaXN0T3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRJZChJDcmVhdGVPcmdhbml6YXRpb24SIC51c2Vycy5DcmVhdGVPcmdhbml6YXRpb25SZXF1ZXN0GiEudXNlcnMuQ3JlYXRlT3JnYW5pemF0aW9uUmVzcG9uc2USWQoSVXBkYXRlT3JnYW5pemF0aW9uEiAudXNlcnMuVXBkYXRlT3JnYW5pemF0aW9uUmVxdWVzdBohLnVzZXJzLlVwZGF0ZU9yZ2FuaXphdGlvblJlc3BvbnNlElkKEkRlbGV0ZU9yZ2FuaXphdGlvbhIgLnVzZXJzLkRlbGV0ZU9yZ2FuaXphdGlvblJlcXVlc3QaIS51c2Vycy5EZWxldGVPcmdhbml6YXRpb25SZXNwb25zZRJTChBMaXN0T3JnYW5pemF0aW9uEh4udXNlcnMuTGlzdE9yZ2FuaXphdGlvblJlcXVlc3QaHy51c2Vycy5MaXN0T3JnYW5pemF0aW9uUmVzcG9uc2USSwoMR2V0Q291bnRyaWVzEhwudXNlcnMuR2V0R2VvbG9jYXRpb25SZXF1ZXN0Gh0udXNlcnMuR2V0R2VvbG9jYXRpb25SZXNwb25zZRJLCgxHZXRQcm92aW5jZXMSHC51c2Vycy5HZXRHZW9sb2NhdGlvblJlcXVlc3QaHS51c2Vycy5HZXRHZW9sb2NhdGlvblJlc3BvbnNlEkgKCUdldENpdGllcxIcLnVzZXJzLkdldEdlb2xvY2F0aW9uUmVxdWVzdBodLnVzZXJzLkdldEdlb2xvY2F0aW9uUmVzcG9uc2VCQ1pBZ2l0aHViLmNvbS9hejU4NzQwL2Nvbm5lY3QtbWljcm9zZXJ2aWNlcy1wcm90by9nb2xhbmcvdXNlcnM7dXNlcnNiBnByb3RvMw", [file_google_protobuf_timestamp]);
+  fileDesc("ChF1c2Vycy91c2Vycy5wcm90bxIFdXNlcnMiMgoKUGVybWlzc2lvbhIUCgxwZXJtaXNzaW9uSWQYASABKAkSDgoGYWN0aW9uGAIgASgJIjQKCFJlc291cmNlEhIKCnJlc291cmNlSWQYASABKAkSFAoMcmVzb3VyY2VOYW1lGAIgASgJIogBCgRSb2xlEg4KBnJvbGVJZBgBIAEoCRIQCghyb2xlTmFtZRgCIAEoCRIhCghyZXNvdXJjZRgDIAEoCzIPLnVzZXJzLlJlc291cmNlEhMKC2Rlc2NyaXB0aW9uGAQgASgJEiYKC3Blcm1pc3Npb25zGAUgAygLMhEudXNlcnMuUGVybWlzc2lvbiJlChFPcmdhbml6YXRpb25Hcm91cBIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEhMKC2Rlc2NyaXB0aW9uGAMgASgJEiEKBnN0YXR1cxgEIAEoDjIRLnVzZXJzLlVzZXJTdGF0dXMizAEKEENvbnRyYWN0aW5nUGFydHkSFgoOb3JnYW5pemF0aW9uSWQYASABKAkSGAoQb3JnYW5pemF0aW9uTmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRInCgVncm91cBgEIAEoCzIYLnVzZXJzLk9yZ2FuaXphdGlvbkdyb3VwEiUKBHR5cGUYBSABKA4yFy51c2Vycy5Pcmdhbml6YXRpb25UeXBlEiEKBnN0YXR1cxgGIAEoDjIRLnVzZXJzLlVzZXJTdGF0dXMigQIKC1VzZXJQcm9maWxlEhAKCGZ1bGxOYW1lGAEgASgJEg0KBWVtYWlsGAIgASgJEhMKC3Bob25lTnVtYmVyGAMgASgJEg8KB2NvdW50cnkYBCABKAkSEAoIcHJvdmluY2UYBSABKAkSDAoEY2l0eRgGIAEoCRIUCgxhZGRyZXNzTGluZTEYByABKAkSFAoMYWRkcmVzc0xpbmUyGAggASgJEg8KB3ppcENvZGUYCSABKAkSCwoDaW1nGAogASgJEiEKBmdlbmRlchgLIAEoDjIRLnVzZXJzLlVzZXJHZW5kZXISHgoWcGhvbmVudW1iZXJSZXNlcnZhdGlvbhgMIAEoCSLjAgoEVXNlchIOCgZ1c2VySWQYASABKAkSIwoHcHJvZmlsZRgCIAEoCzISLnVzZXJzLlVzZXJQcm9maWxlEhoKBXJvbGVzGAMgAygLMgsudXNlcnMuUm9sZRIhCgZzdGF0dXMYBCABKA4yES51c2Vycy5Vc2VyU3RhdHVzEi0KDG9yZ2FuaXphdGlvbhgFIAEoCzIXLnVzZXJzLkNvbnRyYWN0aW5nUGFydHkSEAoIdXNlcm5hbWUYBiABKAkSFAoMcGFzc3dvcmRIYXNoGAcgASgJEh0KBHR5cGUYCCABKA4yDy51c2Vycy5Vc2VyVHlwZRITCgtkZXNjcmlwdGlvbhgJIAEoCRItCgljcmVhdGVkQXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi0KCWRlbGV0ZWRBdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiuwMKCENvbnRyYWN0EhIKCmNvbnRyYWN0SWQYASABKAkSEgoKZW1wbG95ZXJJZBgCIAEoCRISCgplbXBsb3llZUlkGAMgASgJEg0KBXRpdGxlGAQgASgJEhMKC2Rlc2NyaXB0aW9uGAUgASgJEg4KBmFtb3VudBgGIAEoARIQCghjdXJyZW5jeRgHIAEoCRIlCgZzdGF0dXMYCCABKA4yFS51c2Vycy5Db250cmFjdFN0YXR1cxItCglzdGFydERhdGUYCSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEisKB2VuZERhdGUYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEg0KBXRlcm1zGAsgASgJEi0KCWNyZWF0ZWRBdBgMIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLQoJdXBkYXRlZEF0GA0gASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIeChZjb250cmFjdFJlcXVlc3RGaWxlVXJsGA4gASgJEh0KFXNpZ25lZENvbnRyYWN0RmlsZVVybBgPIAEoCSIlCgtHZW9sb2NhdGlvbhIKCgJlbhgBIAEoCRIKCgJmYRgCIAEoCSIfChFHZW9sb2NhdGlvbkZpbHRlchIKCgJlbhgBIAEoCSJBChVHZXRHZW9sb2NhdGlvblJlcXVlc3QSKAoGZmlsdGVyGAEgASgLMhgudXNlcnMuR2VvbG9jYXRpb25GaWx0ZXIiPwoWR2V0R2VvbG9jYXRpb25SZXNwb25zZRIlCglsb2NhdGlvbnMYASADKAsyEi51c2Vycy5HZW9sb2NhdGlvbiKBAQoKUGFnaW5hdGlvbhIMCgRwYWdlGAEgASgFEhEKCXBhZ2Vfc2l6ZRgCIAEoBRIUCgdzb3J0X2J5GAMgASgJSACIAQESHAoPc29ydF9kZXNjZW5kaW5nGAQgASgISAGIAQFCCgoIX3NvcnRfYnlCEgoQX3NvcnRfZGVzY2VuZGluZyLVAQoKVXNlckZpbHRlchIPCgd1c2VyX2lkGAEgASgJEhAKCHVzZXJuYW1lGAIgASgJEg0KBWVtYWlsGAMgASgJEhAKCHJvbGVfaWRzGAQgASgJEhcKD29yZ2FuaXphdGlvbl9pZBgFIAEoCRIUCgx1c2VyX3N0YXR1c2UYBiABKAkSDwoHY291bnRyeRgHIAEoCRIQCghwcm92aW5jZRgIIAEoCRIMCgRjaXR5GAkgASgJEhEKCXVzZXJfdHlwZRgKIAEoCRIQCghncm91cF9pZBgLIAEoCSIvCgpSb2xlRmlsdGVyEiEKCHJlc291cmNlGAEgASgLMg8udXNlcnMuUmVzb3VyY2UikwEKF09yZ2FuaXphdGlvbkdyb3VwRmlsdGVyEhUKCGdyb3VwX2lkGAEgASgJSACIAQESFwoKZ3JvdXBfbmFtZRgCIAEoCUgBiAEBEhoKDWdyb3VwX3N0YXR1c2UYAyABKAlIAogBAUILCglfZ3JvdXBfaWRCDQoLX2dyb3VwX25hbWVCEAoOX2dyb3VwX3N0YXR1c2UivgEKEk9yZ2FuaXphdGlvbkZpbHRlchIcCg9vcmdhbml6YXRpb25faWQYASABKAlIAIgBARIhChRvcmdhbml6YXRpb25ncm91cF9pZBgCIAEoCUgBiAEBEiEKFG9yZ2FuaXphdGlvbl9zdGF0dXNlGAMgASgJSAKIAQFCEgoQX29yZ2FuaXphdGlvbl9pZEIXChVfb3JnYW5pemF0aW9uZ3JvdXBfaWRCFwoVX29yZ2FuaXphdGlvbl9zdGF0dXNlIooBCg9SZWdpc3RlclJlcXVlc3QSDAoEbmFtZRgBIAEoCRINCgVlbWFpbBgCIAEoCRITCgtwaG9uZW51bWJlchgDIAEoCRIQCgh1c2VybmFtZRgEIAEoCRIQCghwYXNzd29yZBgFIAEoCRIhCgZnZW5kZXIYBiABKA4yES51c2Vycy5Vc2VyR2VuZGVyIjQKEFJlZ2lzdGVyUmVzcG9uc2USDwoHdXNlcl9pZBgBIAEoCRIPCgdtZXNzYWdlGAIgASgJIjIKDExvZ2luUmVxdWVzdBIQCgh1c2VybmFtZRgBIAEoCRIQCghwYXNzd29yZBgCIAEoCSIvCg1Mb2dpblJlc3BvbnNlEg0KBXRva2VuGAEgASgJEg8KB3N1Y2Nlc3MYAiABKAgiIAoNTG9nb3V0UmVxdWVzdBIPCgd1c2VyX2lkGAEgASgJIiEKDkxvZ291dFJlc3BvbnNlEg8KB3N1Y2Nlc3MYASABKAgiLgoRVXBkYXRlVXNlclJlcXVlc3QSGQoEdXNlchgBIAEoCzILLnVzZXJzLlVzZXIiJQoSVXBkYXRlVXNlclJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiXAoQTGlzdFVzZXJzUmVxdWVzdBIlCgpwYWdpbmF0aW9uGAEgASgLMhEudXNlcnMuUGFnaW5hdGlvbhIhCgZmaWx0ZXIYAiABKAsyES51c2Vycy5Vc2VyRmlsdGVyIl0KEUxpc3RVc2Vyc1Jlc3BvbnNlEhoKBXVzZXJzGAEgAygLMgsudXNlcnMuVXNlchIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkSEwoLdG90YWxfcGFnZXMYAyABKAUiZgoeQ3JlYXRlT3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0EgwKBG5hbWUYASABKAkSEwoLZGVzY3JpcHRpb24YAiABKAkSIQoGc3RhdHVzGAMgASgOMhEudXNlcnMuVXNlclN0YXR1cyIyCh9DcmVhdGVPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiSQoeVXBkYXRlT3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0EicKBWdyb3VwGAEgASgLMhgudXNlcnMuT3JnYW5pemF0aW9uR3JvdXAiMgofVXBkYXRlT3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIjIKHkRlbGV0ZU9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBIQCghncm91cF9pZBgBIAEoCSIyCh9EZWxldGVPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiTgocTGlzdE9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBIuCgZmaWx0ZXIYASABKAsyHi51c2Vycy5Pcmdhbml6YXRpb25Hcm91cEZpbHRlciJJCh1MaXN0T3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRIoCgZncm91cHMYASADKAsyGC51c2Vycy5Pcmdhbml6YXRpb25Hcm91cCKcAQoZQ3JlYXRlT3JnYW5pemF0aW9uUmVxdWVzdBIZChFvcmdhbml6YXRpb25fbmFtZRgBIAEoCRIhChRvcmdhbml6YXRpb25ncm91cF9pZBgCIAEoCUgAiAEBEhgKC2Rlc2NyaXB0aW9uGAMgASgJSAGIAQFCFwoVX29yZ2FuaXphdGlvbmdyb3VwX2lkQg4KDF9kZXNjcmlwdGlvbiJGChpDcmVhdGVPcmdhbml6YXRpb25SZXNwb25zZRIXCg9vcmdhbml6YXRpb25faWQYASABKAkSDwoHbWVzc2FnZRgCIAEoCSJKChlVcGRhdGVPcmdhbml6YXRpb25SZXF1ZXN0Ei0KDG9yZ2FuaXphdGlvbhgBIAEoCzIXLnVzZXJzLkNvbnRyYWN0aW5nUGFydHkiLQoaVXBkYXRlT3JnYW5pemF0aW9uUmVzcG9uc2USDwoHbWVzc2FnZRgCIAEoCSI0ChlEZWxldGVPcmdhbml6YXRpb25SZXF1ZXN0EhcKD29yZ2FuaXphdGlvbl9pZBgBIAEoCSItChpEZWxldGVPcmdhbml6YXRpb25SZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIkQKF0xpc3RPcmdhbml6YXRpb25SZXF1ZXN0EikKBmZpbHRlchgBIAEoCzIZLnVzZXJzLk9yZ2FuaXphdGlvbkZpbHRlciJKChhMaXN0T3JnYW5pemF0aW9uUmVzcG9uc2USLgoNb3JnYW5pemF0aW9ucxgBIAMoCzIXLnVzZXJzLkNvbnRyYWN0aW5nUGFydHkqjwEKClVzZXJTdGF0dXMSGwoXVVNFUl9TVEFUVVNfVU5TUEVDSUZJRUQQABIWChJVU0VSX1NUQVRVU19BQ1RJVkUQARIYChRVU0VSX1NUQVRVU19JTkFDVElWRRACEhkKFVVTRVJfU1RBVFVTX1NVU1BFTkRFRBADEhcKE1VTRVJfU1RBVFVTX0RFTEVURUQQBCq4AQoIVXNlclR5cGUSFQoRVVNFUl9UWVBFX0RFRkFVTFQQABITCg9VU0VSX1RZUEVfQURNSU4QARIcChhVU0VSX1RZUEVfQ09OVFJBQ1RfUEFSVFkQAhIfChtVU0VSX1RZUEVfQ09OVFJBQ1RfRU1QTE9ZRUUQAxIfChtVU0VSX1RZUEVfQ09OVFJBQ1RfRU1QTE9ZRVIQBBIgChxVU0VSX1RZUEVfQ09OVFJBQ1RfQVBQTElDQU5UEAUqUQoKVXNlckdlbmRlchIUChBVU0VSX0dlbmRlcl9NYWxlEAASFgoSVVNFUl9HZW5kZXJfRmVtYWxlEAESFQoRVVNFUl9HZW5kZXJfT3RoZXIQAip9ChBPcmdhbml6YXRpb25UeXBlEhQKEE9SR19UeXBlX0RFRkFVTFQQABIQCgxTUE9SVFNfR1JPVVAQARIYChRSRUNSRUFUSU9OQUxfQ0VOVEVSUxACEhEKDVNBTEVTX0NFTlRFUlMQAxIUChBNRURJQ0FMX1NFUlZJQ0VTEAQqgQIKDkNvbnRyYWN0U3RhdHVzEh8KG0NPTlRSQUNUX1NUQVRVU19VTlNQRUNJRklFRBAAEhsKF0NPTlRSQUNUX1NUQVRVU19QRU5ESU5HEAESHAoYQ09OVFJBQ1RfU1RBVFVTX0FQUFJPVkVEEAISHAoYQ09OVFJBQ1RfU1RBVFVTX1JFSkVDVEVEEAMSGgoWQ09OVFJBQ1RfU1RBVFVTX1NJR05FRBAEEhoKFkNPTlRSQUNUX1NUQVRVU19BQ1RJVkUQBRIdChlDT05UUkFDVF9TVEFUVVNfQ09NUExFVEVEEAYSHgoaQ09OVFJBQ1RfU1RBVFVTX1RFUk1JTkFURUQQBzL2CQoMVXNlcnNTZXJ2aWNlEj8KDFJlZ2lzdGVyVXNlchIWLnVzZXJzLlJlZ2lzdGVyUmVxdWVzdBoXLnVzZXJzLlJlZ2lzdGVyUmVzcG9uc2USNgoJTG9naW5Vc2VyEhMudXNlcnMuTG9naW5SZXF1ZXN0GhQudXNlcnMuTG9naW5SZXNwb25zZRI+CglMaXN0VXNlcnMSFy51c2Vycy5MaXN0VXNlcnNSZXF1ZXN0GhgudXNlcnMuTGlzdFVzZXJzUmVzcG9uc2USQQoKVXBkYXRlVXNlchIYLnVzZXJzLlVwZGF0ZVVzZXJSZXF1ZXN0GhkudXNlcnMuVXBkYXRlVXNlclJlc3BvbnNlEmgKF0NyZWF0ZU9yZ2FuaXphdGlvbkdyb3VwEiUudXNlcnMuQ3JlYXRlT3JnYW5pemF0aW9uR3JvdXBSZXF1ZXN0GiYudXNlcnMuQ3JlYXRlT3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRJoChdVcGRhdGVPcmdhbml6YXRpb25Hcm91cBIlLnVzZXJzLlVwZGF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVxdWVzdBomLnVzZXJzLlVwZGF0ZU9yZ2FuaXphdGlvbkdyb3VwUmVzcG9uc2USaAoXRGVsZXRlT3JnYW5pemF0aW9uR3JvdXASJS51c2Vycy5EZWxldGVPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QaJi51c2Vycy5EZWxldGVPcmdhbml6YXRpb25Hcm91cFJlc3BvbnNlEmIKFUxpc3RPcmdhbml6YXRpb25Hcm91cBIjLnVzZXJzLkxpc3RPcmdhbml6YXRpb25Hcm91cFJlcXVlc3QaJC51c2Vycy5MaXN0T3JnYW5pemF0aW9uR3JvdXBSZXNwb25zZRJZChJDcmVhdGVPcmdhbml6YXRpb24SIC51c2Vycy5DcmVhdGVPcmdhbml6YXRpb25SZXF1ZXN0GiEudXNlcnMuQ3JlYXRlT3JnYW5pemF0aW9uUmVzcG9uc2USWQoSVXBkYXRlT3JnYW5pemF0aW9uEiAudXNlcnMuVXBkYXRlT3JnYW5pemF0aW9uUmVxdWVzdBohLnVzZXJzLlVwZGF0ZU9yZ2FuaXphdGlvblJlc3BvbnNlElkKEkRlbGV0ZU9yZ2FuaXphdGlvbhIgLnVzZXJzLkRlbGV0ZU9yZ2FuaXphdGlvblJlcXVlc3QaIS51c2Vycy5EZWxldGVPcmdhbml6YXRpb25SZXNwb25zZRJTChBMaXN0T3JnYW5pemF0aW9uEh4udXNlcnMuTGlzdE9yZ2FuaXphdGlvblJlcXVlc3QaHy51c2Vycy5MaXN0T3JnYW5pemF0aW9uUmVzcG9uc2USSwoMR2V0Q291bnRyaWVzEhwudXNlcnMuR2V0R2VvbG9jYXRpb25SZXF1ZXN0Gh0udXNlcnMuR2V0R2VvbG9jYXRpb25SZXNwb25zZRJLCgxHZXRQcm92aW5jZXMSHC51c2Vycy5HZXRHZW9sb2NhdGlvblJlcXVlc3QaHS51c2Vycy5HZXRHZW9sb2NhdGlvblJlc3BvbnNlEkgKCUdldENpdGllcxIcLnVzZXJzLkdldEdlb2xvY2F0aW9uUmVxdWVzdBodLnVzZXJzLkdldEdlb2xvY2F0aW9uUmVzcG9uc2VCQ1pBZ2l0aHViLmNvbS9hejU4NzQwL2Nvbm5lY3QtbWljcm9zZXJ2aWNlcy1wcm90by9nb2xhbmcvdXNlcnM7dXNlcnNiBnByb3RvMw", [file_google_protobuf_timestamp]);
 
 /**
  * Message for defining a permission related to user roles.
@@ -407,6 +407,123 @@ export const UserSchema: GenMessage<User> = /*@__PURE__*/
   messageDesc(file_users_users, 6);
 
 /**
+ * @generated from message users.Contract
+ */
+export type Contract = Message<"users.Contract"> & {
+  /**
+   * شناسه یکتا برای قرارداد | Unique identifier for the contract
+   *
+   * @generated from field: string contractId = 1;
+   */
+  contractId: string;
+
+  /**
+   * آیدی کارفرما (User.userId) | Employer's user ID
+   *
+   * @generated from field: string employerId = 2;
+   */
+  employerId: string;
+
+  /**
+   * آیدی متقاضی (User.userId) | Employee's (candidate's) user ID
+   *
+   * @generated from field: string employeeId = 3;
+   */
+  employeeId: string;
+
+  /**
+   * عنوان قرارداد | Title of the contract
+   *
+   * @generated from field: string title = 4;
+   */
+  title: string;
+
+  /**
+   * توضیح کوتاه درباره قرارداد | Short general description about the contract
+   *
+   * @generated from field: string description = 5;
+   */
+  description: string;
+
+  /**
+   * مبلغ قرارداد (اختیاری) | Contract amount (optional)
+   *
+   * @generated from field: double amount = 6;
+   */
+  amount: number;
+
+  /**
+   * واحد پول (IRR, USD و غیره) | Currency of the amount (IRR, USD, etc.)
+   *
+   * @generated from field: string currency = 7;
+   */
+  currency: string;
+
+  /**
+   * وضعیت فعلی قرارداد | Current status of the contract
+   *
+   * @generated from field: users.ContractStatus status = 8;
+   */
+  status: ContractStatus;
+
+  /**
+   * تاریخ شروع قرارداد | Start date of the contract
+   *
+   * @generated from field: google.protobuf.Timestamp startDate = 9;
+   */
+  startDate?: Timestamp;
+
+  /**
+   * تاریخ پایان قرارداد | End date of the contract
+   *
+   * @generated from field: google.protobuf.Timestamp endDate = 10;
+   */
+  endDate?: Timestamp;
+
+  /**
+   * مفاد یا شرایط دقیق قرارداد | Full legal terms and conditions
+   *
+   * @generated from field: string terms = 11;
+   */
+  terms: string;
+
+  /**
+   * زمان ایجاد قرارداد | Creation timestamp
+   *
+   * @generated from field: google.protobuf.Timestamp createdAt = 12;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * زمان آخرین بروزرسانی قرارداد | Last updated timestamp
+   *
+   * @generated from field: google.protobuf.Timestamp updatedAt = 13;
+   */
+  updatedAt?: Timestamp;
+
+  /**
+   * مسیر فایل تقاضا | URL or path to the request file (e.g., PDF, DOCX)
+   *
+   * @generated from field: string contractRequestFileUrl = 14;
+   */
+  contractRequestFileUrl: string;
+
+  /**
+   * مسیر فایل قرارداد امضا شده | URL or path to the signed contract file
+   *
+   * @generated from field: string signedContractFileUrl = 15;
+   */
+  signedContractFileUrl: string;
+};
+
+/**
+ * Describes the message users.Contract.
+ * Use `create(ContractSchema)` to create a new message.
+ */
+export const ContractSchema: GenMessage<Contract> = /*@__PURE__*/
+  messageDesc(file_users_users, 7);
+
+/**
  * Represents a geolocation in system maby country,province or city
  *
  * @generated from message users.Geolocation
@@ -432,7 +549,7 @@ export type Geolocation = Message<"users.Geolocation"> & {
  * Use `create(GeolocationSchema)` to create a new message.
  */
 export const GeolocationSchema: GenMessage<Geolocation> = /*@__PURE__*/
-  messageDesc(file_users_users, 7);
+  messageDesc(file_users_users, 8);
 
 /**
  * @generated from message users.GeolocationFilter
@@ -449,7 +566,7 @@ export type GeolocationFilter = Message<"users.GeolocationFilter"> & {
  * Use `create(GeolocationFilterSchema)` to create a new message.
  */
 export const GeolocationFilterSchema: GenMessage<GeolocationFilter> = /*@__PURE__*/
-  messageDesc(file_users_users, 8);
+  messageDesc(file_users_users, 9);
 
 /**
  * @generated from message users.GetGeolocationRequest
@@ -466,7 +583,7 @@ export type GetGeolocationRequest = Message<"users.GetGeolocationRequest"> & {
  * Use `create(GetGeolocationRequestSchema)` to create a new message.
  */
 export const GetGeolocationRequestSchema: GenMessage<GetGeolocationRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 9);
+  messageDesc(file_users_users, 10);
 
 /**
  * @generated from message users.GetGeolocationResponse
@@ -483,7 +600,7 @@ export type GetGeolocationResponse = Message<"users.GetGeolocationResponse"> & {
  * Use `create(GetGeolocationResponseSchema)` to create a new message.
  */
 export const GetGeolocationResponseSchema: GenMessage<GetGeolocationResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 10);
+  messageDesc(file_users_users, 11);
 
 /**
  * Pagination options for listing users or roles.
@@ -525,7 +642,7 @@ export type Pagination = Message<"users.Pagination"> & {
  * Use `create(PaginationSchema)` to create a new message.
  */
 export const PaginationSchema: GenMessage<Pagination> = /*@__PURE__*/
-  messageDesc(file_users_users, 11);
+  messageDesc(file_users_users, 12);
 
 /**
  * Filter criteria for listing users based on different parameters.
@@ -616,7 +733,7 @@ export type UserFilter = Message<"users.UserFilter"> & {
  * Use `create(UserFilterSchema)` to create a new message.
  */
 export const UserFilterSchema: GenMessage<UserFilter> = /*@__PURE__*/
-  messageDesc(file_users_users, 12);
+  messageDesc(file_users_users, 13);
 
 /**
  * Filter criteria for listing roles by associated resource.
@@ -637,7 +754,7 @@ export type RoleFilter = Message<"users.RoleFilter"> & {
  * Use `create(RoleFilterSchema)` to create a new message.
  */
 export const RoleFilterSchema: GenMessage<RoleFilter> = /*@__PURE__*/
-  messageDesc(file_users_users, 13);
+  messageDesc(file_users_users, 14);
 
 /**
  * Filter criteria for listing Organization Group by associated resource.
@@ -668,7 +785,7 @@ export type OrganizationGroupFilter = Message<"users.OrganizationGroupFilter"> &
  * Use `create(OrganizationGroupFilterSchema)` to create a new message.
  */
 export const OrganizationGroupFilterSchema: GenMessage<OrganizationGroupFilter> = /*@__PURE__*/
-  messageDesc(file_users_users, 14);
+  messageDesc(file_users_users, 15);
 
 /**
  * Filter criteria for listing Contract Party by associated resource.
@@ -697,7 +814,7 @@ export type OrganizationFilter = Message<"users.OrganizationFilter"> & {
  * Use `create(OrganizationFilterSchema)` to create a new message.
  */
 export const OrganizationFilterSchema: GenMessage<OrganizationFilter> = /*@__PURE__*/
-  messageDesc(file_users_users, 15);
+  messageDesc(file_users_users, 16);
 
 /**
  * Message for registering a new user (sign up).
@@ -753,7 +870,7 @@ export type RegisterRequest = Message<"users.RegisterRequest"> & {
  * Use `create(RegisterRequestSchema)` to create a new message.
  */
 export const RegisterRequestSchema: GenMessage<RegisterRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 16);
+  messageDesc(file_users_users, 17);
 
 /**
  * Response after creating a new user.
@@ -781,7 +898,7 @@ export type RegisterResponse = Message<"users.RegisterResponse"> & {
  * Use `create(RegisterResponseSchema)` to create a new message.
  */
 export const RegisterResponseSchema: GenMessage<RegisterResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 17);
+  messageDesc(file_users_users, 18);
 
 /**
  * Request to authenticate a user during login.
@@ -809,7 +926,7 @@ export type LoginRequest = Message<"users.LoginRequest"> & {
  * Use `create(LoginRequestSchema)` to create a new message.
  */
 export const LoginRequestSchema: GenMessage<LoginRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 18);
+  messageDesc(file_users_users, 19);
 
 /**
  * Response after successful login with authentication token.
@@ -837,7 +954,7 @@ export type LoginResponse = Message<"users.LoginResponse"> & {
  * Use `create(LoginResponseSchema)` to create a new message.
  */
 export const LoginResponseSchema: GenMessage<LoginResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 19);
+  messageDesc(file_users_users, 20);
 
 /**
  * Request to log out a user.
@@ -858,7 +975,7 @@ export type LogoutRequest = Message<"users.LogoutRequest"> & {
  * Use `create(LogoutRequestSchema)` to create a new message.
  */
 export const LogoutRequestSchema: GenMessage<LogoutRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 20);
+  messageDesc(file_users_users, 21);
 
 /**
  * Response after logging out.
@@ -879,7 +996,7 @@ export type LogoutResponse = Message<"users.LogoutResponse"> & {
  * Use `create(LogoutResponseSchema)` to create a new message.
  */
 export const LogoutResponseSchema: GenMessage<LogoutResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 21);
+  messageDesc(file_users_users, 22);
 
 /**
  * Request to update a user's details.
@@ -900,7 +1017,7 @@ export type UpdateUserRequest = Message<"users.UpdateUserRequest"> & {
  * Use `create(UpdateUserRequestSchema)` to create a new message.
  */
 export const UpdateUserRequestSchema: GenMessage<UpdateUserRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 22);
+  messageDesc(file_users_users, 23);
 
 /**
  * Response after updating a user's details.
@@ -921,7 +1038,7 @@ export type UpdateUserResponse = Message<"users.UpdateUserResponse"> & {
  * Use `create(UpdateUserResponseSchema)` to create a new message.
  */
 export const UpdateUserResponseSchema: GenMessage<UpdateUserResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 23);
+  messageDesc(file_users_users, 24);
 
 /**
  * Request to list users with pagination and filtering.
@@ -949,7 +1066,7 @@ export type ListUsersRequest = Message<"users.ListUsersRequest"> & {
  * Use `create(ListUsersRequestSchema)` to create a new message.
  */
 export const ListUsersRequestSchema: GenMessage<ListUsersRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 24);
+  messageDesc(file_users_users, 25);
 
 /**
  * Response for listing users.
@@ -984,7 +1101,7 @@ export type ListUsersResponse = Message<"users.ListUsersResponse"> & {
  * Use `create(ListUsersResponseSchema)` to create a new message.
  */
 export const ListUsersResponseSchema: GenMessage<ListUsersResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 25);
+  messageDesc(file_users_users, 26);
 
 /**
  * Organization Group related message
@@ -1013,7 +1130,7 @@ export type CreateOrganizationGroupRequest = Message<"users.CreateOrganizationGr
  * Use `create(CreateOrganizationGroupRequestSchema)` to create a new message.
  */
 export const CreateOrganizationGroupRequestSchema: GenMessage<CreateOrganizationGroupRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 26);
+  messageDesc(file_users_users, 27);
 
 /**
  * @generated from message users.CreateOrganizationGroupResponse
@@ -1030,7 +1147,7 @@ export type CreateOrganizationGroupResponse = Message<"users.CreateOrganizationG
  * Use `create(CreateOrganizationGroupResponseSchema)` to create a new message.
  */
 export const CreateOrganizationGroupResponseSchema: GenMessage<CreateOrganizationGroupResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 27);
+  messageDesc(file_users_users, 28);
 
 /**
  * @generated from message users.UpdateOrganizationGroupRequest
@@ -1047,7 +1164,7 @@ export type UpdateOrganizationGroupRequest = Message<"users.UpdateOrganizationGr
  * Use `create(UpdateOrganizationGroupRequestSchema)` to create a new message.
  */
 export const UpdateOrganizationGroupRequestSchema: GenMessage<UpdateOrganizationGroupRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 28);
+  messageDesc(file_users_users, 29);
 
 /**
  * @generated from message users.UpdateOrganizationGroupResponse
@@ -1064,7 +1181,7 @@ export type UpdateOrganizationGroupResponse = Message<"users.UpdateOrganizationG
  * Use `create(UpdateOrganizationGroupResponseSchema)` to create a new message.
  */
 export const UpdateOrganizationGroupResponseSchema: GenMessage<UpdateOrganizationGroupResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 29);
+  messageDesc(file_users_users, 30);
 
 /**
  * @generated from message users.DeleteOrganizationGroupRequest
@@ -1081,7 +1198,7 @@ export type DeleteOrganizationGroupRequest = Message<"users.DeleteOrganizationGr
  * Use `create(DeleteOrganizationGroupRequestSchema)` to create a new message.
  */
 export const DeleteOrganizationGroupRequestSchema: GenMessage<DeleteOrganizationGroupRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 30);
+  messageDesc(file_users_users, 31);
 
 /**
  * @generated from message users.DeleteOrganizationGroupResponse
@@ -1098,7 +1215,7 @@ export type DeleteOrganizationGroupResponse = Message<"users.DeleteOrganizationG
  * Use `create(DeleteOrganizationGroupResponseSchema)` to create a new message.
  */
 export const DeleteOrganizationGroupResponseSchema: GenMessage<DeleteOrganizationGroupResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 31);
+  messageDesc(file_users_users, 32);
 
 /**
  * @generated from message users.ListOrganizationGroupRequest
@@ -1115,7 +1232,7 @@ export type ListOrganizationGroupRequest = Message<"users.ListOrganizationGroupR
  * Use `create(ListOrganizationGroupRequestSchema)` to create a new message.
  */
 export const ListOrganizationGroupRequestSchema: GenMessage<ListOrganizationGroupRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 32);
+  messageDesc(file_users_users, 33);
 
 /**
  * @generated from message users.ListOrganizationGroupResponse
@@ -1132,7 +1249,7 @@ export type ListOrganizationGroupResponse = Message<"users.ListOrganizationGroup
  * Use `create(ListOrganizationGroupResponseSchema)` to create a new message.
  */
 export const ListOrganizationGroupResponseSchema: GenMessage<ListOrganizationGroupResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 33);
+  messageDesc(file_users_users, 34);
 
 /**
  * Organization or contractparty related message
@@ -1161,7 +1278,7 @@ export type CreateOrganizationRequest = Message<"users.CreateOrganizationRequest
  * Use `create(CreateOrganizationRequestSchema)` to create a new message.
  */
 export const CreateOrganizationRequestSchema: GenMessage<CreateOrganizationRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 34);
+  messageDesc(file_users_users, 35);
 
 /**
  * @generated from message users.CreateOrganizationResponse
@@ -1183,7 +1300,7 @@ export type CreateOrganizationResponse = Message<"users.CreateOrganizationRespon
  * Use `create(CreateOrganizationResponseSchema)` to create a new message.
  */
 export const CreateOrganizationResponseSchema: GenMessage<CreateOrganizationResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 35);
+  messageDesc(file_users_users, 36);
 
 /**
  * @generated from message users.UpdateOrganizationRequest
@@ -1200,7 +1317,7 @@ export type UpdateOrganizationRequest = Message<"users.UpdateOrganizationRequest
  * Use `create(UpdateOrganizationRequestSchema)` to create a new message.
  */
 export const UpdateOrganizationRequestSchema: GenMessage<UpdateOrganizationRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 36);
+  messageDesc(file_users_users, 37);
 
 /**
  * @generated from message users.UpdateOrganizationResponse
@@ -1217,7 +1334,7 @@ export type UpdateOrganizationResponse = Message<"users.UpdateOrganizationRespon
  * Use `create(UpdateOrganizationResponseSchema)` to create a new message.
  */
 export const UpdateOrganizationResponseSchema: GenMessage<UpdateOrganizationResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 37);
+  messageDesc(file_users_users, 38);
 
 /**
  * @generated from message users.DeleteOrganizationRequest
@@ -1234,7 +1351,7 @@ export type DeleteOrganizationRequest = Message<"users.DeleteOrganizationRequest
  * Use `create(DeleteOrganizationRequestSchema)` to create a new message.
  */
 export const DeleteOrganizationRequestSchema: GenMessage<DeleteOrganizationRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 38);
+  messageDesc(file_users_users, 39);
 
 /**
  * @generated from message users.DeleteOrganizationResponse
@@ -1251,7 +1368,7 @@ export type DeleteOrganizationResponse = Message<"users.DeleteOrganizationRespon
  * Use `create(DeleteOrganizationResponseSchema)` to create a new message.
  */
 export const DeleteOrganizationResponseSchema: GenMessage<DeleteOrganizationResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 39);
+  messageDesc(file_users_users, 40);
 
 /**
  * @generated from message users.ListOrganizationRequest
@@ -1268,7 +1385,7 @@ export type ListOrganizationRequest = Message<"users.ListOrganizationRequest"> &
  * Use `create(ListOrganizationRequestSchema)` to create a new message.
  */
 export const ListOrganizationRequestSchema: GenMessage<ListOrganizationRequest> = /*@__PURE__*/
-  messageDesc(file_users_users, 40);
+  messageDesc(file_users_users, 41);
 
 /**
  * @generated from message users.ListOrganizationResponse
@@ -1285,7 +1402,7 @@ export type ListOrganizationResponse = Message<"users.ListOrganizationResponse">
  * Use `create(ListOrganizationResponseSchema)` to create a new message.
  */
 export const ListOrganizationResponseSchema: GenMessage<ListOrganizationResponse> = /*@__PURE__*/
-  messageDesc(file_users_users, 41);
+  messageDesc(file_users_users, 42);
 
 /**
  * Enum for user status, which can be one of several states for the user account.
@@ -1340,18 +1457,46 @@ export const UserStatusSchema: GenEnum<UserStatus> = /*@__PURE__*/
  */
 export enum UserType {
   /**
-   * Default value.
+   * کاربر عادی پیش فرض | Default normal user
    *
-   * @generated from enum value: USER_Type_DEFAULT = 0;
+   * @generated from enum value: USER_TYPE_DEFAULT = 0;
    */
   DEFAULT = 0,
 
   /**
-   * User as contract party .
+   * ادمین سیستم | System administrator
    *
-   * @generated from enum value: USER_Type_CONTRACTPARTY = 1;
+   * @generated from enum value: USER_TYPE_ADMIN = 1;
    */
-  CONTRACTPARTY = 1,
+  ADMIN = 1,
+
+  /**
+   * طرف قرارداد عمومی | General contracting party
+   *
+   * @generated from enum value: USER_TYPE_CONTRACT_PARTY = 2;
+   */
+  CONTRACT_PARTY = 2,
+
+  /**
+   * کارمند طرف قرارداد | Employee of the contracting party
+   *
+   * @generated from enum value: USER_TYPE_CONTRACT_EMPLOYEE = 3;
+   */
+  CONTRACT_EMPLOYEE = 3,
+
+  /**
+   * کارفرمای طرف قرارداد | Employer of the contracting party
+   *
+   * @generated from enum value: USER_TYPE_CONTRACT_EMPLOYER = 4;
+   */
+  CONTRACT_EMPLOYER = 4,
+
+  /**
+   * متقاضی قرارداد (درخواست دهنده) | Applicant for a contract
+   *
+   * @generated from enum value: USER_TYPE_CONTRACT_APPLICANT = 5;
+   */
+  CONTRACT_APPLICANT = 5,
 }
 
 /**
@@ -1377,6 +1522,13 @@ export enum UserGender {
    * @generated from enum value: USER_Gender_Female = 1;
    */
   Female = 1,
+
+  /**
+   * Other
+   *
+   * @generated from enum value: USER_Gender_Other = 2;
+   */
+  Other = 2,
 }
 
 /**
@@ -1430,6 +1582,73 @@ export enum OrganizationType {
  */
 export const OrganizationTypeSchema: GenEnum<OrganizationType> = /*@__PURE__*/
   enumDesc(file_users_users, 3);
+
+/**
+ * @generated from enum users.ContractStatus
+ */
+export enum ContractStatus {
+  /**
+   * Default unspecified status.
+   *
+   * @generated from enum value: CONTRACT_STATUS_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * Contract is created and awaiting review.
+   *
+   * @generated from enum value: CONTRACT_STATUS_PENDING = 1;
+   */
+  PENDING = 1,
+
+  /**
+   * Contract has been approved by employer.
+   *
+   * @generated from enum value: CONTRACT_STATUS_APPROVED = 2;
+   */
+  APPROVED = 2,
+
+  /**
+   * Contract was rejected.
+   *
+   * @generated from enum value: CONTRACT_STATUS_REJECTED = 3;
+   */
+  REJECTED = 3,
+
+  /**
+   * Contract has been signed by both parties.
+   *
+   * @generated from enum value: CONTRACT_STATUS_SIGNED = 4;
+   */
+  SIGNED = 4,
+
+  /**
+   * Contract is active and in effect.
+   *
+   * @generated from enum value: CONTRACT_STATUS_ACTIVE = 5;
+   */
+  ACTIVE = 5,
+
+  /**
+   * Contract has been fulfilled/completed.
+   *
+   * @generated from enum value: CONTRACT_STATUS_COMPLETED = 6;
+   */
+  COMPLETED = 6,
+
+  /**
+   * Contract has been terminated before completion.
+   *
+   * @generated from enum value: CONTRACT_STATUS_TERMINATED = 7;
+   */
+  TERMINATED = 7,
+}
+
+/**
+ * Describes the enum users.ContractStatus.
+ */
+export const ContractStatusSchema: GenEnum<ContractStatus> = /*@__PURE__*/
+  enumDesc(file_users_users, 4);
 
 /**
  * Service for managing users (authentication, user details, and user roles).

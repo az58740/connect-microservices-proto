@@ -397,6 +397,122 @@ export declare type User = Message<"users.User"> & {
 export declare const UserSchema: GenMessage<User>;
 
 /**
+ * @generated from message users.Contract
+ */
+export declare type Contract = Message<"users.Contract"> & {
+  /**
+   * شناسه یکتا برای قرارداد | Unique identifier for the contract
+   *
+   * @generated from field: string contractId = 1;
+   */
+  contractId: string;
+
+  /**
+   * آیدی کارفرما (User.userId) | Employer's user ID
+   *
+   * @generated from field: string employerId = 2;
+   */
+  employerId: string;
+
+  /**
+   * آیدی متقاضی (User.userId) | Employee's (candidate's) user ID
+   *
+   * @generated from field: string employeeId = 3;
+   */
+  employeeId: string;
+
+  /**
+   * عنوان قرارداد | Title of the contract
+   *
+   * @generated from field: string title = 4;
+   */
+  title: string;
+
+  /**
+   * توضیح کوتاه درباره قرارداد | Short general description about the contract
+   *
+   * @generated from field: string description = 5;
+   */
+  description: string;
+
+  /**
+   * مبلغ قرارداد (اختیاری) | Contract amount (optional)
+   *
+   * @generated from field: double amount = 6;
+   */
+  amount: number;
+
+  /**
+   * واحد پول (IRR, USD و غیره) | Currency of the amount (IRR, USD, etc.)
+   *
+   * @generated from field: string currency = 7;
+   */
+  currency: string;
+
+  /**
+   * وضعیت فعلی قرارداد | Current status of the contract
+   *
+   * @generated from field: users.ContractStatus status = 8;
+   */
+  status: ContractStatus;
+
+  /**
+   * تاریخ شروع قرارداد | Start date of the contract
+   *
+   * @generated from field: google.protobuf.Timestamp startDate = 9;
+   */
+  startDate?: Timestamp;
+
+  /**
+   * تاریخ پایان قرارداد | End date of the contract
+   *
+   * @generated from field: google.protobuf.Timestamp endDate = 10;
+   */
+  endDate?: Timestamp;
+
+  /**
+   * مفاد یا شرایط دقیق قرارداد | Full legal terms and conditions
+   *
+   * @generated from field: string terms = 11;
+   */
+  terms: string;
+
+  /**
+   * زمان ایجاد قرارداد | Creation timestamp
+   *
+   * @generated from field: google.protobuf.Timestamp createdAt = 12;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * زمان آخرین بروزرسانی قرارداد | Last updated timestamp
+   *
+   * @generated from field: google.protobuf.Timestamp updatedAt = 13;
+   */
+  updatedAt?: Timestamp;
+
+  /**
+   * مسیر فایل تقاضا | URL or path to the request file (e.g., PDF, DOCX)
+   *
+   * @generated from field: string contractRequestFileUrl = 14;
+   */
+  contractRequestFileUrl: string;
+
+  /**
+   * مسیر فایل قرارداد امضا شده | URL or path to the signed contract file
+   *
+   * @generated from field: string signedContractFileUrl = 15;
+   */
+  signedContractFileUrl: string;
+};
+
+/**
+ * Describes the message users.Contract.
+ * Use `create(ContractSchema)` to create a new message.
+ */
+export declare const ContractSchema: GenMessage<Contract>;
+
+/**
  * Represents a geolocation in system maby country,province or city
  *
  * @generated from message users.Geolocation
@@ -1294,18 +1410,46 @@ export declare const UserStatusSchema: GenEnum<UserStatus>;
  */
 export enum UserType {
   /**
-   * Default value.
+   * کاربر عادی پیش فرض | Default normal user
    *
-   * @generated from enum value: USER_Type_DEFAULT = 0;
+   * @generated from enum value: USER_TYPE_DEFAULT = 0;
    */
   DEFAULT = 0,
 
   /**
-   * User as contract party .
+   * ادمین سیستم | System administrator
    *
-   * @generated from enum value: USER_Type_CONTRACTPARTY = 1;
+   * @generated from enum value: USER_TYPE_ADMIN = 1;
    */
-  CONTRACTPARTY = 1,
+  ADMIN = 1,
+
+  /**
+   * طرف قرارداد عمومی | General contracting party
+   *
+   * @generated from enum value: USER_TYPE_CONTRACT_PARTY = 2;
+   */
+  CONTRACT_PARTY = 2,
+
+  /**
+   * کارمند طرف قرارداد | Employee of the contracting party
+   *
+   * @generated from enum value: USER_TYPE_CONTRACT_EMPLOYEE = 3;
+   */
+  CONTRACT_EMPLOYEE = 3,
+
+  /**
+   * کارفرمای طرف قرارداد | Employer of the contracting party
+   *
+   * @generated from enum value: USER_TYPE_CONTRACT_EMPLOYER = 4;
+   */
+  CONTRACT_EMPLOYER = 4,
+
+  /**
+   * متقاضی قرارداد (درخواست دهنده) | Applicant for a contract
+   *
+   * @generated from enum value: USER_TYPE_CONTRACT_APPLICANT = 5;
+   */
+  CONTRACT_APPLICANT = 5,
 }
 
 /**
@@ -1330,6 +1474,13 @@ export enum UserGender {
    * @generated from enum value: USER_Gender_Female = 1;
    */
   Female = 1,
+
+  /**
+   * Other
+   *
+   * @generated from enum value: USER_Gender_Other = 2;
+   */
+  Other = 2,
 }
 
 /**
@@ -1381,6 +1532,72 @@ export enum OrganizationType {
  * Describes the enum users.OrganizationType.
  */
 export declare const OrganizationTypeSchema: GenEnum<OrganizationType>;
+
+/**
+ * @generated from enum users.ContractStatus
+ */
+export enum ContractStatus {
+  /**
+   * Default unspecified status.
+   *
+   * @generated from enum value: CONTRACT_STATUS_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * Contract is created and awaiting review.
+   *
+   * @generated from enum value: CONTRACT_STATUS_PENDING = 1;
+   */
+  PENDING = 1,
+
+  /**
+   * Contract has been approved by employer.
+   *
+   * @generated from enum value: CONTRACT_STATUS_APPROVED = 2;
+   */
+  APPROVED = 2,
+
+  /**
+   * Contract was rejected.
+   *
+   * @generated from enum value: CONTRACT_STATUS_REJECTED = 3;
+   */
+  REJECTED = 3,
+
+  /**
+   * Contract has been signed by both parties.
+   *
+   * @generated from enum value: CONTRACT_STATUS_SIGNED = 4;
+   */
+  SIGNED = 4,
+
+  /**
+   * Contract is active and in effect.
+   *
+   * @generated from enum value: CONTRACT_STATUS_ACTIVE = 5;
+   */
+  ACTIVE = 5,
+
+  /**
+   * Contract has been fulfilled/completed.
+   *
+   * @generated from enum value: CONTRACT_STATUS_COMPLETED = 6;
+   */
+  COMPLETED = 6,
+
+  /**
+   * Contract has been terminated before completion.
+   *
+   * @generated from enum value: CONTRACT_STATUS_TERMINATED = 7;
+   */
+  TERMINATED = 7,
+}
+
+/**
+ * Describes the enum users.ContractStatus.
+ */
+export declare const ContractStatusSchema: GenEnum<ContractStatus>;
 
 /**
  * Service for managing users (authentication, user details, and user roles).
