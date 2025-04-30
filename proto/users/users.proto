@@ -130,13 +130,32 @@ message User {
     ContractingParty organization = 5;   // Organization or contracting party the user belongs to.
     string username = 6;                 // Username (could be the email address).
     string passwordHash = 7;            // The hashed password (for security).
-    UserType type = 8;     
-    repeated Contract userContracts=9;              // The user contract.
-    google.protobuf.Timestamp createdAt = 10;  // Date and time when the user was created.
-    google.protobuf.Timestamp deletedAt = 11; // Date and time when the user was deleted.
+    UserType type = 8;                   //User Type
+    repeated Contract userContracts=9;    // The user contract.
+    string employerId=10;                 //The employer to which the user belongs
+    google.protobuf.Timestamp createdAt = 11;  // Date and time when the user was created.
+    google.protobuf.Timestamp deletedAt = 12; // Date and time when the user was deleted.
 }
 
+enum JobPostStatus {
+    JOB_POST_STATUS_UNSPECIFIED = 0;
+    JOB_POST_STATUS_OPEN = 1;
+    JOB_POST_STATUS_CLOSED = 2;
+    JOB_POST_STATUS_CANCELLED = 3;
+}
 
+message JobPost {
+    string jobPostId = 1;                 // Unique ID for the job post.
+    string employerId = 2;                // ID of the employer who posted.
+    string title = 3;                     // Title of the job post.
+    string description = 4;               // Description of the job.
+    repeated string requiredSkills = 5;   // List of required skills.
+    double salary = 6;                    // Expected salary or offer.
+    string currency = 7;                  // Salary currency.
+    JobPostStatus status = 8;              // Status of the job post (open, closed, cancelled).
+    google.protobuf.Timestamp createdAt = 9; // When the job post was created.
+    google.protobuf.Timestamp updatedAt = 10; // Last update timestamp.
+}
 
 //Represents a geolocation in system maby country,province or city
 message Geolocation{

@@ -478,6 +478,8 @@ export declare type User = Message<"users.User"> & {
   passwordHash: string;
 
   /**
+   * User Type
+   *
    * @generated from field: users.UserType type = 8;
    */
   type: UserType;
@@ -490,16 +492,23 @@ export declare type User = Message<"users.User"> & {
   userContracts: Contract[];
 
   /**
+   * The employer to which the user belongs
+   *
+   * @generated from field: string employerId = 10;
+   */
+  employerId: string;
+
+  /**
    * Date and time when the user was created.
    *
-   * @generated from field: google.protobuf.Timestamp createdAt = 10;
+   * @generated from field: google.protobuf.Timestamp createdAt = 11;
    */
   createdAt?: Timestamp;
 
   /**
    * Date and time when the user was deleted.
    *
-   * @generated from field: google.protobuf.Timestamp deletedAt = 11;
+   * @generated from field: google.protobuf.Timestamp deletedAt = 12;
    */
   deletedAt?: Timestamp;
 };
@@ -509,6 +518,87 @@ export declare type User = Message<"users.User"> & {
  * Use `create(UserSchema)` to create a new message.
  */
 export declare const UserSchema: GenMessage<User>;
+
+/**
+ * @generated from message users.JobPost
+ */
+export declare type JobPost = Message<"users.JobPost"> & {
+  /**
+   * Unique ID for the job post.
+   *
+   * @generated from field: string jobPostId = 1;
+   */
+  jobPostId: string;
+
+  /**
+   * ID of the employer who posted.
+   *
+   * @generated from field: string employerId = 2;
+   */
+  employerId: string;
+
+  /**
+   * Title of the job post.
+   *
+   * @generated from field: string title = 3;
+   */
+  title: string;
+
+  /**
+   * Description of the job.
+   *
+   * @generated from field: string description = 4;
+   */
+  description: string;
+
+  /**
+   * List of required skills.
+   *
+   * @generated from field: repeated string requiredSkills = 5;
+   */
+  requiredSkills: string[];
+
+  /**
+   * Expected salary or offer.
+   *
+   * @generated from field: double salary = 6;
+   */
+  salary: number;
+
+  /**
+   * Salary currency.
+   *
+   * @generated from field: string currency = 7;
+   */
+  currency: string;
+
+  /**
+   * Status of the job post (open, closed, cancelled).
+   *
+   * @generated from field: users.JobPostStatus status = 8;
+   */
+  status: JobPostStatus;
+
+  /**
+   * When the job post was created.
+   *
+   * @generated from field: google.protobuf.Timestamp createdAt = 9;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * Last update timestamp.
+   *
+   * @generated from field: google.protobuf.Timestamp updatedAt = 10;
+   */
+  updatedAt?: Timestamp;
+};
+
+/**
+ * Describes the message users.JobPost.
+ * Use `create(JobPostSchema)` to create a new message.
+ */
+export declare const JobPostSchema: GenMessage<JobPost>;
 
 /**
  * Represents a geolocation in system maby country,province or city
@@ -1596,6 +1686,36 @@ export enum ContractStatus {
  * Describes the enum users.ContractStatus.
  */
 export declare const ContractStatusSchema: GenEnum<ContractStatus>;
+
+/**
+ * @generated from enum users.JobPostStatus
+ */
+export enum JobPostStatus {
+  /**
+   * @generated from enum value: JOB_POST_STATUS_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * @generated from enum value: JOB_POST_STATUS_OPEN = 1;
+   */
+  OPEN = 1,
+
+  /**
+   * @generated from enum value: JOB_POST_STATUS_CLOSED = 2;
+   */
+  CLOSED = 2,
+
+  /**
+   * @generated from enum value: JOB_POST_STATUS_CANCELLED = 3;
+   */
+  CANCELLED = 3,
+}
+
+/**
+ * Describes the enum users.JobPostStatus.
+ */
+export declare const JobPostStatusSchema: GenEnum<JobPostStatus>;
 
 /**
  * Service for managing users (authentication, user details, and user roles).
