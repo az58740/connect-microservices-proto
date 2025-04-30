@@ -182,17 +182,19 @@ message Pagination {
 
 // Filter criteria for listing users based on different parameters.
 message UserFilter {
-    string user_id = 1;                   // Filter by user ID.
+    string userId = 1;                   // Filter by user ID.
     string username = 2;                  // Filter by username (e.g., login name).
     string email = 3;                     // Filter by email address.
-    string role_ids = 4;                  // Filter by assigned role IDs.
-    string organization_id = 5;           // Filter by organization ID.
-    string user_statuse = 6;              // Filter by user statuse.
+    string roleId = 4;                  // Filter by assigned role IDs.
+    string organizationId = 5;           // Filter by organization ID.
+    string userStatuse = 6;              // Filter by user statuse.
     string country=7;                     // Filter by geolocation country
     string province=8;                    // Filter by geolocation  province
     string city=9;                        // Filter by geolocation  city
-    string user_type=10;                  // Filter by user type
-    string group_id=11;                   // Filter  by organization group 
+    string userType=10;                  // Filter by user type
+    string groupId=11;                   // Filter  by organization group
+    string employerId=12;                // Filter  by employer the user belongs
+
 }
 
 // Filter criteria for listing roles by associated resource.

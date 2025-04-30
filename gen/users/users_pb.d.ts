@@ -725,7 +725,7 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
   /**
    * Filter by user ID.
    *
-   * @generated from field: string user_id = 1;
+   * @generated from field: string userId = 1;
    */
   userId: string;
 
@@ -746,21 +746,21 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
   /**
    * Filter by assigned role IDs.
    *
-   * @generated from field: string role_ids = 4;
+   * @generated from field: string roleId = 4;
    */
-  roleIds: string;
+  roleId: string;
 
   /**
    * Filter by organization ID.
    *
-   * @generated from field: string organization_id = 5;
+   * @generated from field: string organizationId = 5;
    */
   organizationId: string;
 
   /**
    * Filter by user statuse.
    *
-   * @generated from field: string user_statuse = 6;
+   * @generated from field: string userStatuse = 6;
    */
   userStatuse: string;
 
@@ -788,16 +788,23 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
   /**
    * Filter by user type
    *
-   * @generated from field: string user_type = 10;
+   * @generated from field: string userType = 10;
    */
   userType: string;
 
   /**
-   * Filter  by organization group 
+   * Filter  by organization group
    *
-   * @generated from field: string group_id = 11;
+   * @generated from field: string groupId = 11;
    */
   groupId: string;
+
+  /**
+   * Filter  by employer the user belongs
+   *
+   * @generated from field: string employerId = 12;
+   */
+  employerId: string;
 };
 
 /**
