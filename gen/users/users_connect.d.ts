@@ -3,11 +3,11 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, GetGeolocationRequest, GetGeolocationResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
+import { CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, GetGeolocationRequest, GetGeolocationResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
- * Service for managing users (authentication, user details, and user roles).
+ * ==================== SERVICE DEFINITIONS ====================
  *
  * @generated from service users.UsersService
  */
@@ -50,7 +50,7 @@ export declare const UsersService: {
       readonly kind: MethodKind.Unary,
     },
     /**
-     * Update user
+     * Update user details.
      *
      * @generated from rpc users.UsersService.UpdateUser
      */
@@ -99,7 +99,7 @@ export declare const UsersService: {
       readonly kind: MethodKind.Unary,
     },
     /**
-     * Organization  related methods
+     * Organization related methods
      *
      * @generated from rpc users.UsersService.CreateOrganization
      */
@@ -137,7 +137,45 @@ export declare const UsersService: {
       readonly kind: MethodKind.Unary,
     },
     /**
-     * geolocation related methods
+     * Contract related methods
+     *
+     * @generated from rpc users.UsersService.CreateContract
+     */
+    readonly createContract: {
+      readonly name: "CreateContract",
+      readonly I: typeof CreateContractRequest,
+      readonly O: typeof CreateContractResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.UpdateContract
+     */
+    readonly updateContract: {
+      readonly name: "UpdateContract",
+      readonly I: typeof UpdateContractRequest,
+      readonly O: typeof UpdateContractResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.DeleteContract
+     */
+    readonly deleteContract: {
+      readonly name: "DeleteContract",
+      readonly I: typeof DeleteContractRequest,
+      readonly O: typeof DeleteContractResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.ListContract
+     */
+    readonly listContract: {
+      readonly name: "ListContract",
+      readonly I: typeof ListContractRequest,
+      readonly O: typeof ListContractResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * Geolocation related methods
      *
      * @generated from rpc users.UsersService.GetCountries
      */

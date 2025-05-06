@@ -12,6 +12,7 @@ import type { Timestamp } from "@bufbuild/protobuf/wkt";
 export declare const file_users_users: GenFile;
 
 /**
+ * ==================== USER-RELATED MESSAGES ====================
  * Message for defining a permission related to user roles.
  *
  * @generated from message users.Permission
@@ -25,7 +26,7 @@ export declare type Permission = Message<"users.Permission"> & {
   permissionId: string;
 
   /**
-   * The action that this permission grants (e.g., "create", "read", "update", "delete").
+   * Action granted by this permission (e.g., "create", "read", "update", "delete").
    *
    * @generated from field: string action = 2;
    */
@@ -39,7 +40,7 @@ export declare type Permission = Message<"users.Permission"> & {
 export declare const PermissionSchema: GenMessage<Permission>;
 
 /**
- * Message for representing a resource (e.g., "user", "order", "payment") that roles can be associated with.
+ * Message for representing a resource that roles can be associated with.
  *
  * @generated from message users.Resource
  */
@@ -114,102 +115,6 @@ export declare type Role = Message<"users.Role"> & {
 export declare const RoleSchema: GenMessage<Role>;
 
 /**
- * Represents a group of organizations (could be departments or teams).
- *
- * @generated from message users.OrganizationGroup
- */
-export declare type OrganizationGroup = Message<"users.OrganizationGroup"> & {
-  /**
-   * Unique identifier for the group.
-   *
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * Name of the organization group.
-   *
-   * @generated from field: string name = 2;
-   */
-  name: string;
-
-  /**
-   * Description of the organization group.
-   *
-   * @generated from field: string description = 3;
-   */
-  description: string;
-
-  /**
-   * Current status of the contract party group (active, inactive, etc.).
-   *
-   * @generated from field: users.UserStatus status = 4;
-   */
-  status: UserStatus;
-};
-
-/**
- * Describes the message users.OrganizationGroup.
- * Use `create(OrganizationGroupSchema)` to create a new message.
- */
-export declare const OrganizationGroupSchema: GenMessage<OrganizationGroup>;
-
-/**
- * Represents a contracting party or organization.
- *
- * @generated from message users.ContractingParty
- */
-export declare type ContractingParty = Message<"users.ContractingParty"> & {
-  /**
-   * Unique identifier for the organization.
-   *
-   * @generated from field: string organizationId = 1;
-   */
-  organizationId: string;
-
-  /**
-   * Name of the organization.
-   *
-   * @generated from field: string organizationName = 2;
-   */
-  organizationName: string;
-
-  /**
-   * Description of the organization .
-   *
-   * @generated from field: string description = 3;
-   */
-  description: string;
-
-  /**
-   * Group to which the organization belongs.
-   *
-   * @generated from field: users.OrganizationGroup group = 4;
-   */
-  group?: OrganizationGroup;
-
-  /**
-   * Type of organization
-   *
-   * @generated from field: users.OrganizationType type = 5;
-   */
-  type: OrganizationType;
-
-  /**
-   * Current status of the contract party (active, inactive, etc.).
-   *
-   * @generated from field: users.UserStatus status = 6;
-   */
-  status: UserStatus;
-};
-
-/**
- * Describes the message users.ContractingParty.
- * Use `create(ContractingPartySchema)` to create a new message.
- */
-export declare const ContractingPartySchema: GenMessage<ContractingParty>;
-
-/**
  * Represents a user's profile, which contains personal and contact information.
  *
  * @generated from message users.UserProfile
@@ -230,7 +135,7 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
   email: string;
 
   /**
-   * mobile number of the user.
+   * Mobile number of the user.
    *
    * @generated from field: string phoneNumber = 3;
    */
@@ -279,21 +184,21 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
   zipCode: string;
 
   /**
-   * User image address
+   * User image address.
    *
    * @generated from field: string img = 10;
    */
   img: string;
 
   /**
-   * User Gender
+   * User Gender.
    *
    * @generated from field: users.UserGender gender = 11;
    */
   gender: UserGender;
 
   /**
-   * phone number for reservation
+   * Phone number for reservation.
    *
    * @generated from field: string phonenumberReservation = 12;
    */
@@ -305,122 +210,6 @@ export declare type UserProfile = Message<"users.UserProfile"> & {
  * Use `create(UserProfileSchema)` to create a new message.
  */
 export declare const UserProfileSchema: GenMessage<UserProfile>;
-
-/**
- * @generated from message users.Contract
- */
-export declare type Contract = Message<"users.Contract"> & {
-  /**
-   * شناسه یکتا برای قرارداد | Unique identifier for the contract
-   *
-   * @generated from field: string contractId = 1;
-   */
-  contractId: string;
-
-  /**
-   * آیدی کارفرما (User.userId) | Employer's user ID
-   *
-   * @generated from field: string employerId = 2;
-   */
-  employerId: string;
-
-  /**
-   * آیدی متقاضی (User.userId) | Employee's (candidate's) user ID
-   *
-   * @generated from field: string employeeId = 3;
-   */
-  employeeId: string;
-
-  /**
-   * عنوان قرارداد | Title of the contract
-   *
-   * @generated from field: string title = 4;
-   */
-  title: string;
-
-  /**
-   * توضیح کوتاه درباره قرارداد | Short general description about the contract
-   *
-   * @generated from field: string description = 5;
-   */
-  description: string;
-
-  /**
-   * مبلغ قرارداد (اختیاری) | Contract amount (optional)
-   *
-   * @generated from field: double amount = 6;
-   */
-  amount: number;
-
-  /**
-   * واحد پول (IRR, USD و غیره) | Currency of the amount (IRR, USD, etc.)
-   *
-   * @generated from field: string currency = 7;
-   */
-  currency: string;
-
-  /**
-   * وضعیت فعلی قرارداد | Current status of the contract
-   *
-   * @generated from field: users.ContractStatus status = 8;
-   */
-  status: ContractStatus;
-
-  /**
-   * تاریخ شروع قرارداد | Start date of the contract
-   *
-   * @generated from field: google.protobuf.Timestamp startDate = 9;
-   */
-  startDate?: Timestamp;
-
-  /**
-   * تاریخ پایان قرارداد | End date of the contract
-   *
-   * @generated from field: google.protobuf.Timestamp endDate = 10;
-   */
-  endDate?: Timestamp;
-
-  /**
-   * مفاد یا شرایط دقیق قرارداد | Full legal terms and conditions
-   *
-   * @generated from field: string terms = 11;
-   */
-  terms: string;
-
-  /**
-   * زمان ایجاد قرارداد | Creation timestamp
-   *
-   * @generated from field: google.protobuf.Timestamp createdAt = 12;
-   */
-  createdAt?: Timestamp;
-
-  /**
-   * زمان آخرین بروزرسانی قرارداد | Last updated timestamp
-   *
-   * @generated from field: google.protobuf.Timestamp updatedAt = 13;
-   */
-  updatedAt?: Timestamp;
-
-  /**
-   * مسیر فایل تقاضا | URL or path to the request file (e.g., PDF, DOCX)
-   *
-   * @generated from field: string contractRequestFileUrl = 14;
-   */
-  contractRequestFileUrl: string;
-
-  /**
-   * مسیر فایل قرارداد امضا شده | URL or path to the signed contract file
-   *
-   * @generated from field: string signedContractFileUrl = 15;
-   */
-  signedContractFileUrl: string;
-};
-
-/**
- * Describes the message users.Contract.
- * Use `create(ContractSchema)` to create a new message.
- */
-export declare const ContractSchema: GenMessage<Contract>;
 
 /**
  * Represents a user in the system, including their roles, status, and profile.
@@ -478,21 +267,21 @@ export declare type User = Message<"users.User"> & {
   passwordHash: string;
 
   /**
-   * User Type
+   * User Type.
    *
    * @generated from field: users.UserType type = 8;
    */
   type: UserType;
 
   /**
-   * The user contract.
+   * The user's contracts.
    *
    * @generated from field: repeated users.Contract userContracts = 9;
    */
   userContracts: Contract[];
 
   /**
-   * The employer to which the user belongs
+   * The employer to which the user belongs.
    *
    * @generated from field: string employerId = 10;
    */
@@ -518,203 +307,6 @@ export declare type User = Message<"users.User"> & {
  * Use `create(UserSchema)` to create a new message.
  */
 export declare const UserSchema: GenMessage<User>;
-
-/**
- * @generated from message users.JobPost
- */
-export declare type JobPost = Message<"users.JobPost"> & {
-  /**
-   * Unique ID for the job post.
-   *
-   * @generated from field: string jobPostId = 1;
-   */
-  jobPostId: string;
-
-  /**
-   * ID of the employer who posted.
-   *
-   * @generated from field: string employerId = 2;
-   */
-  employerId: string;
-
-  /**
-   * Title of the job post.
-   *
-   * @generated from field: string title = 3;
-   */
-  title: string;
-
-  /**
-   * Description of the job.
-   *
-   * @generated from field: string description = 4;
-   */
-  description: string;
-
-  /**
-   * List of required skills.
-   *
-   * @generated from field: repeated string requiredSkills = 5;
-   */
-  requiredSkills: string[];
-
-  /**
-   * Expected salary or offer.
-   *
-   * @generated from field: double salary = 6;
-   */
-  salary: number;
-
-  /**
-   * Salary currency.
-   *
-   * @generated from field: string currency = 7;
-   */
-  currency: string;
-
-  /**
-   * Status of the job post (open, closed, cancelled).
-   *
-   * @generated from field: users.JobPostStatus status = 8;
-   */
-  status: JobPostStatus;
-
-  /**
-   * When the job post was created.
-   *
-   * @generated from field: google.protobuf.Timestamp createdAt = 9;
-   */
-  createdAt?: Timestamp;
-
-  /**
-   * Last update timestamp.
-   *
-   * @generated from field: google.protobuf.Timestamp updatedAt = 10;
-   */
-  updatedAt?: Timestamp;
-};
-
-/**
- * Describes the message users.JobPost.
- * Use `create(JobPostSchema)` to create a new message.
- */
-export declare const JobPostSchema: GenMessage<JobPost>;
-
-/**
- * Represents a geolocation in system maby country,province or city
- *
- * @generated from message users.Geolocation
- */
-export declare type Geolocation = Message<"users.Geolocation"> & {
-  /**
-   * Geolocation enghlish name
-   *
-   * @generated from field: string en = 1;
-   */
-  en: string;
-
-  /**
-   * Geolocation farsi name
-   *
-   * @generated from field: string fa = 2;
-   */
-  fa: string;
-};
-
-/**
- * Describes the message users.Geolocation.
- * Use `create(GeolocationSchema)` to create a new message.
- */
-export declare const GeolocationSchema: GenMessage<Geolocation>;
-
-/**
- * @generated from message users.GeolocationFilter
- */
-export declare type GeolocationFilter = Message<"users.GeolocationFilter"> & {
-  /**
-   * @generated from field: string en = 1;
-   */
-  en: string;
-};
-
-/**
- * Describes the message users.GeolocationFilter.
- * Use `create(GeolocationFilterSchema)` to create a new message.
- */
-export declare const GeolocationFilterSchema: GenMessage<GeolocationFilter>;
-
-/**
- * @generated from message users.GetGeolocationRequest
- */
-export declare type GetGeolocationRequest = Message<"users.GetGeolocationRequest"> & {
-  /**
-   * @generated from field: users.GeolocationFilter filter = 1;
-   */
-  filter?: GeolocationFilter;
-};
-
-/**
- * Describes the message users.GetGeolocationRequest.
- * Use `create(GetGeolocationRequestSchema)` to create a new message.
- */
-export declare const GetGeolocationRequestSchema: GenMessage<GetGeolocationRequest>;
-
-/**
- * @generated from message users.GetGeolocationResponse
- */
-export declare type GetGeolocationResponse = Message<"users.GetGeolocationResponse"> & {
-  /**
-   * @generated from field: repeated users.Geolocation locations = 1;
-   */
-  locations: Geolocation[];
-};
-
-/**
- * Describes the message users.GetGeolocationResponse.
- * Use `create(GetGeolocationResponseSchema)` to create a new message.
- */
-export declare const GetGeolocationResponseSchema: GenMessage<GetGeolocationResponse>;
-
-/**
- * Pagination options for listing users or roles.
- *
- * @generated from message users.Pagination
- */
-export declare type Pagination = Message<"users.Pagination"> & {
-  /**
-   * Page number (starting from 1).
-   *
-   * @generated from field: int32 page = 1;
-   */
-  page: number;
-
-  /**
-   * Number of items to return per page.
-   *
-   * @generated from field: int32 page_size = 2;
-   */
-  pageSize: number;
-
-  /**
-   * Field by which to sort the results (e.g., "username").
-   *
-   * @generated from field: optional string sort_by = 3;
-   */
-  sortBy?: string;
-
-  /**
-   * Whether to sort the results in descending order.
-   *
-   * @generated from field: optional bool sort_descending = 4;
-   */
-  sortDescending?: boolean;
-};
-
-/**
- * Describes the message users.Pagination.
- * Use `create(PaginationSchema)` to create a new message.
- */
-export declare const PaginationSchema: GenMessage<Pagination>;
 
 /**
  * Filter criteria for listing users based on different parameters.
@@ -765,42 +357,42 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
   userStatuse: string;
 
   /**
-   * Filter by geolocation country
+   * Filter by geolocation country.
    *
    * @generated from field: string country = 7;
    */
   country: string;
 
   /**
-   * Filter by geolocation  province
+   * Filter by geolocation province.
    *
    * @generated from field: string province = 8;
    */
   province: string;
 
   /**
-   * Filter by geolocation  city
+   * Filter by geolocation city.
    *
    * @generated from field: string city = 9;
    */
   city: string;
 
   /**
-   * Filter by user type
+   * Filter by user type.
    *
    * @generated from field: string userType = 10;
    */
   userType: string;
 
   /**
-   * Filter  by organization group
+   * Filter by organization group.
    *
    * @generated from field: string groupId = 11;
    */
   groupId: string;
 
   /**
-   * Filter  by employer the user belongs
+   * Filter by employer the user belongs to.
    *
    * @generated from field: string employerId = 12;
    */
@@ -814,85 +406,48 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
 export declare const UserFilterSchema: GenMessage<UserFilter>;
 
 /**
- * Filter criteria for listing roles by associated resource.
+ * Pagination options for listing users or roles.
  *
- * @generated from message users.RoleFilter
+ * @generated from message users.Pagination
  */
-export declare type RoleFilter = Message<"users.RoleFilter"> & {
+export declare type Pagination = Message<"users.Pagination"> & {
   /**
-   * Filter by resource associated with the role (e.g., "user", "order").
+   * Page number (starting from 1).
    *
-   * @generated from field: users.Resource resource = 1;
+   * @generated from field: int32 page = 1;
    */
-  resource?: Resource;
-};
-
-/**
- * Describes the message users.RoleFilter.
- * Use `create(RoleFilterSchema)` to create a new message.
- */
-export declare const RoleFilterSchema: GenMessage<RoleFilter>;
-
-/**
- * Filter criteria for listing Organization Group by associated resource.
- *
- * @generated from message users.OrganizationGroupFilter
- */
-export declare type OrganizationGroupFilter = Message<"users.OrganizationGroupFilter"> & {
-  /**
-   * @generated from field: optional string group_id = 1;
-   */
-  groupId?: string;
+  page: number;
 
   /**
-   * @generated from field: optional string group_name = 2;
-   */
-  groupName?: string;
-
-  /**
-   * Filter by  statuse.
+   * Number of items to return per page.
    *
-   * @generated from field: optional string group_statuse = 3;
+   * @generated from field: int32 page_size = 2;
    */
-  groupStatuse?: string;
+  pageSize: number;
+
+  /**
+   * Field by which to sort the results (e.g., "username").
+   *
+   * @generated from field: optional string sort_by = 3;
+   */
+  sortBy?: string;
+
+  /**
+   * Whether to sort the results in descending order.
+   *
+   * @generated from field: optional bool sort_descending = 4;
+   */
+  sortDescending?: boolean;
 };
 
 /**
- * Describes the message users.OrganizationGroupFilter.
- * Use `create(OrganizationGroupFilterSchema)` to create a new message.
+ * Describes the message users.Pagination.
+ * Use `create(PaginationSchema)` to create a new message.
  */
-export declare const OrganizationGroupFilterSchema: GenMessage<OrganizationGroupFilter>;
+export declare const PaginationSchema: GenMessage<Pagination>;
 
 /**
- * Filter criteria for listing Contract Party by associated resource.
- *
- * @generated from message users.OrganizationFilter
- */
-export declare type OrganizationFilter = Message<"users.OrganizationFilter"> & {
-  /**
-   * @generated from field: optional string organization_id = 1;
-   */
-  organizationId?: string;
-
-  /**
-   * @generated from field: optional string organizationgroup_id = 2;
-   */
-  organizationgroupId?: string;
-
-  /**
-   * @generated from field: optional string organization_statuse = 3;
-   */
-  organizationStatuse?: string;
-};
-
-/**
- * Describes the message users.OrganizationFilter.
- * Use `create(OrganizationFilterSchema)` to create a new message.
- */
-export declare const OrganizationFilterSchema: GenMessage<OrganizationFilter>;
-
-/**
- * Message for registering a new user (sign up).
+ * Request to register a new user (sign up).
  *
  * @generated from message users.RegisterRequest
  */
@@ -933,7 +488,7 @@ export declare type RegisterRequest = Message<"users.RegisterRequest"> & {
   password: string;
 
   /**
-   * Gender of user
+   * Gender of the user.
    *
    * @generated from field: users.UserGender gender = 6;
    */
@@ -955,7 +510,7 @@ export declare type RegisterResponse = Message<"users.RegisterResponse"> & {
   /**
    * ID of the newly created user.
    *
-   * @generated from field: string user_id = 1;
+   * @generated from field: string userId = 1;
    */
   userId: string;
 
@@ -980,7 +535,7 @@ export declare const RegisterResponseSchema: GenMessage<RegisterResponse>;
  */
 export declare type LoginRequest = Message<"users.LoginRequest"> & {
   /**
-   * Username (email or username) to login.
+   * Username (email or username) to log in.
    *
    * @generated from field: string username = 1;
    */
@@ -1036,7 +591,7 @@ export declare type LogoutRequest = Message<"users.LogoutRequest"> & {
   /**
    * ID of the user who is logging out.
    *
-   * @generated from field: string user_id = 1;
+   * @generated from field: string userId = 1;
    */
   userId: string;
 };
@@ -1169,22 +724,104 @@ export declare type ListUsersResponse = Message<"users.ListUsersResponse"> & {
 export declare const ListUsersResponseSchema: GenMessage<ListUsersResponse>;
 
 /**
- * Organization Group related message
+ * ==================== ORGANIZATION-RELATED MESSAGES ====================
+ * Represents a group of organizations (could be departments or teams).
+ *
+ * @generated from message users.OrganizationGroup
+ */
+export declare type OrganizationGroup = Message<"users.OrganizationGroup"> & {
+  /**
+   * Unique identifier for the group.
+   *
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * Name of the organization group.
+   *
+   * @generated from field: string name = 2;
+   */
+  name: string;
+
+  /**
+   * Description of the organization group.
+   *
+   * @generated from field: string description = 3;
+   */
+  description: string;
+
+  /**
+   * Current status of the contract party group (active, inactive, etc.).
+   *
+   * @generated from field: users.UserStatus status = 4;
+   */
+  status: UserStatus;
+};
+
+/**
+ * Describes the message users.OrganizationGroup.
+ * Use `create(OrganizationGroupSchema)` to create a new message.
+ */
+export declare const OrganizationGroupSchema: GenMessage<OrganizationGroup>;
+
+/**
+ * Filter criteria for listing Organization Groups.
+ *
+ * @generated from message users.OrganizationGroupFilter
+ */
+export declare type OrganizationGroupFilter = Message<"users.OrganizationGroupFilter"> & {
+  /**
+   * Filter by group ID.
+   *
+   * @generated from field: optional string groupId = 1;
+   */
+  groupId?: string;
+
+  /**
+   * Filter by group name.
+   *
+   * @generated from field: optional string groupName = 2;
+   */
+  groupName?: string;
+
+  /**
+   * Filter by status.
+   *
+   * @generated from field: optional string group_statuse = 3;
+   */
+  groupStatuse?: string;
+};
+
+/**
+ * Describes the message users.OrganizationGroupFilter.
+ * Use `create(OrganizationGroupFilterSchema)` to create a new message.
+ */
+export declare const OrganizationGroupFilterSchema: GenMessage<OrganizationGroupFilter>;
+
+/**
+ * Request to create an organization group.
  *
  * @generated from message users.CreateOrganizationGroupRequest
  */
 export declare type CreateOrganizationGroupRequest = Message<"users.CreateOrganizationGroupRequest"> & {
   /**
+   * Name of the organization group.
+   *
    * @generated from field: string name = 1;
    */
   name: string;
 
   /**
+   * Description of the organization group.
+   *
    * @generated from field: string description = 2;
    */
   description: string;
 
   /**
+   * Current status of the organization group.
+   *
    * @generated from field: users.UserStatus status = 3;
    */
   status: UserStatus;
@@ -1197,10 +834,14 @@ export declare type CreateOrganizationGroupRequest = Message<"users.CreateOrgani
 export declare const CreateOrganizationGroupRequestSchema: GenMessage<CreateOrganizationGroupRequest>;
 
 /**
+ * Response after creating an organization group.
+ *
  * @generated from message users.CreateOrganizationGroupResponse
  */
 export declare type CreateOrganizationGroupResponse = Message<"users.CreateOrganizationGroupResponse"> & {
   /**
+   * Confirmation message.
+   *
    * @generated from field: string message = 1;
    */
   message: string;
@@ -1213,10 +854,14 @@ export declare type CreateOrganizationGroupResponse = Message<"users.CreateOrgan
 export declare const CreateOrganizationGroupResponseSchema: GenMessage<CreateOrganizationGroupResponse>;
 
 /**
+ * Request to update an organization group.
+ *
  * @generated from message users.UpdateOrganizationGroupRequest
  */
 export declare type UpdateOrganizationGroupRequest = Message<"users.UpdateOrganizationGroupRequest"> & {
   /**
+   * Updated organization group details.
+   *
    * @generated from field: users.OrganizationGroup group = 1;
    */
   group?: OrganizationGroup;
@@ -1229,10 +874,14 @@ export declare type UpdateOrganizationGroupRequest = Message<"users.UpdateOrgani
 export declare const UpdateOrganizationGroupRequestSchema: GenMessage<UpdateOrganizationGroupRequest>;
 
 /**
+ * Response after updating an organization group.
+ *
  * @generated from message users.UpdateOrganizationGroupResponse
  */
 export declare type UpdateOrganizationGroupResponse = Message<"users.UpdateOrganizationGroupResponse"> & {
   /**
+   * Confirmation message.
+   *
    * @generated from field: string message = 1;
    */
   message: string;
@@ -1245,11 +894,15 @@ export declare type UpdateOrganizationGroupResponse = Message<"users.UpdateOrgan
 export declare const UpdateOrganizationGroupResponseSchema: GenMessage<UpdateOrganizationGroupResponse>;
 
 /**
+ * Request to delete an organization group.
+ *
  * @generated from message users.DeleteOrganizationGroupRequest
  */
 export declare type DeleteOrganizationGroupRequest = Message<"users.DeleteOrganizationGroupRequest"> & {
   /**
-   * @generated from field: string group_id = 1;
+   * ID of the organization group to delete.
+   *
+   * @generated from field: string groupId = 1;
    */
   groupId: string;
 };
@@ -1261,10 +914,14 @@ export declare type DeleteOrganizationGroupRequest = Message<"users.DeleteOrgani
 export declare const DeleteOrganizationGroupRequestSchema: GenMessage<DeleteOrganizationGroupRequest>;
 
 /**
+ * Response after deleting an organization group.
+ *
  * @generated from message users.DeleteOrganizationGroupResponse
  */
 export declare type DeleteOrganizationGroupResponse = Message<"users.DeleteOrganizationGroupResponse"> & {
   /**
+   * Confirmation message.
+   *
    * @generated from field: string message = 1;
    */
   message: string;
@@ -1277,10 +934,14 @@ export declare type DeleteOrganizationGroupResponse = Message<"users.DeleteOrgan
 export declare const DeleteOrganizationGroupResponseSchema: GenMessage<DeleteOrganizationGroupResponse>;
 
 /**
+ * Request to list organization groups.
+ *
  * @generated from message users.ListOrganizationGroupRequest
  */
 export declare type ListOrganizationGroupRequest = Message<"users.ListOrganizationGroupRequest"> & {
   /**
+   * Filter criteria to apply.
+   *
    * @generated from field: users.OrganizationGroupFilter filter = 1;
    */
   filter?: OrganizationGroupFilter;
@@ -1293,10 +954,14 @@ export declare type ListOrganizationGroupRequest = Message<"users.ListOrganizati
 export declare const ListOrganizationGroupRequestSchema: GenMessage<ListOrganizationGroupRequest>;
 
 /**
+ * Response for listing organization groups.
+ *
  * @generated from message users.ListOrganizationGroupResponse
  */
 export declare type ListOrganizationGroupResponse = Message<"users.ListOrganizationGroupResponse"> & {
   /**
+   * List of organization groups retrieved.
+   *
    * @generated from field: repeated users.OrganizationGroup groups = 1;
    */
   groups: OrganizationGroup[];
@@ -1309,22 +974,117 @@ export declare type ListOrganizationGroupResponse = Message<"users.ListOrganizat
 export declare const ListOrganizationGroupResponseSchema: GenMessage<ListOrganizationGroupResponse>;
 
 /**
- * Organization or contractparty related message
+ * Represents a contracting party or organization.
+ *
+ * @generated from message users.ContractingParty
+ */
+export declare type ContractingParty = Message<"users.ContractingParty"> & {
+  /**
+   * Unique identifier for the organization.
+   *
+   * @generated from field: string organizationId = 1;
+   */
+  organizationId: string;
+
+  /**
+   * Name of the organization.
+   *
+   * @generated from field: string organizationName = 2;
+   */
+  organizationName: string;
+
+  /**
+   * Description of the organization.
+   *
+   * @generated from field: string description = 3;
+   */
+  description: string;
+
+  /**
+   * Group to which the organization belongs.
+   *
+   * @generated from field: users.OrganizationGroup group = 4;
+   */
+  group?: OrganizationGroup;
+
+  /**
+   * Type of organization.
+   *
+   * @generated from field: users.OrganizationType type = 5;
+   */
+  type: OrganizationType;
+
+  /**
+   * Current status of the contract party (active, inactive, etc.).
+   *
+   * @generated from field: users.UserStatus status = 6;
+   */
+  status: UserStatus;
+};
+
+/**
+ * Describes the message users.ContractingParty.
+ * Use `create(ContractingPartySchema)` to create a new message.
+ */
+export declare const ContractingPartySchema: GenMessage<ContractingParty>;
+
+/**
+ * Filter criteria for listing Contract Parties.
+ *
+ * @generated from message users.OrganizationFilter
+ */
+export declare type OrganizationFilter = Message<"users.OrganizationFilter"> & {
+  /**
+   * Filter by organization ID.
+   *
+   * @generated from field: optional string organizationId = 1;
+   */
+  organizationId?: string;
+
+  /**
+   * Filter by organization group ID.
+   *
+   * @generated from field: optional string organizationgroupId = 2;
+   */
+  organizationgroupId?: string;
+
+  /**
+   * Filter by organization status.
+   *
+   * @generated from field: optional string organization_statuse = 3;
+   */
+  organizationStatuse?: string;
+};
+
+/**
+ * Describes the message users.OrganizationFilter.
+ * Use `create(OrganizationFilterSchema)` to create a new message.
+ */
+export declare const OrganizationFilterSchema: GenMessage<OrganizationFilter>;
+
+/**
+ * Request to create an organization.
  *
  * @generated from message users.CreateOrganizationRequest
  */
 export declare type CreateOrganizationRequest = Message<"users.CreateOrganizationRequest"> & {
   /**
-   * @generated from field: string organization_name = 1;
+   * Name of the organization.
+   *
+   * @generated from field: string organizationName = 1;
    */
   organizationName: string;
 
   /**
-   * @generated from field: optional string organizationgroup_id = 2;
+   * ID of the organization group.
+   *
+   * @generated from field: optional string organizationgroupId = 2;
    */
   organizationgroupId?: string;
 
   /**
+   * Description of the organization.
+   *
    * @generated from field: optional string description = 3;
    */
   description?: string;
@@ -1337,15 +1097,21 @@ export declare type CreateOrganizationRequest = Message<"users.CreateOrganizatio
 export declare const CreateOrganizationRequestSchema: GenMessage<CreateOrganizationRequest>;
 
 /**
+ * Response after creating an organization.
+ *
  * @generated from message users.CreateOrganizationResponse
  */
 export declare type CreateOrganizationResponse = Message<"users.CreateOrganizationResponse"> & {
   /**
-   * @generated from field: string organization_id = 1;
+   * ID of the newly created organization.
+   *
+   * @generated from field: string organizationId = 1;
    */
   organizationId: string;
 
   /**
+   * Confirmation message.
+   *
    * @generated from field: string message = 2;
    */
   message: string;
@@ -1358,10 +1124,14 @@ export declare type CreateOrganizationResponse = Message<"users.CreateOrganizati
 export declare const CreateOrganizationResponseSchema: GenMessage<CreateOrganizationResponse>;
 
 /**
+ * Request to update an organization.
+ *
  * @generated from message users.UpdateOrganizationRequest
  */
 export declare type UpdateOrganizationRequest = Message<"users.UpdateOrganizationRequest"> & {
   /**
+   * Updated organization details.
+   *
    * @generated from field: users.ContractingParty organization = 1;
    */
   organization?: ContractingParty;
@@ -1374,11 +1144,15 @@ export declare type UpdateOrganizationRequest = Message<"users.UpdateOrganizatio
 export declare const UpdateOrganizationRequestSchema: GenMessage<UpdateOrganizationRequest>;
 
 /**
+ * Response after updating an organization.
+ *
  * @generated from message users.UpdateOrganizationResponse
  */
 export declare type UpdateOrganizationResponse = Message<"users.UpdateOrganizationResponse"> & {
   /**
-   * @generated from field: string message = 2;
+   * Confirmation message.
+   *
+   * @generated from field: string message = 1;
    */
   message: string;
 };
@@ -1390,11 +1164,15 @@ export declare type UpdateOrganizationResponse = Message<"users.UpdateOrganizati
 export declare const UpdateOrganizationResponseSchema: GenMessage<UpdateOrganizationResponse>;
 
 /**
+ * Request to delete an organization.
+ *
  * @generated from message users.DeleteOrganizationRequest
  */
 export declare type DeleteOrganizationRequest = Message<"users.DeleteOrganizationRequest"> & {
   /**
-   * @generated from field: string organization_id = 1;
+   * ID of the organization to delete.
+   *
+   * @generated from field: string organizationId = 1;
    */
   organizationId: string;
 };
@@ -1406,10 +1184,14 @@ export declare type DeleteOrganizationRequest = Message<"users.DeleteOrganizatio
 export declare const DeleteOrganizationRequestSchema: GenMessage<DeleteOrganizationRequest>;
 
 /**
+ * Response after deleting an organization.
+ *
  * @generated from message users.DeleteOrganizationResponse
  */
 export declare type DeleteOrganizationResponse = Message<"users.DeleteOrganizationResponse"> & {
   /**
+   * Confirmation message.
+   *
    * @generated from field: string message = 1;
    */
   message: string;
@@ -1422,10 +1204,14 @@ export declare type DeleteOrganizationResponse = Message<"users.DeleteOrganizati
 export declare const DeleteOrganizationResponseSchema: GenMessage<DeleteOrganizationResponse>;
 
 /**
+ * Request to list organizations.
+ *
  * @generated from message users.ListOrganizationRequest
  */
 export declare type ListOrganizationRequest = Message<"users.ListOrganizationRequest"> & {
   /**
+   * Filter criteria to apply.
+   *
    * @generated from field: users.OrganizationFilter filter = 1;
    */
   filter?: OrganizationFilter;
@@ -1438,10 +1224,14 @@ export declare type ListOrganizationRequest = Message<"users.ListOrganizationReq
 export declare const ListOrganizationRequestSchema: GenMessage<ListOrganizationRequest>;
 
 /**
+ * Response for listing organizations.
+ *
  * @generated from message users.ListOrganizationResponse
  */
 export declare type ListOrganizationResponse = Message<"users.ListOrganizationResponse"> & {
   /**
+   * List of organizations retrieved.
+   *
    * @generated from field: repeated users.ContractingParty organizations = 1;
    */
   organizations: ContractingParty[];
@@ -1454,41 +1244,590 @@ export declare type ListOrganizationResponse = Message<"users.ListOrganizationRe
 export declare const ListOrganizationResponseSchema: GenMessage<ListOrganizationResponse>;
 
 /**
- * Enum for user status, which can be one of several states for the user account.
+ * ==================== CONTRACT-RELATED MESSAGES ====================
+ * Represents a contract in the system.
+ *
+ * @generated from message users.Contract
+ */
+export declare type Contract = Message<"users.Contract"> & {
+  /**
+   * Unique identifier for the contract.
+   *
+   * @generated from field: string contractId = 1;
+   */
+  contractId: string;
+
+  /**
+   * Employer's user ID.
+   *
+   * @generated from field: string employerId = 2;
+   */
+  employerId: string;
+
+  /**
+   * Employee's (candidate's) user ID.
+   *
+   * @generated from field: string employeeId = 3;
+   */
+  employeeId: string;
+
+  /**
+   * Title of the contract.
+   *
+   * @generated from field: string title = 4;
+   */
+  title: string;
+
+  /**
+   * Short general description about the contract.
+   *
+   * @generated from field: string description = 5;
+   */
+  description: string;
+
+  /**
+   * Contract amount (optional).
+   *
+   * @generated from field: double amount = 6;
+   */
+  amount: number;
+
+  /**
+   * Currency of the amount (IRR, USD, etc.).
+   *
+   * @generated from field: string currency = 7;
+   */
+  currency: string;
+
+  /**
+   * Current status of the contract.
+   *
+   * @generated from field: users.ContractStatus status = 8;
+   */
+  status: ContractStatus;
+
+  /**
+   * Start date of the contract.
+   *
+   * @generated from field: google.protobuf.Timestamp startDate = 9;
+   */
+  startDate?: Timestamp;
+
+  /**
+   * End date of the contract.
+   *
+   * @generated from field: google.protobuf.Timestamp endDate = 10;
+   */
+  endDate?: Timestamp;
+
+  /**
+   * Full legal terms and conditions.
+   *
+   * @generated from field: string terms = 11;
+   */
+  terms: string;
+
+  /**
+   * Creation timestamp.
+   *
+   * @generated from field: google.protobuf.Timestamp createdAt = 12;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * Last updated timestamp.
+   *
+   * @generated from field: google.protobuf.Timestamp updatedAt = 13;
+   */
+  updatedAt?: Timestamp;
+
+  /**
+   * URL or path to the request file (e.g., PDF, DOCX).
+   *
+   * @generated from field: string contractRequestFileUrl = 14;
+   */
+  contractRequestFileUrl: string;
+
+  /**
+   * URL or path to the signed contract file.
+   *
+   * @generated from field: string signedContractFileUrl = 15;
+   */
+  signedContractFileUrl: string;
+};
+
+/**
+ * Describes the message users.Contract.
+ * Use `create(ContractSchema)` to create a new message.
+ */
+export declare const ContractSchema: GenMessage<Contract>;
+
+/**
+ * Filter criteria for listing contracts.
+ *
+ * @generated from message users.ContractFilter
+ */
+export declare type ContractFilter = Message<"users.ContractFilter"> & {
+  /**
+   * Filter by contract ID.
+   *
+   * @generated from field: string contractId = 1;
+   */
+  contractId: string;
+
+  /**
+   * Filter by employer ID.
+   *
+   * @generated from field: string employerId = 2;
+   */
+  employerId: string;
+
+  /**
+   * Filter by employee ID.
+   *
+   * @generated from field: string employeeId = 3;
+   */
+  employeeId: string;
+
+  /**
+   * Filter by contract status.
+   *
+   * @generated from field: string contractStatuse = 4;
+   */
+  contractStatuse: string;
+
+  /**
+   * Filter by start date of the contract.
+   *
+   * @generated from field: google.protobuf.Timestamp startDate = 5;
+   */
+  startDate?: Timestamp;
+
+  /**
+   * Filter by end date of the contract.
+   *
+   * @generated from field: google.protobuf.Timestamp endDate = 6;
+   */
+  endDate?: Timestamp;
+};
+
+/**
+ * Describes the message users.ContractFilter.
+ * Use `create(ContractFilterSchema)` to create a new message.
+ */
+export declare const ContractFilterSchema: GenMessage<ContractFilter>;
+
+/**
+ * Request to create a contract.
+ *
+ * @generated from message users.CreateContractRequest
+ */
+export declare type CreateContractRequest = Message<"users.CreateContractRequest"> & {
+  /**
+   * Employer ID.
+   *
+   * @generated from field: string employerId = 1;
+   */
+  employerId: string;
+
+  /**
+   * Employee ID.
+   *
+   * @generated from field: string employeeId = 2;
+   */
+  employeeId: string;
+
+  /**
+   * Contract status.
+   *
+   * @generated from field: string contractStatuse = 3;
+   */
+  contractStatuse: string;
+
+  /**
+   * Description of the contract.
+   *
+   * @generated from field: string description = 4;
+   */
+  description: string;
+};
+
+/**
+ * Describes the message users.CreateContractRequest.
+ * Use `create(CreateContractRequestSchema)` to create a new message.
+ */
+export declare const CreateContractRequestSchema: GenMessage<CreateContractRequest>;
+
+/**
+ * Response after creating a contract.
+ *
+ * @generated from message users.CreateContractResponse
+ */
+export declare type CreateContractResponse = Message<"users.CreateContractResponse"> & {
+  /**
+   * ID of the newly created contract.
+   *
+   * @generated from field: string contractId = 1;
+   */
+  contractId: string;
+
+  /**
+   * Confirmation message.
+   *
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.CreateContractResponse.
+ * Use `create(CreateContractResponseSchema)` to create a new message.
+ */
+export declare const CreateContractResponseSchema: GenMessage<CreateContractResponse>;
+
+/**
+ * Request to update a contract.
+ *
+ * @generated from message users.UpdateContractRequest
+ */
+export declare type UpdateContractRequest = Message<"users.UpdateContractRequest"> & {
+  /**
+   * Updated contract details.
+   *
+   * @generated from field: users.Contract contract = 1;
+   */
+  contract?: Contract;
+};
+
+/**
+ * Describes the message users.UpdateContractRequest.
+ * Use `create(UpdateContractRequestSchema)` to create a new message.
+ */
+export declare const UpdateContractRequestSchema: GenMessage<UpdateContractRequest>;
+
+/**
+ * Response after updating a contract.
+ *
+ * @generated from message users.UpdateContractResponse
+ */
+export declare type UpdateContractResponse = Message<"users.UpdateContractResponse"> & {
+  /**
+   * Confirmation message.
+   *
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.UpdateContractResponse.
+ * Use `create(UpdateContractResponseSchema)` to create a new message.
+ */
+export declare const UpdateContractResponseSchema: GenMessage<UpdateContractResponse>;
+
+/**
+ * Request to delete a contract.
+ *
+ * @generated from message users.DeleteContractRequest
+ */
+export declare type DeleteContractRequest = Message<"users.DeleteContractRequest"> & {
+  /**
+   * ID of the contract to delete.
+   *
+   * @generated from field: string contractId = 1;
+   */
+  contractId: string;
+};
+
+/**
+ * Describes the message users.DeleteContractRequest.
+ * Use `create(DeleteContractRequestSchema)` to create a new message.
+ */
+export declare const DeleteContractRequestSchema: GenMessage<DeleteContractRequest>;
+
+/**
+ * Response after deleting a contract.
+ *
+ * @generated from message users.DeleteContractResponse
+ */
+export declare type DeleteContractResponse = Message<"users.DeleteContractResponse"> & {
+  /**
+   * Confirmation message.
+   *
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.DeleteContractResponse.
+ * Use `create(DeleteContractResponseSchema)` to create a new message.
+ */
+export declare const DeleteContractResponseSchema: GenMessage<DeleteContractResponse>;
+
+/**
+ * Request to list contracts.
+ *
+ * @generated from message users.ListContractRequest
+ */
+export declare type ListContractRequest = Message<"users.ListContractRequest"> & {
+  /**
+   * Filter criteria to apply.
+   *
+   * @generated from field: users.ContractFilter filter = 1;
+   */
+  filter?: ContractFilter;
+
+  /**
+   * Pagination options.
+   *
+   * @generated from field: users.Pagination pagination = 2;
+   */
+  pagination?: Pagination;
+};
+
+/**
+ * Describes the message users.ListContractRequest.
+ * Use `create(ListContractRequestSchema)` to create a new message.
+ */
+export declare const ListContractRequestSchema: GenMessage<ListContractRequest>;
+
+/**
+ * Response for listing contracts.
+ *
+ * @generated from message users.ListContractResponse
+ */
+export declare type ListContractResponse = Message<"users.ListContractResponse"> & {
+  /**
+   * List of contracts retrieved.
+   *
+   * @generated from field: repeated users.Contract contracts = 1;
+   */
+  contracts: Contract[];
+
+  /**
+   * Total number of pages in the system.
+   *
+   * @generated from field: int32 total_pages = 2;
+   */
+  totalPages: number;
+};
+
+/**
+ * Describes the message users.ListContractResponse.
+ * Use `create(ListContractResponseSchema)` to create a new message.
+ */
+export declare const ListContractResponseSchema: GenMessage<ListContractResponse>;
+
+/**
+ * ==================== GEOLOCATION-RELATED MESSAGES ====================
+ * Represents a geolocation in the system (country, province, or city).
+ *
+ * @generated from message users.Geolocation
+ */
+export declare type Geolocation = Message<"users.Geolocation"> & {
+  /**
+   * Geolocation English name.
+   *
+   * @generated from field: string en = 1;
+   */
+  en: string;
+
+  /**
+   * Geolocation Farsi name.
+   *
+   * @generated from field: string fa = 2;
+   */
+  fa: string;
+};
+
+/**
+ * Describes the message users.Geolocation.
+ * Use `create(GeolocationSchema)` to create a new message.
+ */
+export declare const GeolocationSchema: GenMessage<Geolocation>;
+
+/**
+ * Filter criteria for geolocation.
+ *
+ * @generated from message users.GeolocationFilter
+ */
+export declare type GeolocationFilter = Message<"users.GeolocationFilter"> & {
+  /**
+   * Filter by English name of the geolocation.
+   *
+   * @generated from field: string en = 1;
+   */
+  en: string;
+};
+
+/**
+ * Describes the message users.GeolocationFilter.
+ * Use `create(GeolocationFilterSchema)` to create a new message.
+ */
+export declare const GeolocationFilterSchema: GenMessage<GeolocationFilter>;
+
+/**
+ * Request to get geolocations.
+ *
+ * @generated from message users.GetGeolocationRequest
+ */
+export declare type GetGeolocationRequest = Message<"users.GetGeolocationRequest"> & {
+  /**
+   * Filter criteria to apply.
+   *
+   * @generated from field: users.GeolocationFilter filter = 1;
+   */
+  filter?: GeolocationFilter;
+};
+
+/**
+ * Describes the message users.GetGeolocationRequest.
+ * Use `create(GetGeolocationRequestSchema)` to create a new message.
+ */
+export declare const GetGeolocationRequestSchema: GenMessage<GetGeolocationRequest>;
+
+/**
+ * Response for geolocation retrieval.
+ *
+ * @generated from message users.GetGeolocationResponse
+ */
+export declare type GetGeolocationResponse = Message<"users.GetGeolocationResponse"> & {
+  /**
+   * List of geolocations retrieved.
+   *
+   * @generated from field: repeated users.Geolocation locations = 1;
+   */
+  locations: Geolocation[];
+};
+
+/**
+ * Describes the message users.GetGeolocationResponse.
+ * Use `create(GetGeolocationResponseSchema)` to create a new message.
+ */
+export declare const GetGeolocationResponseSchema: GenMessage<GetGeolocationResponse>;
+
+/**
+ * ==================== JOB POST-RELATED MESSAGES ====================
+ * Represents a job post.
+ *
+ * @generated from message users.JobPost
+ */
+export declare type JobPost = Message<"users.JobPost"> & {
+  /**
+   * Unique ID for the job post.
+   *
+   * @generated from field: string jobPostId = 1;
+   */
+  jobPostId: string;
+
+  /**
+   * ID of the employer who posted.
+   *
+   * @generated from field: string employerId = 2;
+   */
+  employerId: string;
+
+  /**
+   * Title of the job post.
+   *
+   * @generated from field: string title = 3;
+   */
+  title: string;
+
+  /**
+   * Description of the job.
+   *
+   * @generated from field: string description = 4;
+   */
+  description: string;
+
+  /**
+   * List of required skills.
+   *
+   * @generated from field: repeated string requiredSkills = 5;
+   */
+  requiredSkills: string[];
+
+  /**
+   * Expected salary or offer.
+   *
+   * @generated from field: double salary = 6;
+   */
+  salary: number;
+
+  /**
+   * Salary currency.
+   *
+   * @generated from field: string currency = 7;
+   */
+  currency: string;
+
+  /**
+   * Status of the job post (open, closed, cancelled).
+   *
+   * @generated from field: users.JobPostStatus status = 8;
+   */
+  status: JobPostStatus;
+
+  /**
+   * When the job post was created.
+   *
+   * @generated from field: google.protobuf.Timestamp createdAt = 9;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * Last update timestamp.
+   *
+   * @generated from field: google.protobuf.Timestamp updatedAt = 10;
+   */
+  updatedAt?: Timestamp;
+};
+
+/**
+ * Describes the message users.JobPost.
+ * Use `create(JobPostSchema)` to create a new message.
+ */
+export declare const JobPostSchema: GenMessage<JobPost>;
+
+/**
+ * ==================== ENUMS ====================
+ * Enum for user status.
  *
  * @generated from enum users.UserStatus
  */
 export enum UserStatus {
   /**
-   * Default value, used when no status is provided.
+   * Default value.
    *
    * @generated from enum value: USER_STATUS_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * User is active and can log in.
+   * Active user.
    *
    * @generated from enum value: USER_STATUS_ACTIVE = 1;
    */
   ACTIVE = 1,
 
   /**
-   * User has been deactivated and cannot log in.
+   * Inactive user.
    *
    * @generated from enum value: USER_STATUS_INACTIVE = 2;
    */
   INACTIVE = 2,
 
   /**
-   * User is temporarily suspended.
+   * Suspended user.
    *
    * @generated from enum value: USER_STATUS_SUSPENDED = 3;
    */
   SUSPENDED = 3,
 
   /**
-   * User account has been deleted.
+   * Deleted user.
    *
    * @generated from enum value: USER_STATUS_DELETED = 4;
    */
@@ -1501,46 +1840,48 @@ export enum UserStatus {
 export declare const UserStatusSchema: GenEnum<UserStatus>;
 
 /**
+ * Enum for user types.
+ *
  * @generated from enum users.UserType
  */
 export enum UserType {
   /**
-   * کاربر عادی پیش فرض | Default normal user
+   * Default normal user.
    *
    * @generated from enum value: USER_TYPE_DEFAULT = 0;
    */
   DEFAULT = 0,
 
   /**
-   * ادمین سیستم | System administrator
+   * System administrator.
    *
    * @generated from enum value: USER_TYPE_ADMIN = 1;
    */
   ADMIN = 1,
 
   /**
-   * طرف قرارداد عمومی | General contracting party
+   * General contracting party.
    *
    * @generated from enum value: USER_TYPE_CONTRACT_PARTY = 2;
    */
   CONTRACT_PARTY = 2,
 
   /**
-   * کارمند طرف قرارداد | Employee of the contracting party
+   * Employee of the contracting party.
    *
    * @generated from enum value: USER_TYPE_CONTRACT_EMPLOYEE = 3;
    */
   CONTRACT_EMPLOYEE = 3,
 
   /**
-   * کارفرمای طرف قرارداد | Employer of the contracting party
+   * Employer of the contracting party.
    *
    * @generated from enum value: USER_TYPE_CONTRACT_EMPLOYER = 4;
    */
   CONTRACT_EMPLOYER = 4,
 
   /**
-   * متقاضی قرارداد (درخواست دهنده) | Applicant for a contract
+   * Applicant for a contract.
    *
    * @generated from enum value: USER_TYPE_CONTRACT_APPLICANT = 5;
    */
@@ -1553,25 +1894,27 @@ export enum UserType {
 export declare const UserTypeSchema: GenEnum<UserType>;
 
 /**
+ * Enum for user gender.
+ *
  * @generated from enum users.UserGender
  */
 export enum UserGender {
   /**
-   * Default value mail.
+   * Male.
    *
    * @generated from enum value: USER_Gender_Male = 0;
    */
   Male = 0,
 
   /**
-   * Femail
+   * Female.
    *
    * @generated from enum value: USER_Gender_Female = 1;
    */
   Female = 1,
 
   /**
-   * Other
+   * Other.
    *
    * @generated from enum value: USER_Gender_Other = 2;
    */
@@ -1584,6 +1927,8 @@ export enum UserGender {
 export declare const UserGenderSchema: GenEnum<UserGender>;
 
 /**
+ * Enum for organization types.
+ *
  * @generated from enum users.OrganizationType
  */
 export enum OrganizationType {
@@ -1629,6 +1974,8 @@ export enum OrganizationType {
 export declare const OrganizationTypeSchema: GenEnum<OrganizationType>;
 
 /**
+ * Enum for contract statuses.
+ *
  * @generated from enum users.ContractStatus
  */
 export enum ContractStatus {
@@ -1640,49 +1987,49 @@ export enum ContractStatus {
   UNSPECIFIED = 0,
 
   /**
-   * Contract is created and awaiting review.
+   * Awaiting review.
    *
    * @generated from enum value: CONTRACT_STATUS_PENDING = 1;
    */
   PENDING = 1,
 
   /**
-   * Contract has been approved by employer.
+   * Approved by employer.
    *
    * @generated from enum value: CONTRACT_STATUS_APPROVED = 2;
    */
   APPROVED = 2,
 
   /**
-   * Contract was rejected.
+   * Rejected.
    *
    * @generated from enum value: CONTRACT_STATUS_REJECTED = 3;
    */
   REJECTED = 3,
 
   /**
-   * Contract has been signed by both parties.
+   * Signed by both parties.
    *
    * @generated from enum value: CONTRACT_STATUS_SIGNED = 4;
    */
   SIGNED = 4,
 
   /**
-   * Contract is active and in effect.
+   * Active and in effect.
    *
    * @generated from enum value: CONTRACT_STATUS_ACTIVE = 5;
    */
   ACTIVE = 5,
 
   /**
-   * Contract has been fulfilled/completed.
+   * Completed.
    *
    * @generated from enum value: CONTRACT_STATUS_COMPLETED = 6;
    */
   COMPLETED = 6,
 
   /**
-   * Contract has been terminated before completion.
+   * Terminated before completion.
    *
    * @generated from enum value: CONTRACT_STATUS_TERMINATED = 7;
    */
@@ -1695,6 +2042,8 @@ export enum ContractStatus {
 export declare const ContractStatusSchema: GenEnum<ContractStatus>;
 
 /**
+ * Enum for job post statuses.
+ *
  * @generated from enum users.JobPostStatus
  */
 export enum JobPostStatus {
@@ -1725,7 +2074,7 @@ export enum JobPostStatus {
 export declare const JobPostStatusSchema: GenEnum<JobPostStatus>;
 
 /**
- * Service for managing users (authentication, user details, and user roles).
+ * ==================== SERVICE DEFINITIONS ====================
  *
  * @generated from service users.UsersService
  */
@@ -1763,7 +2112,7 @@ export declare const UsersService: GenService<{
     output: typeof ListUsersResponseSchema;
   },
   /**
-   * Update user
+   * Update user details.
    *
    * @generated from rpc users.UsersService.UpdateUser
    */
@@ -1807,7 +2156,7 @@ export declare const UsersService: GenService<{
     output: typeof ListOrganizationGroupResponseSchema;
   },
   /**
-   * Organization  related methods
+   * Organization related methods
    *
    * @generated from rpc users.UsersService.CreateOrganization
    */
@@ -1841,7 +2190,41 @@ export declare const UsersService: GenService<{
     output: typeof ListOrganizationResponseSchema;
   },
   /**
-   * geolocation related methods
+   * Contract related methods
+   *
+   * @generated from rpc users.UsersService.CreateContract
+   */
+  createContract: {
+    methodKind: "unary";
+    input: typeof CreateContractRequestSchema;
+    output: typeof CreateContractResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.UpdateContract
+   */
+  updateContract: {
+    methodKind: "unary";
+    input: typeof UpdateContractRequestSchema;
+    output: typeof UpdateContractResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.DeleteContract
+   */
+  deleteContract: {
+    methodKind: "unary";
+    input: typeof DeleteContractRequestSchema;
+    output: typeof DeleteContractResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.ListContract
+   */
+  listContract: {
+    methodKind: "unary";
+    input: typeof ListContractRequestSchema;
+    output: typeof ListContractResponseSchema;
+  },
+  /**
+   * Geolocation related methods
    *
    * @generated from rpc users.UsersService.GetCountries
    */

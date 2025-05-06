@@ -66,6 +66,18 @@ const (
 	// UsersServiceListOrganizationProcedure is the fully-qualified name of the UsersService's
 	// ListOrganization RPC.
 	UsersServiceListOrganizationProcedure = "/users.UsersService/ListOrganization"
+	// UsersServiceCreateContractProcedure is the fully-qualified name of the UsersService's
+	// CreateContract RPC.
+	UsersServiceCreateContractProcedure = "/users.UsersService/CreateContract"
+	// UsersServiceUpdateContractProcedure is the fully-qualified name of the UsersService's
+	// UpdateContract RPC.
+	UsersServiceUpdateContractProcedure = "/users.UsersService/UpdateContract"
+	// UsersServiceDeleteContractProcedure is the fully-qualified name of the UsersService's
+	// DeleteContract RPC.
+	UsersServiceDeleteContractProcedure = "/users.UsersService/DeleteContract"
+	// UsersServiceListContractProcedure is the fully-qualified name of the UsersService's ListContract
+	// RPC.
+	UsersServiceListContractProcedure = "/users.UsersService/ListContract"
 	// UsersServiceGetCountriesProcedure is the fully-qualified name of the UsersService's GetCountries
 	// RPC.
 	UsersServiceGetCountriesProcedure = "/users.UsersService/GetCountries"
@@ -91,6 +103,10 @@ var (
 	usersServiceUpdateOrganizationMethodDescriptor      = usersServiceServiceDescriptor.Methods().ByName("UpdateOrganization")
 	usersServiceDeleteOrganizationMethodDescriptor      = usersServiceServiceDescriptor.Methods().ByName("DeleteOrganization")
 	usersServiceListOrganizationMethodDescriptor        = usersServiceServiceDescriptor.Methods().ByName("ListOrganization")
+	usersServiceCreateContractMethodDescriptor          = usersServiceServiceDescriptor.Methods().ByName("CreateContract")
+	usersServiceUpdateContractMethodDescriptor          = usersServiceServiceDescriptor.Methods().ByName("UpdateContract")
+	usersServiceDeleteContractMethodDescriptor          = usersServiceServiceDescriptor.Methods().ByName("DeleteContract")
+	usersServiceListContractMethodDescriptor            = usersServiceServiceDescriptor.Methods().ByName("ListContract")
 	usersServiceGetCountriesMethodDescriptor            = usersServiceServiceDescriptor.Methods().ByName("GetCountries")
 	usersServiceGetProvincesMethodDescriptor            = usersServiceServiceDescriptor.Methods().ByName("GetProvinces")
 	usersServiceGetCitiesMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("GetCities")
@@ -108,12 +124,17 @@ type UsersServiceClient interface {
 	UpdateOrganizationGroup(context.Context, *connect.Request[users.UpdateOrganizationGroupRequest]) (*connect.Response[users.UpdateOrganizationGroupResponse], error)
 	DeleteOrganizationGroup(context.Context, *connect.Request[users.DeleteOrganizationGroupRequest]) (*connect.Response[users.DeleteOrganizationGroupResponse], error)
 	ListOrganizationGroup(context.Context, *connect.Request[users.ListOrganizationGroupRequest]) (*connect.Response[users.ListOrganizationGroupResponse], error)
-	// Organization  related methods
+	// Organization related methods
 	CreateOrganization(context.Context, *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error)
 	UpdateOrganization(context.Context, *connect.Request[users.UpdateOrganizationRequest]) (*connect.Response[users.UpdateOrganizationResponse], error)
 	DeleteOrganization(context.Context, *connect.Request[users.DeleteOrganizationRequest]) (*connect.Response[users.DeleteOrganizationResponse], error)
 	ListOrganization(context.Context, *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error)
-	// geolocation related methods
+	// Contract related methods
+	CreateContract(context.Context, *connect.Request[users.CreateContractRequest]) (*connect.Response[users.CreateContractResponse], error)
+	UpdateContract(context.Context, *connect.Request[users.UpdateContractRequest]) (*connect.Response[users.UpdateContractResponse], error)
+	DeleteContract(context.Context, *connect.Request[users.DeleteContractRequest]) (*connect.Response[users.DeleteContractResponse], error)
+	ListContract(context.Context, *connect.Request[users.ListContractRequest]) (*connect.Response[users.ListContractResponse], error)
+	// Geolocation related methods
 	GetCountries(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
 	GetProvinces(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
 	GetCities(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
@@ -201,6 +222,30 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceListOrganizationMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		createContract: connect.NewClient[users.CreateContractRequest, users.CreateContractResponse](
+			httpClient,
+			baseURL+UsersServiceCreateContractProcedure,
+			connect.WithSchema(usersServiceCreateContractMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		updateContract: connect.NewClient[users.UpdateContractRequest, users.UpdateContractResponse](
+			httpClient,
+			baseURL+UsersServiceUpdateContractProcedure,
+			connect.WithSchema(usersServiceUpdateContractMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		deleteContract: connect.NewClient[users.DeleteContractRequest, users.DeleteContractResponse](
+			httpClient,
+			baseURL+UsersServiceDeleteContractProcedure,
+			connect.WithSchema(usersServiceDeleteContractMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		listContract: connect.NewClient[users.ListContractRequest, users.ListContractResponse](
+			httpClient,
+			baseURL+UsersServiceListContractProcedure,
+			connect.WithSchema(usersServiceListContractMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		getCountries: connect.NewClient[users.GetGeolocationRequest, users.GetGeolocationResponse](
 			httpClient,
 			baseURL+UsersServiceGetCountriesProcedure,
@@ -236,6 +281,10 @@ type usersServiceClient struct {
 	updateOrganization      *connect.Client[users.UpdateOrganizationRequest, users.UpdateOrganizationResponse]
 	deleteOrganization      *connect.Client[users.DeleteOrganizationRequest, users.DeleteOrganizationResponse]
 	listOrganization        *connect.Client[users.ListOrganizationRequest, users.ListOrganizationResponse]
+	createContract          *connect.Client[users.CreateContractRequest, users.CreateContractResponse]
+	updateContract          *connect.Client[users.UpdateContractRequest, users.UpdateContractResponse]
+	deleteContract          *connect.Client[users.DeleteContractRequest, users.DeleteContractResponse]
+	listContract            *connect.Client[users.ListContractRequest, users.ListContractResponse]
 	getCountries            *connect.Client[users.GetGeolocationRequest, users.GetGeolocationResponse]
 	getProvinces            *connect.Client[users.GetGeolocationRequest, users.GetGeolocationResponse]
 	getCities               *connect.Client[users.GetGeolocationRequest, users.GetGeolocationResponse]
@@ -301,6 +350,26 @@ func (c *usersServiceClient) ListOrganization(ctx context.Context, req *connect.
 	return c.listOrganization.CallUnary(ctx, req)
 }
 
+// CreateContract calls users.UsersService.CreateContract.
+func (c *usersServiceClient) CreateContract(ctx context.Context, req *connect.Request[users.CreateContractRequest]) (*connect.Response[users.CreateContractResponse], error) {
+	return c.createContract.CallUnary(ctx, req)
+}
+
+// UpdateContract calls users.UsersService.UpdateContract.
+func (c *usersServiceClient) UpdateContract(ctx context.Context, req *connect.Request[users.UpdateContractRequest]) (*connect.Response[users.UpdateContractResponse], error) {
+	return c.updateContract.CallUnary(ctx, req)
+}
+
+// DeleteContract calls users.UsersService.DeleteContract.
+func (c *usersServiceClient) DeleteContract(ctx context.Context, req *connect.Request[users.DeleteContractRequest]) (*connect.Response[users.DeleteContractResponse], error) {
+	return c.deleteContract.CallUnary(ctx, req)
+}
+
+// ListContract calls users.UsersService.ListContract.
+func (c *usersServiceClient) ListContract(ctx context.Context, req *connect.Request[users.ListContractRequest]) (*connect.Response[users.ListContractResponse], error) {
+	return c.listContract.CallUnary(ctx, req)
+}
+
 // GetCountries calls users.UsersService.GetCountries.
 func (c *usersServiceClient) GetCountries(ctx context.Context, req *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error) {
 	return c.getCountries.CallUnary(ctx, req)
@@ -328,12 +397,17 @@ type UsersServiceHandler interface {
 	UpdateOrganizationGroup(context.Context, *connect.Request[users.UpdateOrganizationGroupRequest]) (*connect.Response[users.UpdateOrganizationGroupResponse], error)
 	DeleteOrganizationGroup(context.Context, *connect.Request[users.DeleteOrganizationGroupRequest]) (*connect.Response[users.DeleteOrganizationGroupResponse], error)
 	ListOrganizationGroup(context.Context, *connect.Request[users.ListOrganizationGroupRequest]) (*connect.Response[users.ListOrganizationGroupResponse], error)
-	// Organization  related methods
+	// Organization related methods
 	CreateOrganization(context.Context, *connect.Request[users.CreateOrganizationRequest]) (*connect.Response[users.CreateOrganizationResponse], error)
 	UpdateOrganization(context.Context, *connect.Request[users.UpdateOrganizationRequest]) (*connect.Response[users.UpdateOrganizationResponse], error)
 	DeleteOrganization(context.Context, *connect.Request[users.DeleteOrganizationRequest]) (*connect.Response[users.DeleteOrganizationResponse], error)
 	ListOrganization(context.Context, *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error)
-	// geolocation related methods
+	// Contract related methods
+	CreateContract(context.Context, *connect.Request[users.CreateContractRequest]) (*connect.Response[users.CreateContractResponse], error)
+	UpdateContract(context.Context, *connect.Request[users.UpdateContractRequest]) (*connect.Response[users.UpdateContractResponse], error)
+	DeleteContract(context.Context, *connect.Request[users.DeleteContractRequest]) (*connect.Response[users.DeleteContractResponse], error)
+	ListContract(context.Context, *connect.Request[users.ListContractRequest]) (*connect.Response[users.ListContractResponse], error)
+	// Geolocation related methods
 	GetCountries(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
 	GetProvinces(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
 	GetCities(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
@@ -417,6 +491,30 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceListOrganizationMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	usersServiceCreateContractHandler := connect.NewUnaryHandler(
+		UsersServiceCreateContractProcedure,
+		svc.CreateContract,
+		connect.WithSchema(usersServiceCreateContractMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceUpdateContractHandler := connect.NewUnaryHandler(
+		UsersServiceUpdateContractProcedure,
+		svc.UpdateContract,
+		connect.WithSchema(usersServiceUpdateContractMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceDeleteContractHandler := connect.NewUnaryHandler(
+		UsersServiceDeleteContractProcedure,
+		svc.DeleteContract,
+		connect.WithSchema(usersServiceDeleteContractMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceListContractHandler := connect.NewUnaryHandler(
+		UsersServiceListContractProcedure,
+		svc.ListContract,
+		connect.WithSchema(usersServiceListContractMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	usersServiceGetCountriesHandler := connect.NewUnaryHandler(
 		UsersServiceGetCountriesProcedure,
 		svc.GetCountries,
@@ -461,6 +559,14 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 			usersServiceDeleteOrganizationHandler.ServeHTTP(w, r)
 		case UsersServiceListOrganizationProcedure:
 			usersServiceListOrganizationHandler.ServeHTTP(w, r)
+		case UsersServiceCreateContractProcedure:
+			usersServiceCreateContractHandler.ServeHTTP(w, r)
+		case UsersServiceUpdateContractProcedure:
+			usersServiceUpdateContractHandler.ServeHTTP(w, r)
+		case UsersServiceDeleteContractProcedure:
+			usersServiceDeleteContractHandler.ServeHTTP(w, r)
+		case UsersServiceListContractProcedure:
+			usersServiceListContractHandler.ServeHTTP(w, r)
 		case UsersServiceGetCountriesProcedure:
 			usersServiceGetCountriesHandler.ServeHTTP(w, r)
 		case UsersServiceGetProvincesProcedure:
@@ -522,6 +628,22 @@ func (UnimplementedUsersServiceHandler) DeleteOrganization(context.Context, *con
 
 func (UnimplementedUsersServiceHandler) ListOrganization(context.Context, *connect.Request[users.ListOrganizationRequest]) (*connect.Response[users.ListOrganizationResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.ListOrganization is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) CreateContract(context.Context, *connect.Request[users.CreateContractRequest]) (*connect.Response[users.CreateContractResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CreateContract is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) UpdateContract(context.Context, *connect.Request[users.UpdateContractRequest]) (*connect.Response[users.UpdateContractResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.UpdateContract is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) DeleteContract(context.Context, *connect.Request[users.DeleteContractRequest]) (*connect.Response[users.DeleteContractResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.DeleteContract is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) ListContract(context.Context, *connect.Request[users.ListContractRequest]) (*connect.Response[users.ListContractResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.ListContract is not implemented"))
 }
 
 func (UnimplementedUsersServiceHandler) GetCountries(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error) {
