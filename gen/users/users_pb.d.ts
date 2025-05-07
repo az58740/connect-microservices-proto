@@ -1409,6 +1409,20 @@ export declare type ContractFilter = Message<"users.ContractFilter"> & {
    * @generated from field: google.protobuf.Timestamp endDate = 6;
    */
   endDate?: Timestamp;
+
+  /**
+   * Filter by start request or creation timestamp .
+   *
+   * @generated from field: google.protobuf.Timestamp createdAt = 7;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * Filter by update request or last updated timestamp.
+   *
+   * @generated from field: google.protobuf.Timestamp updatedAt = 8;
+   */
+  updatedAt?: Timestamp;
 };
 
 /**

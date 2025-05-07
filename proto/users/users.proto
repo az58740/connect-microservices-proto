@@ -346,6 +346,8 @@ message ContractFilter {
     string contractStatuse = 4;               // Filter by contract status.
     google.protobuf.Timestamp startDate = 5;  // Filter by start date of the contract.
     google.protobuf.Timestamp endDate = 6;    // Filter by end date of the contract.
+    google.protobuf.Timestamp createdAt = 7;  // Filter by start request or creation timestamp .
+    google.protobuf.Timestamp updatedAt = 8;  // Filter by update request or last updated timestamp.
 }
 
 // Request to create a contract.
