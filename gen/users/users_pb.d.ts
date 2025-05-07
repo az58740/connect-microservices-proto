@@ -1260,16 +1260,16 @@ export declare type Contract = Message<"users.Contract"> & {
   /**
    * Employer's user ID.
    *
-   * @generated from field: string employerId = 2;
+   * @generated from field: users.User employer = 2;
    */
-  employerId: string;
+  employer?: User;
 
   /**
    * Employee's (candidate's) user ID.
    *
-   * @generated from field: string employeeId = 3;
+   * @generated from field: users.User employee = 3;
    */
-  employeeId: string;
+  employee?: User;
 
   /**
    * Title of the contract.

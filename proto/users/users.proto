@@ -322,8 +322,8 @@ message ListOrganizationResponse {
 // Represents a contract in the system.
 message Contract {
     string contractId = 1;                    // Unique identifier for the contract.
-    string employerId = 2;                    // Employer's user ID.
-    string employeeId = 3;                    // Employee's (candidate's) user ID.
+    User employer = 2;                    // Employer's user ID.
+    User employee = 3;                    // Employee's (candidate's) user ID.
     string title = 4;                         // Title of the contract.
     string description = 5;                   // Short general description about the contract.
     double amount = 6;                        // Contract amount (optional).
