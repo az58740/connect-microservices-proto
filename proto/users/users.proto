@@ -343,7 +343,7 @@ message ContractFilter {
     string contractId = 1;                    // Filter by contract ID.
     string employerId = 2;                    // Filter by employer ID.
     string employeeId = 3;                    // Filter by employee ID.
-    string contractStatuse = 4;               // Filter by contract status.
+    ContractStatus contractStatuse = 4;               // Filter by contract status.
     google.protobuf.Timestamp startDate = 5;  // Filter by start date of the contract.
     google.protobuf.Timestamp endDate = 6;    // Filter by end date of the contract.
     google.protobuf.Timestamp createdAt = 7;  // Filter by start request or creation timestamp .

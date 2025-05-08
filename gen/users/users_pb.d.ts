@@ -1392,9 +1392,9 @@ export declare type ContractFilter = Message<"users.ContractFilter"> & {
   /**
    * Filter by contract status.
    *
-   * @generated from field: string contractStatuse = 4;
+   * @generated from field: users.ContractStatus contractStatuse = 4;
    */
-  contractStatuse: string;
+  contractStatuse: ContractStatus;
 
   /**
    * Filter by start date of the contract.
