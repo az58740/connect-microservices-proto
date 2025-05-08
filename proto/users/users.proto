@@ -354,7 +354,7 @@ message ContractFilter {
 message CreateContractRequest {
     string employerId = 1;      // Employer ID.
     string employeeId = 2;      // Employee ID.
-    string contractStatuse = 3; // Contract status.
+    ContractStatus contractStatuse = 3; // Contract status.
     string description = 4;     // Description of the contract.
 }
 

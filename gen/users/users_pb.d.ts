@@ -1454,9 +1454,9 @@ export declare type CreateContractRequest = Message<"users.CreateContractRequest
   /**
    * Contract status.
    *
-   * @generated from field: string contractStatuse = 3;
+   * @generated from field: users.ContractStatus contractStatuse = 3;
    */
-  contractStatuse: string;
+  contractStatuse: ContractStatus;
 
   /**
    * Description of the contract.
