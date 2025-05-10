@@ -2,6 +2,7 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
+
 option go_package = "github.com/az58740/connect-microservices-proto/golang/users;users"; // Go package path for generated code
 package users;
 
@@ -110,7 +111,7 @@ message User {
     string passwordHash = 7;            // The hashed password (for security).
     UserType type = 8;                  // User Type.
     repeated Contract userContracts = 9; // The user's contracts.
-    string employerId = 10;             // The employer to which the user belongs.
+    User employer = 10;                  // The employer to which the user belongs.
     google.protobuf.Timestamp createdAt = 11; // Date and time when the user was created.
     google.protobuf.Timestamp deletedAt = 12; // Date and time when the user was deleted.
 }

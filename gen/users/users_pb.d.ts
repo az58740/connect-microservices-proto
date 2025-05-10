@@ -283,9 +283,9 @@ export declare type User = Message<"users.User"> & {
   /**
    * The employer to which the user belongs.
    *
-   * @generated from field: string employerId = 10;
+   * @generated from field: users.User employer = 10;
    */
-  employerId: string;
+  employer?: User;
 
   /**
    * Date and time when the user was created.
