@@ -357,6 +357,7 @@ message CreateContractRequest {
     string employeeId = 2;      // Employee ID.
     ContractStatus contractStatuse = 3; // Contract status.
     string description = 4;     // Description of the contract.
+    string contractRequestFileUrl=5;  // URL or path to the request file (e.g., PDF, DOCX).
 }
 
 // Response after creating a contract.

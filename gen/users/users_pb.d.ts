@@ -1464,6 +1464,13 @@ export declare type CreateContractRequest = Message<"users.CreateContractRequest
    * @generated from field: string description = 4;
    */
   description: string;
+
+  /**
+   * URL or path to the request file (e.g., PDF, DOCX).
+   *
+   * @generated from field: string contractRequestFileUrl = 5;
+   */
+  contractRequestFileUrl: string;
 };
 
 /**
