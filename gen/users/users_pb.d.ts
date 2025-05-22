@@ -2015,46 +2015,53 @@ export enum ContractStatus {
   PENDING = 1,
 
   /**
+   * Sending  Document.
+   *
+   * @generated from enum value: CONTRACT_STATUS_SENDDOCUMENT = 2;
+   */
+  SENDDOCUMENT = 2,
+
+  /**
    * Approved by employer.
    *
-   * @generated from enum value: CONTRACT_STATUS_APPROVED = 2;
+   * @generated from enum value: CONTRACT_STATUS_APPROVED = 3;
    */
-  APPROVED = 2,
+  APPROVED = 3,
 
   /**
    * Rejected.
    *
-   * @generated from enum value: CONTRACT_STATUS_REJECTED = 3;
+   * @generated from enum value: CONTRACT_STATUS_REJECTED = 4;
    */
-  REJECTED = 3,
+  REJECTED = 4,
 
   /**
    * Signed by both parties.
    *
-   * @generated from enum value: CONTRACT_STATUS_SIGNED = 4;
+   * @generated from enum value: CONTRACT_STATUS_SIGNED = 5;
    */
-  SIGNED = 4,
+  SIGNED = 5,
 
   /**
    * Active and in effect.
    *
-   * @generated from enum value: CONTRACT_STATUS_ACTIVE = 5;
+   * @generated from enum value: CONTRACT_STATUS_ACTIVE = 6;
    */
-  ACTIVE = 5,
+  ACTIVE = 6,
 
   /**
    * Completed.
    *
-   * @generated from enum value: CONTRACT_STATUS_COMPLETED = 6;
+   * @generated from enum value: CONTRACT_STATUS_COMPLETED = 7;
    */
-  COMPLETED = 6,
+  COMPLETED = 7,
 
   /**
    * Terminated before completion.
    *
-   * @generated from enum value: CONTRACT_STATUS_TERMINATED = 7;
+   * @generated from enum value: CONTRACT_STATUS_TERMINATED = 8;
    */
-  TERMINATED = 7,
+  TERMINATED = 8,
 }
 
 /**
