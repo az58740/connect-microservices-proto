@@ -1441,9 +1441,9 @@ export declare type ContractFilter = Message<"users.ContractFilter"> & {
   /**
    * Reverting all contract except for this one statuse.
    *
-   * @generated from field: string oppositeStatuse = 7;
+   * @generated from field: users.ContractStatus oppositeStatuse = 7;
    */
-  oppositeStatuse: string;
+  oppositeStatuse: ContractStatus;
 };
 
 /**

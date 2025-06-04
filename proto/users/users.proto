@@ -352,7 +352,7 @@ message ContractFilter {
     ContractStatus contractStatuse = 4;               // Filter by contract status.
     google.protobuf.Timestamp startDate = 5;  // Filter by start date of the contract.
     google.protobuf.Timestamp endDate = 6;    // Filter by end date of the contract.
-    string oppositeStatuse =7 ;               // Reverting all contract except for this one statuse.
+    ContractStatus oppositeStatuse =7 ;               // Reverting all contract except for this one statuse.
 }
 
 // Request to create a contract.
