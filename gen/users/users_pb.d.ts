@@ -397,6 +397,27 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
    * @generated from field: string employerId = 12;
    */
   employerId: string;
+
+  /**
+   * Reverting all users except for this one statuse.
+   *
+   * @generated from field: string oppositeStatuse = 13;
+   */
+  oppositeStatuse: string;
+
+  /**
+   * Reverting all users except for this one statuse.
+   *
+   * @generated from field: string oppositeStatuse2 = 14;
+   */
+  oppositeStatuse2: string;
+
+  /**
+   * Reverting all users except for this one type.
+   *
+   * @generated from field: string oppositeType = 15;
+   */
+  oppositeType: string;
 };
 
 /**
@@ -1051,9 +1072,16 @@ export declare type OrganizationFilter = Message<"users.OrganizationFilter"> & {
   /**
    * Filter by organization status.
    *
-   * @generated from field: optional string organization_statuse = 3;
+   * @generated from field: optional string organizationStatuse = 3;
    */
   organizationStatuse?: string;
+
+  /**
+   * Reverting all organization except for this one statuse.
+   *
+   * @generated from field: optional string oppositeStatuse = 4;
+   */
+  oppositeStatuse?: string;
 };
 
 /**
@@ -1411,18 +1439,11 @@ export declare type ContractFilter = Message<"users.ContractFilter"> & {
   endDate?: Timestamp;
 
   /**
-   * Filter by start request or creation timestamp .
+   * Reverting all contract except for this one statuse.
    *
-   * @generated from field: google.protobuf.Timestamp createdAt = 7;
+   * @generated from field: string oppositeStatuse = 7;
    */
-  createdAt?: Timestamp;
-
-  /**
-   * Filter by update request or last updated timestamp.
-   *
-   * @generated from field: google.protobuf.Timestamp updatedAt = 8;
-   */
-  updatedAt?: Timestamp;
+  oppositeStatuse: string;
 };
 
 /**

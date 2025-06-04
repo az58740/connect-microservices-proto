@@ -131,6 +131,9 @@ message UserFilter {
     string userType = 10;               // Filter by user type.
     string groupId = 11;                // Filter by organization group.
     string employerId = 12;             // Filter by employer the user belongs to.
+    string oppositeStatuse = 13;         // Reverting all users except for this one statuse.
+    string oppositeStatuse2 = 14;         // Reverting all users except for this one statuse.
+    string oppositeType = 15;            // Reverting all users except for this one type.
 }
 
 // Pagination options for listing users or roles.
@@ -274,7 +277,8 @@ message ContractingParty {
 message OrganizationFilter {
     optional string organizationId = 1;         // Filter by organization ID.
     optional string organizationgroupId = 2;   // Filter by organization group ID.
-    optional string organization_statuse = 3;  // Filter by organization status.
+    optional string organizationStatuse = 3;  // Filter by organization status.
+     optional string oppositeStatuse = 4;     // Reverting all organization except for this one statuse.
 }
 
 // Request to create an organization.
@@ -348,8 +352,7 @@ message ContractFilter {
     ContractStatus contractStatuse = 4;               // Filter by contract status.
     google.protobuf.Timestamp startDate = 5;  // Filter by start date of the contract.
     google.protobuf.Timestamp endDate = 6;    // Filter by end date of the contract.
-    google.protobuf.Timestamp createdAt = 7;  // Filter by start request or creation timestamp .
-    google.protobuf.Timestamp updatedAt = 8;  // Filter by update request or last updated timestamp.
+    string oppositeStatuse =7 ;               // Reverting all contract except for this one statuse.
 }
 
 // Request to create a contract.
