@@ -288,16 +288,23 @@ export declare type User = Message<"users.User"> & {
   employer?: User;
 
   /**
+   * The ability to search
+   *
+   * @generated from field: bool isSearchable = 11;
+   */
+  isSearchable: boolean;
+
+  /**
    * Date and time when the user was created.
    *
-   * @generated from field: google.protobuf.Timestamp createdAt = 11;
+   * @generated from field: google.protobuf.Timestamp createdAt = 12;
    */
   createdAt?: Timestamp;
 
   /**
    * Date and time when the user was deleted.
    *
-   * @generated from field: google.protobuf.Timestamp deletedAt = 12;
+   * @generated from field: google.protobuf.Timestamp deletedAt = 13;
    */
   deletedAt?: Timestamp;
 };
