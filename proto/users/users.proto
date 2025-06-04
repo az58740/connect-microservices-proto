@@ -132,8 +132,8 @@ message UserFilter {
     string groupId = 11;                // Filter by organization group.
     string employerId = 12;             // Filter by employer the user belongs to.
     string oppositeStatuse = 13;         // Reverting all users except for this one statuse.
-    string oppositeStatuse2 = 14;         // Reverting all users except for this one statuse.
-    string oppositeType = 15;            // Reverting all users except for this one type.
+    string oppositeType= 14;         // Reverting all users except for this one statuse.
+    string oppositeTyp2 = 15;            // Reverting all users except for this one type.
 }
 
 // Pagination options for listing users or roles.

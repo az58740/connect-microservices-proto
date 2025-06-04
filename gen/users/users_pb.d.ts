@@ -408,16 +408,16 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
   /**
    * Reverting all users except for this one statuse.
    *
-   * @generated from field: string oppositeStatuse2 = 14;
+   * @generated from field: string oppositeType = 14;
    */
-  oppositeStatuse2: string;
+  oppositeType: string;
 
   /**
    * Reverting all users except for this one type.
    *
-   * @generated from field: string oppositeType = 15;
+   * @generated from field: string oppositeTyp2 = 15;
    */
-  oppositeType: string;
+  oppositeTyp2: string;
 };
 
 /**
