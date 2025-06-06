@@ -173,6 +173,17 @@ message LoginResponse {
     string token = 1;    // Authentication token that can be used for subsequent requests.
     bool success = 2;    // Whether the login was successful or not.
 }
+// Request to authenticate a user during forget password.
+message ForgotPasswordRequest {
+   optional string email = 1; // email  for reset password.
+    optional string phonenumber = 2; //phone number for resetpassword.
+}
+
+// Response after successful login with authentication token.
+message ForgotPasswordResponse {
+    string token = 1;    // A JWT token include email  .
+    bool success = 2;    // Whether the user exist in DB was successful or not.
+}
 
 // Request to log out a user.
 message LogoutRequest {
@@ -445,10 +456,12 @@ message JobPost {
 // ==================== SERVICE DEFINITIONS ====================
 service UsersService {
     // User-related methods
-    rpc RegisterUser(RegisterRequest) returns (RegisterResponse);    // Register a new user.
-    rpc LoginUser(LoginRequest) returns (LoginResponse);             // Log a user in.
-    rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);     // List users with pagination and filtering.
-    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);  // Update user details.
+    rpc RegisterUser(RegisterRequest) returns (RegisterResponse);                     // Register a new user.
+    rpc LoginUser(LoginRequest) returns (LoginResponse);                              // Log a user in.
+    rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);                      // List users with pagination and filtering.
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);                   // Update user details.
+    rpc ForgotPassword(ForgotPasswordRequest) returns (ForgotPasswordResponse);       // Forgot Password 
+
 
     // Organization Group related methods
     rpc CreateOrganizationGroup(CreateOrganizationGroupRequest) returns (CreateOrganizationGroupResponse);

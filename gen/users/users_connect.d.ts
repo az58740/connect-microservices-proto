@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, GetGeolocationRequest, GetGeolocationResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
+import { CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, ForgotPasswordRequest, ForgotPasswordResponse, GetGeolocationRequest, GetGeolocationResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -58,6 +58,17 @@ export declare const UsersService: {
       readonly name: "UpdateUser",
       readonly I: typeof UpdateUserRequest,
       readonly O: typeof UpdateUserResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * Forgot Password 
+     *
+     * @generated from rpc users.UsersService.ForgotPassword
+     */
+    readonly forgotPassword: {
+      readonly name: "ForgotPassword",
+      readonly I: typeof ForgotPasswordRequest,
+      readonly O: typeof ForgotPasswordResponse,
       readonly kind: MethodKind.Unary,
     },
     /**

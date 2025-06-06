@@ -42,6 +42,9 @@ const (
 	UsersServiceListUsersProcedure = "/users.UsersService/ListUsers"
 	// UsersServiceUpdateUserProcedure is the fully-qualified name of the UsersService's UpdateUser RPC.
 	UsersServiceUpdateUserProcedure = "/users.UsersService/UpdateUser"
+	// UsersServiceForgotPasswordProcedure is the fully-qualified name of the UsersService's
+	// ForgotPassword RPC.
+	UsersServiceForgotPasswordProcedure = "/users.UsersService/ForgotPassword"
 	// UsersServiceCreateOrganizationGroupProcedure is the fully-qualified name of the UsersService's
 	// CreateOrganizationGroup RPC.
 	UsersServiceCreateOrganizationGroupProcedure = "/users.UsersService/CreateOrganizationGroup"
@@ -95,6 +98,7 @@ var (
 	usersServiceLoginUserMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("LoginUser")
 	usersServiceListUsersMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("ListUsers")
 	usersServiceUpdateUserMethodDescriptor              = usersServiceServiceDescriptor.Methods().ByName("UpdateUser")
+	usersServiceForgotPasswordMethodDescriptor          = usersServiceServiceDescriptor.Methods().ByName("ForgotPassword")
 	usersServiceCreateOrganizationGroupMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("CreateOrganizationGroup")
 	usersServiceUpdateOrganizationGroupMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("UpdateOrganizationGroup")
 	usersServiceDeleteOrganizationGroupMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("DeleteOrganizationGroup")
@@ -119,6 +123,7 @@ type UsersServiceClient interface {
 	LoginUser(context.Context, *connect.Request[users.LoginRequest]) (*connect.Response[users.LoginResponse], error)
 	ListUsers(context.Context, *connect.Request[users.ListUsersRequest]) (*connect.Response[users.ListUsersResponse], error)
 	UpdateUser(context.Context, *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error)
+	ForgotPassword(context.Context, *connect.Request[users.ForgotPasswordRequest]) (*connect.Response[users.ForgotPasswordResponse], error)
 	// Organization Group related methods
 	CreateOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error)
 	UpdateOrganizationGroup(context.Context, *connect.Request[users.UpdateOrganizationGroupRequest]) (*connect.Response[users.UpdateOrganizationGroupResponse], error)
@@ -172,6 +177,12 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			httpClient,
 			baseURL+UsersServiceUpdateUserProcedure,
 			connect.WithSchema(usersServiceUpdateUserMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		forgotPassword: connect.NewClient[users.ForgotPasswordRequest, users.ForgotPasswordResponse](
+			httpClient,
+			baseURL+UsersServiceForgotPasswordProcedure,
+			connect.WithSchema(usersServiceForgotPasswordMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		createOrganizationGroup: connect.NewClient[users.CreateOrganizationGroupRequest, users.CreateOrganizationGroupResponse](
@@ -273,6 +284,7 @@ type usersServiceClient struct {
 	loginUser               *connect.Client[users.LoginRequest, users.LoginResponse]
 	listUsers               *connect.Client[users.ListUsersRequest, users.ListUsersResponse]
 	updateUser              *connect.Client[users.UpdateUserRequest, users.UpdateUserResponse]
+	forgotPassword          *connect.Client[users.ForgotPasswordRequest, users.ForgotPasswordResponse]
 	createOrganizationGroup *connect.Client[users.CreateOrganizationGroupRequest, users.CreateOrganizationGroupResponse]
 	updateOrganizationGroup *connect.Client[users.UpdateOrganizationGroupRequest, users.UpdateOrganizationGroupResponse]
 	deleteOrganizationGroup *connect.Client[users.DeleteOrganizationGroupRequest, users.DeleteOrganizationGroupResponse]
@@ -308,6 +320,11 @@ func (c *usersServiceClient) ListUsers(ctx context.Context, req *connect.Request
 // UpdateUser calls users.UsersService.UpdateUser.
 func (c *usersServiceClient) UpdateUser(ctx context.Context, req *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error) {
 	return c.updateUser.CallUnary(ctx, req)
+}
+
+// ForgotPassword calls users.UsersService.ForgotPassword.
+func (c *usersServiceClient) ForgotPassword(ctx context.Context, req *connect.Request[users.ForgotPasswordRequest]) (*connect.Response[users.ForgotPasswordResponse], error) {
+	return c.forgotPassword.CallUnary(ctx, req)
 }
 
 // CreateOrganizationGroup calls users.UsersService.CreateOrganizationGroup.
@@ -392,6 +409,7 @@ type UsersServiceHandler interface {
 	LoginUser(context.Context, *connect.Request[users.LoginRequest]) (*connect.Response[users.LoginResponse], error)
 	ListUsers(context.Context, *connect.Request[users.ListUsersRequest]) (*connect.Response[users.ListUsersResponse], error)
 	UpdateUser(context.Context, *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error)
+	ForgotPassword(context.Context, *connect.Request[users.ForgotPasswordRequest]) (*connect.Response[users.ForgotPasswordResponse], error)
 	// Organization Group related methods
 	CreateOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error)
 	UpdateOrganizationGroup(context.Context, *connect.Request[users.UpdateOrganizationGroupRequest]) (*connect.Response[users.UpdateOrganizationGroupResponse], error)
@@ -441,6 +459,12 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		UsersServiceUpdateUserProcedure,
 		svc.UpdateUser,
 		connect.WithSchema(usersServiceUpdateUserMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceForgotPasswordHandler := connect.NewUnaryHandler(
+		UsersServiceForgotPasswordProcedure,
+		svc.ForgotPassword,
+		connect.WithSchema(usersServiceForgotPasswordMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceCreateOrganizationGroupHandler := connect.NewUnaryHandler(
@@ -543,6 +567,8 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 			usersServiceListUsersHandler.ServeHTTP(w, r)
 		case UsersServiceUpdateUserProcedure:
 			usersServiceUpdateUserHandler.ServeHTTP(w, r)
+		case UsersServiceForgotPasswordProcedure:
+			usersServiceForgotPasswordHandler.ServeHTTP(w, r)
 		case UsersServiceCreateOrganizationGroupProcedure:
 			usersServiceCreateOrganizationGroupHandler.ServeHTTP(w, r)
 		case UsersServiceUpdateOrganizationGroupProcedure:
@@ -596,6 +622,10 @@ func (UnimplementedUsersServiceHandler) ListUsers(context.Context, *connect.Requ
 
 func (UnimplementedUsersServiceHandler) UpdateUser(context.Context, *connect.Request[users.UpdateUserRequest]) (*connect.Response[users.UpdateUserResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.UpdateUser is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) ForgotPassword(context.Context, *connect.Request[users.ForgotPasswordRequest]) (*connect.Response[users.ForgotPasswordResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.ForgotPassword is not implemented"))
 }
 
 func (UnimplementedUsersServiceHandler) CreateOrganizationGroup(context.Context, *connect.Request[users.CreateOrganizationGroupRequest]) (*connect.Response[users.CreateOrganizationGroupResponse], error) {

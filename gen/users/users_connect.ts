@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, GetGeolocationRequest, GetGeolocationResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
+import { CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, ForgotPasswordRequest, ForgotPasswordResponse, GetGeolocationRequest, GetGeolocationResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -58,6 +58,17 @@ export const UsersService = {
       name: "UpdateUser",
       I: UpdateUserRequest,
       O: UpdateUserResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Forgot Password 
+     *
+     * @generated from rpc users.UsersService.ForgotPassword
+     */
+    forgotPassword: {
+      name: "ForgotPassword",
+      I: ForgotPasswordRequest,
+      O: ForgotPasswordResponse,
       kind: MethodKind.Unary,
     },
     /**

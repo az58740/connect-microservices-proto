@@ -618,6 +618,60 @@ export declare type LoginResponse = Message<"users.LoginResponse"> & {
 export declare const LoginResponseSchema: GenMessage<LoginResponse>;
 
 /**
+ * Request to authenticate a user during forget password.
+ *
+ * @generated from message users.ForgotPasswordRequest
+ */
+export declare type ForgotPasswordRequest = Message<"users.ForgotPasswordRequest"> & {
+  /**
+   * email  for reset password.
+   *
+   * @generated from field: optional string email = 1;
+   */
+  email?: string;
+
+  /**
+   * phone number for resetpassword.
+   *
+   * @generated from field: optional string phonenumber = 2;
+   */
+  phonenumber?: string;
+};
+
+/**
+ * Describes the message users.ForgotPasswordRequest.
+ * Use `create(ForgotPasswordRequestSchema)` to create a new message.
+ */
+export declare const ForgotPasswordRequestSchema: GenMessage<ForgotPasswordRequest>;
+
+/**
+ * Response after successful login with authentication token.
+ *
+ * @generated from message users.ForgotPasswordResponse
+ */
+export declare type ForgotPasswordResponse = Message<"users.ForgotPasswordResponse"> & {
+  /**
+   * A JWT token include email  .
+   *
+   * @generated from field: string token = 1;
+   */
+  token: string;
+
+  /**
+   * Whether the user exist in DB was successful or not.
+   *
+   * @generated from field: bool success = 2;
+   */
+  success: boolean;
+};
+
+/**
+ * Describes the message users.ForgotPasswordResponse.
+ * Use `create(ForgotPasswordResponseSchema)` to create a new message.
+ */
+export declare const ForgotPasswordResponseSchema: GenMessage<ForgotPasswordResponse>;
+
+/**
  * Request to log out a user.
  *
  * @generated from message users.LogoutRequest
@@ -2183,6 +2237,16 @@ export declare const UsersService: GenService<{
     methodKind: "unary";
     input: typeof UpdateUserRequestSchema;
     output: typeof UpdateUserResponseSchema;
+  },
+  /**
+   * Forgot Password 
+   *
+   * @generated from rpc users.UsersService.ForgotPassword
+   */
+  forgotPassword: {
+    methodKind: "unary";
+    input: typeof ForgotPasswordRequestSchema;
+    output: typeof ForgotPasswordResponseSchema;
   },
   /**
    * Organization Group related methods
