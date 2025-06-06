@@ -636,6 +636,13 @@ export declare type ForgotPasswordRequest = Message<"users.ForgotPasswordRequest
    * @generated from field: optional string phonenumber = 2;
    */
   phonenumber?: string;
+
+  /**
+   * a link for reset password
+   *
+   * @generated from field: optional string resetpasswordlink = 3;
+   */
+  resetpasswordlink?: string;
 };
 
 /**

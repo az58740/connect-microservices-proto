@@ -177,6 +177,7 @@ message LoginResponse {
 message ForgotPasswordRequest {
    optional string email = 1; // email  for reset password.
     optional string phonenumber = 2; //phone number for resetpassword.
+    optional string resetpasswordlink=3; // a link for reset password
 }
 
 // Response after successful login with authentication token.
