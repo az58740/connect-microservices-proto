@@ -425,6 +425,13 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
    * @generated from field: string oppositeTyp2 = 15;
    */
   oppositeTyp2: string;
+
+  /**
+   * Filter by phone number
+   *
+   * @generated from field: string phoneNumber = 16;
+   */
+  phoneNumber: string;
 };
 
 /**
