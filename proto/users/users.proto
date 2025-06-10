@@ -146,6 +146,17 @@ message Pagination {
     optional bool sort_descending = 4;  // Whether to sort the results in descending order.
 }
 
+message PasswordResetToken {
+  uint64 id = 1;
+  string short_code = 2;
+  string token = 3;
+  string phone = 4;
+  string email=5;
+  google.protobuf.Timestamp expires_at = 6;
+  google.protobuf.Timestamp created_at = 7;
+}
+
+
 // Request to register a new user (sign up).
 message RegisterRequest {
     string name = 1;      // Full name of the user.
@@ -176,8 +187,8 @@ message LoginResponse {
 // Request to authenticate a user during forget password.
 message ForgotPasswordRequest {
    optional string email = 1; // email  for reset password.
-    optional string phonenumber = 2; //phone number for resetpassword.
-    optional string resetpasswordlink=3; // a link for reset password
+   optional string phonenumber = 2; //phone number for resetpassword.
+ optional string resetpasswordlink=3; // a link for reset password
 }
 
 // Response after successful login with authentication token.
@@ -453,7 +464,17 @@ message JobPost {
     google.protobuf.Timestamp createdAt = 9;  // When the job post was created.
     google.protobuf.Timestamp updatedAt = 10; // Last update timestamp.
 }
-
+//Request to get main token
+message GetResetTokenRequest {
+  string short_code = 1;
+}
+//Responce from get reset token 
+message GetResetTokenResponse {
+  string token = 1;
+  string phone = 2;
+  string email=3;
+  google.protobuf.Timestamp expires_at = 4;
+}
 // ==================== SERVICE DEFINITIONS ====================
 service UsersService {
     // User-related methods
@@ -486,4 +507,8 @@ service UsersService {
     rpc GetCountries(GetGeolocationRequest) returns (GetGeolocationResponse);
     rpc GetProvinces(GetGeolocationRequest) returns (GetGeolocationResponse);
     rpc GetCities(GetGeolocationRequest) returns (GetGeolocationResponse);
+
+    //Generate token related methods
+      rpc GetResetTokenByShortCode(GetResetTokenRequest) returns (GetResetTokenResponse);
+
 }

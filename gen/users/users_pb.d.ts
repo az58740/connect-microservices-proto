@@ -482,6 +482,52 @@ export declare type Pagination = Message<"users.Pagination"> & {
 export declare const PaginationSchema: GenMessage<Pagination>;
 
 /**
+ * @generated from message users.PasswordResetToken
+ */
+export declare type PasswordResetToken = Message<"users.PasswordResetToken"> & {
+  /**
+   * @generated from field: uint64 id = 1;
+   */
+  id: bigint;
+
+  /**
+   * @generated from field: string short_code = 2;
+   */
+  shortCode: string;
+
+  /**
+   * @generated from field: string token = 3;
+   */
+  token: string;
+
+  /**
+   * @generated from field: string phone = 4;
+   */
+  phone: string;
+
+  /**
+   * @generated from field: string email = 5;
+   */
+  email: string;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp expires_at = 6;
+   */
+  expiresAt?: Timestamp;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 7;
+   */
+  createdAt?: Timestamp;
+};
+
+/**
+ * Describes the message users.PasswordResetToken.
+ * Use `create(PasswordResetTokenSchema)` to create a new message.
+ */
+export declare const PasswordResetTokenSchema: GenMessage<PasswordResetToken>;
+
+/**
  * Request to register a new user (sign up).
  *
  * @generated from message users.RegisterRequest
@@ -1909,6 +1955,57 @@ export declare type JobPost = Message<"users.JobPost"> & {
 export declare const JobPostSchema: GenMessage<JobPost>;
 
 /**
+ * Request to get main token
+ *
+ * @generated from message users.GetResetTokenRequest
+ */
+export declare type GetResetTokenRequest = Message<"users.GetResetTokenRequest"> & {
+  /**
+   * @generated from field: string short_code = 1;
+   */
+  shortCode: string;
+};
+
+/**
+ * Describes the message users.GetResetTokenRequest.
+ * Use `create(GetResetTokenRequestSchema)` to create a new message.
+ */
+export declare const GetResetTokenRequestSchema: GenMessage<GetResetTokenRequest>;
+
+/**
+ * Responce from get reset token 
+ *
+ * @generated from message users.GetResetTokenResponse
+ */
+export declare type GetResetTokenResponse = Message<"users.GetResetTokenResponse"> & {
+  /**
+   * @generated from field: string token = 1;
+   */
+  token: string;
+
+  /**
+   * @generated from field: string phone = 2;
+   */
+  phone: string;
+
+  /**
+   * @generated from field: string email = 3;
+   */
+  email: string;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp expires_at = 4;
+   */
+  expiresAt?: Timestamp;
+};
+
+/**
+ * Describes the message users.GetResetTokenResponse.
+ * Use `create(GetResetTokenResponseSchema)` to create a new message.
+ */
+export declare const GetResetTokenResponseSchema: GenMessage<GetResetTokenResponse>;
+
+/**
  * ==================== ENUMS ====================
  * Enum for user status.
  *
@@ -2382,6 +2479,16 @@ export declare const UsersService: GenService<{
     methodKind: "unary";
     input: typeof GetGeolocationRequestSchema;
     output: typeof GetGeolocationResponseSchema;
+  },
+  /**
+   * Generate token related methods
+   *
+   * @generated from rpc users.UsersService.GetResetTokenByShortCode
+   */
+  getResetTokenByShortCode: {
+    methodKind: "unary";
+    input: typeof GetResetTokenRequestSchema;
+    output: typeof GetResetTokenResponseSchema;
   },
 }>;
 
