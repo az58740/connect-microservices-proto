@@ -3920,6 +3920,51 @@ func (x *GetResetTokenRequest) GetShortCode() string {
 	return ""
 }
 
+type DeleteResetTokenRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ShortCode string `protobuf:"bytes,1,opt,name=short_code,json=shortCode,proto3" json:"short_code,omitempty"`
+}
+
+func (x *DeleteResetTokenRequest) Reset() {
+	*x = DeleteResetTokenRequest{}
+	mi := &file_users_users_proto_msgTypes[56]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteResetTokenRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteResetTokenRequest) ProtoMessage() {}
+
+func (x *DeleteResetTokenRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_users_users_proto_msgTypes[56]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteResetTokenRequest.ProtoReflect.Descriptor instead.
+func (*DeleteResetTokenRequest) Descriptor() ([]byte, []int) {
+	return file_users_users_proto_rawDescGZIP(), []int{56}
+}
+
+func (x *DeleteResetTokenRequest) GetShortCode() string {
+	if x != nil {
+		return x.ShortCode
+	}
+	return ""
+}
+
 //Responce from get reset token
 type GetResetTokenResponse struct {
 	state         protoimpl.MessageState
@@ -3934,7 +3979,7 @@ type GetResetTokenResponse struct {
 
 func (x *GetResetTokenResponse) Reset() {
 	*x = GetResetTokenResponse{}
-	mi := &file_users_users_proto_msgTypes[56]
+	mi := &file_users_users_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3946,7 +3991,7 @@ func (x *GetResetTokenResponse) String() string {
 func (*GetResetTokenResponse) ProtoMessage() {}
 
 func (x *GetResetTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_users_proto_msgTypes[56]
+	mi := &file_users_users_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3959,7 +4004,7 @@ func (x *GetResetTokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResetTokenResponse.ProtoReflect.Descriptor instead.
 func (*GetResetTokenResponse) Descriptor() ([]byte, []int) {
-	return file_users_users_proto_rawDescGZIP(), []int{56}
+	return file_users_users_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *GetResetTokenResponse) GetToken() string {
@@ -3988,6 +4033,51 @@ func (x *GetResetTokenResponse) GetExpiresAt() *timestamppb.Timestamp {
 		return x.ExpiresAt
 	}
 	return nil
+}
+
+type DeleteResetTokenResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"` // Confirmation message.
+}
+
+func (x *DeleteResetTokenResponse) Reset() {
+	*x = DeleteResetTokenResponse{}
+	mi := &file_users_users_proto_msgTypes[58]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteResetTokenResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteResetTokenResponse) ProtoMessage() {}
+
+func (x *DeleteResetTokenResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_users_users_proto_msgTypes[58]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteResetTokenResponse.ProtoReflect.Descriptor instead.
+func (*DeleteResetTokenResponse) Descriptor() ([]byte, []int) {
+	return file_users_users_proto_rawDescGZIP(), []int{58}
+}
+
+func (x *DeleteResetTokenResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
 }
 
 var File_users_users_proto protoreflect.FileDescriptor
@@ -4500,16 +4590,23 @@ var file_users_users_proto_rawDesc = []byte{
 	0x52, 0x65, 0x73, 0x65, 0x74, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
 	0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x68, 0x6f, 0x72, 0x74, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x73, 0x68, 0x6f, 0x72, 0x74, 0x43, 0x6f, 0x64, 0x65,
-	0x22, 0x94, 0x01, 0x0a, 0x15, 0x47, 0x65, 0x74, 0x52, 0x65, 0x73, 0x65, 0x74, 0x54, 0x6f, 0x6b,
-	0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f,
-	0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e,
-	0x12, 0x14, 0x0a, 0x05, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x05, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x39, 0x0a, 0x0a,
-	0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x73, 0x5f, 0x61, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
-	0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x65, 0x78,
-	0x70, 0x69, 0x72, 0x65, 0x73, 0x41, 0x74, 0x2a, 0x8f, 0x01, 0x0a, 0x0a, 0x55, 0x73, 0x65, 0x72,
+	0x22, 0x38, 0x0a, 0x17, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x73, 0x65, 0x74, 0x54,
+	0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x73,
+	0x68, 0x6f, 0x72, 0x74, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x09, 0x73, 0x68, 0x6f, 0x72, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x22, 0x94, 0x01, 0x0a, 0x15, 0x47,
+	0x65, 0x74, 0x52, 0x65, 0x73, 0x65, 0x74, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x14, 0x0a, 0x05, 0x70, 0x68,
+	0x6f, 0x6e, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x70, 0x68, 0x6f, 0x6e, 0x65,
+	0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x39, 0x0a, 0x0a, 0x65, 0x78, 0x70, 0x69, 0x72, 0x65,
+	0x73, 0x5f, 0x61, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d,
+	0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x73, 0x41,
+	0x74, 0x22, 0x34, 0x0a, 0x18, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x73, 0x65, 0x74,
+	0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a,
+	0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2a, 0x8f, 0x01, 0x0a, 0x0a, 0x55, 0x73, 0x65, 0x72,
 	0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x1b, 0x0a, 0x17, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x53,
 	0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45,
 	0x44, 0x10, 0x00, 0x12, 0x16, 0x0a, 0x12, 0x55, 0x53, 0x45, 0x52, 0x5f, 0x53, 0x54, 0x41, 0x54,
@@ -4570,7 +4667,7 @@ var file_users_users_proto_rawDesc = []byte{
 	0x5f, 0x50, 0x4f, 0x53, 0x54, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x43, 0x4c, 0x4f,
 	0x53, 0x45, 0x44, 0x10, 0x02, 0x12, 0x1d, 0x0a, 0x19, 0x4a, 0x4f, 0x42, 0x5f, 0x50, 0x4f, 0x53,
 	0x54, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x5f, 0x43, 0x41, 0x4e, 0x43, 0x45, 0x4c, 0x4c,
-	0x45, 0x44, 0x10, 0x03, 0x32, 0xd2, 0x0d, 0x0a, 0x0c, 0x55, 0x73, 0x65, 0x72, 0x73, 0x53, 0x65,
+	0x45, 0x44, 0x10, 0x03, 0x32, 0xa7, 0x0e, 0x0a, 0x0c, 0x55, 0x73, 0x65, 0x72, 0x73, 0x53, 0x65,
 	0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x3f, 0x0a, 0x0c, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65,
 	0x72, 0x55, 0x73, 0x65, 0x72, 0x12, 0x16, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x52, 0x65,
 	0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e,
@@ -4679,12 +4776,17 @@ var file_users_users_proto_rawDesc = []byte{
 	0x2e, 0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x65, 0x73, 0x65, 0x74, 0x54,
 	0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x75, 0x73,
 	0x65, 0x72, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x65, 0x73, 0x65, 0x74, 0x54, 0x6f, 0x6b, 0x65,
-	0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x43, 0x5a, 0x41, 0x67, 0x69, 0x74,
-	0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x7a, 0x35, 0x38, 0x37, 0x34, 0x30, 0x2f,
-	0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x2d, 0x6d, 0x69, 0x63, 0x72, 0x6f, 0x73, 0x65, 0x72,
-	0x76, 0x69, 0x63, 0x65, 0x73, 0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6c, 0x61,
-	0x6e, 0x67, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x73, 0x3b, 0x75, 0x73, 0x65, 0x72, 0x73, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x53, 0x0a, 0x10, 0x44, 0x65, 0x6c,
+	0x65, 0x74, 0x65, 0x52, 0x65, 0x73, 0x65, 0x74, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x1e, 0x2e,
+	0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x73, 0x65,
+	0x74, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e,
+	0x75, 0x73, 0x65, 0x72, 0x73, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x73, 0x65,
+	0x74, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x43,
+	0x5a, 0x41, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x7a, 0x35,
+	0x38, 0x37, 0x34, 0x30, 0x2f, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x2d, 0x6d, 0x69, 0x63,
+	0x72, 0x6f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2f, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x73, 0x3b, 0x75, 0x73,
+	0x65, 0x72, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -4700,7 +4802,7 @@ func file_users_users_proto_rawDescGZIP() []byte {
 }
 
 var file_users_users_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
-var file_users_users_proto_msgTypes = make([]protoimpl.MessageInfo, 57)
+var file_users_users_proto_msgTypes = make([]protoimpl.MessageInfo, 59)
 var file_users_users_proto_goTypes = []any{
 	(UserStatus)(0),                         // 0: users.UserStatus
 	(UserType)(0),                           // 1: users.UserType
@@ -4764,8 +4866,10 @@ var file_users_users_proto_goTypes = []any{
 	(*GetGeolocationResponse)(nil),          // 59: users.GetGeolocationResponse
 	(*JobPost)(nil),                         // 60: users.JobPost
 	(*GetResetTokenRequest)(nil),            // 61: users.GetResetTokenRequest
-	(*GetResetTokenResponse)(nil),           // 62: users.GetResetTokenResponse
-	(*timestamppb.Timestamp)(nil),           // 63: google.protobuf.Timestamp
+	(*DeleteResetTokenRequest)(nil),         // 62: users.DeleteResetTokenRequest
+	(*GetResetTokenResponse)(nil),           // 63: users.GetResetTokenResponse
+	(*DeleteResetTokenResponse)(nil),        // 64: users.DeleteResetTokenResponse
+	(*timestamppb.Timestamp)(nil),           // 65: google.protobuf.Timestamp
 }
 var file_users_users_proto_depIdxs = []int32{
 	7,  // 0: users.Role.resource:type_name -> users.Resource
@@ -4778,10 +4882,10 @@ var file_users_users_proto_depIdxs = []int32{
 	1,  // 7: users.User.type:type_name -> users.UserType
 	46, // 8: users.User.userContracts:type_name -> users.Contract
 	10, // 9: users.User.employer:type_name -> users.User
-	63, // 10: users.User.createdAt:type_name -> google.protobuf.Timestamp
-	63, // 11: users.User.deletedAt:type_name -> google.protobuf.Timestamp
-	63, // 12: users.PasswordResetToken.expires_at:type_name -> google.protobuf.Timestamp
-	63, // 13: users.PasswordResetToken.created_at:type_name -> google.protobuf.Timestamp
+	65, // 10: users.User.createdAt:type_name -> google.protobuf.Timestamp
+	65, // 11: users.User.deletedAt:type_name -> google.protobuf.Timestamp
+	65, // 12: users.PasswordResetToken.expires_at:type_name -> google.protobuf.Timestamp
+	65, // 13: users.PasswordResetToken.created_at:type_name -> google.protobuf.Timestamp
 	2,  // 14: users.RegisterRequest.gender:type_name -> users.UserGender
 	10, // 15: users.UpdateUserRequest.user:type_name -> users.User
 	12, // 16: users.ListUsersRequest.pagination:type_name -> users.Pagination
@@ -4801,13 +4905,13 @@ var file_users_users_proto_depIdxs = []int32{
 	10, // 30: users.Contract.employer:type_name -> users.User
 	10, // 31: users.Contract.employee:type_name -> users.User
 	4,  // 32: users.Contract.status:type_name -> users.ContractStatus
-	63, // 33: users.Contract.startDate:type_name -> google.protobuf.Timestamp
-	63, // 34: users.Contract.endDate:type_name -> google.protobuf.Timestamp
-	63, // 35: users.Contract.createdAt:type_name -> google.protobuf.Timestamp
-	63, // 36: users.Contract.updatedAt:type_name -> google.protobuf.Timestamp
+	65, // 33: users.Contract.startDate:type_name -> google.protobuf.Timestamp
+	65, // 34: users.Contract.endDate:type_name -> google.protobuf.Timestamp
+	65, // 35: users.Contract.createdAt:type_name -> google.protobuf.Timestamp
+	65, // 36: users.Contract.updatedAt:type_name -> google.protobuf.Timestamp
 	4,  // 37: users.ContractFilter.contractStatuse:type_name -> users.ContractStatus
-	63, // 38: users.ContractFilter.startDate:type_name -> google.protobuf.Timestamp
-	63, // 39: users.ContractFilter.endDate:type_name -> google.protobuf.Timestamp
+	65, // 38: users.ContractFilter.startDate:type_name -> google.protobuf.Timestamp
+	65, // 39: users.ContractFilter.endDate:type_name -> google.protobuf.Timestamp
 	4,  // 40: users.ContractFilter.oppositeStatuse:type_name -> users.ContractStatus
 	4,  // 41: users.CreateContractRequest.contractStatuse:type_name -> users.ContractStatus
 	46, // 42: users.UpdateContractRequest.contract:type_name -> users.Contract
@@ -4817,9 +4921,9 @@ var file_users_users_proto_depIdxs = []int32{
 	57, // 46: users.GetGeolocationRequest.filter:type_name -> users.GeolocationFilter
 	56, // 47: users.GetGeolocationResponse.locations:type_name -> users.Geolocation
 	5,  // 48: users.JobPost.status:type_name -> users.JobPostStatus
-	63, // 49: users.JobPost.createdAt:type_name -> google.protobuf.Timestamp
-	63, // 50: users.JobPost.updatedAt:type_name -> google.protobuf.Timestamp
-	63, // 51: users.GetResetTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
+	65, // 49: users.JobPost.createdAt:type_name -> google.protobuf.Timestamp
+	65, // 50: users.JobPost.updatedAt:type_name -> google.protobuf.Timestamp
+	65, // 51: users.GetResetTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
 	14, // 52: users.UsersService.RegisterUser:input_type -> users.RegisterRequest
 	16, // 53: users.UsersService.LoginUser:input_type -> users.LoginRequest
 	24, // 54: users.UsersService.ListUsers:input_type -> users.ListUsersRequest
@@ -4841,29 +4945,31 @@ var file_users_users_proto_depIdxs = []int32{
 	58, // 70: users.UsersService.GetProvinces:input_type -> users.GetGeolocationRequest
 	58, // 71: users.UsersService.GetCities:input_type -> users.GetGeolocationRequest
 	61, // 72: users.UsersService.GetResetTokenByShortCode:input_type -> users.GetResetTokenRequest
-	15, // 73: users.UsersService.RegisterUser:output_type -> users.RegisterResponse
-	17, // 74: users.UsersService.LoginUser:output_type -> users.LoginResponse
-	25, // 75: users.UsersService.ListUsers:output_type -> users.ListUsersResponse
-	23, // 76: users.UsersService.UpdateUser:output_type -> users.UpdateUserResponse
-	19, // 77: users.UsersService.ForgotPassword:output_type -> users.ForgotPasswordResponse
-	29, // 78: users.UsersService.CreateOrganizationGroup:output_type -> users.CreateOrganizationGroupResponse
-	31, // 79: users.UsersService.UpdateOrganizationGroup:output_type -> users.UpdateOrganizationGroupResponse
-	33, // 80: users.UsersService.DeleteOrganizationGroup:output_type -> users.DeleteOrganizationGroupResponse
-	35, // 81: users.UsersService.ListOrganizationGroup:output_type -> users.ListOrganizationGroupResponse
-	39, // 82: users.UsersService.CreateOrganization:output_type -> users.CreateOrganizationResponse
-	41, // 83: users.UsersService.UpdateOrganization:output_type -> users.UpdateOrganizationResponse
-	43, // 84: users.UsersService.DeleteOrganization:output_type -> users.DeleteOrganizationResponse
-	45, // 85: users.UsersService.ListOrganization:output_type -> users.ListOrganizationResponse
-	49, // 86: users.UsersService.CreateContract:output_type -> users.CreateContractResponse
-	51, // 87: users.UsersService.UpdateContract:output_type -> users.UpdateContractResponse
-	53, // 88: users.UsersService.DeleteContract:output_type -> users.DeleteContractResponse
-	55, // 89: users.UsersService.ListContract:output_type -> users.ListContractResponse
-	59, // 90: users.UsersService.GetCountries:output_type -> users.GetGeolocationResponse
-	59, // 91: users.UsersService.GetProvinces:output_type -> users.GetGeolocationResponse
-	59, // 92: users.UsersService.GetCities:output_type -> users.GetGeolocationResponse
-	62, // 93: users.UsersService.GetResetTokenByShortCode:output_type -> users.GetResetTokenResponse
-	73, // [73:94] is the sub-list for method output_type
-	52, // [52:73] is the sub-list for method input_type
+	62, // 73: users.UsersService.DeleteResetToken:input_type -> users.DeleteResetTokenRequest
+	15, // 74: users.UsersService.RegisterUser:output_type -> users.RegisterResponse
+	17, // 75: users.UsersService.LoginUser:output_type -> users.LoginResponse
+	25, // 76: users.UsersService.ListUsers:output_type -> users.ListUsersResponse
+	23, // 77: users.UsersService.UpdateUser:output_type -> users.UpdateUserResponse
+	19, // 78: users.UsersService.ForgotPassword:output_type -> users.ForgotPasswordResponse
+	29, // 79: users.UsersService.CreateOrganizationGroup:output_type -> users.CreateOrganizationGroupResponse
+	31, // 80: users.UsersService.UpdateOrganizationGroup:output_type -> users.UpdateOrganizationGroupResponse
+	33, // 81: users.UsersService.DeleteOrganizationGroup:output_type -> users.DeleteOrganizationGroupResponse
+	35, // 82: users.UsersService.ListOrganizationGroup:output_type -> users.ListOrganizationGroupResponse
+	39, // 83: users.UsersService.CreateOrganization:output_type -> users.CreateOrganizationResponse
+	41, // 84: users.UsersService.UpdateOrganization:output_type -> users.UpdateOrganizationResponse
+	43, // 85: users.UsersService.DeleteOrganization:output_type -> users.DeleteOrganizationResponse
+	45, // 86: users.UsersService.ListOrganization:output_type -> users.ListOrganizationResponse
+	49, // 87: users.UsersService.CreateContract:output_type -> users.CreateContractResponse
+	51, // 88: users.UsersService.UpdateContract:output_type -> users.UpdateContractResponse
+	53, // 89: users.UsersService.DeleteContract:output_type -> users.DeleteContractResponse
+	55, // 90: users.UsersService.ListContract:output_type -> users.ListContractResponse
+	59, // 91: users.UsersService.GetCountries:output_type -> users.GetGeolocationResponse
+	59, // 92: users.UsersService.GetProvinces:output_type -> users.GetGeolocationResponse
+	59, // 93: users.UsersService.GetCities:output_type -> users.GetGeolocationResponse
+	63, // 94: users.UsersService.GetResetTokenByShortCode:output_type -> users.GetResetTokenResponse
+	64, // 95: users.UsersService.DeleteResetToken:output_type -> users.DeleteResetTokenResponse
+	74, // [74:96] is the sub-list for method output_type
+	52, // [52:74] is the sub-list for method input_type
 	52, // [52:52] is the sub-list for extension type_name
 	52, // [52:52] is the sub-list for extension extendee
 	0,  // [0:52] is the sub-list for field type_name
@@ -4885,7 +4991,7 @@ func file_users_users_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_users_users_proto_rawDesc,
 			NumEnums:      6,
-			NumMessages:   57,
+			NumMessages:   59,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

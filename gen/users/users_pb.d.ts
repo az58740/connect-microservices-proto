@@ -1973,6 +1973,22 @@ export declare type GetResetTokenRequest = Message<"users.GetResetTokenRequest">
 export declare const GetResetTokenRequestSchema: GenMessage<GetResetTokenRequest>;
 
 /**
+ * @generated from message users.DeleteResetTokenRequest
+ */
+export declare type DeleteResetTokenRequest = Message<"users.DeleteResetTokenRequest"> & {
+  /**
+   * @generated from field: string short_code = 1;
+   */
+  shortCode: string;
+};
+
+/**
+ * Describes the message users.DeleteResetTokenRequest.
+ * Use `create(DeleteResetTokenRequestSchema)` to create a new message.
+ */
+export declare const DeleteResetTokenRequestSchema: GenMessage<DeleteResetTokenRequest>;
+
+/**
  * Responce from get reset token 
  *
  * @generated from message users.GetResetTokenResponse
@@ -2004,6 +2020,24 @@ export declare type GetResetTokenResponse = Message<"users.GetResetTokenResponse
  * Use `create(GetResetTokenResponseSchema)` to create a new message.
  */
 export declare const GetResetTokenResponseSchema: GenMessage<GetResetTokenResponse>;
+
+/**
+ * @generated from message users.DeleteResetTokenResponse
+ */
+export declare type DeleteResetTokenResponse = Message<"users.DeleteResetTokenResponse"> & {
+  /**
+   * Confirmation message.
+   *
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.DeleteResetTokenResponse.
+ * Use `create(DeleteResetTokenResponseSchema)` to create a new message.
+ */
+export declare const DeleteResetTokenResponseSchema: GenMessage<DeleteResetTokenResponse>;
 
 /**
  * ==================== ENUMS ====================
@@ -2489,6 +2523,14 @@ export declare const UsersService: GenService<{
     methodKind: "unary";
     input: typeof GetResetTokenRequestSchema;
     output: typeof GetResetTokenResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.DeleteResetToken
+   */
+  deleteResetToken: {
+    methodKind: "unary";
+    input: typeof DeleteResetTokenRequestSchema;
+    output: typeof DeleteResetTokenResponseSchema;
   },
 }>;
 

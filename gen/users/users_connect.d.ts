@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, ForgotPasswordRequest, ForgotPasswordResponse, GetGeolocationRequest, GetGeolocationResponse, GetResetTokenRequest, GetResetTokenResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
+import { CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, DeleteResetTokenRequest, DeleteResetTokenResponse, ForgotPasswordRequest, ForgotPasswordResponse, GetGeolocationRequest, GetGeolocationResponse, GetResetTokenRequest, GetResetTokenResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -223,6 +223,15 @@ export declare const UsersService: {
       readonly name: "GetResetTokenByShortCode",
       readonly I: typeof GetResetTokenRequest,
       readonly O: typeof GetResetTokenResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.DeleteResetToken
+     */
+    readonly deleteResetToken: {
+      readonly name: "DeleteResetToken",
+      readonly I: typeof DeleteResetTokenRequest,
+      readonly O: typeof DeleteResetTokenResponse,
       readonly kind: MethodKind.Unary,
     },
   }

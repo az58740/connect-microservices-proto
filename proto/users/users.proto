@@ -468,12 +468,18 @@ message JobPost {
 message GetResetTokenRequest {
   string short_code = 1;
 }
+message DeleteResetTokenRequest {
+  string short_code = 1;
+}
 //Responce from get reset token 
 message GetResetTokenResponse {
   string token = 1;
   string phone = 2;
   string email=3;
   google.protobuf.Timestamp expires_at = 4;
+}
+message DeleteResetTokenResponse {
+    string message = 1; // Confirmation message.
 }
 // ==================== SERVICE DEFINITIONS ====================
 service UsersService {
@@ -510,5 +516,6 @@ service UsersService {
 
     //Generate token related methods
       rpc GetResetTokenByShortCode(GetResetTokenRequest) returns (GetResetTokenResponse);
+      rpc DeleteResetToken(DeleteResetTokenRequest) returns (DeleteResetTokenResponse);
 
 }

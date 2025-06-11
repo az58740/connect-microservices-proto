@@ -92,6 +92,9 @@ const (
 	// UsersServiceGetResetTokenByShortCodeProcedure is the fully-qualified name of the UsersService's
 	// GetResetTokenByShortCode RPC.
 	UsersServiceGetResetTokenByShortCodeProcedure = "/users.UsersService/GetResetTokenByShortCode"
+	// UsersServiceDeleteResetTokenProcedure is the fully-qualified name of the UsersService's
+	// DeleteResetToken RPC.
+	UsersServiceDeleteResetTokenProcedure = "/users.UsersService/DeleteResetToken"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
@@ -118,6 +121,7 @@ var (
 	usersServiceGetProvincesMethodDescriptor             = usersServiceServiceDescriptor.Methods().ByName("GetProvinces")
 	usersServiceGetCitiesMethodDescriptor                = usersServiceServiceDescriptor.Methods().ByName("GetCities")
 	usersServiceGetResetTokenByShortCodeMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("GetResetTokenByShortCode")
+	usersServiceDeleteResetTokenMethodDescriptor         = usersServiceServiceDescriptor.Methods().ByName("DeleteResetToken")
 )
 
 // UsersServiceClient is a client for the users.UsersService service.
@@ -149,6 +153,7 @@ type UsersServiceClient interface {
 	GetCities(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
 	// Generate token related methods
 	GetResetTokenByShortCode(context.Context, *connect.Request[users.GetResetTokenRequest]) (*connect.Response[users.GetResetTokenResponse], error)
+	DeleteResetToken(context.Context, *connect.Request[users.DeleteResetTokenRequest]) (*connect.Response[users.DeleteResetTokenResponse], error)
 }
 
 // NewUsersServiceClient constructs a client for the users.UsersService service. By default, it uses
@@ -287,6 +292,12 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceGetResetTokenByShortCodeMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		deleteResetToken: connect.NewClient[users.DeleteResetTokenRequest, users.DeleteResetTokenResponse](
+			httpClient,
+			baseURL+UsersServiceDeleteResetTokenProcedure,
+			connect.WithSchema(usersServiceDeleteResetTokenMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -313,6 +324,7 @@ type usersServiceClient struct {
 	getProvinces             *connect.Client[users.GetGeolocationRequest, users.GetGeolocationResponse]
 	getCities                *connect.Client[users.GetGeolocationRequest, users.GetGeolocationResponse]
 	getResetTokenByShortCode *connect.Client[users.GetResetTokenRequest, users.GetResetTokenResponse]
+	deleteResetToken         *connect.Client[users.DeleteResetTokenRequest, users.DeleteResetTokenResponse]
 }
 
 // RegisterUser calls users.UsersService.RegisterUser.
@@ -420,6 +432,11 @@ func (c *usersServiceClient) GetResetTokenByShortCode(ctx context.Context, req *
 	return c.getResetTokenByShortCode.CallUnary(ctx, req)
 }
 
+// DeleteResetToken calls users.UsersService.DeleteResetToken.
+func (c *usersServiceClient) DeleteResetToken(ctx context.Context, req *connect.Request[users.DeleteResetTokenRequest]) (*connect.Response[users.DeleteResetTokenResponse], error) {
+	return c.deleteResetToken.CallUnary(ctx, req)
+}
+
 // UsersServiceHandler is an implementation of the users.UsersService service.
 type UsersServiceHandler interface {
 	// User-related methods
@@ -449,6 +466,7 @@ type UsersServiceHandler interface {
 	GetCities(context.Context, *connect.Request[users.GetGeolocationRequest]) (*connect.Response[users.GetGeolocationResponse], error)
 	// Generate token related methods
 	GetResetTokenByShortCode(context.Context, *connect.Request[users.GetResetTokenRequest]) (*connect.Response[users.GetResetTokenResponse], error)
+	DeleteResetToken(context.Context, *connect.Request[users.DeleteResetTokenRequest]) (*connect.Response[users.DeleteResetTokenResponse], error)
 }
 
 // NewUsersServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -583,6 +601,12 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceGetResetTokenByShortCodeMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	usersServiceDeleteResetTokenHandler := connect.NewUnaryHandler(
+		UsersServiceDeleteResetTokenProcedure,
+		svc.DeleteResetToken,
+		connect.WithSchema(usersServiceDeleteResetTokenMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/users.UsersService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case UsersServiceRegisterUserProcedure:
@@ -627,6 +651,8 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 			usersServiceGetCitiesHandler.ServeHTTP(w, r)
 		case UsersServiceGetResetTokenByShortCodeProcedure:
 			usersServiceGetResetTokenByShortCodeHandler.ServeHTTP(w, r)
+		case UsersServiceDeleteResetTokenProcedure:
+			usersServiceDeleteResetTokenHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -718,4 +744,8 @@ func (UnimplementedUsersServiceHandler) GetCities(context.Context, *connect.Requ
 
 func (UnimplementedUsersServiceHandler) GetResetTokenByShortCode(context.Context, *connect.Request[users.GetResetTokenRequest]) (*connect.Response[users.GetResetTokenResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.GetResetTokenByShortCode is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) DeleteResetToken(context.Context, *connect.Request[users.DeleteResetTokenRequest]) (*connect.Response[users.DeleteResetTokenResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.DeleteResetToken is not implemented"))
 }
