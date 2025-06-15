@@ -19,18 +19,21 @@ export declare const file_users_users: GenFile;
  */
 export declare type Permission = Message<"users.Permission"> & {
   /**
-   * Unique identifier for the permission.
-   *
-   * @generated from field: string permissionId = 1;
+   * @generated from field: string id = 1;
    */
-  permissionId: string;
+  id: string;
 
   /**
-   * Action granted by this permission (e.g., "create", "read", "update", "delete").
-   *
-   * @generated from field: string action = 2;
+   * @generated from field: users.Action action = 2;
    */
-  action: string;
+  action: Action;
+
+  /**
+   * ← یعنی روی چه چیزی عملیات انجام می‌دیم
+   *
+   * @generated from field: string resource = 3;
+   */
+  resource: string;
 };
 
 /**
@@ -40,70 +43,23 @@ export declare type Permission = Message<"users.Permission"> & {
 export declare const PermissionSchema: GenMessage<Permission>;
 
 /**
- * Message for representing a resource that roles can be associated with.
- *
- * @generated from message users.Resource
- */
-export declare type Resource = Message<"users.Resource"> & {
-  /**
-   * Unique identifier for the resource.
-   *
-   * @generated from field: string resourceId = 1;
-   */
-  resourceId: string;
-
-  /**
-   * Name of the resource.
-   *
-   * @generated from field: string resourceName = 2;
-   */
-  resourceName: string;
-};
-
-/**
- * Describes the message users.Resource.
- * Use `create(ResourceSchema)` to create a new message.
- */
-export declare const ResourceSchema: GenMessage<Resource>;
-
-/**
  * Message for defining a user role.
  *
  * @generated from message users.Role
  */
 export declare type Role = Message<"users.Role"> & {
   /**
-   * Unique identifier for the user role.
-   *
-   * @generated from field: string roleId = 1;
+   * @generated from field: string id = 1;
    */
-  roleId: string;
+  id: string;
 
   /**
-   * Name of the role (e.g., "Admin", "User").
-   *
-   * @generated from field: string roleName = 2;
+   * @generated from field: string name = 2;
    */
-  roleName: string;
+  name: string;
 
   /**
-   * The resource that the role applies to (e.g., "user", "order").
-   *
-   * @generated from field: users.Resource resource = 3;
-   */
-  resource?: Resource;
-
-  /**
-   * Description of the role and its responsibilities.
-   *
-   * @generated from field: string description = 4;
-   */
-  description: string;
-
-  /**
-   * List of permissions associated with this role.
-   *
-   * @generated from field: repeated users.Permission permissions = 5;
+   * @generated from field: repeated users.Permission permissions = 3;
    */
   permissions: Permission[];
 };
@@ -2040,6 +1996,268 @@ export declare type DeleteResetTokenResponse = Message<"users.DeleteResetTokenRe
 export declare const DeleteResetTokenResponseSchema: GenMessage<DeleteResetTokenResponse>;
 
 /**
+ * @generated from message users.CreatePermissionRequest
+ */
+export declare type CreatePermissionRequest = Message<"users.CreatePermissionRequest"> & {
+  /**
+   * @generated from field: users.Action action = 1;
+   */
+  action: Action;
+
+  /**
+   * @generated from field: string resource = 2;
+   */
+  resource: string;
+};
+
+/**
+ * Describes the message users.CreatePermissionRequest.
+ * Use `create(CreatePermissionRequestSchema)` to create a new message.
+ */
+export declare const CreatePermissionRequestSchema: GenMessage<CreatePermissionRequest>;
+
+/**
+ * @generated from message users.PermissionResponse
+ */
+export declare type PermissionResponse = Message<"users.PermissionResponse"> & {
+  /**
+   * @generated from field: users.Permission permission = 1;
+   */
+  permission?: Permission;
+};
+
+/**
+ * Describes the message users.PermissionResponse.
+ * Use `create(PermissionResponseSchema)` to create a new message.
+ */
+export declare const PermissionResponseSchema: GenMessage<PermissionResponse>;
+
+/**
+ * @generated from message users.CreateRoleRequest
+ */
+export declare type CreateRoleRequest = Message<"users.CreateRoleRequest"> & {
+  /**
+   * @generated from field: string name = 1;
+   */
+  name: string;
+};
+
+/**
+ * Describes the message users.CreateRoleRequest.
+ * Use `create(CreateRoleRequestSchema)` to create a new message.
+ */
+export declare const CreateRoleRequestSchema: GenMessage<CreateRoleRequest>;
+
+/**
+ * @generated from message users.RoleResponse
+ */
+export declare type RoleResponse = Message<"users.RoleResponse"> & {
+  /**
+   * @generated from field: users.Role role = 1;
+   */
+  role?: Role;
+};
+
+/**
+ * Describes the message users.RoleResponse.
+ * Use `create(RoleResponseSchema)` to create a new message.
+ */
+export declare const RoleResponseSchema: GenMessage<RoleResponse>;
+
+/**
+ * @generated from message users.AssignPermissionsToRoleRequest
+ */
+export declare type AssignPermissionsToRoleRequest = Message<"users.AssignPermissionsToRoleRequest"> & {
+  /**
+   * @generated from field: string role_id = 1;
+   */
+  roleId: string;
+
+  /**
+   * @generated from field: repeated string permission_ids = 2;
+   */
+  permissionIds: string[];
+};
+
+/**
+ * Describes the message users.AssignPermissionsToRoleRequest.
+ * Use `create(AssignPermissionsToRoleRequestSchema)` to create a new message.
+ */
+export declare const AssignPermissionsToRoleRequestSchema: GenMessage<AssignPermissionsToRoleRequest>;
+
+/**
+ * @generated from message users.AssignRolesToUserRequest
+ */
+export declare type AssignRolesToUserRequest = Message<"users.AssignRolesToUserRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: repeated string role_ids = 2;
+   */
+  roleIds: string[];
+};
+
+/**
+ * Describes the message users.AssignRolesToUserRequest.
+ * Use `create(AssignRolesToUserRequestSchema)` to create a new message.
+ */
+export declare const AssignRolesToUserRequestSchema: GenMessage<AssignRolesToUserRequest>;
+
+/**
+ * @generated from message users.RemovePermissionRequest
+ */
+export declare type RemovePermissionRequest = Message<"users.RemovePermissionRequest"> & {
+  /**
+   * @generated from field: string role_id = 1;
+   */
+  roleId: string;
+
+  /**
+   * @generated from field: string permission_id = 2;
+   */
+  permissionId: string;
+};
+
+/**
+ * Describes the message users.RemovePermissionRequest.
+ * Use `create(RemovePermissionRequestSchema)` to create a new message.
+ */
+export declare const RemovePermissionRequestSchema: GenMessage<RemovePermissionRequest>;
+
+/**
+ * @generated from message users.GetUserRolesRequest
+ */
+export declare type GetUserRolesRequest = Message<"users.GetUserRolesRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+};
+
+/**
+ * Describes the message users.GetUserRolesRequest.
+ * Use `create(GetUserRolesRequestSchema)` to create a new message.
+ */
+export declare const GetUserRolesRequestSchema: GenMessage<GetUserRolesRequest>;
+
+/**
+ * @generated from message users.GetUserRolesResponse
+ */
+export declare type GetUserRolesResponse = Message<"users.GetUserRolesResponse"> & {
+  /**
+   * @generated from field: repeated users.Role roles = 1;
+   */
+  roles: Role[];
+};
+
+/**
+ * Describes the message users.GetUserRolesResponse.
+ * Use `create(GetUserRolesResponseSchema)` to create a new message.
+ */
+export declare const GetUserRolesResponseSchema: GenMessage<GetUserRolesResponse>;
+
+/**
+ * @generated from message users.CheckPermissionRequest
+ */
+export declare type CheckPermissionRequest = Message<"users.CheckPermissionRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: users.Action action = 2;
+   */
+  action: Action;
+
+  /**
+   * @generated from field: string resource = 3;
+   */
+  resource: string;
+};
+
+/**
+ * Describes the message users.CheckPermissionRequest.
+ * Use `create(CheckPermissionRequestSchema)` to create a new message.
+ */
+export declare const CheckPermissionRequestSchema: GenMessage<CheckPermissionRequest>;
+
+/**
+ * @generated from message users.CheckPermissionResponse
+ */
+export declare type CheckPermissionResponse = Message<"users.CheckPermissionResponse"> & {
+  /**
+   * @generated from field: bool allowed = 1;
+   */
+  allowed: boolean;
+};
+
+/**
+ * Describes the message users.CheckPermissionResponse.
+ * Use `create(CheckPermissionResponseSchema)` to create a new message.
+ */
+export declare const CheckPermissionResponseSchema: GenMessage<CheckPermissionResponse>;
+
+/**
+ * @generated from message users.ListRolesRequest
+ */
+export declare type ListRolesRequest = Message<"users.ListRolesRequest"> & {
+};
+
+/**
+ * Describes the message users.ListRolesRequest.
+ * Use `create(ListRolesRequestSchema)` to create a new message.
+ */
+export declare const ListRolesRequestSchema: GenMessage<ListRolesRequest>;
+
+/**
+ * @generated from message users.ListRolesResponse
+ */
+export declare type ListRolesResponse = Message<"users.ListRolesResponse"> & {
+  /**
+   * @generated from field: repeated users.Role roles = 1;
+   */
+  roles: Role[];
+};
+
+/**
+ * Describes the message users.ListRolesResponse.
+ * Use `create(ListRolesResponseSchema)` to create a new message.
+ */
+export declare const ListRolesResponseSchema: GenMessage<ListRolesResponse>;
+
+/**
+ * @generated from message users.ListPermissionsRequest
+ */
+export declare type ListPermissionsRequest = Message<"users.ListPermissionsRequest"> & {
+};
+
+/**
+ * Describes the message users.ListPermissionsRequest.
+ * Use `create(ListPermissionsRequestSchema)` to create a new message.
+ */
+export declare const ListPermissionsRequestSchema: GenMessage<ListPermissionsRequest>;
+
+/**
+ * @generated from message users.ListPermissionsResponse
+ */
+export declare type ListPermissionsResponse = Message<"users.ListPermissionsResponse"> & {
+  /**
+   * @generated from field: repeated users.Permission permissions = 1;
+   */
+  permissions: Permission[];
+};
+
+/**
+ * Describes the message users.ListPermissionsResponse.
+ * Use `create(ListPermissionsResponseSchema)` to create a new message.
+ */
+export declare const ListPermissionsResponseSchema: GenMessage<ListPermissionsResponse>;
+
+/**
  * ==================== ENUMS ====================
  * Enum for user status.
  *
@@ -2329,6 +2547,43 @@ export enum JobPostStatus {
 export declare const JobPostStatusSchema: GenEnum<JobPostStatus>;
 
 /**
+ * Enum for permission
+ *
+ * @generated from enum users.Action
+ */
+export enum Action {
+  /**
+   * @generated from enum value: ACTION_UNSPECIFIED = 0;
+   */
+  ACTION_UNSPECIFIED = 0,
+
+  /**
+   * @generated from enum value: CREATE = 1;
+   */
+  CREATE = 1,
+
+  /**
+   * @generated from enum value: READ = 2;
+   */
+  READ = 2,
+
+  /**
+   * @generated from enum value: UPDATE = 3;
+   */
+  UPDATE = 3,
+
+  /**
+   * @generated from enum value: DELETE = 4;
+   */
+  DELETE = 4,
+}
+
+/**
+ * Describes the enum users.Action.
+ */
+export declare const ActionSchema: GenEnum<Action>;
+
+/**
  * ==================== SERVICE DEFINITIONS ====================
  *
  * @generated from service users.UsersService
@@ -2531,6 +2786,80 @@ export declare const UsersService: GenService<{
     methodKind: "unary";
     input: typeof DeleteResetTokenRequestSchema;
     output: typeof DeleteResetTokenResponseSchema;
+  },
+  /**
+   * Role and Permission related methodes
+   *
+   * @generated from rpc users.UsersService.CreatePermission
+   */
+  createPermission: {
+    methodKind: "unary";
+    input: typeof CreatePermissionRequestSchema;
+    output: typeof PermissionResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.ListPermissions
+   */
+  listPermissions: {
+    methodKind: "unary";
+    input: typeof ListPermissionsRequestSchema;
+    output: typeof ListPermissionsResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.CreateRole
+   */
+  createRole: {
+    methodKind: "unary";
+    input: typeof CreateRoleRequestSchema;
+    output: typeof RoleResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.ListRoles
+   */
+  listRoles: {
+    methodKind: "unary";
+    input: typeof ListRolesRequestSchema;
+    output: typeof ListRolesResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.AssignPermissionsToRole
+   */
+  assignPermissionsToRole: {
+    methodKind: "unary";
+    input: typeof AssignPermissionsToRoleRequestSchema;
+    output: typeof RoleResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.RemovePermissionFromRole
+   */
+  removePermissionFromRole: {
+    methodKind: "unary";
+    input: typeof RemovePermissionRequestSchema;
+    output: typeof RoleResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.AssignRolesToUser
+   */
+  assignRolesToUser: {
+    methodKind: "unary";
+    input: typeof AssignRolesToUserRequestSchema;
+    output: typeof UserSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.GetUserRoles
+   */
+  getUserRoles: {
+    methodKind: "unary";
+    input: typeof GetUserRolesRequestSchema;
+    output: typeof GetUserRolesResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.CheckPermission
+   */
+  checkPermission: {
+    methodKind: "unary";
+    input: typeof CheckPermissionRequestSchema;
+    output: typeof CheckPermissionResponseSchema;
   },
 }>;
 

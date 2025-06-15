@@ -62,27 +62,26 @@ enum JobPostStatus {
     JOB_POST_STATUS_CLOSED = 2;
     JOB_POST_STATUS_CANCELLED = 3;
 }
-
+// Enum for permission
+enum Action {
+  ACTION_UNSPECIFIED = 0;
+  CREATE = 1;
+  READ = 2;
+  UPDATE = 3;
+  DELETE = 4;
+}
 // ==================== USER-RELATED MESSAGES ====================
 // Message for defining a permission related to user roles.
 message Permission {
-    string permissionId = 1; // Unique identifier for the permission.
-    string action = 2;       // Action granted by this permission (e.g., "create", "read", "update", "delete").
+  string id = 1;
+  Action action = 2;
+  string resource = 3; // ← یعنی روی چه چیزی عملیات انجام می‌دیم
 }
-
-// Message for representing a resource that roles can be associated with.
-message Resource {
-    string resourceId = 1;   // Unique identifier for the resource.
-    string resourceName = 2; // Name of the resource.
-}
-
 // Message for defining a user role.
 message Role {
-    string roleId = 1;                  // Unique identifier for the user role.
-    string roleName = 2;                // Name of the role (e.g., "Admin", "User").
-    Resource resource = 3;              // The resource that the role applies to (e.g., "user", "order").
-    string description = 4;             // Description of the role and its responsibilities.
-    repeated Permission permissions = 5; // List of permissions associated with this role.
+  string id = 1;
+  string name = 2;
+  repeated Permission permissions = 3;
 }
 
 // Represents a user's profile, which contains personal and contact information.
@@ -481,6 +480,79 @@ message GetResetTokenResponse {
 message DeleteResetTokenResponse {
     string message = 1; // Confirmation message.
 }
+
+// ========== Create Permission ==========
+
+message CreatePermissionRequest {
+  Action action = 1;
+  string resource = 2;
+}
+
+message PermissionResponse {
+  Permission permission = 1;
+}
+
+// ========== Create Role ==========
+
+message CreateRoleRequest {
+  string name = 1;
+}
+
+message RoleResponse {
+  Role role = 1;
+}
+
+// ========== Assign Permissions to Role ==========
+
+message AssignPermissionsToRoleRequest {
+  string role_id = 1;
+  repeated string permission_ids = 2;
+}
+
+// ========== Assign Roles to User ==========
+
+message AssignRolesToUserRequest {
+  string user_id = 1;
+  repeated string role_ids = 2;
+}
+message RemovePermissionRequest {
+  string role_id = 1;
+  string permission_id = 2;
+}
+
+// ========== Get User Roles ==========
+
+message GetUserRolesRequest {
+  string user_id = 1;
+}
+
+message GetUserRolesResponse {
+  repeated Role roles = 1;
+}
+
+// ========== Check Permission ==========
+
+message CheckPermissionRequest {
+  string user_id = 1;
+  Action action = 2;
+  string resource = 3;
+}
+
+message CheckPermissionResponse {
+  bool allowed = 1;
+}
+
+// ========== List Roles and Permissions ==========
+
+message ListRolesRequest {}
+message ListRolesResponse {
+  repeated Role roles = 1;
+}
+
+message ListPermissionsRequest {}
+message ListPermissionsResponse {
+  repeated Permission permissions = 1;
+}
 // ==================== SERVICE DEFINITIONS ====================
 service UsersService {
     // User-related methods
@@ -517,5 +589,20 @@ service UsersService {
     //Generate token related methods
       rpc GetResetTokenByShortCode(GetResetTokenRequest) returns (GetResetTokenResponse);
       rpc DeleteResetToken(DeleteResetTokenRequest) returns (DeleteResetTokenResponse);
+   
+      //Role and Permission related methodes
+    rpc CreatePermission(CreatePermissionRequest) returns (PermissionResponse);
+    rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse);
+
+    rpc CreateRole(CreateRoleRequest) returns (RoleResponse);
+    rpc ListRoles(ListRolesRequest) returns (ListRolesResponse);
+
+    rpc AssignPermissionsToRole(AssignPermissionsToRoleRequest) returns (RoleResponse);
+    rpc RemovePermissionFromRole(RemovePermissionRequest) returns (RoleResponse);
+    rpc AssignRolesToUser(AssignRolesToUserRequest) returns (User);
+
+
+    rpc GetUserRoles(GetUserRolesRequest) returns (GetUserRolesResponse);
+    rpc CheckPermission(CheckPermissionRequest) returns (CheckPermissionResponse);
 
 }

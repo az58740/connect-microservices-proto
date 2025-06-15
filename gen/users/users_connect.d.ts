@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, DeleteResetTokenRequest, DeleteResetTokenResponse, ForgotPasswordRequest, ForgotPasswordResponse, GetGeolocationRequest, GetGeolocationResponse, GetResetTokenRequest, GetResetTokenResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse } from "./users_pb.js";
+import { AssignPermissionsToRoleRequest, AssignRolesToUserRequest, CheckPermissionRequest, CheckPermissionResponse, CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, CreatePermissionRequest, CreateRoleRequest, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, DeleteResetTokenRequest, DeleteResetTokenResponse, ForgotPasswordRequest, ForgotPasswordResponse, GetGeolocationRequest, GetGeolocationResponse, GetResetTokenRequest, GetResetTokenResponse, GetUserRolesRequest, GetUserRolesResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListPermissionsRequest, ListPermissionsResponse, ListRolesRequest, ListRolesResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, PermissionResponse, RegisterRequest, RegisterResponse, RemovePermissionRequest, RoleResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse, User } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -232,6 +232,89 @@ export declare const UsersService: {
       readonly name: "DeleteResetToken",
       readonly I: typeof DeleteResetTokenRequest,
       readonly O: typeof DeleteResetTokenResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * Role and Permission related methodes
+     *
+     * @generated from rpc users.UsersService.CreatePermission
+     */
+    readonly createPermission: {
+      readonly name: "CreatePermission",
+      readonly I: typeof CreatePermissionRequest,
+      readonly O: typeof PermissionResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.ListPermissions
+     */
+    readonly listPermissions: {
+      readonly name: "ListPermissions",
+      readonly I: typeof ListPermissionsRequest,
+      readonly O: typeof ListPermissionsResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.CreateRole
+     */
+    readonly createRole: {
+      readonly name: "CreateRole",
+      readonly I: typeof CreateRoleRequest,
+      readonly O: typeof RoleResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.ListRoles
+     */
+    readonly listRoles: {
+      readonly name: "ListRoles",
+      readonly I: typeof ListRolesRequest,
+      readonly O: typeof ListRolesResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.AssignPermissionsToRole
+     */
+    readonly assignPermissionsToRole: {
+      readonly name: "AssignPermissionsToRole",
+      readonly I: typeof AssignPermissionsToRoleRequest,
+      readonly O: typeof RoleResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.RemovePermissionFromRole
+     */
+    readonly removePermissionFromRole: {
+      readonly name: "RemovePermissionFromRole",
+      readonly I: typeof RemovePermissionRequest,
+      readonly O: typeof RoleResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.AssignRolesToUser
+     */
+    readonly assignRolesToUser: {
+      readonly name: "AssignRolesToUser",
+      readonly I: typeof AssignRolesToUserRequest,
+      readonly O: typeof User,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.GetUserRoles
+     */
+    readonly getUserRoles: {
+      readonly name: "GetUserRoles",
+      readonly I: typeof GetUserRolesRequest,
+      readonly O: typeof GetUserRolesResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.CheckPermission
+     */
+    readonly checkPermission: {
+      readonly name: "CheckPermission",
+      readonly I: typeof CheckPermissionRequest,
+      readonly O: typeof CheckPermissionResponse,
       readonly kind: MethodKind.Unary,
     },
   }

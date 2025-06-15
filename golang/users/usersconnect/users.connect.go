@@ -95,6 +95,31 @@ const (
 	// UsersServiceDeleteResetTokenProcedure is the fully-qualified name of the UsersService's
 	// DeleteResetToken RPC.
 	UsersServiceDeleteResetTokenProcedure = "/users.UsersService/DeleteResetToken"
+	// UsersServiceCreatePermissionProcedure is the fully-qualified name of the UsersService's
+	// CreatePermission RPC.
+	UsersServiceCreatePermissionProcedure = "/users.UsersService/CreatePermission"
+	// UsersServiceListPermissionsProcedure is the fully-qualified name of the UsersService's
+	// ListPermissions RPC.
+	UsersServiceListPermissionsProcedure = "/users.UsersService/ListPermissions"
+	// UsersServiceCreateRoleProcedure is the fully-qualified name of the UsersService's CreateRole RPC.
+	UsersServiceCreateRoleProcedure = "/users.UsersService/CreateRole"
+	// UsersServiceListRolesProcedure is the fully-qualified name of the UsersService's ListRoles RPC.
+	UsersServiceListRolesProcedure = "/users.UsersService/ListRoles"
+	// UsersServiceAssignPermissionsToRoleProcedure is the fully-qualified name of the UsersService's
+	// AssignPermissionsToRole RPC.
+	UsersServiceAssignPermissionsToRoleProcedure = "/users.UsersService/AssignPermissionsToRole"
+	// UsersServiceRemovePermissionFromRoleProcedure is the fully-qualified name of the UsersService's
+	// RemovePermissionFromRole RPC.
+	UsersServiceRemovePermissionFromRoleProcedure = "/users.UsersService/RemovePermissionFromRole"
+	// UsersServiceAssignRolesToUserProcedure is the fully-qualified name of the UsersService's
+	// AssignRolesToUser RPC.
+	UsersServiceAssignRolesToUserProcedure = "/users.UsersService/AssignRolesToUser"
+	// UsersServiceGetUserRolesProcedure is the fully-qualified name of the UsersService's GetUserRoles
+	// RPC.
+	UsersServiceGetUserRolesProcedure = "/users.UsersService/GetUserRoles"
+	// UsersServiceCheckPermissionProcedure is the fully-qualified name of the UsersService's
+	// CheckPermission RPC.
+	UsersServiceCheckPermissionProcedure = "/users.UsersService/CheckPermission"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
@@ -122,6 +147,15 @@ var (
 	usersServiceGetCitiesMethodDescriptor                = usersServiceServiceDescriptor.Methods().ByName("GetCities")
 	usersServiceGetResetTokenByShortCodeMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("GetResetTokenByShortCode")
 	usersServiceDeleteResetTokenMethodDescriptor         = usersServiceServiceDescriptor.Methods().ByName("DeleteResetToken")
+	usersServiceCreatePermissionMethodDescriptor         = usersServiceServiceDescriptor.Methods().ByName("CreatePermission")
+	usersServiceListPermissionsMethodDescriptor          = usersServiceServiceDescriptor.Methods().ByName("ListPermissions")
+	usersServiceCreateRoleMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("CreateRole")
+	usersServiceListRolesMethodDescriptor                = usersServiceServiceDescriptor.Methods().ByName("ListRoles")
+	usersServiceAssignPermissionsToRoleMethodDescriptor  = usersServiceServiceDescriptor.Methods().ByName("AssignPermissionsToRole")
+	usersServiceRemovePermissionFromRoleMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("RemovePermissionFromRole")
+	usersServiceAssignRolesToUserMethodDescriptor        = usersServiceServiceDescriptor.Methods().ByName("AssignRolesToUser")
+	usersServiceGetUserRolesMethodDescriptor             = usersServiceServiceDescriptor.Methods().ByName("GetUserRoles")
+	usersServiceCheckPermissionMethodDescriptor          = usersServiceServiceDescriptor.Methods().ByName("CheckPermission")
 )
 
 // UsersServiceClient is a client for the users.UsersService service.
@@ -154,6 +188,16 @@ type UsersServiceClient interface {
 	// Generate token related methods
 	GetResetTokenByShortCode(context.Context, *connect.Request[users.GetResetTokenRequest]) (*connect.Response[users.GetResetTokenResponse], error)
 	DeleteResetToken(context.Context, *connect.Request[users.DeleteResetTokenRequest]) (*connect.Response[users.DeleteResetTokenResponse], error)
+	// Role and Permission related methodes
+	CreatePermission(context.Context, *connect.Request[users.CreatePermissionRequest]) (*connect.Response[users.PermissionResponse], error)
+	ListPermissions(context.Context, *connect.Request[users.ListPermissionsRequest]) (*connect.Response[users.ListPermissionsResponse], error)
+	CreateRole(context.Context, *connect.Request[users.CreateRoleRequest]) (*connect.Response[users.RoleResponse], error)
+	ListRoles(context.Context, *connect.Request[users.ListRolesRequest]) (*connect.Response[users.ListRolesResponse], error)
+	AssignPermissionsToRole(context.Context, *connect.Request[users.AssignPermissionsToRoleRequest]) (*connect.Response[users.RoleResponse], error)
+	RemovePermissionFromRole(context.Context, *connect.Request[users.RemovePermissionRequest]) (*connect.Response[users.RoleResponse], error)
+	AssignRolesToUser(context.Context, *connect.Request[users.AssignRolesToUserRequest]) (*connect.Response[users.User], error)
+	GetUserRoles(context.Context, *connect.Request[users.GetUserRolesRequest]) (*connect.Response[users.GetUserRolesResponse], error)
+	CheckPermission(context.Context, *connect.Request[users.CheckPermissionRequest]) (*connect.Response[users.CheckPermissionResponse], error)
 }
 
 // NewUsersServiceClient constructs a client for the users.UsersService service. By default, it uses
@@ -298,6 +342,60 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceDeleteResetTokenMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		createPermission: connect.NewClient[users.CreatePermissionRequest, users.PermissionResponse](
+			httpClient,
+			baseURL+UsersServiceCreatePermissionProcedure,
+			connect.WithSchema(usersServiceCreatePermissionMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		listPermissions: connect.NewClient[users.ListPermissionsRequest, users.ListPermissionsResponse](
+			httpClient,
+			baseURL+UsersServiceListPermissionsProcedure,
+			connect.WithSchema(usersServiceListPermissionsMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		createRole: connect.NewClient[users.CreateRoleRequest, users.RoleResponse](
+			httpClient,
+			baseURL+UsersServiceCreateRoleProcedure,
+			connect.WithSchema(usersServiceCreateRoleMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		listRoles: connect.NewClient[users.ListRolesRequest, users.ListRolesResponse](
+			httpClient,
+			baseURL+UsersServiceListRolesProcedure,
+			connect.WithSchema(usersServiceListRolesMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		assignPermissionsToRole: connect.NewClient[users.AssignPermissionsToRoleRequest, users.RoleResponse](
+			httpClient,
+			baseURL+UsersServiceAssignPermissionsToRoleProcedure,
+			connect.WithSchema(usersServiceAssignPermissionsToRoleMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		removePermissionFromRole: connect.NewClient[users.RemovePermissionRequest, users.RoleResponse](
+			httpClient,
+			baseURL+UsersServiceRemovePermissionFromRoleProcedure,
+			connect.WithSchema(usersServiceRemovePermissionFromRoleMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		assignRolesToUser: connect.NewClient[users.AssignRolesToUserRequest, users.User](
+			httpClient,
+			baseURL+UsersServiceAssignRolesToUserProcedure,
+			connect.WithSchema(usersServiceAssignRolesToUserMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		getUserRoles: connect.NewClient[users.GetUserRolesRequest, users.GetUserRolesResponse](
+			httpClient,
+			baseURL+UsersServiceGetUserRolesProcedure,
+			connect.WithSchema(usersServiceGetUserRolesMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		checkPermission: connect.NewClient[users.CheckPermissionRequest, users.CheckPermissionResponse](
+			httpClient,
+			baseURL+UsersServiceCheckPermissionProcedure,
+			connect.WithSchema(usersServiceCheckPermissionMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -325,6 +423,15 @@ type usersServiceClient struct {
 	getCities                *connect.Client[users.GetGeolocationRequest, users.GetGeolocationResponse]
 	getResetTokenByShortCode *connect.Client[users.GetResetTokenRequest, users.GetResetTokenResponse]
 	deleteResetToken         *connect.Client[users.DeleteResetTokenRequest, users.DeleteResetTokenResponse]
+	createPermission         *connect.Client[users.CreatePermissionRequest, users.PermissionResponse]
+	listPermissions          *connect.Client[users.ListPermissionsRequest, users.ListPermissionsResponse]
+	createRole               *connect.Client[users.CreateRoleRequest, users.RoleResponse]
+	listRoles                *connect.Client[users.ListRolesRequest, users.ListRolesResponse]
+	assignPermissionsToRole  *connect.Client[users.AssignPermissionsToRoleRequest, users.RoleResponse]
+	removePermissionFromRole *connect.Client[users.RemovePermissionRequest, users.RoleResponse]
+	assignRolesToUser        *connect.Client[users.AssignRolesToUserRequest, users.User]
+	getUserRoles             *connect.Client[users.GetUserRolesRequest, users.GetUserRolesResponse]
+	checkPermission          *connect.Client[users.CheckPermissionRequest, users.CheckPermissionResponse]
 }
 
 // RegisterUser calls users.UsersService.RegisterUser.
@@ -437,6 +544,51 @@ func (c *usersServiceClient) DeleteResetToken(ctx context.Context, req *connect.
 	return c.deleteResetToken.CallUnary(ctx, req)
 }
 
+// CreatePermission calls users.UsersService.CreatePermission.
+func (c *usersServiceClient) CreatePermission(ctx context.Context, req *connect.Request[users.CreatePermissionRequest]) (*connect.Response[users.PermissionResponse], error) {
+	return c.createPermission.CallUnary(ctx, req)
+}
+
+// ListPermissions calls users.UsersService.ListPermissions.
+func (c *usersServiceClient) ListPermissions(ctx context.Context, req *connect.Request[users.ListPermissionsRequest]) (*connect.Response[users.ListPermissionsResponse], error) {
+	return c.listPermissions.CallUnary(ctx, req)
+}
+
+// CreateRole calls users.UsersService.CreateRole.
+func (c *usersServiceClient) CreateRole(ctx context.Context, req *connect.Request[users.CreateRoleRequest]) (*connect.Response[users.RoleResponse], error) {
+	return c.createRole.CallUnary(ctx, req)
+}
+
+// ListRoles calls users.UsersService.ListRoles.
+func (c *usersServiceClient) ListRoles(ctx context.Context, req *connect.Request[users.ListRolesRequest]) (*connect.Response[users.ListRolesResponse], error) {
+	return c.listRoles.CallUnary(ctx, req)
+}
+
+// AssignPermissionsToRole calls users.UsersService.AssignPermissionsToRole.
+func (c *usersServiceClient) AssignPermissionsToRole(ctx context.Context, req *connect.Request[users.AssignPermissionsToRoleRequest]) (*connect.Response[users.RoleResponse], error) {
+	return c.assignPermissionsToRole.CallUnary(ctx, req)
+}
+
+// RemovePermissionFromRole calls users.UsersService.RemovePermissionFromRole.
+func (c *usersServiceClient) RemovePermissionFromRole(ctx context.Context, req *connect.Request[users.RemovePermissionRequest]) (*connect.Response[users.RoleResponse], error) {
+	return c.removePermissionFromRole.CallUnary(ctx, req)
+}
+
+// AssignRolesToUser calls users.UsersService.AssignRolesToUser.
+func (c *usersServiceClient) AssignRolesToUser(ctx context.Context, req *connect.Request[users.AssignRolesToUserRequest]) (*connect.Response[users.User], error) {
+	return c.assignRolesToUser.CallUnary(ctx, req)
+}
+
+// GetUserRoles calls users.UsersService.GetUserRoles.
+func (c *usersServiceClient) GetUserRoles(ctx context.Context, req *connect.Request[users.GetUserRolesRequest]) (*connect.Response[users.GetUserRolesResponse], error) {
+	return c.getUserRoles.CallUnary(ctx, req)
+}
+
+// CheckPermission calls users.UsersService.CheckPermission.
+func (c *usersServiceClient) CheckPermission(ctx context.Context, req *connect.Request[users.CheckPermissionRequest]) (*connect.Response[users.CheckPermissionResponse], error) {
+	return c.checkPermission.CallUnary(ctx, req)
+}
+
 // UsersServiceHandler is an implementation of the users.UsersService service.
 type UsersServiceHandler interface {
 	// User-related methods
@@ -467,6 +619,16 @@ type UsersServiceHandler interface {
 	// Generate token related methods
 	GetResetTokenByShortCode(context.Context, *connect.Request[users.GetResetTokenRequest]) (*connect.Response[users.GetResetTokenResponse], error)
 	DeleteResetToken(context.Context, *connect.Request[users.DeleteResetTokenRequest]) (*connect.Response[users.DeleteResetTokenResponse], error)
+	// Role and Permission related methodes
+	CreatePermission(context.Context, *connect.Request[users.CreatePermissionRequest]) (*connect.Response[users.PermissionResponse], error)
+	ListPermissions(context.Context, *connect.Request[users.ListPermissionsRequest]) (*connect.Response[users.ListPermissionsResponse], error)
+	CreateRole(context.Context, *connect.Request[users.CreateRoleRequest]) (*connect.Response[users.RoleResponse], error)
+	ListRoles(context.Context, *connect.Request[users.ListRolesRequest]) (*connect.Response[users.ListRolesResponse], error)
+	AssignPermissionsToRole(context.Context, *connect.Request[users.AssignPermissionsToRoleRequest]) (*connect.Response[users.RoleResponse], error)
+	RemovePermissionFromRole(context.Context, *connect.Request[users.RemovePermissionRequest]) (*connect.Response[users.RoleResponse], error)
+	AssignRolesToUser(context.Context, *connect.Request[users.AssignRolesToUserRequest]) (*connect.Response[users.User], error)
+	GetUserRoles(context.Context, *connect.Request[users.GetUserRolesRequest]) (*connect.Response[users.GetUserRolesResponse], error)
+	CheckPermission(context.Context, *connect.Request[users.CheckPermissionRequest]) (*connect.Response[users.CheckPermissionResponse], error)
 }
 
 // NewUsersServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -607,6 +769,60 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceDeleteResetTokenMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	usersServiceCreatePermissionHandler := connect.NewUnaryHandler(
+		UsersServiceCreatePermissionProcedure,
+		svc.CreatePermission,
+		connect.WithSchema(usersServiceCreatePermissionMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceListPermissionsHandler := connect.NewUnaryHandler(
+		UsersServiceListPermissionsProcedure,
+		svc.ListPermissions,
+		connect.WithSchema(usersServiceListPermissionsMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceCreateRoleHandler := connect.NewUnaryHandler(
+		UsersServiceCreateRoleProcedure,
+		svc.CreateRole,
+		connect.WithSchema(usersServiceCreateRoleMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceListRolesHandler := connect.NewUnaryHandler(
+		UsersServiceListRolesProcedure,
+		svc.ListRoles,
+		connect.WithSchema(usersServiceListRolesMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceAssignPermissionsToRoleHandler := connect.NewUnaryHandler(
+		UsersServiceAssignPermissionsToRoleProcedure,
+		svc.AssignPermissionsToRole,
+		connect.WithSchema(usersServiceAssignPermissionsToRoleMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceRemovePermissionFromRoleHandler := connect.NewUnaryHandler(
+		UsersServiceRemovePermissionFromRoleProcedure,
+		svc.RemovePermissionFromRole,
+		connect.WithSchema(usersServiceRemovePermissionFromRoleMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceAssignRolesToUserHandler := connect.NewUnaryHandler(
+		UsersServiceAssignRolesToUserProcedure,
+		svc.AssignRolesToUser,
+		connect.WithSchema(usersServiceAssignRolesToUserMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceGetUserRolesHandler := connect.NewUnaryHandler(
+		UsersServiceGetUserRolesProcedure,
+		svc.GetUserRoles,
+		connect.WithSchema(usersServiceGetUserRolesMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceCheckPermissionHandler := connect.NewUnaryHandler(
+		UsersServiceCheckPermissionProcedure,
+		svc.CheckPermission,
+		connect.WithSchema(usersServiceCheckPermissionMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/users.UsersService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case UsersServiceRegisterUserProcedure:
@@ -653,6 +869,24 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 			usersServiceGetResetTokenByShortCodeHandler.ServeHTTP(w, r)
 		case UsersServiceDeleteResetTokenProcedure:
 			usersServiceDeleteResetTokenHandler.ServeHTTP(w, r)
+		case UsersServiceCreatePermissionProcedure:
+			usersServiceCreatePermissionHandler.ServeHTTP(w, r)
+		case UsersServiceListPermissionsProcedure:
+			usersServiceListPermissionsHandler.ServeHTTP(w, r)
+		case UsersServiceCreateRoleProcedure:
+			usersServiceCreateRoleHandler.ServeHTTP(w, r)
+		case UsersServiceListRolesProcedure:
+			usersServiceListRolesHandler.ServeHTTP(w, r)
+		case UsersServiceAssignPermissionsToRoleProcedure:
+			usersServiceAssignPermissionsToRoleHandler.ServeHTTP(w, r)
+		case UsersServiceRemovePermissionFromRoleProcedure:
+			usersServiceRemovePermissionFromRoleHandler.ServeHTTP(w, r)
+		case UsersServiceAssignRolesToUserProcedure:
+			usersServiceAssignRolesToUserHandler.ServeHTTP(w, r)
+		case UsersServiceGetUserRolesProcedure:
+			usersServiceGetUserRolesHandler.ServeHTTP(w, r)
+		case UsersServiceCheckPermissionProcedure:
+			usersServiceCheckPermissionHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -748,4 +982,40 @@ func (UnimplementedUsersServiceHandler) GetResetTokenByShortCode(context.Context
 
 func (UnimplementedUsersServiceHandler) DeleteResetToken(context.Context, *connect.Request[users.DeleteResetTokenRequest]) (*connect.Response[users.DeleteResetTokenResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.DeleteResetToken is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) CreatePermission(context.Context, *connect.Request[users.CreatePermissionRequest]) (*connect.Response[users.PermissionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CreatePermission is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) ListPermissions(context.Context, *connect.Request[users.ListPermissionsRequest]) (*connect.Response[users.ListPermissionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.ListPermissions is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) CreateRole(context.Context, *connect.Request[users.CreateRoleRequest]) (*connect.Response[users.RoleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CreateRole is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) ListRoles(context.Context, *connect.Request[users.ListRolesRequest]) (*connect.Response[users.ListRolesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.ListRoles is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) AssignPermissionsToRole(context.Context, *connect.Request[users.AssignPermissionsToRoleRequest]) (*connect.Response[users.RoleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.AssignPermissionsToRole is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) RemovePermissionFromRole(context.Context, *connect.Request[users.RemovePermissionRequest]) (*connect.Response[users.RoleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.RemovePermissionFromRole is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) AssignRolesToUser(context.Context, *connect.Request[users.AssignRolesToUserRequest]) (*connect.Response[users.User], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.AssignRolesToUser is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) GetUserRoles(context.Context, *connect.Request[users.GetUserRolesRequest]) (*connect.Response[users.GetUserRolesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.GetUserRoles is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) CheckPermission(context.Context, *connect.Request[users.CheckPermissionRequest]) (*connect.Response[users.CheckPermissionResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CheckPermission is not implemented"))
 }
