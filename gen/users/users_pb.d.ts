@@ -31,9 +31,9 @@ export declare type Permission = Message<"users.Permission"> & {
   /**
    * ← یعنی روی چه چیزی عملیات انجام می‌دیم
    *
-   * @generated from field: string resource = 3;
+   * @generated from field: users.Resource resource = 3;
    */
-  resource: string;
+  resource: Resource;
 };
 
 /**
@@ -2582,6 +2582,120 @@ export enum Action {
  * Describes the enum users.Action.
  */
 export declare const ActionSchema: GenEnum<Action>;
+
+/**
+ * @generated from enum users.Resource
+ */
+export enum Resource {
+  /**
+   * @generated from enum value: RESOURCE_UNSPECIFIED = 0;
+   */
+  RESOURCE_UNSPECIFIED = 0,
+
+  /**
+   * Core
+   *
+   * @generated from enum value: USER = 1;
+   */
+  USER = 1,
+
+  /**
+   * @generated from enum value: ROLE = 2;
+   */
+  ROLE = 2,
+
+  /**
+   * @generated from enum value: PERMISSION = 3;
+   */
+  PERMISSION = 3,
+
+  /**
+   * @generated from enum value: UserDashboard = 4;
+   */
+  UserDashboard = 4,
+
+  /**
+   * HR
+   *
+   * @generated from enum value: EMPLOYEE = 10;
+   */
+  EMPLOYEE = 10,
+
+  /**
+   * @generated from enum value: JOB_POST = 11;
+   */
+  JOB_POST = 11,
+
+  /**
+   * @generated from enum value: APPLICATION = 12;
+   */
+  APPLICATION = 12,
+
+  /**
+   * @generated from enum value: CONTRACT = 13;
+   */
+  CONTRACT = 13,
+
+  /**
+   * Sales
+   *
+   * @generated from enum value: PRODUCT = 20;
+   */
+  PRODUCT = 20,
+
+  /**
+   * @generated from enum value: ORDER = 21;
+   */
+  ORDER = 21,
+
+  /**
+   * @generated from enum value: INVOICE = 22;
+   */
+  INVOICE = 22,
+
+  /**
+   * Marketing
+   *
+   * @generated from enum value: CAMPAIGN = 30;
+   */
+  CAMPAIGN = 30,
+
+  /**
+   * @generated from enum value: LEAD = 31;
+   */
+  LEAD = 31,
+
+  /**
+   * Support
+   *
+   * @generated from enum value: TICKET = 40;
+   */
+  TICKET = 40,
+
+  /**
+   * Content
+   *
+   * @generated from enum value: ARTICLE = 50;
+   */
+  ARTICLE = 50,
+
+  /**
+   * @generated from enum value: COMMENT = 51;
+   */
+  COMMENT = 51,
+
+  /**
+   * Finance
+   *
+   * @generated from enum value: PAYMENT = 60;
+   */
+  PAYMENT = 60,
+}
+
+/**
+ * Describes the enum users.Resource.
+ */
+export declare const ResourceSchema: GenEnum<Resource>;
 
 /**
  * ==================== SERVICE DEFINITIONS ====================

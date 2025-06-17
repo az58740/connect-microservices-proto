@@ -70,12 +70,46 @@ enum Action {
   UPDATE = 3;
   DELETE = 4;
 }
+enum Resource {
+  RESOURCE_UNSPECIFIED = 0;
+
+  // Core
+  USER = 1;
+  ROLE = 2;
+  PERMISSION = 3;
+  UserDashboard=4;
+
+  // HR
+  EMPLOYEE = 10;
+  JOB_POST = 11;
+  APPLICATION = 12;
+  CONTRACT=13;
+
+  // Sales
+  PRODUCT = 20;
+  ORDER = 21;
+  INVOICE = 22;
+
+  // Marketing
+  CAMPAIGN = 30;
+  LEAD = 31;
+
+  // Support
+  TICKET = 40;
+
+  // Content
+  ARTICLE = 50;
+  COMMENT = 51;
+
+  // Finance
+  PAYMENT = 60;
+}
 // ==================== USER-RELATED MESSAGES ====================
 // Message for defining a permission related to user roles.
 message Permission {
   string id = 1;
   Action action = 2;
-  string resource = 3; // ← یعنی روی چه چیزی عملیات انجام می‌دیم
+  Resource resource = 3; // ← یعنی روی چه چیزی عملیات انجام می‌دیم
 }
 // Message for defining a user role.
 message Role {
