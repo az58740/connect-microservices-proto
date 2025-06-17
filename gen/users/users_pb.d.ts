@@ -29,11 +29,14 @@ export declare type Permission = Message<"users.Permission"> & {
   action: Action;
 
   /**
-   * ← یعنی روی چه چیزی عملیات انجام می‌دیم
-   *
    * @generated from field: users.Resource resource = 3;
    */
   resource: Resource;
+
+  /**
+   * @generated from field: string roleId = 4;
+   */
+  roleId: string;
 };
 
 /**
@@ -2013,6 +2016,11 @@ export declare type CreatePermissionRequest = Message<"users.CreatePermissionReq
    * @generated from field: users.Resource resource = 2;
    */
   resource: Resource;
+
+  /**
+   * @generated from field: optional string roleId = 3;
+   */
+  roleId?: string;
 };
 
 /**

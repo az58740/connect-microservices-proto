@@ -109,7 +109,8 @@ enum Resource {
 message Permission {
   string id = 1;
   Action action = 2;
-  Resource resource = 3; // ← یعنی روی چه چیزی عملیات انجام می‌دیم
+  Resource resource = 3;
+  string roleId=4;
 }
 // Message for defining a user role.
 message Role {
@@ -521,6 +522,7 @@ message DeleteResetTokenResponse {
 message CreatePermissionRequest {
   Action action = 1;
   Resource resource = 2;
+  optional string roleId=3;
 }
 
 message PermissionResponse {
@@ -592,7 +594,7 @@ message ListRolesResponse {
 }
 message PermissionListFilter {
   optional string permission_id=1;
-      optional string role_id = 2;
+    optional string role_id = 2;
 }
 message ListPermissionsRequest {
    PermissionListFilter filter=1;
