@@ -2212,9 +2212,36 @@ export declare type CheckPermissionResponse = Message<"users.CheckPermissionResp
 export declare const CheckPermissionResponseSchema: GenMessage<CheckPermissionResponse>;
 
 /**
+ * ========== List Roles and Permissions ==========
+ *
+ * @generated from message users.RolesListFilter
+ */
+export declare type RolesListFilter = Message<"users.RolesListFilter"> & {
+  /**
+   * @generated from field: optional string roleId = 1;
+   */
+  roleId?: string;
+
+  /**
+   * @generated from field: optional string userId = 2;
+   */
+  userId?: string;
+};
+
+/**
+ * Describes the message users.RolesListFilter.
+ * Use `create(RolesListFilterSchema)` to create a new message.
+ */
+export declare const RolesListFilterSchema: GenMessage<RolesListFilter>;
+
+/**
  * @generated from message users.ListRolesRequest
  */
 export declare type ListRolesRequest = Message<"users.ListRolesRequest"> & {
+  /**
+   * @generated from field: users.RolesListFilter filter = 1;
+   */
+  filter?: RolesListFilter;
 };
 
 /**
@@ -2240,13 +2267,34 @@ export declare type ListRolesResponse = Message<"users.ListRolesResponse"> & {
 export declare const ListRolesResponseSchema: GenMessage<ListRolesResponse>;
 
 /**
+ * @generated from message users.PermissionListFilter
+ */
+export declare type PermissionListFilter = Message<"users.PermissionListFilter"> & {
+  /**
+   * @generated from field: optional string permission_id = 1;
+   */
+  permissionId?: string;
+
+  /**
+   * @generated from field: optional string role_id = 2;
+   */
+  roleId?: string;
+};
+
+/**
+ * Describes the message users.PermissionListFilter.
+ * Use `create(PermissionListFilterSchema)` to create a new message.
+ */
+export declare const PermissionListFilterSchema: GenMessage<PermissionListFilter>;
+
+/**
  * @generated from message users.ListPermissionsRequest
  */
 export declare type ListPermissionsRequest = Message<"users.ListPermissionsRequest"> & {
   /**
-   * @generated from field: string role_id = 1;
+   * @generated from field: users.PermissionListFilter filter = 1;
    */
-  roleId: string;
+  filter?: PermissionListFilter;
 };
 
 /**
