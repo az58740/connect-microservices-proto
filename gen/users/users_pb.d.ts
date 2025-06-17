@@ -2005,9 +2005,9 @@ export declare type CreatePermissionRequest = Message<"users.CreatePermissionReq
   action: Action;
 
   /**
-   * @generated from field: string resource = 2;
+   * @generated from field: users.Resource resource = 2;
    */
-  resource: string;
+  resource: Resource;
 };
 
 /**

@@ -519,7 +519,7 @@ message DeleteResetTokenResponse {
 
 message CreatePermissionRequest {
   Action action = 1;
-  string resource = 2;
+  Resource resource = 2;
 }
 
 message PermissionResponse {
