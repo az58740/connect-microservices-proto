@@ -115,7 +115,8 @@ message Permission {
 message Role {
   string id = 1;
   string name = 2;
-  repeated Permission permissions = 3;
+  string description=3;
+  repeated Permission permissions = 4;
 }
 
 // Represents a user's profile, which contains personal and contact information.
@@ -530,6 +531,7 @@ message PermissionResponse {
 
 message CreateRoleRequest {
   string name = 1;
+  string description=2;
 }
 
 message RoleResponse {
@@ -578,12 +580,16 @@ message CheckPermissionResponse {
 
 // ========== List Roles and Permissions ==========
 
-message ListRolesRequest {}
+message ListRolesRequest {
+
+}
 message ListRolesResponse {
   repeated Role roles = 1;
 }
 
-message ListPermissionsRequest {}
+message ListPermissionsRequest {
+     string role_id = 1;
+}
 message ListPermissionsResponse {
   repeated Permission permissions = 1;
 }

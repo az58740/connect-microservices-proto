@@ -59,7 +59,12 @@ export declare type Role = Message<"users.Role"> & {
   name: string;
 
   /**
-   * @generated from field: repeated users.Permission permissions = 3;
+   * @generated from field: string description = 3;
+   */
+  description: string;
+
+  /**
+   * @generated from field: repeated users.Permission permissions = 4;
    */
   permissions: Permission[];
 };
@@ -2040,6 +2045,11 @@ export declare type CreateRoleRequest = Message<"users.CreateRoleRequest"> & {
    * @generated from field: string name = 1;
    */
   name: string;
+
+  /**
+   * @generated from field: string description = 2;
+   */
+  description: string;
 };
 
 /**
@@ -2233,6 +2243,10 @@ export declare const ListRolesResponseSchema: GenMessage<ListRolesResponse>;
  * @generated from message users.ListPermissionsRequest
  */
 export declare type ListPermissionsRequest = Message<"users.ListPermissionsRequest"> & {
+  /**
+   * @generated from field: string role_id = 1;
+   */
+  roleId: string;
 };
 
 /**
