@@ -114,6 +114,9 @@ const (
 	// UsersServiceAssignRolesToUserProcedure is the fully-qualified name of the UsersService's
 	// AssignRolesToUser RPC.
 	UsersServiceAssignRolesToUserProcedure = "/users.UsersService/AssignRolesToUser"
+	// UsersServiceRemoveUserRoleProcedure is the fully-qualified name of the UsersService's
+	// RemoveUserRole RPC.
+	UsersServiceRemoveUserRoleProcedure = "/users.UsersService/RemoveUserRole"
 	// UsersServiceGetUserRolesProcedure is the fully-qualified name of the UsersService's GetUserRoles
 	// RPC.
 	UsersServiceGetUserRolesProcedure = "/users.UsersService/GetUserRoles"
@@ -154,6 +157,7 @@ var (
 	usersServiceAssignPermissionsToRoleMethodDescriptor  = usersServiceServiceDescriptor.Methods().ByName("AssignPermissionsToRole")
 	usersServiceRemovePermissionFromRoleMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("RemovePermissionFromRole")
 	usersServiceAssignRolesToUserMethodDescriptor        = usersServiceServiceDescriptor.Methods().ByName("AssignRolesToUser")
+	usersServiceRemoveUserRoleMethodDescriptor           = usersServiceServiceDescriptor.Methods().ByName("RemoveUserRole")
 	usersServiceGetUserRolesMethodDescriptor             = usersServiceServiceDescriptor.Methods().ByName("GetUserRoles")
 	usersServiceCheckPermissionMethodDescriptor          = usersServiceServiceDescriptor.Methods().ByName("CheckPermission")
 )
@@ -196,6 +200,7 @@ type UsersServiceClient interface {
 	AssignPermissionsToRole(context.Context, *connect.Request[users.AssignPermissionsToRoleRequest]) (*connect.Response[users.RoleResponse], error)
 	RemovePermissionFromRole(context.Context, *connect.Request[users.RemovePermissionRequest]) (*connect.Response[users.RoleResponse], error)
 	AssignRolesToUser(context.Context, *connect.Request[users.AssignRolesToUserRequest]) (*connect.Response[users.User], error)
+	RemoveUserRole(context.Context, *connect.Request[users.RemoveUserRoleRequest]) (*connect.Response[users.User], error)
 	GetUserRoles(context.Context, *connect.Request[users.GetUserRolesRequest]) (*connect.Response[users.GetUserRolesResponse], error)
 	CheckPermission(context.Context, *connect.Request[users.CheckPermissionRequest]) (*connect.Response[users.CheckPermissionResponse], error)
 }
@@ -384,6 +389,12 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceAssignRolesToUserMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		removeUserRole: connect.NewClient[users.RemoveUserRoleRequest, users.User](
+			httpClient,
+			baseURL+UsersServiceRemoveUserRoleProcedure,
+			connect.WithSchema(usersServiceRemoveUserRoleMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		getUserRoles: connect.NewClient[users.GetUserRolesRequest, users.GetUserRolesResponse](
 			httpClient,
 			baseURL+UsersServiceGetUserRolesProcedure,
@@ -430,6 +441,7 @@ type usersServiceClient struct {
 	assignPermissionsToRole  *connect.Client[users.AssignPermissionsToRoleRequest, users.RoleResponse]
 	removePermissionFromRole *connect.Client[users.RemovePermissionRequest, users.RoleResponse]
 	assignRolesToUser        *connect.Client[users.AssignRolesToUserRequest, users.User]
+	removeUserRole           *connect.Client[users.RemoveUserRoleRequest, users.User]
 	getUserRoles             *connect.Client[users.GetUserRolesRequest, users.GetUserRolesResponse]
 	checkPermission          *connect.Client[users.CheckPermissionRequest, users.CheckPermissionResponse]
 }
@@ -579,6 +591,11 @@ func (c *usersServiceClient) AssignRolesToUser(ctx context.Context, req *connect
 	return c.assignRolesToUser.CallUnary(ctx, req)
 }
 
+// RemoveUserRole calls users.UsersService.RemoveUserRole.
+func (c *usersServiceClient) RemoveUserRole(ctx context.Context, req *connect.Request[users.RemoveUserRoleRequest]) (*connect.Response[users.User], error) {
+	return c.removeUserRole.CallUnary(ctx, req)
+}
+
 // GetUserRoles calls users.UsersService.GetUserRoles.
 func (c *usersServiceClient) GetUserRoles(ctx context.Context, req *connect.Request[users.GetUserRolesRequest]) (*connect.Response[users.GetUserRolesResponse], error) {
 	return c.getUserRoles.CallUnary(ctx, req)
@@ -627,6 +644,7 @@ type UsersServiceHandler interface {
 	AssignPermissionsToRole(context.Context, *connect.Request[users.AssignPermissionsToRoleRequest]) (*connect.Response[users.RoleResponse], error)
 	RemovePermissionFromRole(context.Context, *connect.Request[users.RemovePermissionRequest]) (*connect.Response[users.RoleResponse], error)
 	AssignRolesToUser(context.Context, *connect.Request[users.AssignRolesToUserRequest]) (*connect.Response[users.User], error)
+	RemoveUserRole(context.Context, *connect.Request[users.RemoveUserRoleRequest]) (*connect.Response[users.User], error)
 	GetUserRoles(context.Context, *connect.Request[users.GetUserRolesRequest]) (*connect.Response[users.GetUserRolesResponse], error)
 	CheckPermission(context.Context, *connect.Request[users.CheckPermissionRequest]) (*connect.Response[users.CheckPermissionResponse], error)
 }
@@ -811,6 +829,12 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceAssignRolesToUserMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	usersServiceRemoveUserRoleHandler := connect.NewUnaryHandler(
+		UsersServiceRemoveUserRoleProcedure,
+		svc.RemoveUserRole,
+		connect.WithSchema(usersServiceRemoveUserRoleMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	usersServiceGetUserRolesHandler := connect.NewUnaryHandler(
 		UsersServiceGetUserRolesProcedure,
 		svc.GetUserRoles,
@@ -883,6 +907,8 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 			usersServiceRemovePermissionFromRoleHandler.ServeHTTP(w, r)
 		case UsersServiceAssignRolesToUserProcedure:
 			usersServiceAssignRolesToUserHandler.ServeHTTP(w, r)
+		case UsersServiceRemoveUserRoleProcedure:
+			usersServiceRemoveUserRoleHandler.ServeHTTP(w, r)
 		case UsersServiceGetUserRolesProcedure:
 			usersServiceGetUserRolesHandler.ServeHTTP(w, r)
 		case UsersServiceCheckPermissionProcedure:
@@ -1010,6 +1036,10 @@ func (UnimplementedUsersServiceHandler) RemovePermissionFromRole(context.Context
 
 func (UnimplementedUsersServiceHandler) AssignRolesToUser(context.Context, *connect.Request[users.AssignRolesToUserRequest]) (*connect.Response[users.User], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.AssignRolesToUser is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) RemoveUserRole(context.Context, *connect.Request[users.RemoveUserRoleRequest]) (*connect.Response[users.User], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.RemoveUserRole is not implemented"))
 }
 
 func (UnimplementedUsersServiceHandler) GetUserRoles(context.Context, *connect.Request[users.GetUserRolesRequest]) (*connect.Response[users.GetUserRolesResponse], error) {

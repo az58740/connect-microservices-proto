@@ -2125,6 +2125,27 @@ export declare type AssignRolesToUserRequest = Message<"users.AssignRolesToUserR
 export declare const AssignRolesToUserRequestSchema: GenMessage<AssignRolesToUserRequest>;
 
 /**
+ * @generated from message users.RemoveUserRoleRequest
+ */
+export declare type RemoveUserRoleRequest = Message<"users.RemoveUserRoleRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: repeated string role_ids = 2;
+   */
+  roleIds: string[];
+};
+
+/**
+ * Describes the message users.RemoveUserRoleRequest.
+ * Use `create(RemoveUserRoleRequestSchema)` to create a new message.
+ */
+export declare const RemoveUserRoleRequestSchema: GenMessage<RemoveUserRoleRequest>;
+
+/**
  * @generated from message users.RemovePermissionRequest
  */
 export declare type RemovePermissionRequest = Message<"users.RemovePermissionRequest"> & {
@@ -3027,6 +3048,14 @@ export declare const UsersService: GenService<{
   assignRolesToUser: {
     methodKind: "unary";
     input: typeof AssignRolesToUserRequestSchema;
+    output: typeof UserSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.RemoveUserRole
+   */
+  removeUserRole: {
+    methodKind: "unary";
+    input: typeof RemoveUserRoleRequestSchema;
     output: typeof UserSchema;
   },
   /**

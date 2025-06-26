@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AssignPermissionsToRoleRequest, AssignRolesToUserRequest, CheckPermissionRequest, CheckPermissionResponse, CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, CreatePermissionRequest, CreateRoleRequest, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, DeleteResetTokenRequest, DeleteResetTokenResponse, ForgotPasswordRequest, ForgotPasswordResponse, GetGeolocationRequest, GetGeolocationResponse, GetResetTokenRequest, GetResetTokenResponse, GetUserRolesRequest, GetUserRolesResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListPermissionsRequest, ListPermissionsResponse, ListRolesRequest, ListRolesResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, PermissionResponse, RegisterRequest, RegisterResponse, RemovePermissionRequest, RoleResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse, User } from "./users_pb.js";
+import { AssignPermissionsToRoleRequest, AssignRolesToUserRequest, CheckPermissionRequest, CheckPermissionResponse, CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, CreatePermissionRequest, CreateRoleRequest, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, DeleteResetTokenRequest, DeleteResetTokenResponse, ForgotPasswordRequest, ForgotPasswordResponse, GetGeolocationRequest, GetGeolocationResponse, GetResetTokenRequest, GetResetTokenResponse, GetUserRolesRequest, GetUserRolesResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListPermissionsRequest, ListPermissionsResponse, ListRolesRequest, ListRolesResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, PermissionResponse, RegisterRequest, RegisterResponse, RemovePermissionRequest, RemoveUserRoleRequest, RoleResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateUserRequest, UpdateUserResponse, User } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -296,6 +296,15 @@ export declare const UsersService: {
     readonly assignRolesToUser: {
       readonly name: "AssignRolesToUser",
       readonly I: typeof AssignRolesToUserRequest,
+      readonly O: typeof User,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc users.UsersService.RemoveUserRole
+     */
+    readonly removeUserRole: {
+      readonly name: "RemoveUserRole",
+      readonly I: typeof RemoveUserRoleRequest,
       readonly O: typeof User,
       readonly kind: MethodKind.Unary,
     },
