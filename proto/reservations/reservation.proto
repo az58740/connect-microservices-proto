@@ -1,0 +1,200 @@
+syntax = "proto3";
+
+package reservation;
+option go_package = "github.com/az58740/connect-microservices-proto/golang/reservation;reservation";
+
+import "google/protobuf/timestamp.proto";
+
+// ========== ENUMS ==========
+
+// نوع مالک تایم‌اسلات — تعیین می‌کند که تایم‌اسلات متعلق به فرد است یا فضای مشترک
+// TimeSlot owner type — defines whether it's owned by an individual (e.g., doctor) or shared (e.g., room)
+enum OwnerType {
+  INDIVIDUAL = 0; // شخصی (مانند پزشک یا آرایشگر)
+  SHARED = 1;     // اشتراکی (مانند میز یا سالن)
+}
+
+// وضعیت رزرو
+// Reservation status
+enum ReservationStatus {
+  PENDING = 0;     // در انتظار تأیید
+  CONFIRMED = 1;   // تأیید شده
+  CANCELLED = 2;   // لغو شده
+  COMPLETED = 3;   // انجام شده
+}
+
+// روزهای هفته
+// Days of the week
+enum WeekDay {
+  SATURDAY = 0;
+  SUNDAY = 1;
+  MONDAY = 2;
+  TUESDAY = 3;
+  WEDNESDAY = 4;
+  THURSDAY = 5;
+  FRIDAY = 6;
+}
+
+// ========== ENTITIES ==========
+
+// فسیلیتی یا مکان — مانند مطب، آرایشگاه، هتل، باشگاه
+// Facility such as a clinic, salon, hotel, or gym
+message Facility {
+  string id = 1; // شناسه یکتا | Unique facility ID
+  string name = 2; // نام مکان | Name of the facility
+  string description = 3; // توضیحات | Description
+  string type = 4; // نوع فسیلیتی مانند "SALON", "HOTEL", "CLINIC" | Type of the facility
+  string owner_user_id = 5; // شناسه کاربر صاحب فسیلیتی | User ID of the facility owner
+}
+
+// سرویس یا خدمت قابل ارائه در فسیلیتی
+// Service offered in a facility
+message Service {
+  string id = 1; // شناسه یکتا | Unique service ID
+  string facility_id = 2; // شناسه فسیلیتی | Associated facility ID
+  string name = 3; // نام سرویس مانند "کوتاهی مو" یا "ویزیت عمومی" | Service name
+  string description = 4; // توضیحات | Description
+  int32 duration_minutes = 5; // مدت زمان سرویس به دقیقه | Duration in minutes
+  double price = 6; // قیمت سرویس | Service price
+}
+
+// نگاشت بین سرویس و ارائه‌دهنده خاص
+// Mapping of service to a specific provider
+message ProviderService {
+  string id = 1;
+  string service_id = 2;
+  string provider_user_id = 3; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
+  bool is_available = 4; // آیا ارائه می‌شود یا نه
+}
+
+// برنامه‌ زمانی تکرارشونده‌ی سرویس‌دهنده در یک روز خاص
+// Weekly repeating schedule for a provider
+message WeeklySchedule {
+  string id = 1;
+  string provider_user_id = 2;
+  WeekDay day = 3; // روز هفته
+  string start_time = 4; // ساعت شروع (مانند "09:00")
+  string end_time = 5; // ساعت پایان (مانند "17:00")
+  string facility_id = 6; // مکان مرتبط
+  string service_id = 7; // سرویس مرتبط (اختیاری)
+}
+
+// تایم‌اسلات — بازه‌ زمانی دقیق رزرو
+// TimeSlot — precise slot available for reservation
+message TimeSlot {
+  string id = 1;
+  string provider_user_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+  OwnerType owner_type = 5;
+  bool is_reserved = 6;
+  string weekly_schedule_id = 7;
+  string facility_id = 8;
+  string service_id = 9;
+}
+
+// رزرو ثبت‌شده توسط کاربر
+// Reservation made by user
+message Reservation {
+  string id = 1;
+  string user_id = 2; // کاربر رزروکننده
+  string provider_user_id = 3; // سرویس‌دهنده
+  string service_id = 4;
+  string facility_id = 5;
+  string time_slot_id = 6;
+  ReservationStatus status = 7;
+  string notes = 8;
+  google.protobuf.Timestamp created_at = 9;
+}
+
+// ========== REQUEST / RESPONSE MESSAGES ==========
+
+message CreateFacilityRequest {
+  Facility facility = 1;
+}
+message CreateFacilityResponse {
+  string id = 1;
+  string message = 2;
+}
+
+message CreateServiceRequest {
+  Service service = 1;
+}
+message CreateServiceResponse {
+  string id = 1;
+  string message = 2;
+}
+
+message AssignServiceToProviderRequest {
+  string service_id = 1;
+  string provider_user_id = 2;
+}
+message AssignServiceToProviderResponse {
+  string message = 1;
+}
+
+message CreateWeeklyScheduleRequest {
+  WeeklySchedule schedule = 1;
+}
+message CreateWeeklyScheduleResponse {
+  string id = 1;
+}
+
+message GenerateTimeSlotsRequest {
+  string weekly_schedule_id = 1;
+}
+message GenerateTimeSlotsResponse {
+  repeated TimeSlot time_slots = 1;
+}
+
+message CreateReservationRequest {
+  string user_id = 1;
+  string provider_user_id = 2;
+  string service_id = 3;
+  string time_slot_id = 4;
+  string notes = 5;
+}
+message CreateReservationResponse {
+  string reservation_id = 1;
+  string message = 2;
+}
+
+message CancelReservationRequest {
+  string reservation_id = 1;
+}
+message CancelReservationResponse {
+  string message = 1;
+}
+
+message ListReservationsRequest {
+  string user_id = 1;
+  optional string status = 2;
+}
+message ListReservationsResponse {
+  repeated Reservation reservations = 1;
+}
+
+message ListAvailableTimeSlotsRequest {
+  string provider_user_id = 1;
+  string service_id = 2;
+  string facility_id = 3;
+}
+message ListAvailableTimeSlotsResponse {
+  repeated TimeSlot time_slots = 1;
+}
+
+// ========== SERVICE ==========
+
+service ReservationService {
+  rpc CreateFacility(CreateFacilityRequest) returns (CreateFacilityResponse);
+  rpc CreateService(CreateServiceRequest) returns (CreateServiceResponse);
+  rpc AssignServiceToProvider(AssignServiceToProviderRequest) returns (AssignServiceToProviderResponse);
+
+  rpc CreateWeeklySchedule(CreateWeeklyScheduleRequest) returns (CreateWeeklyScheduleResponse);
+  rpc GenerateTimeSlots(GenerateTimeSlotsRequest) returns (GenerateTimeSlotsResponse);
+
+  rpc CreateReservation(CreateReservationRequest) returns (CreateReservationResponse);
+  rpc CancelReservation(CancelReservationRequest) returns (CancelReservationResponse);
+  rpc ListReservations(ListReservationsRequest) returns (ListReservationsResponse);
+  rpc ListAvailableTimeSlots(ListAvailableTimeSlotsRequest) returns (ListAvailableTimeSlotsResponse);
+}

@@ -34,6 +34,7 @@ enum UserGender {
 }
 
 // Enum for organization types.
+//ُService Provider Type 
 enum OrganizationType {
     ORG_Type_DEFAULT = 0;       // Default value.
     SPORTS_GROUP = 1;           // Sports Group.
@@ -69,6 +70,7 @@ enum Action {
   READ = 2;
   UPDATE = 3;
   DELETE = 4;
+  CURD=5;
 }
 enum Resource {
   RESOURCE_UNSPECIFIED = 0;
@@ -104,6 +106,7 @@ enum Resource {
   // Finance
   PAYMENT = 60;
 }
+
 // ==================== USER-RELATED MESSAGES ====================
 // Message for defining a permission related to user roles.
 message Permission {
@@ -267,6 +270,7 @@ message ListUsersResponse {
 
 // ==================== ORGANIZATION-RELATED MESSAGES ====================
 // Represents a group of organizations (could be departments or teams).
+//ّFacility
 message OrganizationGroup {
     string id = 1;          // Unique identifier for the group.
     string name = 2;        // Name of the organization group.
@@ -302,7 +306,6 @@ message UpdateOrganizationGroupRequest {
 message UpdateOrganizationGroupResponse {
     string message = 1; // Confirmation message.
 }
-
 // Request to delete an organization group.
 message DeleteOrganizationGroupRequest {
     string groupId = 1; // ID of the organization group to delete.
@@ -324,6 +327,7 @@ message ListOrganizationGroupResponse {
 }
 
 // Represents a contracting party or organization.
+//Service
 message ContractingParty {
     string organizationId = 1;   // Unique identifier for the organization.
     string organizationName = 2; // Name of the organization.

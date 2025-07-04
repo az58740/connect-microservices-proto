@@ -832,6 +832,7 @@ export declare const ListUsersResponseSchema: GenMessage<ListUsersResponse>;
 /**
  * ==================== ORGANIZATION-RELATED MESSAGES ====================
  * Represents a group of organizations (could be departments or teams).
+ * ّFacility
  *
  * @generated from message users.OrganizationGroup
  */
@@ -1081,6 +1082,7 @@ export declare const ListOrganizationGroupResponseSchema: GenMessage<ListOrganiz
 
 /**
  * Represents a contracting party or organization.
+ * Service
  *
  * @generated from message users.ContractingParty
  */
@@ -2485,6 +2487,7 @@ export declare const UserGenderSchema: GenEnum<UserGender>;
 
 /**
  * Enum for organization types.
+ * ُService Provider Type 
  *
  * @generated from enum users.OrganizationType
  */
@@ -2667,6 +2670,11 @@ export enum Action {
    * @generated from enum value: DELETE = 4;
    */
   DELETE = 4,
+
+  /**
+   * @generated from enum value: CURD = 5;
+   */
+  CURD = 5,
 }
 
 /**
