@@ -61,6 +61,62 @@ export declare type Facility = Message<"reservation.Facility"> & {
 export declare const FacilitySchema: GenMessage<Facility>;
 
 /**
+ * تصویر مرتبط با یک فسیلیتی مانند عکس اتاق یا نمای بیرونی
+ * Image related to a facility, like room photo or exterior view
+ *
+ * @generated from message reservation.FacilityImage
+ */
+export declare type FacilityImage = Message<"reservation.FacilityImage"> & {
+  /**
+   * شناسه یکتا | Unique image ID
+   *
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * شناسه فسیلیتی | Related Facility ID
+   *
+   * @generated from field: string facility_id = 2;
+   */
+  facilityId: string;
+
+  /**
+   * مسیر یا لینک فایل تصویر | URL or file path to the image
+   *
+   * @generated from field: string url = 3;
+   */
+  url: string;
+
+  /**
+   * عنوان اختیاری | Optional image title
+   *
+   * @generated from field: string title = 4;
+   */
+  title: string;
+
+  /**
+   * توضیح تصویر | Optional image description
+   *
+   * @generated from field: string description = 5;
+   */
+  description: string;
+
+  /**
+   * زمان آپلود | Upload timestamp
+   *
+   * @generated from field: google.protobuf.Timestamp uploaded_at = 6;
+   */
+  uploadedAt?: Timestamp;
+};
+
+/**
+ * Describes the message reservation.FacilityImage.
+ * Use `create(FacilityImageSchema)` to create a new message.
+ */
+export declare const FacilityImageSchema: GenMessage<FacilityImage>;
+
+/**
  * سرویس یا خدمت قابل ارائه در فسیلیتی
  * Service offered in a facility
  *
@@ -371,6 +427,72 @@ export declare type CreateFacilityResponse = Message<"reservation.CreateFacility
  * Use `create(CreateFacilityResponseSchema)` to create a new message.
  */
 export declare const CreateFacilityResponseSchema: GenMessage<CreateFacilityResponse>;
+
+/**
+ * @generated from message reservation.DeleteFacilityImageRequest
+ */
+export declare type DeleteFacilityImageRequest = Message<"reservation.DeleteFacilityImageRequest"> & {
+  /**
+   * @generated from field: string image_id = 1;
+   */
+  imageId: string;
+};
+
+/**
+ * Describes the message reservation.DeleteFacilityImageRequest.
+ * Use `create(DeleteFacilityImageRequestSchema)` to create a new message.
+ */
+export declare const DeleteFacilityImageRequestSchema: GenMessage<DeleteFacilityImageRequest>;
+
+/**
+ * @generated from message reservation.DeleteFacilityImageResponse
+ */
+export declare type DeleteFacilityImageResponse = Message<"reservation.DeleteFacilityImageResponse"> & {
+  /**
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.DeleteFacilityImageResponse.
+ * Use `create(DeleteFacilityImageResponseSchema)` to create a new message.
+ */
+export declare const DeleteFacilityImageResponseSchema: GenMessage<DeleteFacilityImageResponse>;
+
+/**
+ * دریافت لیست تصاویر یک فسیلیتی
+ *
+ * @generated from message reservation.GetFacilityImagesRequest
+ */
+export declare type GetFacilityImagesRequest = Message<"reservation.GetFacilityImagesRequest"> & {
+  /**
+   * @generated from field: string facility_id = 1;
+   */
+  facilityId: string;
+};
+
+/**
+ * Describes the message reservation.GetFacilityImagesRequest.
+ * Use `create(GetFacilityImagesRequestSchema)` to create a new message.
+ */
+export declare const GetFacilityImagesRequestSchema: GenMessage<GetFacilityImagesRequest>;
+
+/**
+ * @generated from message reservation.GetFacilityImagesResponse
+ */
+export declare type GetFacilityImagesResponse = Message<"reservation.GetFacilityImagesResponse"> & {
+  /**
+   * @generated from field: repeated reservation.FacilityImage images = 1;
+   */
+  images: FacilityImage[];
+};
+
+/**
+ * Describes the message reservation.GetFacilityImagesResponse.
+ * Use `create(GetFacilityImagesResponseSchema)` to create a new message.
+ */
+export declare const GetFacilityImagesResponseSchema: GenMessage<GetFacilityImagesResponse>;
 
 /**
  * @generated from message reservation.CreateServiceRequest
@@ -805,6 +927,30 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof CreateFacilityRequestSchema;
     output: typeof CreateFacilityResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.AddFacilityImage
+   */
+  addFacilityImage: {
+    methodKind: "unary";
+    input: typeof FacilityImageSchema;
+    output: typeof FacilityImageSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.DeleteFacilityImage
+   */
+  deleteFacilityImage: {
+    methodKind: "unary";
+    input: typeof DeleteFacilityImageRequestSchema;
+    output: typeof DeleteFacilityImageResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.GetFacilityImages
+   */
+  getFacilityImages: {
+    methodKind: "unary";
+    input: typeof GetFacilityImagesRequestSchema;
+    output: typeof GetFacilityImagesResponseSchema;
   },
   /**
    * @generated from rpc reservation.ReservationService.CreateService

@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file reservations/reservation.proto.
  */
 export const file_reservations_reservation: GenFile = /*@__PURE__*/
-  fileDesc("Ch5yZXNlcnZhdGlvbnMvcmVzZXJ2YXRpb24ucHJvdG8SC3Jlc2VydmF0aW9uIl4KCEZhY2lsaXR5EgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkSDAoEdHlwZRgEIAEoCRIVCg1vd25lcl91c2VyX2lkGAUgASgJInYKB1NlcnZpY2USCgoCaWQYASABKAkSEwoLZmFjaWxpdHlfaWQYAiABKAkSDAoEbmFtZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEoCRIYChBkdXJhdGlvbl9taW51dGVzGAUgASgFEg0KBXByaWNlGAYgASgBImEKD1Byb3ZpZGVyU2VydmljZRIKCgJpZBgBIAEoCRISCgpzZXJ2aWNlX2lkGAIgASgJEhgKEHByb3ZpZGVyX3VzZXJfaWQYAyABKAkSFAoMaXNfYXZhaWxhYmxlGAQgASgIIqgBCg5XZWVrbHlTY2hlZHVsZRIKCgJpZBgBIAEoCRIYChBwcm92aWRlcl91c2VyX2lkGAIgASgJEiEKA2RheRgDIAEoDjIULnJlc2VydmF0aW9uLldlZWtEYXkSEgoKc3RhcnRfdGltZRgEIAEoCRIQCghlbmRfdGltZRgFIAEoCRITCgtmYWNpbGl0eV9pZBgGIAEoCRISCgpzZXJ2aWNlX2lkGAcgASgJIpQCCghUaW1lU2xvdBIKCgJpZBgBIAEoCRIYChBwcm92aWRlcl91c2VyX2lkGAIgASgJEi4KCnN0YXJ0X3RpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEiwKCGVuZF90aW1lGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIqCgpvd25lcl90eXBlGAUgASgOMhYucmVzZXJ2YXRpb24uT3duZXJUeXBlEhMKC2lzX3Jlc2VydmVkGAYgASgIEhoKEndlZWtseV9zY2hlZHVsZV9pZBgHIAEoCRITCgtmYWNpbGl0eV9pZBgIIAEoCRISCgpzZXJ2aWNlX2lkGAkgASgJIvIBCgtSZXNlcnZhdGlvbhIKCgJpZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEhgKEHByb3ZpZGVyX3VzZXJfaWQYAyABKAkSEgoKc2VydmljZV9pZBgEIAEoCRITCgtmYWNpbGl0eV9pZBgFIAEoCRIUCgx0aW1lX3Nsb3RfaWQYBiABKAkSLgoGc3RhdHVzGAcgASgOMh4ucmVzZXJ2YXRpb24uUmVzZXJ2YXRpb25TdGF0dXMSDQoFbm90ZXMYCCABKAkSLgoKY3JlYXRlZF9hdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiQAoVQ3JlYXRlRmFjaWxpdHlSZXF1ZXN0EicKCGZhY2lsaXR5GAEgASgLMhUucmVzZXJ2YXRpb24uRmFjaWxpdHkiNQoWQ3JlYXRlRmFjaWxpdHlSZXNwb25zZRIKCgJpZBgBIAEoCRIPCgdtZXNzYWdlGAIgASgJIj0KFENyZWF0ZVNlcnZpY2VSZXF1ZXN0EiUKB3NlcnZpY2UYASABKAsyFC5yZXNlcnZhdGlvbi5TZXJ2aWNlIjQKFUNyZWF0ZVNlcnZpY2VSZXNwb25zZRIKCgJpZBgBIAEoCRIPCgdtZXNzYWdlGAIgASgJIk4KHkFzc2lnblNlcnZpY2VUb1Byb3ZpZGVyUmVxdWVzdBISCgpzZXJ2aWNlX2lkGAEgASgJEhgKEHByb3ZpZGVyX3VzZXJfaWQYAiABKAkiMgofQXNzaWduU2VydmljZVRvUHJvdmlkZXJSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIkwKG0NyZWF0ZVdlZWtseVNjaGVkdWxlUmVxdWVzdBItCghzY2hlZHVsZRgBIAEoCzIbLnJlc2VydmF0aW9uLldlZWtseVNjaGVkdWxlIioKHENyZWF0ZVdlZWtseVNjaGVkdWxlUmVzcG9uc2USCgoCaWQYASABKAkiNgoYR2VuZXJhdGVUaW1lU2xvdHNSZXF1ZXN0EhoKEndlZWtseV9zY2hlZHVsZV9pZBgBIAEoCSJGChlHZW5lcmF0ZVRpbWVTbG90c1Jlc3BvbnNlEikKCnRpbWVfc2xvdHMYASADKAsyFS5yZXNlcnZhdGlvbi5UaW1lU2xvdCJ+ChhDcmVhdGVSZXNlcnZhdGlvblJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRIYChBwcm92aWRlcl91c2VyX2lkGAIgASgJEhIKCnNlcnZpY2VfaWQYAyABKAkSFAoMdGltZV9zbG90X2lkGAQgASgJEg0KBW5vdGVzGAUgASgJIkQKGUNyZWF0ZVJlc2VydmF0aW9uUmVzcG9uc2USFgoOcmVzZXJ2YXRpb25faWQYASABKAkSDwoHbWVzc2FnZRgCIAEoCSIyChhDYW5jZWxSZXNlcnZhdGlvblJlcXVlc3QSFgoOcmVzZXJ2YXRpb25faWQYASABKAkiLAoZQ2FuY2VsUmVzZXJ2YXRpb25SZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIkoKF0xpc3RSZXNlcnZhdGlvbnNSZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkSEwoGc3RhdHVzGAIgASgJSACIAQFCCQoHX3N0YXR1cyJKChhMaXN0UmVzZXJ2YXRpb25zUmVzcG9uc2USLgoMcmVzZXJ2YXRpb25zGAEgAygLMhgucmVzZXJ2YXRpb24uUmVzZXJ2YXRpb24iYgodTGlzdEF2YWlsYWJsZVRpbWVTbG90c1JlcXVlc3QSGAoQcHJvdmlkZXJfdXNlcl9pZBgBIAEoCRISCgpzZXJ2aWNlX2lkGAIgASgJEhMKC2ZhY2lsaXR5X2lkGAMgASgJIksKHkxpc3RBdmFpbGFibGVUaW1lU2xvdHNSZXNwb25zZRIpCgp0aW1lX3Nsb3RzGAEgAygLMhUucmVzZXJ2YXRpb24uVGltZVNsb3QqJwoJT3duZXJUeXBlEg4KCklORElWSURVQUwQABIKCgZTSEFSRUQQASpNChFSZXNlcnZhdGlvblN0YXR1cxILCgdQRU5ESU5HEAASDQoJQ09ORklSTUVEEAESDQoJQ0FOQ0VMTEVEEAISDQoJQ09NUExFVEVEEAMqZQoHV2Vla0RheRIMCghTQVRVUkRBWRAAEgoKBlNVTkRBWRABEgoKBk1PTkRBWRACEgsKB1RVRVNEQVkQAxINCglXRURORVNEQVkQBBIMCghUSFVSU0RBWRAFEgoKBkZSSURBWRAGMqoHChJSZXNlcnZhdGlvblNlcnZpY2USWQoOQ3JlYXRlRmFjaWxpdHkSIi5yZXNlcnZhdGlvbi5DcmVhdGVGYWNpbGl0eVJlcXVlc3QaIy5yZXNlcnZhdGlvbi5DcmVhdGVGYWNpbGl0eVJlc3BvbnNlElYKDUNyZWF0ZVNlcnZpY2USIS5yZXNlcnZhdGlvbi5DcmVhdGVTZXJ2aWNlUmVxdWVzdBoiLnJlc2VydmF0aW9uLkNyZWF0ZVNlcnZpY2VSZXNwb25zZRJ0ChdBc3NpZ25TZXJ2aWNlVG9Qcm92aWRlchIrLnJlc2VydmF0aW9uLkFzc2lnblNlcnZpY2VUb1Byb3ZpZGVyUmVxdWVzdBosLnJlc2VydmF0aW9uLkFzc2lnblNlcnZpY2VUb1Byb3ZpZGVyUmVzcG9uc2USawoUQ3JlYXRlV2Vla2x5U2NoZWR1bGUSKC5yZXNlcnZhdGlvbi5DcmVhdGVXZWVrbHlTY2hlZHVsZVJlcXVlc3QaKS5yZXNlcnZhdGlvbi5DcmVhdGVXZWVrbHlTY2hlZHVsZVJlc3BvbnNlEmIKEUdlbmVyYXRlVGltZVNsb3RzEiUucmVzZXJ2YXRpb24uR2VuZXJhdGVUaW1lU2xvdHNSZXF1ZXN0GiYucmVzZXJ2YXRpb24uR2VuZXJhdGVUaW1lU2xvdHNSZXNwb25zZRJiChFDcmVhdGVSZXNlcnZhdGlvbhIlLnJlc2VydmF0aW9uLkNyZWF0ZVJlc2VydmF0aW9uUmVxdWVzdBomLnJlc2VydmF0aW9uLkNyZWF0ZVJlc2VydmF0aW9uUmVzcG9uc2USYgoRQ2FuY2VsUmVzZXJ2YXRpb24SJS5yZXNlcnZhdGlvbi5DYW5jZWxSZXNlcnZhdGlvblJlcXVlc3QaJi5yZXNlcnZhdGlvbi5DYW5jZWxSZXNlcnZhdGlvblJlc3BvbnNlEl8KEExpc3RSZXNlcnZhdGlvbnMSJC5yZXNlcnZhdGlvbi5MaXN0UmVzZXJ2YXRpb25zUmVxdWVzdBolLnJlc2VydmF0aW9uLkxpc3RSZXNlcnZhdGlvbnNSZXNwb25zZRJxChZMaXN0QXZhaWxhYmxlVGltZVNsb3RzEioucmVzZXJ2YXRpb24uTGlzdEF2YWlsYWJsZVRpbWVTbG90c1JlcXVlc3QaKy5yZXNlcnZhdGlvbi5MaXN0QXZhaWxhYmxlVGltZVNsb3RzUmVzcG9uc2VCT1pNZ2l0aHViLmNvbS9hejU4NzQwL2Nvbm5lY3QtbWljcm9zZXJ2aWNlcy1wcm90by9nb2xhbmcvcmVzZXJ2YXRpb247cmVzZXJ2YXRpb25iBnByb3RvMw", [file_google_protobuf_timestamp]);
+  fileDesc("Ch5yZXNlcnZhdGlvbnMvcmVzZXJ2YXRpb24ucHJvdG8SC3Jlc2VydmF0aW9uIl4KCEZhY2lsaXR5EgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkSDAoEdHlwZRgEIAEoCRIVCg1vd25lcl91c2VyX2lkGAUgASgJIpIBCg1GYWNpbGl0eUltYWdlEgoKAmlkGAEgASgJEhMKC2ZhY2lsaXR5X2lkGAIgASgJEgsKA3VybBgDIAEoCRINCgV0aXRsZRgEIAEoCRITCgtkZXNjcmlwdGlvbhgFIAEoCRIvCgt1cGxvYWRlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAidgoHU2VydmljZRIKCgJpZBgBIAEoCRITCgtmYWNpbGl0eV9pZBgCIAEoCRIMCgRuYW1lGAMgASgJEhMKC2Rlc2NyaXB0aW9uGAQgASgJEhgKEGR1cmF0aW9uX21pbnV0ZXMYBSABKAUSDQoFcHJpY2UYBiABKAEiYQoPUHJvdmlkZXJTZXJ2aWNlEgoKAmlkGAEgASgJEhIKCnNlcnZpY2VfaWQYAiABKAkSGAoQcHJvdmlkZXJfdXNlcl9pZBgDIAEoCRIUCgxpc19hdmFpbGFibGUYBCABKAgiqAEKDldlZWtseVNjaGVkdWxlEgoKAmlkGAEgASgJEhgKEHByb3ZpZGVyX3VzZXJfaWQYAiABKAkSIQoDZGF5GAMgASgOMhQucmVzZXJ2YXRpb24uV2Vla0RheRISCgpzdGFydF90aW1lGAQgASgJEhAKCGVuZF90aW1lGAUgASgJEhMKC2ZhY2lsaXR5X2lkGAYgASgJEhIKCnNlcnZpY2VfaWQYByABKAkilAIKCFRpbWVTbG90EgoKAmlkGAEgASgJEhgKEHByb3ZpZGVyX3VzZXJfaWQYAiABKAkSLgoKc3RhcnRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEioKCm93bmVyX3R5cGUYBSABKA4yFi5yZXNlcnZhdGlvbi5Pd25lclR5cGUSEwoLaXNfcmVzZXJ2ZWQYBiABKAgSGgoSd2Vla2x5X3NjaGVkdWxlX2lkGAcgASgJEhMKC2ZhY2lsaXR5X2lkGAggASgJEhIKCnNlcnZpY2VfaWQYCSABKAki8gEKC1Jlc2VydmF0aW9uEgoKAmlkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkSGAoQcHJvdmlkZXJfdXNlcl9pZBgDIAEoCRISCgpzZXJ2aWNlX2lkGAQgASgJEhMKC2ZhY2lsaXR5X2lkGAUgASgJEhQKDHRpbWVfc2xvdF9pZBgGIAEoCRIuCgZzdGF0dXMYByABKA4yHi5yZXNlcnZhdGlvbi5SZXNlcnZhdGlvblN0YXR1cxINCgVub3RlcxgIIAEoCRIuCgpjcmVhdGVkX2F0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJAChVDcmVhdGVGYWNpbGl0eVJlcXVlc3QSJwoIZmFjaWxpdHkYASABKAsyFS5yZXNlcnZhdGlvbi5GYWNpbGl0eSI1ChZDcmVhdGVGYWNpbGl0eVJlc3BvbnNlEgoKAmlkGAEgASgJEg8KB21lc3NhZ2UYAiABKAkiLgoaRGVsZXRlRmFjaWxpdHlJbWFnZVJlcXVlc3QSEAoIaW1hZ2VfaWQYASABKAkiLgobRGVsZXRlRmFjaWxpdHlJbWFnZVJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiLwoYR2V0RmFjaWxpdHlJbWFnZXNSZXF1ZXN0EhMKC2ZhY2lsaXR5X2lkGAEgASgJIkcKGUdldEZhY2lsaXR5SW1hZ2VzUmVzcG9uc2USKgoGaW1hZ2VzGAEgAygLMhoucmVzZXJ2YXRpb24uRmFjaWxpdHlJbWFnZSI9ChRDcmVhdGVTZXJ2aWNlUmVxdWVzdBIlCgdzZXJ2aWNlGAEgASgLMhQucmVzZXJ2YXRpb24uU2VydmljZSI0ChVDcmVhdGVTZXJ2aWNlUmVzcG9uc2USCgoCaWQYASABKAkSDwoHbWVzc2FnZRgCIAEoCSJOCh5Bc3NpZ25TZXJ2aWNlVG9Qcm92aWRlclJlcXVlc3QSEgoKc2VydmljZV9pZBgBIAEoCRIYChBwcm92aWRlcl91c2VyX2lkGAIgASgJIjIKH0Fzc2lnblNlcnZpY2VUb1Byb3ZpZGVyUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSJMChtDcmVhdGVXZWVrbHlTY2hlZHVsZVJlcXVlc3QSLQoIc2NoZWR1bGUYASABKAsyGy5yZXNlcnZhdGlvbi5XZWVrbHlTY2hlZHVsZSIqChxDcmVhdGVXZWVrbHlTY2hlZHVsZVJlc3BvbnNlEgoKAmlkGAEgASgJIjYKGEdlbmVyYXRlVGltZVNsb3RzUmVxdWVzdBIaChJ3ZWVrbHlfc2NoZWR1bGVfaWQYASABKAkiRgoZR2VuZXJhdGVUaW1lU2xvdHNSZXNwb25zZRIpCgp0aW1lX3Nsb3RzGAEgAygLMhUucmVzZXJ2YXRpb24uVGltZVNsb3QifgoYQ3JlYXRlUmVzZXJ2YXRpb25SZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkSGAoQcHJvdmlkZXJfdXNlcl9pZBgCIAEoCRISCgpzZXJ2aWNlX2lkGAMgASgJEhQKDHRpbWVfc2xvdF9pZBgEIAEoCRINCgVub3RlcxgFIAEoCSJEChlDcmVhdGVSZXNlcnZhdGlvblJlc3BvbnNlEhYKDnJlc2VydmF0aW9uX2lkGAEgASgJEg8KB21lc3NhZ2UYAiABKAkiMgoYQ2FuY2VsUmVzZXJ2YXRpb25SZXF1ZXN0EhYKDnJlc2VydmF0aW9uX2lkGAEgASgJIiwKGUNhbmNlbFJlc2VydmF0aW9uUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSJKChdMaXN0UmVzZXJ2YXRpb25zUmVxdWVzdBIPCgd1c2VyX2lkGAEgASgJEhMKBnN0YXR1cxgCIAEoCUgAiAEBQgkKB19zdGF0dXMiSgoYTGlzdFJlc2VydmF0aW9uc1Jlc3BvbnNlEi4KDHJlc2VydmF0aW9ucxgBIAMoCzIYLnJlc2VydmF0aW9uLlJlc2VydmF0aW9uImIKHUxpc3RBdmFpbGFibGVUaW1lU2xvdHNSZXF1ZXN0EhgKEHByb3ZpZGVyX3VzZXJfaWQYASABKAkSEgoKc2VydmljZV9pZBgCIAEoCRITCgtmYWNpbGl0eV9pZBgDIAEoCSJLCh5MaXN0QXZhaWxhYmxlVGltZVNsb3RzUmVzcG9uc2USKQoKdGltZV9zbG90cxgBIAMoCzIVLnJlc2VydmF0aW9uLlRpbWVTbG90KicKCU93bmVyVHlwZRIOCgpJTkRJVklEVUFMEAASCgoGU0hBUkVEEAEqTQoRUmVzZXJ2YXRpb25TdGF0dXMSCwoHUEVORElORxAAEg0KCUNPTkZJUk1FRBABEg0KCUNBTkNFTExFRBACEg0KCUNPTVBMRVRFRBADKmUKB1dlZWtEYXkSDAoIU0FUVVJEQVkQABIKCgZTVU5EQVkQARIKCgZNT05EQVkQAhILCgdUVUVTREFZEAMSDQoJV0VETkVTREFZEAQSDAoIVEhVUlNEQVkQBRIKCgZGUklEQVkQBjLECQoSUmVzZXJ2YXRpb25TZXJ2aWNlElkKDkNyZWF0ZUZhY2lsaXR5EiIucmVzZXJ2YXRpb24uQ3JlYXRlRmFjaWxpdHlSZXF1ZXN0GiMucmVzZXJ2YXRpb24uQ3JlYXRlRmFjaWxpdHlSZXNwb25zZRJKChBBZGRGYWNpbGl0eUltYWdlEhoucmVzZXJ2YXRpb24uRmFjaWxpdHlJbWFnZRoaLnJlc2VydmF0aW9uLkZhY2lsaXR5SW1hZ2USaAoTRGVsZXRlRmFjaWxpdHlJbWFnZRInLnJlc2VydmF0aW9uLkRlbGV0ZUZhY2lsaXR5SW1hZ2VSZXF1ZXN0GigucmVzZXJ2YXRpb24uRGVsZXRlRmFjaWxpdHlJbWFnZVJlc3BvbnNlEmIKEUdldEZhY2lsaXR5SW1hZ2VzEiUucmVzZXJ2YXRpb24uR2V0RmFjaWxpdHlJbWFnZXNSZXF1ZXN0GiYucmVzZXJ2YXRpb24uR2V0RmFjaWxpdHlJbWFnZXNSZXNwb25zZRJWCg1DcmVhdGVTZXJ2aWNlEiEucmVzZXJ2YXRpb24uQ3JlYXRlU2VydmljZVJlcXVlc3QaIi5yZXNlcnZhdGlvbi5DcmVhdGVTZXJ2aWNlUmVzcG9uc2USdAoXQXNzaWduU2VydmljZVRvUHJvdmlkZXISKy5yZXNlcnZhdGlvbi5Bc3NpZ25TZXJ2aWNlVG9Qcm92aWRlclJlcXVlc3QaLC5yZXNlcnZhdGlvbi5Bc3NpZ25TZXJ2aWNlVG9Qcm92aWRlclJlc3BvbnNlEmsKFENyZWF0ZVdlZWtseVNjaGVkdWxlEigucmVzZXJ2YXRpb24uQ3JlYXRlV2Vla2x5U2NoZWR1bGVSZXF1ZXN0GikucmVzZXJ2YXRpb24uQ3JlYXRlV2Vla2x5U2NoZWR1bGVSZXNwb25zZRJiChFHZW5lcmF0ZVRpbWVTbG90cxIlLnJlc2VydmF0aW9uLkdlbmVyYXRlVGltZVNsb3RzUmVxdWVzdBomLnJlc2VydmF0aW9uLkdlbmVyYXRlVGltZVNsb3RzUmVzcG9uc2USYgoRQ3JlYXRlUmVzZXJ2YXRpb24SJS5yZXNlcnZhdGlvbi5DcmVhdGVSZXNlcnZhdGlvblJlcXVlc3QaJi5yZXNlcnZhdGlvbi5DcmVhdGVSZXNlcnZhdGlvblJlc3BvbnNlEmIKEUNhbmNlbFJlc2VydmF0aW9uEiUucmVzZXJ2YXRpb24uQ2FuY2VsUmVzZXJ2YXRpb25SZXF1ZXN0GiYucmVzZXJ2YXRpb24uQ2FuY2VsUmVzZXJ2YXRpb25SZXNwb25zZRJfChBMaXN0UmVzZXJ2YXRpb25zEiQucmVzZXJ2YXRpb24uTGlzdFJlc2VydmF0aW9uc1JlcXVlc3QaJS5yZXNlcnZhdGlvbi5MaXN0UmVzZXJ2YXRpb25zUmVzcG9uc2UScQoWTGlzdEF2YWlsYWJsZVRpbWVTbG90cxIqLnJlc2VydmF0aW9uLkxpc3RBdmFpbGFibGVUaW1lU2xvdHNSZXF1ZXN0GisucmVzZXJ2YXRpb24uTGlzdEF2YWlsYWJsZVRpbWVTbG90c1Jlc3BvbnNlQk9aTWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3Jlc2VydmF0aW9uO3Jlc2VydmF0aW9uYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
  * فسیلیتی یا مکان — مانند مطب، آرایشگاه، هتل، باشگاه
@@ -63,6 +63,63 @@ export type Facility = Message<"reservation.Facility"> & {
  */
 export const FacilitySchema: GenMessage<Facility> = /*@__PURE__*/
   messageDesc(file_reservations_reservation, 0);
+
+/**
+ * تصویر مرتبط با یک فسیلیتی مانند عکس اتاق یا نمای بیرونی
+ * Image related to a facility, like room photo or exterior view
+ *
+ * @generated from message reservation.FacilityImage
+ */
+export type FacilityImage = Message<"reservation.FacilityImage"> & {
+  /**
+   * شناسه یکتا | Unique image ID
+   *
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * شناسه فسیلیتی | Related Facility ID
+   *
+   * @generated from field: string facility_id = 2;
+   */
+  facilityId: string;
+
+  /**
+   * مسیر یا لینک فایل تصویر | URL or file path to the image
+   *
+   * @generated from field: string url = 3;
+   */
+  url: string;
+
+  /**
+   * عنوان اختیاری | Optional image title
+   *
+   * @generated from field: string title = 4;
+   */
+  title: string;
+
+  /**
+   * توضیح تصویر | Optional image description
+   *
+   * @generated from field: string description = 5;
+   */
+  description: string;
+
+  /**
+   * زمان آپلود | Upload timestamp
+   *
+   * @generated from field: google.protobuf.Timestamp uploaded_at = 6;
+   */
+  uploadedAt?: Timestamp;
+};
+
+/**
+ * Describes the message reservation.FacilityImage.
+ * Use `create(FacilityImageSchema)` to create a new message.
+ */
+export const FacilityImageSchema: GenMessage<FacilityImage> = /*@__PURE__*/
+  messageDesc(file_reservations_reservation, 1);
 
 /**
  * سرویس یا خدمت قابل ارائه در فسیلیتی
@@ -119,7 +176,7 @@ export type Service = Message<"reservation.Service"> & {
  * Use `create(ServiceSchema)` to create a new message.
  */
 export const ServiceSchema: GenMessage<Service> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 1);
+  messageDesc(file_reservations_reservation, 2);
 
 /**
  * نگاشت بین سرویس و ارائه‌دهنده خاص
@@ -158,7 +215,7 @@ export type ProviderService = Message<"reservation.ProviderService"> & {
  * Use `create(ProviderServiceSchema)` to create a new message.
  */
 export const ProviderServiceSchema: GenMessage<ProviderService> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 2);
+  messageDesc(file_reservations_reservation, 3);
 
 /**
  * برنامه‌ زمانی تکرارشونده‌ی سرویس‌دهنده در یک روز خاص
@@ -218,7 +275,7 @@ export type WeeklySchedule = Message<"reservation.WeeklySchedule"> & {
  * Use `create(WeeklyScheduleSchema)` to create a new message.
  */
 export const WeeklyScheduleSchema: GenMessage<WeeklySchedule> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 3);
+  messageDesc(file_reservations_reservation, 4);
 
 /**
  * تایم‌اسلات — بازه‌ زمانی دقیق رزرو
@@ -278,7 +335,7 @@ export type TimeSlot = Message<"reservation.TimeSlot"> & {
  * Use `create(TimeSlotSchema)` to create a new message.
  */
 export const TimeSlotSchema: GenMessage<TimeSlot> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 4);
+  messageDesc(file_reservations_reservation, 5);
 
 /**
  * رزرو ثبت‌شده توسط کاربر
@@ -342,7 +399,7 @@ export type Reservation = Message<"reservation.Reservation"> & {
  * Use `create(ReservationSchema)` to create a new message.
  */
 export const ReservationSchema: GenMessage<Reservation> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 5);
+  messageDesc(file_reservations_reservation, 6);
 
 /**
  * @generated from message reservation.CreateFacilityRequest
@@ -359,7 +416,7 @@ export type CreateFacilityRequest = Message<"reservation.CreateFacilityRequest">
  * Use `create(CreateFacilityRequestSchema)` to create a new message.
  */
 export const CreateFacilityRequestSchema: GenMessage<CreateFacilityRequest> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 6);
+  messageDesc(file_reservations_reservation, 7);
 
 /**
  * @generated from message reservation.CreateFacilityResponse
@@ -381,7 +438,77 @@ export type CreateFacilityResponse = Message<"reservation.CreateFacilityResponse
  * Use `create(CreateFacilityResponseSchema)` to create a new message.
  */
 export const CreateFacilityResponseSchema: GenMessage<CreateFacilityResponse> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 7);
+  messageDesc(file_reservations_reservation, 8);
+
+/**
+ * @generated from message reservation.DeleteFacilityImageRequest
+ */
+export type DeleteFacilityImageRequest = Message<"reservation.DeleteFacilityImageRequest"> & {
+  /**
+   * @generated from field: string image_id = 1;
+   */
+  imageId: string;
+};
+
+/**
+ * Describes the message reservation.DeleteFacilityImageRequest.
+ * Use `create(DeleteFacilityImageRequestSchema)` to create a new message.
+ */
+export const DeleteFacilityImageRequestSchema: GenMessage<DeleteFacilityImageRequest> = /*@__PURE__*/
+  messageDesc(file_reservations_reservation, 9);
+
+/**
+ * @generated from message reservation.DeleteFacilityImageResponse
+ */
+export type DeleteFacilityImageResponse = Message<"reservation.DeleteFacilityImageResponse"> & {
+  /**
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.DeleteFacilityImageResponse.
+ * Use `create(DeleteFacilityImageResponseSchema)` to create a new message.
+ */
+export const DeleteFacilityImageResponseSchema: GenMessage<DeleteFacilityImageResponse> = /*@__PURE__*/
+  messageDesc(file_reservations_reservation, 10);
+
+/**
+ * دریافت لیست تصاویر یک فسیلیتی
+ *
+ * @generated from message reservation.GetFacilityImagesRequest
+ */
+export type GetFacilityImagesRequest = Message<"reservation.GetFacilityImagesRequest"> & {
+  /**
+   * @generated from field: string facility_id = 1;
+   */
+  facilityId: string;
+};
+
+/**
+ * Describes the message reservation.GetFacilityImagesRequest.
+ * Use `create(GetFacilityImagesRequestSchema)` to create a new message.
+ */
+export const GetFacilityImagesRequestSchema: GenMessage<GetFacilityImagesRequest> = /*@__PURE__*/
+  messageDesc(file_reservations_reservation, 11);
+
+/**
+ * @generated from message reservation.GetFacilityImagesResponse
+ */
+export type GetFacilityImagesResponse = Message<"reservation.GetFacilityImagesResponse"> & {
+  /**
+   * @generated from field: repeated reservation.FacilityImage images = 1;
+   */
+  images: FacilityImage[];
+};
+
+/**
+ * Describes the message reservation.GetFacilityImagesResponse.
+ * Use `create(GetFacilityImagesResponseSchema)` to create a new message.
+ */
+export const GetFacilityImagesResponseSchema: GenMessage<GetFacilityImagesResponse> = /*@__PURE__*/
+  messageDesc(file_reservations_reservation, 12);
 
 /**
  * @generated from message reservation.CreateServiceRequest
@@ -398,7 +525,7 @@ export type CreateServiceRequest = Message<"reservation.CreateServiceRequest"> &
  * Use `create(CreateServiceRequestSchema)` to create a new message.
  */
 export const CreateServiceRequestSchema: GenMessage<CreateServiceRequest> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 8);
+  messageDesc(file_reservations_reservation, 13);
 
 /**
  * @generated from message reservation.CreateServiceResponse
@@ -420,7 +547,7 @@ export type CreateServiceResponse = Message<"reservation.CreateServiceResponse">
  * Use `create(CreateServiceResponseSchema)` to create a new message.
  */
 export const CreateServiceResponseSchema: GenMessage<CreateServiceResponse> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 9);
+  messageDesc(file_reservations_reservation, 14);
 
 /**
  * @generated from message reservation.AssignServiceToProviderRequest
@@ -442,7 +569,7 @@ export type AssignServiceToProviderRequest = Message<"reservation.AssignServiceT
  * Use `create(AssignServiceToProviderRequestSchema)` to create a new message.
  */
 export const AssignServiceToProviderRequestSchema: GenMessage<AssignServiceToProviderRequest> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 10);
+  messageDesc(file_reservations_reservation, 15);
 
 /**
  * @generated from message reservation.AssignServiceToProviderResponse
@@ -459,7 +586,7 @@ export type AssignServiceToProviderResponse = Message<"reservation.AssignService
  * Use `create(AssignServiceToProviderResponseSchema)` to create a new message.
  */
 export const AssignServiceToProviderResponseSchema: GenMessage<AssignServiceToProviderResponse> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 11);
+  messageDesc(file_reservations_reservation, 16);
 
 /**
  * @generated from message reservation.CreateWeeklyScheduleRequest
@@ -476,7 +603,7 @@ export type CreateWeeklyScheduleRequest = Message<"reservation.CreateWeeklySched
  * Use `create(CreateWeeklyScheduleRequestSchema)` to create a new message.
  */
 export const CreateWeeklyScheduleRequestSchema: GenMessage<CreateWeeklyScheduleRequest> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 12);
+  messageDesc(file_reservations_reservation, 17);
 
 /**
  * @generated from message reservation.CreateWeeklyScheduleResponse
@@ -493,7 +620,7 @@ export type CreateWeeklyScheduleResponse = Message<"reservation.CreateWeeklySche
  * Use `create(CreateWeeklyScheduleResponseSchema)` to create a new message.
  */
 export const CreateWeeklyScheduleResponseSchema: GenMessage<CreateWeeklyScheduleResponse> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 13);
+  messageDesc(file_reservations_reservation, 18);
 
 /**
  * @generated from message reservation.GenerateTimeSlotsRequest
@@ -510,7 +637,7 @@ export type GenerateTimeSlotsRequest = Message<"reservation.GenerateTimeSlotsReq
  * Use `create(GenerateTimeSlotsRequestSchema)` to create a new message.
  */
 export const GenerateTimeSlotsRequestSchema: GenMessage<GenerateTimeSlotsRequest> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 14);
+  messageDesc(file_reservations_reservation, 19);
 
 /**
  * @generated from message reservation.GenerateTimeSlotsResponse
@@ -527,7 +654,7 @@ export type GenerateTimeSlotsResponse = Message<"reservation.GenerateTimeSlotsRe
  * Use `create(GenerateTimeSlotsResponseSchema)` to create a new message.
  */
 export const GenerateTimeSlotsResponseSchema: GenMessage<GenerateTimeSlotsResponse> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 15);
+  messageDesc(file_reservations_reservation, 20);
 
 /**
  * @generated from message reservation.CreateReservationRequest
@@ -564,7 +691,7 @@ export type CreateReservationRequest = Message<"reservation.CreateReservationReq
  * Use `create(CreateReservationRequestSchema)` to create a new message.
  */
 export const CreateReservationRequestSchema: GenMessage<CreateReservationRequest> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 16);
+  messageDesc(file_reservations_reservation, 21);
 
 /**
  * @generated from message reservation.CreateReservationResponse
@@ -586,7 +713,7 @@ export type CreateReservationResponse = Message<"reservation.CreateReservationRe
  * Use `create(CreateReservationResponseSchema)` to create a new message.
  */
 export const CreateReservationResponseSchema: GenMessage<CreateReservationResponse> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 17);
+  messageDesc(file_reservations_reservation, 22);
 
 /**
  * @generated from message reservation.CancelReservationRequest
@@ -603,7 +730,7 @@ export type CancelReservationRequest = Message<"reservation.CancelReservationReq
  * Use `create(CancelReservationRequestSchema)` to create a new message.
  */
 export const CancelReservationRequestSchema: GenMessage<CancelReservationRequest> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 18);
+  messageDesc(file_reservations_reservation, 23);
 
 /**
  * @generated from message reservation.CancelReservationResponse
@@ -620,7 +747,7 @@ export type CancelReservationResponse = Message<"reservation.CancelReservationRe
  * Use `create(CancelReservationResponseSchema)` to create a new message.
  */
 export const CancelReservationResponseSchema: GenMessage<CancelReservationResponse> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 19);
+  messageDesc(file_reservations_reservation, 24);
 
 /**
  * @generated from message reservation.ListReservationsRequest
@@ -642,7 +769,7 @@ export type ListReservationsRequest = Message<"reservation.ListReservationsReque
  * Use `create(ListReservationsRequestSchema)` to create a new message.
  */
 export const ListReservationsRequestSchema: GenMessage<ListReservationsRequest> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 20);
+  messageDesc(file_reservations_reservation, 25);
 
 /**
  * @generated from message reservation.ListReservationsResponse
@@ -659,7 +786,7 @@ export type ListReservationsResponse = Message<"reservation.ListReservationsResp
  * Use `create(ListReservationsResponseSchema)` to create a new message.
  */
 export const ListReservationsResponseSchema: GenMessage<ListReservationsResponse> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 21);
+  messageDesc(file_reservations_reservation, 26);
 
 /**
  * @generated from message reservation.ListAvailableTimeSlotsRequest
@@ -686,7 +813,7 @@ export type ListAvailableTimeSlotsRequest = Message<"reservation.ListAvailableTi
  * Use `create(ListAvailableTimeSlotsRequestSchema)` to create a new message.
  */
 export const ListAvailableTimeSlotsRequestSchema: GenMessage<ListAvailableTimeSlotsRequest> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 22);
+  messageDesc(file_reservations_reservation, 27);
 
 /**
  * @generated from message reservation.ListAvailableTimeSlotsResponse
@@ -703,7 +830,7 @@ export type ListAvailableTimeSlotsResponse = Message<"reservation.ListAvailableT
  * Use `create(ListAvailableTimeSlotsResponseSchema)` to create a new message.
  */
 export const ListAvailableTimeSlotsResponseSchema: GenMessage<ListAvailableTimeSlotsResponse> = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 23);
+  messageDesc(file_reservations_reservation, 28);
 
 /**
  * نوع مالک تایم‌اسلات — تعیین می‌کند که تایم‌اسلات متعلق به فرد است یا فضای مشترک
@@ -835,6 +962,30 @@ export const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof CreateFacilityRequestSchema;
     output: typeof CreateFacilityResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.AddFacilityImage
+   */
+  addFacilityImage: {
+    methodKind: "unary";
+    input: typeof FacilityImageSchema;
+    output: typeof FacilityImageSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.DeleteFacilityImage
+   */
+  deleteFacilityImage: {
+    methodKind: "unary";
+    input: typeof DeleteFacilityImageRequestSchema;
+    output: typeof DeleteFacilityImageResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.GetFacilityImages
+   */
+  getFacilityImages: {
+    methodKind: "unary";
+    input: typeof GetFacilityImagesRequestSchema;
+    output: typeof GetFacilityImagesResponseSchema;
   },
   /**
    * @generated from rpc reservation.ReservationService.CreateService

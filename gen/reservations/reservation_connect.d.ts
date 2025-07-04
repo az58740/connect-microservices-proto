@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AssignServiceToProviderRequest, AssignServiceToProviderResponse, CancelReservationRequest, CancelReservationResponse, CreateFacilityRequest, CreateFacilityResponse, CreateReservationRequest, CreateReservationResponse, CreateServiceRequest, CreateServiceResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, ListAvailableTimeSlotsRequest, ListAvailableTimeSlotsResponse, ListReservationsRequest, ListReservationsResponse } from "./reservation_pb.js";
+import { AssignServiceToProviderRequest, AssignServiceToProviderResponse, CancelReservationRequest, CancelReservationResponse, CreateFacilityRequest, CreateFacilityResponse, CreateReservationRequest, CreateReservationResponse, CreateServiceRequest, CreateServiceResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteFacilityImageRequest, DeleteFacilityImageResponse, FacilityImage, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetFacilityImagesRequest, GetFacilityImagesResponse, ListAvailableTimeSlotsRequest, ListAvailableTimeSlotsResponse, ListReservationsRequest, ListReservationsResponse } from "./reservation_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -19,6 +19,33 @@ export declare const ReservationService: {
       readonly name: "CreateFacility",
       readonly I: typeof CreateFacilityRequest,
       readonly O: typeof CreateFacilityResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.AddFacilityImage
+     */
+    readonly addFacilityImage: {
+      readonly name: "AddFacilityImage",
+      readonly I: typeof FacilityImage,
+      readonly O: typeof FacilityImage,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.DeleteFacilityImage
+     */
+    readonly deleteFacilityImage: {
+      readonly name: "DeleteFacilityImage",
+      readonly I: typeof DeleteFacilityImageRequest,
+      readonly O: typeof DeleteFacilityImageResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.GetFacilityImages
+     */
+    readonly getFacilityImages: {
+      readonly name: "GetFacilityImages",
+      readonly I: typeof GetFacilityImagesRequest,
+      readonly O: typeof GetFacilityImagesResponse,
       readonly kind: MethodKind.Unary,
     },
     /**

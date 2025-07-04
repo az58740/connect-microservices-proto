@@ -46,7 +46,16 @@ message Facility {
   string type = 4; // نوع فسیلیتی مانند "SALON", "HOTEL", "CLINIC" | Type of the facility
   string owner_user_id = 5; // شناسه کاربر صاحب فسیلیتی | User ID of the facility owner
 }
-
+// تصویر مرتبط با یک فسیلیتی مانند عکس اتاق یا نمای بیرونی
+// Image related to a facility, like room photo or exterior view
+message FacilityImage {
+  string id = 1;                // شناسه یکتا | Unique image ID
+  string facility_id = 2;       // شناسه فسیلیتی | Related Facility ID
+  string url = 3;               // مسیر یا لینک فایل تصویر | URL or file path to the image
+  string title = 4;             // عنوان اختیاری | Optional image title
+  string description = 5;       // توضیح تصویر | Optional image description
+  google.protobuf.Timestamp uploaded_at = 6; // زمان آپلود | Upload timestamp
+}
 // سرویس یا خدمت قابل ارائه در فسیلیتی
 // Service offered in a facility
 message Service {
@@ -66,7 +75,6 @@ message ProviderService {
   string provider_user_id = 3; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
   bool is_available = 4; // آیا ارائه می‌شود یا نه
 }
-
 // برنامه‌ زمانی تکرارشونده‌ی سرویس‌دهنده در یک روز خاص
 // Weekly repeating schedule for a provider
 message WeeklySchedule {
@@ -78,7 +86,6 @@ message WeeklySchedule {
   string facility_id = 6; // مکان مرتبط
   string service_id = 7; // سرویس مرتبط (اختیاری)
 }
-
 // تایم‌اسلات — بازه‌ زمانی دقیق رزرو
 // TimeSlot — precise slot available for reservation
 message TimeSlot {
@@ -92,7 +99,6 @@ message TimeSlot {
   string facility_id = 8;
   string service_id = 9;
 }
-
 // رزرو ثبت‌شده توسط کاربر
 // Reservation made by user
 message Reservation {
@@ -115,6 +121,19 @@ message CreateFacilityRequest {
 message CreateFacilityResponse {
   string id = 1;
   string message = 2;
+}
+message DeleteFacilityImageRequest {
+  string image_id = 1;
+}
+message DeleteFacilityImageResponse {
+  string message = 1;
+}
+// دریافت لیست تصاویر یک فسیلیتی
+message GetFacilityImagesRequest {
+  string facility_id = 1;
+}
+message GetFacilityImagesResponse {
+  repeated FacilityImage images = 1;
 }
 
 message CreateServiceRequest {
@@ -187,6 +206,10 @@ message ListAvailableTimeSlotsResponse {
 
 service ReservationService {
   rpc CreateFacility(CreateFacilityRequest) returns (CreateFacilityResponse);
+  rpc AddFacilityImage(FacilityImage) returns (FacilityImage);
+  rpc DeleteFacilityImage(DeleteFacilityImageRequest) returns (DeleteFacilityImageResponse);
+  rpc GetFacilityImages(GetFacilityImagesRequest) returns (GetFacilityImagesResponse);
+
   rpc CreateService(CreateServiceRequest) returns (CreateServiceResponse);
   rpc AssignServiceToProvider(AssignServiceToProviderRequest) returns (AssignServiceToProviderResponse);
 

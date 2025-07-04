@@ -9,7 +9,7 @@ import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
  * Describes the file reservations/reservation.proto.
  */
 export const file_reservations_reservation = /*@__PURE__*/
-  fileDesc("Ch5yZXNlcnZhdGlvbnMvcmVzZXJ2YXRpb24ucHJvdG8SC3Jlc2VydmF0aW9uIl4KCEZhY2lsaXR5EgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkSDAoEdHlwZRgEIAEoCRIVCg1vd25lcl91c2VyX2lkGAUgASgJInYKB1NlcnZpY2USCgoCaWQYASABKAkSEwoLZmFjaWxpdHlfaWQYAiABKAkSDAoEbmFtZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEoCRIYChBkdXJhdGlvbl9taW51dGVzGAUgASgFEg0KBXByaWNlGAYgASgBImEKD1Byb3ZpZGVyU2VydmljZRIKCgJpZBgBIAEoCRISCgpzZXJ2aWNlX2lkGAIgASgJEhgKEHByb3ZpZGVyX3VzZXJfaWQYAyABKAkSFAoMaXNfYXZhaWxhYmxlGAQgASgIIqgBCg5XZWVrbHlTY2hlZHVsZRIKCgJpZBgBIAEoCRIYChBwcm92aWRlcl91c2VyX2lkGAIgASgJEiEKA2RheRgDIAEoDjIULnJlc2VydmF0aW9uLldlZWtEYXkSEgoKc3RhcnRfdGltZRgEIAEoCRIQCghlbmRfdGltZRgFIAEoCRITCgtmYWNpbGl0eV9pZBgGIAEoCRISCgpzZXJ2aWNlX2lkGAcgASgJIpQCCghUaW1lU2xvdBIKCgJpZBgBIAEoCRIYChBwcm92aWRlcl91c2VyX2lkGAIgASgJEi4KCnN0YXJ0X3RpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEiwKCGVuZF90aW1lGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIqCgpvd25lcl90eXBlGAUgASgOMhYucmVzZXJ2YXRpb24uT3duZXJUeXBlEhMKC2lzX3Jlc2VydmVkGAYgASgIEhoKEndlZWtseV9zY2hlZHVsZV9pZBgHIAEoCRITCgtmYWNpbGl0eV9pZBgIIAEoCRISCgpzZXJ2aWNlX2lkGAkgASgJIvIBCgtSZXNlcnZhdGlvbhIKCgJpZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEhgKEHByb3ZpZGVyX3VzZXJfaWQYAyABKAkSEgoKc2VydmljZV9pZBgEIAEoCRITCgtmYWNpbGl0eV9pZBgFIAEoCRIUCgx0aW1lX3Nsb3RfaWQYBiABKAkSLgoGc3RhdHVzGAcgASgOMh4ucmVzZXJ2YXRpb24uUmVzZXJ2YXRpb25TdGF0dXMSDQoFbm90ZXMYCCABKAkSLgoKY3JlYXRlZF9hdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiQAoVQ3JlYXRlRmFjaWxpdHlSZXF1ZXN0EicKCGZhY2lsaXR5GAEgASgLMhUucmVzZXJ2YXRpb24uRmFjaWxpdHkiNQoWQ3JlYXRlRmFjaWxpdHlSZXNwb25zZRIKCgJpZBgBIAEoCRIPCgdtZXNzYWdlGAIgASgJIj0KFENyZWF0ZVNlcnZpY2VSZXF1ZXN0EiUKB3NlcnZpY2UYASABKAsyFC5yZXNlcnZhdGlvbi5TZXJ2aWNlIjQKFUNyZWF0ZVNlcnZpY2VSZXNwb25zZRIKCgJpZBgBIAEoCRIPCgdtZXNzYWdlGAIgASgJIk4KHkFzc2lnblNlcnZpY2VUb1Byb3ZpZGVyUmVxdWVzdBISCgpzZXJ2aWNlX2lkGAEgASgJEhgKEHByb3ZpZGVyX3VzZXJfaWQYAiABKAkiMgofQXNzaWduU2VydmljZVRvUHJvdmlkZXJSZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIkwKG0NyZWF0ZVdlZWtseVNjaGVkdWxlUmVxdWVzdBItCghzY2hlZHVsZRgBIAEoCzIbLnJlc2VydmF0aW9uLldlZWtseVNjaGVkdWxlIioKHENyZWF0ZVdlZWtseVNjaGVkdWxlUmVzcG9uc2USCgoCaWQYASABKAkiNgoYR2VuZXJhdGVUaW1lU2xvdHNSZXF1ZXN0EhoKEndlZWtseV9zY2hlZHVsZV9pZBgBIAEoCSJGChlHZW5lcmF0ZVRpbWVTbG90c1Jlc3BvbnNlEikKCnRpbWVfc2xvdHMYASADKAsyFS5yZXNlcnZhdGlvbi5UaW1lU2xvdCJ+ChhDcmVhdGVSZXNlcnZhdGlvblJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRIYChBwcm92aWRlcl91c2VyX2lkGAIgASgJEhIKCnNlcnZpY2VfaWQYAyABKAkSFAoMdGltZV9zbG90X2lkGAQgASgJEg0KBW5vdGVzGAUgASgJIkQKGUNyZWF0ZVJlc2VydmF0aW9uUmVzcG9uc2USFgoOcmVzZXJ2YXRpb25faWQYASABKAkSDwoHbWVzc2FnZRgCIAEoCSIyChhDYW5jZWxSZXNlcnZhdGlvblJlcXVlc3QSFgoOcmVzZXJ2YXRpb25faWQYASABKAkiLAoZQ2FuY2VsUmVzZXJ2YXRpb25SZXNwb25zZRIPCgdtZXNzYWdlGAEgASgJIkoKF0xpc3RSZXNlcnZhdGlvbnNSZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkSEwoGc3RhdHVzGAIgASgJSACIAQFCCQoHX3N0YXR1cyJKChhMaXN0UmVzZXJ2YXRpb25zUmVzcG9uc2USLgoMcmVzZXJ2YXRpb25zGAEgAygLMhgucmVzZXJ2YXRpb24uUmVzZXJ2YXRpb24iYgodTGlzdEF2YWlsYWJsZVRpbWVTbG90c1JlcXVlc3QSGAoQcHJvdmlkZXJfdXNlcl9pZBgBIAEoCRISCgpzZXJ2aWNlX2lkGAIgASgJEhMKC2ZhY2lsaXR5X2lkGAMgASgJIksKHkxpc3RBdmFpbGFibGVUaW1lU2xvdHNSZXNwb25zZRIpCgp0aW1lX3Nsb3RzGAEgAygLMhUucmVzZXJ2YXRpb24uVGltZVNsb3QqJwoJT3duZXJUeXBlEg4KCklORElWSURVQUwQABIKCgZTSEFSRUQQASpNChFSZXNlcnZhdGlvblN0YXR1cxILCgdQRU5ESU5HEAASDQoJQ09ORklSTUVEEAESDQoJQ0FOQ0VMTEVEEAISDQoJQ09NUExFVEVEEAMqZQoHV2Vla0RheRIMCghTQVRVUkRBWRAAEgoKBlNVTkRBWRABEgoKBk1PTkRBWRACEgsKB1RVRVNEQVkQAxINCglXRURORVNEQVkQBBIMCghUSFVSU0RBWRAFEgoKBkZSSURBWRAGMqoHChJSZXNlcnZhdGlvblNlcnZpY2USWQoOQ3JlYXRlRmFjaWxpdHkSIi5yZXNlcnZhdGlvbi5DcmVhdGVGYWNpbGl0eVJlcXVlc3QaIy5yZXNlcnZhdGlvbi5DcmVhdGVGYWNpbGl0eVJlc3BvbnNlElYKDUNyZWF0ZVNlcnZpY2USIS5yZXNlcnZhdGlvbi5DcmVhdGVTZXJ2aWNlUmVxdWVzdBoiLnJlc2VydmF0aW9uLkNyZWF0ZVNlcnZpY2VSZXNwb25zZRJ0ChdBc3NpZ25TZXJ2aWNlVG9Qcm92aWRlchIrLnJlc2VydmF0aW9uLkFzc2lnblNlcnZpY2VUb1Byb3ZpZGVyUmVxdWVzdBosLnJlc2VydmF0aW9uLkFzc2lnblNlcnZpY2VUb1Byb3ZpZGVyUmVzcG9uc2USawoUQ3JlYXRlV2Vla2x5U2NoZWR1bGUSKC5yZXNlcnZhdGlvbi5DcmVhdGVXZWVrbHlTY2hlZHVsZVJlcXVlc3QaKS5yZXNlcnZhdGlvbi5DcmVhdGVXZWVrbHlTY2hlZHVsZVJlc3BvbnNlEmIKEUdlbmVyYXRlVGltZVNsb3RzEiUucmVzZXJ2YXRpb24uR2VuZXJhdGVUaW1lU2xvdHNSZXF1ZXN0GiYucmVzZXJ2YXRpb24uR2VuZXJhdGVUaW1lU2xvdHNSZXNwb25zZRJiChFDcmVhdGVSZXNlcnZhdGlvbhIlLnJlc2VydmF0aW9uLkNyZWF0ZVJlc2VydmF0aW9uUmVxdWVzdBomLnJlc2VydmF0aW9uLkNyZWF0ZVJlc2VydmF0aW9uUmVzcG9uc2USYgoRQ2FuY2VsUmVzZXJ2YXRpb24SJS5yZXNlcnZhdGlvbi5DYW5jZWxSZXNlcnZhdGlvblJlcXVlc3QaJi5yZXNlcnZhdGlvbi5DYW5jZWxSZXNlcnZhdGlvblJlc3BvbnNlEl8KEExpc3RSZXNlcnZhdGlvbnMSJC5yZXNlcnZhdGlvbi5MaXN0UmVzZXJ2YXRpb25zUmVxdWVzdBolLnJlc2VydmF0aW9uLkxpc3RSZXNlcnZhdGlvbnNSZXNwb25zZRJxChZMaXN0QXZhaWxhYmxlVGltZVNsb3RzEioucmVzZXJ2YXRpb24uTGlzdEF2YWlsYWJsZVRpbWVTbG90c1JlcXVlc3QaKy5yZXNlcnZhdGlvbi5MaXN0QXZhaWxhYmxlVGltZVNsb3RzUmVzcG9uc2VCT1pNZ2l0aHViLmNvbS9hejU4NzQwL2Nvbm5lY3QtbWljcm9zZXJ2aWNlcy1wcm90by9nb2xhbmcvcmVzZXJ2YXRpb247cmVzZXJ2YXRpb25iBnByb3RvMw", [file_google_protobuf_timestamp]);
+  fileDesc("Ch5yZXNlcnZhdGlvbnMvcmVzZXJ2YXRpb24ucHJvdG8SC3Jlc2VydmF0aW9uIl4KCEZhY2lsaXR5EgoKAmlkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkSDAoEdHlwZRgEIAEoCRIVCg1vd25lcl91c2VyX2lkGAUgASgJIpIBCg1GYWNpbGl0eUltYWdlEgoKAmlkGAEgASgJEhMKC2ZhY2lsaXR5X2lkGAIgASgJEgsKA3VybBgDIAEoCRINCgV0aXRsZRgEIAEoCRITCgtkZXNjcmlwdGlvbhgFIAEoCRIvCgt1cGxvYWRlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAidgoHU2VydmljZRIKCgJpZBgBIAEoCRITCgtmYWNpbGl0eV9pZBgCIAEoCRIMCgRuYW1lGAMgASgJEhMKC2Rlc2NyaXB0aW9uGAQgASgJEhgKEGR1cmF0aW9uX21pbnV0ZXMYBSABKAUSDQoFcHJpY2UYBiABKAEiYQoPUHJvdmlkZXJTZXJ2aWNlEgoKAmlkGAEgASgJEhIKCnNlcnZpY2VfaWQYAiABKAkSGAoQcHJvdmlkZXJfdXNlcl9pZBgDIAEoCRIUCgxpc19hdmFpbGFibGUYBCABKAgiqAEKDldlZWtseVNjaGVkdWxlEgoKAmlkGAEgASgJEhgKEHByb3ZpZGVyX3VzZXJfaWQYAiABKAkSIQoDZGF5GAMgASgOMhQucmVzZXJ2YXRpb24uV2Vla0RheRISCgpzdGFydF90aW1lGAQgASgJEhAKCGVuZF90aW1lGAUgASgJEhMKC2ZhY2lsaXR5X2lkGAYgASgJEhIKCnNlcnZpY2VfaWQYByABKAkilAIKCFRpbWVTbG90EgoKAmlkGAEgASgJEhgKEHByb3ZpZGVyX3VzZXJfaWQYAiABKAkSLgoKc3RhcnRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEioKCm93bmVyX3R5cGUYBSABKA4yFi5yZXNlcnZhdGlvbi5Pd25lclR5cGUSEwoLaXNfcmVzZXJ2ZWQYBiABKAgSGgoSd2Vla2x5X3NjaGVkdWxlX2lkGAcgASgJEhMKC2ZhY2lsaXR5X2lkGAggASgJEhIKCnNlcnZpY2VfaWQYCSABKAki8gEKC1Jlc2VydmF0aW9uEgoKAmlkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkSGAoQcHJvdmlkZXJfdXNlcl9pZBgDIAEoCRISCgpzZXJ2aWNlX2lkGAQgASgJEhMKC2ZhY2lsaXR5X2lkGAUgASgJEhQKDHRpbWVfc2xvdF9pZBgGIAEoCRIuCgZzdGF0dXMYByABKA4yHi5yZXNlcnZhdGlvbi5SZXNlcnZhdGlvblN0YXR1cxINCgVub3RlcxgIIAEoCRIuCgpjcmVhdGVkX2F0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJAChVDcmVhdGVGYWNpbGl0eVJlcXVlc3QSJwoIZmFjaWxpdHkYASABKAsyFS5yZXNlcnZhdGlvbi5GYWNpbGl0eSI1ChZDcmVhdGVGYWNpbGl0eVJlc3BvbnNlEgoKAmlkGAEgASgJEg8KB21lc3NhZ2UYAiABKAkiLgoaRGVsZXRlRmFjaWxpdHlJbWFnZVJlcXVlc3QSEAoIaW1hZ2VfaWQYASABKAkiLgobRGVsZXRlRmFjaWxpdHlJbWFnZVJlc3BvbnNlEg8KB21lc3NhZ2UYASABKAkiLwoYR2V0RmFjaWxpdHlJbWFnZXNSZXF1ZXN0EhMKC2ZhY2lsaXR5X2lkGAEgASgJIkcKGUdldEZhY2lsaXR5SW1hZ2VzUmVzcG9uc2USKgoGaW1hZ2VzGAEgAygLMhoucmVzZXJ2YXRpb24uRmFjaWxpdHlJbWFnZSI9ChRDcmVhdGVTZXJ2aWNlUmVxdWVzdBIlCgdzZXJ2aWNlGAEgASgLMhQucmVzZXJ2YXRpb24uU2VydmljZSI0ChVDcmVhdGVTZXJ2aWNlUmVzcG9uc2USCgoCaWQYASABKAkSDwoHbWVzc2FnZRgCIAEoCSJOCh5Bc3NpZ25TZXJ2aWNlVG9Qcm92aWRlclJlcXVlc3QSEgoKc2VydmljZV9pZBgBIAEoCRIYChBwcm92aWRlcl91c2VyX2lkGAIgASgJIjIKH0Fzc2lnblNlcnZpY2VUb1Byb3ZpZGVyUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSJMChtDcmVhdGVXZWVrbHlTY2hlZHVsZVJlcXVlc3QSLQoIc2NoZWR1bGUYASABKAsyGy5yZXNlcnZhdGlvbi5XZWVrbHlTY2hlZHVsZSIqChxDcmVhdGVXZWVrbHlTY2hlZHVsZVJlc3BvbnNlEgoKAmlkGAEgASgJIjYKGEdlbmVyYXRlVGltZVNsb3RzUmVxdWVzdBIaChJ3ZWVrbHlfc2NoZWR1bGVfaWQYASABKAkiRgoZR2VuZXJhdGVUaW1lU2xvdHNSZXNwb25zZRIpCgp0aW1lX3Nsb3RzGAEgAygLMhUucmVzZXJ2YXRpb24uVGltZVNsb3QifgoYQ3JlYXRlUmVzZXJ2YXRpb25SZXF1ZXN0Eg8KB3VzZXJfaWQYASABKAkSGAoQcHJvdmlkZXJfdXNlcl9pZBgCIAEoCRISCgpzZXJ2aWNlX2lkGAMgASgJEhQKDHRpbWVfc2xvdF9pZBgEIAEoCRINCgVub3RlcxgFIAEoCSJEChlDcmVhdGVSZXNlcnZhdGlvblJlc3BvbnNlEhYKDnJlc2VydmF0aW9uX2lkGAEgASgJEg8KB21lc3NhZ2UYAiABKAkiMgoYQ2FuY2VsUmVzZXJ2YXRpb25SZXF1ZXN0EhYKDnJlc2VydmF0aW9uX2lkGAEgASgJIiwKGUNhbmNlbFJlc2VydmF0aW9uUmVzcG9uc2USDwoHbWVzc2FnZRgBIAEoCSJKChdMaXN0UmVzZXJ2YXRpb25zUmVxdWVzdBIPCgd1c2VyX2lkGAEgASgJEhMKBnN0YXR1cxgCIAEoCUgAiAEBQgkKB19zdGF0dXMiSgoYTGlzdFJlc2VydmF0aW9uc1Jlc3BvbnNlEi4KDHJlc2VydmF0aW9ucxgBIAMoCzIYLnJlc2VydmF0aW9uLlJlc2VydmF0aW9uImIKHUxpc3RBdmFpbGFibGVUaW1lU2xvdHNSZXF1ZXN0EhgKEHByb3ZpZGVyX3VzZXJfaWQYASABKAkSEgoKc2VydmljZV9pZBgCIAEoCRITCgtmYWNpbGl0eV9pZBgDIAEoCSJLCh5MaXN0QXZhaWxhYmxlVGltZVNsb3RzUmVzcG9uc2USKQoKdGltZV9zbG90cxgBIAMoCzIVLnJlc2VydmF0aW9uLlRpbWVTbG90KicKCU93bmVyVHlwZRIOCgpJTkRJVklEVUFMEAASCgoGU0hBUkVEEAEqTQoRUmVzZXJ2YXRpb25TdGF0dXMSCwoHUEVORElORxAAEg0KCUNPTkZJUk1FRBABEg0KCUNBTkNFTExFRBACEg0KCUNPTVBMRVRFRBADKmUKB1dlZWtEYXkSDAoIU0FUVVJEQVkQABIKCgZTVU5EQVkQARIKCgZNT05EQVkQAhILCgdUVUVTREFZEAMSDQoJV0VETkVTREFZEAQSDAoIVEhVUlNEQVkQBRIKCgZGUklEQVkQBjLECQoSUmVzZXJ2YXRpb25TZXJ2aWNlElkKDkNyZWF0ZUZhY2lsaXR5EiIucmVzZXJ2YXRpb24uQ3JlYXRlRmFjaWxpdHlSZXF1ZXN0GiMucmVzZXJ2YXRpb24uQ3JlYXRlRmFjaWxpdHlSZXNwb25zZRJKChBBZGRGYWNpbGl0eUltYWdlEhoucmVzZXJ2YXRpb24uRmFjaWxpdHlJbWFnZRoaLnJlc2VydmF0aW9uLkZhY2lsaXR5SW1hZ2USaAoTRGVsZXRlRmFjaWxpdHlJbWFnZRInLnJlc2VydmF0aW9uLkRlbGV0ZUZhY2lsaXR5SW1hZ2VSZXF1ZXN0GigucmVzZXJ2YXRpb24uRGVsZXRlRmFjaWxpdHlJbWFnZVJlc3BvbnNlEmIKEUdldEZhY2lsaXR5SW1hZ2VzEiUucmVzZXJ2YXRpb24uR2V0RmFjaWxpdHlJbWFnZXNSZXF1ZXN0GiYucmVzZXJ2YXRpb24uR2V0RmFjaWxpdHlJbWFnZXNSZXNwb25zZRJWCg1DcmVhdGVTZXJ2aWNlEiEucmVzZXJ2YXRpb24uQ3JlYXRlU2VydmljZVJlcXVlc3QaIi5yZXNlcnZhdGlvbi5DcmVhdGVTZXJ2aWNlUmVzcG9uc2USdAoXQXNzaWduU2VydmljZVRvUHJvdmlkZXISKy5yZXNlcnZhdGlvbi5Bc3NpZ25TZXJ2aWNlVG9Qcm92aWRlclJlcXVlc3QaLC5yZXNlcnZhdGlvbi5Bc3NpZ25TZXJ2aWNlVG9Qcm92aWRlclJlc3BvbnNlEmsKFENyZWF0ZVdlZWtseVNjaGVkdWxlEigucmVzZXJ2YXRpb24uQ3JlYXRlV2Vla2x5U2NoZWR1bGVSZXF1ZXN0GikucmVzZXJ2YXRpb24uQ3JlYXRlV2Vla2x5U2NoZWR1bGVSZXNwb25zZRJiChFHZW5lcmF0ZVRpbWVTbG90cxIlLnJlc2VydmF0aW9uLkdlbmVyYXRlVGltZVNsb3RzUmVxdWVzdBomLnJlc2VydmF0aW9uLkdlbmVyYXRlVGltZVNsb3RzUmVzcG9uc2USYgoRQ3JlYXRlUmVzZXJ2YXRpb24SJS5yZXNlcnZhdGlvbi5DcmVhdGVSZXNlcnZhdGlvblJlcXVlc3QaJi5yZXNlcnZhdGlvbi5DcmVhdGVSZXNlcnZhdGlvblJlc3BvbnNlEmIKEUNhbmNlbFJlc2VydmF0aW9uEiUucmVzZXJ2YXRpb24uQ2FuY2VsUmVzZXJ2YXRpb25SZXF1ZXN0GiYucmVzZXJ2YXRpb24uQ2FuY2VsUmVzZXJ2YXRpb25SZXNwb25zZRJfChBMaXN0UmVzZXJ2YXRpb25zEiQucmVzZXJ2YXRpb24uTGlzdFJlc2VydmF0aW9uc1JlcXVlc3QaJS5yZXNlcnZhdGlvbi5MaXN0UmVzZXJ2YXRpb25zUmVzcG9uc2UScQoWTGlzdEF2YWlsYWJsZVRpbWVTbG90cxIqLnJlc2VydmF0aW9uLkxpc3RBdmFpbGFibGVUaW1lU2xvdHNSZXF1ZXN0GisucmVzZXJ2YXRpb24uTGlzdEF2YWlsYWJsZVRpbWVTbG90c1Jlc3BvbnNlQk9aTWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3Jlc2VydmF0aW9uO3Jlc2VydmF0aW9uYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
  * Describes the message reservation.Facility.
@@ -19,165 +19,200 @@ export const FacilitySchema = /*@__PURE__*/
   messageDesc(file_reservations_reservation, 0);
 
 /**
+ * Describes the message reservation.FacilityImage.
+ * Use `create(FacilityImageSchema)` to create a new message.
+ */
+export const FacilityImageSchema = /*@__PURE__*/
+  messageDesc(file_reservations_reservation, 1);
+
+/**
  * Describes the message reservation.Service.
  * Use `create(ServiceSchema)` to create a new message.
  */
 export const ServiceSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 1);
+  messageDesc(file_reservations_reservation, 2);
 
 /**
  * Describes the message reservation.ProviderService.
  * Use `create(ProviderServiceSchema)` to create a new message.
  */
 export const ProviderServiceSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 2);
+  messageDesc(file_reservations_reservation, 3);
 
 /**
  * Describes the message reservation.WeeklySchedule.
  * Use `create(WeeklyScheduleSchema)` to create a new message.
  */
 export const WeeklyScheduleSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 3);
+  messageDesc(file_reservations_reservation, 4);
 
 /**
  * Describes the message reservation.TimeSlot.
  * Use `create(TimeSlotSchema)` to create a new message.
  */
 export const TimeSlotSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 4);
+  messageDesc(file_reservations_reservation, 5);
 
 /**
  * Describes the message reservation.Reservation.
  * Use `create(ReservationSchema)` to create a new message.
  */
 export const ReservationSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 5);
+  messageDesc(file_reservations_reservation, 6);
 
 /**
  * Describes the message reservation.CreateFacilityRequest.
  * Use `create(CreateFacilityRequestSchema)` to create a new message.
  */
 export const CreateFacilityRequestSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 6);
+  messageDesc(file_reservations_reservation, 7);
 
 /**
  * Describes the message reservation.CreateFacilityResponse.
  * Use `create(CreateFacilityResponseSchema)` to create a new message.
  */
 export const CreateFacilityResponseSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 7);
+  messageDesc(file_reservations_reservation, 8);
+
+/**
+ * Describes the message reservation.DeleteFacilityImageRequest.
+ * Use `create(DeleteFacilityImageRequestSchema)` to create a new message.
+ */
+export const DeleteFacilityImageRequestSchema = /*@__PURE__*/
+  messageDesc(file_reservations_reservation, 9);
+
+/**
+ * Describes the message reservation.DeleteFacilityImageResponse.
+ * Use `create(DeleteFacilityImageResponseSchema)` to create a new message.
+ */
+export const DeleteFacilityImageResponseSchema = /*@__PURE__*/
+  messageDesc(file_reservations_reservation, 10);
+
+/**
+ * Describes the message reservation.GetFacilityImagesRequest.
+ * Use `create(GetFacilityImagesRequestSchema)` to create a new message.
+ */
+export const GetFacilityImagesRequestSchema = /*@__PURE__*/
+  messageDesc(file_reservations_reservation, 11);
+
+/**
+ * Describes the message reservation.GetFacilityImagesResponse.
+ * Use `create(GetFacilityImagesResponseSchema)` to create a new message.
+ */
+export const GetFacilityImagesResponseSchema = /*@__PURE__*/
+  messageDesc(file_reservations_reservation, 12);
 
 /**
  * Describes the message reservation.CreateServiceRequest.
  * Use `create(CreateServiceRequestSchema)` to create a new message.
  */
 export const CreateServiceRequestSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 8);
+  messageDesc(file_reservations_reservation, 13);
 
 /**
  * Describes the message reservation.CreateServiceResponse.
  * Use `create(CreateServiceResponseSchema)` to create a new message.
  */
 export const CreateServiceResponseSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 9);
+  messageDesc(file_reservations_reservation, 14);
 
 /**
  * Describes the message reservation.AssignServiceToProviderRequest.
  * Use `create(AssignServiceToProviderRequestSchema)` to create a new message.
  */
 export const AssignServiceToProviderRequestSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 10);
+  messageDesc(file_reservations_reservation, 15);
 
 /**
  * Describes the message reservation.AssignServiceToProviderResponse.
  * Use `create(AssignServiceToProviderResponseSchema)` to create a new message.
  */
 export const AssignServiceToProviderResponseSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 11);
+  messageDesc(file_reservations_reservation, 16);
 
 /**
  * Describes the message reservation.CreateWeeklyScheduleRequest.
  * Use `create(CreateWeeklyScheduleRequestSchema)` to create a new message.
  */
 export const CreateWeeklyScheduleRequestSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 12);
+  messageDesc(file_reservations_reservation, 17);
 
 /**
  * Describes the message reservation.CreateWeeklyScheduleResponse.
  * Use `create(CreateWeeklyScheduleResponseSchema)` to create a new message.
  */
 export const CreateWeeklyScheduleResponseSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 13);
+  messageDesc(file_reservations_reservation, 18);
 
 /**
  * Describes the message reservation.GenerateTimeSlotsRequest.
  * Use `create(GenerateTimeSlotsRequestSchema)` to create a new message.
  */
 export const GenerateTimeSlotsRequestSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 14);
+  messageDesc(file_reservations_reservation, 19);
 
 /**
  * Describes the message reservation.GenerateTimeSlotsResponse.
  * Use `create(GenerateTimeSlotsResponseSchema)` to create a new message.
  */
 export const GenerateTimeSlotsResponseSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 15);
+  messageDesc(file_reservations_reservation, 20);
 
 /**
  * Describes the message reservation.CreateReservationRequest.
  * Use `create(CreateReservationRequestSchema)` to create a new message.
  */
 export const CreateReservationRequestSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 16);
+  messageDesc(file_reservations_reservation, 21);
 
 /**
  * Describes the message reservation.CreateReservationResponse.
  * Use `create(CreateReservationResponseSchema)` to create a new message.
  */
 export const CreateReservationResponseSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 17);
+  messageDesc(file_reservations_reservation, 22);
 
 /**
  * Describes the message reservation.CancelReservationRequest.
  * Use `create(CancelReservationRequestSchema)` to create a new message.
  */
 export const CancelReservationRequestSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 18);
+  messageDesc(file_reservations_reservation, 23);
 
 /**
  * Describes the message reservation.CancelReservationResponse.
  * Use `create(CancelReservationResponseSchema)` to create a new message.
  */
 export const CancelReservationResponseSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 19);
+  messageDesc(file_reservations_reservation, 24);
 
 /**
  * Describes the message reservation.ListReservationsRequest.
  * Use `create(ListReservationsRequestSchema)` to create a new message.
  */
 export const ListReservationsRequestSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 20);
+  messageDesc(file_reservations_reservation, 25);
 
 /**
  * Describes the message reservation.ListReservationsResponse.
  * Use `create(ListReservationsResponseSchema)` to create a new message.
  */
 export const ListReservationsResponseSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 21);
+  messageDesc(file_reservations_reservation, 26);
 
 /**
  * Describes the message reservation.ListAvailableTimeSlotsRequest.
  * Use `create(ListAvailableTimeSlotsRequestSchema)` to create a new message.
  */
 export const ListAvailableTimeSlotsRequestSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 22);
+  messageDesc(file_reservations_reservation, 27);
 
 /**
  * Describes the message reservation.ListAvailableTimeSlotsResponse.
  * Use `create(ListAvailableTimeSlotsResponseSchema)` to create a new message.
  */
 export const ListAvailableTimeSlotsResponseSchema = /*@__PURE__*/
-  messageDesc(file_reservations_reservation, 23);
+  messageDesc(file_reservations_reservation, 28);
 
 /**
  * Describes the enum reservation.OwnerType.

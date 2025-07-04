@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AssignServiceToProviderRequest, AssignServiceToProviderResponse, CancelReservationRequest, CancelReservationResponse, CreateFacilityRequest, CreateFacilityResponse, CreateReservationRequest, CreateReservationResponse, CreateServiceRequest, CreateServiceResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, ListAvailableTimeSlotsRequest, ListAvailableTimeSlotsResponse, ListReservationsRequest, ListReservationsResponse } from "./reservation_pb.js";
+import { AssignServiceToProviderRequest, AssignServiceToProviderResponse, CancelReservationRequest, CancelReservationResponse, CreateFacilityRequest, CreateFacilityResponse, CreateReservationRequest, CreateReservationResponse, CreateServiceRequest, CreateServiceResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteFacilityImageRequest, DeleteFacilityImageResponse, FacilityImage, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetFacilityImagesRequest, GetFacilityImagesResponse, ListAvailableTimeSlotsRequest, ListAvailableTimeSlotsResponse, ListReservationsRequest, ListReservationsResponse } from "./reservation_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -19,6 +19,33 @@ export const ReservationService = {
       name: "CreateFacility",
       I: CreateFacilityRequest,
       O: CreateFacilityResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.AddFacilityImage
+     */
+    addFacilityImage: {
+      name: "AddFacilityImage",
+      I: FacilityImage,
+      O: FacilityImage,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.DeleteFacilityImage
+     */
+    deleteFacilityImage: {
+      name: "DeleteFacilityImage",
+      I: DeleteFacilityImageRequest,
+      O: DeleteFacilityImageResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.GetFacilityImages
+     */
+    getFacilityImages: {
+      name: "GetFacilityImages",
+      I: GetFacilityImagesRequest,
+      O: GetFacilityImagesResponse,
       kind: MethodKind.Unary,
     },
     /**
