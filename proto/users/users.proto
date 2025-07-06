@@ -533,7 +533,7 @@ message PermissionResponse {
   Permission permission = 1;
 }
 
-// ========== Create Role ==========
+// ========== Create And Update Role ==========
 
 message CreateRoleRequest {
   string name = 1;
@@ -542,6 +542,12 @@ message CreateRoleRequest {
 
 message RoleResponse {
   Role role = 1;
+}
+message UpdateRoleRequest {
+    Role role = 1; 
+}
+message UpdateRoleResponse {
+    string message = 1; 
 }
 
 // ========== Assign Permissions to Role ==========
@@ -652,6 +658,7 @@ service UsersService {
     rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse);
 
     rpc CreateRole(CreateRoleRequest) returns (RoleResponse);
+    rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse);
     rpc ListRoles(ListRolesRequest) returns (ListRolesResponse);
 
     rpc AssignPermissionsToRole(AssignPermissionsToRoleRequest) returns (RoleResponse);

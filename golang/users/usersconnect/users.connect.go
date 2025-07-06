@@ -103,6 +103,8 @@ const (
 	UsersServiceListPermissionsProcedure = "/users.UsersService/ListPermissions"
 	// UsersServiceCreateRoleProcedure is the fully-qualified name of the UsersService's CreateRole RPC.
 	UsersServiceCreateRoleProcedure = "/users.UsersService/CreateRole"
+	// UsersServiceUpdateRoleProcedure is the fully-qualified name of the UsersService's UpdateRole RPC.
+	UsersServiceUpdateRoleProcedure = "/users.UsersService/UpdateRole"
 	// UsersServiceListRolesProcedure is the fully-qualified name of the UsersService's ListRoles RPC.
 	UsersServiceListRolesProcedure = "/users.UsersService/ListRoles"
 	// UsersServiceAssignPermissionsToRoleProcedure is the fully-qualified name of the UsersService's
@@ -153,6 +155,7 @@ var (
 	usersServiceCreatePermissionMethodDescriptor         = usersServiceServiceDescriptor.Methods().ByName("CreatePermission")
 	usersServiceListPermissionsMethodDescriptor          = usersServiceServiceDescriptor.Methods().ByName("ListPermissions")
 	usersServiceCreateRoleMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("CreateRole")
+	usersServiceUpdateRoleMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("UpdateRole")
 	usersServiceListRolesMethodDescriptor                = usersServiceServiceDescriptor.Methods().ByName("ListRoles")
 	usersServiceAssignPermissionsToRoleMethodDescriptor  = usersServiceServiceDescriptor.Methods().ByName("AssignPermissionsToRole")
 	usersServiceRemovePermissionFromRoleMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("RemovePermissionFromRole")
@@ -196,6 +199,7 @@ type UsersServiceClient interface {
 	CreatePermission(context.Context, *connect.Request[users.CreatePermissionRequest]) (*connect.Response[users.PermissionResponse], error)
 	ListPermissions(context.Context, *connect.Request[users.ListPermissionsRequest]) (*connect.Response[users.ListPermissionsResponse], error)
 	CreateRole(context.Context, *connect.Request[users.CreateRoleRequest]) (*connect.Response[users.RoleResponse], error)
+	UpdateRole(context.Context, *connect.Request[users.UpdateRoleRequest]) (*connect.Response[users.UpdateRoleResponse], error)
 	ListRoles(context.Context, *connect.Request[users.ListRolesRequest]) (*connect.Response[users.ListRolesResponse], error)
 	AssignPermissionsToRole(context.Context, *connect.Request[users.AssignPermissionsToRoleRequest]) (*connect.Response[users.RoleResponse], error)
 	RemovePermissionFromRole(context.Context, *connect.Request[users.RemovePermissionRequest]) (*connect.Response[users.RoleResponse], error)
@@ -365,6 +369,12 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceCreateRoleMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		updateRole: connect.NewClient[users.UpdateRoleRequest, users.UpdateRoleResponse](
+			httpClient,
+			baseURL+UsersServiceUpdateRoleProcedure,
+			connect.WithSchema(usersServiceUpdateRoleMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		listRoles: connect.NewClient[users.ListRolesRequest, users.ListRolesResponse](
 			httpClient,
 			baseURL+UsersServiceListRolesProcedure,
@@ -437,6 +447,7 @@ type usersServiceClient struct {
 	createPermission         *connect.Client[users.CreatePermissionRequest, users.PermissionResponse]
 	listPermissions          *connect.Client[users.ListPermissionsRequest, users.ListPermissionsResponse]
 	createRole               *connect.Client[users.CreateRoleRequest, users.RoleResponse]
+	updateRole               *connect.Client[users.UpdateRoleRequest, users.UpdateRoleResponse]
 	listRoles                *connect.Client[users.ListRolesRequest, users.ListRolesResponse]
 	assignPermissionsToRole  *connect.Client[users.AssignPermissionsToRoleRequest, users.RoleResponse]
 	removePermissionFromRole *connect.Client[users.RemovePermissionRequest, users.RoleResponse]
@@ -571,6 +582,11 @@ func (c *usersServiceClient) CreateRole(ctx context.Context, req *connect.Reques
 	return c.createRole.CallUnary(ctx, req)
 }
 
+// UpdateRole calls users.UsersService.UpdateRole.
+func (c *usersServiceClient) UpdateRole(ctx context.Context, req *connect.Request[users.UpdateRoleRequest]) (*connect.Response[users.UpdateRoleResponse], error) {
+	return c.updateRole.CallUnary(ctx, req)
+}
+
 // ListRoles calls users.UsersService.ListRoles.
 func (c *usersServiceClient) ListRoles(ctx context.Context, req *connect.Request[users.ListRolesRequest]) (*connect.Response[users.ListRolesResponse], error) {
 	return c.listRoles.CallUnary(ctx, req)
@@ -640,6 +656,7 @@ type UsersServiceHandler interface {
 	CreatePermission(context.Context, *connect.Request[users.CreatePermissionRequest]) (*connect.Response[users.PermissionResponse], error)
 	ListPermissions(context.Context, *connect.Request[users.ListPermissionsRequest]) (*connect.Response[users.ListPermissionsResponse], error)
 	CreateRole(context.Context, *connect.Request[users.CreateRoleRequest]) (*connect.Response[users.RoleResponse], error)
+	UpdateRole(context.Context, *connect.Request[users.UpdateRoleRequest]) (*connect.Response[users.UpdateRoleResponse], error)
 	ListRoles(context.Context, *connect.Request[users.ListRolesRequest]) (*connect.Response[users.ListRolesResponse], error)
 	AssignPermissionsToRole(context.Context, *connect.Request[users.AssignPermissionsToRoleRequest]) (*connect.Response[users.RoleResponse], error)
 	RemovePermissionFromRole(context.Context, *connect.Request[users.RemovePermissionRequest]) (*connect.Response[users.RoleResponse], error)
@@ -805,6 +822,12 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceCreateRoleMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	usersServiceUpdateRoleHandler := connect.NewUnaryHandler(
+		UsersServiceUpdateRoleProcedure,
+		svc.UpdateRole,
+		connect.WithSchema(usersServiceUpdateRoleMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	usersServiceListRolesHandler := connect.NewUnaryHandler(
 		UsersServiceListRolesProcedure,
 		svc.ListRoles,
@@ -899,6 +922,8 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 			usersServiceListPermissionsHandler.ServeHTTP(w, r)
 		case UsersServiceCreateRoleProcedure:
 			usersServiceCreateRoleHandler.ServeHTTP(w, r)
+		case UsersServiceUpdateRoleProcedure:
+			usersServiceUpdateRoleHandler.ServeHTTP(w, r)
 		case UsersServiceListRolesProcedure:
 			usersServiceListRolesHandler.ServeHTTP(w, r)
 		case UsersServiceAssignPermissionsToRoleProcedure:
@@ -1020,6 +1045,10 @@ func (UnimplementedUsersServiceHandler) ListPermissions(context.Context, *connec
 
 func (UnimplementedUsersServiceHandler) CreateRole(context.Context, *connect.Request[users.CreateRoleRequest]) (*connect.Response[users.RoleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CreateRole is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) UpdateRole(context.Context, *connect.Request[users.UpdateRoleRequest]) (*connect.Response[users.UpdateRoleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.UpdateRole is not implemented"))
 }
 
 func (UnimplementedUsersServiceHandler) ListRoles(context.Context, *connect.Request[users.ListRolesRequest]) (*connect.Response[users.ListRolesResponse], error) {

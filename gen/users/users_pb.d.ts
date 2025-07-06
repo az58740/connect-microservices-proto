@@ -2085,6 +2085,38 @@ export declare type RoleResponse = Message<"users.RoleResponse"> & {
 export declare const RoleResponseSchema: GenMessage<RoleResponse>;
 
 /**
+ * @generated from message users.UpdateRoleRequest
+ */
+export declare type UpdateRoleRequest = Message<"users.UpdateRoleRequest"> & {
+  /**
+   * @generated from field: users.Role role = 1;
+   */
+  role?: Role;
+};
+
+/**
+ * Describes the message users.UpdateRoleRequest.
+ * Use `create(UpdateRoleRequestSchema)` to create a new message.
+ */
+export declare const UpdateRoleRequestSchema: GenMessage<UpdateRoleRequest>;
+
+/**
+ * @generated from message users.UpdateRoleResponse
+ */
+export declare type UpdateRoleResponse = Message<"users.UpdateRoleResponse"> & {
+  /**
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.UpdateRoleResponse.
+ * Use `create(UpdateRoleResponseSchema)` to create a new message.
+ */
+export declare const UpdateRoleResponseSchema: GenMessage<UpdateRoleResponse>;
+
+/**
  * @generated from message users.AssignPermissionsToRoleRequest
  */
 export declare type AssignPermissionsToRoleRequest = Message<"users.AssignPermissionsToRoleRequest"> & {
@@ -3025,6 +3057,14 @@ export declare const UsersService: GenService<{
     methodKind: "unary";
     input: typeof CreateRoleRequestSchema;
     output: typeof RoleResponseSchema;
+  },
+  /**
+   * @generated from rpc users.UsersService.UpdateRole
+   */
+  updateRole: {
+    methodKind: "unary";
+    input: typeof UpdateRoleRequestSchema;
+    output: typeof UpdateRoleResponseSchema;
   },
   /**
    * @generated from rpc users.UsersService.ListRoles
