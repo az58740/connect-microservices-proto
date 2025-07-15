@@ -1,12 +1,32 @@
-# For details on buf.yaml configuration, visit https://buf.build/docs/configuration/v2/buf-yaml
 version: v2
+
+# Define modules — each Protobuf package directory in your project
 modules:
   - path: proto
+
+# Dependencies — shared across all modules
 deps:
-  - buf.build/googleapis/googleapis
+  - buf.build/googleapis/googleapis  # For google/type/money.proto and others
+
+# Linting configuration — enforce clean, consistent Protobuf style
 lint:
   use:
-    - STANDARD
+    - STANDARD  # Standard lint ruleset
+  except:
+    - IMPORT_USED  # Allow imports that aren't used (useful during development)
+  enum_zero_value_suffix: _UNSPECIFIED  # Enforce zero value suffix convention
+  service_suffix: Service  # Ensure services end with "Service"
+  rpc_allow_same_request_response: false
+  rpc_allow_google_protobuf_empty_requests: false
+  rpc_allow_google_protobuf_empty_responses: false
+  disable_builtin: false
+
+# Breaking change detection — prevent breaking changes in your API
 breaking:
   use:
-    - FILE
+    - FILE  # Conservative default: no breaking changes allowed in the same file
+  ignore_unstable_packages: true  # Ignore unstable packages like v1alpha1, v1beta1
+  disable_builtin: false
+
+# Optional plugins (if you're using any custom lint/breaking rules)
+plugins: []
