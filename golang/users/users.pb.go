@@ -427,31 +427,31 @@ func (Action) EnumDescriptor() ([]byte, []int) {
 type Resource int32
 
 const (
-	Resource_RESOURCE_UNSPECIFIED Resource = 0
-	// Core
-	Resource_USER          Resource = 1
-	Resource_ROLE          Resource = 2
-	Resource_PERMISSION    Resource = 3
-	Resource_UserDashboard Resource = 4
-	// HR
-	Resource_EMPLOYEE    Resource = 10
-	Resource_JOB_POST    Resource = 11
-	Resource_APPLICATION Resource = 12
-	Resource_CONTRACT    Resource = 13
-	// Sales
-	Resource_PRODUCT Resource = 20
-	Resource_ORDER   Resource = 21
-	Resource_INVOICE Resource = 22
-	// Marketing
-	Resource_CAMPAIGN Resource = 30
-	Resource_LEAD     Resource = 31
-	// Support
-	Resource_TICKET Resource = 40
-	// Content
-	Resource_ARTICLE Resource = 50
-	Resource_COMMENT Resource = 51
-	// Finance
-	Resource_PAYMENT Resource = 60
+	Resource_RESOURCE_UNSPECIFIED Resource = 0 // منبع نامشخص (پیش‌فرض)
+	// Core - هسته سیستم
+	Resource_USER          Resource = 1 // کاربر (مدیریت حساب‌های کاربران)
+	Resource_ROLE          Resource = 2 // نقش (تعریف و تخصیص نقش‌ها)
+	Resource_PERMISSION    Resource = 3 // دسترسی (سطوح دسترسی برای نقش‌ها و کاربران)
+	Resource_UserDashboard Resource = 4 // داشبورد کاربر (نمای کلی اطلاعات کاربر)
+	// HR - منابع انسانی
+	Resource_EMPLOYEE    Resource = 10 // کارمند (اطلاعات کارکنان)
+	Resource_JOB_POST    Resource = 11 // آگهی شغلی (موقعیت‌های شغلی منتشر شده)
+	Resource_APPLICATION Resource = 12 // درخواست استخدام (فرم‌ها یا رزومه‌های ارسالی)
+	Resource_CONTRACT    Resource = 13 // قرارداد (مدیریت قراردادهای کاری)
+	// Sales - فروش
+	Resource_PRODUCT Resource = 20 // محصول (کالاها یا خدمات قابل فروش)
+	Resource_ORDER   Resource = 21 // سفارش (ثبت سفارش مشتریان)
+	Resource_INVOICE Resource = 22 // فاکتور (صورتحساب‌های صادر شده)
+	// Marketing - بازاریابی
+	Resource_CAMPAIGN Resource = 30 // کمپین (کمپین‌های تبلیغاتی یا بازاریابی)
+	Resource_LEAD     Resource = 31 // سرنخ فروش (مشتریان بالقوه)
+	// Support - پشتیبانی
+	Resource_TICKET Resource = 40 // تیکت پشتیبانی (درخواست‌های مشتریان)
+	// Content - محتوا
+	Resource_ARTICLE Resource = 50 // مقاله (مطالب یا صفحات منتشر شده)
+	Resource_COMMENT Resource = 51 // نظر (دیدگاه‌های کاربران)
+	// Finance - مالی
+	Resource_PAYMENT Resource = 60 // پرداخت (تراکنش‌های مالی یا دریافتی‌ها)
 )
 
 // Enum value maps for Resource.

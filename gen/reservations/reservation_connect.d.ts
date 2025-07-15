@@ -3,25 +3,31 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AssignServiceToProviderRequest, AssignServiceToProviderResponse, CancelReservationRequest, CancelReservationResponse, CreateFacilityRequest, CreateFacilityResponse, CreateReservationRequest, CreateReservationResponse, CreateServiceRequest, CreateServiceResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteFacilityImageRequest, DeleteFacilityImageResponse, FacilityImage, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetFacilityImagesRequest, GetFacilityImagesResponse, ListAvailableTimeSlotsRequest, ListAvailableTimeSlotsResponse, ListReservationsRequest, ListReservationsResponse } from "./reservation_pb.js";
+import { AddRoomImageRequest, AddRoomImageResponse, AssignServiceToProviderRequest, AssignServiceToProviderResponse, CancelReservationRequest, CancelReservationResponse, CheckRoomAvailabilityRequest, CheckRoomAvailabilityResponse, CreateProviderUnavailabilityRequest, CreateProviderUnavailabilityResponse, CreateReservationRequest, CreateReservationResponse, CreateRoomRequest, CreateRoomResponse, CreateRoomTypeRequest, CreateRoomTypeResponse, CreateServiceRequest, CreateServiceResponse, CreateServiceUnavailabilityRequest, CreateServiceUnavailabilityResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteFacilityImageRequest, DeleteFacilityImageResponse, DeleteProviderUnavailabilityRequest, DeleteProviderUnavailabilityResponse, DeleteRoomImageRequest, DeleteRoomImageResponse, DeleteRoomRequest, DeleteRoomResponse, DeleteRoomTypeRequest, DeleteRoomTypeResponse, DeleteServiceUnavailabilityRequest, DeleteServiceUnavailabilityResponse, Facility, FacilityImage, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetFacilityImagesRequest, GetFacilityImagesResponse, GetRoomImagesRequest, GetRoomImagesResponse, ListAvailableTimeSlotsRequest, ListAvailableTimeSlotsResponse, ListFacilitiesRequest, ListFacilitiesResponse, ListProviderUnavailabilityRequest, ListProviderUnavailabilityResponse, ListReservationsRequest, ListReservationsResponse, ListRoomAvailabilityRequest, ListRoomAvailabilityResponse, ListRoomsRequest, ListRoomsResponse, ListRoomTypesRequest, ListRoomTypesResponse, ListServicesRequest, ListServicesResponse, ListServiceUnavailabilityRequest, ListServiceUnavailabilityResponse, MarkAttendanceRequest, MarkAttendanceResponse, UpdateReservationStatusRequest, UpdateReservationStatusResponse } from "./reservation_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * سرویس رزرو | Reservation Service
+ *
  * @generated from service reservation.ReservationService
  */
 export declare const ReservationService: {
   readonly typeName: "reservation.ReservationService",
   readonly methods: {
     /**
+     * ایجاد یک فسیلیتی جدید | Create a new facility
+     *
      * @generated from rpc reservation.ReservationService.CreateFacility
      */
     readonly createFacility: {
       readonly name: "CreateFacility",
-      readonly I: typeof CreateFacilityRequest,
-      readonly O: typeof CreateFacilityResponse,
+      readonly I: typeof Facility,
+      readonly O: typeof Facility,
       readonly kind: MethodKind.Unary,
     },
     /**
+     * افزودن تصویر به فسیلیتی | Add an image to a facility
+     *
      * @generated from rpc reservation.ReservationService.AddFacilityImage
      */
     readonly addFacilityImage: {
@@ -31,6 +37,8 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * حذف تصویر از فسیلیتی | Delete an image from a facility
+     *
      * @generated from rpc reservation.ReservationService.DeleteFacilityImage
      */
     readonly deleteFacilityImage: {
@@ -40,6 +48,8 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * دریافت تصاویر فسیلیتی | Get images of a facility
+     *
      * @generated from rpc reservation.ReservationService.GetFacilityImages
      */
     readonly getFacilityImages: {
@@ -49,6 +59,8 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * ایجاد سرویس جدید برای یک فسیلیتی | Create a new service for a facility
+     *
      * @generated from rpc reservation.ReservationService.CreateService
      */
     readonly createService: {
@@ -58,6 +70,8 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
+     *
      * @generated from rpc reservation.ReservationService.AssignServiceToProvider
      */
     readonly assignServiceToProvider: {
@@ -67,6 +81,8 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
+     *
      * @generated from rpc reservation.ReservationService.CreateWeeklySchedule
      */
     readonly createWeeklySchedule: {
@@ -76,6 +92,8 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
+     *
      * @generated from rpc reservation.ReservationService.GenerateTimeSlots
      */
     readonly generateTimeSlots: {
@@ -85,6 +103,8 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * ثبت یک رزرو جدید | Create a new reservation
+     *
      * @generated from rpc reservation.ReservationService.CreateReservation
      */
     readonly createReservation: {
@@ -94,6 +114,8 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * لغو رزرو ثبت‌شده | Cancel an existing reservation
+     *
      * @generated from rpc reservation.ReservationService.CancelReservation
      */
     readonly cancelReservation: {
@@ -103,6 +125,30 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
+     *
+     * @generated from rpc reservation.ReservationService.UpdateReservationStatus
+     */
+    readonly updateReservationStatus: {
+      readonly name: "UpdateReservationStatus",
+      readonly I: typeof UpdateReservationStatusRequest,
+      readonly O: typeof UpdateReservationStatusResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * ثبت وضعیت حضور یا عدم حضور کاربر | Mark attendance status for reservation
+     *
+     * @generated from rpc reservation.ReservationService.MarkAttendance
+     */
+    readonly markAttendance: {
+      readonly name: "MarkAttendance",
+      readonly I: typeof MarkAttendanceRequest,
+      readonly O: typeof MarkAttendanceResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * دریافت لیست رزروهای کاربر | List user reservations
+     *
      * @generated from rpc reservation.ReservationService.ListReservations
      */
     readonly listReservations: {
@@ -112,12 +158,223 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * دریافت تایم‌اسلات‌های آزاد برای رزرو | List available time slots
+     *
      * @generated from rpc reservation.ReservationService.ListAvailableTimeSlots
      */
     readonly listAvailableTimeSlots: {
       readonly name: "ListAvailableTimeSlots",
       readonly I: typeof ListAvailableTimeSlotsRequest,
       readonly O: typeof ListAvailableTimeSlotsResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * دریافت لیست مکان‌ها | List all facilities
+     *
+     * @generated from rpc reservation.ReservationService.ListFacilities
+     */
+    readonly listFacilities: {
+      readonly name: "ListFacilities",
+      readonly I: typeof ListFacilitiesRequest,
+      readonly O: typeof ListFacilitiesResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
+     *
+     * @generated from rpc reservation.ReservationService.ListServices
+     */
+    readonly listServices: {
+      readonly name: "ListServices",
+      readonly I: typeof ListServicesRequest,
+      readonly O: typeof ListServicesResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider
+     *
+     * @generated from rpc reservation.ReservationService.CreateProviderUnavailability
+     */
+    readonly createProviderUnavailability: {
+      readonly name: "CreateProviderUnavailability",
+      readonly I: typeof CreateProviderUnavailabilityRequest,
+      readonly O: typeof CreateProviderUnavailabilityResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * دریافت لیست بازه‌های غیبت ارائه‌دهنده | List unavailability periods of a provider
+     *
+     * @generated from rpc reservation.ReservationService.ListProviderUnavailability
+     */
+    readonly listProviderUnavailability: {
+      readonly name: "ListProviderUnavailability",
+      readonly I: typeof ListProviderUnavailabilityRequest,
+      readonly O: typeof ListProviderUnavailabilityResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * حذف بازه‌ی غیبت ارائه‌دهنده | Delete an unavailability period of a provider
+     *
+     * @generated from rpc reservation.ReservationService.DeleteProviderUnavailability
+     */
+    readonly deleteProviderUnavailability: {
+      readonly name: "DeleteProviderUnavailability",
+      readonly I: typeof DeleteProviderUnavailabilityRequest,
+      readonly O: typeof DeleteProviderUnavailabilityResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * ایجاد نوع اتاق | Create room type
+     *
+     * @generated from rpc reservation.ReservationService.CreateRoomType
+     */
+    readonly createRoomType: {
+      readonly name: "CreateRoomType",
+      readonly I: typeof CreateRoomTypeRequest,
+      readonly O: typeof CreateRoomTypeResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * لیست نوع اتاق‌های یک هتل | List room types for a hotel
+     *
+     * @generated from rpc reservation.ReservationService.ListRoomTypes
+     */
+    readonly listRoomTypes: {
+      readonly name: "ListRoomTypes",
+      readonly I: typeof ListRoomTypesRequest,
+      readonly O: typeof ListRoomTypesResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * حذف نوع اتاق | Delete room type
+     *
+     * @generated from rpc reservation.ReservationService.DeleteRoomType
+     */
+    readonly deleteRoomType: {
+      readonly name: "DeleteRoomType",
+      readonly I: typeof DeleteRoomTypeRequest,
+      readonly O: typeof DeleteRoomTypeResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * ایجاد اتاق جدید | Create a room
+     *
+     * @generated from rpc reservation.ReservationService.CreateRoom
+     */
+    readonly createRoom: {
+      readonly name: "CreateRoom",
+      readonly I: typeof CreateRoomRequest,
+      readonly O: typeof CreateRoomResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * لیست اتاق‌های یک هتل | List rooms of a hotel
+     *
+     * @generated from rpc reservation.ReservationService.ListRooms
+     */
+    readonly listRooms: {
+      readonly name: "ListRooms",
+      readonly I: typeof ListRoomsRequest,
+      readonly O: typeof ListRoomsResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * حذف اتاق | Delete a room
+     *
+     * @generated from rpc reservation.ReservationService.DeleteRoom
+     */
+    readonly deleteRoom: {
+      readonly name: "DeleteRoom",
+      readonly I: typeof DeleteRoomRequest,
+      readonly O: typeof DeleteRoomResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * افزودن تصویر به اتاق | Add image to room
+     *
+     * @generated from rpc reservation.ReservationService.AddRoomImage
+     */
+    readonly addRoomImage: {
+      readonly name: "AddRoomImage",
+      readonly I: typeof AddRoomImageRequest,
+      readonly O: typeof AddRoomImageResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * دریافت تصاویر یک اتاق | Get images of a room
+     *
+     * @generated from rpc reservation.ReservationService.GetRoomImages
+     */
+    readonly getRoomImages: {
+      readonly name: "GetRoomImages",
+      readonly I: typeof GetRoomImagesRequest,
+      readonly O: typeof GetRoomImagesResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * حذف تصویر از اتاق | Delete room image
+     *
+     * @generated from rpc reservation.ReservationService.DeleteRoomImage
+     */
+    readonly deleteRoomImage: {
+      readonly name: "DeleteRoomImage",
+      readonly I: typeof DeleteRoomImageRequest,
+      readonly O: typeof DeleteRoomImageResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * بررسی در دسترس بودن اتاق‌ها | Check room availability
+     *
+     * @generated from rpc reservation.ReservationService.CheckRoomAvailability
+     */
+    readonly checkRoomAvailability: {
+      readonly name: "CheckRoomAvailability",
+      readonly I: typeof CheckRoomAvailabilityRequest,
+      readonly O: typeof CheckRoomAvailabilityResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * لیست شب‌هایی که رزرو شده‌اند | List reserved nights for room/service
+     *
+     * @generated from rpc reservation.ReservationService.ListRoomAvailability
+     */
+    readonly listRoomAvailability: {
+      readonly name: "ListRoomAvailability",
+      readonly I: typeof ListRoomAvailabilityRequest,
+      readonly O: typeof ListRoomAvailabilityResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * تعریف زمان‌های عدم دسترسی اتاق | Define room/service unavailability
+     *
+     * @generated from rpc reservation.ReservationService.CreateServiceUnavailability
+     */
+    readonly createServiceUnavailability: {
+      readonly name: "CreateServiceUnavailability",
+      readonly I: typeof CreateServiceUnavailabilityRequest,
+      readonly O: typeof CreateServiceUnavailabilityResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * دریافت لیست زمان‌های عدم دسترسی اتاق | List service unavailability periods
+     *
+     * @generated from rpc reservation.ReservationService.ListServiceUnavailability
+     */
+    readonly listServiceUnavailability: {
+      readonly name: "ListServiceUnavailability",
+      readonly I: typeof ListServiceUnavailabilityRequest,
+      readonly O: typeof ListServiceUnavailabilityResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * حذف زمان عدم دسترسی | Delete service unavailability
+     *
+     * @generated from rpc reservation.ReservationService.DeleteServiceUnavailability
+     */
+    readonly deleteServiceUnavailability: {
+      readonly name: "DeleteServiceUnavailability",
+      readonly I: typeof DeleteServiceUnavailabilityRequest,
+      readonly O: typeof DeleteServiceUnavailabilityResponse,
       readonly kind: MethodKind.Unary,
     },
   }

@@ -2807,104 +2807,140 @@ export const ActionSchema: GenEnum<Action> = /*@__PURE__*/
  */
 export enum Resource {
   /**
+   * منبع نامشخص (پیش‌فرض)
+   *
    * @generated from enum value: RESOURCE_UNSPECIFIED = 0;
    */
   RESOURCE_UNSPECIFIED = 0,
 
   /**
-   * Core
+   * Core - هسته سیستم
+   *
+   * کاربر (مدیریت حساب‌های کاربران)
    *
    * @generated from enum value: USER = 1;
    */
   USER = 1,
 
   /**
+   * نقش (تعریف و تخصیص نقش‌ها)
+   *
    * @generated from enum value: ROLE = 2;
    */
   ROLE = 2,
 
   /**
+   * دسترسی (سطوح دسترسی برای نقش‌ها و کاربران)
+   *
    * @generated from enum value: PERMISSION = 3;
    */
   PERMISSION = 3,
 
   /**
+   * داشبورد کاربر (نمای کلی اطلاعات کاربر)
+   *
    * @generated from enum value: UserDashboard = 4;
    */
   UserDashboard = 4,
 
   /**
-   * HR
+   * HR - منابع انسانی
+   *
+   * کارمند (اطلاعات کارکنان)
    *
    * @generated from enum value: EMPLOYEE = 10;
    */
   EMPLOYEE = 10,
 
   /**
+   * آگهی شغلی (موقعیت‌های شغلی منتشر شده)
+   *
    * @generated from enum value: JOB_POST = 11;
    */
   JOB_POST = 11,
 
   /**
+   * درخواست استخدام (فرم‌ها یا رزومه‌های ارسالی)
+   *
    * @generated from enum value: APPLICATION = 12;
    */
   APPLICATION = 12,
 
   /**
+   * قرارداد (مدیریت قراردادهای کاری)
+   *
    * @generated from enum value: CONTRACT = 13;
    */
   CONTRACT = 13,
 
   /**
-   * Sales
+   * Sales - فروش
+   *
+   * محصول (کالاها یا خدمات قابل فروش)
    *
    * @generated from enum value: PRODUCT = 20;
    */
   PRODUCT = 20,
 
   /**
+   * سفارش (ثبت سفارش مشتریان)
+   *
    * @generated from enum value: ORDER = 21;
    */
   ORDER = 21,
 
   /**
+   * فاکتور (صورتحساب‌های صادر شده)
+   *
    * @generated from enum value: INVOICE = 22;
    */
   INVOICE = 22,
 
   /**
-   * Marketing
+   * Marketing - بازاریابی
+   *
+   * کمپین (کمپین‌های تبلیغاتی یا بازاریابی)
    *
    * @generated from enum value: CAMPAIGN = 30;
    */
   CAMPAIGN = 30,
 
   /**
+   * سرنخ فروش (مشتریان بالقوه)
+   *
    * @generated from enum value: LEAD = 31;
    */
   LEAD = 31,
 
   /**
-   * Support
+   * Support - پشتیبانی
+   *
+   * تیکت پشتیبانی (درخواست‌های مشتریان)
    *
    * @generated from enum value: TICKET = 40;
    */
   TICKET = 40,
 
   /**
-   * Content
+   * Content - محتوا
+   *
+   * مقاله (مطالب یا صفحات منتشر شده)
    *
    * @generated from enum value: ARTICLE = 50;
    */
   ARTICLE = 50,
 
   /**
+   * نظر (دیدگاه‌های کاربران)
+   *
    * @generated from enum value: COMMENT = 51;
    */
   COMMENT = 51,
 
   /**
-   * Finance
+   * Finance - مالی
+   *
+   * پرداخت (تراکنش‌های مالی یا دریافتی‌ها)
    *
    * @generated from enum value: PAYMENT = 60;
    */

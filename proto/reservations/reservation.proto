@@ -1,50 +1,239 @@
+
 syntax = "proto3";
 
 package reservation;
 option go_package = "github.com/az58740/connect-microservices-proto/golang/reservations;reservations";
 
 import "google/protobuf/timestamp.proto";
+import "users/users.proto";
+import "google/type/money.proto";
 
 // ========== ENUMS ==========
 
 // نوع مالک تایم‌اسلات — تعیین می‌کند که تایم‌اسلات متعلق به فرد است یا فضای مشترک
 // TimeSlot owner type — defines whether it's owned by an individual (e.g., doctor) or shared (e.g., room)
 enum OwnerType {
-  INDIVIDUAL = 0; // شخصی (مانند پزشک یا آرایشگر)
-  SHARED = 1;     // اشتراکی (مانند میز یا سالن)
+  INDIVIDUAL = 0; // شخصی (مانند پزشک یا آرایشگر) | Individual (like doctor, hairdresser)
+  SHARED = 1;     // اشتراکی (مانند میز یا سالن) | Shared (like room or hall)
 }
 
-// وضعیت رزرو
-// Reservation status
+// وضعیت رزرو | Reservation status
 enum ReservationStatus {
-  PENDING = 0;     // در انتظار تأیید
-  CONFIRMED = 1;   // تأیید شده
-  CANCELLED = 2;   // لغو شده
-  COMPLETED = 3;   // انجام شده
+  PENDING = 0;     // در انتظار تأیید | Waiting for confirmation
+  CONFIRMED = 1;   // تأیید شده | Confirmed
+  CANCELLED = 2;   // لغو شده | Cancelled
+  COMPLETED = 3;   // انجام شده | Completed
 }
 
-// روزهای هفته
-// Days of the week
+// روزهای هفته | Days of the week
 enum WeekDay {
-  SATURDAY = 0;
-  SUNDAY = 1;
-  MONDAY = 2;
-  TUESDAY = 3;
-  WEDNESDAY = 4;
-  THURSDAY = 5;
-  FRIDAY = 6;
+  SATURDAY = 0;   // شنبه | Saturday
+  SUNDAY = 1;     // یکشنبه | Sunday
+  MONDAY = 2;     // دوشنبه | Monday
+  TUESDAY = 3;    // سه‌شنبه | Tuesday
+  WEDNESDAY = 4;  // چهارشنبه | Wednesday
+  THURSDAY = 5;   // پنج‌شنبه | Thursday
+  FRIDAY = 6;     // جمعه | Friday
 }
 
-// ========== ENTITIES ==========
+// وضعیت حضور | Attendance status
+enum AttendanceStatus {
+  UNKNOWN_Status = 0;   // نامشخص | Unknown
+  ATTENDED = 1;  // حضور داشته | Attended
+  NO_SHOW = 2;   // عدم حضور | No-show
+}
 
+enum FacilityGroup {
+  UNKNOWN_GROUP = 0;
+
+  // 1. خدمات پزشکی و درمانی
+  MEDICAL_SERVICES = 1;     // شامل: بیمارستان، کلینیک، داروخانه، آزمایشگاه
+
+  // 2. سالن‌های آرایشی و زیبایی
+  BEAUTY_SALONS = 2;        // شامل: سالن زیبایی، آرایشگاه، اسپا، ...
+
+  // 3. سالن‌های ورزشی و تناسب اندام
+  SPORTS_CLUBS = 3;         // شامل: باشگاه بدنسازی، یوگا، استخر و ...
+
+  // 4. فروشگاه‌ها (خرده‌فروشی)
+  RETAIL_STORES = 4;        // شامل: خواربارفروشی، لوازم الکترونیکی، پوشاک، حیوانات خانگی
+
+  // 5. مراکز خرید (مرکزی، عمده و چند منظوره)
+  SHOPPING_CENTERS = 5;     // شامل: مراکز خرید (مول)، هایپرمارکت، مرکز خرید عمده
+
+  // 6. سرگرمی
+  ENTERTAINMENT = 6;        // شامل: سینما، گیم‌نت، مرکز بازی
+
+  // 7. مراکز اقامتی
+  ACCOMMODATION = 7;        // شامل: هتل، متل، هاستل، مهمان‌سرایی
+
+  // 8. غذا و نوشیدنی
+  FOOD_AND_BEVERAGE = 8;    // شامل: رستوران، کافی‌شاپ، فست‌فود
+
+  // 9. مراکز آموزشی
+  EDUCATIONAL_CENTERS = 9;  // شامل: آموزشگاه، مدرسه، کلاس خصوصی
+
+  // 10. خدمات حرفه‌ای و حقوقی
+  PROFESSIONAL_SERVICES = 10; // شامل: وکالت، مشاوره، حسابداری، املاک
+
+  // 11. صنعت و تولید
+  INDUSTRIAL_FACILITIES = 11; // شامل: کارخانه، انبار، لجستیک
+
+  // 12. فعالیت‌های آنلاین
+  ONLINE_BUSINESSES = 12;    // شامل: فروشگاه اینترنتی، فریلنسرها
+}
+// عنوان یا نوع کسب‌وکار، مرکز، یا شغل | Business type, workplace, or job title
+enum FacilityTitle {
+  UNKNOWN = 0;     // نامشخص | Unknown
+
+  // گروه: MEDICAL_SERVICES — خدمات پزشکی و درمانی
+  CLINIC = 1;              // کلینیک | Clinic
+  HOSPITAL = 2;            // بیمارستان | Hospital
+  LABORATORY = 3;          // آزمایشگاه | Laboratory
+  PHARMACY = 4;            // داروخانه | Pharmacy
+  DENTAL_CLINIC = 5;       // کلینیک دندانپزشکی | Dental Clinic
+  PHYSIOTHERAPY_CENTER = 6; // مرکز فیزیوتراپی | Physiotherapy Center
+  VETERINARY_CLINIC = 7;   // کلینیک دامپزشکی | Veterinary Clinic
+
+  // متخصصین پزشکی
+  GENERAL_PHYSICIAN = 8;      // پزشک عمومی | General Physician
+  DENTIST = 9;                 // دندانپزشک | Dentist
+  CARDIOLOGIST = 10;           // متخصص قلب و عروق | Cardiologist
+  NEUROLOGIST = 11;            // متخصص مغز و اعصاب | Neurologist
+  PEDIATRICIAN = 12;           // متخصص کودکان | Pediatrician
+  DERMATOLOGIST = 13;          // متخصص پوست | Dermatologist
+  ORTHOPEDIC_SURGEON = 14;     // متخصص ارتوپدی / جراحی استخوان | Orthopedic Surgeon
+  GYNECOLOGIST = 15;           // متخصص زنان و زایمان | Gynecologist
+  EYE_SPECIALIST = 16;         // متخصص چشم | Ophthalmologist / Eye Specialist
+  ENT_SPECIALIST = 17;         // متخصص گوش و حنجره | Ear, Nose and Throat Specialist (ENT)
+  PSYCHIATRIST = 18;           // متخصص روانپزشکی | Psychiatrist
+  DIETITIAN = 19;              // متخصص تغذیه | Dietitian / Nutritionist
+  UROLOGIST = 20;              // متخصص ادراری و تناسلی | Urologist
+  ONCOLOGIST = 21;             // متخصص سرطان | Oncologist
+  SURGEON = 22;                // جراح عمومی | General Surgeon
+  ANESTHESIOLOGIST = 23;       // متخصص بیهوشی | Anesthesiologist
+  RADIOLOGIST = 24;            // متخصص تصویربرداری | Radiologist
+
+  // گروه: BEAUTY_SALONS — سالن‌های زیبایی و آرایشی
+  BEAUTY_SALON = 25;        // سالن زیبایی | Beauty Salon
+  BARBERSHOP = 26;          // آرایشگاه مردانه | Barbershop
+  SPA = 27;                 // اسپا | Spa or Massage Center
+  COSMETICS_STORE = 28;     // فروشگاه لوازم آرایشی | Cosmetics Store
+  HYGIENE_STORE = 29;       // فروشگاه مواد شوینده و بهداشتی | Hygiene Store
+
+  // گروه: SPORTS_CLUBS — باشگاه‌های ورزشی و تناسب اندام
+  GYM = 30;                 // باشگاه بدنسازی | Gym
+  SWIMMING_POOL = 31;       // استخر | Swimming Pool
+  YOGA_CENTER = 32;         // مرکز یوگا | Yoga Center
+  SPORTS_CLUB = 33;         // باشگاه ورزشی عمومی | Sports Club
+
+  // گروه: RETAIL_STORES — فروشگاه‌های خرد
+  GROCERY_STORE = 34;       // خواربارفروشی | Grocery Store
+  CLOTHING_STORE = 35;      // فروشگاه پوشاک | Clothing Store
+  ELECTRONICS_STORE = 36;   // فروشگاه الکترونیک | Electronics Store
+  PET_SHOP = 37;            // فروشگاه حیوانات خانگی | Pet Shop
+  BOOKSTORE = 38;           // کتاب‌فروشی | Bookstore
+  TOY_STORE = 39;           // فروشگاه اسباب‌بازی | Toy Store
+
+  // گروه: SHOPPING_CENTERS — مراکز خرید و هایپرمارکت
+  SHOPPING_MALL = 40;       // مرکز خرید (مول) | Shopping Mall
+  HYPERMARKET = 41;         // هایپرمارکت | Hypermarket
+  MARKETPLACE = 42;         // مجتمع فروشندگان | Marketplace / Bazaar
+
+  // گروه: ENTERTAINMENT — سرگرمی
+  CINEMA = 43;              // سینما | Cinema
+  GAME_CENTER = 44;         // مرکز بازی / گیم‌نت | Game Center
+  PLAYGROUND = 45;          // پارک بازی | Playground
+  THEATER = 46;             // تئاتر | Theater
+
+  // گروه: ACCOMMODATION — مراکز اقامتی
+  HOTEL = 47;               // هتل | Hotel
+  MOTEL = 48;               // متل | Motel
+  HOSTEL = 49;              // هاستل | Hostel
+  RESORT = 50;              // رزورت | Resort
+  CAMPING_SITE = 51;        // کمپینگ | Camping Site
+
+  // گروه: FOOD_AND_BEVERAGE — غذا و نوشیدنی
+  RESTAURANT = 52;          // رستوران | Restaurant
+  FAST_FOOD = 53;           // فست‌فود | Fast Food
+  CAFE = 54;                // کافی‌شاپ | Cafe
+  COFFEE_SHOP = 55;         // قهوه‌خانه | Coffee Shop
+  BAKERY = 56;              // نانوایی / کیک‌پزی | Bakery / Cake Shop
+
+  // گروه: EDUCATIONAL_CENTERS — مراکز آموزشی
+  SCHOOL = 57;              // مدرسه | School
+  UNIVERSITY = 58;          // دانشگاه | University
+  LANGUAGE_SCHOOL = 59;     // آموزشگاه زبان | Language School
+  TUTORING_CENTER = 60;     // مرکز تدریس خصوصی | Tutoring Center
+  CODING_BOOTCAMP = 61;     // دوره‌های کدنویسی | Coding Bootcamp
+
+  // گروه: PROFESSIONAL_SERVICES — خدمات حرفه‌ای
+  LAW_FIRM = 62;            // دفتر حقوقی | Law Firm
+  ACCOUNTING_OFFICE = 63;   // دفتر حسابداری | Accounting Office
+  CONSULTING_FIRM = 64;     // شرکت مشاوره | Consulting Firm
+  REAL_ESTATE_AGENCY = 65;  // آژانس املاک | Real Estate Agency
+  INSURANCE_AGENCY = 66;    // نمایندگی بیمه | Insurance Agency
+  TRAVEL_AGENCY = 67;       // آژانس مسافرتی | Travel Agency
+
+  // گروه: INDUSTRIAL_FACILITIES — صنعت و تولید
+  MANUFACTURING_PLANT = 68; // کارخانه تولید | Manufacturing Plant
+  WAREHOUSE = 69;           // انبار | Warehouse
+  LOGISTICS_CENTER = 70;    // مرکز لجستیک | Logistics Center
+  FACTORY = 71;             // کارخانه عمومی | Factory
+
+  // گروه: ONLINE_BUSINESSES — فعالیت‌های آنلاین
+  FREELANCE_PROFESSIONAL = 72; // فریلنسر | Freelance Professional
+  ONLINE_SHOP = 73;            // فروشگاه اینترنتی | Online Shop
+  REMOTE_WORKSPACE = 74;       // محیط کار آنلاین | Remote Workspace
+}
+enum FacilityType {
+  Facility_BOOKABLE = 0;         // قابل رزرو (مثلاً آرایشگاه، پزشک)
+  Facility_PURCHASABLE = 1;      // قابل خرید (مثلاً فروشگاه)
+  Facility_HYBRID = 2;           // ترکیبی
+  Facility_ACCOMMODATION = 3;    // فسیلیتی اقامتی مثل هتل یا هاستل
+}
+// نوع‌های استاندارد اتاق | Standard room type codes
+enum RoomTypeCode {
+  ROOM_TYPE_UNSPECIFIED = 0; // نامشخص | Unspecified
+  SINGLE = 1;                // یک‌تخته | Single
+  DOUBLE = 2;                // دوتخته | Double
+  TWIN = 3;                  // دو تخت جدا | Twin
+  SUITE = 4;                 // سوئیت | Suite
+  FAMILY = 5;                // خانوادگی | Family
+  KING = 6;                  // کینگ | King
+  QUEEN = 7;                 // کوئین | Queen
+}
+enum Status {
+  ACTIVE = 0;     // پیش‌فرض: فعال
+  INACTIVE = 1;   // غیرفعال
+}
+// ========== ENTITIES ==========
+// رشته قابل ترجمه در چند زبان | Translatable string with multiple languages
+message LocalizedString {
+  string fa = 1;  // فارسی
+  string en = 2;  // انگلیسی
+  string ar = 3;  // عربی
+}
 // فسیلیتی یا مکان — مانند مطب، آرایشگاه، هتل، باشگاه
 // Facility such as a clinic, salon, hotel, or gym
 message Facility {
-  string id = 1; // شناسه یکتا | Unique facility ID
-  string name = 2; // نام مکان | Name of the facility
-  string description = 3; // توضیحات | Description
-  string type = 4; // نوع فسیلیتی مانند "SALON", "HOTEL", "CLINIC" | Type of the facility
-  string owner_user_id = 5; // شناسه کاربر صاحب فسیلیتی | User ID of the facility owner
+  string id = 1;                    // شناسه منحصر به فرد
+  LocalizedString name = 2;                  // نام ساختار (مثلاً "کلینیک دکتر محمدی")
+  FacilityTitle title = 3;          // نوع ساختاری (کلینیک، سالن، هتل و ...)
+  FacilityType type = 4;            // کاربرد (رزرو، خرید، ترکیبی)
+  FacilityGroup group = 5;          // گروه‌بندی موضوعی
+  Status status = 6;                // وضعیت: فعال / غیرفعال
+}
+// سرویس یا خدمت قابل ارائه در فسیلیتی
+// Service offered in a facility
+message Service {
+  string id = 1; // شناسه یکتا | Unique service ID
+  string facility_id = 2; // شناسه فسیلیتی که این سرویس به آن تعلق دارد | Associated facility ID
+  LocalizedString name = 3; // نام سرویس مانند "کوتاهی مو" یا "ویزیت عمومی" | Service name
+  optional  LocalizedString description = 4; // توضیحات | Description 
+  bool is_available = 5;
+  optional int32 default_duration_minutes = 6; // مدت پیش‌فرض | Default duration
+  optional google.type.Money default_price = 7; // قیمت پیش‌فرض | Default price
 }
 // تصویر مرتبط با یک فسیلیتی مانند عکس اتاق یا نمای بیرونی
 // Image related to a facility, like room photo or exterior view
@@ -52,58 +241,126 @@ message FacilityImage {
   string id = 1;                // شناسه یکتا | Unique image ID
   string facility_id = 2;       // شناسه فسیلیتی | Related Facility ID
   string url = 3;               // مسیر یا لینک فایل تصویر | URL or file path to the image
-  string title = 4;             // عنوان اختیاری | Optional image title
-  string description = 5;       // توضیح تصویر | Optional image description
-  google.protobuf.Timestamp uploaded_at = 6; // زمان آپلود | Upload timestamp
+  LocalizedString title = 4;             // عنوان اختیاری | Optional image title
+  LocalizedString description = 5;       // توضیح تصویر | Optional image description
+  Status status = 6;                // وضعیت: فعال / غیرفعال
 }
-// سرویس یا خدمت قابل ارائه در فسیلیتی
-// Service offered in a facility
-message Service {
-  string id = 1; // شناسه یکتا | Unique service ID
-  string facility_id = 2; // شناسه فسیلیتی | Associated facility ID
-  string name = 3; // نام سرویس مانند "کوتاهی مو" یا "ویزیت عمومی" | Service name
-  string description = 4; // توضیحات | Description
-  int32 duration_minutes = 5; // مدت زمان سرویس به دقیقه | Duration in minutes
-  double price = 6; // قیمت سرویس | Service price
-}
-
 // نگاشت بین سرویس و ارائه‌دهنده خاص
 // Mapping of service to a specific provider
 message ProviderService {
   string id = 1;
   string service_id = 2;
-  string provider_user_id = 3; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
+  users.User provider_user = 3; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
   bool is_available = 4; // آیا ارائه می‌شود یا نه
+  // اگر مقداردهی شوند، جایگزین مقدار پیش‌فرض می‌شوند
+  optional google.type.Money price = 5;          // قیمت اختصاصی این provider
+  optional int32 duration_minutes = 6;           // مدت اختصاصی این provider
 }
-// برنامه‌ زمانی تکرارشونده‌ی سرویس‌دهنده در یک روز خاص
-// Weekly repeating schedule for a provider
+// برنامه‌ زمانی تکرارشونده‌ی سرویس‌دهنده در یک روز خاص  
+// Weekly recurring availability for provider
 message WeeklySchedule {
   string id = 1;
   string provider_user_id = 2;
-  WeekDay day = 3; // روز هفته
-  string start_time = 4; // ساعت شروع (مانند "09:00")
-  string end_time = 5; // ساعت پایان (مانند "17:00")
-  string facility_id = 6; // مکان مرتبط
-  string service_id = 7; // سرویس مرتبط (اختیاری)
+  WeekDay day = 3;                     // روز هفته | Day of the week (e.g. Saturday)
+  string start_time = 4;              // ساعت شروع (HH:mm) مثل "09:00"
+  string end_time = 5;                // ساعت پایان (HH:mm) مثل "17:00"
+  string facility_id = 6;             // مکان مرتبط | Facility ID
+  optional string service_id = 7;     // سرویس خاص، اختیاری | Optional service ID
+  Status status = 8;                  // وضعیت فعال یا غیرفعال
 }
-// تایم‌اسلات — بازه‌ زمانی دقیق رزرو
-// TimeSlot — precise slot available for reservation
+
+// بازه‌ زمانی رزروپذیر (تولیدشده یا دستی)  
+// Exact time slot for reservation
 message TimeSlot {
   string id = 1;
   string provider_user_id = 2;
   google.protobuf.Timestamp start_time = 3;
   google.protobuf.Timestamp end_time = 4;
-  OwnerType owner_type = 5;
-  bool is_reserved = 6;
-  string weekly_schedule_id = 7;
+  OwnerType owner_type = 5;            // فردی یا اشتراکی
+  bool is_reserved = 6;                // آیا رزرو شده یا نه
+  optional string weekly_schedule_id = 7; // منبع ساخت (در صورت تولید خودکار)
   string facility_id = 8;
-  string service_id = 9;
+  optional string service_id = 9;
+
+  enum SlotSource {
+    GENERATED_FROM_WEEKLY = 0; // تولیدشده از برنامه هفتگی
+    MANUAL = 1;                // وارد شده به صورت دستی
+  }
+  SlotSource source = 10;
+  Status status = 11; // فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
+}
+// بازه‌های عدم دسترسی ارائه‌دهنده (برای کل روز یا ساعاتی خاص)
+// Periods when the provider is not available (full day or specific hours)
+message ProviderUnavailability {
+  string id = 1;
+  string provider_user_id = 2;                // شناسه ارائه‌دهنده | Provider user ID
+  google.protobuf.Timestamp date = 3;         // تاریخ غیبت | Specific date (e.g. 2025-07-15)
+  optional string start_time = 4;             // ساعت شروع (مثلاً "09:00") | Optional start time
+  optional string end_time = 5;               // ساعت پایان (مثلاً "12:00") | Optional end time
+  optional string reason = 6;                 // دلیل اختیاری (مثلاً مرخصی، سفر و ...) | Optional reason
+  bool full_day = 7;                          // آیا کل روز غیرفعال است؟ | Is it a full-day off?
+  Status status = 8;                          // فعال / غیرفعال
+}
+
+message RoomAvailability {
+  string id = 1;
+  string service_id = 2;
+  google.protobuf.Timestamp date = 3; // تاریخ شب
+  bool is_reserved = 4;
+}
+message ServiceUnavailability {
+  string id = 1;
+  string service_id = 2; // اتاق خاص
+  google.protobuf.Timestamp from = 3;
+  google.protobuf.Timestamp to = 4;
+  string reason = 5;
+}
+// اطلاعات نوع اتاق در هتل | Hotel room type definition
+message RoomType {
+  string id = 1;
+  string facility_id = 2;                    // شناسه هتل | Hotel/facility ID
+  RoomTypeCode type_code = 3;                // کد نوع اتاق استاندارد | Standard room type code
+  LocalizedString custom_name = 4;           // نام سفارشی توسط ادمین | Custom name (optional)
+  LocalizedString description = 5;           // توضیحات | Description
+
+  int32 capacity = 6;                        // ظرفیت | Max guest capacity
+  int32 bed_count = 7;                       // تعداد تخت | Bed count
+  string bed_type = 8;                       // نوع تخت | Bed type (Single, Double, King...)
+
+  bool has_private_bathroom = 9;             // حمام اختصاصی | Private bathroom
+  bool has_air_conditioning = 10;            // تهویه مطبوع | Air conditioning
+  bool has_tv = 11;                          // تلویزیون | TV
+  bool has_wifi = 12;                        // وای‌فای | WiFi
+  bool has_balcony = 13;                     // بالکن | Balcony
+  bool is_smoking_allowed = 14;              // مجاز بودن سیگار | Smoking allowed
+
+  optional google.type.Money base_price = 15;         // قیمت پایه | Base price
+  Status status = 16;                        // وضعیت: فعال/غیرفعال | Status
+}
+// اطلاعات یک اتاق واقعی در هتل | Physical room information in a hotel
+message Room {
+  string id = 1;
+  string facility_id = 2;              // شناسه هتل | Hotel/facility ID
+  string room_type_id = 3;             // شناسه نوع اتاق | Associated RoomType ID
+  string room_number = 4;              // شماره یا نام اتاق | Room number or label (e.g., 101, A1)
+
+  repeated RoomImage images = 5;       // تصاویر اتاق | Room images
+  Status status = 6;                   // وضعیت: فعال، غیرفعال، در حال تعمیر | Status (Available, Maintenance, etc.)
+}
+// تصویرهای اتاق | Room images
+message RoomImage {
+  string id = 1;                      // شناسه یکتا | Unique image ID
+  string room_id = 2;                 // شناسه اتاق | Room ID this image belongs to
+  string url = 3;                     // لینک یا مسیر فایل تصویر | Image URL or file path
+  LocalizedString title = 4;         // عنوان تصویر (اختیاری) | Optional image title
+  LocalizedString description = 5;   // توضیح تصویر (اختیاری) | Optional image description
+  Status status = 6;                 // وضعیت: فعال / غیرفعال | Active / Inactive
 }
 // رزرو ثبت‌شده توسط کاربر
 // Reservation made by user
 message Reservation {
   string id = 1;
-  string user_id = 2; // کاربر رزروکننده
+  users.User user= 2; // کاربر رزروکننده
   string provider_user_id = 3; // سرویس‌دهنده
   string service_id = 4;
   string facility_id = 5;
@@ -115,109 +372,384 @@ message Reservation {
 
 // ========== REQUEST / RESPONSE MESSAGES ==========
 
+// ایجاد فسیلیتی | Create a facility
 message CreateFacilityRequest {
-  Facility facility = 1;
+  Facility facility = 1; // فسیلیتی برای ثبت | Facility to create
 }
 message CreateFacilityResponse {
-  string id = 1;
-  string message = 2;
+  string id = 1;       // شناسه فسیلیتی ایجاد شده | Created facility ID
+  string message = 2;  // پیام موفقیت یا خطا | Success or error message
 }
+
+// افزودن تصویر به فسیلیتی | Add image to facility
+message AddFacilityImageRequest {
+  FacilityImage image = 1; // اطلاعات تصویر | Image info
+}
+message AddFacilityImageResponse {
+  string id = 1;       // شناسه تصویر آپلود شده | Uploaded image ID
+  string message = 2;  // پیام موفقیت یا خطا | Success or error message
+}
+
+// حذف تصویر فسیلیتی | Delete facility image
 message DeleteFacilityImageRequest {
-  string image_id = 1;
+  string image_id = 1; // شناسه تصویر | Image ID
 }
 message DeleteFacilityImageResponse {
-  string message = 1;
+  string message = 1;  // پیام موفقیت یا خطا | Success or error message
 }
-// دریافت لیست تصاویر یک فسیلیتی
+
+// دریافت تصاویر فسیلیتی | Get images of a facility
 message GetFacilityImagesRequest {
-  string facility_id = 1;
+  string facility_id = 1; // شناسه فسیلیتی | Facility ID
 }
 message GetFacilityImagesResponse {
-  repeated FacilityImage images = 1;
+  repeated FacilityImage images = 1; // لیست تصاویر | List of images
 }
 
+// ایجاد سرویس | Create a service
 message CreateServiceRequest {
-  Service service = 1;
+  Service service = 1; // اطلاعات سرویس | Service info
 }
 message CreateServiceResponse {
-  string id = 1;
-  string message = 2;
+  string id = 1;       // شناسه سرویس | Service ID
+  string message = 2;  // پیام موفقیت یا خطا | Success or error message
 }
 
+// اختصاص سرویس به ارائه‌دهنده | Assign service to provider
 message AssignServiceToProviderRequest {
-  string service_id = 1;
-  string provider_user_id = 2;
+  string service_id = 1;         // شناسه سرویس | Service ID
+  string provider_user_id = 2;   // شناسه کاربر ارائه‌دهنده | Provider user ID
 }
 message AssignServiceToProviderResponse {
-  string message = 1;
+  string message = 1;  // پیام موفقیت | Success message
 }
 
+// ایجاد برنامه هفتگی | Create weekly schedule
 message CreateWeeklyScheduleRequest {
-  WeeklySchedule schedule = 1;
+  WeeklySchedule schedule = 1; // برنامه زمانی | Weekly schedule
 }
 message CreateWeeklyScheduleResponse {
-  string id = 1;
+  string id = 1;  // شناسه برنامه | Schedule ID
 }
 
+// تولید تایم‌اسلات بر اساس برنامه هفتگی | Generate timeslots from weekly schedule
 message GenerateTimeSlotsRequest {
-  string weekly_schedule_id = 1;
+  string weekly_schedule_id = 1; // شناسه برنامه هفتگی | Weekly schedule ID
 }
 message GenerateTimeSlotsResponse {
-  repeated TimeSlot time_slots = 1;
+  repeated TimeSlot time_slots = 1; // لیست تایم‌اسلات‌های ایجاد شده | Generated time slots
 }
 
+// ایجاد رزرو | Create a reservation
 message CreateReservationRequest {
-  string user_id = 1;
-  string provider_user_id = 2;
-  string service_id = 3;
-  string time_slot_id = 4;
-  string notes = 5;
+  string user_id = 1;             // شناسه کاربر رزروکننده | User ID
+  string provider_user_id = 2;    // شناسه ارائه‌دهنده | Provider user ID
+  string service_id = 3;          // شناسه سرویس | Service ID
+  string time_slot_id = 4;        // شناسه تایم‌اسلات | TimeSlot ID
+  string notes = 5;               // یادداشت‌های کاربر | Optional notes
 }
 message CreateReservationResponse {
-  string reservation_id = 1;
+  string reservation_id = 1;      // شناسه رزرو | Reservation ID
+  string message = 2;             // پیام موفقیت یا خطا | Success or error message
+}
+
+// لغو رزرو | Cancel reservation
+message CancelReservationRequest {
+  string reservation_id = 1;  // شناسه رزرو | Reservation ID
+}
+message CancelReservationResponse {
+  string message = 1;  // پیام موفقیت | Success message
+}
+
+// ثبت وضعیت حضور | Mark attendance
+message MarkAttendanceRequest {
+  string reservation_id = 1;      // شناسه رزرو | Reservation ID
+  AttendanceStatus status = 2;   // وضعیت حضور | Attendance status
+}
+message MarkAttendanceResponse {
+  string message = 1;  // پیام موفقیت | Success message
+}
+
+// دریافت لیست رزروها | List reservations
+message ListReservationsRequest {
+  string user_id = 1;              // شناسه کاربر | User ID
+  optional string status = 2;      // فیلتر بر اساس وضعیت | Filter by status
+}
+message ListReservationsResponse {
+  repeated Reservation reservations = 1; // لیست رزروها | List of reservations
+}
+
+// دریافت تایم‌اسلات‌های آزاد | List available time slots
+message ListAvailableTimeSlotsRequest {
+  string provider_user_id = 1;         // شناسه ارائه‌دهنده | Provider ID
+  string service_id = 2;               // شناسه سرویس | Service ID
+  string facility_id = 3;              // شناسه مکان | Facility ID
+  google.protobuf.Timestamp from = 4;  // از تاریخ | From timestamp
+  google.protobuf.Timestamp to = 5;    // تا تاریخ | To timestamp
+}
+message ListAvailableTimeSlotsResponse {
+  repeated TimeSlot time_slots = 1; // لیست تایم‌اسلات‌های آزاد | List of available time slots
+}
+message UpdateReservationStatusRequest {
+  string reservation_id = 1;         // شناسه رزرو | Reservation ID
+  ReservationStatus status = 2;     // وضعیت جدید | New status
+}
+message UpdateReservationStatusResponse {
+  string message = 1;               // پیام موفقیت یا خطا | Success or error message
+}
+
+message ListFacilitiesRequest {
+  optional string owner_user_id = 1; // شناسه صاحب فسیلیتی | Optional owner ID filter
+}
+message ListFacilitiesResponse {
+  repeated Facility facilities = 1;  // لیست فسیلیتی‌ها | List of facilities
+}
+
+message ListServicesRequest {
+  string facility_id = 1;            // شناسه فسیلیتی | Facility ID
+}
+message ListServicesResponse {
+  repeated Service services = 1;     // لیست سرویس‌ها | List of services
+}
+// ایجاد عدم دسترسی برای ارائه‌دهنده | Create unavailability for a provider
+message CreateProviderUnavailabilityRequest {
+  ProviderUnavailability unavailability = 1; // اطلاعات بازه‌ی غیبت | Unavailability data
+}
+
+// پاسخ ایجاد عدم دسترسی | Response for creating unavailability
+message CreateProviderUnavailabilityResponse {
+  string id = 1;         // شناسه غیبت ثبت‌شده | Created unavailability ID
+  string message = 2;    // پیام موفقیت یا خطا | Success or error message
+}
+
+// دریافت لیست بازه‌های غیبت ارائه‌دهنده | List unavailability periods for a provider
+message ListProviderUnavailabilityRequest {
+  string provider_user_id = 1;             // شناسه ارائه‌دهنده | Provider ID
+  optional google.protobuf.Timestamp from = 2; // فیلتر از تاریخ | Optional from date
+  optional google.protobuf.Timestamp to = 3;   // فیلتر تا تاریخ | Optional to date
+}
+
+// پاسخ لیست غیبت‌ها | Response with list of unavailability periods
+message ListProviderUnavailabilityResponse {
+  repeated ProviderUnavailability items = 1; // لیست بازه‌های غیبت | List of unavailability items
+}
+
+// حذف یک بازه‌ی غیبت | Delete an unavailability period
+message DeleteProviderUnavailabilityRequest {
+  string id = 1; // شناسه بازه‌ی غیبت | Unavailability ID
+}
+
+// پاسخ حذف غیبت | Response for delete request
+message DeleteProviderUnavailabilityResponse {
+  string message = 1; // پیام موفقیت یا خطا | Success or error message
+}
+// ================= RoomType =================
+message CreateRoomTypeRequest {
+  RoomType room_type = 1; // اطلاعات نوع اتاق | RoomType info
+}
+
+message CreateRoomTypeResponse {
+  string id = 1;
   string message = 2;
 }
 
-message CancelReservationRequest {
-  string reservation_id = 1;
+message ListRoomTypesRequest {
+  string facility_id = 1; // شناسه هتل | Hotel ID
 }
-message CancelReservationResponse {
+
+message ListRoomTypesResponse {
+  repeated RoomType items = 1;
+}
+
+message DeleteRoomTypeRequest {
+  string id = 1; // شناسه نوع اتاق | RoomType ID
+}
+
+message DeleteRoomTypeResponse {
   string message = 1;
 }
 
-message ListReservationsRequest {
-  string user_id = 1;
-  optional string status = 2;
-}
-message ListReservationsResponse {
-  repeated Reservation reservations = 1;
+// ================= Room =================
+message CreateRoomRequest {
+  Room room = 1; // اطلاعات اتاق | Room info
 }
 
-message ListAvailableTimeSlotsRequest {
-  string provider_user_id = 1;
-  string service_id = 2;
-  string facility_id = 3;
+message CreateRoomResponse {
+  string id = 1;
+  string message = 2;
 }
-message ListAvailableTimeSlotsResponse {
-  repeated TimeSlot time_slots = 1;
+
+message ListRoomsRequest {
+  string facility_id = 1; // شناسه هتل | Hotel ID
 }
+
+message ListRoomsResponse {
+  repeated Room items = 1;
+}
+
+message DeleteRoomRequest {
+  string id = 1; // شناسه اتاق | Room ID
+}
+
+message DeleteRoomResponse {
+  string message = 1;
+}
+
+// ================= RoomImage =================
+message AddRoomImageRequest {
+  RoomImage image = 1; // اطلاعات تصویر | Image info
+}
+
+message AddRoomImageResponse {
+  string id = 1;
+  string message = 2;
+}
+
+message GetRoomImagesRequest {
+  string room_id = 1; // شناسه اتاق | Room ID
+}
+
+message GetRoomImagesResponse {
+  repeated RoomImage items = 1;
+}
+
+message DeleteRoomImageRequest {
+  string id = 1; // شناسه تصویر | Image ID
+}
+
+message DeleteRoomImageResponse {
+  string message = 1;
+}
+
+// ================= RoomAvailability =================
+message CheckRoomAvailabilityRequest {
+  string service_id = 1; // شناسه سرویس | Service ID (e.g., room)
+  google.protobuf.Timestamp from = 2;
+  google.protobuf.Timestamp to = 3;
+}
+
+message CheckRoomAvailabilityResponse {
+  repeated RoomAvailability items = 1; // وضعیت در دسترس بودن | Availability list
+}
+
+message ListRoomAvailabilityRequest {
+  string service_id = 1;
+  optional google.protobuf.Timestamp from = 2;
+  optional google.protobuf.Timestamp to = 3;
+}
+
+message ListRoomAvailabilityResponse {
+  repeated RoomAvailability items = 1;
+}
+
+// ================= ServiceUnavailability =================
+message CreateServiceUnavailabilityRequest {
+  ServiceUnavailability unavailability = 1;
+}
+
+message CreateServiceUnavailabilityResponse {
+  string id = 1;
+  string message = 2;
+}
+
+message ListServiceUnavailabilityRequest {
+  string service_id = 1;
+  optional google.protobuf.Timestamp from = 2;
+  optional google.protobuf.Timestamp to = 3;
+}
+
+message ListServiceUnavailabilityResponse {
+  repeated ServiceUnavailability items = 1;
+}
+
+message DeleteServiceUnavailabilityRequest {
+  string id = 1;
+}
+
+message DeleteServiceUnavailabilityResponse {
+  string message = 1;
+}
+
 
 // ========== SERVICE ==========
 
+// سرویس رزرو | Reservation Service
 service ReservationService {
-  rpc CreateFacility(CreateFacilityRequest) returns (CreateFacilityResponse);
+    // ایجاد یک فسیلیتی جدید | Create a new facility
+  rpc CreateFacility(Facility) returns (Facility);
+    // افزودن تصویر به فسیلیتی | Add an image to a facility
   rpc AddFacilityImage(FacilityImage) returns (FacilityImage);
+    // حذف تصویر از فسیلیتی | Delete an image from a facility
   rpc DeleteFacilityImage(DeleteFacilityImageRequest) returns (DeleteFacilityImageResponse);
+    // دریافت تصاویر فسیلیتی | Get images of a facility
   rpc GetFacilityImages(GetFacilityImagesRequest) returns (GetFacilityImagesResponse);
 
+    // ایجاد سرویس جدید برای یک فسیلیتی | Create a new service for a facility
   rpc CreateService(CreateServiceRequest) returns (CreateServiceResponse);
+    // تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
   rpc AssignServiceToProvider(AssignServiceToProviderRequest) returns (AssignServiceToProviderResponse);
 
+    // ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
   rpc CreateWeeklySchedule(CreateWeeklyScheduleRequest) returns (CreateWeeklyScheduleResponse);
+    // تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
   rpc GenerateTimeSlots(GenerateTimeSlotsRequest) returns (GenerateTimeSlotsResponse);
 
+    // ثبت یک رزرو جدید | Create a new reservation
   rpc CreateReservation(CreateReservationRequest) returns (CreateReservationResponse);
+    // لغو رزرو ثبت‌شده | Cancel an existing reservation
   rpc CancelReservation(CancelReservationRequest) returns (CancelReservationResponse);
+    // بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
+  rpc UpdateReservationStatus(UpdateReservationStatusRequest) returns (UpdateReservationStatusResponse);
+    // ثبت وضعیت حضور یا عدم حضور کاربر | Mark attendance status for reservation
+  rpc MarkAttendance(MarkAttendanceRequest) returns (MarkAttendanceResponse);
+    // دریافت لیست رزروهای کاربر | List user reservations
   rpc ListReservations(ListReservationsRequest) returns (ListReservationsResponse);
+    // دریافت تایم‌اسلات‌های آزاد برای رزرو | List available time slots
   rpc ListAvailableTimeSlots(ListAvailableTimeSlotsRequest) returns (ListAvailableTimeSlotsResponse);
+
+    // دریافت لیست مکان‌ها | List all facilities
+  rpc ListFacilities(ListFacilitiesRequest) returns (ListFacilitiesResponse);
+    // دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
+  rpc ListServices(ListServicesRequest) returns (ListServicesResponse);
+    // ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider
+  rpc CreateProviderUnavailability(CreateProviderUnavailabilityRequest) returns (CreateProviderUnavailabilityResponse);
+
+  // دریافت لیست بازه‌های غیبت ارائه‌دهنده | List unavailability periods of a provider
+  rpc ListProviderUnavailability(ListProviderUnavailabilityRequest) returns (ListProviderUnavailabilityResponse);
+
+  // حذف بازه‌ی غیبت ارائه‌دهنده | Delete an unavailability period of a provider
+  rpc DeleteProviderUnavailability(DeleteProviderUnavailabilityRequest) returns (DeleteProviderUnavailabilityResponse);
+
+  // ایجاد نوع اتاق | Create room type
+rpc CreateRoomType(CreateRoomTypeRequest) returns (CreateRoomTypeResponse);
+// لیست نوع اتاق‌های یک هتل | List room types for a hotel
+rpc ListRoomTypes(ListRoomTypesRequest) returns (ListRoomTypesResponse);
+// حذف نوع اتاق | Delete room type
+rpc DeleteRoomType(DeleteRoomTypeRequest) returns (DeleteRoomTypeResponse);
+// ایجاد اتاق جدید | Create a room
+rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
+// لیست اتاق‌های یک هتل | List rooms of a hotel
+rpc ListRooms(ListRoomsRequest) returns (ListRoomsResponse);
+// حذف اتاق | Delete a room
+rpc DeleteRoom(DeleteRoomRequest) returns (DeleteRoomResponse);
+// افزودن تصویر به اتاق | Add image to room
+rpc AddRoomImage(AddRoomImageRequest) returns (AddRoomImageResponse);
+// دریافت تصاویر یک اتاق | Get images of a room
+rpc GetRoomImages(GetRoomImagesRequest) returns (GetRoomImagesResponse);
+// حذف تصویر از اتاق | Delete room image
+rpc DeleteRoomImage(DeleteRoomImageRequest) returns (DeleteRoomImageResponse);
+// بررسی در دسترس بودن اتاق‌ها | Check room availability
+rpc CheckRoomAvailability(CheckRoomAvailabilityRequest) returns (CheckRoomAvailabilityResponse);
+// لیست شب‌هایی که رزرو شده‌اند | List reserved nights for room/service
+rpc ListRoomAvailability(ListRoomAvailabilityRequest) returns (ListRoomAvailabilityResponse);
+// تعریف زمان‌های عدم دسترسی اتاق | Define room/service unavailability
+rpc CreateServiceUnavailability(CreateServiceUnavailabilityRequest) returns (CreateServiceUnavailabilityResponse);
+// دریافت لیست زمان‌های عدم دسترسی اتاق | List service unavailability periods
+rpc ListServiceUnavailability(ListServiceUnavailabilityRequest) returns (ListServiceUnavailabilityResponse);
+// حذف زمان عدم دسترسی | Delete service unavailability
+rpc DeleteServiceUnavailability(DeleteServiceUnavailabilityRequest) returns (DeleteServiceUnavailabilityResponse);
+
+
 }
+
+
