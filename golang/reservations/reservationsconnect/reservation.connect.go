@@ -36,6 +36,12 @@ const (
 	// ReservationServiceCreateFacilityProcedure is the fully-qualified name of the ReservationService's
 	// CreateFacility RPC.
 	ReservationServiceCreateFacilityProcedure = "/reservation.ReservationService/CreateFacility"
+	// ReservationServiceUpdateFacilityProcedure is the fully-qualified name of the ReservationService's
+	// UpdateFacility RPC.
+	ReservationServiceUpdateFacilityProcedure = "/reservation.ReservationService/UpdateFacility"
+	// ReservationServiceListFacilitiesProcedure is the fully-qualified name of the ReservationService's
+	// ListFacilities RPC.
+	ReservationServiceListFacilitiesProcedure = "/reservation.ReservationService/ListFacilities"
 	// ReservationServiceAddFacilityImageProcedure is the fully-qualified name of the
 	// ReservationService's AddFacilityImage RPC.
 	ReservationServiceAddFacilityImageProcedure = "/reservation.ReservationService/AddFacilityImage"
@@ -75,9 +81,6 @@ const (
 	// ReservationServiceListAvailableTimeSlotsProcedure is the fully-qualified name of the
 	// ReservationService's ListAvailableTimeSlots RPC.
 	ReservationServiceListAvailableTimeSlotsProcedure = "/reservation.ReservationService/ListAvailableTimeSlots"
-	// ReservationServiceListFacilitiesProcedure is the fully-qualified name of the ReservationService's
-	// ListFacilities RPC.
-	ReservationServiceListFacilitiesProcedure = "/reservation.ReservationService/ListFacilities"
 	// ReservationServiceListServicesProcedure is the fully-qualified name of the ReservationService's
 	// ListServices RPC.
 	ReservationServiceListServicesProcedure = "/reservation.ReservationService/ListServices"
@@ -138,6 +141,8 @@ const (
 var (
 	reservationServiceServiceDescriptor                            = reservations.File_reservations_reservation_proto.Services().ByName("ReservationService")
 	reservationServiceCreateFacilityMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("CreateFacility")
+	reservationServiceUpdateFacilityMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("UpdateFacility")
+	reservationServiceListFacilitiesMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("ListFacilities")
 	reservationServiceAddFacilityImageMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("AddFacilityImage")
 	reservationServiceDeleteFacilityImageMethodDescriptor          = reservationServiceServiceDescriptor.Methods().ByName("DeleteFacilityImage")
 	reservationServiceGetFacilityImagesMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("GetFacilityImages")
@@ -151,7 +156,6 @@ var (
 	reservationServiceMarkAttendanceMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("MarkAttendance")
 	reservationServiceListReservationsMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("ListReservations")
 	reservationServiceListAvailableTimeSlotsMethodDescriptor       = reservationServiceServiceDescriptor.Methods().ByName("ListAvailableTimeSlots")
-	reservationServiceListFacilitiesMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("ListFacilities")
 	reservationServiceListServicesMethodDescriptor                 = reservationServiceServiceDescriptor.Methods().ByName("ListServices")
 	reservationServiceCreateProviderUnavailabilityMethodDescriptor = reservationServiceServiceDescriptor.Methods().ByName("CreateProviderUnavailability")
 	reservationServiceListProviderUnavailabilityMethodDescriptor   = reservationServiceServiceDescriptor.Methods().ByName("ListProviderUnavailability")
@@ -175,7 +179,11 @@ var (
 // ReservationServiceClient is a client for the reservation.ReservationService service.
 type ReservationServiceClient interface {
 	// ایجاد یک فسیلیتی جدید | Create a new facility
-	CreateFacility(context.Context, *connect.Request[reservations.Facility]) (*connect.Response[reservations.Facility], error)
+	CreateFacility(context.Context, *connect.Request[reservations.CreateFacilityRequest]) (*connect.Response[reservations.CreateFacilityResponse], error)
+	// ویرایش یم فسیلیتی| update a  facility
+	UpdateFacility(context.Context, *connect.Request[reservations.UpdateFacilityRequest]) (*connect.Response[reservations.UpdateFacilityResponse], error)
+	// دریافت لیست مکان‌ها | List all facilities
+	ListFacilities(context.Context, *connect.Request[reservations.ListFacilitiesRequest]) (*connect.Response[reservations.ListFacilitiesResponse], error)
 	// افزودن تصویر به فسیلیتی | Add an image to a facility
 	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
 	// حذف تصویر از فسیلیتی | Delete an image from a facility
@@ -202,8 +210,6 @@ type ReservationServiceClient interface {
 	ListReservations(context.Context, *connect.Request[reservations.ListReservationsRequest]) (*connect.Response[reservations.ListReservationsResponse], error)
 	// دریافت تایم‌اسلات‌های آزاد برای رزرو | List available time slots
 	ListAvailableTimeSlots(context.Context, *connect.Request[reservations.ListAvailableTimeSlotsRequest]) (*connect.Response[reservations.ListAvailableTimeSlotsResponse], error)
-	// دریافت لیست مکان‌ها | List all facilities
-	ListFacilities(context.Context, *connect.Request[reservations.ListFacilitiesRequest]) (*connect.Response[reservations.ListFacilitiesResponse], error)
 	// دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
 	ListServices(context.Context, *connect.Request[reservations.ListServicesRequest]) (*connect.Response[reservations.ListServicesResponse], error)
 	// ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider
@@ -252,10 +258,22 @@ type ReservationServiceClient interface {
 func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ReservationServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
 	return &reservationServiceClient{
-		createFacility: connect.NewClient[reservations.Facility, reservations.Facility](
+		createFacility: connect.NewClient[reservations.CreateFacilityRequest, reservations.CreateFacilityResponse](
 			httpClient,
 			baseURL+ReservationServiceCreateFacilityProcedure,
 			connect.WithSchema(reservationServiceCreateFacilityMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		updateFacility: connect.NewClient[reservations.UpdateFacilityRequest, reservations.UpdateFacilityResponse](
+			httpClient,
+			baseURL+ReservationServiceUpdateFacilityProcedure,
+			connect.WithSchema(reservationServiceUpdateFacilityMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		listFacilities: connect.NewClient[reservations.ListFacilitiesRequest, reservations.ListFacilitiesResponse](
+			httpClient,
+			baseURL+ReservationServiceListFacilitiesProcedure,
+			connect.WithSchema(reservationServiceListFacilitiesMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		addFacilityImage: connect.NewClient[reservations.FacilityImage, reservations.FacilityImage](
@@ -334,12 +352,6 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			httpClient,
 			baseURL+ReservationServiceListAvailableTimeSlotsProcedure,
 			connect.WithSchema(reservationServiceListAvailableTimeSlotsMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		listFacilities: connect.NewClient[reservations.ListFacilitiesRequest, reservations.ListFacilitiesResponse](
-			httpClient,
-			baseURL+ReservationServiceListFacilitiesProcedure,
-			connect.WithSchema(reservationServiceListFacilitiesMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		listServices: connect.NewClient[reservations.ListServicesRequest, reservations.ListServicesResponse](
@@ -455,7 +467,9 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 
 // reservationServiceClient implements ReservationServiceClient.
 type reservationServiceClient struct {
-	createFacility               *connect.Client[reservations.Facility, reservations.Facility]
+	createFacility               *connect.Client[reservations.CreateFacilityRequest, reservations.CreateFacilityResponse]
+	updateFacility               *connect.Client[reservations.UpdateFacilityRequest, reservations.UpdateFacilityResponse]
+	listFacilities               *connect.Client[reservations.ListFacilitiesRequest, reservations.ListFacilitiesResponse]
 	addFacilityImage             *connect.Client[reservations.FacilityImage, reservations.FacilityImage]
 	deleteFacilityImage          *connect.Client[reservations.DeleteFacilityImageRequest, reservations.DeleteFacilityImageResponse]
 	getFacilityImages            *connect.Client[reservations.GetFacilityImagesRequest, reservations.GetFacilityImagesResponse]
@@ -469,7 +483,6 @@ type reservationServiceClient struct {
 	markAttendance               *connect.Client[reservations.MarkAttendanceRequest, reservations.MarkAttendanceResponse]
 	listReservations             *connect.Client[reservations.ListReservationsRequest, reservations.ListReservationsResponse]
 	listAvailableTimeSlots       *connect.Client[reservations.ListAvailableTimeSlotsRequest, reservations.ListAvailableTimeSlotsResponse]
-	listFacilities               *connect.Client[reservations.ListFacilitiesRequest, reservations.ListFacilitiesResponse]
 	listServices                 *connect.Client[reservations.ListServicesRequest, reservations.ListServicesResponse]
 	createProviderUnavailability *connect.Client[reservations.CreateProviderUnavailabilityRequest, reservations.CreateProviderUnavailabilityResponse]
 	listProviderUnavailability   *connect.Client[reservations.ListProviderUnavailabilityRequest, reservations.ListProviderUnavailabilityResponse]
@@ -491,8 +504,18 @@ type reservationServiceClient struct {
 }
 
 // CreateFacility calls reservation.ReservationService.CreateFacility.
-func (c *reservationServiceClient) CreateFacility(ctx context.Context, req *connect.Request[reservations.Facility]) (*connect.Response[reservations.Facility], error) {
+func (c *reservationServiceClient) CreateFacility(ctx context.Context, req *connect.Request[reservations.CreateFacilityRequest]) (*connect.Response[reservations.CreateFacilityResponse], error) {
 	return c.createFacility.CallUnary(ctx, req)
+}
+
+// UpdateFacility calls reservation.ReservationService.UpdateFacility.
+func (c *reservationServiceClient) UpdateFacility(ctx context.Context, req *connect.Request[reservations.UpdateFacilityRequest]) (*connect.Response[reservations.UpdateFacilityResponse], error) {
+	return c.updateFacility.CallUnary(ctx, req)
+}
+
+// ListFacilities calls reservation.ReservationService.ListFacilities.
+func (c *reservationServiceClient) ListFacilities(ctx context.Context, req *connect.Request[reservations.ListFacilitiesRequest]) (*connect.Response[reservations.ListFacilitiesResponse], error) {
+	return c.listFacilities.CallUnary(ctx, req)
 }
 
 // AddFacilityImage calls reservation.ReservationService.AddFacilityImage.
@@ -558,11 +581,6 @@ func (c *reservationServiceClient) ListReservations(ctx context.Context, req *co
 // ListAvailableTimeSlots calls reservation.ReservationService.ListAvailableTimeSlots.
 func (c *reservationServiceClient) ListAvailableTimeSlots(ctx context.Context, req *connect.Request[reservations.ListAvailableTimeSlotsRequest]) (*connect.Response[reservations.ListAvailableTimeSlotsResponse], error) {
 	return c.listAvailableTimeSlots.CallUnary(ctx, req)
-}
-
-// ListFacilities calls reservation.ReservationService.ListFacilities.
-func (c *reservationServiceClient) ListFacilities(ctx context.Context, req *connect.Request[reservations.ListFacilitiesRequest]) (*connect.Response[reservations.ListFacilitiesResponse], error) {
-	return c.listFacilities.CallUnary(ctx, req)
 }
 
 // ListServices calls reservation.ReservationService.ListServices.
@@ -658,7 +676,11 @@ func (c *reservationServiceClient) DeleteServiceUnavailability(ctx context.Conte
 // ReservationServiceHandler is an implementation of the reservation.ReservationService service.
 type ReservationServiceHandler interface {
 	// ایجاد یک فسیلیتی جدید | Create a new facility
-	CreateFacility(context.Context, *connect.Request[reservations.Facility]) (*connect.Response[reservations.Facility], error)
+	CreateFacility(context.Context, *connect.Request[reservations.CreateFacilityRequest]) (*connect.Response[reservations.CreateFacilityResponse], error)
+	// ویرایش یم فسیلیتی| update a  facility
+	UpdateFacility(context.Context, *connect.Request[reservations.UpdateFacilityRequest]) (*connect.Response[reservations.UpdateFacilityResponse], error)
+	// دریافت لیست مکان‌ها | List all facilities
+	ListFacilities(context.Context, *connect.Request[reservations.ListFacilitiesRequest]) (*connect.Response[reservations.ListFacilitiesResponse], error)
 	// افزودن تصویر به فسیلیتی | Add an image to a facility
 	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
 	// حذف تصویر از فسیلیتی | Delete an image from a facility
@@ -685,8 +707,6 @@ type ReservationServiceHandler interface {
 	ListReservations(context.Context, *connect.Request[reservations.ListReservationsRequest]) (*connect.Response[reservations.ListReservationsResponse], error)
 	// دریافت تایم‌اسلات‌های آزاد برای رزرو | List available time slots
 	ListAvailableTimeSlots(context.Context, *connect.Request[reservations.ListAvailableTimeSlotsRequest]) (*connect.Response[reservations.ListAvailableTimeSlotsResponse], error)
-	// دریافت لیست مکان‌ها | List all facilities
-	ListFacilities(context.Context, *connect.Request[reservations.ListFacilitiesRequest]) (*connect.Response[reservations.ListFacilitiesResponse], error)
 	// دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
 	ListServices(context.Context, *connect.Request[reservations.ListServicesRequest]) (*connect.Response[reservations.ListServicesResponse], error)
 	// ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider
@@ -735,6 +755,18 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		ReservationServiceCreateFacilityProcedure,
 		svc.CreateFacility,
 		connect.WithSchema(reservationServiceCreateFacilityMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceUpdateFacilityHandler := connect.NewUnaryHandler(
+		ReservationServiceUpdateFacilityProcedure,
+		svc.UpdateFacility,
+		connect.WithSchema(reservationServiceUpdateFacilityMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceListFacilitiesHandler := connect.NewUnaryHandler(
+		ReservationServiceListFacilitiesProcedure,
+		svc.ListFacilities,
+		connect.WithSchema(reservationServiceListFacilitiesMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceAddFacilityImageHandler := connect.NewUnaryHandler(
@@ -813,12 +845,6 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		ReservationServiceListAvailableTimeSlotsProcedure,
 		svc.ListAvailableTimeSlots,
 		connect.WithSchema(reservationServiceListAvailableTimeSlotsMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceListFacilitiesHandler := connect.NewUnaryHandler(
-		ReservationServiceListFacilitiesProcedure,
-		svc.ListFacilities,
-		connect.WithSchema(reservationServiceListFacilitiesMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceListServicesHandler := connect.NewUnaryHandler(
@@ -933,6 +959,10 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		switch r.URL.Path {
 		case ReservationServiceCreateFacilityProcedure:
 			reservationServiceCreateFacilityHandler.ServeHTTP(w, r)
+		case ReservationServiceUpdateFacilityProcedure:
+			reservationServiceUpdateFacilityHandler.ServeHTTP(w, r)
+		case ReservationServiceListFacilitiesProcedure:
+			reservationServiceListFacilitiesHandler.ServeHTTP(w, r)
 		case ReservationServiceAddFacilityImageProcedure:
 			reservationServiceAddFacilityImageHandler.ServeHTTP(w, r)
 		case ReservationServiceDeleteFacilityImageProcedure:
@@ -959,8 +989,6 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 			reservationServiceListReservationsHandler.ServeHTTP(w, r)
 		case ReservationServiceListAvailableTimeSlotsProcedure:
 			reservationServiceListAvailableTimeSlotsHandler.ServeHTTP(w, r)
-		case ReservationServiceListFacilitiesProcedure:
-			reservationServiceListFacilitiesHandler.ServeHTTP(w, r)
 		case ReservationServiceListServicesProcedure:
 			reservationServiceListServicesHandler.ServeHTTP(w, r)
 		case ReservationServiceCreateProviderUnavailabilityProcedure:
@@ -1006,8 +1034,16 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 // UnimplementedReservationServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedReservationServiceHandler struct{}
 
-func (UnimplementedReservationServiceHandler) CreateFacility(context.Context, *connect.Request[reservations.Facility]) (*connect.Response[reservations.Facility], error) {
+func (UnimplementedReservationServiceHandler) CreateFacility(context.Context, *connect.Request[reservations.CreateFacilityRequest]) (*connect.Response[reservations.CreateFacilityResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CreateFacility is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) UpdateFacility(context.Context, *connect.Request[reservations.UpdateFacilityRequest]) (*connect.Response[reservations.UpdateFacilityResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.UpdateFacility is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) ListFacilities(context.Context, *connect.Request[reservations.ListFacilitiesRequest]) (*connect.Response[reservations.ListFacilitiesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ListFacilities is not implemented"))
 }
 
 func (UnimplementedReservationServiceHandler) AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error) {
@@ -1060,10 +1096,6 @@ func (UnimplementedReservationServiceHandler) ListReservations(context.Context, 
 
 func (UnimplementedReservationServiceHandler) ListAvailableTimeSlots(context.Context, *connect.Request[reservations.ListAvailableTimeSlotsRequest]) (*connect.Response[reservations.ListAvailableTimeSlotsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ListAvailableTimeSlots is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) ListFacilities(context.Context, *connect.Request[reservations.ListFacilitiesRequest]) (*connect.Response[reservations.ListFacilitiesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ListFacilities is not implemented"))
 }
 
 func (UnimplementedReservationServiceHandler) ListServices(context.Context, *connect.Request[reservations.ListServicesRequest]) (*connect.Response[reservations.ListServicesResponse], error) {

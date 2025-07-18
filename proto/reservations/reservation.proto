@@ -311,9 +311,10 @@ message RoomAvailability {
 message ServiceUnavailability {
   string id = 1;
   string service_id = 2; // اتاق خاص
-  google.protobuf.Timestamp from = 3;
-  google.protobuf.Timestamp to = 4;
-  string reason = 5;
+  users.User provider_user = 3; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
+  google.protobuf.Timestamp from = 4;
+  google.protobuf.Timestamp to = 5;
+  string reason = 6;
 }
 // اطلاعات نوع اتاق در هتل | Hotel room type definition
 message RoomType {
@@ -370,15 +371,41 @@ message Reservation {
   google.protobuf.Timestamp created_at = 9;
 }
 
+
 // ========== REQUEST / RESPONSE MESSAGES ==========
 
 // ایجاد فسیلیتی | Create a facility
+// Proto
 message CreateFacilityRequest {
-  Facility facility = 1; // فسیلیتی برای ثبت | Facility to create
+  LocalizedString name = 1;
+  FacilityTitle title = 2;
+  FacilityType type = 3;
+  FacilityGroup group = 4;
+  Status status = 5;
 }
+
 message CreateFacilityResponse {
   string id = 1;       // شناسه فسیلیتی ایجاد شده | Created facility ID
   string message = 2;  // پیام موفقیت یا خطا | Success or error message
+  Facility facility = 3;
+
+}
+// Proto File
+
+message UpdateFacilityRequest {
+  int64 facility_id = 1;
+
+  // می‌تونیم یک فیلد partial باشه و فقط فیلدهایی که کاربر می‌خواد بروز کنه را بفرسته
+  LocalizedString name = 2;
+  FacilityTitle title = 3;
+  FacilityType type = 4;
+  FacilityGroup group = 5;
+  Status status = 6;
+}
+
+message UpdateFacilityResponse {
+  Facility facility = 1;
+  string message = 2;
 }
 
 // افزودن تصویر به فسیلیتی | Add image to facility
@@ -497,9 +524,12 @@ message UpdateReservationStatusRequest {
 message UpdateReservationStatusResponse {
   string message = 1;               // پیام موفقیت یا خطا | Success or error message
 }
-
 message ListFacilitiesRequest {
-  optional string owner_user_id = 1; // شناسه صاحب فسیلیتی | Optional owner ID filter
+  optional int64 facility_id = 1;
+
+  optional FacilityGroup group = 2;
+  optional FacilityType type = 3;
+  optional FacilityTitle title = 4;
 }
 message ListFacilitiesResponse {
   repeated Facility facilities = 1;  // لیست فسیلیتی‌ها | List of facilities
@@ -676,7 +706,12 @@ message DeleteServiceUnavailabilityResponse {
 // سرویس رزرو | Reservation Service
 service ReservationService {
     // ایجاد یک فسیلیتی جدید | Create a new facility
-  rpc CreateFacility(Facility) returns (Facility);
+  rpc CreateFacility(CreateFacilityRequest) returns (CreateFacilityResponse);
+    // ویرایش یم فسیلیتی| update a  facility
+  rpc UpdateFacility(UpdateFacilityRequest) returns (UpdateFacilityResponse);
+    // دریافت لیست مکان‌ها | List all facilities
+  rpc ListFacilities(ListFacilitiesRequest) returns (ListFacilitiesResponse);
+
     // افزودن تصویر به فسیلیتی | Add an image to a facility
   rpc AddFacilityImage(FacilityImage) returns (FacilityImage);
     // حذف تصویر از فسیلیتی | Delete an image from a facility
@@ -707,8 +742,6 @@ service ReservationService {
     // دریافت تایم‌اسلات‌های آزاد برای رزرو | List available time slots
   rpc ListAvailableTimeSlots(ListAvailableTimeSlotsRequest) returns (ListAvailableTimeSlotsResponse);
 
-    // دریافت لیست مکان‌ها | List all facilities
-  rpc ListFacilities(ListFacilitiesRequest) returns (ListFacilitiesResponse);
     // دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
   rpc ListServices(ListServicesRequest) returns (ListServicesResponse);
     // ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider

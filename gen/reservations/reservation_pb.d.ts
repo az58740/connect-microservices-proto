@@ -560,17 +560,24 @@ export declare type ServiceUnavailability = Message<"reservation.ServiceUnavaila
   serviceId: string;
 
   /**
-   * @generated from field: google.protobuf.Timestamp from = 3;
+   * شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
+   *
+   * @generated from field: users.User provider_user = 3;
+   */
+  providerUser?: User;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp from = 4;
    */
   from?: Timestamp;
 
   /**
-   * @generated from field: google.protobuf.Timestamp to = 4;
+   * @generated from field: google.protobuf.Timestamp to = 5;
    */
   to?: Timestamp;
 
   /**
-   * @generated from field: string reason = 5;
+   * @generated from field: string reason = 6;
    */
   reason: string;
 };
@@ -877,16 +884,35 @@ export declare const ReservationSchema: GenMessage<Reservation>;
 
 /**
  * ایجاد فسیلیتی | Create a facility
+ * Proto
  *
  * @generated from message reservation.CreateFacilityRequest
  */
 export declare type CreateFacilityRequest = Message<"reservation.CreateFacilityRequest"> & {
   /**
-   * فسیلیتی برای ثبت | Facility to create
-   *
-   * @generated from field: reservation.Facility facility = 1;
+   * @generated from field: reservation.LocalizedString name = 1;
    */
-  facility?: Facility;
+  name?: LocalizedString;
+
+  /**
+   * @generated from field: reservation.FacilityTitle title = 2;
+   */
+  title: FacilityTitle;
+
+  /**
+   * @generated from field: reservation.FacilityType type = 3;
+   */
+  type: FacilityType;
+
+  /**
+   * @generated from field: reservation.FacilityGroup group = 4;
+   */
+  group: FacilityGroup;
+
+  /**
+   * @generated from field: reservation.Status status = 5;
+   */
+  status: Status;
 };
 
 /**
@@ -912,6 +938,11 @@ export declare type CreateFacilityResponse = Message<"reservation.CreateFacility
    * @generated from field: string message = 2;
    */
   message: string;
+
+  /**
+   * @generated from field: reservation.Facility facility = 3;
+   */
+  facility?: Facility;
 };
 
 /**
@@ -919,6 +950,70 @@ export declare type CreateFacilityResponse = Message<"reservation.CreateFacility
  * Use `create(CreateFacilityResponseSchema)` to create a new message.
  */
 export declare const CreateFacilityResponseSchema: GenMessage<CreateFacilityResponse>;
+
+/**
+ * @generated from message reservation.UpdateFacilityRequest
+ */
+export declare type UpdateFacilityRequest = Message<"reservation.UpdateFacilityRequest"> & {
+  /**
+   * @generated from field: int64 facility_id = 1;
+   */
+  facilityId: bigint;
+
+  /**
+   * می‌تونیم یک فیلد partial باشه و فقط فیلدهایی که کاربر می‌خواد بروز کنه را بفرسته
+   *
+   * @generated from field: reservation.LocalizedString name = 2;
+   */
+  name?: LocalizedString;
+
+  /**
+   * @generated from field: reservation.FacilityTitle title = 3;
+   */
+  title: FacilityTitle;
+
+  /**
+   * @generated from field: reservation.FacilityType type = 4;
+   */
+  type: FacilityType;
+
+  /**
+   * @generated from field: reservation.FacilityGroup group = 5;
+   */
+  group: FacilityGroup;
+
+  /**
+   * @generated from field: reservation.Status status = 6;
+   */
+  status: Status;
+};
+
+/**
+ * Describes the message reservation.UpdateFacilityRequest.
+ * Use `create(UpdateFacilityRequestSchema)` to create a new message.
+ */
+export declare const UpdateFacilityRequestSchema: GenMessage<UpdateFacilityRequest>;
+
+/**
+ * @generated from message reservation.UpdateFacilityResponse
+ */
+export declare type UpdateFacilityResponse = Message<"reservation.UpdateFacilityResponse"> & {
+  /**
+   * @generated from field: reservation.Facility facility = 1;
+   */
+  facility?: Facility;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.UpdateFacilityResponse.
+ * Use `create(UpdateFacilityResponseSchema)` to create a new message.
+ */
+export declare const UpdateFacilityResponseSchema: GenMessage<UpdateFacilityResponse>;
 
 /**
  * افزودن تصویر به فسیلیتی | Add image to facility
@@ -1522,11 +1617,24 @@ export declare const UpdateReservationStatusResponseSchema: GenMessage<UpdateRes
  */
 export declare type ListFacilitiesRequest = Message<"reservation.ListFacilitiesRequest"> & {
   /**
-   * شناسه صاحب فسیلیتی | Optional owner ID filter
-   *
-   * @generated from field: optional string owner_user_id = 1;
+   * @generated from field: optional int64 facility_id = 1;
    */
-  ownerUserId?: string;
+  facilityId?: bigint;
+
+  /**
+   * @generated from field: optional reservation.FacilityGroup group = 2;
+   */
+  group?: FacilityGroup;
+
+  /**
+   * @generated from field: optional reservation.FacilityType type = 3;
+   */
+  type?: FacilityType;
+
+  /**
+   * @generated from field: optional reservation.FacilityTitle title = 4;
+   */
+  title?: FacilityTitle;
 };
 
 /**
@@ -3250,8 +3358,28 @@ export declare const ReservationService: GenService<{
    */
   createFacility: {
     methodKind: "unary";
-    input: typeof FacilitySchema;
-    output: typeof FacilitySchema;
+    input: typeof CreateFacilityRequestSchema;
+    output: typeof CreateFacilityResponseSchema;
+  },
+  /**
+   * ویرایش یم فسیلیتی| update a  facility
+   *
+   * @generated from rpc reservation.ReservationService.UpdateFacility
+   */
+  updateFacility: {
+    methodKind: "unary";
+    input: typeof UpdateFacilityRequestSchema;
+    output: typeof UpdateFacilityResponseSchema;
+  },
+  /**
+   * دریافت لیست مکان‌ها | List all facilities
+   *
+   * @generated from rpc reservation.ReservationService.ListFacilities
+   */
+  listFacilities: {
+    methodKind: "unary";
+    input: typeof ListFacilitiesRequestSchema;
+    output: typeof ListFacilitiesResponseSchema;
   },
   /**
    * افزودن تصویر به فسیلیتی | Add an image to a facility
@@ -3382,16 +3510,6 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof ListAvailableTimeSlotsRequestSchema;
     output: typeof ListAvailableTimeSlotsResponseSchema;
-  },
-  /**
-   * دریافت لیست مکان‌ها | List all facilities
-   *
-   * @generated from rpc reservation.ReservationService.ListFacilities
-   */
-  listFacilities: {
-    methodKind: "unary";
-    input: typeof ListFacilitiesRequestSchema;
-    output: typeof ListFacilitiesResponseSchema;
   },
   /**
    * دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
