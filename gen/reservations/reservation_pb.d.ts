@@ -1617,6 +1617,22 @@ export declare const UpdateReservationStatusResponseSchema: GenMessage<UpdateRes
  */
 export declare type ListFacilitiesRequest = Message<"reservation.ListFacilitiesRequest"> & {
   /**
+   * @generated from field: reservation.FaclityFilter filter = 1;
+   */
+  filter?: FaclityFilter;
+};
+
+/**
+ * Describes the message reservation.ListFacilitiesRequest.
+ * Use `create(ListFacilitiesRequestSchema)` to create a new message.
+ */
+export declare const ListFacilitiesRequestSchema: GenMessage<ListFacilitiesRequest>;
+
+/**
+ * @generated from message reservation.FaclityFilter
+ */
+export declare type FaclityFilter = Message<"reservation.FaclityFilter"> & {
+  /**
    * @generated from field: optional int64 facility_id = 1;
    */
   facilityId?: bigint;
@@ -1638,10 +1654,10 @@ export declare type ListFacilitiesRequest = Message<"reservation.ListFacilitiesR
 };
 
 /**
- * Describes the message reservation.ListFacilitiesRequest.
- * Use `create(ListFacilitiesRequestSchema)` to create a new message.
+ * Describes the message reservation.FaclityFilter.
+ * Use `create(FaclityFilterSchema)` to create a new message.
  */
-export declare const ListFacilitiesRequestSchema: GenMessage<ListFacilitiesRequest>;
+export declare const FaclityFilterSchema: GenMessage<FaclityFilter>;
 
 /**
  * @generated from message reservation.ListFacilitiesResponse

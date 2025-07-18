@@ -525,11 +525,15 @@ message UpdateReservationStatusResponse {
   string message = 1;               // پیام موفقیت یا خطا | Success or error message
 }
 message ListFacilitiesRequest {
-  optional int64 facility_id = 1;
+ FaclityFilter filter=1;
+}
+message FaclityFilter {
+    optional int64 facility_id = 1;
 
   optional FacilityGroup group = 2;
   optional FacilityType type = 3;
   optional FacilityTitle title = 4;
+
 }
 message ListFacilitiesResponse {
   repeated Facility facilities = 1;  // لیست فسیلیتی‌ها | List of facilities
