@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AddRoomImageRequest, AddRoomImageResponse, AssignServiceToProviderRequest, AssignServiceToProviderResponse, CancelReservationRequest, CancelReservationResponse, CheckRoomAvailabilityRequest, CheckRoomAvailabilityResponse, CreateFacilityRequest, CreateFacilityResponse, CreateProviderUnavailabilityRequest, CreateProviderUnavailabilityResponse, CreateReservationRequest, CreateReservationResponse, CreateRoomRequest, CreateRoomResponse, CreateRoomTypeRequest, CreateRoomTypeResponse, CreateServiceRequest, CreateServiceResponse, CreateServiceUnavailabilityRequest, CreateServiceUnavailabilityResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteFacilityImageRequest, DeleteFacilityImageResponse, DeleteProviderUnavailabilityRequest, DeleteProviderUnavailabilityResponse, DeleteRoomImageRequest, DeleteRoomImageResponse, DeleteRoomRequest, DeleteRoomResponse, DeleteRoomTypeRequest, DeleteRoomTypeResponse, DeleteServiceUnavailabilityRequest, DeleteServiceUnavailabilityResponse, FacilityImage, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetFacilityImagesRequest, GetFacilityImagesResponse, GetRoomImagesRequest, GetRoomImagesResponse, ListAvailableTimeSlotsRequest, ListAvailableTimeSlotsResponse, ListFacilitiesRequest, ListFacilitiesResponse, ListProviderUnavailabilityRequest, ListProviderUnavailabilityResponse, ListReservationsRequest, ListReservationsResponse, ListRoomAvailabilityRequest, ListRoomAvailabilityResponse, ListRoomsRequest, ListRoomsResponse, ListRoomTypesRequest, ListRoomTypesResponse, ListServicesRequest, ListServicesResponse, ListServiceUnavailabilityRequest, ListServiceUnavailabilityResponse, MarkAttendanceRequest, MarkAttendanceResponse, UpdateFacilityRequest, UpdateFacilityResponse, UpdateReservationStatusRequest, UpdateReservationStatusResponse } from "./reservation_pb.js";
+import { AddRoomImageRequest, AddRoomImageResponse, AssignServiceToProviderRequest, AssignServiceToProviderResponse, CancelReservationRequest, CancelReservationResponse, CheckRoomAvailabilityRequest, CheckRoomAvailabilityResponse, CreateFacilityRequest, CreateFacilityResponse, CreateProviderUnavailabilityRequest, CreateProviderUnavailabilityResponse, CreateReservationRequest, CreateReservationResponse, CreateRoomRequest, CreateRoomResponse, CreateRoomTypeRequest, CreateRoomTypeResponse, CreateServiceRequest, CreateServiceResponse, CreateServiceUnavailabilityRequest, CreateServiceUnavailabilityResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteFacilityImageRequest, DeleteFacilityImageResponse, DeleteProviderUnavailabilityRequest, DeleteProviderUnavailabilityResponse, DeleteRoomImageRequest, DeleteRoomImageResponse, DeleteRoomRequest, DeleteRoomResponse, DeleteRoomTypeRequest, DeleteRoomTypeResponse, DeleteServiceUnavailabilityRequest, DeleteServiceUnavailabilityResponse, FacilityImage, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetFacilityImagesRequest, GetFacilityImagesResponse, GetRoomImagesRequest, GetRoomImagesResponse, ListAvailableTimeSlotsRequest, ListAvailableTimeSlotsResponse, ListFacilitiesRequest, ListFacilitiesResponse, ListProviderUnavailabilityRequest, ListProviderUnavailabilityResponse, ListReservationsRequest, ListReservationsResponse, ListRoomAvailabilityRequest, ListRoomAvailabilityResponse, ListRoomsRequest, ListRoomsResponse, ListRoomTypesRequest, ListRoomTypesResponse, ListServicesRequest, ListServicesResponse, ListServiceUnavailabilityRequest, ListServiceUnavailabilityResponse, MarkAttendanceRequest, MarkAttendanceResponse, UpdateFacilityRequest, UpdateFacilityResponse, UpdateReservationStatusRequest, UpdateReservationStatusResponse, UpdateServiceRequest, UpdateServiceResponse } from "./reservation_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -15,6 +15,7 @@ export const ReservationService = {
   typeName: "reservation.ReservationService",
   methods: {
     /**
+     * facility related methods
      * ایجاد یک فسیلیتی جدید | Create a new facility
      *
      * @generated from rpc reservation.ReservationService.CreateFacility
@@ -48,6 +49,40 @@ export const ReservationService = {
       kind: MethodKind.Unary,
     },
     /**
+     * Service related methods
+     * ایجاد سرویس جدید برای یک فسیلیتی | Create a new service for a facility
+     *
+     * @generated from rpc reservation.ReservationService.CreateService
+     */
+    createService: {
+      name: "CreateService",
+      I: CreateServiceRequest,
+      O: CreateServiceResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * ویرایش سرویس  | Update a service for a facility
+     *
+     * @generated from rpc reservation.ReservationService.UpdateService
+     */
+    updateService: {
+      name: "UpdateService",
+      I: UpdateServiceRequest,
+      O: UpdateServiceResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
+     *
+     * @generated from rpc reservation.ReservationService.ListServices
+     */
+    listServices: {
+      name: "ListServices",
+      I: ListServicesRequest,
+      O: ListServicesResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
      * افزودن تصویر به فسیلیتی | Add an image to a facility
      *
      * @generated from rpc reservation.ReservationService.AddFacilityImage
@@ -78,17 +113,6 @@ export const ReservationService = {
       name: "GetFacilityImages",
       I: GetFacilityImagesRequest,
       O: GetFacilityImagesResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * ایجاد سرویس جدید برای یک فسیلیتی | Create a new service for a facility
-     *
-     * @generated from rpc reservation.ReservationService.CreateService
-     */
-    createService: {
-      name: "CreateService",
-      I: CreateServiceRequest,
-      O: CreateServiceResponse,
       kind: MethodKind.Unary,
     },
     /**
@@ -188,17 +212,6 @@ export const ReservationService = {
       name: "ListAvailableTimeSlots",
       I: ListAvailableTimeSlotsRequest,
       O: ListAvailableTimeSlotsResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
-     *
-     * @generated from rpc reservation.ReservationService.ListServices
-     */
-    listServices: {
-      name: "ListServices",
-      I: ListServicesRequest,
-      O: ListServicesResponse,
       kind: MethodKind.Unary,
     },
     /**

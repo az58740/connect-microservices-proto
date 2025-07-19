@@ -372,10 +372,11 @@ message Reservation {
 }
 
 
+
+
 // ========== REQUEST / RESPONSE MESSAGES ==========
 
 // ایجاد فسیلیتی | Create a facility
-// Proto
 message CreateFacilityRequest {
   LocalizedString name = 1;
   FacilityTitle title = 2;
@@ -390,10 +391,9 @@ message CreateFacilityResponse {
   Facility facility = 3;
 
 }
-// Proto File
 
 message UpdateFacilityRequest {
-  int64 facility_id = 1;
+  string facility_id = 1;
 
   // می‌تونیم یک فیلد partial باشه و فقط فیلدهایی که کاربر می‌خواد بروز کنه را بفرسته
   LocalizedString name = 2;
@@ -407,40 +407,60 @@ message UpdateFacilityResponse {
   Facility facility = 1;
   string message = 2;
 }
+message ListFacilitiesRequest {
+ FaclityFilter filter=1;
+}
+message FaclityFilter {
+    optional string facility_id = 1;
 
-// افزودن تصویر به فسیلیتی | Add image to facility
-message AddFacilityImageRequest {
-  FacilityImage image = 1; // اطلاعات تصویر | Image info
-}
-message AddFacilityImageResponse {
-  string id = 1;       // شناسه تصویر آپلود شده | Uploaded image ID
-  string message = 2;  // پیام موفقیت یا خطا | Success or error message
-}
+  optional FacilityGroup group = 2;
+  optional FacilityType type = 3;
+  optional FacilityTitle title = 4;
 
-// حذف تصویر فسیلیتی | Delete facility image
-message DeleteFacilityImageRequest {
-  string image_id = 1; // شناسه تصویر | Image ID
 }
-message DeleteFacilityImageResponse {
-  string message = 1;  // پیام موفقیت یا خطا | Success or error message
-}
-
-// دریافت تصاویر فسیلیتی | Get images of a facility
-message GetFacilityImagesRequest {
-  string facility_id = 1; // شناسه فسیلیتی | Facility ID
-}
-message GetFacilityImagesResponse {
-  repeated FacilityImage images = 1; // لیست تصاویر | List of images
+message ListFacilitiesResponse {
+  repeated Facility facilities = 1;  // لیست فسیلیتی‌ها | List of facilities
 }
 
 // ایجاد سرویس | Create a service
 message CreateServiceRequest {
-  Service service = 1; // اطلاعات سرویس | Service info
+  string facility_id = 1;
+  LocalizedString name = 2;
+  optional LocalizedString description = 3;
+  bool is_available = 4;
+  optional int32 default_duration_minutes = 5;
+  optional google.type.Money default_price = 6;
 }
 message CreateServiceResponse {
-  string id = 1;       // شناسه سرویس | Service ID
-  string message = 2;  // پیام موفقیت یا خطا | Success or error message
+  Service service = 1;
+  string message = 2;
 }
+// ویرایش سرویس | Update a service
+message UpdateServiceRequest {
+  string service_id = 1;
+  optional LocalizedString name = 2;
+  optional LocalizedString description = 3;
+  optional bool is_available = 4;
+  optional int32 default_duration_minutes = 5;
+  optional google.type.Money default_price = 6;
+}
+message UpdateServiceResponse {
+  Service service = 1;
+  string message=2;
+}
+// لیست سرویس ها| List all services for a facility
+message ListServicesRequest {
+  ListServiceFilter filter = 1;
+}
+message ListServiceFilter {
+   optional string service_id = 1;
+   optional string facility_id = 2;
+   optional  bool is_available = 3;
+}
+message ListServicesResponse {
+  repeated Service services = 1;
+}
+
 
 // اختصاص سرویس به ارائه‌دهنده | Assign service to provider
 message AssignServiceToProviderRequest {
@@ -524,27 +544,9 @@ message UpdateReservationStatusRequest {
 message UpdateReservationStatusResponse {
   string message = 1;               // پیام موفقیت یا خطا | Success or error message
 }
-message ListFacilitiesRequest {
- FaclityFilter filter=1;
-}
-message FaclityFilter {
-    optional int64 facility_id = 1;
 
-  optional FacilityGroup group = 2;
-  optional FacilityType type = 3;
-  optional FacilityTitle title = 4;
 
-}
-message ListFacilitiesResponse {
-  repeated Facility facilities = 1;  // لیست فسیلیتی‌ها | List of facilities
-}
 
-message ListServicesRequest {
-  string facility_id = 1;            // شناسه فسیلیتی | Facility ID
-}
-message ListServicesResponse {
-  repeated Service services = 1;     // لیست سرویس‌ها | List of services
-}
 // ایجاد عدم دسترسی برای ارائه‌دهنده | Create unavailability for a provider
 message CreateProviderUnavailabilityRequest {
   ProviderUnavailability unavailability = 1; // اطلاعات بازه‌ی غیبت | Unavailability data
@@ -704,17 +706,49 @@ message DeleteServiceUnavailabilityResponse {
   string message = 1;
 }
 
+// افزودن تصویر به فسیلیتی | Add image to facility
+message AddFacilityImageRequest {
+  FacilityImage image = 1; // اطلاعات تصویر | Image info
+}
+message AddFacilityImageResponse {
+  string id = 1;       // شناسه تصویر آپلود شده | Uploaded image ID
+  string message = 2;  // پیام موفقیت یا خطا | Success or error message
+}
+// حذف تصویر فسیلیتی | Delete facility image
+message DeleteFacilityImageRequest {
+  string image_id = 1; // شناسه تصویر | Image ID
+}
+message DeleteFacilityImageResponse {
+  string message = 1;  // پیام موفقیت یا خطا | Success or error message
+}
+// دریافت تصاویر فسیلیتی | Get images of a facility
+message GetFacilityImagesRequest {
+  string facility_id = 1; // شناسه فسیلیتی | Facility ID
+}
+message GetFacilityImagesResponse {
+  repeated FacilityImage images = 1; // لیست تصاویر | List of images
+}
 
 // ========== SERVICE ==========
 
 // سرویس رزرو | Reservation Service
 service ReservationService {
+  //facility related methods
     // ایجاد یک فسیلیتی جدید | Create a new facility
   rpc CreateFacility(CreateFacilityRequest) returns (CreateFacilityResponse);
     // ویرایش یم فسیلیتی| update a  facility
   rpc UpdateFacility(UpdateFacilityRequest) returns (UpdateFacilityResponse);
     // دریافت لیست مکان‌ها | List all facilities
   rpc ListFacilities(ListFacilitiesRequest) returns (ListFacilitiesResponse);
+//Service related methods
+    // ایجاد سرویس جدید برای یک فسیلیتی | Create a new service for a facility
+ rpc CreateService (CreateServiceRequest) returns (CreateServiceResponse);
+     // ویرایش سرویس  | Update a service for a facility
+  rpc UpdateService (UpdateServiceRequest) returns (UpdateServiceResponse);
+          // دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
+  rpc ListServices (ListServicesRequest) returns (ListServicesResponse);
+
+
 
     // افزودن تصویر به فسیلیتی | Add an image to a facility
   rpc AddFacilityImage(FacilityImage) returns (FacilityImage);
@@ -723,8 +757,7 @@ service ReservationService {
     // دریافت تصاویر فسیلیتی | Get images of a facility
   rpc GetFacilityImages(GetFacilityImagesRequest) returns (GetFacilityImagesResponse);
 
-    // ایجاد سرویس جدید برای یک فسیلیتی | Create a new service for a facility
-  rpc CreateService(CreateServiceRequest) returns (CreateServiceResponse);
+
     // تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
   rpc AssignServiceToProvider(AssignServiceToProviderRequest) returns (AssignServiceToProviderResponse);
 
@@ -746,8 +779,6 @@ service ReservationService {
     // دریافت تایم‌اسلات‌های آزاد برای رزرو | List available time slots
   rpc ListAvailableTimeSlots(ListAvailableTimeSlotsRequest) returns (ListAvailableTimeSlotsResponse);
 
-    // دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
-  rpc ListServices(ListServicesRequest) returns (ListServicesResponse);
     // ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider
   rpc CreateProviderUnavailability(CreateProviderUnavailabilityRequest) returns (CreateProviderUnavailabilityResponse);
 

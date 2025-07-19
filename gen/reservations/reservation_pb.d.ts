@@ -884,7 +884,6 @@ export declare const ReservationSchema: GenMessage<Reservation>;
 
 /**
  * ایجاد فسیلیتی | Create a facility
- * Proto
  *
  * @generated from message reservation.CreateFacilityRequest
  */
@@ -956,9 +955,9 @@ export declare const CreateFacilityResponseSchema: GenMessage<CreateFacilityResp
  */
 export declare type UpdateFacilityRequest = Message<"reservation.UpdateFacilityRequest"> & {
   /**
-   * @generated from field: int64 facility_id = 1;
+   * @generated from field: string facility_id = 1;
    */
-  facilityId: bigint;
+  facilityId: string;
 
   /**
    * می‌تونیم یک فیلد partial باشه و فقط فیلدهایی که کاربر می‌خواد بروز کنه را بفرسته
@@ -1016,125 +1015,69 @@ export declare type UpdateFacilityResponse = Message<"reservation.UpdateFacility
 export declare const UpdateFacilityResponseSchema: GenMessage<UpdateFacilityResponse>;
 
 /**
- * افزودن تصویر به فسیلیتی | Add image to facility
- *
- * @generated from message reservation.AddFacilityImageRequest
+ * @generated from message reservation.ListFacilitiesRequest
  */
-export declare type AddFacilityImageRequest = Message<"reservation.AddFacilityImageRequest"> & {
+export declare type ListFacilitiesRequest = Message<"reservation.ListFacilitiesRequest"> & {
   /**
-   * اطلاعات تصویر | Image info
-   *
-   * @generated from field: reservation.FacilityImage image = 1;
+   * @generated from field: reservation.FaclityFilter filter = 1;
    */
-  image?: FacilityImage;
+  filter?: FaclityFilter;
 };
 
 /**
- * Describes the message reservation.AddFacilityImageRequest.
- * Use `create(AddFacilityImageRequestSchema)` to create a new message.
+ * Describes the message reservation.ListFacilitiesRequest.
+ * Use `create(ListFacilitiesRequestSchema)` to create a new message.
  */
-export declare const AddFacilityImageRequestSchema: GenMessage<AddFacilityImageRequest>;
+export declare const ListFacilitiesRequestSchema: GenMessage<ListFacilitiesRequest>;
 
 /**
- * @generated from message reservation.AddFacilityImageResponse
+ * @generated from message reservation.FaclityFilter
  */
-export declare type AddFacilityImageResponse = Message<"reservation.AddFacilityImageResponse"> & {
+export declare type FaclityFilter = Message<"reservation.FaclityFilter"> & {
   /**
-   * شناسه تصویر آپلود شده | Uploaded image ID
-   *
-   * @generated from field: string id = 1;
+   * @generated from field: optional string facility_id = 1;
    */
-  id: string;
+  facilityId?: string;
 
   /**
-   * پیام موفقیت یا خطا | Success or error message
-   *
-   * @generated from field: string message = 2;
+   * @generated from field: optional reservation.FacilityGroup group = 2;
    */
-  message: string;
+  group?: FacilityGroup;
+
+  /**
+   * @generated from field: optional reservation.FacilityType type = 3;
+   */
+  type?: FacilityType;
+
+  /**
+   * @generated from field: optional reservation.FacilityTitle title = 4;
+   */
+  title?: FacilityTitle;
 };
 
 /**
- * Describes the message reservation.AddFacilityImageResponse.
- * Use `create(AddFacilityImageResponseSchema)` to create a new message.
+ * Describes the message reservation.FaclityFilter.
+ * Use `create(FaclityFilterSchema)` to create a new message.
  */
-export declare const AddFacilityImageResponseSchema: GenMessage<AddFacilityImageResponse>;
+export declare const FaclityFilterSchema: GenMessage<FaclityFilter>;
 
 /**
- * حذف تصویر فسیلیتی | Delete facility image
- *
- * @generated from message reservation.DeleteFacilityImageRequest
+ * @generated from message reservation.ListFacilitiesResponse
  */
-export declare type DeleteFacilityImageRequest = Message<"reservation.DeleteFacilityImageRequest"> & {
+export declare type ListFacilitiesResponse = Message<"reservation.ListFacilitiesResponse"> & {
   /**
-   * شناسه تصویر | Image ID
+   * لیست فسیلیتی‌ها | List of facilities
    *
-   * @generated from field: string image_id = 1;
+   * @generated from field: repeated reservation.Facility facilities = 1;
    */
-  imageId: string;
+  facilities: Facility[];
 };
 
 /**
- * Describes the message reservation.DeleteFacilityImageRequest.
- * Use `create(DeleteFacilityImageRequestSchema)` to create a new message.
+ * Describes the message reservation.ListFacilitiesResponse.
+ * Use `create(ListFacilitiesResponseSchema)` to create a new message.
  */
-export declare const DeleteFacilityImageRequestSchema: GenMessage<DeleteFacilityImageRequest>;
-
-/**
- * @generated from message reservation.DeleteFacilityImageResponse
- */
-export declare type DeleteFacilityImageResponse = Message<"reservation.DeleteFacilityImageResponse"> & {
-  /**
-   * پیام موفقیت یا خطا | Success or error message
-   *
-   * @generated from field: string message = 1;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.DeleteFacilityImageResponse.
- * Use `create(DeleteFacilityImageResponseSchema)` to create a new message.
- */
-export declare const DeleteFacilityImageResponseSchema: GenMessage<DeleteFacilityImageResponse>;
-
-/**
- * دریافت تصاویر فسیلیتی | Get images of a facility
- *
- * @generated from message reservation.GetFacilityImagesRequest
- */
-export declare type GetFacilityImagesRequest = Message<"reservation.GetFacilityImagesRequest"> & {
-  /**
-   * شناسه فسیلیتی | Facility ID
-   *
-   * @generated from field: string facility_id = 1;
-   */
-  facilityId: string;
-};
-
-/**
- * Describes the message reservation.GetFacilityImagesRequest.
- * Use `create(GetFacilityImagesRequestSchema)` to create a new message.
- */
-export declare const GetFacilityImagesRequestSchema: GenMessage<GetFacilityImagesRequest>;
-
-/**
- * @generated from message reservation.GetFacilityImagesResponse
- */
-export declare type GetFacilityImagesResponse = Message<"reservation.GetFacilityImagesResponse"> & {
-  /**
-   * لیست تصاویر | List of images
-   *
-   * @generated from field: repeated reservation.FacilityImage images = 1;
-   */
-  images: FacilityImage[];
-};
-
-/**
- * Describes the message reservation.GetFacilityImagesResponse.
- * Use `create(GetFacilityImagesResponseSchema)` to create a new message.
- */
-export declare const GetFacilityImagesResponseSchema: GenMessage<GetFacilityImagesResponse>;
+export declare const ListFacilitiesResponseSchema: GenMessage<ListFacilitiesResponse>;
 
 /**
  * ایجاد سرویس | Create a service
@@ -1143,11 +1086,34 @@ export declare const GetFacilityImagesResponseSchema: GenMessage<GetFacilityImag
  */
 export declare type CreateServiceRequest = Message<"reservation.CreateServiceRequest"> & {
   /**
-   * اطلاعات سرویس | Service info
-   *
-   * @generated from field: reservation.Service service = 1;
+   * @generated from field: string facility_id = 1;
    */
-  service?: Service;
+  facilityId: string;
+
+  /**
+   * @generated from field: reservation.LocalizedString name = 2;
+   */
+  name?: LocalizedString;
+
+  /**
+   * @generated from field: optional reservation.LocalizedString description = 3;
+   */
+  description?: LocalizedString;
+
+  /**
+   * @generated from field: bool is_available = 4;
+   */
+  isAvailable: boolean;
+
+  /**
+   * @generated from field: optional int32 default_duration_minutes = 5;
+   */
+  defaultDurationMinutes?: number;
+
+  /**
+   * @generated from field: optional google.type.Money default_price = 6;
+   */
+  defaultPrice?: Money;
 };
 
 /**
@@ -1161,15 +1127,11 @@ export declare const CreateServiceRequestSchema: GenMessage<CreateServiceRequest
  */
 export declare type CreateServiceResponse = Message<"reservation.CreateServiceResponse"> & {
   /**
-   * شناسه سرویس | Service ID
-   *
-   * @generated from field: string id = 1;
+   * @generated from field: reservation.Service service = 1;
    */
-  id: string;
+  service?: Service;
 
   /**
-   * پیام موفقیت یا خطا | Success or error message
-   *
    * @generated from field: string message = 2;
    */
   message: string;
@@ -1180,6 +1142,130 @@ export declare type CreateServiceResponse = Message<"reservation.CreateServiceRe
  * Use `create(CreateServiceResponseSchema)` to create a new message.
  */
 export declare const CreateServiceResponseSchema: GenMessage<CreateServiceResponse>;
+
+/**
+ * ویرایش سرویس | Update a service
+ *
+ * @generated from message reservation.UpdateServiceRequest
+ */
+export declare type UpdateServiceRequest = Message<"reservation.UpdateServiceRequest"> & {
+  /**
+   * @generated from field: string service_id = 1;
+   */
+  serviceId: string;
+
+  /**
+   * @generated from field: optional reservation.LocalizedString name = 2;
+   */
+  name?: LocalizedString;
+
+  /**
+   * @generated from field: optional reservation.LocalizedString description = 3;
+   */
+  description?: LocalizedString;
+
+  /**
+   * @generated from field: optional bool is_available = 4;
+   */
+  isAvailable?: boolean;
+
+  /**
+   * @generated from field: optional int32 default_duration_minutes = 5;
+   */
+  defaultDurationMinutes?: number;
+
+  /**
+   * @generated from field: optional google.type.Money default_price = 6;
+   */
+  defaultPrice?: Money;
+};
+
+/**
+ * Describes the message reservation.UpdateServiceRequest.
+ * Use `create(UpdateServiceRequestSchema)` to create a new message.
+ */
+export declare const UpdateServiceRequestSchema: GenMessage<UpdateServiceRequest>;
+
+/**
+ * @generated from message reservation.UpdateServiceResponse
+ */
+export declare type UpdateServiceResponse = Message<"reservation.UpdateServiceResponse"> & {
+  /**
+   * @generated from field: reservation.Service service = 1;
+   */
+  service?: Service;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.UpdateServiceResponse.
+ * Use `create(UpdateServiceResponseSchema)` to create a new message.
+ */
+export declare const UpdateServiceResponseSchema: GenMessage<UpdateServiceResponse>;
+
+/**
+ * لیست سرویس ها| List all services for a facility
+ *
+ * @generated from message reservation.ListServicesRequest
+ */
+export declare type ListServicesRequest = Message<"reservation.ListServicesRequest"> & {
+  /**
+   * @generated from field: reservation.ListServiceFilter filter = 1;
+   */
+  filter?: ListServiceFilter;
+};
+
+/**
+ * Describes the message reservation.ListServicesRequest.
+ * Use `create(ListServicesRequestSchema)` to create a new message.
+ */
+export declare const ListServicesRequestSchema: GenMessage<ListServicesRequest>;
+
+/**
+ * @generated from message reservation.ListServiceFilter
+ */
+export declare type ListServiceFilter = Message<"reservation.ListServiceFilter"> & {
+  /**
+   * @generated from field: optional string service_id = 1;
+   */
+  serviceId?: string;
+
+  /**
+   * @generated from field: optional string facility_id = 2;
+   */
+  facilityId?: string;
+
+  /**
+   * @generated from field: optional bool is_available = 3;
+   */
+  isAvailable?: boolean;
+};
+
+/**
+ * Describes the message reservation.ListServiceFilter.
+ * Use `create(ListServiceFilterSchema)` to create a new message.
+ */
+export declare const ListServiceFilterSchema: GenMessage<ListServiceFilter>;
+
+/**
+ * @generated from message reservation.ListServicesResponse
+ */
+export declare type ListServicesResponse = Message<"reservation.ListServicesResponse"> & {
+  /**
+   * @generated from field: repeated reservation.Service services = 1;
+   */
+  services: Service[];
+};
+
+/**
+ * Describes the message reservation.ListServicesResponse.
+ * Use `create(ListServicesResponseSchema)` to create a new message.
+ */
+export declare const ListServicesResponseSchema: GenMessage<ListServicesResponse>;
 
 /**
  * اختصاص سرویس به ارائه‌دهنده | Assign service to provider
@@ -1611,107 +1697,6 @@ export declare type UpdateReservationStatusResponse = Message<"reservation.Updat
  * Use `create(UpdateReservationStatusResponseSchema)` to create a new message.
  */
 export declare const UpdateReservationStatusResponseSchema: GenMessage<UpdateReservationStatusResponse>;
-
-/**
- * @generated from message reservation.ListFacilitiesRequest
- */
-export declare type ListFacilitiesRequest = Message<"reservation.ListFacilitiesRequest"> & {
-  /**
-   * @generated from field: reservation.FaclityFilter filter = 1;
-   */
-  filter?: FaclityFilter;
-};
-
-/**
- * Describes the message reservation.ListFacilitiesRequest.
- * Use `create(ListFacilitiesRequestSchema)` to create a new message.
- */
-export declare const ListFacilitiesRequestSchema: GenMessage<ListFacilitiesRequest>;
-
-/**
- * @generated from message reservation.FaclityFilter
- */
-export declare type FaclityFilter = Message<"reservation.FaclityFilter"> & {
-  /**
-   * @generated from field: optional int64 facility_id = 1;
-   */
-  facilityId?: bigint;
-
-  /**
-   * @generated from field: optional reservation.FacilityGroup group = 2;
-   */
-  group?: FacilityGroup;
-
-  /**
-   * @generated from field: optional reservation.FacilityType type = 3;
-   */
-  type?: FacilityType;
-
-  /**
-   * @generated from field: optional reservation.FacilityTitle title = 4;
-   */
-  title?: FacilityTitle;
-};
-
-/**
- * Describes the message reservation.FaclityFilter.
- * Use `create(FaclityFilterSchema)` to create a new message.
- */
-export declare const FaclityFilterSchema: GenMessage<FaclityFilter>;
-
-/**
- * @generated from message reservation.ListFacilitiesResponse
- */
-export declare type ListFacilitiesResponse = Message<"reservation.ListFacilitiesResponse"> & {
-  /**
-   * لیست فسیلیتی‌ها | List of facilities
-   *
-   * @generated from field: repeated reservation.Facility facilities = 1;
-   */
-  facilities: Facility[];
-};
-
-/**
- * Describes the message reservation.ListFacilitiesResponse.
- * Use `create(ListFacilitiesResponseSchema)` to create a new message.
- */
-export declare const ListFacilitiesResponseSchema: GenMessage<ListFacilitiesResponse>;
-
-/**
- * @generated from message reservation.ListServicesRequest
- */
-export declare type ListServicesRequest = Message<"reservation.ListServicesRequest"> & {
-  /**
-   * شناسه فسیلیتی | Facility ID
-   *
-   * @generated from field: string facility_id = 1;
-   */
-  facilityId: string;
-};
-
-/**
- * Describes the message reservation.ListServicesRequest.
- * Use `create(ListServicesRequestSchema)` to create a new message.
- */
-export declare const ListServicesRequestSchema: GenMessage<ListServicesRequest>;
-
-/**
- * @generated from message reservation.ListServicesResponse
- */
-export declare type ListServicesResponse = Message<"reservation.ListServicesResponse"> & {
-  /**
-   * لیست سرویس‌ها | List of services
-   *
-   * @generated from field: repeated reservation.Service services = 1;
-   */
-  services: Service[];
-};
-
-/**
- * Describes the message reservation.ListServicesResponse.
- * Use `create(ListServicesResponseSchema)` to create a new message.
- */
-export declare const ListServicesResponseSchema: GenMessage<ListServicesResponse>;
 
 /**
  * ایجاد عدم دسترسی برای ارائه‌دهنده | Create unavailability for a provider
@@ -2383,6 +2368,127 @@ export declare type DeleteServiceUnavailabilityResponse = Message<"reservation.D
  * Use `create(DeleteServiceUnavailabilityResponseSchema)` to create a new message.
  */
 export declare const DeleteServiceUnavailabilityResponseSchema: GenMessage<DeleteServiceUnavailabilityResponse>;
+
+/**
+ * افزودن تصویر به فسیلیتی | Add image to facility
+ *
+ * @generated from message reservation.AddFacilityImageRequest
+ */
+export declare type AddFacilityImageRequest = Message<"reservation.AddFacilityImageRequest"> & {
+  /**
+   * اطلاعات تصویر | Image info
+   *
+   * @generated from field: reservation.FacilityImage image = 1;
+   */
+  image?: FacilityImage;
+};
+
+/**
+ * Describes the message reservation.AddFacilityImageRequest.
+ * Use `create(AddFacilityImageRequestSchema)` to create a new message.
+ */
+export declare const AddFacilityImageRequestSchema: GenMessage<AddFacilityImageRequest>;
+
+/**
+ * @generated from message reservation.AddFacilityImageResponse
+ */
+export declare type AddFacilityImageResponse = Message<"reservation.AddFacilityImageResponse"> & {
+  /**
+   * شناسه تصویر آپلود شده | Uploaded image ID
+   *
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * پیام موفقیت یا خطا | Success or error message
+   *
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.AddFacilityImageResponse.
+ * Use `create(AddFacilityImageResponseSchema)` to create a new message.
+ */
+export declare const AddFacilityImageResponseSchema: GenMessage<AddFacilityImageResponse>;
+
+/**
+ * حذف تصویر فسیلیتی | Delete facility image
+ *
+ * @generated from message reservation.DeleteFacilityImageRequest
+ */
+export declare type DeleteFacilityImageRequest = Message<"reservation.DeleteFacilityImageRequest"> & {
+  /**
+   * شناسه تصویر | Image ID
+   *
+   * @generated from field: string image_id = 1;
+   */
+  imageId: string;
+};
+
+/**
+ * Describes the message reservation.DeleteFacilityImageRequest.
+ * Use `create(DeleteFacilityImageRequestSchema)` to create a new message.
+ */
+export declare const DeleteFacilityImageRequestSchema: GenMessage<DeleteFacilityImageRequest>;
+
+/**
+ * @generated from message reservation.DeleteFacilityImageResponse
+ */
+export declare type DeleteFacilityImageResponse = Message<"reservation.DeleteFacilityImageResponse"> & {
+  /**
+   * پیام موفقیت یا خطا | Success or error message
+   *
+   * @generated from field: string message = 1;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.DeleteFacilityImageResponse.
+ * Use `create(DeleteFacilityImageResponseSchema)` to create a new message.
+ */
+export declare const DeleteFacilityImageResponseSchema: GenMessage<DeleteFacilityImageResponse>;
+
+/**
+ * دریافت تصاویر فسیلیتی | Get images of a facility
+ *
+ * @generated from message reservation.GetFacilityImagesRequest
+ */
+export declare type GetFacilityImagesRequest = Message<"reservation.GetFacilityImagesRequest"> & {
+  /**
+   * شناسه فسیلیتی | Facility ID
+   *
+   * @generated from field: string facility_id = 1;
+   */
+  facilityId: string;
+};
+
+/**
+ * Describes the message reservation.GetFacilityImagesRequest.
+ * Use `create(GetFacilityImagesRequestSchema)` to create a new message.
+ */
+export declare const GetFacilityImagesRequestSchema: GenMessage<GetFacilityImagesRequest>;
+
+/**
+ * @generated from message reservation.GetFacilityImagesResponse
+ */
+export declare type GetFacilityImagesResponse = Message<"reservation.GetFacilityImagesResponse"> & {
+  /**
+   * لیست تصاویر | List of images
+   *
+   * @generated from field: repeated reservation.FacilityImage images = 1;
+   */
+  images: FacilityImage[];
+};
+
+/**
+ * Describes the message reservation.GetFacilityImagesResponse.
+ * Use `create(GetFacilityImagesResponseSchema)` to create a new message.
+ */
+export declare const GetFacilityImagesResponseSchema: GenMessage<GetFacilityImagesResponse>;
 
 /**
  * نوع مالک تایم‌اسلات — تعیین می‌کند که تایم‌اسلات متعلق به فرد است یا فضای مشترک
@@ -3368,6 +3474,7 @@ export declare const StatusSchema: GenEnum<Status>;
  */
 export declare const ReservationService: GenService<{
   /**
+   * facility related methods
    * ایجاد یک فسیلیتی جدید | Create a new facility
    *
    * @generated from rpc reservation.ReservationService.CreateFacility
@@ -3398,6 +3505,37 @@ export declare const ReservationService: GenService<{
     output: typeof ListFacilitiesResponseSchema;
   },
   /**
+   * Service related methods
+   * ایجاد سرویس جدید برای یک فسیلیتی | Create a new service for a facility
+   *
+   * @generated from rpc reservation.ReservationService.CreateService
+   */
+  createService: {
+    methodKind: "unary";
+    input: typeof CreateServiceRequestSchema;
+    output: typeof CreateServiceResponseSchema;
+  },
+  /**
+   * ویرایش سرویس  | Update a service for a facility
+   *
+   * @generated from rpc reservation.ReservationService.UpdateService
+   */
+  updateService: {
+    methodKind: "unary";
+    input: typeof UpdateServiceRequestSchema;
+    output: typeof UpdateServiceResponseSchema;
+  },
+  /**
+   * دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
+   *
+   * @generated from rpc reservation.ReservationService.ListServices
+   */
+  listServices: {
+    methodKind: "unary";
+    input: typeof ListServicesRequestSchema;
+    output: typeof ListServicesResponseSchema;
+  },
+  /**
    * افزودن تصویر به فسیلیتی | Add an image to a facility
    *
    * @generated from rpc reservation.ReservationService.AddFacilityImage
@@ -3426,16 +3564,6 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof GetFacilityImagesRequestSchema;
     output: typeof GetFacilityImagesResponseSchema;
-  },
-  /**
-   * ایجاد سرویس جدید برای یک فسیلیتی | Create a new service for a facility
-   *
-   * @generated from rpc reservation.ReservationService.CreateService
-   */
-  createService: {
-    methodKind: "unary";
-    input: typeof CreateServiceRequestSchema;
-    output: typeof CreateServiceResponseSchema;
   },
   /**
    * تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
@@ -3526,16 +3654,6 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof ListAvailableTimeSlotsRequestSchema;
     output: typeof ListAvailableTimeSlotsResponseSchema;
-  },
-  /**
-   * دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
-   *
-   * @generated from rpc reservation.ReservationService.ListServices
-   */
-  listServices: {
-    methodKind: "unary";
-    input: typeof ListServicesRequestSchema;
-    output: typeof ListServicesResponseSchema;
   },
   /**
    * ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider
