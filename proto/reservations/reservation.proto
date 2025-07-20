@@ -438,11 +438,12 @@ message CreateServiceResponse {
 // ویرایش سرویس | Update a service
 message UpdateServiceRequest {
   string service_id = 1;
-  optional LocalizedString name = 2;
-  optional LocalizedString description = 3;
-  optional bool is_available = 4;
-  optional int32 default_duration_minutes = 5;
-  optional google.type.Money default_price = 6;
+  optional  string facility_id = 2;
+  optional LocalizedString name = 3;
+  optional LocalizedString description = 4;
+  optional bool is_available = 5;
+  optional int32 default_duration_minutes = 6;
+  optional google.type.Money default_price = 7;
 }
 message UpdateServiceResponse {
   Service service = 1;

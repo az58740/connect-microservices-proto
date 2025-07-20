@@ -1155,27 +1155,32 @@ export declare type UpdateServiceRequest = Message<"reservation.UpdateServiceReq
   serviceId: string;
 
   /**
-   * @generated from field: optional reservation.LocalizedString name = 2;
+   * @generated from field: optional string facility_id = 2;
+   */
+  facilityId?: string;
+
+  /**
+   * @generated from field: optional reservation.LocalizedString name = 3;
    */
   name?: LocalizedString;
 
   /**
-   * @generated from field: optional reservation.LocalizedString description = 3;
+   * @generated from field: optional reservation.LocalizedString description = 4;
    */
   description?: LocalizedString;
 
   /**
-   * @generated from field: optional bool is_available = 4;
+   * @generated from field: optional bool is_available = 5;
    */
   isAvailable?: boolean;
 
   /**
-   * @generated from field: optional int32 default_duration_minutes = 5;
+   * @generated from field: optional int32 default_duration_minutes = 6;
    */
   defaultDurationMinutes?: number;
 
   /**
-   * @generated from field: optional google.type.Money default_price = 6;
+   * @generated from field: optional google.type.Money default_price = 7;
    */
   defaultPrice?: Money;
 };
