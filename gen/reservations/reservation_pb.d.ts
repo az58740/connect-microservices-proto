@@ -5,7 +5,6 @@
 import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
 import type { Message } from "@bufbuild/protobuf";
 import type { Money } from "../google/type/money_pb.ts";
-import type { User } from "../users/users_pb.ts";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 
 /**
@@ -241,9 +240,9 @@ export declare type ProviderService = Message<"reservation.ProviderService"> & {
   /**
    * شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
    *
-   * @generated from field: users.User provider_user = 3;
+   * @generated from field: string provider_user_id = 3;
    */
-  providerUser?: User;
+  providerUserId: string;
 
   /**
    * آیا ارائه می‌شود یا نه
@@ -562,9 +561,9 @@ export declare type ServiceUnavailability = Message<"reservation.ServiceUnavaila
   /**
    * شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
    *
-   * @generated from field: users.User provider_user = 3;
+   * @generated from field: string provider_user_id = 3;
    */
-  providerUser?: User;
+  providerUserId: string;
 
   /**
    * @generated from field: google.protobuf.Timestamp from = 4;
@@ -834,9 +833,9 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
   /**
    * کاربر رزروکننده
    *
-   * @generated from field: users.User user = 2;
+   * @generated from field: string user_id = 2;
    */
-  user?: User;
+  userId: string;
 
   /**
    * سرویس‌دهنده
@@ -1279,18 +1278,30 @@ export declare const ListServicesResponseSchema: GenMessage<ListServicesResponse
  */
 export declare type AssignServiceToProviderRequest = Message<"reservation.AssignServiceToProviderRequest"> & {
   /**
-   * شناسه سرویس | Service ID
-   *
    * @generated from field: string service_id = 1;
    */
   serviceId: string;
 
   /**
-   * شناسه کاربر ارائه‌دهنده | Provider user ID
+   * ID کاربر ارائه‌دهنده
    *
    * @generated from field: string provider_user_id = 2;
    */
   providerUserId: string;
+
+  /**
+   * قیمت اختیاری
+   *
+   * @generated from field: optional google.type.Money price = 3;
+   */
+  price?: Money;
+
+  /**
+   * مدت اختیاری
+   *
+   * @generated from field: optional int32 duration_minutes = 4;
+   */
+  durationMinutes?: number;
 };
 
 /**
@@ -1300,15 +1311,27 @@ export declare type AssignServiceToProviderRequest = Message<"reservation.Assign
 export declare const AssignServiceToProviderRequestSchema: GenMessage<AssignServiceToProviderRequest>;
 
 /**
+ * پاسخ برای تخصیص 
+ *
  * @generated from message reservation.AssignServiceToProviderResponse
  */
 export declare type AssignServiceToProviderResponse = Message<"reservation.AssignServiceToProviderResponse"> & {
   /**
-   * پیام موفقیت | Success message
-   *
-   * @generated from field: string message = 1;
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
    */
   message: string;
+
+  /**
+   * فقط در حالت Assign برگردانده شود
+   *
+   * @generated from field: optional reservation.ProviderService provider_service = 3;
+   */
+  providerService?: ProviderService;
 };
 
 /**
@@ -1316,6 +1339,97 @@ export declare type AssignServiceToProviderResponse = Message<"reservation.Assig
  * Use `create(AssignServiceToProviderResponseSchema)` to create a new message.
  */
 export declare const AssignServiceToProviderResponseSchema: GenMessage<AssignServiceToProviderResponse>;
+
+/**
+ * درخواست برای حذف سرویس
+ *
+ * @generated from message reservation.RemoveServiceFromProviderRequest
+ */
+export declare type RemoveServiceFromProviderRequest = Message<"reservation.RemoveServiceFromProviderRequest"> & {
+  /**
+   * @generated from field: string service_id = 1;
+   */
+  serviceId: string;
+
+  /**
+   * ID کاربر ارائه‌دهنده
+   *
+   * @generated from field: string provider_user_id = 2;
+   */
+  providerUserId: string;
+};
+
+/**
+ * Describes the message reservation.RemoveServiceFromProviderRequest.
+ * Use `create(RemoveServiceFromProviderRequestSchema)` to create a new message.
+ */
+export declare const RemoveServiceFromProviderRequestSchema: GenMessage<RemoveServiceFromProviderRequest>;
+
+/**
+ * پاسخ  حذف سرویس
+ *
+ * @generated from message reservation.RemoveServiceFromProviderResponse
+ */
+export declare type RemoveServiceFromProviderResponse = Message<"reservation.RemoveServiceFromProviderResponse"> & {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+
+  /**
+   * فقط در حالت Assign برگردانده شود
+   *
+   * @generated from field: optional reservation.ProviderService provider_service = 3;
+   */
+  providerService?: ProviderService;
+};
+
+/**
+ * Describes the message reservation.RemoveServiceFromProviderResponse.
+ * Use `create(RemoveServiceFromProviderResponseSchema)` to create a new message.
+ */
+export declare const RemoveServiceFromProviderResponseSchema: GenMessage<RemoveServiceFromProviderResponse>;
+
+/**
+ * درخواست برای دریافت لیست سرویس‌های یک ارائه‌دهنده
+ *
+ * @generated from message reservation.GetProviderServicesListRequest
+ */
+export declare type GetProviderServicesListRequest = Message<"reservation.GetProviderServicesListRequest"> & {
+  /**
+   * @generated from field: string provider_user_id = 1;
+   */
+  providerUserId: string;
+};
+
+/**
+ * Describes the message reservation.GetProviderServicesListRequest.
+ * Use `create(GetProviderServicesListRequestSchema)` to create a new message.
+ */
+export declare const GetProviderServicesListRequestSchema: GenMessage<GetProviderServicesListRequest>;
+
+/**
+ * پاسخ برای لیست سرویس‌های یک ارائه‌دهنده
+ *
+ * @generated from message reservation.GetProviderServicesListResponse
+ */
+export declare type GetProviderServicesListResponse = Message<"reservation.GetProviderServicesListResponse"> & {
+  /**
+   * @generated from field: repeated reservation.ProviderService services = 1;
+   */
+  services: ProviderService[];
+};
+
+/**
+ * Describes the message reservation.GetProviderServicesListResponse.
+ * Use `create(GetProviderServicesListResponseSchema)` to create a new message.
+ */
+export declare const GetProviderServicesListResponseSchema: GenMessage<GetProviderServicesListResponse>;
 
 /**
  * ایجاد برنامه هفتگی | Create weekly schedule
@@ -3541,6 +3655,36 @@ export declare const ReservationService: GenService<{
     output: typeof ListServicesResponseSchema;
   },
   /**
+   * تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
+   *
+   * @generated from rpc reservation.ReservationService.AssignServiceToProvider
+   */
+  assignServiceToProvider: {
+    methodKind: "unary";
+    input: typeof AssignServiceToProviderRequestSchema;
+    output: typeof AssignServiceToProviderResponseSchema;
+  },
+  /**
+   * خذف یک سرویس از ارائه‌دهنده | Remove a service from a provider
+   *
+   * @generated from rpc reservation.ReservationService.RemoveServiceFromProvider
+   */
+  removeServiceFromProvider: {
+    methodKind: "unary";
+    input: typeof RemoveServiceFromProviderRequestSchema;
+    output: typeof RemoveServiceFromProviderResponseSchema;
+  },
+  /**
+   *  دریافت لیست سرویس‌های یک ارائه‌دهنده| Get provider services 
+   *
+   * @generated from rpc reservation.ReservationService.GetProviderServicesList
+   */
+  getProviderServicesList: {
+    methodKind: "unary";
+    input: typeof GetProviderServicesListRequestSchema;
+    output: typeof GetProviderServicesListResponseSchema;
+  },
+  /**
    * افزودن تصویر به فسیلیتی | Add an image to a facility
    *
    * @generated from rpc reservation.ReservationService.AddFacilityImage
@@ -3569,16 +3713,6 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof GetFacilityImagesRequestSchema;
     output: typeof GetFacilityImagesResponseSchema;
-  },
-  /**
-   * تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
-   *
-   * @generated from rpc reservation.ReservationService.AssignServiceToProvider
-   */
-  assignServiceToProvider: {
-    methodKind: "unary";
-    input: typeof AssignServiceToProviderRequestSchema;
-    output: typeof AssignServiceToProviderResponseSchema;
   },
   /**
    * ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider

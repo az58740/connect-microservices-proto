@@ -250,7 +250,7 @@ message FacilityImage {
 message ProviderService {
   string id = 1;
   string service_id = 2;
-  users.User provider_user = 3; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
+  string provider_user_id = 3; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
   bool is_available = 4; // آیا ارائه می‌شود یا نه
   // اگر مقداردهی شوند، جایگزین مقدار پیش‌فرض می‌شوند
   optional google.type.Money price = 5;          // قیمت اختصاصی این provider
@@ -311,7 +311,7 @@ message RoomAvailability {
 message ServiceUnavailability {
   string id = 1;
   string service_id = 2; // اتاق خاص
-  users.User provider_user = 3; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
+  string provider_user_id = 3; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
   google.protobuf.Timestamp from = 4;
   google.protobuf.Timestamp to = 5;
   string reason = 6;
@@ -361,7 +361,7 @@ message RoomImage {
 // Reservation made by user
 message Reservation {
   string id = 1;
-  users.User user= 2; // کاربر رزروکننده
+  string user_id= 2; // کاربر رزروکننده
   string provider_user_id = 3; // سرویس‌دهنده
   string service_id = 4;
   string facility_id = 5;
@@ -461,15 +461,37 @@ message ListServiceFilter {
 message ListServicesResponse {
   repeated Service services = 1;
 }
-
-
 // اختصاص سرویس به ارائه‌دهنده | Assign service to provider
 message AssignServiceToProviderRequest {
-  string service_id = 1;         // شناسه سرویس | Service ID
-  string provider_user_id = 2;   // شناسه کاربر ارائه‌دهنده | Provider user ID
+  string service_id = 1;
+  string provider_user_id = 2; // ID کاربر ارائه‌دهنده
+  optional google.type.Money price = 3;          // قیمت اختیاری
+  optional int32 duration_minutes = 4;           // مدت اختیاری
 }
+// پاسخ برای تخصیص 
 message AssignServiceToProviderResponse {
-  string message = 1;  // پیام موفقیت | Success message
+  bool success = 1;
+  string message = 2;
+  optional ProviderService provider_service = 3; // فقط در حالت Assign برگردانده شود
+}
+// درخواست برای حذف سرویس
+message RemoveServiceFromProviderRequest {
+  string service_id = 1;
+  string provider_user_id = 2; // ID کاربر ارائه‌دهنده
+}
+// پاسخ  حذف سرویس
+message RemoveServiceFromProviderResponse {
+  bool success = 1;
+  string message = 2;
+  optional ProviderService provider_service = 3; // فقط در حالت Assign برگردانده شود
+}
+// درخواست برای دریافت لیست سرویس‌های یک ارائه‌دهنده
+message GetProviderServicesListRequest {
+  string provider_user_id = 1;
+}
+// پاسخ برای لیست سرویس‌های یک ارائه‌دهنده
+message GetProviderServicesListResponse {
+  repeated ProviderService services = 1;
 }
 
 // ایجاد برنامه هفتگی | Create weekly schedule
@@ -749,6 +771,12 @@ service ReservationService {
           // دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
   rpc ListServices (ListServicesRequest) returns (ListServicesResponse);
 
+    // تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
+  rpc AssignServiceToProvider(AssignServiceToProviderRequest) returns (AssignServiceToProviderResponse);
+    // خذف یک سرویس از ارائه‌دهنده | Remove a service from a provider
+  rpc RemoveServiceFromProvider(RemoveServiceFromProviderRequest) returns (RemoveServiceFromProviderResponse);
+    //  دریافت لیست سرویس‌های یک ارائه‌دهنده| Get provider services 
+  rpc GetProviderServicesList(GetProviderServicesListRequest) returns (GetProviderServicesListResponse);
 
 
     // افزودن تصویر به فسیلیتی | Add an image to a facility
@@ -759,8 +787,6 @@ service ReservationService {
   rpc GetFacilityImages(GetFacilityImagesRequest) returns (GetFacilityImagesResponse);
 
 
-    // تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
-  rpc AssignServiceToProvider(AssignServiceToProviderRequest) returns (AssignServiceToProviderResponse);
 
     // ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
   rpc CreateWeeklySchedule(CreateWeeklyScheduleRequest) returns (CreateWeeklyScheduleResponse);
