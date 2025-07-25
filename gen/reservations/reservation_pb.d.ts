@@ -1052,6 +1052,11 @@ export declare type FaclityFilter = Message<"reservation.FaclityFilter"> & {
    * @generated from field: optional reservation.FacilityTitle title = 4;
    */
   title?: FacilityTitle;
+
+  /**
+   * @generated from field: optional string facility_name = 5;
+   */
+  facilityName?: string;
 };
 
 /**
