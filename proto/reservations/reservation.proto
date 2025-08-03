@@ -249,12 +249,12 @@ message FacilityImage {
 // Mapping of service to a specific provider
 message ProviderService {
   string id = 1;
-  string service_id = 2;
-  string provider_user_id = 3; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
-  bool is_available = 4; // آیا ارائه می‌شود یا نه
-  // اگر مقداردهی شوند، جایگزین مقدار پیش‌فرض می‌شوند
-  optional google.type.Money price = 5;          // قیمت اختصاصی این provider
-  optional int32 duration_minutes = 6;           // مدت اختصاصی این provider
+  string facility_id = 2;
+  string service_id = 3;
+  string provider_user_id = 4; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
+  bool is_available = 5; // آیا ارائه می‌شود یا نه
+  optional google.type.Money price = 6;          // قیمت اختصاصی این provider
+  optional int32 duration_minutes = 7;           // مدت اختصاصی این provider
 }
 // برنامه‌ زمانی تکرارشونده‌ی سرویس‌دهنده در یک روز خاص  
 // Weekly recurring availability for provider
@@ -463,31 +463,31 @@ message ListServicesResponse {
 }
 // اختصاص سرویس به ارائه‌دهنده | Assign service to provider
 message AssignServiceToProviderRequest {
-  string service_id = 1;
-  string provider_user_id = 2; // ID کاربر ارائه‌دهنده
-  optional google.type.Money price = 3;          // قیمت اختیاری
-  optional int32 duration_minutes = 4;           // مدت اختیاری
+   repeated ProviderService services = 1; 
 }
 // پاسخ برای تخصیص 
 message AssignServiceToProviderResponse {
   bool success = 1;
   string message = 2;
-  optional ProviderService provider_service = 3; // فقط در حالت Assign برگردانده شود
 }
 // درخواست برای حذف سرویس
 message RemoveServiceFromProviderRequest {
-  string service_id = 1;
-  string provider_user_id = 2; // ID کاربر ارائه‌دهنده
+   repeated ProviderService services = 1;
 }
 // پاسخ  حذف سرویس
 message RemoveServiceFromProviderResponse {
   bool success = 1;
   string message = 2;
-  optional ProviderService provider_service = 3; // فقط در حالت Assign برگردانده شود
 }
 // درخواست برای دریافت لیست سرویس‌های یک ارائه‌دهنده
 message GetProviderServicesListRequest {
-  string provider_user_id = 1;
+ProviderServiceFilter filter=1;
+}
+message ProviderServiceFilter{
+  optional string provider_user_id = 1;
+  optional string facility_id=2;
+  optional string  service_id=3;
+  optional string id=4;
 }
 // پاسخ برای لیست سرویس‌های یک ارائه‌دهنده
 message GetProviderServicesListResponse {

@@ -233,37 +233,40 @@ export declare type ProviderService = Message<"reservation.ProviderService"> & {
   id: string;
 
   /**
-   * @generated from field: string service_id = 2;
+   * @generated from field: string facility_id = 2;
+   */
+  facilityId: string;
+
+  /**
+   * @generated from field: string service_id = 3;
    */
   serviceId: string;
 
   /**
    * شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
    *
-   * @generated from field: string provider_user_id = 3;
+   * @generated from field: string provider_user_id = 4;
    */
   providerUserId: string;
 
   /**
    * آیا ارائه می‌شود یا نه
    *
-   * @generated from field: bool is_available = 4;
+   * @generated from field: bool is_available = 5;
    */
   isAvailable: boolean;
 
   /**
-   * اگر مقداردهی شوند، جایگزین مقدار پیش‌فرض می‌شوند
-   *
    * قیمت اختصاصی این provider
    *
-   * @generated from field: optional google.type.Money price = 5;
+   * @generated from field: optional google.type.Money price = 6;
    */
   price?: Money;
 
   /**
    * مدت اختصاصی این provider
    *
-   * @generated from field: optional int32 duration_minutes = 6;
+   * @generated from field: optional int32 duration_minutes = 7;
    */
   durationMinutes?: number;
 };
@@ -1283,30 +1286,9 @@ export declare const ListServicesResponseSchema: GenMessage<ListServicesResponse
  */
 export declare type AssignServiceToProviderRequest = Message<"reservation.AssignServiceToProviderRequest"> & {
   /**
-   * @generated from field: string service_id = 1;
+   * @generated from field: repeated reservation.ProviderService services = 1;
    */
-  serviceId: string;
-
-  /**
-   * ID کاربر ارائه‌دهنده
-   *
-   * @generated from field: string provider_user_id = 2;
-   */
-  providerUserId: string;
-
-  /**
-   * قیمت اختیاری
-   *
-   * @generated from field: optional google.type.Money price = 3;
-   */
-  price?: Money;
-
-  /**
-   * مدت اختیاری
-   *
-   * @generated from field: optional int32 duration_minutes = 4;
-   */
-  durationMinutes?: number;
+  services: ProviderService[];
 };
 
 /**
@@ -1330,13 +1312,6 @@ export declare type AssignServiceToProviderResponse = Message<"reservation.Assig
    * @generated from field: string message = 2;
    */
   message: string;
-
-  /**
-   * فقط در حالت Assign برگردانده شود
-   *
-   * @generated from field: optional reservation.ProviderService provider_service = 3;
-   */
-  providerService?: ProviderService;
 };
 
 /**
@@ -1352,16 +1327,9 @@ export declare const AssignServiceToProviderResponseSchema: GenMessage<AssignSer
  */
 export declare type RemoveServiceFromProviderRequest = Message<"reservation.RemoveServiceFromProviderRequest"> & {
   /**
-   * @generated from field: string service_id = 1;
+   * @generated from field: repeated reservation.ProviderService services = 1;
    */
-  serviceId: string;
-
-  /**
-   * ID کاربر ارائه‌دهنده
-   *
-   * @generated from field: string provider_user_id = 2;
-   */
-  providerUserId: string;
+  services: ProviderService[];
 };
 
 /**
@@ -1385,13 +1353,6 @@ export declare type RemoveServiceFromProviderResponse = Message<"reservation.Rem
    * @generated from field: string message = 2;
    */
   message: string;
-
-  /**
-   * فقط در حالت Assign برگردانده شود
-   *
-   * @generated from field: optional reservation.ProviderService provider_service = 3;
-   */
-  providerService?: ProviderService;
 };
 
 /**
@@ -1407,9 +1368,9 @@ export declare const RemoveServiceFromProviderResponseSchema: GenMessage<RemoveS
  */
 export declare type GetProviderServicesListRequest = Message<"reservation.GetProviderServicesListRequest"> & {
   /**
-   * @generated from field: string provider_user_id = 1;
+   * @generated from field: reservation.ProviderServiceFilter filter = 1;
    */
-  providerUserId: string;
+  filter?: ProviderServiceFilter;
 };
 
 /**
@@ -1417,6 +1378,37 @@ export declare type GetProviderServicesListRequest = Message<"reservation.GetPro
  * Use `create(GetProviderServicesListRequestSchema)` to create a new message.
  */
 export declare const GetProviderServicesListRequestSchema: GenMessage<GetProviderServicesListRequest>;
+
+/**
+ * @generated from message reservation.ProviderServiceFilter
+ */
+export declare type ProviderServiceFilter = Message<"reservation.ProviderServiceFilter"> & {
+  /**
+   * @generated from field: optional string provider_user_id = 1;
+   */
+  providerUserId?: string;
+
+  /**
+   * @generated from field: optional string facility_id = 2;
+   */
+  facilityId?: string;
+
+  /**
+   * @generated from field: optional string service_id = 3;
+   */
+  serviceId?: string;
+
+  /**
+   * @generated from field: optional string id = 4;
+   */
+  id?: string;
+};
+
+/**
+ * Describes the message reservation.ProviderServiceFilter.
+ * Use `create(ProviderServiceFilterSchema)` to create a new message.
+ */
+export declare const ProviderServiceFilterSchema: GenMessage<ProviderServiceFilter>;
 
 /**
  * پاسخ برای لیست سرویس‌های یک ارائه‌دهنده
