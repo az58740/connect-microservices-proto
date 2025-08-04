@@ -1384,9 +1384,9 @@ export declare const GetProviderServicesListRequestSchema: GenMessage<GetProvide
  */
 export declare type ProviderServiceFilter = Message<"reservation.ProviderServiceFilter"> & {
   /**
-   * @generated from field: optional string provider_user_id = 1;
+   * @generated from field: string provider_user_id = 1;
    */
-  providerUserId?: string;
+  providerUserId: string;
 
   /**
    * @generated from field: optional string facility_id = 2;

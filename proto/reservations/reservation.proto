@@ -484,7 +484,7 @@ message GetProviderServicesListRequest {
 ProviderServiceFilter filter=1;
 }
 message ProviderServiceFilter{
-  optional string provider_user_id = 1;
+  string provider_user_id = 1;
   optional string facility_id=2;
   optional string  service_id=3;
   optional string id=4;
