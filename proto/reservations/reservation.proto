@@ -481,6 +481,17 @@ message RemoveServiceFromProviderResponse {
   bool success = 1;
   string message = 2;
 }
+// ویرایش سرویس | Update a service
+message UpdateProviderServiceRequest {
+  string id = 1;
+  optional bool is_available = 2;
+  optional int32 duration_minutes = 3;
+  optional google.type.Money price = 4;
+}
+message UpdateProviderServiceResponse {
+  ProviderService service = 1;
+  string message=2;
+}
 // درخواست برای دریافت لیست سرویس‌های یک ارائه‌دهنده
 message GetProviderServicesListRequest {
 ProviderServiceFilter filter=1;
@@ -779,7 +790,8 @@ service ReservationService {
   rpc RemoveServiceFromProvider(RemoveServiceFromProviderRequest) returns (RemoveServiceFromProviderResponse);
     //  دریافت لیست سرویس‌های یک ارائه‌دهنده| Get provider services 
   rpc GetProviderServicesList(GetProviderServicesListRequest) returns (GetProviderServicesListResponse);
-
+   // ویرایش سرویس  | Update a service for a provider
+  rpc UpdateProviderService (UpdateProviderServiceRequest) returns (UpdateProviderServiceResponse);
 
     // افزودن تصویر به فسیلیتی | Add an image to a facility
   rpc AddFacilityImage(FacilityImage) returns (FacilityImage);

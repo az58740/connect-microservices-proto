@@ -60,6 +60,9 @@ const (
 	// ReservationServiceGetProviderServicesListProcedure is the fully-qualified name of the
 	// ReservationService's GetProviderServicesList RPC.
 	ReservationServiceGetProviderServicesListProcedure = "/reservation.ReservationService/GetProviderServicesList"
+	// ReservationServiceUpdateProviderServiceProcedure is the fully-qualified name of the
+	// ReservationService's UpdateProviderService RPC.
+	ReservationServiceUpdateProviderServiceProcedure = "/reservation.ReservationService/UpdateProviderService"
 	// ReservationServiceAddFacilityImageProcedure is the fully-qualified name of the
 	// ReservationService's AddFacilityImage RPC.
 	ReservationServiceAddFacilityImageProcedure = "/reservation.ReservationService/AddFacilityImage"
@@ -158,6 +161,7 @@ var (
 	reservationServiceAssignServiceToProviderMethodDescriptor      = reservationServiceServiceDescriptor.Methods().ByName("AssignServiceToProvider")
 	reservationServiceRemoveServiceFromProviderMethodDescriptor    = reservationServiceServiceDescriptor.Methods().ByName("RemoveServiceFromProvider")
 	reservationServiceGetProviderServicesListMethodDescriptor      = reservationServiceServiceDescriptor.Methods().ByName("GetProviderServicesList")
+	reservationServiceUpdateProviderServiceMethodDescriptor        = reservationServiceServiceDescriptor.Methods().ByName("UpdateProviderService")
 	reservationServiceAddFacilityImageMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("AddFacilityImage")
 	reservationServiceDeleteFacilityImageMethodDescriptor          = reservationServiceServiceDescriptor.Methods().ByName("DeleteFacilityImage")
 	reservationServiceGetFacilityImagesMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("GetFacilityImages")
@@ -210,6 +214,8 @@ type ReservationServiceClient interface {
 	RemoveServiceFromProvider(context.Context, *connect.Request[reservations.RemoveServiceFromProviderRequest]) (*connect.Response[reservations.RemoveServiceFromProviderResponse], error)
 	// دریافت لیست سرویس‌های یک ارائه‌دهنده| Get provider services
 	GetProviderServicesList(context.Context, *connect.Request[reservations.GetProviderServicesListRequest]) (*connect.Response[reservations.GetProviderServicesListResponse], error)
+	// ویرایش سرویس  | Update a service for a provider
+	UpdateProviderService(context.Context, *connect.Request[reservations.UpdateProviderServiceRequest]) (*connect.Response[reservations.UpdateProviderServiceResponse], error)
 	// افزودن تصویر به فسیلیتی | Add an image to a facility
 	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
 	// حذف تصویر از فسیلیتی | Delete an image from a facility
@@ -330,6 +336,12 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			httpClient,
 			baseURL+ReservationServiceGetProviderServicesListProcedure,
 			connect.WithSchema(reservationServiceGetProviderServicesListMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		updateProviderService: connect.NewClient[reservations.UpdateProviderServiceRequest, reservations.UpdateProviderServiceResponse](
+			httpClient,
+			baseURL+ReservationServiceUpdateProviderServiceProcedure,
+			connect.WithSchema(reservationServiceUpdateProviderServiceMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		addFacilityImage: connect.NewClient[reservations.FacilityImage, reservations.FacilityImage](
@@ -514,6 +526,7 @@ type reservationServiceClient struct {
 	assignServiceToProvider      *connect.Client[reservations.AssignServiceToProviderRequest, reservations.AssignServiceToProviderResponse]
 	removeServiceFromProvider    *connect.Client[reservations.RemoveServiceFromProviderRequest, reservations.RemoveServiceFromProviderResponse]
 	getProviderServicesList      *connect.Client[reservations.GetProviderServicesListRequest, reservations.GetProviderServicesListResponse]
+	updateProviderService        *connect.Client[reservations.UpdateProviderServiceRequest, reservations.UpdateProviderServiceResponse]
 	addFacilityImage             *connect.Client[reservations.FacilityImage, reservations.FacilityImage]
 	deleteFacilityImage          *connect.Client[reservations.DeleteFacilityImageRequest, reservations.DeleteFacilityImageResponse]
 	getFacilityImages            *connect.Client[reservations.GetFacilityImagesRequest, reservations.GetFacilityImagesResponse]
@@ -587,6 +600,11 @@ func (c *reservationServiceClient) RemoveServiceFromProvider(ctx context.Context
 // GetProviderServicesList calls reservation.ReservationService.GetProviderServicesList.
 func (c *reservationServiceClient) GetProviderServicesList(ctx context.Context, req *connect.Request[reservations.GetProviderServicesListRequest]) (*connect.Response[reservations.GetProviderServicesListResponse], error) {
 	return c.getProviderServicesList.CallUnary(ctx, req)
+}
+
+// UpdateProviderService calls reservation.ReservationService.UpdateProviderService.
+func (c *reservationServiceClient) UpdateProviderService(ctx context.Context, req *connect.Request[reservations.UpdateProviderServiceRequest]) (*connect.Response[reservations.UpdateProviderServiceResponse], error) {
+	return c.updateProviderService.CallUnary(ctx, req)
 }
 
 // AddFacilityImage calls reservation.ReservationService.AddFacilityImage.
@@ -751,6 +769,8 @@ type ReservationServiceHandler interface {
 	RemoveServiceFromProvider(context.Context, *connect.Request[reservations.RemoveServiceFromProviderRequest]) (*connect.Response[reservations.RemoveServiceFromProviderResponse], error)
 	// دریافت لیست سرویس‌های یک ارائه‌دهنده| Get provider services
 	GetProviderServicesList(context.Context, *connect.Request[reservations.GetProviderServicesListRequest]) (*connect.Response[reservations.GetProviderServicesListResponse], error)
+	// ویرایش سرویس  | Update a service for a provider
+	UpdateProviderService(context.Context, *connect.Request[reservations.UpdateProviderServiceRequest]) (*connect.Response[reservations.UpdateProviderServiceResponse], error)
 	// افزودن تصویر به فسیلیتی | Add an image to a facility
 	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
 	// حذف تصویر از فسیلیتی | Delete an image from a facility
@@ -867,6 +887,12 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		ReservationServiceGetProviderServicesListProcedure,
 		svc.GetProviderServicesList,
 		connect.WithSchema(reservationServiceGetProviderServicesListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceUpdateProviderServiceHandler := connect.NewUnaryHandler(
+		ReservationServiceUpdateProviderServiceProcedure,
+		svc.UpdateProviderService,
+		connect.WithSchema(reservationServiceUpdateProviderServiceMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceAddFacilityImageHandler := connect.NewUnaryHandler(
@@ -1057,6 +1083,8 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 			reservationServiceRemoveServiceFromProviderHandler.ServeHTTP(w, r)
 		case ReservationServiceGetProviderServicesListProcedure:
 			reservationServiceGetProviderServicesListHandler.ServeHTTP(w, r)
+		case ReservationServiceUpdateProviderServiceProcedure:
+			reservationServiceUpdateProviderServiceHandler.ServeHTTP(w, r)
 		case ReservationServiceAddFacilityImageProcedure:
 			reservationServiceAddFacilityImageHandler.ServeHTTP(w, r)
 		case ReservationServiceDeleteFacilityImageProcedure:
@@ -1156,6 +1184,10 @@ func (UnimplementedReservationServiceHandler) RemoveServiceFromProvider(context.
 
 func (UnimplementedReservationServiceHandler) GetProviderServicesList(context.Context, *connect.Request[reservations.GetProviderServicesListRequest]) (*connect.Response[reservations.GetProviderServicesListResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GetProviderServicesList is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) UpdateProviderService(context.Context, *connect.Request[reservations.UpdateProviderServiceRequest]) (*connect.Response[reservations.UpdateProviderServiceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.UpdateProviderService is not implemented"))
 }
 
 func (UnimplementedReservationServiceHandler) AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error) {

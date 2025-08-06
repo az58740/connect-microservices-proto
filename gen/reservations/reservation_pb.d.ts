@@ -1376,6 +1376,60 @@ export declare type RemoveServiceFromProviderResponse = Message<"reservation.Rem
 export declare const RemoveServiceFromProviderResponseSchema: GenMessage<RemoveServiceFromProviderResponse>;
 
 /**
+ * ویرایش سرویس | Update a service
+ *
+ * @generated from message reservation.UpdateProviderServiceRequest
+ */
+export declare type UpdateProviderServiceRequest = Message<"reservation.UpdateProviderServiceRequest"> & {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * @generated from field: optional bool is_available = 2;
+   */
+  isAvailable?: boolean;
+
+  /**
+   * @generated from field: optional int32 duration_minutes = 3;
+   */
+  durationMinutes?: number;
+
+  /**
+   * @generated from field: optional google.type.Money price = 4;
+   */
+  price?: Money;
+};
+
+/**
+ * Describes the message reservation.UpdateProviderServiceRequest.
+ * Use `create(UpdateProviderServiceRequestSchema)` to create a new message.
+ */
+export declare const UpdateProviderServiceRequestSchema: GenMessage<UpdateProviderServiceRequest>;
+
+/**
+ * @generated from message reservation.UpdateProviderServiceResponse
+ */
+export declare type UpdateProviderServiceResponse = Message<"reservation.UpdateProviderServiceResponse"> & {
+  /**
+   * @generated from field: reservation.ProviderService service = 1;
+   */
+  service?: ProviderService;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.UpdateProviderServiceResponse.
+ * Use `create(UpdateProviderServiceResponseSchema)` to create a new message.
+ */
+export declare const UpdateProviderServiceResponseSchema: GenMessage<UpdateProviderServiceResponse>;
+
+/**
  * درخواست برای دریافت لیست سرویس‌های یک ارائه‌دهنده
  *
  * @generated from message reservation.GetProviderServicesListRequest
@@ -3694,6 +3748,16 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof GetProviderServicesListRequestSchema;
     output: typeof GetProviderServicesListResponseSchema;
+  },
+  /**
+   * ویرایش سرویس  | Update a service for a provider
+   *
+   * @generated from rpc reservation.ReservationService.UpdateProviderService
+   */
+  updateProviderService: {
+    methodKind: "unary";
+    input: typeof UpdateProviderServiceRequestSchema;
+    output: typeof UpdateProviderServiceResponseSchema;
   },
   /**
    * افزودن تصویر به فسیلیتی | Add an image to a facility
