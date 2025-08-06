@@ -249,12 +249,14 @@ message FacilityImage {
 // Mapping of service to a specific provider
 message ProviderService {
   string id = 1;
-  string facility_id = 2;
-  string service_id = 3;
-  string provider_user_id = 4; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
-  bool is_available = 5; // آیا ارائه می‌شود یا نه
-  optional google.type.Money price = 6;          // قیمت اختصاصی این provider
-  optional int32 duration_minutes = 7;           // مدت اختصاصی این provider
+  LocalizedString name = 2; // نام سرویس مانند "کوتاهی مو" یا "ویزیت عمومی" | Service name
+  optional  LocalizedString description = 3; // توضیحات | Description 
+  string facility_id = 4;
+  string service_id = 5;
+  string provider_user_id = 6; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
+  bool is_available = 7; // آیا ارائه می‌شود یا نه
+  optional google.type.Money price = 8;          // قیمت اختصاصی این provider
+  optional int32 duration_minutes = 9;           // مدت اختصاصی این provider
 }
 // برنامه‌ زمانی تکرارشونده‌ی سرویس‌دهنده در یک روز خاص  
 // Weekly recurring availability for provider
