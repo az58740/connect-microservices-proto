@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AddRoomImageRequest, AddRoomImageResponse, AssignServiceToProviderRequest, AssignServiceToProviderResponse, CancelReservationRequest, CancelReservationResponse, CheckRoomAvailabilityRequest, CheckRoomAvailabilityResponse, CreateFacilityRequest, CreateFacilityResponse, CreateProviderUnavailabilityRequest, CreateProviderUnavailabilityResponse, CreateReservationRequest, CreateReservationResponse, CreateRoomRequest, CreateRoomResponse, CreateRoomTypeRequest, CreateRoomTypeResponse, CreateServiceRequest, CreateServiceResponse, CreateServiceUnavailabilityRequest, CreateServiceUnavailabilityResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteFacilityImageRequest, DeleteFacilityImageResponse, DeleteProviderUnavailabilityRequest, DeleteProviderUnavailabilityResponse, DeleteRoomImageRequest, DeleteRoomImageResponse, DeleteRoomRequest, DeleteRoomResponse, DeleteRoomTypeRequest, DeleteRoomTypeResponse, DeleteServiceUnavailabilityRequest, DeleteServiceUnavailabilityResponse, FacilityImage, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetFacilityImagesRequest, GetFacilityImagesResponse, GetProviderServicesListRequest, GetProviderServicesListResponse, GetRoomImagesRequest, GetRoomImagesResponse, ListAvailableTimeSlotsRequest, ListAvailableTimeSlotsResponse, ListFacilitiesRequest, ListFacilitiesResponse, ListProviderUnavailabilityRequest, ListProviderUnavailabilityResponse, ListReservationsRequest, ListReservationsResponse, ListRoomAvailabilityRequest, ListRoomAvailabilityResponse, ListRoomsRequest, ListRoomsResponse, ListRoomTypesRequest, ListRoomTypesResponse, ListServicesRequest, ListServicesResponse, ListServiceUnavailabilityRequest, ListServiceUnavailabilityResponse, MarkAttendanceRequest, MarkAttendanceResponse, RemoveServiceFromProviderRequest, RemoveServiceFromProviderResponse, UpdateFacilityRequest, UpdateFacilityResponse, UpdateProviderServiceRequest, UpdateProviderServiceResponse, UpdateReservationStatusRequest, UpdateReservationStatusResponse, UpdateServiceRequest, UpdateServiceResponse } from "./reservation_pb.js";
+import { AddRoomImageRequest, AddRoomImageResponse, AssignServiceToProviderRequest, AssignServiceToProviderResponse, CancelReservationRequest, CancelReservationResponse, CheckRoomAvailabilityRequest, CheckRoomAvailabilityResponse, CreateFacilityRequest, CreateFacilityResponse, CreateProviderUnavailabilityRequest, CreateProviderUnavailabilityResponse, CreateReservationRequest, CreateReservationResponse, CreateRoomRequest, CreateRoomResponse, CreateRoomTypeRequest, CreateRoomTypeResponse, CreateServiceRequest, CreateServiceResponse, CreateServiceUnavailabilityRequest, CreateServiceUnavailabilityResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteFacilityImageRequest, DeleteFacilityImageResponse, DeleteProviderUnavailabilityRequest, DeleteProviderUnavailabilityResponse, DeleteRoomImageRequest, DeleteRoomImageResponse, DeleteRoomRequest, DeleteRoomResponse, DeleteRoomTypeRequest, DeleteRoomTypeResponse, DeleteServiceUnavailabilityRequest, DeleteServiceUnavailabilityResponse, FacilityImage, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetFacilityImagesRequest, GetFacilityImagesResponse, GetProviderServicesListRequest, GetProviderServicesListResponse, GetRoomImagesRequest, GetRoomImagesResponse, GetTimeSlotsListRequest, GetTimeSlotsListResponse, GetWeeklyScheduleListRequest, GetWeeklyScheduleListResponse, ListAvailableTimeSlotsRequest, ListAvailableTimeSlotsResponse, ListFacilitiesRequest, ListFacilitiesResponse, ListProviderUnavailabilityRequest, ListProviderUnavailabilityResponse, ListReservationsRequest, ListReservationsResponse, ListRoomAvailabilityRequest, ListRoomAvailabilityResponse, ListRoomsRequest, ListRoomsResponse, ListRoomTypesRequest, ListRoomTypesResponse, ListServicesRequest, ListServicesResponse, ListServiceUnavailabilityRequest, ListServiceUnavailabilityResponse, MarkAttendanceRequest, MarkAttendanceResponse, RemoveServiceFromProviderRequest, RemoveServiceFromProviderResponse, UpdateFacilityRequest, UpdateFacilityResponse, UpdateProviderServiceRequest, UpdateProviderServiceResponse, UpdateReservationStatusRequest, UpdateReservationStatusResponse, UpdateServiceRequest, UpdateServiceResponse, UpdateTimeSlotRequest, UpdateTimeSlotResponse, UpdateWeeklyScheduleRequest, UpdateWeeklyScheduleResponse } from "./reservation_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -83,6 +83,7 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * ُProvider Service  related methods
      * تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
      *
      * @generated from rpc reservation.ReservationService.AssignServiceToProvider
@@ -127,6 +128,65 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * WeeklySchedule and TimeSlot releated methods 
+     * ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
+     *
+     * @generated from rpc reservation.ReservationService.CreateWeeklySchedule
+     */
+    readonly createWeeklySchedule: {
+      readonly name: "CreateWeeklySchedule",
+      readonly I: typeof CreateWeeklyScheduleRequest,
+      readonly O: typeof CreateWeeklyScheduleResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.GetWeeklyScheduleList
+     */
+    readonly getWeeklyScheduleList: {
+      readonly name: "GetWeeklyScheduleList",
+      readonly I: typeof GetWeeklyScheduleListRequest,
+      readonly O: typeof GetWeeklyScheduleListResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.UpdateWeeklySchedule
+     */
+    readonly updateWeeklySchedule: {
+      readonly name: "UpdateWeeklySchedule",
+      readonly I: typeof UpdateWeeklyScheduleRequest,
+      readonly O: typeof UpdateWeeklyScheduleResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
+     *
+     * @generated from rpc reservation.ReservationService.GenerateTimeSlots
+     */
+    readonly generateTimeSlots: {
+      readonly name: "GenerateTimeSlots",
+      readonly I: typeof GenerateTimeSlotsRequest,
+      readonly O: typeof GenerateTimeSlotsResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.GetTimeSlotsList
+     */
+    readonly getTimeSlotsList: {
+      readonly name: "GetTimeSlotsList",
+      readonly I: typeof GetTimeSlotsListRequest,
+      readonly O: typeof GetTimeSlotsListResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.UpdateTimeSlot
+     */
+    readonly updateTimeSlot: {
+      readonly name: "UpdateTimeSlot",
+      readonly I: typeof UpdateTimeSlotRequest,
+      readonly O: typeof UpdateTimeSlotResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
      * افزودن تصویر به فسیلیتی | Add an image to a facility
      *
      * @generated from rpc reservation.ReservationService.AddFacilityImage
@@ -157,28 +217,6 @@ export declare const ReservationService: {
       readonly name: "GetFacilityImages",
       readonly I: typeof GetFacilityImagesRequest,
       readonly O: typeof GetFacilityImagesResponse,
-      readonly kind: MethodKind.Unary,
-    },
-    /**
-     * ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
-     *
-     * @generated from rpc reservation.ReservationService.CreateWeeklySchedule
-     */
-    readonly createWeeklySchedule: {
-      readonly name: "CreateWeeklySchedule",
-      readonly I: typeof CreateWeeklyScheduleRequest,
-      readonly O: typeof CreateWeeklyScheduleResponse,
-      readonly kind: MethodKind.Unary,
-    },
-    /**
-     * تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
-     *
-     * @generated from rpc reservation.ReservationService.GenerateTimeSlots
-     */
-    readonly generateTimeSlots: {
-      readonly name: "GenerateTimeSlots",
-      readonly I: typeof GenerateTimeSlotsRequest,
-      readonly O: typeof GenerateTimeSlotsResponse,
       readonly kind: MethodKind.Unary,
     },
     /**

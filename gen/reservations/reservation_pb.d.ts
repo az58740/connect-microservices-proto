@@ -1505,9 +1505,9 @@ export declare type CreateWeeklyScheduleRequest = Message<"reservation.CreateWee
   /**
    * برنامه زمانی | Weekly schedule
    *
-   * @generated from field: reservation.WeeklySchedule schedule = 1;
+   * @generated from field: repeated reservation.WeeklySchedule schedule = 1;
    */
-  schedule?: WeeklySchedule;
+  schedule: WeeklySchedule[];
 };
 
 /**
@@ -1521,11 +1521,14 @@ export declare const CreateWeeklyScheduleRequestSchema: GenMessage<CreateWeeklyS
  */
 export declare type CreateWeeklyScheduleResponse = Message<"reservation.CreateWeeklyScheduleResponse"> & {
   /**
-   * شناسه برنامه | Schedule ID
-   *
-   * @generated from field: string id = 1;
+   * @generated from field: bool success = 1;
    */
-  id: string;
+  success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
 };
 
 /**
@@ -1533,6 +1536,153 @@ export declare type CreateWeeklyScheduleResponse = Message<"reservation.CreateWe
  * Use `create(CreateWeeklyScheduleResponseSchema)` to create a new message.
  */
 export declare const CreateWeeklyScheduleResponseSchema: GenMessage<CreateWeeklyScheduleResponse>;
+
+/**
+ * @generated from message reservation.WeeklyScheduleFilter
+ */
+export declare type WeeklyScheduleFilter = Message<"reservation.WeeklyScheduleFilter"> & {
+  /**
+   * @generated from field: string provider_user_id = 1;
+   */
+  providerUserId: string;
+
+  /**
+   * @generated from field: optional string facility_id = 2;
+   */
+  facilityId?: string;
+
+  /**
+   * @generated from field: optional string service_id = 3;
+   */
+  serviceId?: string;
+
+  /**
+   * @generated from field: optional string id = 4;
+   */
+  id?: string;
+};
+
+/**
+ * Describes the message reservation.WeeklyScheduleFilter.
+ * Use `create(WeeklyScheduleFilterSchema)` to create a new message.
+ */
+export declare const WeeklyScheduleFilterSchema: GenMessage<WeeklyScheduleFilter>;
+
+/**
+ * @generated from message reservation.GetWeeklyScheduleListRequest
+ */
+export declare type GetWeeklyScheduleListRequest = Message<"reservation.GetWeeklyScheduleListRequest"> & {
+  /**
+   * @generated from field: reservation.WeeklyScheduleFilter filter = 1;
+   */
+  filter?: WeeklyScheduleFilter;
+};
+
+/**
+ * Describes the message reservation.GetWeeklyScheduleListRequest.
+ * Use `create(GetWeeklyScheduleListRequestSchema)` to create a new message.
+ */
+export declare const GetWeeklyScheduleListRequestSchema: GenMessage<GetWeeklyScheduleListRequest>;
+
+/**
+ * @generated from message reservation.GetWeeklyScheduleListResponse
+ */
+export declare type GetWeeklyScheduleListResponse = Message<"reservation.GetWeeklyScheduleListResponse"> & {
+  /**
+   * @generated from field: repeated reservation.WeeklySchedule weeklyschedules = 1;
+   */
+  weeklyschedules: WeeklySchedule[];
+};
+
+/**
+ * Describes the message reservation.GetWeeklyScheduleListResponse.
+ * Use `create(GetWeeklyScheduleListResponseSchema)` to create a new message.
+ */
+export declare const GetWeeklyScheduleListResponseSchema: GenMessage<GetWeeklyScheduleListResponse>;
+
+/**
+ * @generated from message reservation.UpdateWeeklyScheduleRequest
+ */
+export declare type UpdateWeeklyScheduleRequest = Message<"reservation.UpdateWeeklyScheduleRequest"> & {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * @generated from field: string provider_user_id = 2;
+   */
+  providerUserId: string;
+
+  /**
+   * روز هفته | Day of the week (e.g. Saturday)
+   *
+   * @generated from field: reservation.WeekDay day = 3;
+   */
+  day: WeekDay;
+
+  /**
+   * ساعت شروع (HH:mm) مثل "09:00"
+   *
+   * @generated from field: string start_time = 4;
+   */
+  startTime: string;
+
+  /**
+   * ساعت پایان (HH:mm) مثل "17:00"
+   *
+   * @generated from field: string end_time = 5;
+   */
+  endTime: string;
+
+  /**
+   * مکان مرتبط | Facility ID
+   *
+   * @generated from field: string facility_id = 6;
+   */
+  facilityId: string;
+
+  /**
+   * سرویس خاص، اختیاری | Optional service ID
+   *
+   * @generated from field: optional string service_id = 7;
+   */
+  serviceId?: string;
+
+  /**
+   * وضعیت فعال یا غیرفعال
+   *
+   * @generated from field: reservation.Status status = 8;
+   */
+  status: Status;
+};
+
+/**
+ * Describes the message reservation.UpdateWeeklyScheduleRequest.
+ * Use `create(UpdateWeeklyScheduleRequestSchema)` to create a new message.
+ */
+export declare const UpdateWeeklyScheduleRequestSchema: GenMessage<UpdateWeeklyScheduleRequest>;
+
+/**
+ * @generated from message reservation.UpdateWeeklyScheduleResponse
+ */
+export declare type UpdateWeeklyScheduleResponse = Message<"reservation.UpdateWeeklyScheduleResponse"> & {
+  /**
+   * @generated from field: reservation.WeeklySchedule weeklySchedule = 1;
+   */
+  weeklySchedule?: WeeklySchedule;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.UpdateWeeklyScheduleResponse.
+ * Use `create(UpdateWeeklyScheduleResponseSchema)` to create a new message.
+ */
+export declare const UpdateWeeklyScheduleResponseSchema: GenMessage<UpdateWeeklyScheduleResponse>;
 
 /**
  * تولید تایم‌اسلات بر اساس برنامه هفتگی | Generate timeslots from weekly schedule
@@ -1543,9 +1693,9 @@ export declare type GenerateTimeSlotsRequest = Message<"reservation.GenerateTime
   /**
    * شناسه برنامه هفتگی | Weekly schedule ID
    *
-   * @generated from field: string weekly_schedule_id = 1;
+   * @generated from field: repeated reservation.TimeSlot timeslot = 1;
    */
-  weeklyScheduleId: string;
+  timeslot: TimeSlot[];
 };
 
 /**
@@ -1559,11 +1709,14 @@ export declare const GenerateTimeSlotsRequestSchema: GenMessage<GenerateTimeSlot
  */
 export declare type GenerateTimeSlotsResponse = Message<"reservation.GenerateTimeSlotsResponse"> & {
   /**
-   * لیست تایم‌اسلات‌های ایجاد شده | Generated time slots
-   *
-   * @generated from field: repeated reservation.TimeSlot time_slots = 1;
+   * @generated from field: bool success = 1;
    */
-  timeSlots: TimeSlot[];
+  success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
 };
 
 /**
@@ -1571,6 +1724,187 @@ export declare type GenerateTimeSlotsResponse = Message<"reservation.GenerateTim
  * Use `create(GenerateTimeSlotsResponseSchema)` to create a new message.
  */
 export declare const GenerateTimeSlotsResponseSchema: GenMessage<GenerateTimeSlotsResponse>;
+
+/**
+ * @generated from message reservation.TimeSlotsFilter
+ */
+export declare type TimeSlotsFilter = Message<"reservation.TimeSlotsFilter"> & {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * @generated from field: string provider_user_id = 2;
+   */
+  providerUserId: string;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp start_time = 3;
+   */
+  startTime?: Timestamp;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp end_time = 4;
+   */
+  endTime?: Timestamp;
+
+  /**
+   * فردی یا اشتراکی
+   *
+   * @generated from field: reservation.OwnerType owner_type = 5;
+   */
+  ownerType: OwnerType;
+
+  /**
+   * آیا رزرو شده یا نه
+   *
+   * @generated from field: bool is_reserved = 6;
+   */
+  isReserved: boolean;
+
+  /**
+   * منبع ساخت (در صورت تولید خودکار)
+   *
+   * @generated from field: optional string weekly_schedule_id = 7;
+   */
+  weeklyScheduleId?: string;
+
+  /**
+   * @generated from field: string facility_id = 8;
+   */
+  facilityId: string;
+
+  /**
+   * @generated from field: optional string service_id = 9;
+   */
+  serviceId?: string;
+
+  /**
+   * روز هفته | Day of the week (e.g. Saturday)
+   *
+   * @generated from field: reservation.WeekDay day = 10;
+   */
+  day: WeekDay;
+
+  /**
+   * فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
+   *
+   * @generated from field: reservation.Status status = 11;
+   */
+  status: Status;
+};
+
+/**
+ * Describes the message reservation.TimeSlotsFilter.
+ * Use `create(TimeSlotsFilterSchema)` to create a new message.
+ */
+export declare const TimeSlotsFilterSchema: GenMessage<TimeSlotsFilter>;
+
+/**
+ * @generated from message reservation.GetTimeSlotsListRequest
+ */
+export declare type GetTimeSlotsListRequest = Message<"reservation.GetTimeSlotsListRequest"> & {
+  /**
+   * @generated from field: reservation.TimeSlotsFilter filter = 1;
+   */
+  filter?: TimeSlotsFilter;
+};
+
+/**
+ * Describes the message reservation.GetTimeSlotsListRequest.
+ * Use `create(GetTimeSlotsListRequestSchema)` to create a new message.
+ */
+export declare const GetTimeSlotsListRequestSchema: GenMessage<GetTimeSlotsListRequest>;
+
+/**
+ * @generated from message reservation.GetTimeSlotsListResponse
+ */
+export declare type GetTimeSlotsListResponse = Message<"reservation.GetTimeSlotsListResponse"> & {
+  /**
+   * @generated from field: repeated reservation.TimeSlot stimeslots = 1;
+   */
+  stimeslots: TimeSlot[];
+};
+
+/**
+ * Describes the message reservation.GetTimeSlotsListResponse.
+ * Use `create(GetTimeSlotsListResponseSchema)` to create a new message.
+ */
+export declare const GetTimeSlotsListResponseSchema: GenMessage<GetTimeSlotsListResponse>;
+
+/**
+ * @generated from message reservation.UpdateTimeSlotRequest
+ */
+export declare type UpdateTimeSlotRequest = Message<"reservation.UpdateTimeSlotRequest"> & {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * @generated from field: string provider_user_id = 2;
+   */
+  providerUserId: string;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp start_time = 3;
+   */
+  startTime?: Timestamp;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp end_time = 4;
+   */
+  endTime?: Timestamp;
+
+  /**
+   * فردی یا اشتراکی
+   *
+   * @generated from field: reservation.OwnerType owner_type = 5;
+   */
+  ownerType: OwnerType;
+
+  /**
+   * آیا رزرو شده یا نه
+   *
+   * @generated from field: bool is_reserved = 6;
+   */
+  isReserved: boolean;
+
+  /**
+   * فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
+   *
+   * @generated from field: reservation.Status status = 7;
+   */
+  status: Status;
+};
+
+/**
+ * Describes the message reservation.UpdateTimeSlotRequest.
+ * Use `create(UpdateTimeSlotRequestSchema)` to create a new message.
+ */
+export declare const UpdateTimeSlotRequestSchema: GenMessage<UpdateTimeSlotRequest>;
+
+/**
+ * @generated from message reservation.UpdateTimeSlotResponse
+ */
+export declare type UpdateTimeSlotResponse = Message<"reservation.UpdateTimeSlotResponse"> & {
+  /**
+   * @generated from field: reservation.TimeSlot tileslot = 1;
+   */
+  tileslot?: TimeSlot;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.UpdateTimeSlotResponse.
+ * Use `create(UpdateTimeSlotResponseSchema)` to create a new message.
+ */
+export declare const UpdateTimeSlotResponseSchema: GenMessage<UpdateTimeSlotResponse>;
 
 /**
  * ایجاد رزرو | Create a reservation
@@ -3720,6 +4054,7 @@ export declare const ReservationService: GenService<{
     output: typeof ListServicesResponseSchema;
   },
   /**
+   * ُProvider Service  related methods
    * تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
    *
    * @generated from rpc reservation.ReservationService.AssignServiceToProvider
@@ -3760,6 +4095,59 @@ export declare const ReservationService: GenService<{
     output: typeof UpdateProviderServiceResponseSchema;
   },
   /**
+   * WeeklySchedule and TimeSlot releated methods 
+   * ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
+   *
+   * @generated from rpc reservation.ReservationService.CreateWeeklySchedule
+   */
+  createWeeklySchedule: {
+    methodKind: "unary";
+    input: typeof CreateWeeklyScheduleRequestSchema;
+    output: typeof CreateWeeklyScheduleResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.GetWeeklyScheduleList
+   */
+  getWeeklyScheduleList: {
+    methodKind: "unary";
+    input: typeof GetWeeklyScheduleListRequestSchema;
+    output: typeof GetWeeklyScheduleListResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.UpdateWeeklySchedule
+   */
+  updateWeeklySchedule: {
+    methodKind: "unary";
+    input: typeof UpdateWeeklyScheduleRequestSchema;
+    output: typeof UpdateWeeklyScheduleResponseSchema;
+  },
+  /**
+   * تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
+   *
+   * @generated from rpc reservation.ReservationService.GenerateTimeSlots
+   */
+  generateTimeSlots: {
+    methodKind: "unary";
+    input: typeof GenerateTimeSlotsRequestSchema;
+    output: typeof GenerateTimeSlotsResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.GetTimeSlotsList
+   */
+  getTimeSlotsList: {
+    methodKind: "unary";
+    input: typeof GetTimeSlotsListRequestSchema;
+    output: typeof GetTimeSlotsListResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.UpdateTimeSlot
+   */
+  updateTimeSlot: {
+    methodKind: "unary";
+    input: typeof UpdateTimeSlotRequestSchema;
+    output: typeof UpdateTimeSlotResponseSchema;
+  },
+  /**
    * افزودن تصویر به فسیلیتی | Add an image to a facility
    *
    * @generated from rpc reservation.ReservationService.AddFacilityImage
@@ -3788,26 +4176,6 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof GetFacilityImagesRequestSchema;
     output: typeof GetFacilityImagesResponseSchema;
-  },
-  /**
-   * ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
-   *
-   * @generated from rpc reservation.ReservationService.CreateWeeklySchedule
-   */
-  createWeeklySchedule: {
-    methodKind: "unary";
-    input: typeof CreateWeeklyScheduleRequestSchema;
-    output: typeof CreateWeeklyScheduleResponseSchema;
-  },
-  /**
-   * تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
-   *
-   * @generated from rpc reservation.ReservationService.GenerateTimeSlots
-   */
-  generateTimeSlots: {
-    methodKind: "unary";
-    input: typeof GenerateTimeSlotsRequestSchema;
-    output: typeof GenerateTimeSlotsResponseSchema;
   },
   /**
    * ثبت یک رزرو جدید | Create a new reservation

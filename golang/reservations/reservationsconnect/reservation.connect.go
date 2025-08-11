@@ -63,6 +63,24 @@ const (
 	// ReservationServiceUpdateProviderServiceProcedure is the fully-qualified name of the
 	// ReservationService's UpdateProviderService RPC.
 	ReservationServiceUpdateProviderServiceProcedure = "/reservation.ReservationService/UpdateProviderService"
+	// ReservationServiceCreateWeeklyScheduleProcedure is the fully-qualified name of the
+	// ReservationService's CreateWeeklySchedule RPC.
+	ReservationServiceCreateWeeklyScheduleProcedure = "/reservation.ReservationService/CreateWeeklySchedule"
+	// ReservationServiceGetWeeklyScheduleListProcedure is the fully-qualified name of the
+	// ReservationService's GetWeeklyScheduleList RPC.
+	ReservationServiceGetWeeklyScheduleListProcedure = "/reservation.ReservationService/GetWeeklyScheduleList"
+	// ReservationServiceUpdateWeeklyScheduleProcedure is the fully-qualified name of the
+	// ReservationService's UpdateWeeklySchedule RPC.
+	ReservationServiceUpdateWeeklyScheduleProcedure = "/reservation.ReservationService/UpdateWeeklySchedule"
+	// ReservationServiceGenerateTimeSlotsProcedure is the fully-qualified name of the
+	// ReservationService's GenerateTimeSlots RPC.
+	ReservationServiceGenerateTimeSlotsProcedure = "/reservation.ReservationService/GenerateTimeSlots"
+	// ReservationServiceGetTimeSlotsListProcedure is the fully-qualified name of the
+	// ReservationService's GetTimeSlotsList RPC.
+	ReservationServiceGetTimeSlotsListProcedure = "/reservation.ReservationService/GetTimeSlotsList"
+	// ReservationServiceUpdateTimeSlotProcedure is the fully-qualified name of the ReservationService's
+	// UpdateTimeSlot RPC.
+	ReservationServiceUpdateTimeSlotProcedure = "/reservation.ReservationService/UpdateTimeSlot"
 	// ReservationServiceAddFacilityImageProcedure is the fully-qualified name of the
 	// ReservationService's AddFacilityImage RPC.
 	ReservationServiceAddFacilityImageProcedure = "/reservation.ReservationService/AddFacilityImage"
@@ -72,12 +90,6 @@ const (
 	// ReservationServiceGetFacilityImagesProcedure is the fully-qualified name of the
 	// ReservationService's GetFacilityImages RPC.
 	ReservationServiceGetFacilityImagesProcedure = "/reservation.ReservationService/GetFacilityImages"
-	// ReservationServiceCreateWeeklyScheduleProcedure is the fully-qualified name of the
-	// ReservationService's CreateWeeklySchedule RPC.
-	ReservationServiceCreateWeeklyScheduleProcedure = "/reservation.ReservationService/CreateWeeklySchedule"
-	// ReservationServiceGenerateTimeSlotsProcedure is the fully-qualified name of the
-	// ReservationService's GenerateTimeSlots RPC.
-	ReservationServiceGenerateTimeSlotsProcedure = "/reservation.ReservationService/GenerateTimeSlots"
 	// ReservationServiceCreateReservationProcedure is the fully-qualified name of the
 	// ReservationService's CreateReservation RPC.
 	ReservationServiceCreateReservationProcedure = "/reservation.ReservationService/CreateReservation"
@@ -162,11 +174,15 @@ var (
 	reservationServiceRemoveServiceFromProviderMethodDescriptor    = reservationServiceServiceDescriptor.Methods().ByName("RemoveServiceFromProvider")
 	reservationServiceGetProviderServicesListMethodDescriptor      = reservationServiceServiceDescriptor.Methods().ByName("GetProviderServicesList")
 	reservationServiceUpdateProviderServiceMethodDescriptor        = reservationServiceServiceDescriptor.Methods().ByName("UpdateProviderService")
+	reservationServiceCreateWeeklyScheduleMethodDescriptor         = reservationServiceServiceDescriptor.Methods().ByName("CreateWeeklySchedule")
+	reservationServiceGetWeeklyScheduleListMethodDescriptor        = reservationServiceServiceDescriptor.Methods().ByName("GetWeeklyScheduleList")
+	reservationServiceUpdateWeeklyScheduleMethodDescriptor         = reservationServiceServiceDescriptor.Methods().ByName("UpdateWeeklySchedule")
+	reservationServiceGenerateTimeSlotsMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("GenerateTimeSlots")
+	reservationServiceGetTimeSlotsListMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("GetTimeSlotsList")
+	reservationServiceUpdateTimeSlotMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("UpdateTimeSlot")
 	reservationServiceAddFacilityImageMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("AddFacilityImage")
 	reservationServiceDeleteFacilityImageMethodDescriptor          = reservationServiceServiceDescriptor.Methods().ByName("DeleteFacilityImage")
 	reservationServiceGetFacilityImagesMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("GetFacilityImages")
-	reservationServiceCreateWeeklyScheduleMethodDescriptor         = reservationServiceServiceDescriptor.Methods().ByName("CreateWeeklySchedule")
-	reservationServiceGenerateTimeSlotsMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("GenerateTimeSlots")
 	reservationServiceCreateReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("CreateReservation")
 	reservationServiceCancelReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("CancelReservation")
 	reservationServiceUpdateReservationStatusMethodDescriptor      = reservationServiceServiceDescriptor.Methods().ByName("UpdateReservationStatus")
@@ -208,6 +224,7 @@ type ReservationServiceClient interface {
 	UpdateService(context.Context, *connect.Request[reservations.UpdateServiceRequest]) (*connect.Response[reservations.UpdateServiceResponse], error)
 	// دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
 	ListServices(context.Context, *connect.Request[reservations.ListServicesRequest]) (*connect.Response[reservations.ListServicesResponse], error)
+	// ُProvider Service  related methods
 	// تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
 	AssignServiceToProvider(context.Context, *connect.Request[reservations.AssignServiceToProviderRequest]) (*connect.Response[reservations.AssignServiceToProviderResponse], error)
 	// خذف یک سرویس از ارائه‌دهنده | Remove a service from a provider
@@ -216,16 +233,21 @@ type ReservationServiceClient interface {
 	GetProviderServicesList(context.Context, *connect.Request[reservations.GetProviderServicesListRequest]) (*connect.Response[reservations.GetProviderServicesListResponse], error)
 	// ویرایش سرویس  | Update a service for a provider
 	UpdateProviderService(context.Context, *connect.Request[reservations.UpdateProviderServiceRequest]) (*connect.Response[reservations.UpdateProviderServiceResponse], error)
+	// WeeklySchedule and TimeSlot releated methods
+	// ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
+	CreateWeeklySchedule(context.Context, *connect.Request[reservations.CreateWeeklyScheduleRequest]) (*connect.Response[reservations.CreateWeeklyScheduleResponse], error)
+	GetWeeklyScheduleList(context.Context, *connect.Request[reservations.GetWeeklyScheduleListRequest]) (*connect.Response[reservations.GetWeeklyScheduleListResponse], error)
+	UpdateWeeklySchedule(context.Context, *connect.Request[reservations.UpdateWeeklyScheduleRequest]) (*connect.Response[reservations.UpdateWeeklyScheduleResponse], error)
+	// تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
+	GenerateTimeSlots(context.Context, *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error)
+	GetTimeSlotsList(context.Context, *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error)
+	UpdateTimeSlot(context.Context, *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error)
 	// افزودن تصویر به فسیلیتی | Add an image to a facility
 	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
 	// حذف تصویر از فسیلیتی | Delete an image from a facility
 	DeleteFacilityImage(context.Context, *connect.Request[reservations.DeleteFacilityImageRequest]) (*connect.Response[reservations.DeleteFacilityImageResponse], error)
 	// دریافت تصاویر فسیلیتی | Get images of a facility
 	GetFacilityImages(context.Context, *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error)
-	// ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
-	CreateWeeklySchedule(context.Context, *connect.Request[reservations.CreateWeeklyScheduleRequest]) (*connect.Response[reservations.CreateWeeklyScheduleResponse], error)
-	// تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
-	GenerateTimeSlots(context.Context, *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error)
 	// ثبت یک رزرو جدید | Create a new reservation
 	CreateReservation(context.Context, *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error)
 	// لغو رزرو ثبت‌شده | Cancel an existing reservation
@@ -344,6 +366,42 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			connect.WithSchema(reservationServiceUpdateProviderServiceMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		createWeeklySchedule: connect.NewClient[reservations.CreateWeeklyScheduleRequest, reservations.CreateWeeklyScheduleResponse](
+			httpClient,
+			baseURL+ReservationServiceCreateWeeklyScheduleProcedure,
+			connect.WithSchema(reservationServiceCreateWeeklyScheduleMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		getWeeklyScheduleList: connect.NewClient[reservations.GetWeeklyScheduleListRequest, reservations.GetWeeklyScheduleListResponse](
+			httpClient,
+			baseURL+ReservationServiceGetWeeklyScheduleListProcedure,
+			connect.WithSchema(reservationServiceGetWeeklyScheduleListMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		updateWeeklySchedule: connect.NewClient[reservations.UpdateWeeklyScheduleRequest, reservations.UpdateWeeklyScheduleResponse](
+			httpClient,
+			baseURL+ReservationServiceUpdateWeeklyScheduleProcedure,
+			connect.WithSchema(reservationServiceUpdateWeeklyScheduleMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		generateTimeSlots: connect.NewClient[reservations.GenerateTimeSlotsRequest, reservations.GenerateTimeSlotsResponse](
+			httpClient,
+			baseURL+ReservationServiceGenerateTimeSlotsProcedure,
+			connect.WithSchema(reservationServiceGenerateTimeSlotsMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		getTimeSlotsList: connect.NewClient[reservations.GetTimeSlotsListRequest, reservations.GetTimeSlotsListResponse](
+			httpClient,
+			baseURL+ReservationServiceGetTimeSlotsListProcedure,
+			connect.WithSchema(reservationServiceGetTimeSlotsListMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		updateTimeSlot: connect.NewClient[reservations.UpdateTimeSlotRequest, reservations.UpdateTimeSlotResponse](
+			httpClient,
+			baseURL+ReservationServiceUpdateTimeSlotProcedure,
+			connect.WithSchema(reservationServiceUpdateTimeSlotMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		addFacilityImage: connect.NewClient[reservations.FacilityImage, reservations.FacilityImage](
 			httpClient,
 			baseURL+ReservationServiceAddFacilityImageProcedure,
@@ -360,18 +418,6 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			httpClient,
 			baseURL+ReservationServiceGetFacilityImagesProcedure,
 			connect.WithSchema(reservationServiceGetFacilityImagesMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		createWeeklySchedule: connect.NewClient[reservations.CreateWeeklyScheduleRequest, reservations.CreateWeeklyScheduleResponse](
-			httpClient,
-			baseURL+ReservationServiceCreateWeeklyScheduleProcedure,
-			connect.WithSchema(reservationServiceCreateWeeklyScheduleMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		generateTimeSlots: connect.NewClient[reservations.GenerateTimeSlotsRequest, reservations.GenerateTimeSlotsResponse](
-			httpClient,
-			baseURL+ReservationServiceGenerateTimeSlotsProcedure,
-			connect.WithSchema(reservationServiceGenerateTimeSlotsMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		createReservation: connect.NewClient[reservations.CreateReservationRequest, reservations.CreateReservationResponse](
@@ -527,11 +573,15 @@ type reservationServiceClient struct {
 	removeServiceFromProvider    *connect.Client[reservations.RemoveServiceFromProviderRequest, reservations.RemoveServiceFromProviderResponse]
 	getProviderServicesList      *connect.Client[reservations.GetProviderServicesListRequest, reservations.GetProviderServicesListResponse]
 	updateProviderService        *connect.Client[reservations.UpdateProviderServiceRequest, reservations.UpdateProviderServiceResponse]
+	createWeeklySchedule         *connect.Client[reservations.CreateWeeklyScheduleRequest, reservations.CreateWeeklyScheduleResponse]
+	getWeeklyScheduleList        *connect.Client[reservations.GetWeeklyScheduleListRequest, reservations.GetWeeklyScheduleListResponse]
+	updateWeeklySchedule         *connect.Client[reservations.UpdateWeeklyScheduleRequest, reservations.UpdateWeeklyScheduleResponse]
+	generateTimeSlots            *connect.Client[reservations.GenerateTimeSlotsRequest, reservations.GenerateTimeSlotsResponse]
+	getTimeSlotsList             *connect.Client[reservations.GetTimeSlotsListRequest, reservations.GetTimeSlotsListResponse]
+	updateTimeSlot               *connect.Client[reservations.UpdateTimeSlotRequest, reservations.UpdateTimeSlotResponse]
 	addFacilityImage             *connect.Client[reservations.FacilityImage, reservations.FacilityImage]
 	deleteFacilityImage          *connect.Client[reservations.DeleteFacilityImageRequest, reservations.DeleteFacilityImageResponse]
 	getFacilityImages            *connect.Client[reservations.GetFacilityImagesRequest, reservations.GetFacilityImagesResponse]
-	createWeeklySchedule         *connect.Client[reservations.CreateWeeklyScheduleRequest, reservations.CreateWeeklyScheduleResponse]
-	generateTimeSlots            *connect.Client[reservations.GenerateTimeSlotsRequest, reservations.GenerateTimeSlotsResponse]
 	createReservation            *connect.Client[reservations.CreateReservationRequest, reservations.CreateReservationResponse]
 	cancelReservation            *connect.Client[reservations.CancelReservationRequest, reservations.CancelReservationResponse]
 	updateReservationStatus      *connect.Client[reservations.UpdateReservationStatusRequest, reservations.UpdateReservationStatusResponse]
@@ -607,6 +657,36 @@ func (c *reservationServiceClient) UpdateProviderService(ctx context.Context, re
 	return c.updateProviderService.CallUnary(ctx, req)
 }
 
+// CreateWeeklySchedule calls reservation.ReservationService.CreateWeeklySchedule.
+func (c *reservationServiceClient) CreateWeeklySchedule(ctx context.Context, req *connect.Request[reservations.CreateWeeklyScheduleRequest]) (*connect.Response[reservations.CreateWeeklyScheduleResponse], error) {
+	return c.createWeeklySchedule.CallUnary(ctx, req)
+}
+
+// GetWeeklyScheduleList calls reservation.ReservationService.GetWeeklyScheduleList.
+func (c *reservationServiceClient) GetWeeklyScheduleList(ctx context.Context, req *connect.Request[reservations.GetWeeklyScheduleListRequest]) (*connect.Response[reservations.GetWeeklyScheduleListResponse], error) {
+	return c.getWeeklyScheduleList.CallUnary(ctx, req)
+}
+
+// UpdateWeeklySchedule calls reservation.ReservationService.UpdateWeeklySchedule.
+func (c *reservationServiceClient) UpdateWeeklySchedule(ctx context.Context, req *connect.Request[reservations.UpdateWeeklyScheduleRequest]) (*connect.Response[reservations.UpdateWeeklyScheduleResponse], error) {
+	return c.updateWeeklySchedule.CallUnary(ctx, req)
+}
+
+// GenerateTimeSlots calls reservation.ReservationService.GenerateTimeSlots.
+func (c *reservationServiceClient) GenerateTimeSlots(ctx context.Context, req *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error) {
+	return c.generateTimeSlots.CallUnary(ctx, req)
+}
+
+// GetTimeSlotsList calls reservation.ReservationService.GetTimeSlotsList.
+func (c *reservationServiceClient) GetTimeSlotsList(ctx context.Context, req *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error) {
+	return c.getTimeSlotsList.CallUnary(ctx, req)
+}
+
+// UpdateTimeSlot calls reservation.ReservationService.UpdateTimeSlot.
+func (c *reservationServiceClient) UpdateTimeSlot(ctx context.Context, req *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error) {
+	return c.updateTimeSlot.CallUnary(ctx, req)
+}
+
 // AddFacilityImage calls reservation.ReservationService.AddFacilityImage.
 func (c *reservationServiceClient) AddFacilityImage(ctx context.Context, req *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error) {
 	return c.addFacilityImage.CallUnary(ctx, req)
@@ -620,16 +700,6 @@ func (c *reservationServiceClient) DeleteFacilityImage(ctx context.Context, req 
 // GetFacilityImages calls reservation.ReservationService.GetFacilityImages.
 func (c *reservationServiceClient) GetFacilityImages(ctx context.Context, req *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error) {
 	return c.getFacilityImages.CallUnary(ctx, req)
-}
-
-// CreateWeeklySchedule calls reservation.ReservationService.CreateWeeklySchedule.
-func (c *reservationServiceClient) CreateWeeklySchedule(ctx context.Context, req *connect.Request[reservations.CreateWeeklyScheduleRequest]) (*connect.Response[reservations.CreateWeeklyScheduleResponse], error) {
-	return c.createWeeklySchedule.CallUnary(ctx, req)
-}
-
-// GenerateTimeSlots calls reservation.ReservationService.GenerateTimeSlots.
-func (c *reservationServiceClient) GenerateTimeSlots(ctx context.Context, req *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error) {
-	return c.generateTimeSlots.CallUnary(ctx, req)
 }
 
 // CreateReservation calls reservation.ReservationService.CreateReservation.
@@ -763,6 +833,7 @@ type ReservationServiceHandler interface {
 	UpdateService(context.Context, *connect.Request[reservations.UpdateServiceRequest]) (*connect.Response[reservations.UpdateServiceResponse], error)
 	// دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
 	ListServices(context.Context, *connect.Request[reservations.ListServicesRequest]) (*connect.Response[reservations.ListServicesResponse], error)
+	// ُProvider Service  related methods
 	// تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
 	AssignServiceToProvider(context.Context, *connect.Request[reservations.AssignServiceToProviderRequest]) (*connect.Response[reservations.AssignServiceToProviderResponse], error)
 	// خذف یک سرویس از ارائه‌دهنده | Remove a service from a provider
@@ -771,16 +842,21 @@ type ReservationServiceHandler interface {
 	GetProviderServicesList(context.Context, *connect.Request[reservations.GetProviderServicesListRequest]) (*connect.Response[reservations.GetProviderServicesListResponse], error)
 	// ویرایش سرویس  | Update a service for a provider
 	UpdateProviderService(context.Context, *connect.Request[reservations.UpdateProviderServiceRequest]) (*connect.Response[reservations.UpdateProviderServiceResponse], error)
+	// WeeklySchedule and TimeSlot releated methods
+	// ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
+	CreateWeeklySchedule(context.Context, *connect.Request[reservations.CreateWeeklyScheduleRequest]) (*connect.Response[reservations.CreateWeeklyScheduleResponse], error)
+	GetWeeklyScheduleList(context.Context, *connect.Request[reservations.GetWeeklyScheduleListRequest]) (*connect.Response[reservations.GetWeeklyScheduleListResponse], error)
+	UpdateWeeklySchedule(context.Context, *connect.Request[reservations.UpdateWeeklyScheduleRequest]) (*connect.Response[reservations.UpdateWeeklyScheduleResponse], error)
+	// تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
+	GenerateTimeSlots(context.Context, *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error)
+	GetTimeSlotsList(context.Context, *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error)
+	UpdateTimeSlot(context.Context, *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error)
 	// افزودن تصویر به فسیلیتی | Add an image to a facility
 	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
 	// حذف تصویر از فسیلیتی | Delete an image from a facility
 	DeleteFacilityImage(context.Context, *connect.Request[reservations.DeleteFacilityImageRequest]) (*connect.Response[reservations.DeleteFacilityImageResponse], error)
 	// دریافت تصاویر فسیلیتی | Get images of a facility
 	GetFacilityImages(context.Context, *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error)
-	// ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
-	CreateWeeklySchedule(context.Context, *connect.Request[reservations.CreateWeeklyScheduleRequest]) (*connect.Response[reservations.CreateWeeklyScheduleResponse], error)
-	// تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
-	GenerateTimeSlots(context.Context, *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error)
 	// ثبت یک رزرو جدید | Create a new reservation
 	CreateReservation(context.Context, *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error)
 	// لغو رزرو ثبت‌شده | Cancel an existing reservation
@@ -895,6 +971,42 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		connect.WithSchema(reservationServiceUpdateProviderServiceMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	reservationServiceCreateWeeklyScheduleHandler := connect.NewUnaryHandler(
+		ReservationServiceCreateWeeklyScheduleProcedure,
+		svc.CreateWeeklySchedule,
+		connect.WithSchema(reservationServiceCreateWeeklyScheduleMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceGetWeeklyScheduleListHandler := connect.NewUnaryHandler(
+		ReservationServiceGetWeeklyScheduleListProcedure,
+		svc.GetWeeklyScheduleList,
+		connect.WithSchema(reservationServiceGetWeeklyScheduleListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceUpdateWeeklyScheduleHandler := connect.NewUnaryHandler(
+		ReservationServiceUpdateWeeklyScheduleProcedure,
+		svc.UpdateWeeklySchedule,
+		connect.WithSchema(reservationServiceUpdateWeeklyScheduleMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceGenerateTimeSlotsHandler := connect.NewUnaryHandler(
+		ReservationServiceGenerateTimeSlotsProcedure,
+		svc.GenerateTimeSlots,
+		connect.WithSchema(reservationServiceGenerateTimeSlotsMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceGetTimeSlotsListHandler := connect.NewUnaryHandler(
+		ReservationServiceGetTimeSlotsListProcedure,
+		svc.GetTimeSlotsList,
+		connect.WithSchema(reservationServiceGetTimeSlotsListMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceUpdateTimeSlotHandler := connect.NewUnaryHandler(
+		ReservationServiceUpdateTimeSlotProcedure,
+		svc.UpdateTimeSlot,
+		connect.WithSchema(reservationServiceUpdateTimeSlotMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	reservationServiceAddFacilityImageHandler := connect.NewUnaryHandler(
 		ReservationServiceAddFacilityImageProcedure,
 		svc.AddFacilityImage,
@@ -911,18 +1023,6 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		ReservationServiceGetFacilityImagesProcedure,
 		svc.GetFacilityImages,
 		connect.WithSchema(reservationServiceGetFacilityImagesMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceCreateWeeklyScheduleHandler := connect.NewUnaryHandler(
-		ReservationServiceCreateWeeklyScheduleProcedure,
-		svc.CreateWeeklySchedule,
-		connect.WithSchema(reservationServiceCreateWeeklyScheduleMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceGenerateTimeSlotsHandler := connect.NewUnaryHandler(
-		ReservationServiceGenerateTimeSlotsProcedure,
-		svc.GenerateTimeSlots,
-		connect.WithSchema(reservationServiceGenerateTimeSlotsMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceCreateReservationHandler := connect.NewUnaryHandler(
@@ -1085,16 +1185,24 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 			reservationServiceGetProviderServicesListHandler.ServeHTTP(w, r)
 		case ReservationServiceUpdateProviderServiceProcedure:
 			reservationServiceUpdateProviderServiceHandler.ServeHTTP(w, r)
+		case ReservationServiceCreateWeeklyScheduleProcedure:
+			reservationServiceCreateWeeklyScheduleHandler.ServeHTTP(w, r)
+		case ReservationServiceGetWeeklyScheduleListProcedure:
+			reservationServiceGetWeeklyScheduleListHandler.ServeHTTP(w, r)
+		case ReservationServiceUpdateWeeklyScheduleProcedure:
+			reservationServiceUpdateWeeklyScheduleHandler.ServeHTTP(w, r)
+		case ReservationServiceGenerateTimeSlotsProcedure:
+			reservationServiceGenerateTimeSlotsHandler.ServeHTTP(w, r)
+		case ReservationServiceGetTimeSlotsListProcedure:
+			reservationServiceGetTimeSlotsListHandler.ServeHTTP(w, r)
+		case ReservationServiceUpdateTimeSlotProcedure:
+			reservationServiceUpdateTimeSlotHandler.ServeHTTP(w, r)
 		case ReservationServiceAddFacilityImageProcedure:
 			reservationServiceAddFacilityImageHandler.ServeHTTP(w, r)
 		case ReservationServiceDeleteFacilityImageProcedure:
 			reservationServiceDeleteFacilityImageHandler.ServeHTTP(w, r)
 		case ReservationServiceGetFacilityImagesProcedure:
 			reservationServiceGetFacilityImagesHandler.ServeHTTP(w, r)
-		case ReservationServiceCreateWeeklyScheduleProcedure:
-			reservationServiceCreateWeeklyScheduleHandler.ServeHTTP(w, r)
-		case ReservationServiceGenerateTimeSlotsProcedure:
-			reservationServiceGenerateTimeSlotsHandler.ServeHTTP(w, r)
 		case ReservationServiceCreateReservationProcedure:
 			reservationServiceCreateReservationHandler.ServeHTTP(w, r)
 		case ReservationServiceCancelReservationProcedure:
@@ -1190,6 +1298,30 @@ func (UnimplementedReservationServiceHandler) UpdateProviderService(context.Cont
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.UpdateProviderService is not implemented"))
 }
 
+func (UnimplementedReservationServiceHandler) CreateWeeklySchedule(context.Context, *connect.Request[reservations.CreateWeeklyScheduleRequest]) (*connect.Response[reservations.CreateWeeklyScheduleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CreateWeeklySchedule is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) GetWeeklyScheduleList(context.Context, *connect.Request[reservations.GetWeeklyScheduleListRequest]) (*connect.Response[reservations.GetWeeklyScheduleListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GetWeeklyScheduleList is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) UpdateWeeklySchedule(context.Context, *connect.Request[reservations.UpdateWeeklyScheduleRequest]) (*connect.Response[reservations.UpdateWeeklyScheduleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.UpdateWeeklySchedule is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) GenerateTimeSlots(context.Context, *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GenerateTimeSlots is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) GetTimeSlotsList(context.Context, *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GetTimeSlotsList is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) UpdateTimeSlot(context.Context, *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.UpdateTimeSlot is not implemented"))
+}
+
 func (UnimplementedReservationServiceHandler) AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.AddFacilityImage is not implemented"))
 }
@@ -1200,14 +1332,6 @@ func (UnimplementedReservationServiceHandler) DeleteFacilityImage(context.Contex
 
 func (UnimplementedReservationServiceHandler) GetFacilityImages(context.Context, *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GetFacilityImages is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) CreateWeeklySchedule(context.Context, *connect.Request[reservations.CreateWeeklyScheduleRequest]) (*connect.Response[reservations.CreateWeeklyScheduleResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CreateWeeklySchedule is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) GenerateTimeSlots(context.Context, *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GenerateTimeSlots is not implemented"))
 }
 
 func (UnimplementedReservationServiceHandler) CreateReservation(context.Context, *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error) {

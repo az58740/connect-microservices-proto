@@ -373,9 +373,6 @@ message Reservation {
   google.protobuf.Timestamp created_at = 9;
 }
 
-
-
-
 // ========== REQUEST / RESPONSE MESSAGES ==========
 
 // ایجاد فسیلیتی | Create a facility
@@ -413,7 +410,7 @@ message ListFacilitiesRequest {
  FaclityFilter filter=1;
 }
 message FaclityFilter {
-    optional string facility_id = 1;
+  optional string facility_id = 1;
   optional FacilityGroup group = 2;
   optional FacilityType type = 3;
   optional FacilityTitle title = 4;
@@ -509,19 +506,81 @@ message GetProviderServicesListResponse {
 
 // ایجاد برنامه هفتگی | Create weekly schedule
 message CreateWeeklyScheduleRequest {
-  WeeklySchedule schedule = 1; // برنامه زمانی | Weekly schedule
+ repeated WeeklySchedule schedule = 1; // برنامه زمانی | Weekly schedule
 }
 message CreateWeeklyScheduleResponse {
-  string id = 1;  // شناسه برنامه | Schedule ID
+ bool success = 1;
+ string message = 2;
 }
-
+message WeeklyScheduleFilter{
+  string provider_user_id = 1;
+  optional string facility_id=2;
+  optional string  service_id=3;
+  optional string id=4;
+}
+message GetWeeklyScheduleListRequest {
+WeeklyScheduleFilter filter=1;
+}
+message GetWeeklyScheduleListResponse {
+  repeated WeeklySchedule weeklyschedules = 1;
+}
+message UpdateWeeklyScheduleRequest {
+  string id = 1;
+  string provider_user_id = 2;
+  WeekDay day = 3;                     // روز هفته | Day of the week (e.g. Saturday)
+  string start_time = 4;              // ساعت شروع (HH:mm) مثل "09:00"
+  string end_time = 5;                // ساعت پایان (HH:mm) مثل "17:00"
+  string facility_id = 6;             // مکان مرتبط | Facility ID
+  optional string service_id = 7;     // سرویس خاص، اختیاری | Optional service ID
+  Status status = 8;                  // وضعیت فعال یا غیرفعال
+}
+message UpdateWeeklyScheduleResponse {
+  WeeklySchedule weeklySchedule = 1;
+  string message=2;
+}
 // تولید تایم‌اسلات بر اساس برنامه هفتگی | Generate timeslots from weekly schedule
 message GenerateTimeSlotsRequest {
-  string weekly_schedule_id = 1; // شناسه برنامه هفتگی | Weekly schedule ID
+  repeated TimeSlot timeslot = 1; // شناسه برنامه هفتگی | Weekly schedule ID
 }
 message GenerateTimeSlotsResponse {
-  repeated TimeSlot time_slots = 1; // لیست تایم‌اسلات‌های ایجاد شده | Generated time slots
+   bool success = 1;
+  string message = 2;
 }
+message TimeSlotsFilter{
+  string id = 1;
+  string provider_user_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+  OwnerType owner_type = 5;            // فردی یا اشتراکی
+  bool is_reserved = 6;                // آیا رزرو شده یا نه
+  optional string weekly_schedule_id = 7; // منبع ساخت (در صورت تولید خودکار)
+  string facility_id = 8;
+  optional string service_id = 9;
+  WeekDay day = 10;                     // روز هفته | Day of the week (e.g. Saturday)
+  Status status = 11; // فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
+}
+message GetTimeSlotsListRequest {
+TimeSlotsFilter filter=1;
+}
+message GetTimeSlotsListResponse {
+  repeated TimeSlot stimeslots = 1;
+}
+message UpdateTimeSlotRequest {
+  string id = 1;
+  string provider_user_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+  OwnerType owner_type = 5;            // فردی یا اشتراکی
+  bool is_reserved = 6;                // آیا رزرو شده یا نه
+  Status status = 7; // فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
+}
+message UpdateTimeSlotResponse {
+  TimeSlot tileslot = 1;
+  string message=2;
+}
+
+
+
 
 // ایجاد رزرو | Create a reservation
 message CreateReservationRequest {
@@ -783,7 +842,7 @@ service ReservationService {
   rpc UpdateService (UpdateServiceRequest) returns (UpdateServiceResponse);
           // دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
   rpc ListServices (ListServicesRequest) returns (ListServicesResponse);
-
+//ُProvider Service  related methods
     // تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
   rpc AssignServiceToProvider(AssignServiceToProviderRequest) returns (AssignServiceToProviderResponse);
     // خذف یک سرویس از ارائه‌دهنده | Remove a service from a provider
@@ -792,6 +851,19 @@ service ReservationService {
   rpc GetProviderServicesList(GetProviderServicesListRequest) returns (GetProviderServicesListResponse);
    // ویرایش سرویس  | Update a service for a provider
   rpc UpdateProviderService (UpdateProviderServiceRequest) returns (UpdateProviderServiceResponse);
+  //WeeklySchedule and TimeSlot releated methods 
+   // ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
+  rpc CreateWeeklySchedule(CreateWeeklyScheduleRequest) returns (CreateWeeklyScheduleResponse);
+  rpc  GetWeeklyScheduleList(GetWeeklyScheduleListRequest) returns (GetWeeklyScheduleListResponse);
+  rpc  UpdateWeeklySchedule(UpdateWeeklyScheduleRequest)  returns (UpdateWeeklyScheduleResponse);
+    // تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
+  rpc GenerateTimeSlots(GenerateTimeSlotsRequest) returns (GenerateTimeSlotsResponse);
+  rpc GetTimeSlotsList(GetTimeSlotsListRequest) returns (GetTimeSlotsListResponse);
+  rpc UpdateTimeSlot(UpdateTimeSlotRequest) returns (UpdateTimeSlotResponse);
+
+
+
+
 
     // افزودن تصویر به فسیلیتی | Add an image to a facility
   rpc AddFacilityImage(FacilityImage) returns (FacilityImage);
@@ -799,14 +871,6 @@ service ReservationService {
   rpc DeleteFacilityImage(DeleteFacilityImageRequest) returns (DeleteFacilityImageResponse);
     // دریافت تصاویر فسیلیتی | Get images of a facility
   rpc GetFacilityImages(GetFacilityImagesRequest) returns (GetFacilityImagesResponse);
-
-
-
-    // ایجاد برنامه‌ زمانی هفتگی برای ارائه‌دهنده | Create weekly schedule for provider
-  rpc CreateWeeklySchedule(CreateWeeklyScheduleRequest) returns (CreateWeeklyScheduleResponse);
-    // تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
-  rpc GenerateTimeSlots(GenerateTimeSlotsRequest) returns (GenerateTimeSlotsResponse);
-
     // ثبت یک رزرو جدید | Create a new reservation
   rpc CreateReservation(CreateReservationRequest) returns (CreateReservationResponse);
     // لغو رزرو ثبت‌شده | Cancel an existing reservation
