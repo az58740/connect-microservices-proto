@@ -1560,6 +1560,16 @@ export declare type WeeklyScheduleFilter = Message<"reservation.WeeklyScheduleFi
    * @generated from field: optional string id = 4;
    */
   id?: string;
+
+  /**
+   * @generated from field: optional google.protobuf.Timestamp start_time = 5;
+   */
+  startTime?: Timestamp;
+
+  /**
+   * @generated from field: optional google.protobuf.Timestamp end_time = 6;
+   */
+  endTime?: Timestamp;
 };
 
 /**
