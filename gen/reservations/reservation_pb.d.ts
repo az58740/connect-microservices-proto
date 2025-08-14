@@ -318,16 +318,16 @@ export declare type WeeklySchedule = Message<"reservation.WeeklySchedule"> & {
   /**
    * ساعت شروع (HH:mm) مثل "09:00"
    *
-   * @generated from field: string start_time = 4;
+   * @generated from field: google.protobuf.Timestamp start_time = 4;
    */
-  startTime: string;
+  startTime?: Timestamp;
 
   /**
    * ساعت پایان (HH:mm) مثل "17:00"
    *
-   * @generated from field: string end_time = 5;
+   * @generated from field: google.protobuf.Timestamp end_time = 5;
    */
-  endTime: string;
+  endTime?: Timestamp;
 
   /**
    * مکان مرتبط | Facility ID
