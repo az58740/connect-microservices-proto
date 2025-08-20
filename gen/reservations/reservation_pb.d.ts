@@ -1542,9 +1542,9 @@ export declare const CreateWeeklyScheduleResponseSchema: GenMessage<CreateWeekly
  */
 export declare type WeeklyScheduleFilter = Message<"reservation.WeeklyScheduleFilter"> & {
   /**
-   * @generated from field: string provider_user_id = 1;
+   * @generated from field: optional string provider_user_id = 1;
    */
-  providerUserId: string;
+  providerUserId?: string;
 
   /**
    * @generated from field: optional string facility_id = 2;
@@ -1570,6 +1570,11 @@ export declare type WeeklyScheduleFilter = Message<"reservation.WeeklyScheduleFi
    * @generated from field: optional google.protobuf.Timestamp end_time = 6;
    */
   endTime?: Timestamp;
+
+  /**
+   * @generated from field: optional reservation.Status status = 7;
+   */
+  status?: Status;
 };
 
 /**

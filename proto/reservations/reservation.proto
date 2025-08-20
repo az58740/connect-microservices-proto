@@ -513,12 +513,13 @@ message CreateWeeklyScheduleResponse {
  string message = 2;
 }
 message WeeklyScheduleFilter{
-  string provider_user_id = 1;
+  optional string provider_user_id = 1;
   optional string facility_id=2;
   optional string  service_id=3;
   optional string id=4;
   optional google.protobuf.Timestamp start_time = 5;
   optional google.protobuf.Timestamp end_time = 6;
+  optional Status status = 7;    
 }
 message GetWeeklyScheduleListRequest {
 WeeklyScheduleFilter filter=1;
