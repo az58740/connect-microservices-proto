@@ -426,6 +426,13 @@ export declare type TimeSlot = Message<"reservation.TimeSlot"> & {
    * @generated from field: reservation.Status status = 11;
    */
   status: Status;
+
+  /**
+   * روز هفته | Day of the week (e.g. Saturday)
+   *
+   * @generated from field: reservation.WeekDay day = 12;
+   */
+  day: WeekDay;
 };
 
 /**
