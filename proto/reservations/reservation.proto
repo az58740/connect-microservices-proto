@@ -24,7 +24,10 @@ enum ReservationStatus {
   CANCELLED = 2;   // لغو شده | Cancelled
   COMPLETED = 3;   // انجام شده | Completed
 }
-
+  enum SlotSource {
+    GENERATED_FROM_WEEKLY = 0; // تولیدشده از برنامه هفتگی
+    MANUAL = 1;                // وارد شده به صورت دستی
+  }
 // روزهای هفته | Days of the week
 enum WeekDay {
   SATURDAY = 0;   // شنبه | Saturday
@@ -283,11 +286,6 @@ message TimeSlot {
   optional string weekly_schedule_id = 7; // منبع ساخت (در صورت تولید خودکار)
   string facility_id = 8;
   optional string service_id = 9;
-
-  enum SlotSource {
-    GENERATED_FROM_WEEKLY = 0; // تولیدشده از برنامه هفتگی
-    MANUAL = 1;                // وارد شده به صورت دستی
-  }
   SlotSource source = 10;
   Status status = 11; // فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
   WeekDay day = 12;                     // روز هفته | Day of the week (e.g. Saturday)
@@ -580,6 +578,8 @@ message UpdateTimeSlotRequest {
   OwnerType owner_type = 5;            // فردی یا اشتراکی
   bool is_reserved = 6;                // آیا رزرو شده یا نه
   Status status = 7; // فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
+   int32 capacity = 8; // ظرفیت کل
+  int32 reserved_count = 9; // تعداد رزروهای انجام شده
 }
 message UpdateTimeSlotResponse {
   TimeSlot tileslot = 1;

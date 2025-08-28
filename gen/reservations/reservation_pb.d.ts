@@ -416,9 +416,9 @@ export declare type TimeSlot = Message<"reservation.TimeSlot"> & {
   serviceId?: string;
 
   /**
-   * @generated from field: reservation.TimeSlot.SlotSource source = 10;
+   * @generated from field: reservation.SlotSource source = 10;
    */
-  source: TimeSlot_SlotSource;
+  source: SlotSource;
 
   /**
    * فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
@@ -454,30 +454,6 @@ export declare type TimeSlot = Message<"reservation.TimeSlot"> & {
  * Use `create(TimeSlotSchema)` to create a new message.
  */
 export declare const TimeSlotSchema: GenMessage<TimeSlot>;
-
-/**
- * @generated from enum reservation.TimeSlot.SlotSource
- */
-export enum TimeSlot_SlotSource {
-  /**
-   * تولیدشده از برنامه هفتگی
-   *
-   * @generated from enum value: GENERATED_FROM_WEEKLY = 0;
-   */
-  GENERATED_FROM_WEEKLY = 0,
-
-  /**
-   * وارد شده به صورت دستی
-   *
-   * @generated from enum value: MANUAL = 1;
-   */
-  MANUAL = 1,
-}
-
-/**
- * Describes the enum reservation.TimeSlot.SlotSource.
- */
-export declare const TimeSlot_SlotSourceSchema: GenEnum<TimeSlot_SlotSource>;
 
 /**
  * بازه‌های عدم دسترسی ارائه‌دهنده (برای کل روز یا ساعاتی خاص)
@@ -1913,6 +1889,20 @@ export declare type UpdateTimeSlotRequest = Message<"reservation.UpdateTimeSlotR
    * @generated from field: reservation.Status status = 7;
    */
   status: Status;
+
+  /**
+   * ظرفیت کل
+   *
+   * @generated from field: int32 capacity = 8;
+   */
+  capacity: number;
+
+  /**
+   * تعداد رزروهای انجام شده
+   *
+   * @generated from field: int32 reserved_count = 9;
+   */
+  reservedCount: number;
 };
 
 /**
@@ -3110,6 +3100,30 @@ export enum ReservationStatus {
  * Describes the enum reservation.ReservationStatus.
  */
 export declare const ReservationStatusSchema: GenEnum<ReservationStatus>;
+
+/**
+ * @generated from enum reservation.SlotSource
+ */
+export enum SlotSource {
+  /**
+   * تولیدشده از برنامه هفتگی
+   *
+   * @generated from enum value: GENERATED_FROM_WEEKLY = 0;
+   */
+  GENERATED_FROM_WEEKLY = 0,
+
+  /**
+   * وارد شده به صورت دستی
+   *
+   * @generated from enum value: MANUAL = 1;
+   */
+  MANUAL = 1,
+}
+
+/**
+ * Describes the enum reservation.SlotSource.
+ */
+export declare const SlotSourceSchema: GenEnum<SlotSource>;
 
 /**
  * روزهای هفته | Days of the week
