@@ -433,6 +433,20 @@ export declare type TimeSlot = Message<"reservation.TimeSlot"> & {
    * @generated from field: reservation.WeekDay day = 12;
    */
   day: WeekDay;
+
+  /**
+   * ظرفیت کل
+   *
+   * @generated from field: int32 capacity = 13;
+   */
+  capacity: number;
+
+  /**
+   * تعداد رزروهای انجام شده
+   *
+   * @generated from field: int32 reserved_count = 14;
+   */
+  reservedCount: number;
 };
 
 /**

@@ -291,6 +291,8 @@ message TimeSlot {
   SlotSource source = 10;
   Status status = 11; // فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
   WeekDay day = 12;                     // روز هفته | Day of the week (e.g. Saturday)
+  int32 capacity = 13; // ظرفیت کل
+  int32 reserved_count = 14; // تعداد رزروهای انجام شده
 
 }
 // بازه‌های عدم دسترسی ارائه‌دهنده (برای کل روز یا ساعاتی خاص)
