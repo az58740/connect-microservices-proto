@@ -6,6 +6,7 @@ import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobu
 import type { Message } from "@bufbuild/protobuf";
 import type { Money } from "../google/type/money_pb.ts";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
+import type { User, UserFilter } from "../users/users_pb.ts";
 
 /**
  * Describes the file reservations/reservation.proto.
@@ -3035,6 +3036,68 @@ export declare type GetFacilityImagesResponse = Message<"reservation.GetFacility
 export declare const GetFacilityImagesResponseSchema: GenMessage<GetFacilityImagesResponse>;
 
 /**
+ * @generated from message reservation.ProviderServiceWithUser
+ */
+export declare type ProviderServiceWithUser = Message<"reservation.ProviderServiceWithUser"> & {
+  /**
+   * @generated from field: reservation.ProviderService service = 1;
+   */
+  service?: ProviderService;
+
+  /**
+   * ✅ درست
+   *
+   * @generated from field: users.User user = 2;
+   */
+  user?: User;
+};
+
+/**
+ * Describes the message reservation.ProviderServiceWithUser.
+ * Use `create(ProviderServiceWithUserSchema)` to create a new message.
+ */
+export declare const ProviderServiceWithUserSchema: GenMessage<ProviderServiceWithUser>;
+
+/**
+ * @generated from message reservation.GetProviderServicesWithUsersRequest
+ */
+export declare type GetProviderServicesWithUsersRequest = Message<"reservation.GetProviderServicesWithUsersRequest"> & {
+  /**
+   * ✅ درست
+   *
+   * @generated from field: users.UserFilter userfilter = 1;
+   */
+  userfilter?: UserFilter;
+
+  /**
+   * @generated from field: reservation.ProviderServiceFilter serviceFilter = 2;
+   */
+  serviceFilter?: ProviderServiceFilter;
+};
+
+/**
+ * Describes the message reservation.GetProviderServicesWithUsersRequest.
+ * Use `create(GetProviderServicesWithUsersRequestSchema)` to create a new message.
+ */
+export declare const GetProviderServicesWithUsersRequestSchema: GenMessage<GetProviderServicesWithUsersRequest>;
+
+/**
+ * @generated from message reservation.GetProviderServicesWithUsersResponse
+ */
+export declare type GetProviderServicesWithUsersResponse = Message<"reservation.GetProviderServicesWithUsersResponse"> & {
+  /**
+   * @generated from field: repeated reservation.ProviderServiceWithUser items = 1;
+   */
+  items: ProviderServiceWithUser[];
+};
+
+/**
+ * Describes the message reservation.GetProviderServicesWithUsersResponse.
+ * Use `create(GetProviderServicesWithUsersResponseSchema)` to create a new message.
+ */
+export declare const GetProviderServicesWithUsersResponseSchema: GenMessage<GetProviderServicesWithUsersResponse>;
+
+/**
  * نوع مالک تایم‌اسلات — تعیین می‌کند که تایم‌اسلات متعلق به فرد است یا فضای مشترک
  * TimeSlot owner type — defines whether it's owned by an individual (e.g., doctor) or shared (e.g., room)
  *
@@ -4196,6 +4259,14 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof UpdateTimeSlotRequestSchema;
     output: typeof UpdateTimeSlotResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
+   */
+  getProviderServicesWithUsers: {
+    methodKind: "unary";
+    input: typeof GetProviderServicesWithUsersRequestSchema;
+    output: typeof GetProviderServicesWithUsersResponseSchema;
   },
   /**
    * افزودن تصویر به فسیلیتی | Add an image to a facility

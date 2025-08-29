@@ -5,9 +5,8 @@ package reservation;
 option go_package = "github.com/az58740/connect-microservices-proto/golang/reservations;reservations";
 
 import "google/protobuf/timestamp.proto";
-import "users/users.proto";
 import "google/type/money.proto";
-
+import "users/users.proto";
 // ========== ENUMS ==========
 
 // نوع مالک تایم‌اسلات — تعیین می‌کند که تایم‌اسلات متعلق به فرد است یا فضای مشترک
@@ -24,7 +23,7 @@ enum ReservationStatus {
   CANCELLED = 2;   // لغو شده | Cancelled
   COMPLETED = 3;   // انجام شده | Completed
 }
-  enum SlotSource {
+enum SlotSource {
     GENERATED_FROM_WEEKLY = 0; // تولیدشده از برنامه هفتگی
     MANUAL = 1;                // وارد شده به صورت دستی
   }
@@ -830,6 +829,21 @@ message GetFacilityImagesRequest {
 message GetFacilityImagesResponse {
   repeated FacilityImage images = 1; // لیست تصاویر | List of images
 }
+// ========== DOT ==========
+
+message ProviderServiceWithUser {
+  ProviderService service = 1;
+  users.User user = 2; // ✅ درست
+}
+
+message GetProviderServicesWithUsersRequest {
+  users.UserFilter userfilter = 1; // ✅ درست
+  ProviderServiceFilter serviceFilter = 2;
+}
+
+message GetProviderServicesWithUsersResponse {
+  repeated ProviderServiceWithUser items = 1;
+}
 
 // ========== SERVICE ==========
 
@@ -867,6 +881,11 @@ service ReservationService {
   rpc GenerateTimeSlots(GenerateTimeSlotsRequest) returns (GenerateTimeSlotsResponse);
   rpc GetTimeSlotsList(GetTimeSlotsListRequest) returns (GetTimeSlotsListResponse);
   rpc UpdateTimeSlot(UpdateTimeSlotRequest) returns (UpdateTimeSlotResponse);
+  
+  rpc GetProviderServicesWithUsers(GetProviderServicesWithUsersRequest) returns (GetProviderServicesWithUsersResponse);
+
+
+
 
 
 
