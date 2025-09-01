@@ -839,6 +839,7 @@ message ProviderServiceWithUser {
 message GetProviderServicesWithUsersRequest {
   users.UserFilter userfilter = 1; // ✅ درست
   ProviderServiceFilter serviceFilter = 2;
+  users.Pagination pagination=3;
 }
 
 message GetProviderServicesWithUsersResponse {

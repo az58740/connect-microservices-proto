@@ -6,7 +6,7 @@ import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobu
 import type { Message } from "@bufbuild/protobuf";
 import type { Money } from "../google/type/money_pb.ts";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
-import type { User, UserFilter } from "../users/users_pb.ts";
+import type { Pagination, User, UserFilter } from "../users/users_pb.ts";
 
 /**
  * Describes the file reservations/reservation.proto.
@@ -3073,6 +3073,11 @@ export declare type GetProviderServicesWithUsersRequest = Message<"reservation.G
    * @generated from field: reservation.ProviderServiceFilter serviceFilter = 2;
    */
   serviceFilter?: ProviderServiceFilter;
+
+  /**
+   * @generated from field: users.Pagination pagination = 3;
+   */
+  pagination?: Pagination;
 };
 
 /**
