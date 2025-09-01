@@ -255,11 +255,12 @@ message ProviderService {
   optional  LocalizedString description = 3; // توضیحات | Description 
   string facility_id = 4;
   LocalizedString facility_name=5;
-  string service_id = 6;
-  string provider_user_id = 7; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
-  bool is_available = 78; // آیا ارائه می‌شود یا نه
-  optional google.type.Money price = 9;          // قیمت اختصاصی این provider
-  optional int32 duration_minutes = 10;           // مدت اختصاصی این provider
+  FacilityType facility_type=6;
+  string service_id =7;
+  string provider_user_id = 8; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
+  bool is_available = 9; // آیا ارائه می‌شود یا نه
+  optional google.type.Money price = 10;          // قیمت اختصاصی این provider
+  optional int32 duration_minutes = 11;           // مدت اختصاصی این provider
 }
 // برنامه‌ زمانی تکرارشونده‌ی سرویس‌دهنده در یک روز خاص  
 // Weekly recurring availability for provider

@@ -1159,11 +1159,12 @@ type ProviderService struct {
 	Description     *LocalizedString `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"` // توضیحات | Description
 	FacilityId      string           `protobuf:"bytes,4,opt,name=facility_id,json=facilityId,proto3" json:"facility_id,omitempty"`
 	FacilityName    *LocalizedString `protobuf:"bytes,5,opt,name=facility_name,json=facilityName,proto3" json:"facility_name,omitempty"`
-	ServiceId       string           `protobuf:"bytes,6,opt,name=service_id,json=serviceId,proto3" json:"service_id,omitempty"`
-	ProviderUserId  string           `protobuf:"bytes,7,opt,name=provider_user_id,json=providerUserId,proto3" json:"provider_user_id,omitempty"`          // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
-	IsAvailable     bool             `protobuf:"varint,78,opt,name=is_available,json=isAvailable,proto3" json:"is_available,omitempty"`                   // آیا ارائه می‌شود یا نه
-	Price           *money.Money     `protobuf:"bytes,9,opt,name=price,proto3,oneof" json:"price,omitempty"`                                              // قیمت اختصاصی این provider
-	DurationMinutes *int32           `protobuf:"varint,10,opt,name=duration_minutes,json=durationMinutes,proto3,oneof" json:"duration_minutes,omitempty"` // مدت اختصاصی این provider
+	FacilityType    FacilityType     `protobuf:"varint,6,opt,name=facility_type,json=facilityType,proto3,enum=reservation.FacilityType" json:"facility_type,omitempty"`
+	ServiceId       string           `protobuf:"bytes,7,opt,name=service_id,json=serviceId,proto3" json:"service_id,omitempty"`
+	ProviderUserId  string           `protobuf:"bytes,8,opt,name=provider_user_id,json=providerUserId,proto3" json:"provider_user_id,omitempty"`          // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
+	IsAvailable     bool             `protobuf:"varint,9,opt,name=is_available,json=isAvailable,proto3" json:"is_available,omitempty"`                    // آیا ارائه می‌شود یا نه
+	Price           *money.Money     `protobuf:"bytes,10,opt,name=price,proto3,oneof" json:"price,omitempty"`                                             // قیمت اختصاصی این provider
+	DurationMinutes *int32           `protobuf:"varint,11,opt,name=duration_minutes,json=durationMinutes,proto3,oneof" json:"duration_minutes,omitempty"` // مدت اختصاصی این provider
 }
 
 func (x *ProviderService) Reset() {
@@ -1229,6 +1230,13 @@ func (x *ProviderService) GetFacilityName() *LocalizedString {
 		return x.FacilityName
 	}
 	return nil
+}
+
+func (x *ProviderService) GetFacilityType() FacilityType {
+	if x != nil {
+		return x.FacilityType
+	}
+	return FacilityType_Facility_BOOKABLE
 }
 
 func (x *ProviderService) GetServiceId() string {
@@ -7303,7 +7311,7 @@ var file_reservations_reservation_proto_rawDesc = []byte{
 	0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x2b, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74,
 	0x75, 0x73, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x13, 0x2e, 0x72, 0x65, 0x73, 0x65, 0x72,
 	0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x06, 0x73,
-	0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0xf6, 0x03, 0x0a, 0x0f, 0x50, 0x72, 0x6f, 0x76, 0x69, 0x64,
+	0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0xb6, 0x04, 0x0a, 0x0f, 0x50, 0x72, 0x6f, 0x76, 0x69, 0x64,
 	0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x30, 0x0a, 0x04, 0x6e, 0x61, 0x6d,
 	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x72, 0x65, 0x73, 0x65, 0x72, 0x76,
@@ -7319,18 +7327,22 @@ var file_reservations_reservation_proto_rawDesc = []byte{
 	0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x72, 0x65, 0x73, 0x65, 0x72,
 	0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x4c, 0x6f, 0x63, 0x61, 0x6c, 0x69, 0x7a, 0x65, 0x64,
 	0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x0c, 0x66, 0x61, 0x63, 0x69, 0x6c, 0x69, 0x74, 0x79,
-	0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5f,
-	0x69, 0x64, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x4e, 0x61, 0x6d, 0x65, 0x12, 0x3e, 0x0a, 0x0d, 0x66, 0x61, 0x63, 0x69, 0x6c, 0x69, 0x74, 0x79,
+	0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x19, 0x2e, 0x72, 0x65,
+	0x73, 0x65, 0x72, 0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x46, 0x61, 0x63, 0x69, 0x6c, 0x69,
+	0x74, 0x79, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0c, 0x66, 0x61, 0x63, 0x69, 0x6c, 0x69, 0x74, 0x79,
+	0x54, 0x79, 0x70, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5f,
+	0x69, 0x64, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
 	0x65, 0x49, 0x64, 0x12, 0x28, 0x0a, 0x10, 0x70, 0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x5f,
-	0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x70,
+	0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x70,
 	0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x21, 0x0a,
-	0x0c, 0x69, 0x73, 0x5f, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x18, 0x4e, 0x20,
+	0x0c, 0x69, 0x73, 0x5f, 0x61, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x18, 0x09, 0x20,
 	0x01, 0x28, 0x08, 0x52, 0x0b, 0x69, 0x73, 0x41, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65,
-	0x12, 0x2d, 0x0a, 0x05, 0x70, 0x72, 0x69, 0x63, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x12, 0x2d, 0x0a, 0x05, 0x70, 0x72, 0x69, 0x63, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x0b, 0x32,
 	0x12, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x2e, 0x4d, 0x6f,
 	0x6e, 0x65, 0x79, 0x48, 0x01, 0x52, 0x05, 0x70, 0x72, 0x69, 0x63, 0x65, 0x88, 0x01, 0x01, 0x12,
 	0x2e, 0x0a, 0x10, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x6d, 0x69, 0x6e, 0x75,
-	0x74, 0x65, 0x73, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x05, 0x48, 0x02, 0x52, 0x0f, 0x64, 0x75, 0x72,
+	0x74, 0x65, 0x73, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x05, 0x48, 0x02, 0x52, 0x0f, 0x64, 0x75, 0x72,
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x69, 0x6e, 0x75, 0x74, 0x65, 0x73, 0x88, 0x01, 0x01, 0x42,
 	0x0e, 0x0a, 0x0c, 0x5f, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x42,
 	0x08, 0x0a, 0x06, 0x5f, 0x70, 0x72, 0x69, 0x63, 0x65, 0x42, 0x13, 0x0a, 0x11, 0x5f, 0x64, 0x75,
@@ -8817,216 +8829,217 @@ var file_reservations_reservation_proto_depIdxs = []int32{
 	10,  // 11: reservation.ProviderService.name:type_name -> reservation.LocalizedString
 	10,  // 12: reservation.ProviderService.description:type_name -> reservation.LocalizedString
 	10,  // 13: reservation.ProviderService.facility_name:type_name -> reservation.LocalizedString
-	116, // 14: reservation.ProviderService.price:type_name -> google.type.Money
-	3,   // 15: reservation.WeeklySchedule.day:type_name -> reservation.WeekDay
-	117, // 16: reservation.WeeklySchedule.start_time:type_name -> google.protobuf.Timestamp
-	117, // 17: reservation.WeeklySchedule.end_time:type_name -> google.protobuf.Timestamp
-	9,   // 18: reservation.WeeklySchedule.status:type_name -> reservation.Status
-	117, // 19: reservation.TimeSlot.start_time:type_name -> google.protobuf.Timestamp
-	117, // 20: reservation.TimeSlot.end_time:type_name -> google.protobuf.Timestamp
-	0,   // 21: reservation.TimeSlot.owner_type:type_name -> reservation.OwnerType
-	2,   // 22: reservation.TimeSlot.source:type_name -> reservation.SlotSource
-	9,   // 23: reservation.TimeSlot.status:type_name -> reservation.Status
-	3,   // 24: reservation.TimeSlot.day:type_name -> reservation.WeekDay
-	117, // 25: reservation.ProviderUnavailability.date:type_name -> google.protobuf.Timestamp
-	9,   // 26: reservation.ProviderUnavailability.status:type_name -> reservation.Status
-	117, // 27: reservation.RoomAvailability.date:type_name -> google.protobuf.Timestamp
-	117, // 28: reservation.ServiceUnavailability.from:type_name -> google.protobuf.Timestamp
-	117, // 29: reservation.ServiceUnavailability.to:type_name -> google.protobuf.Timestamp
-	8,   // 30: reservation.RoomType.type_code:type_name -> reservation.RoomTypeCode
-	10,  // 31: reservation.RoomType.custom_name:type_name -> reservation.LocalizedString
-	10,  // 32: reservation.RoomType.description:type_name -> reservation.LocalizedString
-	116, // 33: reservation.RoomType.base_price:type_name -> google.type.Money
-	9,   // 34: reservation.RoomType.status:type_name -> reservation.Status
-	22,  // 35: reservation.Room.images:type_name -> reservation.RoomImage
-	9,   // 36: reservation.Room.status:type_name -> reservation.Status
-	10,  // 37: reservation.RoomImage.title:type_name -> reservation.LocalizedString
-	10,  // 38: reservation.RoomImage.description:type_name -> reservation.LocalizedString
-	9,   // 39: reservation.RoomImage.status:type_name -> reservation.Status
-	1,   // 40: reservation.Reservation.status:type_name -> reservation.ReservationStatus
-	117, // 41: reservation.Reservation.created_at:type_name -> google.protobuf.Timestamp
-	10,  // 42: reservation.CreateFacilityRequest.name:type_name -> reservation.LocalizedString
-	6,   // 43: reservation.CreateFacilityRequest.title:type_name -> reservation.FacilityTitle
-	7,   // 44: reservation.CreateFacilityRequest.type:type_name -> reservation.FacilityType
-	5,   // 45: reservation.CreateFacilityRequest.group:type_name -> reservation.FacilityGroup
-	9,   // 46: reservation.CreateFacilityRequest.status:type_name -> reservation.Status
-	11,  // 47: reservation.CreateFacilityResponse.facility:type_name -> reservation.Facility
-	10,  // 48: reservation.UpdateFacilityRequest.name:type_name -> reservation.LocalizedString
-	6,   // 49: reservation.UpdateFacilityRequest.title:type_name -> reservation.FacilityTitle
-	7,   // 50: reservation.UpdateFacilityRequest.type:type_name -> reservation.FacilityType
-	5,   // 51: reservation.UpdateFacilityRequest.group:type_name -> reservation.FacilityGroup
-	9,   // 52: reservation.UpdateFacilityRequest.status:type_name -> reservation.Status
-	11,  // 53: reservation.UpdateFacilityResponse.facility:type_name -> reservation.Facility
-	29,  // 54: reservation.ListFacilitiesRequest.filter:type_name -> reservation.FaclityFilter
-	5,   // 55: reservation.FaclityFilter.group:type_name -> reservation.FacilityGroup
-	7,   // 56: reservation.FaclityFilter.type:type_name -> reservation.FacilityType
-	6,   // 57: reservation.FaclityFilter.title:type_name -> reservation.FacilityTitle
-	11,  // 58: reservation.ListFacilitiesResponse.facilities:type_name -> reservation.Facility
-	10,  // 59: reservation.CreateServiceRequest.name:type_name -> reservation.LocalizedString
-	10,  // 60: reservation.CreateServiceRequest.description:type_name -> reservation.LocalizedString
-	116, // 61: reservation.CreateServiceRequest.default_price:type_name -> google.type.Money
-	12,  // 62: reservation.CreateServiceResponse.service:type_name -> reservation.Service
-	10,  // 63: reservation.UpdateServiceRequest.name:type_name -> reservation.LocalizedString
-	10,  // 64: reservation.UpdateServiceRequest.description:type_name -> reservation.LocalizedString
-	116, // 65: reservation.UpdateServiceRequest.default_price:type_name -> google.type.Money
-	12,  // 66: reservation.UpdateServiceResponse.service:type_name -> reservation.Service
-	36,  // 67: reservation.ListServicesRequest.filter:type_name -> reservation.ListServiceFilter
-	12,  // 68: reservation.ListServicesResponse.services:type_name -> reservation.Service
-	14,  // 69: reservation.AssignServiceToProviderRequest.services:type_name -> reservation.ProviderService
-	14,  // 70: reservation.RemoveServiceFromProviderRequest.services:type_name -> reservation.ProviderService
-	116, // 71: reservation.UpdateProviderServiceRequest.price:type_name -> google.type.Money
-	14,  // 72: reservation.UpdateProviderServiceResponse.service:type_name -> reservation.ProviderService
-	45,  // 73: reservation.GetProviderServicesListRequest.filter:type_name -> reservation.ProviderServiceFilter
-	14,  // 74: reservation.GetProviderServicesListResponse.services:type_name -> reservation.ProviderService
-	15,  // 75: reservation.CreateWeeklyScheduleRequest.schedule:type_name -> reservation.WeeklySchedule
-	117, // 76: reservation.WeeklyScheduleFilter.start_time:type_name -> google.protobuf.Timestamp
-	117, // 77: reservation.WeeklyScheduleFilter.end_time:type_name -> google.protobuf.Timestamp
-	9,   // 78: reservation.WeeklyScheduleFilter.status:type_name -> reservation.Status
-	49,  // 79: reservation.GetWeeklyScheduleListRequest.filter:type_name -> reservation.WeeklyScheduleFilter
-	15,  // 80: reservation.GetWeeklyScheduleListResponse.weeklyschedules:type_name -> reservation.WeeklySchedule
-	3,   // 81: reservation.UpdateWeeklyScheduleRequest.day:type_name -> reservation.WeekDay
-	117, // 82: reservation.UpdateWeeklyScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
-	117, // 83: reservation.UpdateWeeklyScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
-	9,   // 84: reservation.UpdateWeeklyScheduleRequest.status:type_name -> reservation.Status
-	15,  // 85: reservation.UpdateWeeklyScheduleResponse.weeklySchedule:type_name -> reservation.WeeklySchedule
-	16,  // 86: reservation.GenerateTimeSlotsRequest.timeslot:type_name -> reservation.TimeSlot
-	117, // 87: reservation.TimeSlotsFilter.start_time:type_name -> google.protobuf.Timestamp
-	117, // 88: reservation.TimeSlotsFilter.end_time:type_name -> google.protobuf.Timestamp
-	0,   // 89: reservation.TimeSlotsFilter.owner_type:type_name -> reservation.OwnerType
-	3,   // 90: reservation.TimeSlotsFilter.day:type_name -> reservation.WeekDay
-	9,   // 91: reservation.TimeSlotsFilter.status:type_name -> reservation.Status
-	56,  // 92: reservation.GetTimeSlotsListRequest.filter:type_name -> reservation.TimeSlotsFilter
-	16,  // 93: reservation.GetTimeSlotsListResponse.stimeslots:type_name -> reservation.TimeSlot
-	117, // 94: reservation.UpdateTimeSlotRequest.start_time:type_name -> google.protobuf.Timestamp
-	117, // 95: reservation.UpdateTimeSlotRequest.end_time:type_name -> google.protobuf.Timestamp
-	0,   // 96: reservation.UpdateTimeSlotRequest.owner_type:type_name -> reservation.OwnerType
-	9,   // 97: reservation.UpdateTimeSlotRequest.status:type_name -> reservation.Status
-	16,  // 98: reservation.UpdateTimeSlotResponse.tileslot:type_name -> reservation.TimeSlot
-	4,   // 99: reservation.MarkAttendanceRequest.status:type_name -> reservation.AttendanceStatus
-	23,  // 100: reservation.ListReservationsResponse.reservations:type_name -> reservation.Reservation
-	117, // 101: reservation.ListAvailableTimeSlotsRequest.from:type_name -> google.protobuf.Timestamp
-	117, // 102: reservation.ListAvailableTimeSlotsRequest.to:type_name -> google.protobuf.Timestamp
-	16,  // 103: reservation.ListAvailableTimeSlotsResponse.time_slots:type_name -> reservation.TimeSlot
-	1,   // 104: reservation.UpdateReservationStatusRequest.status:type_name -> reservation.ReservationStatus
-	17,  // 105: reservation.CreateProviderUnavailabilityRequest.unavailability:type_name -> reservation.ProviderUnavailability
-	117, // 106: reservation.ListProviderUnavailabilityRequest.from:type_name -> google.protobuf.Timestamp
-	117, // 107: reservation.ListProviderUnavailabilityRequest.to:type_name -> google.protobuf.Timestamp
-	17,  // 108: reservation.ListProviderUnavailabilityResponse.items:type_name -> reservation.ProviderUnavailability
-	20,  // 109: reservation.CreateRoomTypeRequest.room_type:type_name -> reservation.RoomType
-	20,  // 110: reservation.ListRoomTypesResponse.items:type_name -> reservation.RoomType
-	21,  // 111: reservation.CreateRoomRequest.room:type_name -> reservation.Room
-	21,  // 112: reservation.ListRoomsResponse.items:type_name -> reservation.Room
-	22,  // 113: reservation.AddRoomImageRequest.image:type_name -> reservation.RoomImage
-	22,  // 114: reservation.GetRoomImagesResponse.items:type_name -> reservation.RoomImage
-	117, // 115: reservation.CheckRoomAvailabilityRequest.from:type_name -> google.protobuf.Timestamp
-	117, // 116: reservation.CheckRoomAvailabilityRequest.to:type_name -> google.protobuf.Timestamp
-	18,  // 117: reservation.CheckRoomAvailabilityResponse.items:type_name -> reservation.RoomAvailability
-	117, // 118: reservation.ListRoomAvailabilityRequest.from:type_name -> google.protobuf.Timestamp
-	117, // 119: reservation.ListRoomAvailabilityRequest.to:type_name -> google.protobuf.Timestamp
-	18,  // 120: reservation.ListRoomAvailabilityResponse.items:type_name -> reservation.RoomAvailability
-	19,  // 121: reservation.CreateServiceUnavailabilityRequest.unavailability:type_name -> reservation.ServiceUnavailability
-	117, // 122: reservation.ListServiceUnavailabilityRequest.from:type_name -> google.protobuf.Timestamp
-	117, // 123: reservation.ListServiceUnavailabilityRequest.to:type_name -> google.protobuf.Timestamp
-	19,  // 124: reservation.ListServiceUnavailabilityResponse.items:type_name -> reservation.ServiceUnavailability
-	13,  // 125: reservation.AddFacilityImageRequest.image:type_name -> reservation.FacilityImage
-	13,  // 126: reservation.GetFacilityImagesResponse.images:type_name -> reservation.FacilityImage
-	14,  // 127: reservation.ProviderServiceWithUser.service:type_name -> reservation.ProviderService
-	118, // 128: reservation.ProviderServiceWithUser.user:type_name -> users.User
-	119, // 129: reservation.GetProviderServicesWithUsersRequest.userfilter:type_name -> users.UserFilter
-	45,  // 130: reservation.GetProviderServicesWithUsersRequest.serviceFilter:type_name -> reservation.ProviderServiceFilter
-	120, // 131: reservation.GetProviderServicesWithUsersRequest.pagination:type_name -> users.Pagination
-	113, // 132: reservation.GetProviderServicesWithUsersResponse.items:type_name -> reservation.ProviderServiceWithUser
-	24,  // 133: reservation.ReservationService.CreateFacility:input_type -> reservation.CreateFacilityRequest
-	26,  // 134: reservation.ReservationService.UpdateFacility:input_type -> reservation.UpdateFacilityRequest
-	28,  // 135: reservation.ReservationService.ListFacilities:input_type -> reservation.ListFacilitiesRequest
-	31,  // 136: reservation.ReservationService.CreateService:input_type -> reservation.CreateServiceRequest
-	33,  // 137: reservation.ReservationService.UpdateService:input_type -> reservation.UpdateServiceRequest
-	35,  // 138: reservation.ReservationService.ListServices:input_type -> reservation.ListServicesRequest
-	38,  // 139: reservation.ReservationService.AssignServiceToProvider:input_type -> reservation.AssignServiceToProviderRequest
-	40,  // 140: reservation.ReservationService.RemoveServiceFromProvider:input_type -> reservation.RemoveServiceFromProviderRequest
-	44,  // 141: reservation.ReservationService.GetProviderServicesList:input_type -> reservation.GetProviderServicesListRequest
-	42,  // 142: reservation.ReservationService.UpdateProviderService:input_type -> reservation.UpdateProviderServiceRequest
-	47,  // 143: reservation.ReservationService.CreateWeeklySchedule:input_type -> reservation.CreateWeeklyScheduleRequest
-	50,  // 144: reservation.ReservationService.GetWeeklyScheduleList:input_type -> reservation.GetWeeklyScheduleListRequest
-	52,  // 145: reservation.ReservationService.UpdateWeeklySchedule:input_type -> reservation.UpdateWeeklyScheduleRequest
-	54,  // 146: reservation.ReservationService.GenerateTimeSlots:input_type -> reservation.GenerateTimeSlotsRequest
-	57,  // 147: reservation.ReservationService.GetTimeSlotsList:input_type -> reservation.GetTimeSlotsListRequest
-	59,  // 148: reservation.ReservationService.UpdateTimeSlot:input_type -> reservation.UpdateTimeSlotRequest
-	114, // 149: reservation.ReservationService.GetProviderServicesWithUsers:input_type -> reservation.GetProviderServicesWithUsersRequest
-	13,  // 150: reservation.ReservationService.AddFacilityImage:input_type -> reservation.FacilityImage
-	109, // 151: reservation.ReservationService.DeleteFacilityImage:input_type -> reservation.DeleteFacilityImageRequest
-	111, // 152: reservation.ReservationService.GetFacilityImages:input_type -> reservation.GetFacilityImagesRequest
-	61,  // 153: reservation.ReservationService.CreateReservation:input_type -> reservation.CreateReservationRequest
-	63,  // 154: reservation.ReservationService.CancelReservation:input_type -> reservation.CancelReservationRequest
-	71,  // 155: reservation.ReservationService.UpdateReservationStatus:input_type -> reservation.UpdateReservationStatusRequest
-	65,  // 156: reservation.ReservationService.MarkAttendance:input_type -> reservation.MarkAttendanceRequest
-	67,  // 157: reservation.ReservationService.ListReservations:input_type -> reservation.ListReservationsRequest
-	69,  // 158: reservation.ReservationService.ListAvailableTimeSlots:input_type -> reservation.ListAvailableTimeSlotsRequest
-	73,  // 159: reservation.ReservationService.CreateProviderUnavailability:input_type -> reservation.CreateProviderUnavailabilityRequest
-	75,  // 160: reservation.ReservationService.ListProviderUnavailability:input_type -> reservation.ListProviderUnavailabilityRequest
-	77,  // 161: reservation.ReservationService.DeleteProviderUnavailability:input_type -> reservation.DeleteProviderUnavailabilityRequest
-	79,  // 162: reservation.ReservationService.CreateRoomType:input_type -> reservation.CreateRoomTypeRequest
-	81,  // 163: reservation.ReservationService.ListRoomTypes:input_type -> reservation.ListRoomTypesRequest
-	83,  // 164: reservation.ReservationService.DeleteRoomType:input_type -> reservation.DeleteRoomTypeRequest
-	85,  // 165: reservation.ReservationService.CreateRoom:input_type -> reservation.CreateRoomRequest
-	87,  // 166: reservation.ReservationService.ListRooms:input_type -> reservation.ListRoomsRequest
-	89,  // 167: reservation.ReservationService.DeleteRoom:input_type -> reservation.DeleteRoomRequest
-	91,  // 168: reservation.ReservationService.AddRoomImage:input_type -> reservation.AddRoomImageRequest
-	93,  // 169: reservation.ReservationService.GetRoomImages:input_type -> reservation.GetRoomImagesRequest
-	95,  // 170: reservation.ReservationService.DeleteRoomImage:input_type -> reservation.DeleteRoomImageRequest
-	97,  // 171: reservation.ReservationService.CheckRoomAvailability:input_type -> reservation.CheckRoomAvailabilityRequest
-	99,  // 172: reservation.ReservationService.ListRoomAvailability:input_type -> reservation.ListRoomAvailabilityRequest
-	101, // 173: reservation.ReservationService.CreateServiceUnavailability:input_type -> reservation.CreateServiceUnavailabilityRequest
-	103, // 174: reservation.ReservationService.ListServiceUnavailability:input_type -> reservation.ListServiceUnavailabilityRequest
-	105, // 175: reservation.ReservationService.DeleteServiceUnavailability:input_type -> reservation.DeleteServiceUnavailabilityRequest
-	25,  // 176: reservation.ReservationService.CreateFacility:output_type -> reservation.CreateFacilityResponse
-	27,  // 177: reservation.ReservationService.UpdateFacility:output_type -> reservation.UpdateFacilityResponse
-	30,  // 178: reservation.ReservationService.ListFacilities:output_type -> reservation.ListFacilitiesResponse
-	32,  // 179: reservation.ReservationService.CreateService:output_type -> reservation.CreateServiceResponse
-	34,  // 180: reservation.ReservationService.UpdateService:output_type -> reservation.UpdateServiceResponse
-	37,  // 181: reservation.ReservationService.ListServices:output_type -> reservation.ListServicesResponse
-	39,  // 182: reservation.ReservationService.AssignServiceToProvider:output_type -> reservation.AssignServiceToProviderResponse
-	41,  // 183: reservation.ReservationService.RemoveServiceFromProvider:output_type -> reservation.RemoveServiceFromProviderResponse
-	46,  // 184: reservation.ReservationService.GetProviderServicesList:output_type -> reservation.GetProviderServicesListResponse
-	43,  // 185: reservation.ReservationService.UpdateProviderService:output_type -> reservation.UpdateProviderServiceResponse
-	48,  // 186: reservation.ReservationService.CreateWeeklySchedule:output_type -> reservation.CreateWeeklyScheduleResponse
-	51,  // 187: reservation.ReservationService.GetWeeklyScheduleList:output_type -> reservation.GetWeeklyScheduleListResponse
-	53,  // 188: reservation.ReservationService.UpdateWeeklySchedule:output_type -> reservation.UpdateWeeklyScheduleResponse
-	55,  // 189: reservation.ReservationService.GenerateTimeSlots:output_type -> reservation.GenerateTimeSlotsResponse
-	58,  // 190: reservation.ReservationService.GetTimeSlotsList:output_type -> reservation.GetTimeSlotsListResponse
-	60,  // 191: reservation.ReservationService.UpdateTimeSlot:output_type -> reservation.UpdateTimeSlotResponse
-	115, // 192: reservation.ReservationService.GetProviderServicesWithUsers:output_type -> reservation.GetProviderServicesWithUsersResponse
-	13,  // 193: reservation.ReservationService.AddFacilityImage:output_type -> reservation.FacilityImage
-	110, // 194: reservation.ReservationService.DeleteFacilityImage:output_type -> reservation.DeleteFacilityImageResponse
-	112, // 195: reservation.ReservationService.GetFacilityImages:output_type -> reservation.GetFacilityImagesResponse
-	62,  // 196: reservation.ReservationService.CreateReservation:output_type -> reservation.CreateReservationResponse
-	64,  // 197: reservation.ReservationService.CancelReservation:output_type -> reservation.CancelReservationResponse
-	72,  // 198: reservation.ReservationService.UpdateReservationStatus:output_type -> reservation.UpdateReservationStatusResponse
-	66,  // 199: reservation.ReservationService.MarkAttendance:output_type -> reservation.MarkAttendanceResponse
-	68,  // 200: reservation.ReservationService.ListReservations:output_type -> reservation.ListReservationsResponse
-	70,  // 201: reservation.ReservationService.ListAvailableTimeSlots:output_type -> reservation.ListAvailableTimeSlotsResponse
-	74,  // 202: reservation.ReservationService.CreateProviderUnavailability:output_type -> reservation.CreateProviderUnavailabilityResponse
-	76,  // 203: reservation.ReservationService.ListProviderUnavailability:output_type -> reservation.ListProviderUnavailabilityResponse
-	78,  // 204: reservation.ReservationService.DeleteProviderUnavailability:output_type -> reservation.DeleteProviderUnavailabilityResponse
-	80,  // 205: reservation.ReservationService.CreateRoomType:output_type -> reservation.CreateRoomTypeResponse
-	82,  // 206: reservation.ReservationService.ListRoomTypes:output_type -> reservation.ListRoomTypesResponse
-	84,  // 207: reservation.ReservationService.DeleteRoomType:output_type -> reservation.DeleteRoomTypeResponse
-	86,  // 208: reservation.ReservationService.CreateRoom:output_type -> reservation.CreateRoomResponse
-	88,  // 209: reservation.ReservationService.ListRooms:output_type -> reservation.ListRoomsResponse
-	90,  // 210: reservation.ReservationService.DeleteRoom:output_type -> reservation.DeleteRoomResponse
-	92,  // 211: reservation.ReservationService.AddRoomImage:output_type -> reservation.AddRoomImageResponse
-	94,  // 212: reservation.ReservationService.GetRoomImages:output_type -> reservation.GetRoomImagesResponse
-	96,  // 213: reservation.ReservationService.DeleteRoomImage:output_type -> reservation.DeleteRoomImageResponse
-	98,  // 214: reservation.ReservationService.CheckRoomAvailability:output_type -> reservation.CheckRoomAvailabilityResponse
-	100, // 215: reservation.ReservationService.ListRoomAvailability:output_type -> reservation.ListRoomAvailabilityResponse
-	102, // 216: reservation.ReservationService.CreateServiceUnavailability:output_type -> reservation.CreateServiceUnavailabilityResponse
-	104, // 217: reservation.ReservationService.ListServiceUnavailability:output_type -> reservation.ListServiceUnavailabilityResponse
-	106, // 218: reservation.ReservationService.DeleteServiceUnavailability:output_type -> reservation.DeleteServiceUnavailabilityResponse
-	176, // [176:219] is the sub-list for method output_type
-	133, // [133:176] is the sub-list for method input_type
-	133, // [133:133] is the sub-list for extension type_name
-	133, // [133:133] is the sub-list for extension extendee
-	0,   // [0:133] is the sub-list for field type_name
+	7,   // 14: reservation.ProviderService.facility_type:type_name -> reservation.FacilityType
+	116, // 15: reservation.ProviderService.price:type_name -> google.type.Money
+	3,   // 16: reservation.WeeklySchedule.day:type_name -> reservation.WeekDay
+	117, // 17: reservation.WeeklySchedule.start_time:type_name -> google.protobuf.Timestamp
+	117, // 18: reservation.WeeklySchedule.end_time:type_name -> google.protobuf.Timestamp
+	9,   // 19: reservation.WeeklySchedule.status:type_name -> reservation.Status
+	117, // 20: reservation.TimeSlot.start_time:type_name -> google.protobuf.Timestamp
+	117, // 21: reservation.TimeSlot.end_time:type_name -> google.protobuf.Timestamp
+	0,   // 22: reservation.TimeSlot.owner_type:type_name -> reservation.OwnerType
+	2,   // 23: reservation.TimeSlot.source:type_name -> reservation.SlotSource
+	9,   // 24: reservation.TimeSlot.status:type_name -> reservation.Status
+	3,   // 25: reservation.TimeSlot.day:type_name -> reservation.WeekDay
+	117, // 26: reservation.ProviderUnavailability.date:type_name -> google.protobuf.Timestamp
+	9,   // 27: reservation.ProviderUnavailability.status:type_name -> reservation.Status
+	117, // 28: reservation.RoomAvailability.date:type_name -> google.protobuf.Timestamp
+	117, // 29: reservation.ServiceUnavailability.from:type_name -> google.protobuf.Timestamp
+	117, // 30: reservation.ServiceUnavailability.to:type_name -> google.protobuf.Timestamp
+	8,   // 31: reservation.RoomType.type_code:type_name -> reservation.RoomTypeCode
+	10,  // 32: reservation.RoomType.custom_name:type_name -> reservation.LocalizedString
+	10,  // 33: reservation.RoomType.description:type_name -> reservation.LocalizedString
+	116, // 34: reservation.RoomType.base_price:type_name -> google.type.Money
+	9,   // 35: reservation.RoomType.status:type_name -> reservation.Status
+	22,  // 36: reservation.Room.images:type_name -> reservation.RoomImage
+	9,   // 37: reservation.Room.status:type_name -> reservation.Status
+	10,  // 38: reservation.RoomImage.title:type_name -> reservation.LocalizedString
+	10,  // 39: reservation.RoomImage.description:type_name -> reservation.LocalizedString
+	9,   // 40: reservation.RoomImage.status:type_name -> reservation.Status
+	1,   // 41: reservation.Reservation.status:type_name -> reservation.ReservationStatus
+	117, // 42: reservation.Reservation.created_at:type_name -> google.protobuf.Timestamp
+	10,  // 43: reservation.CreateFacilityRequest.name:type_name -> reservation.LocalizedString
+	6,   // 44: reservation.CreateFacilityRequest.title:type_name -> reservation.FacilityTitle
+	7,   // 45: reservation.CreateFacilityRequest.type:type_name -> reservation.FacilityType
+	5,   // 46: reservation.CreateFacilityRequest.group:type_name -> reservation.FacilityGroup
+	9,   // 47: reservation.CreateFacilityRequest.status:type_name -> reservation.Status
+	11,  // 48: reservation.CreateFacilityResponse.facility:type_name -> reservation.Facility
+	10,  // 49: reservation.UpdateFacilityRequest.name:type_name -> reservation.LocalizedString
+	6,   // 50: reservation.UpdateFacilityRequest.title:type_name -> reservation.FacilityTitle
+	7,   // 51: reservation.UpdateFacilityRequest.type:type_name -> reservation.FacilityType
+	5,   // 52: reservation.UpdateFacilityRequest.group:type_name -> reservation.FacilityGroup
+	9,   // 53: reservation.UpdateFacilityRequest.status:type_name -> reservation.Status
+	11,  // 54: reservation.UpdateFacilityResponse.facility:type_name -> reservation.Facility
+	29,  // 55: reservation.ListFacilitiesRequest.filter:type_name -> reservation.FaclityFilter
+	5,   // 56: reservation.FaclityFilter.group:type_name -> reservation.FacilityGroup
+	7,   // 57: reservation.FaclityFilter.type:type_name -> reservation.FacilityType
+	6,   // 58: reservation.FaclityFilter.title:type_name -> reservation.FacilityTitle
+	11,  // 59: reservation.ListFacilitiesResponse.facilities:type_name -> reservation.Facility
+	10,  // 60: reservation.CreateServiceRequest.name:type_name -> reservation.LocalizedString
+	10,  // 61: reservation.CreateServiceRequest.description:type_name -> reservation.LocalizedString
+	116, // 62: reservation.CreateServiceRequest.default_price:type_name -> google.type.Money
+	12,  // 63: reservation.CreateServiceResponse.service:type_name -> reservation.Service
+	10,  // 64: reservation.UpdateServiceRequest.name:type_name -> reservation.LocalizedString
+	10,  // 65: reservation.UpdateServiceRequest.description:type_name -> reservation.LocalizedString
+	116, // 66: reservation.UpdateServiceRequest.default_price:type_name -> google.type.Money
+	12,  // 67: reservation.UpdateServiceResponse.service:type_name -> reservation.Service
+	36,  // 68: reservation.ListServicesRequest.filter:type_name -> reservation.ListServiceFilter
+	12,  // 69: reservation.ListServicesResponse.services:type_name -> reservation.Service
+	14,  // 70: reservation.AssignServiceToProviderRequest.services:type_name -> reservation.ProviderService
+	14,  // 71: reservation.RemoveServiceFromProviderRequest.services:type_name -> reservation.ProviderService
+	116, // 72: reservation.UpdateProviderServiceRequest.price:type_name -> google.type.Money
+	14,  // 73: reservation.UpdateProviderServiceResponse.service:type_name -> reservation.ProviderService
+	45,  // 74: reservation.GetProviderServicesListRequest.filter:type_name -> reservation.ProviderServiceFilter
+	14,  // 75: reservation.GetProviderServicesListResponse.services:type_name -> reservation.ProviderService
+	15,  // 76: reservation.CreateWeeklyScheduleRequest.schedule:type_name -> reservation.WeeklySchedule
+	117, // 77: reservation.WeeklyScheduleFilter.start_time:type_name -> google.protobuf.Timestamp
+	117, // 78: reservation.WeeklyScheduleFilter.end_time:type_name -> google.protobuf.Timestamp
+	9,   // 79: reservation.WeeklyScheduleFilter.status:type_name -> reservation.Status
+	49,  // 80: reservation.GetWeeklyScheduleListRequest.filter:type_name -> reservation.WeeklyScheduleFilter
+	15,  // 81: reservation.GetWeeklyScheduleListResponse.weeklyschedules:type_name -> reservation.WeeklySchedule
+	3,   // 82: reservation.UpdateWeeklyScheduleRequest.day:type_name -> reservation.WeekDay
+	117, // 83: reservation.UpdateWeeklyScheduleRequest.start_time:type_name -> google.protobuf.Timestamp
+	117, // 84: reservation.UpdateWeeklyScheduleRequest.end_time:type_name -> google.protobuf.Timestamp
+	9,   // 85: reservation.UpdateWeeklyScheduleRequest.status:type_name -> reservation.Status
+	15,  // 86: reservation.UpdateWeeklyScheduleResponse.weeklySchedule:type_name -> reservation.WeeklySchedule
+	16,  // 87: reservation.GenerateTimeSlotsRequest.timeslot:type_name -> reservation.TimeSlot
+	117, // 88: reservation.TimeSlotsFilter.start_time:type_name -> google.protobuf.Timestamp
+	117, // 89: reservation.TimeSlotsFilter.end_time:type_name -> google.protobuf.Timestamp
+	0,   // 90: reservation.TimeSlotsFilter.owner_type:type_name -> reservation.OwnerType
+	3,   // 91: reservation.TimeSlotsFilter.day:type_name -> reservation.WeekDay
+	9,   // 92: reservation.TimeSlotsFilter.status:type_name -> reservation.Status
+	56,  // 93: reservation.GetTimeSlotsListRequest.filter:type_name -> reservation.TimeSlotsFilter
+	16,  // 94: reservation.GetTimeSlotsListResponse.stimeslots:type_name -> reservation.TimeSlot
+	117, // 95: reservation.UpdateTimeSlotRequest.start_time:type_name -> google.protobuf.Timestamp
+	117, // 96: reservation.UpdateTimeSlotRequest.end_time:type_name -> google.protobuf.Timestamp
+	0,   // 97: reservation.UpdateTimeSlotRequest.owner_type:type_name -> reservation.OwnerType
+	9,   // 98: reservation.UpdateTimeSlotRequest.status:type_name -> reservation.Status
+	16,  // 99: reservation.UpdateTimeSlotResponse.tileslot:type_name -> reservation.TimeSlot
+	4,   // 100: reservation.MarkAttendanceRequest.status:type_name -> reservation.AttendanceStatus
+	23,  // 101: reservation.ListReservationsResponse.reservations:type_name -> reservation.Reservation
+	117, // 102: reservation.ListAvailableTimeSlotsRequest.from:type_name -> google.protobuf.Timestamp
+	117, // 103: reservation.ListAvailableTimeSlotsRequest.to:type_name -> google.protobuf.Timestamp
+	16,  // 104: reservation.ListAvailableTimeSlotsResponse.time_slots:type_name -> reservation.TimeSlot
+	1,   // 105: reservation.UpdateReservationStatusRequest.status:type_name -> reservation.ReservationStatus
+	17,  // 106: reservation.CreateProviderUnavailabilityRequest.unavailability:type_name -> reservation.ProviderUnavailability
+	117, // 107: reservation.ListProviderUnavailabilityRequest.from:type_name -> google.protobuf.Timestamp
+	117, // 108: reservation.ListProviderUnavailabilityRequest.to:type_name -> google.protobuf.Timestamp
+	17,  // 109: reservation.ListProviderUnavailabilityResponse.items:type_name -> reservation.ProviderUnavailability
+	20,  // 110: reservation.CreateRoomTypeRequest.room_type:type_name -> reservation.RoomType
+	20,  // 111: reservation.ListRoomTypesResponse.items:type_name -> reservation.RoomType
+	21,  // 112: reservation.CreateRoomRequest.room:type_name -> reservation.Room
+	21,  // 113: reservation.ListRoomsResponse.items:type_name -> reservation.Room
+	22,  // 114: reservation.AddRoomImageRequest.image:type_name -> reservation.RoomImage
+	22,  // 115: reservation.GetRoomImagesResponse.items:type_name -> reservation.RoomImage
+	117, // 116: reservation.CheckRoomAvailabilityRequest.from:type_name -> google.protobuf.Timestamp
+	117, // 117: reservation.CheckRoomAvailabilityRequest.to:type_name -> google.protobuf.Timestamp
+	18,  // 118: reservation.CheckRoomAvailabilityResponse.items:type_name -> reservation.RoomAvailability
+	117, // 119: reservation.ListRoomAvailabilityRequest.from:type_name -> google.protobuf.Timestamp
+	117, // 120: reservation.ListRoomAvailabilityRequest.to:type_name -> google.protobuf.Timestamp
+	18,  // 121: reservation.ListRoomAvailabilityResponse.items:type_name -> reservation.RoomAvailability
+	19,  // 122: reservation.CreateServiceUnavailabilityRequest.unavailability:type_name -> reservation.ServiceUnavailability
+	117, // 123: reservation.ListServiceUnavailabilityRequest.from:type_name -> google.protobuf.Timestamp
+	117, // 124: reservation.ListServiceUnavailabilityRequest.to:type_name -> google.protobuf.Timestamp
+	19,  // 125: reservation.ListServiceUnavailabilityResponse.items:type_name -> reservation.ServiceUnavailability
+	13,  // 126: reservation.AddFacilityImageRequest.image:type_name -> reservation.FacilityImage
+	13,  // 127: reservation.GetFacilityImagesResponse.images:type_name -> reservation.FacilityImage
+	14,  // 128: reservation.ProviderServiceWithUser.service:type_name -> reservation.ProviderService
+	118, // 129: reservation.ProviderServiceWithUser.user:type_name -> users.User
+	119, // 130: reservation.GetProviderServicesWithUsersRequest.userfilter:type_name -> users.UserFilter
+	45,  // 131: reservation.GetProviderServicesWithUsersRequest.serviceFilter:type_name -> reservation.ProviderServiceFilter
+	120, // 132: reservation.GetProviderServicesWithUsersRequest.pagination:type_name -> users.Pagination
+	113, // 133: reservation.GetProviderServicesWithUsersResponse.items:type_name -> reservation.ProviderServiceWithUser
+	24,  // 134: reservation.ReservationService.CreateFacility:input_type -> reservation.CreateFacilityRequest
+	26,  // 135: reservation.ReservationService.UpdateFacility:input_type -> reservation.UpdateFacilityRequest
+	28,  // 136: reservation.ReservationService.ListFacilities:input_type -> reservation.ListFacilitiesRequest
+	31,  // 137: reservation.ReservationService.CreateService:input_type -> reservation.CreateServiceRequest
+	33,  // 138: reservation.ReservationService.UpdateService:input_type -> reservation.UpdateServiceRequest
+	35,  // 139: reservation.ReservationService.ListServices:input_type -> reservation.ListServicesRequest
+	38,  // 140: reservation.ReservationService.AssignServiceToProvider:input_type -> reservation.AssignServiceToProviderRequest
+	40,  // 141: reservation.ReservationService.RemoveServiceFromProvider:input_type -> reservation.RemoveServiceFromProviderRequest
+	44,  // 142: reservation.ReservationService.GetProviderServicesList:input_type -> reservation.GetProviderServicesListRequest
+	42,  // 143: reservation.ReservationService.UpdateProviderService:input_type -> reservation.UpdateProviderServiceRequest
+	47,  // 144: reservation.ReservationService.CreateWeeklySchedule:input_type -> reservation.CreateWeeklyScheduleRequest
+	50,  // 145: reservation.ReservationService.GetWeeklyScheduleList:input_type -> reservation.GetWeeklyScheduleListRequest
+	52,  // 146: reservation.ReservationService.UpdateWeeklySchedule:input_type -> reservation.UpdateWeeklyScheduleRequest
+	54,  // 147: reservation.ReservationService.GenerateTimeSlots:input_type -> reservation.GenerateTimeSlotsRequest
+	57,  // 148: reservation.ReservationService.GetTimeSlotsList:input_type -> reservation.GetTimeSlotsListRequest
+	59,  // 149: reservation.ReservationService.UpdateTimeSlot:input_type -> reservation.UpdateTimeSlotRequest
+	114, // 150: reservation.ReservationService.GetProviderServicesWithUsers:input_type -> reservation.GetProviderServicesWithUsersRequest
+	13,  // 151: reservation.ReservationService.AddFacilityImage:input_type -> reservation.FacilityImage
+	109, // 152: reservation.ReservationService.DeleteFacilityImage:input_type -> reservation.DeleteFacilityImageRequest
+	111, // 153: reservation.ReservationService.GetFacilityImages:input_type -> reservation.GetFacilityImagesRequest
+	61,  // 154: reservation.ReservationService.CreateReservation:input_type -> reservation.CreateReservationRequest
+	63,  // 155: reservation.ReservationService.CancelReservation:input_type -> reservation.CancelReservationRequest
+	71,  // 156: reservation.ReservationService.UpdateReservationStatus:input_type -> reservation.UpdateReservationStatusRequest
+	65,  // 157: reservation.ReservationService.MarkAttendance:input_type -> reservation.MarkAttendanceRequest
+	67,  // 158: reservation.ReservationService.ListReservations:input_type -> reservation.ListReservationsRequest
+	69,  // 159: reservation.ReservationService.ListAvailableTimeSlots:input_type -> reservation.ListAvailableTimeSlotsRequest
+	73,  // 160: reservation.ReservationService.CreateProviderUnavailability:input_type -> reservation.CreateProviderUnavailabilityRequest
+	75,  // 161: reservation.ReservationService.ListProviderUnavailability:input_type -> reservation.ListProviderUnavailabilityRequest
+	77,  // 162: reservation.ReservationService.DeleteProviderUnavailability:input_type -> reservation.DeleteProviderUnavailabilityRequest
+	79,  // 163: reservation.ReservationService.CreateRoomType:input_type -> reservation.CreateRoomTypeRequest
+	81,  // 164: reservation.ReservationService.ListRoomTypes:input_type -> reservation.ListRoomTypesRequest
+	83,  // 165: reservation.ReservationService.DeleteRoomType:input_type -> reservation.DeleteRoomTypeRequest
+	85,  // 166: reservation.ReservationService.CreateRoom:input_type -> reservation.CreateRoomRequest
+	87,  // 167: reservation.ReservationService.ListRooms:input_type -> reservation.ListRoomsRequest
+	89,  // 168: reservation.ReservationService.DeleteRoom:input_type -> reservation.DeleteRoomRequest
+	91,  // 169: reservation.ReservationService.AddRoomImage:input_type -> reservation.AddRoomImageRequest
+	93,  // 170: reservation.ReservationService.GetRoomImages:input_type -> reservation.GetRoomImagesRequest
+	95,  // 171: reservation.ReservationService.DeleteRoomImage:input_type -> reservation.DeleteRoomImageRequest
+	97,  // 172: reservation.ReservationService.CheckRoomAvailability:input_type -> reservation.CheckRoomAvailabilityRequest
+	99,  // 173: reservation.ReservationService.ListRoomAvailability:input_type -> reservation.ListRoomAvailabilityRequest
+	101, // 174: reservation.ReservationService.CreateServiceUnavailability:input_type -> reservation.CreateServiceUnavailabilityRequest
+	103, // 175: reservation.ReservationService.ListServiceUnavailability:input_type -> reservation.ListServiceUnavailabilityRequest
+	105, // 176: reservation.ReservationService.DeleteServiceUnavailability:input_type -> reservation.DeleteServiceUnavailabilityRequest
+	25,  // 177: reservation.ReservationService.CreateFacility:output_type -> reservation.CreateFacilityResponse
+	27,  // 178: reservation.ReservationService.UpdateFacility:output_type -> reservation.UpdateFacilityResponse
+	30,  // 179: reservation.ReservationService.ListFacilities:output_type -> reservation.ListFacilitiesResponse
+	32,  // 180: reservation.ReservationService.CreateService:output_type -> reservation.CreateServiceResponse
+	34,  // 181: reservation.ReservationService.UpdateService:output_type -> reservation.UpdateServiceResponse
+	37,  // 182: reservation.ReservationService.ListServices:output_type -> reservation.ListServicesResponse
+	39,  // 183: reservation.ReservationService.AssignServiceToProvider:output_type -> reservation.AssignServiceToProviderResponse
+	41,  // 184: reservation.ReservationService.RemoveServiceFromProvider:output_type -> reservation.RemoveServiceFromProviderResponse
+	46,  // 185: reservation.ReservationService.GetProviderServicesList:output_type -> reservation.GetProviderServicesListResponse
+	43,  // 186: reservation.ReservationService.UpdateProviderService:output_type -> reservation.UpdateProviderServiceResponse
+	48,  // 187: reservation.ReservationService.CreateWeeklySchedule:output_type -> reservation.CreateWeeklyScheduleResponse
+	51,  // 188: reservation.ReservationService.GetWeeklyScheduleList:output_type -> reservation.GetWeeklyScheduleListResponse
+	53,  // 189: reservation.ReservationService.UpdateWeeklySchedule:output_type -> reservation.UpdateWeeklyScheduleResponse
+	55,  // 190: reservation.ReservationService.GenerateTimeSlots:output_type -> reservation.GenerateTimeSlotsResponse
+	58,  // 191: reservation.ReservationService.GetTimeSlotsList:output_type -> reservation.GetTimeSlotsListResponse
+	60,  // 192: reservation.ReservationService.UpdateTimeSlot:output_type -> reservation.UpdateTimeSlotResponse
+	115, // 193: reservation.ReservationService.GetProviderServicesWithUsers:output_type -> reservation.GetProviderServicesWithUsersResponse
+	13,  // 194: reservation.ReservationService.AddFacilityImage:output_type -> reservation.FacilityImage
+	110, // 195: reservation.ReservationService.DeleteFacilityImage:output_type -> reservation.DeleteFacilityImageResponse
+	112, // 196: reservation.ReservationService.GetFacilityImages:output_type -> reservation.GetFacilityImagesResponse
+	62,  // 197: reservation.ReservationService.CreateReservation:output_type -> reservation.CreateReservationResponse
+	64,  // 198: reservation.ReservationService.CancelReservation:output_type -> reservation.CancelReservationResponse
+	72,  // 199: reservation.ReservationService.UpdateReservationStatus:output_type -> reservation.UpdateReservationStatusResponse
+	66,  // 200: reservation.ReservationService.MarkAttendance:output_type -> reservation.MarkAttendanceResponse
+	68,  // 201: reservation.ReservationService.ListReservations:output_type -> reservation.ListReservationsResponse
+	70,  // 202: reservation.ReservationService.ListAvailableTimeSlots:output_type -> reservation.ListAvailableTimeSlotsResponse
+	74,  // 203: reservation.ReservationService.CreateProviderUnavailability:output_type -> reservation.CreateProviderUnavailabilityResponse
+	76,  // 204: reservation.ReservationService.ListProviderUnavailability:output_type -> reservation.ListProviderUnavailabilityResponse
+	78,  // 205: reservation.ReservationService.DeleteProviderUnavailability:output_type -> reservation.DeleteProviderUnavailabilityResponse
+	80,  // 206: reservation.ReservationService.CreateRoomType:output_type -> reservation.CreateRoomTypeResponse
+	82,  // 207: reservation.ReservationService.ListRoomTypes:output_type -> reservation.ListRoomTypesResponse
+	84,  // 208: reservation.ReservationService.DeleteRoomType:output_type -> reservation.DeleteRoomTypeResponse
+	86,  // 209: reservation.ReservationService.CreateRoom:output_type -> reservation.CreateRoomResponse
+	88,  // 210: reservation.ReservationService.ListRooms:output_type -> reservation.ListRoomsResponse
+	90,  // 211: reservation.ReservationService.DeleteRoom:output_type -> reservation.DeleteRoomResponse
+	92,  // 212: reservation.ReservationService.AddRoomImage:output_type -> reservation.AddRoomImageResponse
+	94,  // 213: reservation.ReservationService.GetRoomImages:output_type -> reservation.GetRoomImagesResponse
+	96,  // 214: reservation.ReservationService.DeleteRoomImage:output_type -> reservation.DeleteRoomImageResponse
+	98,  // 215: reservation.ReservationService.CheckRoomAvailability:output_type -> reservation.CheckRoomAvailabilityResponse
+	100, // 216: reservation.ReservationService.ListRoomAvailability:output_type -> reservation.ListRoomAvailabilityResponse
+	102, // 217: reservation.ReservationService.CreateServiceUnavailability:output_type -> reservation.CreateServiceUnavailabilityResponse
+	104, // 218: reservation.ReservationService.ListServiceUnavailability:output_type -> reservation.ListServiceUnavailabilityResponse
+	106, // 219: reservation.ReservationService.DeleteServiceUnavailability:output_type -> reservation.DeleteServiceUnavailabilityResponse
+	177, // [177:220] is the sub-list for method output_type
+	134, // [134:177] is the sub-list for method input_type
+	134, // [134:134] is the sub-list for extension type_name
+	134, // [134:134] is the sub-list for extension extendee
+	0,   // [0:134] is the sub-list for field type_name
 }
 
 func init() { file_reservations_reservation_proto_init() }
