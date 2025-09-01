@@ -253,35 +253,40 @@ export declare type ProviderService = Message<"reservation.ProviderService"> & {
   facilityId: string;
 
   /**
-   * @generated from field: string service_id = 5;
+   * @generated from field: reservation.LocalizedString facility_name = 5;
+   */
+  facilityName?: LocalizedString;
+
+  /**
+   * @generated from field: string service_id = 6;
    */
   serviceId: string;
 
   /**
    * شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
    *
-   * @generated from field: string provider_user_id = 6;
+   * @generated from field: string provider_user_id = 7;
    */
   providerUserId: string;
 
   /**
    * آیا ارائه می‌شود یا نه
    *
-   * @generated from field: bool is_available = 7;
+   * @generated from field: bool is_available = 78;
    */
   isAvailable: boolean;
 
   /**
    * قیمت اختصاصی این provider
    *
-   * @generated from field: optional google.type.Money price = 8;
+   * @generated from field: optional google.type.Money price = 9;
    */
   price?: Money;
 
   /**
    * مدت اختصاصی این provider
    *
-   * @generated from field: optional int32 duration_minutes = 9;
+   * @generated from field: optional int32 duration_minutes = 10;
    */
   durationMinutes?: number;
 };

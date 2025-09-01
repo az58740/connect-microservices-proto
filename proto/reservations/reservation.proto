@@ -254,11 +254,12 @@ message ProviderService {
   LocalizedString name = 2; // نام سرویس مانند "کوتاهی مو" یا "ویزیت عمومی" | Service name
   optional  LocalizedString description = 3; // توضیحات | Description 
   string facility_id = 4;
-  string service_id = 5;
-  string provider_user_id = 6; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
-  bool is_available = 7; // آیا ارائه می‌شود یا نه
-  optional google.type.Money price = 8;          // قیمت اختصاصی این provider
-  optional int32 duration_minutes = 9;           // مدت اختصاصی این provider
+  LocalizedString facility_name=5;
+  string service_id = 6;
+  string provider_user_id = 7; // شناسه کاربر ارائه‌دهنده (مثل پزشک یا آرایشگر)
+  bool is_available = 78; // آیا ارائه می‌شود یا نه
+  optional google.type.Money price = 9;          // قیمت اختصاصی این provider
+  optional int32 duration_minutes = 10;           // مدت اختصاصی این provider
 }
 // برنامه‌ زمانی تکرارشونده‌ی سرویس‌دهنده در یک روز خاص  
 // Weekly recurring availability for provider
