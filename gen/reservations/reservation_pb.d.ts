@@ -3050,16 +3050,19 @@ export declare const GetFacilityImagesResponseSchema: GenMessage<GetFacilityImag
  */
 export declare type ProviderServiceWithUser = Message<"reservation.ProviderServiceWithUser"> & {
   /**
-   * @generated from field: reservation.ProviderService service = 1;
-   */
-  service?: ProviderService;
-
-  /**
-   * ✅ درست
-   *
-   * @generated from field: users.User user = 2;
+   * @generated from field: users.User user = 1;
    */
   user?: User;
+
+  /**
+   * @generated from field: reservation.Facility facility = 2;
+   */
+  facility?: Facility;
+
+  /**
+   * @generated from field: repeated reservation.ProviderService services = 3;
+   */
+  services: ProviderService[];
 };
 
 /**
@@ -3067,6 +3070,22 @@ export declare type ProviderServiceWithUser = Message<"reservation.ProviderServi
  * Use `create(ProviderServiceWithUserSchema)` to create a new message.
  */
 export declare const ProviderServiceWithUserSchema: GenMessage<ProviderServiceWithUser>;
+
+/**
+ * @generated from message reservation.GetProviderServicesWithUsersResponse
+ */
+export declare type GetProviderServicesWithUsersResponse = Message<"reservation.GetProviderServicesWithUsersResponse"> & {
+  /**
+   * @generated from field: repeated reservation.ProviderServiceWithUser items = 1;
+   */
+  items: ProviderServiceWithUser[];
+};
+
+/**
+ * Describes the message reservation.GetProviderServicesWithUsersResponse.
+ * Use `create(GetProviderServicesWithUsersResponseSchema)` to create a new message.
+ */
+export declare const GetProviderServicesWithUsersResponseSchema: GenMessage<GetProviderServicesWithUsersResponse>;
 
 /**
  * @generated from message reservation.GetProviderServicesWithUsersRequest
@@ -3095,22 +3114,6 @@ export declare type GetProviderServicesWithUsersRequest = Message<"reservation.G
  * Use `create(GetProviderServicesWithUsersRequestSchema)` to create a new message.
  */
 export declare const GetProviderServicesWithUsersRequestSchema: GenMessage<GetProviderServicesWithUsersRequest>;
-
-/**
- * @generated from message reservation.GetProviderServicesWithUsersResponse
- */
-export declare type GetProviderServicesWithUsersResponse = Message<"reservation.GetProviderServicesWithUsersResponse"> & {
-  /**
-   * @generated from field: repeated reservation.ProviderServiceWithUser items = 1;
-   */
-  items: ProviderServiceWithUser[];
-};
-
-/**
- * Describes the message reservation.GetProviderServicesWithUsersResponse.
- * Use `create(GetProviderServicesWithUsersResponseSchema)` to create a new message.
- */
-export declare const GetProviderServicesWithUsersResponseSchema: GenMessage<GetProviderServicesWithUsersResponse>;
 
 /**
  * نوع مالک تایم‌اسلات — تعیین می‌کند که تایم‌اسلات متعلق به فرد است یا فضای مشترک

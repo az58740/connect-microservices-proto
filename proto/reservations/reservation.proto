@@ -834,19 +834,19 @@ message GetFacilityImagesResponse {
 // ========== DOT ==========
 
 message ProviderServiceWithUser {
-  ProviderService service = 1;
-  users.User user = 2; // ✅ درست
+  users.User user = 1;
+  Facility facility=2;
+  repeated ProviderService services =3;
 }
-
+message GetProviderServicesWithUsersResponse {
+  repeated ProviderServiceWithUser items = 1;
+}
 message GetProviderServicesWithUsersRequest {
   users.UserFilter userfilter = 1; // ✅ درست
   ProviderServiceFilter serviceFilter = 2;
   users.Pagination pagination=3;
 }
 
-message GetProviderServicesWithUsersResponse {
-  repeated ProviderServiceWithUser items = 1;
-}
 
 // ========== SERVICE ==========
 
