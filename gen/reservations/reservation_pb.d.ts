@@ -3046,9 +3046,11 @@ export declare type GetFacilityImagesResponse = Message<"reservation.GetFacility
 export declare const GetFacilityImagesResponseSchema: GenMessage<GetFacilityImagesResponse>;
 
 /**
- * @generated from message reservation.ProviderServiceWithUser
+ * ========== DOT ==========
+ *
+ * @generated from message reservation.ProviderServiceDOT
  */
-export declare type ProviderServiceWithUser = Message<"reservation.ProviderServiceWithUser"> & {
+export declare type ProviderServiceDOT = Message<"reservation.ProviderServiceDOT"> & {
   /**
    * @generated from field: users.User user = 1;
    */
@@ -3063,6 +3065,27 @@ export declare type ProviderServiceWithUser = Message<"reservation.ProviderServi
    * @generated from field: repeated reservation.ProviderService services = 3;
    */
   services: ProviderService[];
+};
+
+/**
+ * Describes the message reservation.ProviderServiceDOT.
+ * Use `create(ProviderServiceDOTSchema)` to create a new message.
+ */
+export declare const ProviderServiceDOTSchema: GenMessage<ProviderServiceDOT>;
+
+/**
+ * @generated from message reservation.ProviderServiceWithUser
+ */
+export declare type ProviderServiceWithUser = Message<"reservation.ProviderServiceWithUser"> & {
+  /**
+   * @generated from field: reservation.ProviderServiceDOT users = 1;
+   */
+  users?: ProviderServiceDOT;
+
+  /**
+   * @generated from field: repeated reservation.ProviderServiceDOT subusers = 2;
+   */
+  subusers: ProviderServiceDOT[];
 };
 
 /**

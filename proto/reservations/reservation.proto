@@ -832,11 +832,14 @@ message GetFacilityImagesResponse {
   repeated FacilityImage images = 1; // لیست تصاویر | List of images
 }
 // ========== DOT ==========
-
-message ProviderServiceWithUser {
+message ProviderServiceDOT {
   users.User user = 1;
   Facility facility=2;
   repeated ProviderService services =3;
+}
+message ProviderServiceWithUser {
+ ProviderServiceDOT users=1;
+ repeated  ProviderServiceDOT subusers=2;
 }
 message GetProviderServicesWithUsersResponse {
   repeated ProviderServiceWithUser items = 1;
