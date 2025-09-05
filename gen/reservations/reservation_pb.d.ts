@@ -3048,9 +3048,9 @@ export declare const GetFacilityImagesResponseSchema: GenMessage<GetFacilityImag
 /**
  * ========== DOT ==========
  *
- * @generated from message reservation.ProviderServiceDOT
+ * @generated from message reservation.ProviderServiceData
  */
-export declare type ProviderServiceDOT = Message<"reservation.ProviderServiceDOT"> & {
+export declare type ProviderServiceData = Message<"reservation.ProviderServiceData"> & {
   /**
    * @generated from field: users.User user = 1;
    */
@@ -3068,40 +3068,40 @@ export declare type ProviderServiceDOT = Message<"reservation.ProviderServiceDOT
 };
 
 /**
- * Describes the message reservation.ProviderServiceDOT.
- * Use `create(ProviderServiceDOTSchema)` to create a new message.
+ * Describes the message reservation.ProviderServiceData.
+ * Use `create(ProviderServiceDataSchema)` to create a new message.
  */
-export declare const ProviderServiceDOTSchema: GenMessage<ProviderServiceDOT>;
+export declare const ProviderServiceDataSchema: GenMessage<ProviderServiceData>;
 
 /**
- * @generated from message reservation.ProviderServiceWithUser
+ * @generated from message reservation.ProviderTeam
  */
-export declare type ProviderServiceWithUser = Message<"reservation.ProviderServiceWithUser"> & {
+export declare type ProviderTeam = Message<"reservation.ProviderTeam"> & {
   /**
-   * @generated from field: reservation.ProviderServiceDOT users = 1;
+   * @generated from field: reservation.ProviderServiceData employer = 1;
    */
-  users?: ProviderServiceDOT;
+  employer?: ProviderServiceData;
 
   /**
-   * @generated from field: repeated reservation.ProviderServiceDOT subusers = 2;
+   * @generated from field: repeated reservation.ProviderServiceData employees = 2;
    */
-  subusers: ProviderServiceDOT[];
+  employees: ProviderServiceData[];
 };
 
 /**
- * Describes the message reservation.ProviderServiceWithUser.
- * Use `create(ProviderServiceWithUserSchema)` to create a new message.
+ * Describes the message reservation.ProviderTeam.
+ * Use `create(ProviderTeamSchema)` to create a new message.
  */
-export declare const ProviderServiceWithUserSchema: GenMessage<ProviderServiceWithUser>;
+export declare const ProviderTeamSchema: GenMessage<ProviderTeam>;
 
 /**
  * @generated from message reservation.GetProviderServicesWithUsersResponse
  */
 export declare type GetProviderServicesWithUsersResponse = Message<"reservation.GetProviderServicesWithUsersResponse"> & {
   /**
-   * @generated from field: repeated reservation.ProviderServiceWithUser items = 1;
+   * @generated from field: repeated reservation.ProviderTeam items = 1;
    */
-  items: ProviderServiceWithUser[];
+  items: ProviderTeam[];
 };
 
 /**
@@ -3115,14 +3115,12 @@ export declare const GetProviderServicesWithUsersResponseSchema: GenMessage<GetP
  */
 export declare type GetProviderServicesWithUsersRequest = Message<"reservation.GetProviderServicesWithUsersRequest"> & {
   /**
-   * ✅ درست
-   *
-   * @generated from field: users.UserFilter userfilter = 1;
+   * @generated from field: users.UserFilter user_filter = 1;
    */
-  userfilter?: UserFilter;
+  userFilter?: UserFilter;
 
   /**
-   * @generated from field: reservation.ProviderServiceFilter serviceFilter = 2;
+   * @generated from field: reservation.ProviderServiceFilter service_filter = 2;
    */
   serviceFilter?: ProviderServiceFilter;
 

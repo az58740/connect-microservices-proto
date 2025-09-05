@@ -832,24 +832,26 @@ message GetFacilityImagesResponse {
   repeated FacilityImage images = 1; // لیست تصاویر | List of images
 }
 // ========== DOT ==========
-message ProviderServiceDOT {
+message ProviderServiceData {
   users.User user = 1;
-  Facility facility=2;
-  repeated ProviderService services =3;
-}
-message ProviderServiceWithUser {
- ProviderServiceDOT users=1;
- repeated  ProviderServiceDOT subusers=2;
-}
-message GetProviderServicesWithUsersResponse {
-  repeated ProviderServiceWithUser items = 1;
-}
-message GetProviderServicesWithUsersRequest {
-  users.UserFilter userfilter = 1; // ✅ درست
-  ProviderServiceFilter serviceFilter = 2;
-  users.Pagination pagination=3;
+  Facility facility = 2;
+  repeated ProviderService services = 3;
 }
 
+message ProviderTeam {
+  ProviderServiceData employer = 1;
+  repeated ProviderServiceData employees = 2;
+}
+
+message GetProviderServicesWithUsersResponse {
+  repeated ProviderTeam items = 1;
+}
+
+message GetProviderServicesWithUsersRequest {
+  users.UserFilter user_filter = 1;
+  ProviderServiceFilter service_filter = 2;
+  users.Pagination pagination = 3;
+}
 
 // ========== SERVICE ==========
 
