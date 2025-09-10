@@ -840,7 +840,7 @@ message ProviderServiceData {
 
 message ProviderTeam {
   ProviderServiceData employer = 1;
-  repeated ProviderServiceData employees = 2;
+ repeated ProviderServiceData employees = 2;
 }
 
 message GetProviderServicesWithUsersResponse {

@@ -1469,6 +1469,13 @@ export declare type Contract = Message<"users.Contract"> & {
    * @generated from field: string signedContractFileUrl = 15;
    */
   signedContractFileUrl: string;
+
+  /**
+   * facility of the contract.
+   *
+   * @generated from field: string facilityId = 16;
+   */
+  facilityId: string;
 };
 
 /**
@@ -1579,6 +1586,13 @@ export declare type CreateContractRequest = Message<"users.CreateContractRequest
    * @generated from field: string contractRequestFileUrl = 5;
    */
   contractRequestFileUrl: string;
+
+  /**
+   * facility of the contract.    
+   *
+   * @generated from field: string facilityId = 6;
+   */
+  facilityId: string;
 };
 
 /**

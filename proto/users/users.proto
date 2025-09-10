@@ -405,6 +405,8 @@ message Contract {
     google.protobuf.Timestamp updatedAt = 13; // Last updated timestamp.
     string contractRequestFileUrl = 14;       // URL or path to the request file (e.g., PDF, DOCX).
     string signedContractFileUrl = 15;        // URL or path to the signed contract file.
+   string facilityId = 16;                         // facility of the contract.
+
 }
 
 // Filter criteria for listing contracts.
@@ -412,7 +414,7 @@ message ContractFilter {
     string contractId = 1;                    // Filter by contract ID.
     string employerId = 2;                    // Filter by employer ID.
     string employeeId = 3;                    // Filter by employee ID.
-    ContractStatus contractStatuse = 4;               // Filter by contract status.
+    ContractStatus contractStatuse = 4;       // Filter by contract status.
     google.protobuf.Timestamp startDate = 5;  // Filter by start date of the contract.
     google.protobuf.Timestamp endDate = 6;    // Filter by end date of the contract.
     ContractStatus oppositeStatuse =7 ;               // Reverting all contract except for this one statuse.
@@ -425,7 +427,7 @@ message CreateContractRequest {
     ContractStatus contractStatuse = 3; // Contract status.
     string description = 4;     // Description of the contract.
     string contractRequestFileUrl=5;  // URL or path to the request file (e.g., PDF, DOCX).
-    
+    string facilityId = 6;                         // facility of the contract.    
 }
 
 // Response after creating a contract.
