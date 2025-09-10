@@ -1538,6 +1538,11 @@ export declare type ContractFilter = Message<"users.ContractFilter"> & {
    * @generated from field: users.ContractStatus oppositeStatuse = 7;
    */
   oppositeStatuse: ContractStatus;
+
+  /**
+   * @generated from field: string facilityId = 8;
+   */
+  facilityId: string;
 };
 
 /**
