@@ -2534,12 +2534,9 @@ export declare type RemoveFavoriteResponse = Message<"users.RemoveFavoriteRespon
 export declare const RemoveFavoriteResponseSchema: GenMessage<RemoveFavoriteResponse>;
 
 /**
- * درخواست لیست علاقه‌مندی‌ها
- * Request to list favorites
- *
- * @generated from message users.ListFavoritesRequest
+ * @generated from message users.FavoriteFilter
  */
-export declare type ListFavoritesRequest = Message<"users.ListFavoritesRequest"> & {
+export declare type FavoriteFilter = Message<"users.FavoriteFilter"> & {
   /**
    * کاربری که علاقه‌مندی را ثبت کرده / The user who marks favorite
    *
@@ -2560,6 +2557,25 @@ export declare type ListFavoritesRequest = Message<"users.ListFavoritesRequest">
    * @generated from field: users.FavoriteTargetType favorite_type = 3;
    */
   favoriteType: FavoriteTargetType;
+};
+
+/**
+ * Describes the message users.FavoriteFilter.
+ * Use `create(FavoriteFilterSchema)` to create a new message.
+ */
+export declare const FavoriteFilterSchema: GenMessage<FavoriteFilter>;
+
+/**
+ * درخواست لیست علاقه‌مندی‌ها
+ * Request to list favorites
+ *
+ * @generated from message users.ListFavoritesRequest
+ */
+export declare type ListFavoritesRequest = Message<"users.ListFavoritesRequest"> & {
+  /**
+   * @generated from field: users.FavoriteFilter filter = 1;
+   */
+  filter?: FavoriteFilter;
 };
 
 /**

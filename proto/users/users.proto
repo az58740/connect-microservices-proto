@@ -661,13 +661,15 @@ message RemoveFavoriteResponse {
     bool success = 1; // موفقیت / Whether the operation succeeded
     string message=2;
 }
-
+message FavoriteFilter{
+     string user_id = 1;          // کاربری که علاقه‌مندی را ثبت کرده / The user who marks favorite
+    string favorite_user_id = 2;                  // کاربر مورد نظر / The user whose favorites are requested
+    FavoriteTargetType favorite_type = 3; // اختیاری: فیلتر بر اساس نوع هدف / Optional: filter by target type
+}
 // درخواست لیست علاقه‌مندی‌ها
 // Request to list favorites
 message ListFavoritesRequest {
-    string user_id = 1;          // کاربری که علاقه‌مندی را ثبت کرده / The user who marks favorite
-    string favorite_user_id = 2;                  // کاربر مورد نظر / The user whose favorites are requested
-    FavoriteTargetType favorite_type = 3; // اختیاری: فیلتر بر اساس نوع هدف / Optional: filter by target type
+ FavoriteFilter filter=1;  
 }
 
 // پاسخ لیست علاقه‌مندی‌ها
