@@ -849,7 +849,7 @@ message GetProviderServicesWithUsersResponse {
 
 message GetProviderServicesWithUsersRequest {
   users.UserFilter user_filter = 1;
-  ProviderServiceFilter service_filter = 2;
+  repeated ProviderServiceFilter service_filter = 2;
   users.Pagination pagination = 3;
 }
 

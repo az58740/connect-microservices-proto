@@ -2402,6 +2402,194 @@ export declare type ListPermissionsResponse = Message<"users.ListPermissionsResp
 export declare const ListPermissionsResponseSchema: GenMessage<ListPermissionsResponse>;
 
 /**
+ * پیام UserFavorite
+ * UserFavorite message
+ *
+ * @generated from message users.UserFavorite
+ */
+export declare type UserFavorite = Message<"users.UserFavorite"> & {
+  /**
+   * کاربری که علاقه‌مندی را ثبت کرده / The user who marks favorite
+   *
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * کاربری که مورد علاقه است / The user that is favorited
+   *
+   * @generated from field: string favorite_user_id = 2;
+   */
+  favoriteUserId: string;
+
+  /**
+   * شناسه هدف (ممکنه یوزر دیگه، مرکز یا محصول باشد) / Target ID (could be another user, center, or product)
+   *
+   * @generated from field: string target_id = 3;
+   */
+  targetId: string;
+
+  /**
+   * نوع هدف / Type of the target
+   *
+   * @generated from field: users.FavoriteTargetType favorite_type = 4;
+   */
+  favoriteType: FavoriteTargetType;
+};
+
+/**
+ * Describes the message users.UserFavorite.
+ * Use `create(UserFavoriteSchema)` to create a new message.
+ */
+export declare const UserFavoriteSchema: GenMessage<UserFavorite>;
+
+/**
+ * درخواست اضافه کردن علاقه‌مندی
+ * Request to add a favorite
+ *
+ * @generated from message users.AddFavoriteRequest
+ */
+export declare type AddFavoriteRequest = Message<"users.AddFavoriteRequest"> & {
+  /**
+   * @generated from field: users.UserFavorite favorite = 1;
+   */
+  favorite?: UserFavorite;
+};
+
+/**
+ * Describes the message users.AddFavoriteRequest.
+ * Use `create(AddFavoriteRequestSchema)` to create a new message.
+ */
+export declare const AddFavoriteRequestSchema: GenMessage<AddFavoriteRequest>;
+
+/**
+ * پاسخ اضافه کردن علاقه‌مندی
+ * Response for adding a favorite
+ *
+ * @generated from message users.AddFavoriteResponse
+ */
+export declare type AddFavoriteResponse = Message<"users.AddFavoriteResponse"> & {
+  /**
+   * موفقیت / Whether the operation succeeded
+   *
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.AddFavoriteResponse.
+ * Use `create(AddFavoriteResponseSchema)` to create a new message.
+ */
+export declare const AddFavoriteResponseSchema: GenMessage<AddFavoriteResponse>;
+
+/**
+ * درخواست حذف علاقه‌مندی
+ * Request to remove a favorite
+ *
+ * @generated from message users.RemoveFavoriteRequest
+ */
+export declare type RemoveFavoriteRequest = Message<"users.RemoveFavoriteRequest"> & {
+  /**
+   * @generated from field: users.UserFavorite favorite = 1;
+   */
+  favorite?: UserFavorite;
+};
+
+/**
+ * Describes the message users.RemoveFavoriteRequest.
+ * Use `create(RemoveFavoriteRequestSchema)` to create a new message.
+ */
+export declare const RemoveFavoriteRequestSchema: GenMessage<RemoveFavoriteRequest>;
+
+/**
+ * پاسخ حذف علاقه‌مندی
+ * Response for removing a favorite
+ *
+ * @generated from message users.RemoveFavoriteResponse
+ */
+export declare type RemoveFavoriteResponse = Message<"users.RemoveFavoriteResponse"> & {
+  /**
+   * موفقیت / Whether the operation succeeded
+   *
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message users.RemoveFavoriteResponse.
+ * Use `create(RemoveFavoriteResponseSchema)` to create a new message.
+ */
+export declare const RemoveFavoriteResponseSchema: GenMessage<RemoveFavoriteResponse>;
+
+/**
+ * درخواست لیست علاقه‌مندی‌ها
+ * Request to list favorites
+ *
+ * @generated from message users.ListFavoritesRequest
+ */
+export declare type ListFavoritesRequest = Message<"users.ListFavoritesRequest"> & {
+  /**
+   * کاربری که علاقه‌مندی را ثبت کرده / The user who marks favorite
+   *
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * کاربر مورد نظر / The user whose favorites are requested
+   *
+   * @generated from field: string favorite_user_id = 2;
+   */
+  favoriteUserId: string;
+
+  /**
+   * اختیاری: فیلتر بر اساس نوع هدف / Optional: filter by target type
+   *
+   * @generated from field: users.FavoriteTargetType favorite_type = 3;
+   */
+  favoriteType: FavoriteTargetType;
+};
+
+/**
+ * Describes the message users.ListFavoritesRequest.
+ * Use `create(ListFavoritesRequestSchema)` to create a new message.
+ */
+export declare const ListFavoritesRequestSchema: GenMessage<ListFavoritesRequest>;
+
+/**
+ * پاسخ لیست علاقه‌مندی‌ها
+ * Response for listing favorites
+ *
+ * @generated from message users.ListFavoritesResponse
+ */
+export declare type ListFavoritesResponse = Message<"users.ListFavoritesResponse"> & {
+  /**
+   * لیست علاقه‌مندی‌ها / List of favorites
+   *
+   * @generated from field: repeated users.UserFavorite items = 1;
+   */
+  items: UserFavorite[];
+};
+
+/**
+ * Describes the message users.ListFavoritesResponse.
+ * Use `create(ListFavoritesResponseSchema)` to create a new message.
+ */
+export declare const ListFavoritesResponseSchema: GenMessage<ListFavoritesResponse>;
+
+/**
  * ==================== ENUMS ====================
  * Enum for user status.
  *
@@ -2884,6 +3072,41 @@ export enum Resource {
 export declare const ResourceSchema: GenEnum<Resource>;
 
 /**
+ * ========== Favorit User ==========
+ * Enum برای نوع هدف
+ * Enum for the target type
+ *
+ * @generated from enum users.FavoriteTargetType
+ */
+export enum FavoriteTargetType {
+  /**
+   * کاربر دیگر / Other user
+   *
+   * @generated from enum value: TARGET_TYPE_USER = 0;
+   */
+  TARGET_TYPE_USER = 0,
+
+  /**
+   * مراکز  /  center
+   *
+   * @generated from enum value: TARGET_TYPE_CENTER = 1;
+   */
+  TARGET_TYPE_CENTER = 1,
+
+  /**
+   * محصول / Product
+   *
+   * @generated from enum value: TARGET_TYPE_PRODUCT = 2;
+   */
+  TARGET_TYPE_PRODUCT = 2,
+}
+
+/**
+ * Describes the enum users.FavoriteTargetType.
+ */
+export declare const FavoriteTargetTypeSchema: GenEnum<FavoriteTargetType>;
+
+/**
  * ==================== SERVICE DEFINITIONS ====================
  *
  * @generated from service users.UsersService
@@ -3170,12 +3393,45 @@ export declare const UsersService: GenService<{
     output: typeof GetUserRolesResponseSchema;
   },
   /**
+   * سرویس Favorites
+   * Favorites service
+   *
    * @generated from rpc users.UsersService.CheckPermission
    */
   checkPermission: {
     methodKind: "unary";
     input: typeof CheckPermissionRequestSchema;
     output: typeof CheckPermissionResponseSchema;
+  },
+  /**
+   * اضافه کردن علاقه‌مندی / Add a favorite
+   *
+   * @generated from rpc users.UsersService.AddFavorite
+   */
+  addFavorite: {
+    methodKind: "unary";
+    input: typeof AddFavoriteRequestSchema;
+    output: typeof AddFavoriteResponseSchema;
+  },
+  /**
+   * حذف علاقه‌مندی / Remove a favorite
+   *
+   * @generated from rpc users.UsersService.RemoveFavorite
+   */
+  removeFavorite: {
+    methodKind: "unary";
+    input: typeof RemoveFavoriteRequestSchema;
+    output: typeof RemoveFavoriteResponseSchema;
+  },
+  /**
+   * دریافت لیست علاقه‌مندی‌ها / List favorites
+   *
+   * @generated from rpc users.UsersService.ListFavorites
+   */
+  listFavorites: {
+    methodKind: "unary";
+    input: typeof ListFavoritesRequestSchema;
+    output: typeof ListFavoritesResponseSchema;
   },
 }>;
 

@@ -3120,9 +3120,9 @@ export declare type GetProviderServicesWithUsersRequest = Message<"reservation.G
   userFilter?: UserFilter;
 
   /**
-   * @generated from field: reservation.ProviderServiceFilter service_filter = 2;
+   * @generated from field: repeated reservation.ProviderServiceFilter service_filter = 2;
    */
-  serviceFilter?: ProviderServiceFilter;
+  serviceFilter: ProviderServiceFilter[];
 
   /**
    * @generated from field: users.Pagination pagination = 3;

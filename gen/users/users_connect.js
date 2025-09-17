@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AssignPermissionsToRoleRequest, AssignRolesToUserRequest, CheckPermissionRequest, CheckPermissionResponse, CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, CreatePermissionRequest, CreateRoleRequest, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, DeleteResetTokenRequest, DeleteResetTokenResponse, ForgotPasswordRequest, ForgotPasswordResponse, GetGeolocationRequest, GetGeolocationResponse, GetResetTokenRequest, GetResetTokenResponse, GetUserRolesRequest, GetUserRolesResponse, ListContractRequest, ListContractResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListPermissionsRequest, ListPermissionsResponse, ListRolesRequest, ListRolesResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, PermissionResponse, RegisterRequest, RegisterResponse, RemovePermissionRequest, RemoveUserRoleRequest, RoleResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateRoleRequest, UpdateRoleResponse, UpdateUserRequest, UpdateUserResponse, User } from "./users_pb.js";
+import { AddFavoriteRequest, AddFavoriteResponse, AssignPermissionsToRoleRequest, AssignRolesToUserRequest, CheckPermissionRequest, CheckPermissionResponse, CreateContractRequest, CreateContractResponse, CreateOrganizationGroupRequest, CreateOrganizationGroupResponse, CreateOrganizationRequest, CreateOrganizationResponse, CreatePermissionRequest, CreateRoleRequest, DeleteContractRequest, DeleteContractResponse, DeleteOrganizationGroupRequest, DeleteOrganizationGroupResponse, DeleteOrganizationRequest, DeleteOrganizationResponse, DeleteResetTokenRequest, DeleteResetTokenResponse, ForgotPasswordRequest, ForgotPasswordResponse, GetGeolocationRequest, GetGeolocationResponse, GetResetTokenRequest, GetResetTokenResponse, GetUserRolesRequest, GetUserRolesResponse, ListContractRequest, ListContractResponse, ListFavoritesRequest, ListFavoritesResponse, ListOrganizationGroupRequest, ListOrganizationGroupResponse, ListOrganizationRequest, ListOrganizationResponse, ListPermissionsRequest, ListPermissionsResponse, ListRolesRequest, ListRolesResponse, ListUsersRequest, ListUsersResponse, LoginRequest, LoginResponse, PermissionResponse, RegisterRequest, RegisterResponse, RemoveFavoriteRequest, RemoveFavoriteResponse, RemovePermissionRequest, RemoveUserRoleRequest, RoleResponse, UpdateContractRequest, UpdateContractResponse, UpdateOrganizationGroupRequest, UpdateOrganizationGroupResponse, UpdateOrganizationRequest, UpdateOrganizationResponse, UpdateRoleRequest, UpdateRoleResponse, UpdateUserRequest, UpdateUserResponse, User } from "./users_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -327,12 +327,48 @@ export const UsersService = {
       kind: MethodKind.Unary,
     },
     /**
+     * سرویس Favorites
+     * Favorites service
+     *
      * @generated from rpc users.UsersService.CheckPermission
      */
     checkPermission: {
       name: "CheckPermission",
       I: CheckPermissionRequest,
       O: CheckPermissionResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * اضافه کردن علاقه‌مندی / Add a favorite
+     *
+     * @generated from rpc users.UsersService.AddFavorite
+     */
+    addFavorite: {
+      name: "AddFavorite",
+      I: AddFavoriteRequest,
+      O: AddFavoriteResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * حذف علاقه‌مندی / Remove a favorite
+     *
+     * @generated from rpc users.UsersService.RemoveFavorite
+     */
+    removeFavorite: {
+      name: "RemoveFavorite",
+      I: RemoveFavoriteRequest,
+      O: RemoveFavoriteResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * دریافت لیست علاقه‌مندی‌ها / List favorites
+     *
+     * @generated from rpc users.UsersService.ListFavorites
+     */
+    listFavorites: {
+      name: "ListFavorites",
+      I: ListFavoritesRequest,
+      O: ListFavoritesResponse,
       kind: MethodKind.Unary,
     },
   }

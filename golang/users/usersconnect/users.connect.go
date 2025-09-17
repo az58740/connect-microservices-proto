@@ -125,6 +125,15 @@ const (
 	// UsersServiceCheckPermissionProcedure is the fully-qualified name of the UsersService's
 	// CheckPermission RPC.
 	UsersServiceCheckPermissionProcedure = "/users.UsersService/CheckPermission"
+	// UsersServiceAddFavoriteProcedure is the fully-qualified name of the UsersService's AddFavorite
+	// RPC.
+	UsersServiceAddFavoriteProcedure = "/users.UsersService/AddFavorite"
+	// UsersServiceRemoveFavoriteProcedure is the fully-qualified name of the UsersService's
+	// RemoveFavorite RPC.
+	UsersServiceRemoveFavoriteProcedure = "/users.UsersService/RemoveFavorite"
+	// UsersServiceListFavoritesProcedure is the fully-qualified name of the UsersService's
+	// ListFavorites RPC.
+	UsersServiceListFavoritesProcedure = "/users.UsersService/ListFavorites"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
@@ -163,6 +172,9 @@ var (
 	usersServiceRemoveUserRoleMethodDescriptor           = usersServiceServiceDescriptor.Methods().ByName("RemoveUserRole")
 	usersServiceGetUserRolesMethodDescriptor             = usersServiceServiceDescriptor.Methods().ByName("GetUserRoles")
 	usersServiceCheckPermissionMethodDescriptor          = usersServiceServiceDescriptor.Methods().ByName("CheckPermission")
+	usersServiceAddFavoriteMethodDescriptor              = usersServiceServiceDescriptor.Methods().ByName("AddFavorite")
+	usersServiceRemoveFavoriteMethodDescriptor           = usersServiceServiceDescriptor.Methods().ByName("RemoveFavorite")
+	usersServiceListFavoritesMethodDescriptor            = usersServiceServiceDescriptor.Methods().ByName("ListFavorites")
 )
 
 // UsersServiceClient is a client for the users.UsersService service.
@@ -207,6 +219,9 @@ type UsersServiceClient interface {
 	RemoveUserRole(context.Context, *connect.Request[users.RemoveUserRoleRequest]) (*connect.Response[users.User], error)
 	GetUserRoles(context.Context, *connect.Request[users.GetUserRolesRequest]) (*connect.Response[users.GetUserRolesResponse], error)
 	CheckPermission(context.Context, *connect.Request[users.CheckPermissionRequest]) (*connect.Response[users.CheckPermissionResponse], error)
+	AddFavorite(context.Context, *connect.Request[users.AddFavoriteRequest]) (*connect.Response[users.AddFavoriteResponse], error)
+	RemoveFavorite(context.Context, *connect.Request[users.RemoveFavoriteRequest]) (*connect.Response[users.RemoveFavoriteResponse], error)
+	ListFavorites(context.Context, *connect.Request[users.ListFavoritesRequest]) (*connect.Response[users.ListFavoritesResponse], error)
 }
 
 // NewUsersServiceClient constructs a client for the users.UsersService service. By default, it uses
@@ -417,6 +432,24 @@ func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(usersServiceCheckPermissionMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		addFavorite: connect.NewClient[users.AddFavoriteRequest, users.AddFavoriteResponse](
+			httpClient,
+			baseURL+UsersServiceAddFavoriteProcedure,
+			connect.WithSchema(usersServiceAddFavoriteMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		removeFavorite: connect.NewClient[users.RemoveFavoriteRequest, users.RemoveFavoriteResponse](
+			httpClient,
+			baseURL+UsersServiceRemoveFavoriteProcedure,
+			connect.WithSchema(usersServiceRemoveFavoriteMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		listFavorites: connect.NewClient[users.ListFavoritesRequest, users.ListFavoritesResponse](
+			httpClient,
+			baseURL+UsersServiceListFavoritesProcedure,
+			connect.WithSchema(usersServiceListFavoritesMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -455,6 +488,9 @@ type usersServiceClient struct {
 	removeUserRole           *connect.Client[users.RemoveUserRoleRequest, users.User]
 	getUserRoles             *connect.Client[users.GetUserRolesRequest, users.GetUserRolesResponse]
 	checkPermission          *connect.Client[users.CheckPermissionRequest, users.CheckPermissionResponse]
+	addFavorite              *connect.Client[users.AddFavoriteRequest, users.AddFavoriteResponse]
+	removeFavorite           *connect.Client[users.RemoveFavoriteRequest, users.RemoveFavoriteResponse]
+	listFavorites            *connect.Client[users.ListFavoritesRequest, users.ListFavoritesResponse]
 }
 
 // RegisterUser calls users.UsersService.RegisterUser.
@@ -622,6 +658,21 @@ func (c *usersServiceClient) CheckPermission(ctx context.Context, req *connect.R
 	return c.checkPermission.CallUnary(ctx, req)
 }
 
+// AddFavorite calls users.UsersService.AddFavorite.
+func (c *usersServiceClient) AddFavorite(ctx context.Context, req *connect.Request[users.AddFavoriteRequest]) (*connect.Response[users.AddFavoriteResponse], error) {
+	return c.addFavorite.CallUnary(ctx, req)
+}
+
+// RemoveFavorite calls users.UsersService.RemoveFavorite.
+func (c *usersServiceClient) RemoveFavorite(ctx context.Context, req *connect.Request[users.RemoveFavoriteRequest]) (*connect.Response[users.RemoveFavoriteResponse], error) {
+	return c.removeFavorite.CallUnary(ctx, req)
+}
+
+// ListFavorites calls users.UsersService.ListFavorites.
+func (c *usersServiceClient) ListFavorites(ctx context.Context, req *connect.Request[users.ListFavoritesRequest]) (*connect.Response[users.ListFavoritesResponse], error) {
+	return c.listFavorites.CallUnary(ctx, req)
+}
+
 // UsersServiceHandler is an implementation of the users.UsersService service.
 type UsersServiceHandler interface {
 	// User-related methods
@@ -664,6 +715,9 @@ type UsersServiceHandler interface {
 	RemoveUserRole(context.Context, *connect.Request[users.RemoveUserRoleRequest]) (*connect.Response[users.User], error)
 	GetUserRoles(context.Context, *connect.Request[users.GetUserRolesRequest]) (*connect.Response[users.GetUserRolesResponse], error)
 	CheckPermission(context.Context, *connect.Request[users.CheckPermissionRequest]) (*connect.Response[users.CheckPermissionResponse], error)
+	AddFavorite(context.Context, *connect.Request[users.AddFavoriteRequest]) (*connect.Response[users.AddFavoriteResponse], error)
+	RemoveFavorite(context.Context, *connect.Request[users.RemoveFavoriteRequest]) (*connect.Response[users.RemoveFavoriteResponse], error)
+	ListFavorites(context.Context, *connect.Request[users.ListFavoritesRequest]) (*connect.Response[users.ListFavoritesResponse], error)
 }
 
 // NewUsersServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -870,6 +924,24 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(usersServiceCheckPermissionMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	usersServiceAddFavoriteHandler := connect.NewUnaryHandler(
+		UsersServiceAddFavoriteProcedure,
+		svc.AddFavorite,
+		connect.WithSchema(usersServiceAddFavoriteMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceRemoveFavoriteHandler := connect.NewUnaryHandler(
+		UsersServiceRemoveFavoriteProcedure,
+		svc.RemoveFavorite,
+		connect.WithSchema(usersServiceRemoveFavoriteMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	usersServiceListFavoritesHandler := connect.NewUnaryHandler(
+		UsersServiceListFavoritesProcedure,
+		svc.ListFavorites,
+		connect.WithSchema(usersServiceListFavoritesMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/users.UsersService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case UsersServiceRegisterUserProcedure:
@@ -938,6 +1010,12 @@ func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOpti
 			usersServiceGetUserRolesHandler.ServeHTTP(w, r)
 		case UsersServiceCheckPermissionProcedure:
 			usersServiceCheckPermissionHandler.ServeHTTP(w, r)
+		case UsersServiceAddFavoriteProcedure:
+			usersServiceAddFavoriteHandler.ServeHTTP(w, r)
+		case UsersServiceRemoveFavoriteProcedure:
+			usersServiceRemoveFavoriteHandler.ServeHTTP(w, r)
+		case UsersServiceListFavoritesProcedure:
+			usersServiceListFavoritesHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -1077,4 +1155,16 @@ func (UnimplementedUsersServiceHandler) GetUserRoles(context.Context, *connect.R
 
 func (UnimplementedUsersServiceHandler) CheckPermission(context.Context, *connect.Request[users.CheckPermissionRequest]) (*connect.Response[users.CheckPermissionResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.CheckPermission is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) AddFavorite(context.Context, *connect.Request[users.AddFavoriteRequest]) (*connect.Response[users.AddFavoriteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.AddFavorite is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) RemoveFavorite(context.Context, *connect.Request[users.RemoveFavoriteRequest]) (*connect.Response[users.RemoveFavoriteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.RemoveFavorite is not implemented"))
+}
+
+func (UnimplementedUsersServiceHandler) ListFavorites(context.Context, *connect.Request[users.ListFavoritesRequest]) (*connect.Response[users.ListFavoritesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("users.UsersService.ListFavorites is not implemented"))
 }

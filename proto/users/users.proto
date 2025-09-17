@@ -15,7 +15,6 @@ enum UserStatus {
     USER_STATUS_SUSPENDED = 3;   // Suspended user.
     USER_STATUS_DELETED = 4;     // Deleted user.
 }
-
 // Enum for user types.
 enum UserType {
     USER_TYPE_DEFAULT = 0;             // Default normal user.
@@ -25,6 +24,7 @@ enum UserType {
     USER_TYPE_CONTRACT_EMPLOYER = 4;   // Employer of the contracting party.
     USER_TYPE_CONTRACT_APPLICANT = 5;  // Applicant for a contract.
 }
+
 
 // Enum for user gender.
 enum UserGender {
@@ -618,6 +618,66 @@ message ListPermissionsRequest {
 message ListPermissionsResponse {
   repeated Permission permissions = 1;
 }
+// ========== Favorit User ==========
+// Enum برای نوع هدف
+// Enum for the target type
+enum FavoriteTargetType {
+    TARGET_TYPE_USER = 0;    // کاربر دیگر / Other user
+    TARGET_TYPE_CENTER = 1;  // مراکز  /  center
+    TARGET_TYPE_PRODUCT = 2; // محصول / Product
+}
+
+// پیام UserFavorite
+// UserFavorite message
+message UserFavorite {
+    string user_id = 1;          // کاربری که علاقه‌مندی را ثبت کرده / The user who marks favorite
+    string favorite_user_id = 2; // کاربری که مورد علاقه است / The user that is favorited
+    string target_id = 3;        // شناسه هدف (ممکنه یوزر دیگه، مرکز یا محصول باشد) / Target ID (could be another user, center, or product)
+    FavoriteTargetType favorite_type = 4; // نوع هدف / Type of the target
+}
+
+// درخواست اضافه کردن علاقه‌مندی
+// Request to add a favorite
+message AddFavoriteRequest {
+    UserFavorite favorite = 1;
+}
+
+// پاسخ اضافه کردن علاقه‌مندی
+// Response for adding a favorite
+message AddFavoriteResponse {
+    bool success = 1; // موفقیت / Whether the operation succeeded
+    string message=2;
+}
+
+// درخواست حذف علاقه‌مندی
+// Request to remove a favorite
+message RemoveFavoriteRequest {
+    UserFavorite favorite = 1;
+}
+
+// پاسخ حذف علاقه‌مندی
+// Response for removing a favorite
+message RemoveFavoriteResponse {
+    bool success = 1; // موفقیت / Whether the operation succeeded
+    string message=2;
+}
+
+// درخواست لیست علاقه‌مندی‌ها
+// Request to list favorites
+message ListFavoritesRequest {
+    string user_id = 1;          // کاربری که علاقه‌مندی را ثبت کرده / The user who marks favorite
+    string favorite_user_id = 2;                  // کاربر مورد نظر / The user whose favorites are requested
+    FavoriteTargetType favorite_type = 3; // اختیاری: فیلتر بر اساس نوع هدف / Optional: filter by target type
+}
+
+// پاسخ لیست علاقه‌مندی‌ها
+// Response for listing favorites
+message ListFavoritesResponse {
+    repeated UserFavorite items = 1; // لیست علاقه‌مندی‌ها / List of favorites
+}
+
+
+
 // ==================== SERVICE DEFINITIONS ====================
 service UsersService {
     // User-related methods
@@ -672,5 +732,12 @@ service UsersService {
 
     rpc GetUserRoles(GetUserRolesRequest) returns (GetUserRolesResponse);
     rpc CheckPermission(CheckPermissionRequest) returns (CheckPermissionResponse);
+    // سرویس Favorites
+// Favorites service
+
+    rpc AddFavorite(AddFavoriteRequest) returns (AddFavoriteResponse);         // اضافه کردن علاقه‌مندی / Add a favorite
+    rpc RemoveFavorite(RemoveFavoriteRequest) returns (RemoveFavoriteResponse); // حذف علاقه‌مندی / Remove a favorite
+    rpc ListFavorites(ListFavoritesRequest) returns (ListFavoritesResponse);   // دریافت لیست علاقه‌مندی‌ها / List favorites
+
 
 }
