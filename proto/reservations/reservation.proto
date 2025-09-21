@@ -836,6 +836,8 @@ message ProviderServiceData {
   users.User user = 1;
   Facility facility = 2;
   repeated ProviderService services = 3;
+  bool isStarred=4;
+
 }
 
 message ProviderTeam {

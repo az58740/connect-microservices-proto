@@ -3065,6 +3065,11 @@ export declare type ProviderServiceData = Message<"reservation.ProviderServiceDa
    * @generated from field: repeated reservation.ProviderService services = 3;
    */
   services: ProviderService[];
+
+  /**
+   * @generated from field: bool isStarred = 4;
+   */
+  isStarred: boolean;
 };
 
 /**
