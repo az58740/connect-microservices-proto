@@ -81,6 +81,9 @@ const (
 	// ReservationServiceUpdateTimeSlotProcedure is the fully-qualified name of the ReservationService's
 	// UpdateTimeSlot RPC.
 	ReservationServiceUpdateTimeSlotProcedure = "/reservation.ReservationService/UpdateTimeSlot"
+	// ReservationServiceRemoveTimeSlotsProcedure is the fully-qualified name of the
+	// ReservationService's RemoveTimeSlots RPC.
+	ReservationServiceRemoveTimeSlotsProcedure = "/reservation.ReservationService/RemoveTimeSlots"
 	// ReservationServiceGetProviderServicesWithUsersProcedure is the fully-qualified name of the
 	// ReservationService's GetProviderServicesWithUsers RPC.
 	ReservationServiceGetProviderServicesWithUsersProcedure = "/reservation.ReservationService/GetProviderServicesWithUsers"
@@ -183,6 +186,7 @@ var (
 	reservationServiceGenerateTimeSlotsMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("GenerateTimeSlots")
 	reservationServiceGetTimeSlotsListMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("GetTimeSlotsList")
 	reservationServiceUpdateTimeSlotMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("UpdateTimeSlot")
+	reservationServiceRemoveTimeSlotsMethodDescriptor              = reservationServiceServiceDescriptor.Methods().ByName("RemoveTimeSlots")
 	reservationServiceGetProviderServicesWithUsersMethodDescriptor = reservationServiceServiceDescriptor.Methods().ByName("GetProviderServicesWithUsers")
 	reservationServiceAddFacilityImageMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("AddFacilityImage")
 	reservationServiceDeleteFacilityImageMethodDescriptor          = reservationServiceServiceDescriptor.Methods().ByName("DeleteFacilityImage")
@@ -246,6 +250,7 @@ type ReservationServiceClient interface {
 	GenerateTimeSlots(context.Context, *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error)
 	GetTimeSlotsList(context.Context, *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error)
 	UpdateTimeSlot(context.Context, *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error)
+	RemoveTimeSlots(context.Context, *connect.Request[reservations.RemoveTimeSlotsRequest]) (*connect.Response[reservations.RemoveTimeSlotsResponse], error)
 	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
 	// افزودن تصویر به فسیلیتی | Add an image to a facility
 	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
@@ -405,6 +410,12 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			httpClient,
 			baseURL+ReservationServiceUpdateTimeSlotProcedure,
 			connect.WithSchema(reservationServiceUpdateTimeSlotMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		removeTimeSlots: connect.NewClient[reservations.RemoveTimeSlotsRequest, reservations.RemoveTimeSlotsResponse](
+			httpClient,
+			baseURL+ReservationServiceRemoveTimeSlotsProcedure,
+			connect.WithSchema(reservationServiceRemoveTimeSlotsMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		getProviderServicesWithUsers: connect.NewClient[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse](
@@ -590,6 +601,7 @@ type reservationServiceClient struct {
 	generateTimeSlots            *connect.Client[reservations.GenerateTimeSlotsRequest, reservations.GenerateTimeSlotsResponse]
 	getTimeSlotsList             *connect.Client[reservations.GetTimeSlotsListRequest, reservations.GetTimeSlotsListResponse]
 	updateTimeSlot               *connect.Client[reservations.UpdateTimeSlotRequest, reservations.UpdateTimeSlotResponse]
+	removeTimeSlots              *connect.Client[reservations.RemoveTimeSlotsRequest, reservations.RemoveTimeSlotsResponse]
 	getProviderServicesWithUsers *connect.Client[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse]
 	addFacilityImage             *connect.Client[reservations.FacilityImage, reservations.FacilityImage]
 	deleteFacilityImage          *connect.Client[reservations.DeleteFacilityImageRequest, reservations.DeleteFacilityImageResponse]
@@ -697,6 +709,11 @@ func (c *reservationServiceClient) GetTimeSlotsList(ctx context.Context, req *co
 // UpdateTimeSlot calls reservation.ReservationService.UpdateTimeSlot.
 func (c *reservationServiceClient) UpdateTimeSlot(ctx context.Context, req *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error) {
 	return c.updateTimeSlot.CallUnary(ctx, req)
+}
+
+// RemoveTimeSlots calls reservation.ReservationService.RemoveTimeSlots.
+func (c *reservationServiceClient) RemoveTimeSlots(ctx context.Context, req *connect.Request[reservations.RemoveTimeSlotsRequest]) (*connect.Response[reservations.RemoveTimeSlotsResponse], error) {
+	return c.removeTimeSlots.CallUnary(ctx, req)
 }
 
 // GetProviderServicesWithUsers calls reservation.ReservationService.GetProviderServicesWithUsers.
@@ -868,6 +885,7 @@ type ReservationServiceHandler interface {
 	GenerateTimeSlots(context.Context, *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error)
 	GetTimeSlotsList(context.Context, *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error)
 	UpdateTimeSlot(context.Context, *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error)
+	RemoveTimeSlots(context.Context, *connect.Request[reservations.RemoveTimeSlotsRequest]) (*connect.Response[reservations.RemoveTimeSlotsResponse], error)
 	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
 	// افزودن تصویر به فسیلیتی | Add an image to a facility
 	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
@@ -1023,6 +1041,12 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		ReservationServiceUpdateTimeSlotProcedure,
 		svc.UpdateTimeSlot,
 		connect.WithSchema(reservationServiceUpdateTimeSlotMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceRemoveTimeSlotsHandler := connect.NewUnaryHandler(
+		ReservationServiceRemoveTimeSlotsProcedure,
+		svc.RemoveTimeSlots,
+		connect.WithSchema(reservationServiceRemoveTimeSlotsMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceGetProviderServicesWithUsersHandler := connect.NewUnaryHandler(
@@ -1221,6 +1245,8 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 			reservationServiceGetTimeSlotsListHandler.ServeHTTP(w, r)
 		case ReservationServiceUpdateTimeSlotProcedure:
 			reservationServiceUpdateTimeSlotHandler.ServeHTTP(w, r)
+		case ReservationServiceRemoveTimeSlotsProcedure:
+			reservationServiceRemoveTimeSlotsHandler.ServeHTTP(w, r)
 		case ReservationServiceGetProviderServicesWithUsersProcedure:
 			reservationServiceGetProviderServicesWithUsersHandler.ServeHTTP(w, r)
 		case ReservationServiceAddFacilityImageProcedure:
@@ -1346,6 +1372,10 @@ func (UnimplementedReservationServiceHandler) GetTimeSlotsList(context.Context, 
 
 func (UnimplementedReservationServiceHandler) UpdateTimeSlot(context.Context, *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.UpdateTimeSlot is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) RemoveTimeSlots(context.Context, *connect.Request[reservations.RemoveTimeSlotsRequest]) (*connect.Response[reservations.RemoveTimeSlotsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.RemoveTimeSlots is not implemented"))
 }
 
 func (UnimplementedReservationServiceHandler) GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error) {

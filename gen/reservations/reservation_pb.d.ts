@@ -1749,6 +1749,45 @@ export declare type GenerateTimeSlotsResponse = Message<"reservation.GenerateTim
 export declare const GenerateTimeSlotsResponseSchema: GenMessage<GenerateTimeSlotsResponse>;
 
 /**
+ * @generated from message reservation.RemoveTimeSlotsRequest
+ */
+export declare type RemoveTimeSlotsRequest = Message<"reservation.RemoveTimeSlotsRequest"> & {
+  /**
+   * شناسه برنامه هفتگی | Weekly schedule ID
+   *
+   * @generated from field: repeated reservation.TimeSlot timeslot = 1;
+   */
+  timeslot: TimeSlot[];
+};
+
+/**
+ * Describes the message reservation.RemoveTimeSlotsRequest.
+ * Use `create(RemoveTimeSlotsRequestSchema)` to create a new message.
+ */
+export declare const RemoveTimeSlotsRequestSchema: GenMessage<RemoveTimeSlotsRequest>;
+
+/**
+ * @generated from message reservation.RemoveTimeSlotsResponse
+ */
+export declare type RemoveTimeSlotsResponse = Message<"reservation.RemoveTimeSlotsResponse"> & {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.RemoveTimeSlotsResponse.
+ * Use `create(RemoveTimeSlotsResponseSchema)` to create a new message.
+ */
+export declare const RemoveTimeSlotsResponseSchema: GenMessage<RemoveTimeSlotsResponse>;
+
+/**
  * @generated from message reservation.TimeSlotsFilter
  */
 export declare type TimeSlotsFilter = Message<"reservation.TimeSlotsFilter"> & {
@@ -1763,59 +1802,79 @@ export declare type TimeSlotsFilter = Message<"reservation.TimeSlotsFilter"> & {
   providerUserId: string;
 
   /**
-   * @generated from field: google.protobuf.Timestamp start_time = 3;
+   * @generated from field: string facility_id = 3;
    */
-  startTime?: Timestamp;
+  facilityId: string;
 
   /**
-   * @generated from field: google.protobuf.Timestamp end_time = 4;
+   * @generated from field: optional string service_id = 4;
    */
-  endTime?: Timestamp;
+  serviceId?: string;
 
   /**
+   * @generated from field: optional string weekly_schedule_id = 5;
+   */
+  weeklyScheduleId?: string;
+
+  /**
+   * وضعیت‌ها
+   *
    * فردی یا اشتراکی
    *
-   * @generated from field: reservation.OwnerType owner_type = 5;
+   * @generated from field: reservation.OwnerType owner_type = 6;
    */
   ownerType: OwnerType;
 
   /**
    * آیا رزرو شده یا نه
    *
-   * @generated from field: bool is_reserved = 6;
+   * @generated from field: bool is_reserved = 7;
    */
   isReserved: boolean;
 
   /**
-   * منبع ساخت (در صورت تولید خودکار)
+   * فعال/غیرفعال (مثلاً کنسل یا غیرفعال شده)
    *
-   * @generated from field: optional string weekly_schedule_id = 7;
+   * @generated from field: reservation.Status status = 8;
    */
-  weeklyScheduleId?: string;
+  status: Status;
 
   /**
-   * @generated from field: string facility_id = 8;
-   */
-  facilityId: string;
-
-  /**
-   * @generated from field: optional string service_id = 9;
-   */
-  serviceId?: string;
-
-  /**
-   * روز هفته | Day of the week (e.g. Saturday)
+   * روز هفته
    *
-   * @generated from field: reservation.WeekDay day = 10;
+   * @generated from field: reservation.WeekDay day = 9;
    */
   day: WeekDay;
 
   /**
-   * فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
+   * فیلتر زمانی
    *
-   * @generated from field: reservation.Status status = 11;
+   * شروع بازه
+   *
+   * @generated from field: google.protobuf.Timestamp start_time = 10;
    */
-  status: Status;
+  startTime?: Timestamp;
+
+  /**
+   * پایان بازه
+   *
+   * @generated from field: google.protobuf.Timestamp end_time = 12;
+   */
+  endTime?: Timestamp;
+
+  /**
+   * شروع بزرگتر از
+   *
+   * @generated from field: google.protobuf.Timestamp start_time_after = 13;
+   */
+  startTimeAfter?: Timestamp;
+
+  /**
+   * پایان کوچکتر از
+   *
+   * @generated from field: google.protobuf.Timestamp end_time_before = 14;
+   */
+  endTimeBefore?: Timestamp;
 };
 
 /**
@@ -4303,6 +4362,14 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof UpdateTimeSlotRequestSchema;
     output: typeof UpdateTimeSlotResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.RemoveTimeSlots
+   */
+  removeTimeSlots: {
+    methodKind: "unary";
+    input: typeof RemoveTimeSlotsRequestSchema;
+    output: typeof RemoveTimeSlotsResponseSchema;
   },
   /**
    * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers

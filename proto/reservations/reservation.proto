@@ -552,19 +552,34 @@ message GenerateTimeSlotsResponse {
    bool success = 1;
   string message = 2;
 }
-message TimeSlotsFilter{
+message RemoveTimeSlotsRequest {
+  repeated TimeSlot timeslot = 1; // شناسه برنامه هفتگی | Weekly schedule ID
+}
+message RemoveTimeSlotsResponse {
+   bool success = 1;
+  string message = 2;
+}
+message TimeSlotsFilter {
   string id = 1;
   string provider_user_id = 2;
-  google.protobuf.Timestamp start_time = 3;
-  google.protobuf.Timestamp end_time = 4;
-  OwnerType owner_type = 5;            // فردی یا اشتراکی
-  bool is_reserved = 6;                // آیا رزرو شده یا نه
-  optional string weekly_schedule_id = 7; // منبع ساخت (در صورت تولید خودکار)
-  string facility_id = 8;
-  optional string service_id = 9;
-  WeekDay day = 10;                     // روز هفته | Day of the week (e.g. Saturday)
-  Status status = 11; // فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
+  string facility_id = 3;
+  optional string service_id = 4;
+  optional string weekly_schedule_id = 5;
+
+  // وضعیت‌ها
+  OwnerType owner_type = 6;   // فردی یا اشتراکی
+  bool is_reserved = 7;       // آیا رزرو شده یا نه
+  Status status = 8;          // فعال/غیرفعال (مثلاً کنسل یا غیرفعال شده)
+  WeekDay day = 9;            // روز هفته
+  // فیلتر زمانی
+  google.protobuf.Timestamp start_time = 10;        // شروع بازه
+  google.protobuf.Timestamp end_time = 12;          // پایان بازه
+  google.protobuf.Timestamp start_time_after = 13;  // شروع بزرگتر از
+  google.protobuf.Timestamp end_time_before = 14;   // پایان کوچکتر از
 }
+
+
+
 message GetTimeSlotsListRequest {
 TimeSlotsFilter filter=1;
 }
@@ -837,7 +852,6 @@ message ProviderServiceData {
   Facility facility = 2;
   repeated ProviderService services = 3;
   bool isStarred=4;
-
 }
 
 message ProviderTeam {
@@ -891,6 +905,8 @@ service ReservationService {
   rpc GenerateTimeSlots(GenerateTimeSlotsRequest) returns (GenerateTimeSlotsResponse);
   rpc GetTimeSlotsList(GetTimeSlotsListRequest) returns (GetTimeSlotsListResponse);
   rpc UpdateTimeSlot(UpdateTimeSlotRequest) returns (UpdateTimeSlotResponse);
+  rpc RemoveTimeSlots(RemoveTimeSlotsRequest) returns (RemoveTimeSlotsResponse);
+
   
   rpc GetProviderServicesWithUsers(GetProviderServicesWithUsersRequest) returns (GetProviderServicesWithUsersResponse);
 
