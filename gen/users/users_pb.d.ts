@@ -1362,6 +1362,38 @@ export declare const ListOrganizationResponseSchema: GenMessage<ListOrganization
  * ==================== CONTRACT-RELATED MESSAGES ====================
  * Represents a contract in the system.
  *
+ * @generated from message users.LocalizedString
+ */
+export declare type LocalizedString = Message<"users.LocalizedString"> & {
+  /**
+   * فارسی
+   *
+   * @generated from field: string fa = 1;
+   */
+  fa: string;
+
+  /**
+   * انگلیسی
+   *
+   * @generated from field: string en = 2;
+   */
+  en: string;
+
+  /**
+   * عربی
+   *
+   * @generated from field: string ar = 3;
+   */
+  ar: string;
+};
+
+/**
+ * Describes the message users.LocalizedString.
+ * Use `create(LocalizedStringSchema)` to create a new message.
+ */
+export declare const LocalizedStringSchema: GenMessage<LocalizedString>;
+
+/**
  * @generated from message users.Contract
  */
 export declare type Contract = Message<"users.Contract"> & {
@@ -1476,6 +1508,13 @@ export declare type Contract = Message<"users.Contract"> & {
    * @generated from field: string facilityId = 16;
    */
   facilityId: string;
+
+  /**
+   * نام ساختار (مثلاً "کلینیک دکتر محمدی")
+   *
+   * @generated from field: users.LocalizedString facilityname = 17;
+   */
+  facilityname?: LocalizedString;
 };
 
 /**

@@ -389,6 +389,11 @@ message ListOrganizationResponse {
 
 // ==================== CONTRACT-RELATED MESSAGES ====================
 // Represents a contract in the system.
+message LocalizedString {
+  string fa = 1;  // فارسی
+  string en = 2;  // انگلیسی
+  string ar = 3;  // عربی
+}
 message Contract {
     string contractId = 1;                    // Unique identifier for the contract.
     User employer = 2;                    // Employer's user ID.
@@ -406,7 +411,7 @@ message Contract {
     string contractRequestFileUrl = 14;       // URL or path to the request file (e.g., PDF, DOCX).
     string signedContractFileUrl = 15;        // URL or path to the signed contract file.
    string facilityId = 16;                         // facility of the contract.
-
+   LocalizedString facilityname = 17;                  // نام ساختار (مثلاً "کلینیک دکتر محمدی")
 }
 
 // Filter criteria for listing contracts.
