@@ -271,7 +271,7 @@ message WeeklySchedule {
   google.protobuf.Timestamp start_time = 4;              // ساعت شروع (HH:mm) مثل "09:00"
   google.protobuf.Timestamp end_time = 5;                // ساعت پایان (HH:mm) مثل "17:00"
   string facility_id = 6;             // مکان مرتبط | Facility ID
-  optional string service_id = 7;     // سرویس خاص، اختیاری | Optional service ID
+  optional string employer_id = 7;     // سرویس خاص، اختیاری | Optional service ID
   Status status = 8;                  // وضعیت فعال یا غیرفعال
 }
 

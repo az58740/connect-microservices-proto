@@ -740,7 +740,7 @@ service UsersService {
     rpc GetUserRoles(GetUserRolesRequest) returns (GetUserRolesResponse);
     rpc CheckPermission(CheckPermissionRequest) returns (CheckPermissionResponse);
     // سرویس Favorites
-// Favorites service
+    // Favorites service
 
     rpc AddFavorite(AddFavoriteRequest) returns (AddFavoriteResponse);         // اضافه کردن علاقه‌مندی / Add a favorite
     rpc RemoveFavorite(RemoveFavoriteRequest) returns (RemoveFavoriteResponse); // حذف علاقه‌مندی / Remove a favorite
