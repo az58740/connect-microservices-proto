@@ -1560,9 +1560,9 @@ export declare type WeeklyScheduleFilter = Message<"reservation.WeeklyScheduleFi
   facilityId?: string;
 
   /**
-   * @generated from field: optional string service_id = 3;
+   * @generated from field: optional string employer_id = 3;
    */
-  serviceId?: string;
+  employerId?: string;
 
   /**
    * @generated from field: optional string id = 4;
@@ -1668,9 +1668,9 @@ export declare type UpdateWeeklyScheduleRequest = Message<"reservation.UpdateWee
   /**
    * سرویس خاص، اختیاری | Optional service ID
    *
-   * @generated from field: optional string service_id = 7;
+   * @generated from field: optional string employer_id = 7;
    */
-  serviceId?: string;
+  employerId?: string;
 
   /**
    * وضعیت فعال یا غیرفعال
