@@ -350,9 +350,9 @@ export declare type WeeklySchedule = Message<"reservation.WeeklySchedule"> & {
   /**
    * سرویس خاص، اختیاری | Optional service ID
    *
-   * @generated from field: optional string employer_id = 7;
+   * @generated from field: string employer_id = 7;
    */
-  employerId?: string;
+  employerId: string;
 
   /**
    * وضعیت فعال یا غیرفعال
