@@ -544,6 +544,13 @@ message UpdateWeeklyScheduleResponse {
   WeeklySchedule weeklySchedule = 1;
   string message=2;
 }
+message RemoveWeeklyScheduleRequest {
+  string id = 1;
+}
+message RemoveWeeklyScheduleResponse {
+   bool success = 1;
+  string message = 2;
+}
 // تولید تایم‌اسلات بر اساس برنامه هفتگی | Generate timeslots from weekly schedule
 message GenerateTimeSlotsRequest {
   repeated TimeSlot timeslot = 1; // شناسه برنامه هفتگی | Weekly schedule ID
@@ -901,6 +908,9 @@ service ReservationService {
   rpc CreateWeeklySchedule(CreateWeeklyScheduleRequest) returns (CreateWeeklyScheduleResponse);
   rpc  GetWeeklyScheduleList(GetWeeklyScheduleListRequest) returns (GetWeeklyScheduleListResponse);
   rpc  UpdateWeeklySchedule(UpdateWeeklyScheduleRequest)  returns (UpdateWeeklyScheduleResponse);
+  rpc  RemoveWeeklySchedule(RemoveWeeklyScheduleRequest)  returns (RemoveWeeklyScheduleResponse);
+
+  
     // تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
   rpc GenerateTimeSlots(GenerateTimeSlotsRequest) returns (GenerateTimeSlotsResponse);
   rpc GetTimeSlotsList(GetTimeSlotsListRequest) returns (GetTimeSlotsListResponse);

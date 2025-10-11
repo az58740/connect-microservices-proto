@@ -72,6 +72,9 @@ const (
 	// ReservationServiceUpdateWeeklyScheduleProcedure is the fully-qualified name of the
 	// ReservationService's UpdateWeeklySchedule RPC.
 	ReservationServiceUpdateWeeklyScheduleProcedure = "/reservation.ReservationService/UpdateWeeklySchedule"
+	// ReservationServiceRemoveWeeklyScheduleProcedure is the fully-qualified name of the
+	// ReservationService's RemoveWeeklySchedule RPC.
+	ReservationServiceRemoveWeeklyScheduleProcedure = "/reservation.ReservationService/RemoveWeeklySchedule"
 	// ReservationServiceGenerateTimeSlotsProcedure is the fully-qualified name of the
 	// ReservationService's GenerateTimeSlots RPC.
 	ReservationServiceGenerateTimeSlotsProcedure = "/reservation.ReservationService/GenerateTimeSlots"
@@ -183,6 +186,7 @@ var (
 	reservationServiceCreateWeeklyScheduleMethodDescriptor         = reservationServiceServiceDescriptor.Methods().ByName("CreateWeeklySchedule")
 	reservationServiceGetWeeklyScheduleListMethodDescriptor        = reservationServiceServiceDescriptor.Methods().ByName("GetWeeklyScheduleList")
 	reservationServiceUpdateWeeklyScheduleMethodDescriptor         = reservationServiceServiceDescriptor.Methods().ByName("UpdateWeeklySchedule")
+	reservationServiceRemoveWeeklyScheduleMethodDescriptor         = reservationServiceServiceDescriptor.Methods().ByName("RemoveWeeklySchedule")
 	reservationServiceGenerateTimeSlotsMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("GenerateTimeSlots")
 	reservationServiceGetTimeSlotsListMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("GetTimeSlotsList")
 	reservationServiceUpdateTimeSlotMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("UpdateTimeSlot")
@@ -246,6 +250,7 @@ type ReservationServiceClient interface {
 	CreateWeeklySchedule(context.Context, *connect.Request[reservations.CreateWeeklyScheduleRequest]) (*connect.Response[reservations.CreateWeeklyScheduleResponse], error)
 	GetWeeklyScheduleList(context.Context, *connect.Request[reservations.GetWeeklyScheduleListRequest]) (*connect.Response[reservations.GetWeeklyScheduleListResponse], error)
 	UpdateWeeklySchedule(context.Context, *connect.Request[reservations.UpdateWeeklyScheduleRequest]) (*connect.Response[reservations.UpdateWeeklyScheduleResponse], error)
+	RemoveWeeklySchedule(context.Context, *connect.Request[reservations.RemoveWeeklyScheduleRequest]) (*connect.Response[reservations.RemoveWeeklyScheduleResponse], error)
 	// تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
 	GenerateTimeSlots(context.Context, *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error)
 	GetTimeSlotsList(context.Context, *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error)
@@ -392,6 +397,12 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			httpClient,
 			baseURL+ReservationServiceUpdateWeeklyScheduleProcedure,
 			connect.WithSchema(reservationServiceUpdateWeeklyScheduleMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		removeWeeklySchedule: connect.NewClient[reservations.RemoveWeeklyScheduleRequest, reservations.RemoveWeeklyScheduleResponse](
+			httpClient,
+			baseURL+ReservationServiceRemoveWeeklyScheduleProcedure,
+			connect.WithSchema(reservationServiceRemoveWeeklyScheduleMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		generateTimeSlots: connect.NewClient[reservations.GenerateTimeSlotsRequest, reservations.GenerateTimeSlotsResponse](
@@ -598,6 +609,7 @@ type reservationServiceClient struct {
 	createWeeklySchedule         *connect.Client[reservations.CreateWeeklyScheduleRequest, reservations.CreateWeeklyScheduleResponse]
 	getWeeklyScheduleList        *connect.Client[reservations.GetWeeklyScheduleListRequest, reservations.GetWeeklyScheduleListResponse]
 	updateWeeklySchedule         *connect.Client[reservations.UpdateWeeklyScheduleRequest, reservations.UpdateWeeklyScheduleResponse]
+	removeWeeklySchedule         *connect.Client[reservations.RemoveWeeklyScheduleRequest, reservations.RemoveWeeklyScheduleResponse]
 	generateTimeSlots            *connect.Client[reservations.GenerateTimeSlotsRequest, reservations.GenerateTimeSlotsResponse]
 	getTimeSlotsList             *connect.Client[reservations.GetTimeSlotsListRequest, reservations.GetTimeSlotsListResponse]
 	updateTimeSlot               *connect.Client[reservations.UpdateTimeSlotRequest, reservations.UpdateTimeSlotResponse]
@@ -694,6 +706,11 @@ func (c *reservationServiceClient) GetWeeklyScheduleList(ctx context.Context, re
 // UpdateWeeklySchedule calls reservation.ReservationService.UpdateWeeklySchedule.
 func (c *reservationServiceClient) UpdateWeeklySchedule(ctx context.Context, req *connect.Request[reservations.UpdateWeeklyScheduleRequest]) (*connect.Response[reservations.UpdateWeeklyScheduleResponse], error) {
 	return c.updateWeeklySchedule.CallUnary(ctx, req)
+}
+
+// RemoveWeeklySchedule calls reservation.ReservationService.RemoveWeeklySchedule.
+func (c *reservationServiceClient) RemoveWeeklySchedule(ctx context.Context, req *connect.Request[reservations.RemoveWeeklyScheduleRequest]) (*connect.Response[reservations.RemoveWeeklyScheduleResponse], error) {
+	return c.removeWeeklySchedule.CallUnary(ctx, req)
 }
 
 // GenerateTimeSlots calls reservation.ReservationService.GenerateTimeSlots.
@@ -881,6 +898,7 @@ type ReservationServiceHandler interface {
 	CreateWeeklySchedule(context.Context, *connect.Request[reservations.CreateWeeklyScheduleRequest]) (*connect.Response[reservations.CreateWeeklyScheduleResponse], error)
 	GetWeeklyScheduleList(context.Context, *connect.Request[reservations.GetWeeklyScheduleListRequest]) (*connect.Response[reservations.GetWeeklyScheduleListResponse], error)
 	UpdateWeeklySchedule(context.Context, *connect.Request[reservations.UpdateWeeklyScheduleRequest]) (*connect.Response[reservations.UpdateWeeklyScheduleResponse], error)
+	RemoveWeeklySchedule(context.Context, *connect.Request[reservations.RemoveWeeklyScheduleRequest]) (*connect.Response[reservations.RemoveWeeklyScheduleResponse], error)
 	// تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
 	GenerateTimeSlots(context.Context, *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error)
 	GetTimeSlotsList(context.Context, *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error)
@@ -1023,6 +1041,12 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		ReservationServiceUpdateWeeklyScheduleProcedure,
 		svc.UpdateWeeklySchedule,
 		connect.WithSchema(reservationServiceUpdateWeeklyScheduleMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceRemoveWeeklyScheduleHandler := connect.NewUnaryHandler(
+		ReservationServiceRemoveWeeklyScheduleProcedure,
+		svc.RemoveWeeklySchedule,
+		connect.WithSchema(reservationServiceRemoveWeeklyScheduleMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceGenerateTimeSlotsHandler := connect.NewUnaryHandler(
@@ -1239,6 +1263,8 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 			reservationServiceGetWeeklyScheduleListHandler.ServeHTTP(w, r)
 		case ReservationServiceUpdateWeeklyScheduleProcedure:
 			reservationServiceUpdateWeeklyScheduleHandler.ServeHTTP(w, r)
+		case ReservationServiceRemoveWeeklyScheduleProcedure:
+			reservationServiceRemoveWeeklyScheduleHandler.ServeHTTP(w, r)
 		case ReservationServiceGenerateTimeSlotsProcedure:
 			reservationServiceGenerateTimeSlotsHandler.ServeHTTP(w, r)
 		case ReservationServiceGetTimeSlotsListProcedure:
@@ -1360,6 +1386,10 @@ func (UnimplementedReservationServiceHandler) GetWeeklyScheduleList(context.Cont
 
 func (UnimplementedReservationServiceHandler) UpdateWeeklySchedule(context.Context, *connect.Request[reservations.UpdateWeeklyScheduleRequest]) (*connect.Response[reservations.UpdateWeeklyScheduleResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.UpdateWeeklySchedule is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) RemoveWeeklySchedule(context.Context, *connect.Request[reservations.RemoveWeeklyScheduleRequest]) (*connect.Response[reservations.RemoveWeeklyScheduleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.RemoveWeeklySchedule is not implemented"))
 }
 
 func (UnimplementedReservationServiceHandler) GenerateTimeSlots(context.Context, *connect.Request[reservations.GenerateTimeSlotsRequest]) (*connect.Response[reservations.GenerateTimeSlotsResponse], error) {

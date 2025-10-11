@@ -1708,6 +1708,43 @@ export declare type UpdateWeeklyScheduleResponse = Message<"reservation.UpdateWe
 export declare const UpdateWeeklyScheduleResponseSchema: GenMessage<UpdateWeeklyScheduleResponse>;
 
 /**
+ * @generated from message reservation.RemoveWeeklyScheduleRequest
+ */
+export declare type RemoveWeeklyScheduleRequest = Message<"reservation.RemoveWeeklyScheduleRequest"> & {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string;
+};
+
+/**
+ * Describes the message reservation.RemoveWeeklyScheduleRequest.
+ * Use `create(RemoveWeeklyScheduleRequestSchema)` to create a new message.
+ */
+export declare const RemoveWeeklyScheduleRequestSchema: GenMessage<RemoveWeeklyScheduleRequest>;
+
+/**
+ * @generated from message reservation.RemoveWeeklyScheduleResponse
+ */
+export declare type RemoveWeeklyScheduleResponse = Message<"reservation.RemoveWeeklyScheduleResponse"> & {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.RemoveWeeklyScheduleResponse.
+ * Use `create(RemoveWeeklyScheduleResponseSchema)` to create a new message.
+ */
+export declare const RemoveWeeklyScheduleResponseSchema: GenMessage<RemoveWeeklyScheduleResponse>;
+
+/**
  * تولید تایم‌اسلات بر اساس برنامه هفتگی | Generate timeslots from weekly schedule
  *
  * @generated from message reservation.GenerateTimeSlotsRequest
@@ -4336,6 +4373,14 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof UpdateWeeklyScheduleRequestSchema;
     output: typeof UpdateWeeklyScheduleResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.RemoveWeeklySchedule
+   */
+  removeWeeklySchedule: {
+    methodKind: "unary";
+    input: typeof RemoveWeeklyScheduleRequestSchema;
+    output: typeof RemoveWeeklyScheduleResponseSchema;
   },
   /**
    * تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
