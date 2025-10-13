@@ -286,7 +286,7 @@ message TimeSlot {
   bool is_reserved = 6;                // آیا رزرو شده یا نه
   optional string weekly_schedule_id = 7; // منبع ساخت (در صورت تولید خودکار)
   string facility_id = 8;
-  optional string service_id = 9;
+  optional string employer_id = 9;
   SlotSource source = 10;
   Status status = 11; // فعال/غیرفعال (مثلاً کنسل شده یا غیرفعال شده)
   WeekDay day = 12;                     // روز هفته | Day of the week (e.g. Saturday)
@@ -570,7 +570,7 @@ message TimeSlotsFilter {
   string id = 1;
   string provider_user_id = 2;
   string facility_id = 3;
-  optional string service_id = 4;
+  optional string employer_id = 4;
   optional string weekly_schedule_id = 5;
 
   // وضعیت‌ها

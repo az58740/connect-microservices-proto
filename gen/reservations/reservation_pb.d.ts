@@ -422,9 +422,9 @@ export declare type TimeSlot = Message<"reservation.TimeSlot"> & {
   facilityId: string;
 
   /**
-   * @generated from field: optional string service_id = 9;
+   * @generated from field: optional string employer_id = 9;
    */
-  serviceId?: string;
+  employerId?: string;
 
   /**
    * @generated from field: reservation.SlotSource source = 10;
@@ -1844,9 +1844,9 @@ export declare type TimeSlotsFilter = Message<"reservation.TimeSlotsFilter"> & {
   facilityId: string;
 
   /**
-   * @generated from field: optional string service_id = 4;
+   * @generated from field: optional string employer_id = 4;
    */
-  serviceId?: string;
+  employerId?: string;
 
   /**
    * @generated from field: optional string weekly_schedule_id = 5;
