@@ -29,13 +29,14 @@ enum SlotSource {
   }
 // روزهای هفته | Days of the week
 enum WeekDay {
-  SATURDAY = 0;   // شنبه | Saturday
-  SUNDAY = 1;     // یکشنبه | Sunday
-  MONDAY = 2;     // دوشنبه | Monday
-  TUESDAY = 3;    // سه‌شنبه | Tuesday
-  WEDNESDAY = 4;  // چهارشنبه | Wednesday
-  THURSDAY = 5;   // پنج‌شنبه | Thursday
-  FRIDAY = 6;     // جمعه | Friday
+  SUNDAY = 0;     // یکشنبه | Sunday
+  MONDAY = 1;     // دوشنبه | Monday
+  TUESDAY = 2;    // سه‌شنبه | Tuesday
+  WEDNESDAY = 3;  // چهارشنبه | Wednesday
+  THURSDAY = 4;   // پنج‌شنبه | Thursday
+  FRIDAY = 5;     // جمعه | Friday
+  SATURDAY = 6;   // شنبه | Saturday
+
 }
 
 // وضعیت حضور | Attendance status

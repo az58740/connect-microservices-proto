@@ -3335,53 +3335,53 @@ export declare const SlotSourceSchema: GenEnum<SlotSource>;
  */
 export enum WeekDay {
   /**
-   * شنبه | Saturday
-   *
-   * @generated from enum value: SATURDAY = 0;
-   */
-  SATURDAY = 0,
-
-  /**
    * یکشنبه | Sunday
    *
-   * @generated from enum value: SUNDAY = 1;
+   * @generated from enum value: SUNDAY = 0;
    */
-  SUNDAY = 1,
+  SUNDAY = 0,
 
   /**
    * دوشنبه | Monday
    *
-   * @generated from enum value: MONDAY = 2;
+   * @generated from enum value: MONDAY = 1;
    */
-  MONDAY = 2,
+  MONDAY = 1,
 
   /**
    * سه‌شنبه | Tuesday
    *
-   * @generated from enum value: TUESDAY = 3;
+   * @generated from enum value: TUESDAY = 2;
    */
-  TUESDAY = 3,
+  TUESDAY = 2,
 
   /**
    * چهارشنبه | Wednesday
    *
-   * @generated from enum value: WEDNESDAY = 4;
+   * @generated from enum value: WEDNESDAY = 3;
    */
-  WEDNESDAY = 4,
+  WEDNESDAY = 3,
 
   /**
    * پنج‌شنبه | Thursday
    *
-   * @generated from enum value: THURSDAY = 5;
+   * @generated from enum value: THURSDAY = 4;
    */
-  THURSDAY = 5,
+  THURSDAY = 4,
 
   /**
    * جمعه | Friday
    *
-   * @generated from enum value: FRIDAY = 6;
+   * @generated from enum value: FRIDAY = 5;
    */
-  FRIDAY = 6,
+  FRIDAY = 5,
+
+  /**
+   * شنبه | Saturday
+   *
+   * @generated from enum value: SATURDAY = 6;
+   */
+  SATURDAY = 6,
 }
 
 /**
