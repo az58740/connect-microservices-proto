@@ -194,6 +194,7 @@ enum FacilityType {
   Facility_PURCHASABLE = 1;      // قابل خرید (مثلاً فروشگاه)
   Facility_HYBRID = 2;           // ترکیبی
   Facility_ACCOMMODATION = 3;    // فسیلیتی اقامتی مثل هتل یا هاستل
+  Facility_NOT_BOOKABLE = 4; //  غیر قابل رزروNot bookable (e.g., store, exhibition hall)
 }
 // نوع‌های استاندارد اتاق | Standard room type codes
 enum RoomTypeCode {
@@ -295,6 +296,21 @@ message TimeSlot {
   int32 reserved_count = 14; // تعداد رزروهای انجام شده
 
 }
+// رزرو ثبت‌شده توسط کاربر
+// Reservation made by user
+message Reservation {
+  string id = 1;
+  string user_id= 2; // کاربر رزروکننده
+  string provider_user_id = 3; // سرویس‌دهنده
+  string service_id = 4;
+  string facility_id = 5;
+  string time_slot_id = 6;
+  ReservationStatus status = 7;
+  string notes = 8;
+  google.protobuf.Timestamp created_at = 9;
+}
+
+
 // بازه‌های عدم دسترسی ارائه‌دهنده (برای کل روز یا ساعاتی خاص)
 // Periods when the provider is not available (full day or specific hours)
 message ProviderUnavailability {
@@ -363,19 +379,7 @@ message RoomImage {
   LocalizedString description = 5;   // توضیح تصویر (اختیاری) | Optional image description
   Status status = 6;                 // وضعیت: فعال / غیرفعال | Active / Inactive
 }
-// رزرو ثبت‌شده توسط کاربر
-// Reservation made by user
-message Reservation {
-  string id = 1;
-  string user_id= 2; // کاربر رزروکننده
-  string provider_user_id = 3; // سرویس‌دهنده
-  string service_id = 4;
-  string facility_id = 5;
-  string time_slot_id = 6;
-  ReservationStatus status = 7;
-  string notes = 8;
-  google.protobuf.Timestamp created_at = 9;
-}
+
 
 // ========== REQUEST / RESPONSE MESSAGES ==========
 
@@ -917,6 +921,12 @@ service ReservationService {
   rpc GetTimeSlotsList(GetTimeSlotsListRequest) returns (GetTimeSlotsListResponse);
   rpc UpdateTimeSlot(UpdateTimeSlotRequest) returns (UpdateTimeSlotResponse);
   rpc RemoveTimeSlots(RemoveTimeSlotsRequest) returns (RemoveTimeSlotsResponse);
+      // ثبت یک رزرو جدید | Create a new reservation
+  rpc CreateReservation(CreateReservationRequest) returns (CreateReservationResponse);
+    // لغو رزرو ثبت‌شده | Cancel an existing reservation
+  rpc CancelReservation(CancelReservationRequest) returns (CancelReservationResponse);
+    // بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
+  rpc UpdateReservationStatus(UpdateReservationStatusRequest) returns (UpdateReservationStatusResponse);
 
   
   rpc GetProviderServicesWithUsers(GetProviderServicesWithUsersRequest) returns (GetProviderServicesWithUsersResponse);
@@ -934,12 +944,6 @@ service ReservationService {
   rpc DeleteFacilityImage(DeleteFacilityImageRequest) returns (DeleteFacilityImageResponse);
     // دریافت تصاویر فسیلیتی | Get images of a facility
   rpc GetFacilityImages(GetFacilityImagesRequest) returns (GetFacilityImagesResponse);
-    // ثبت یک رزرو جدید | Create a new reservation
-  rpc CreateReservation(CreateReservationRequest) returns (CreateReservationResponse);
-    // لغو رزرو ثبت‌شده | Cancel an existing reservation
-  rpc CancelReservation(CancelReservationRequest) returns (CancelReservationResponse);
-    // بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
-  rpc UpdateReservationStatus(UpdateReservationStatusRequest) returns (UpdateReservationStatusResponse);
     // ثبت وضعیت حضور یا عدم حضور کاربر | Mark attendance status for reservation
   rpc MarkAttendance(MarkAttendanceRequest) returns (MarkAttendanceResponse);
     // دریافت لیست رزروهای کاربر | List user reservations

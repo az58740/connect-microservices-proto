@@ -87,6 +87,15 @@ const (
 	// ReservationServiceRemoveTimeSlotsProcedure is the fully-qualified name of the
 	// ReservationService's RemoveTimeSlots RPC.
 	ReservationServiceRemoveTimeSlotsProcedure = "/reservation.ReservationService/RemoveTimeSlots"
+	// ReservationServiceCreateReservationProcedure is the fully-qualified name of the
+	// ReservationService's CreateReservation RPC.
+	ReservationServiceCreateReservationProcedure = "/reservation.ReservationService/CreateReservation"
+	// ReservationServiceCancelReservationProcedure is the fully-qualified name of the
+	// ReservationService's CancelReservation RPC.
+	ReservationServiceCancelReservationProcedure = "/reservation.ReservationService/CancelReservation"
+	// ReservationServiceUpdateReservationStatusProcedure is the fully-qualified name of the
+	// ReservationService's UpdateReservationStatus RPC.
+	ReservationServiceUpdateReservationStatusProcedure = "/reservation.ReservationService/UpdateReservationStatus"
 	// ReservationServiceGetProviderServicesWithUsersProcedure is the fully-qualified name of the
 	// ReservationService's GetProviderServicesWithUsers RPC.
 	ReservationServiceGetProviderServicesWithUsersProcedure = "/reservation.ReservationService/GetProviderServicesWithUsers"
@@ -99,15 +108,6 @@ const (
 	// ReservationServiceGetFacilityImagesProcedure is the fully-qualified name of the
 	// ReservationService's GetFacilityImages RPC.
 	ReservationServiceGetFacilityImagesProcedure = "/reservation.ReservationService/GetFacilityImages"
-	// ReservationServiceCreateReservationProcedure is the fully-qualified name of the
-	// ReservationService's CreateReservation RPC.
-	ReservationServiceCreateReservationProcedure = "/reservation.ReservationService/CreateReservation"
-	// ReservationServiceCancelReservationProcedure is the fully-qualified name of the
-	// ReservationService's CancelReservation RPC.
-	ReservationServiceCancelReservationProcedure = "/reservation.ReservationService/CancelReservation"
-	// ReservationServiceUpdateReservationStatusProcedure is the fully-qualified name of the
-	// ReservationService's UpdateReservationStatus RPC.
-	ReservationServiceUpdateReservationStatusProcedure = "/reservation.ReservationService/UpdateReservationStatus"
 	// ReservationServiceMarkAttendanceProcedure is the fully-qualified name of the ReservationService's
 	// MarkAttendance RPC.
 	ReservationServiceMarkAttendanceProcedure = "/reservation.ReservationService/MarkAttendance"
@@ -191,13 +191,13 @@ var (
 	reservationServiceGetTimeSlotsListMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("GetTimeSlotsList")
 	reservationServiceUpdateTimeSlotMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("UpdateTimeSlot")
 	reservationServiceRemoveTimeSlotsMethodDescriptor              = reservationServiceServiceDescriptor.Methods().ByName("RemoveTimeSlots")
+	reservationServiceCreateReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("CreateReservation")
+	reservationServiceCancelReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("CancelReservation")
+	reservationServiceUpdateReservationStatusMethodDescriptor      = reservationServiceServiceDescriptor.Methods().ByName("UpdateReservationStatus")
 	reservationServiceGetProviderServicesWithUsersMethodDescriptor = reservationServiceServiceDescriptor.Methods().ByName("GetProviderServicesWithUsers")
 	reservationServiceAddFacilityImageMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("AddFacilityImage")
 	reservationServiceDeleteFacilityImageMethodDescriptor          = reservationServiceServiceDescriptor.Methods().ByName("DeleteFacilityImage")
 	reservationServiceGetFacilityImagesMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("GetFacilityImages")
-	reservationServiceCreateReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("CreateReservation")
-	reservationServiceCancelReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("CancelReservation")
-	reservationServiceUpdateReservationStatusMethodDescriptor      = reservationServiceServiceDescriptor.Methods().ByName("UpdateReservationStatus")
 	reservationServiceMarkAttendanceMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("MarkAttendance")
 	reservationServiceListReservationsMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("ListReservations")
 	reservationServiceListAvailableTimeSlotsMethodDescriptor       = reservationServiceServiceDescriptor.Methods().ByName("ListAvailableTimeSlots")
@@ -256,6 +256,12 @@ type ReservationServiceClient interface {
 	GetTimeSlotsList(context.Context, *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error)
 	UpdateTimeSlot(context.Context, *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error)
 	RemoveTimeSlots(context.Context, *connect.Request[reservations.RemoveTimeSlotsRequest]) (*connect.Response[reservations.RemoveTimeSlotsResponse], error)
+	// ثبت یک رزرو جدید | Create a new reservation
+	CreateReservation(context.Context, *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error)
+	// لغو رزرو ثبت‌شده | Cancel an existing reservation
+	CancelReservation(context.Context, *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error)
+	// بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
+	UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error)
 	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
 	// افزودن تصویر به فسیلیتی | Add an image to a facility
 	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
@@ -263,12 +269,6 @@ type ReservationServiceClient interface {
 	DeleteFacilityImage(context.Context, *connect.Request[reservations.DeleteFacilityImageRequest]) (*connect.Response[reservations.DeleteFacilityImageResponse], error)
 	// دریافت تصاویر فسیلیتی | Get images of a facility
 	GetFacilityImages(context.Context, *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error)
-	// ثبت یک رزرو جدید | Create a new reservation
-	CreateReservation(context.Context, *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error)
-	// لغو رزرو ثبت‌شده | Cancel an existing reservation
-	CancelReservation(context.Context, *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error)
-	// بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
-	UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error)
 	// ثبت وضعیت حضور یا عدم حضور کاربر | Mark attendance status for reservation
 	MarkAttendance(context.Context, *connect.Request[reservations.MarkAttendanceRequest]) (*connect.Response[reservations.MarkAttendanceResponse], error)
 	// دریافت لیست رزروهای کاربر | List user reservations
@@ -429,6 +429,24 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			connect.WithSchema(reservationServiceRemoveTimeSlotsMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		createReservation: connect.NewClient[reservations.CreateReservationRequest, reservations.CreateReservationResponse](
+			httpClient,
+			baseURL+ReservationServiceCreateReservationProcedure,
+			connect.WithSchema(reservationServiceCreateReservationMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		cancelReservation: connect.NewClient[reservations.CancelReservationRequest, reservations.CancelReservationResponse](
+			httpClient,
+			baseURL+ReservationServiceCancelReservationProcedure,
+			connect.WithSchema(reservationServiceCancelReservationMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		updateReservationStatus: connect.NewClient[reservations.UpdateReservationStatusRequest, reservations.UpdateReservationStatusResponse](
+			httpClient,
+			baseURL+ReservationServiceUpdateReservationStatusProcedure,
+			connect.WithSchema(reservationServiceUpdateReservationStatusMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		getProviderServicesWithUsers: connect.NewClient[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse](
 			httpClient,
 			baseURL+ReservationServiceGetProviderServicesWithUsersProcedure,
@@ -451,24 +469,6 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			httpClient,
 			baseURL+ReservationServiceGetFacilityImagesProcedure,
 			connect.WithSchema(reservationServiceGetFacilityImagesMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		createReservation: connect.NewClient[reservations.CreateReservationRequest, reservations.CreateReservationResponse](
-			httpClient,
-			baseURL+ReservationServiceCreateReservationProcedure,
-			connect.WithSchema(reservationServiceCreateReservationMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		cancelReservation: connect.NewClient[reservations.CancelReservationRequest, reservations.CancelReservationResponse](
-			httpClient,
-			baseURL+ReservationServiceCancelReservationProcedure,
-			connect.WithSchema(reservationServiceCancelReservationMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		updateReservationStatus: connect.NewClient[reservations.UpdateReservationStatusRequest, reservations.UpdateReservationStatusResponse](
-			httpClient,
-			baseURL+ReservationServiceUpdateReservationStatusProcedure,
-			connect.WithSchema(reservationServiceUpdateReservationStatusMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		markAttendance: connect.NewClient[reservations.MarkAttendanceRequest, reservations.MarkAttendanceResponse](
@@ -614,13 +614,13 @@ type reservationServiceClient struct {
 	getTimeSlotsList             *connect.Client[reservations.GetTimeSlotsListRequest, reservations.GetTimeSlotsListResponse]
 	updateTimeSlot               *connect.Client[reservations.UpdateTimeSlotRequest, reservations.UpdateTimeSlotResponse]
 	removeTimeSlots              *connect.Client[reservations.RemoveTimeSlotsRequest, reservations.RemoveTimeSlotsResponse]
+	createReservation            *connect.Client[reservations.CreateReservationRequest, reservations.CreateReservationResponse]
+	cancelReservation            *connect.Client[reservations.CancelReservationRequest, reservations.CancelReservationResponse]
+	updateReservationStatus      *connect.Client[reservations.UpdateReservationStatusRequest, reservations.UpdateReservationStatusResponse]
 	getProviderServicesWithUsers *connect.Client[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse]
 	addFacilityImage             *connect.Client[reservations.FacilityImage, reservations.FacilityImage]
 	deleteFacilityImage          *connect.Client[reservations.DeleteFacilityImageRequest, reservations.DeleteFacilityImageResponse]
 	getFacilityImages            *connect.Client[reservations.GetFacilityImagesRequest, reservations.GetFacilityImagesResponse]
-	createReservation            *connect.Client[reservations.CreateReservationRequest, reservations.CreateReservationResponse]
-	cancelReservation            *connect.Client[reservations.CancelReservationRequest, reservations.CancelReservationResponse]
-	updateReservationStatus      *connect.Client[reservations.UpdateReservationStatusRequest, reservations.UpdateReservationStatusResponse]
 	markAttendance               *connect.Client[reservations.MarkAttendanceRequest, reservations.MarkAttendanceResponse]
 	listReservations             *connect.Client[reservations.ListReservationsRequest, reservations.ListReservationsResponse]
 	listAvailableTimeSlots       *connect.Client[reservations.ListAvailableTimeSlotsRequest, reservations.ListAvailableTimeSlotsResponse]
@@ -733,6 +733,21 @@ func (c *reservationServiceClient) RemoveTimeSlots(ctx context.Context, req *con
 	return c.removeTimeSlots.CallUnary(ctx, req)
 }
 
+// CreateReservation calls reservation.ReservationService.CreateReservation.
+func (c *reservationServiceClient) CreateReservation(ctx context.Context, req *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error) {
+	return c.createReservation.CallUnary(ctx, req)
+}
+
+// CancelReservation calls reservation.ReservationService.CancelReservation.
+func (c *reservationServiceClient) CancelReservation(ctx context.Context, req *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error) {
+	return c.cancelReservation.CallUnary(ctx, req)
+}
+
+// UpdateReservationStatus calls reservation.ReservationService.UpdateReservationStatus.
+func (c *reservationServiceClient) UpdateReservationStatus(ctx context.Context, req *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error) {
+	return c.updateReservationStatus.CallUnary(ctx, req)
+}
+
 // GetProviderServicesWithUsers calls reservation.ReservationService.GetProviderServicesWithUsers.
 func (c *reservationServiceClient) GetProviderServicesWithUsers(ctx context.Context, req *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error) {
 	return c.getProviderServicesWithUsers.CallUnary(ctx, req)
@@ -751,21 +766,6 @@ func (c *reservationServiceClient) DeleteFacilityImage(ctx context.Context, req 
 // GetFacilityImages calls reservation.ReservationService.GetFacilityImages.
 func (c *reservationServiceClient) GetFacilityImages(ctx context.Context, req *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error) {
 	return c.getFacilityImages.CallUnary(ctx, req)
-}
-
-// CreateReservation calls reservation.ReservationService.CreateReservation.
-func (c *reservationServiceClient) CreateReservation(ctx context.Context, req *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error) {
-	return c.createReservation.CallUnary(ctx, req)
-}
-
-// CancelReservation calls reservation.ReservationService.CancelReservation.
-func (c *reservationServiceClient) CancelReservation(ctx context.Context, req *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error) {
-	return c.cancelReservation.CallUnary(ctx, req)
-}
-
-// UpdateReservationStatus calls reservation.ReservationService.UpdateReservationStatus.
-func (c *reservationServiceClient) UpdateReservationStatus(ctx context.Context, req *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error) {
-	return c.updateReservationStatus.CallUnary(ctx, req)
 }
 
 // MarkAttendance calls reservation.ReservationService.MarkAttendance.
@@ -904,6 +904,12 @@ type ReservationServiceHandler interface {
 	GetTimeSlotsList(context.Context, *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error)
 	UpdateTimeSlot(context.Context, *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error)
 	RemoveTimeSlots(context.Context, *connect.Request[reservations.RemoveTimeSlotsRequest]) (*connect.Response[reservations.RemoveTimeSlotsResponse], error)
+	// ثبت یک رزرو جدید | Create a new reservation
+	CreateReservation(context.Context, *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error)
+	// لغو رزرو ثبت‌شده | Cancel an existing reservation
+	CancelReservation(context.Context, *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error)
+	// بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
+	UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error)
 	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
 	// افزودن تصویر به فسیلیتی | Add an image to a facility
 	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
@@ -911,12 +917,6 @@ type ReservationServiceHandler interface {
 	DeleteFacilityImage(context.Context, *connect.Request[reservations.DeleteFacilityImageRequest]) (*connect.Response[reservations.DeleteFacilityImageResponse], error)
 	// دریافت تصاویر فسیلیتی | Get images of a facility
 	GetFacilityImages(context.Context, *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error)
-	// ثبت یک رزرو جدید | Create a new reservation
-	CreateReservation(context.Context, *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error)
-	// لغو رزرو ثبت‌شده | Cancel an existing reservation
-	CancelReservation(context.Context, *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error)
-	// بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
-	UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error)
 	// ثبت وضعیت حضور یا عدم حضور کاربر | Mark attendance status for reservation
 	MarkAttendance(context.Context, *connect.Request[reservations.MarkAttendanceRequest]) (*connect.Response[reservations.MarkAttendanceResponse], error)
 	// دریافت لیست رزروهای کاربر | List user reservations
@@ -1073,6 +1073,24 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		connect.WithSchema(reservationServiceRemoveTimeSlotsMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	reservationServiceCreateReservationHandler := connect.NewUnaryHandler(
+		ReservationServiceCreateReservationProcedure,
+		svc.CreateReservation,
+		connect.WithSchema(reservationServiceCreateReservationMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceCancelReservationHandler := connect.NewUnaryHandler(
+		ReservationServiceCancelReservationProcedure,
+		svc.CancelReservation,
+		connect.WithSchema(reservationServiceCancelReservationMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceUpdateReservationStatusHandler := connect.NewUnaryHandler(
+		ReservationServiceUpdateReservationStatusProcedure,
+		svc.UpdateReservationStatus,
+		connect.WithSchema(reservationServiceUpdateReservationStatusMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	reservationServiceGetProviderServicesWithUsersHandler := connect.NewUnaryHandler(
 		ReservationServiceGetProviderServicesWithUsersProcedure,
 		svc.GetProviderServicesWithUsers,
@@ -1095,24 +1113,6 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		ReservationServiceGetFacilityImagesProcedure,
 		svc.GetFacilityImages,
 		connect.WithSchema(reservationServiceGetFacilityImagesMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceCreateReservationHandler := connect.NewUnaryHandler(
-		ReservationServiceCreateReservationProcedure,
-		svc.CreateReservation,
-		connect.WithSchema(reservationServiceCreateReservationMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceCancelReservationHandler := connect.NewUnaryHandler(
-		ReservationServiceCancelReservationProcedure,
-		svc.CancelReservation,
-		connect.WithSchema(reservationServiceCancelReservationMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceUpdateReservationStatusHandler := connect.NewUnaryHandler(
-		ReservationServiceUpdateReservationStatusProcedure,
-		svc.UpdateReservationStatus,
-		connect.WithSchema(reservationServiceUpdateReservationStatusMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceMarkAttendanceHandler := connect.NewUnaryHandler(
@@ -1273,6 +1273,12 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 			reservationServiceUpdateTimeSlotHandler.ServeHTTP(w, r)
 		case ReservationServiceRemoveTimeSlotsProcedure:
 			reservationServiceRemoveTimeSlotsHandler.ServeHTTP(w, r)
+		case ReservationServiceCreateReservationProcedure:
+			reservationServiceCreateReservationHandler.ServeHTTP(w, r)
+		case ReservationServiceCancelReservationProcedure:
+			reservationServiceCancelReservationHandler.ServeHTTP(w, r)
+		case ReservationServiceUpdateReservationStatusProcedure:
+			reservationServiceUpdateReservationStatusHandler.ServeHTTP(w, r)
 		case ReservationServiceGetProviderServicesWithUsersProcedure:
 			reservationServiceGetProviderServicesWithUsersHandler.ServeHTTP(w, r)
 		case ReservationServiceAddFacilityImageProcedure:
@@ -1281,12 +1287,6 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 			reservationServiceDeleteFacilityImageHandler.ServeHTTP(w, r)
 		case ReservationServiceGetFacilityImagesProcedure:
 			reservationServiceGetFacilityImagesHandler.ServeHTTP(w, r)
-		case ReservationServiceCreateReservationProcedure:
-			reservationServiceCreateReservationHandler.ServeHTTP(w, r)
-		case ReservationServiceCancelReservationProcedure:
-			reservationServiceCancelReservationHandler.ServeHTTP(w, r)
-		case ReservationServiceUpdateReservationStatusProcedure:
-			reservationServiceUpdateReservationStatusHandler.ServeHTTP(w, r)
 		case ReservationServiceMarkAttendanceProcedure:
 			reservationServiceMarkAttendanceHandler.ServeHTTP(w, r)
 		case ReservationServiceListReservationsProcedure:
@@ -1408,6 +1408,18 @@ func (UnimplementedReservationServiceHandler) RemoveTimeSlots(context.Context, *
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.RemoveTimeSlots is not implemented"))
 }
 
+func (UnimplementedReservationServiceHandler) CreateReservation(context.Context, *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CreateReservation is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) CancelReservation(context.Context, *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CancelReservation is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.UpdateReservationStatus is not implemented"))
+}
+
 func (UnimplementedReservationServiceHandler) GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GetProviderServicesWithUsers is not implemented"))
 }
@@ -1422,18 +1434,6 @@ func (UnimplementedReservationServiceHandler) DeleteFacilityImage(context.Contex
 
 func (UnimplementedReservationServiceHandler) GetFacilityImages(context.Context, *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GetFacilityImages is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) CreateReservation(context.Context, *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CreateReservation is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) CancelReservation(context.Context, *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CancelReservation is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.UpdateReservationStatus is not implemented"))
 }
 
 func (UnimplementedReservationServiceHandler) MarkAttendance(context.Context, *connect.Request[reservations.MarkAttendanceRequest]) (*connect.Response[reservations.MarkAttendanceResponse], error) {

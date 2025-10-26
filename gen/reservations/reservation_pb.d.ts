@@ -467,6 +467,69 @@ export declare type TimeSlot = Message<"reservation.TimeSlot"> & {
 export declare const TimeSlotSchema: GenMessage<TimeSlot>;
 
 /**
+ * رزرو ثبت‌شده توسط کاربر
+ * Reservation made by user
+ *
+ * @generated from message reservation.Reservation
+ */
+export declare type Reservation = Message<"reservation.Reservation"> & {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string;
+
+  /**
+   * کاربر رزروکننده
+   *
+   * @generated from field: string user_id = 2;
+   */
+  userId: string;
+
+  /**
+   * سرویس‌دهنده
+   *
+   * @generated from field: string provider_user_id = 3;
+   */
+  providerUserId: string;
+
+  /**
+   * @generated from field: string service_id = 4;
+   */
+  serviceId: string;
+
+  /**
+   * @generated from field: string facility_id = 5;
+   */
+  facilityId: string;
+
+  /**
+   * @generated from field: string time_slot_id = 6;
+   */
+  timeSlotId: string;
+
+  /**
+   * @generated from field: reservation.ReservationStatus status = 7;
+   */
+  status: ReservationStatus;
+
+  /**
+   * @generated from field: string notes = 8;
+   */
+  notes: string;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 9;
+   */
+  createdAt?: Timestamp;
+};
+
+/**
+ * Describes the message reservation.Reservation.
+ * Use `create(ReservationSchema)` to create a new message.
+ */
+export declare const ReservationSchema: GenMessage<Reservation>;
+
+/**
  * بازه‌های عدم دسترسی ارائه‌دهنده (برای کل روز یا ساعاتی خاص)
  * Periods when the provider is not available (full day or specific hours)
  *
@@ -842,69 +905,6 @@ export declare type RoomImage = Message<"reservation.RoomImage"> & {
  * Use `create(RoomImageSchema)` to create a new message.
  */
 export declare const RoomImageSchema: GenMessage<RoomImage>;
-
-/**
- * رزرو ثبت‌شده توسط کاربر
- * Reservation made by user
- *
- * @generated from message reservation.Reservation
- */
-export declare type Reservation = Message<"reservation.Reservation"> & {
-  /**
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * کاربر رزروکننده
-   *
-   * @generated from field: string user_id = 2;
-   */
-  userId: string;
-
-  /**
-   * سرویس‌دهنده
-   *
-   * @generated from field: string provider_user_id = 3;
-   */
-  providerUserId: string;
-
-  /**
-   * @generated from field: string service_id = 4;
-   */
-  serviceId: string;
-
-  /**
-   * @generated from field: string facility_id = 5;
-   */
-  facilityId: string;
-
-  /**
-   * @generated from field: string time_slot_id = 6;
-   */
-  timeSlotId: string;
-
-  /**
-   * @generated from field: reservation.ReservationStatus status = 7;
-   */
-  status: ReservationStatus;
-
-  /**
-   * @generated from field: string notes = 8;
-   */
-  notes: string;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp created_at = 9;
-   */
-  createdAt?: Timestamp;
-};
-
-/**
- * Describes the message reservation.Reservation.
- * Use `create(ReservationSchema)` to create a new message.
- */
-export declare const ReservationSchema: GenMessage<Reservation>;
 
 /**
  * ایجاد فسیلیتی | Create a facility
@@ -4139,6 +4139,13 @@ export enum FacilityType {
    * @generated from enum value: Facility_ACCOMMODATION = 3;
    */
   Facility_ACCOMMODATION = 3,
+
+  /**
+   *  غیر قابل رزروNot bookable (e.g., store, exhibition hall)
+   *
+   * @generated from enum value: Facility_NOT_BOOKABLE = 4;
+   */
+  Facility_NOT_BOOKABLE = 4,
 }
 
 /**
@@ -4417,6 +4424,36 @@ export declare const ReservationService: GenService<{
     output: typeof RemoveTimeSlotsResponseSchema;
   },
   /**
+   * ثبت یک رزرو جدید | Create a new reservation
+   *
+   * @generated from rpc reservation.ReservationService.CreateReservation
+   */
+  createReservation: {
+    methodKind: "unary";
+    input: typeof CreateReservationRequestSchema;
+    output: typeof CreateReservationResponseSchema;
+  },
+  /**
+   * لغو رزرو ثبت‌شده | Cancel an existing reservation
+   *
+   * @generated from rpc reservation.ReservationService.CancelReservation
+   */
+  cancelReservation: {
+    methodKind: "unary";
+    input: typeof CancelReservationRequestSchema;
+    output: typeof CancelReservationResponseSchema;
+  },
+  /**
+   * بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
+   *
+   * @generated from rpc reservation.ReservationService.UpdateReservationStatus
+   */
+  updateReservationStatus: {
+    methodKind: "unary";
+    input: typeof UpdateReservationStatusRequestSchema;
+    output: typeof UpdateReservationStatusResponseSchema;
+  },
+  /**
    * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
    */
   getProviderServicesWithUsers: {
@@ -4453,36 +4490,6 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof GetFacilityImagesRequestSchema;
     output: typeof GetFacilityImagesResponseSchema;
-  },
-  /**
-   * ثبت یک رزرو جدید | Create a new reservation
-   *
-   * @generated from rpc reservation.ReservationService.CreateReservation
-   */
-  createReservation: {
-    methodKind: "unary";
-    input: typeof CreateReservationRequestSchema;
-    output: typeof CreateReservationResponseSchema;
-  },
-  /**
-   * لغو رزرو ثبت‌شده | Cancel an existing reservation
-   *
-   * @generated from rpc reservation.ReservationService.CancelReservation
-   */
-  cancelReservation: {
-    methodKind: "unary";
-    input: typeof CancelReservationRequestSchema;
-    output: typeof CancelReservationResponseSchema;
-  },
-  /**
-   * بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
-   *
-   * @generated from rpc reservation.ReservationService.UpdateReservationStatus
-   */
-  updateReservationStatus: {
-    methodKind: "unary";
-    input: typeof UpdateReservationStatusRequestSchema;
-    output: typeof UpdateReservationStatusResponseSchema;
   },
   /**
    * ثبت وضعیت حضور یا عدم حضور کاربر | Mark attendance status for reservation

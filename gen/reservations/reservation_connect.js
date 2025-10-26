@@ -205,6 +205,39 @@ export const ReservationService = {
       kind: MethodKind.Unary,
     },
     /**
+     * ثبت یک رزرو جدید | Create a new reservation
+     *
+     * @generated from rpc reservation.ReservationService.CreateReservation
+     */
+    createReservation: {
+      name: "CreateReservation",
+      I: CreateReservationRequest,
+      O: CreateReservationResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * لغو رزرو ثبت‌شده | Cancel an existing reservation
+     *
+     * @generated from rpc reservation.ReservationService.CancelReservation
+     */
+    cancelReservation: {
+      name: "CancelReservation",
+      I: CancelReservationRequest,
+      O: CancelReservationResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
+     *
+     * @generated from rpc reservation.ReservationService.UpdateReservationStatus
+     */
+    updateReservationStatus: {
+      name: "UpdateReservationStatus",
+      I: UpdateReservationStatusRequest,
+      O: UpdateReservationStatusResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
      * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
      */
     getProviderServicesWithUsers: {
@@ -244,39 +277,6 @@ export const ReservationService = {
       name: "GetFacilityImages",
       I: GetFacilityImagesRequest,
       O: GetFacilityImagesResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * ثبت یک رزرو جدید | Create a new reservation
-     *
-     * @generated from rpc reservation.ReservationService.CreateReservation
-     */
-    createReservation: {
-      name: "CreateReservation",
-      I: CreateReservationRequest,
-      O: CreateReservationResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * لغو رزرو ثبت‌شده | Cancel an existing reservation
-     *
-     * @generated from rpc reservation.ReservationService.CancelReservation
-     */
-    cancelReservation: {
-      name: "CancelReservation",
-      I: CancelReservationRequest,
-      O: CancelReservationResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
-     *
-     * @generated from rpc reservation.ReservationService.UpdateReservationStatus
-     */
-    updateReservationStatus: {
-      name: "UpdateReservationStatus",
-      I: UpdateReservationStatusRequest,
-      O: UpdateReservationStatusResponse,
       kind: MethodKind.Unary,
     },
     /**

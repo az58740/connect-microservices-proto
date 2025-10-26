@@ -205,6 +205,39 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * ثبت یک رزرو جدید | Create a new reservation
+     *
+     * @generated from rpc reservation.ReservationService.CreateReservation
+     */
+    readonly createReservation: {
+      readonly name: "CreateReservation",
+      readonly I: typeof CreateReservationRequest,
+      readonly O: typeof CreateReservationResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * لغو رزرو ثبت‌شده | Cancel an existing reservation
+     *
+     * @generated from rpc reservation.ReservationService.CancelReservation
+     */
+    readonly cancelReservation: {
+      readonly name: "CancelReservation",
+      readonly I: typeof CancelReservationRequest,
+      readonly O: typeof CancelReservationResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
+     *
+     * @generated from rpc reservation.ReservationService.UpdateReservationStatus
+     */
+    readonly updateReservationStatus: {
+      readonly name: "UpdateReservationStatus",
+      readonly I: typeof UpdateReservationStatusRequest,
+      readonly O: typeof UpdateReservationStatusResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
      * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
      */
     readonly getProviderServicesWithUsers: {
@@ -244,39 +277,6 @@ export declare const ReservationService: {
       readonly name: "GetFacilityImages",
       readonly I: typeof GetFacilityImagesRequest,
       readonly O: typeof GetFacilityImagesResponse,
-      readonly kind: MethodKind.Unary,
-    },
-    /**
-     * ثبت یک رزرو جدید | Create a new reservation
-     *
-     * @generated from rpc reservation.ReservationService.CreateReservation
-     */
-    readonly createReservation: {
-      readonly name: "CreateReservation",
-      readonly I: typeof CreateReservationRequest,
-      readonly O: typeof CreateReservationResponse,
-      readonly kind: MethodKind.Unary,
-    },
-    /**
-     * لغو رزرو ثبت‌شده | Cancel an existing reservation
-     *
-     * @generated from rpc reservation.ReservationService.CancelReservation
-     */
-    readonly cancelReservation: {
-      readonly name: "CancelReservation",
-      readonly I: typeof CancelReservationRequest,
-      readonly O: typeof CancelReservationResponse,
-      readonly kind: MethodKind.Unary,
-    },
-    /**
-     * بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
-     *
-     * @generated from rpc reservation.ReservationService.UpdateReservationStatus
-     */
-    readonly updateReservationStatus: {
-      readonly name: "UpdateReservationStatus",
-      readonly I: typeof UpdateReservationStatusRequest,
-      readonly O: typeof UpdateReservationStatusResponse,
       readonly kind: MethodKind.Unary,
     },
     /**
