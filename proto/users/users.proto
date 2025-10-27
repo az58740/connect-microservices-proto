@@ -419,6 +419,8 @@ message Contract {
     string signedContractFileUrl = 15;        // URL or path to the signed contract file.
    string facilityId = 16;                         // facility of the contract.
    LocalizedString facilityname = 17;                  // نام ساختار (مثلاً "کلینیک دکتر محمدی")
+   FacilityType facilitytype = 18;              // کاربرد (رزرو، خرید، ترکیبی)
+
 
 }
 
@@ -433,6 +435,7 @@ message ContractFilter {
     ContractStatus oppositeStatuse =7 ;      // Reverting all contract except for this one statuse.
     string facilityId=8;
     FacilityType facilitytype = 9;            // کاربرد (رزرو، خرید، ترکیبی)
+
 }
 
 // Request to create a contract.
