@@ -423,7 +423,7 @@ message FaclityFilter {
   optional FacilityType type = 3;
   optional FacilityTitle title = 4;
   optional string facility_name = 5;
-
+   optional FacilityType oppositetype = 6;
 }
 message ListFacilitiesResponse {
   repeated Facility facilities = 1;  // لیست فسیلیتی‌ها | List of facilities
