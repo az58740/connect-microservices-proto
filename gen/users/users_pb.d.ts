@@ -1515,6 +1515,13 @@ export declare type Contract = Message<"users.Contract"> & {
    * @generated from field: users.LocalizedString facilityname = 17;
    */
   facilityname?: LocalizedString;
+
+  /**
+   * کاربرد (رزرو، خرید، ترکیبی)
+   *
+   * @generated from field: users.FacilityType facilitytype = 18;
+   */
+  facilitytype: FacilityType;
 };
 
 /**
