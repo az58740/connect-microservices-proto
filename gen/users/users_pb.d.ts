@@ -1582,6 +1582,13 @@ export declare type ContractFilter = Message<"users.ContractFilter"> & {
    * @generated from field: string facilityId = 8;
    */
   facilityId: string;
+
+  /**
+   * کاربرد (رزرو، خرید، ترکیبی)
+   *
+   * @generated from field: users.FacilityType facilitytype = 9;
+   */
+  facilitytype: FacilityType;
 };
 
 /**
@@ -2901,6 +2908,51 @@ export enum ContractStatus {
  * Describes the enum users.ContractStatus.
  */
 export declare const ContractStatusSchema: GenEnum<ContractStatus>;
+
+/**
+ * @generated from enum users.FacilityType
+ */
+export enum FacilityType {
+  /**
+   * قابل رزرو (مثلاً آرایشگاه، پزشک)
+   *
+   * @generated from enum value: Facility_BOOKABLE = 0;
+   */
+  Facility_BOOKABLE = 0,
+
+  /**
+   * قابل خرید (مثلاً فروشگاه)
+   *
+   * @generated from enum value: Facility_PURCHASABLE = 1;
+   */
+  Facility_PURCHASABLE = 1,
+
+  /**
+   * ترکیبی
+   *
+   * @generated from enum value: Facility_HYBRID = 2;
+   */
+  Facility_HYBRID = 2,
+
+  /**
+   * فسیلیتی اقامتی مثل هتل یا هاستل
+   *
+   * @generated from enum value: Facility_ACCOMMODATION = 3;
+   */
+  Facility_ACCOMMODATION = 3,
+
+  /**
+   *  غیر قابل رزروNot bookable (e.g., store, exhibition hall)
+   *
+   * @generated from enum value: Facility_NOT_BOOKABLE = 4;
+   */
+  Facility_NOT_BOOKABLE = 4,
+}
+
+/**
+ * Describes the enum users.FacilityType.
+ */
+export declare const FacilityTypeSchema: GenEnum<FacilityType>;
 
 /**
  * Enum for job post statuses.

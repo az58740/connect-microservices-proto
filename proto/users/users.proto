@@ -55,6 +55,13 @@ enum ContractStatus {
     CONTRACT_STATUS_COMPLETED = 7;   // Completed.
     CONTRACT_STATUS_TERMINATED = 8;  // Terminated before completion.
 }
+enum FacilityType {
+  Facility_BOOKABLE = 0;         // قابل رزرو (مثلاً آرایشگاه، پزشک)
+  Facility_PURCHASABLE = 1;      // قابل خرید (مثلاً فروشگاه)
+  Facility_HYBRID = 2;           // ترکیبی
+  Facility_ACCOMMODATION = 3;    // فسیلیتی اقامتی مثل هتل یا هاستل
+  Facility_NOT_BOOKABLE = 4; //  غیر قابل رزروNot bookable (e.g., store, exhibition hall)
+}
 
 // Enum for job post statuses.
 enum JobPostStatus {
@@ -412,6 +419,7 @@ message Contract {
     string signedContractFileUrl = 15;        // URL or path to the signed contract file.
    string facilityId = 16;                         // facility of the contract.
    LocalizedString facilityname = 17;                  // نام ساختار (مثلاً "کلینیک دکتر محمدی")
+
 }
 
 // Filter criteria for listing contracts.
@@ -424,6 +432,7 @@ message ContractFilter {
     google.protobuf.Timestamp endDate = 6;    // Filter by end date of the contract.
     ContractStatus oppositeStatuse =7 ;      // Reverting all contract except for this one statuse.
     string facilityId=8;
+    FacilityType facilitytype = 9;            // کاربرد (رزرو، خرید، ترکیبی)
 }
 
 // Request to create a contract.
