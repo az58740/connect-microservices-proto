@@ -1522,6 +1522,11 @@ export declare type Contract = Message<"users.Contract"> & {
    * @generated from field: users.FacilityType facilitytype = 18;
    */
   facilitytype: FacilityType;
+
+  /**
+   * @generated from field: users.ContractType type = 19;
+   */
+  type: ContractType;
 };
 
 /**
@@ -1596,6 +1601,11 @@ export declare type ContractFilter = Message<"users.ContractFilter"> & {
    * @generated from field: users.FacilityType facilitytype = 9;
    */
   facilitytype: FacilityType;
+
+  /**
+   * @generated from field: users.ContractType type = 10;
+   */
+  type: ContractType;
 };
 
 /**
@@ -1646,11 +1656,16 @@ export declare type CreateContractRequest = Message<"users.CreateContractRequest
   contractRequestFileUrl: string;
 
   /**
-   * facility of the contract.    
+   * facility of the contract.   
    *
    * @generated from field: string facilityId = 6;
    */
   facilityId: string;
+
+  /**
+   * @generated from field: users.ContractType type = 7;
+   */
+  type: ContractType;
 };
 
 /**
@@ -2915,6 +2930,32 @@ export enum ContractStatus {
  * Describes the enum users.ContractStatus.
  */
 export declare const ContractStatusSchema: GenEnum<ContractStatus>;
+
+/**
+ * Enum for contract statuses.
+ *
+ * @generated from enum users.ContractType
+ */
+export enum ContractType {
+  /**
+   * Default .
+   *
+   * @generated from enum value: CONTRACT_Type_WithEmployer = 0;
+   */
+  WithEmployer = 0,
+
+  /**
+   * .
+   *
+   * @generated from enum value: CONTRACT_Type_WithAdmin = 1;
+   */
+  WithAdmin = 1,
+}
+
+/**
+ * Describes the enum users.ContractType.
+ */
+export declare const ContractTypeSchema: GenEnum<ContractType>;
 
 /**
  * @generated from enum users.FacilityType
