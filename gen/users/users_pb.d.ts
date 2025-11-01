@@ -1519,14 +1519,14 @@ export declare type Contract = Message<"users.Contract"> & {
   /**
    * کاربرد (رزرو، خرید، ترکیبی)
    *
-   * @generated from field: int32 facilitytype = 18;
+   * @generated from field: string facilitytype = 18;
    */
-  facilitytype: number;
+  facilitytype: string;
 
   /**
-   * @generated from field: int32 facilitygroup = 19;
+   * @generated from field: string facilitygroup = 19;
    */
-  facilitygroup: number;
+  facilitygroup: string;
 
   /**
    * @generated from field: users.ContractType type = 20;

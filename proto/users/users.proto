@@ -425,8 +425,8 @@ message Contract {
     string signedContractFileUrl = 15;        // URL or path to the signed contract file.
    string facilityId = 16;                         // facility of the contract.
    LocalizedString facilityname = 17;                  // نام ساختار (مثلاً "کلینیک دکتر محمدی")
-   int32 facilitytype = 18;              // کاربرد (رزرو، خرید، ترکیبی)
-   int32 facilitygroup=19;
+   string facilitytype = 18;              // کاربرد (رزرو، خرید، ترکیبی)
+   string facilitygroup=19;
    ContractType type=20;
 }
 
