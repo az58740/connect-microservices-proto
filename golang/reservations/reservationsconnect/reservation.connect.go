@@ -90,84 +90,18 @@ const (
 	// ReservationServiceCreateReservationProcedure is the fully-qualified name of the
 	// ReservationService's CreateReservation RPC.
 	ReservationServiceCreateReservationProcedure = "/reservation.ReservationService/CreateReservation"
-	// ReservationServiceCancelReservationProcedure is the fully-qualified name of the
-	// ReservationService's CancelReservation RPC.
-	ReservationServiceCancelReservationProcedure = "/reservation.ReservationService/CancelReservation"
 	// ReservationServiceUpdateReservationStatusProcedure is the fully-qualified name of the
 	// ReservationService's UpdateReservationStatus RPC.
 	ReservationServiceUpdateReservationStatusProcedure = "/reservation.ReservationService/UpdateReservationStatus"
-	// ReservationServiceGetProviderServicesWithUsersProcedure is the fully-qualified name of the
-	// ReservationService's GetProviderServicesWithUsers RPC.
-	ReservationServiceGetProviderServicesWithUsersProcedure = "/reservation.ReservationService/GetProviderServicesWithUsers"
-	// ReservationServiceAddFacilityImageProcedure is the fully-qualified name of the
-	// ReservationService's AddFacilityImage RPC.
-	ReservationServiceAddFacilityImageProcedure = "/reservation.ReservationService/AddFacilityImage"
-	// ReservationServiceDeleteFacilityImageProcedure is the fully-qualified name of the
-	// ReservationService's DeleteFacilityImage RPC.
-	ReservationServiceDeleteFacilityImageProcedure = "/reservation.ReservationService/DeleteFacilityImage"
-	// ReservationServiceGetFacilityImagesProcedure is the fully-qualified name of the
-	// ReservationService's GetFacilityImages RPC.
-	ReservationServiceGetFacilityImagesProcedure = "/reservation.ReservationService/GetFacilityImages"
-	// ReservationServiceMarkAttendanceProcedure is the fully-qualified name of the ReservationService's
-	// MarkAttendance RPC.
-	ReservationServiceMarkAttendanceProcedure = "/reservation.ReservationService/MarkAttendance"
 	// ReservationServiceListReservationsProcedure is the fully-qualified name of the
 	// ReservationService's ListReservations RPC.
 	ReservationServiceListReservationsProcedure = "/reservation.ReservationService/ListReservations"
-	// ReservationServiceListAvailableTimeSlotsProcedure is the fully-qualified name of the
-	// ReservationService's ListAvailableTimeSlots RPC.
-	ReservationServiceListAvailableTimeSlotsProcedure = "/reservation.ReservationService/ListAvailableTimeSlots"
-	// ReservationServiceCreateProviderUnavailabilityProcedure is the fully-qualified name of the
-	// ReservationService's CreateProviderUnavailability RPC.
-	ReservationServiceCreateProviderUnavailabilityProcedure = "/reservation.ReservationService/CreateProviderUnavailability"
-	// ReservationServiceListProviderUnavailabilityProcedure is the fully-qualified name of the
-	// ReservationService's ListProviderUnavailability RPC.
-	ReservationServiceListProviderUnavailabilityProcedure = "/reservation.ReservationService/ListProviderUnavailability"
-	// ReservationServiceDeleteProviderUnavailabilityProcedure is the fully-qualified name of the
-	// ReservationService's DeleteProviderUnavailability RPC.
-	ReservationServiceDeleteProviderUnavailabilityProcedure = "/reservation.ReservationService/DeleteProviderUnavailability"
-	// ReservationServiceCreateRoomTypeProcedure is the fully-qualified name of the ReservationService's
-	// CreateRoomType RPC.
-	ReservationServiceCreateRoomTypeProcedure = "/reservation.ReservationService/CreateRoomType"
-	// ReservationServiceListRoomTypesProcedure is the fully-qualified name of the ReservationService's
-	// ListRoomTypes RPC.
-	ReservationServiceListRoomTypesProcedure = "/reservation.ReservationService/ListRoomTypes"
-	// ReservationServiceDeleteRoomTypeProcedure is the fully-qualified name of the ReservationService's
-	// DeleteRoomType RPC.
-	ReservationServiceDeleteRoomTypeProcedure = "/reservation.ReservationService/DeleteRoomType"
-	// ReservationServiceCreateRoomProcedure is the fully-qualified name of the ReservationService's
-	// CreateRoom RPC.
-	ReservationServiceCreateRoomProcedure = "/reservation.ReservationService/CreateRoom"
-	// ReservationServiceListRoomsProcedure is the fully-qualified name of the ReservationService's
-	// ListRooms RPC.
-	ReservationServiceListRoomsProcedure = "/reservation.ReservationService/ListRooms"
-	// ReservationServiceDeleteRoomProcedure is the fully-qualified name of the ReservationService's
-	// DeleteRoom RPC.
-	ReservationServiceDeleteRoomProcedure = "/reservation.ReservationService/DeleteRoom"
-	// ReservationServiceAddRoomImageProcedure is the fully-qualified name of the ReservationService's
-	// AddRoomImage RPC.
-	ReservationServiceAddRoomImageProcedure = "/reservation.ReservationService/AddRoomImage"
-	// ReservationServiceGetRoomImagesProcedure is the fully-qualified name of the ReservationService's
-	// GetRoomImages RPC.
-	ReservationServiceGetRoomImagesProcedure = "/reservation.ReservationService/GetRoomImages"
-	// ReservationServiceDeleteRoomImageProcedure is the fully-qualified name of the
-	// ReservationService's DeleteRoomImage RPC.
-	ReservationServiceDeleteRoomImageProcedure = "/reservation.ReservationService/DeleteRoomImage"
-	// ReservationServiceCheckRoomAvailabilityProcedure is the fully-qualified name of the
-	// ReservationService's CheckRoomAvailability RPC.
-	ReservationServiceCheckRoomAvailabilityProcedure = "/reservation.ReservationService/CheckRoomAvailability"
-	// ReservationServiceListRoomAvailabilityProcedure is the fully-qualified name of the
-	// ReservationService's ListRoomAvailability RPC.
-	ReservationServiceListRoomAvailabilityProcedure = "/reservation.ReservationService/ListRoomAvailability"
-	// ReservationServiceCreateServiceUnavailabilityProcedure is the fully-qualified name of the
-	// ReservationService's CreateServiceUnavailability RPC.
-	ReservationServiceCreateServiceUnavailabilityProcedure = "/reservation.ReservationService/CreateServiceUnavailability"
-	// ReservationServiceListServiceUnavailabilityProcedure is the fully-qualified name of the
-	// ReservationService's ListServiceUnavailability RPC.
-	ReservationServiceListServiceUnavailabilityProcedure = "/reservation.ReservationService/ListServiceUnavailability"
-	// ReservationServiceDeleteServiceUnavailabilityProcedure is the fully-qualified name of the
-	// ReservationService's DeleteServiceUnavailability RPC.
-	ReservationServiceDeleteServiceUnavailabilityProcedure = "/reservation.ReservationService/DeleteServiceUnavailability"
+	// ReservationServiceDeleteReservationProcedure is the fully-qualified name of the
+	// ReservationService's DeleteReservation RPC.
+	ReservationServiceDeleteReservationProcedure = "/reservation.ReservationService/DeleteReservation"
+	// ReservationServiceGetProviderServicesWithUsersProcedure is the fully-qualified name of the
+	// ReservationService's GetProviderServicesWithUsers RPC.
+	ReservationServiceGetProviderServicesWithUsersProcedure = "/reservation.ReservationService/GetProviderServicesWithUsers"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
@@ -192,32 +126,10 @@ var (
 	reservationServiceUpdateTimeSlotMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("UpdateTimeSlot")
 	reservationServiceRemoveTimeSlotsMethodDescriptor              = reservationServiceServiceDescriptor.Methods().ByName("RemoveTimeSlots")
 	reservationServiceCreateReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("CreateReservation")
-	reservationServiceCancelReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("CancelReservation")
 	reservationServiceUpdateReservationStatusMethodDescriptor      = reservationServiceServiceDescriptor.Methods().ByName("UpdateReservationStatus")
-	reservationServiceGetProviderServicesWithUsersMethodDescriptor = reservationServiceServiceDescriptor.Methods().ByName("GetProviderServicesWithUsers")
-	reservationServiceAddFacilityImageMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("AddFacilityImage")
-	reservationServiceDeleteFacilityImageMethodDescriptor          = reservationServiceServiceDescriptor.Methods().ByName("DeleteFacilityImage")
-	reservationServiceGetFacilityImagesMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("GetFacilityImages")
-	reservationServiceMarkAttendanceMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("MarkAttendance")
 	reservationServiceListReservationsMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("ListReservations")
-	reservationServiceListAvailableTimeSlotsMethodDescriptor       = reservationServiceServiceDescriptor.Methods().ByName("ListAvailableTimeSlots")
-	reservationServiceCreateProviderUnavailabilityMethodDescriptor = reservationServiceServiceDescriptor.Methods().ByName("CreateProviderUnavailability")
-	reservationServiceListProviderUnavailabilityMethodDescriptor   = reservationServiceServiceDescriptor.Methods().ByName("ListProviderUnavailability")
-	reservationServiceDeleteProviderUnavailabilityMethodDescriptor = reservationServiceServiceDescriptor.Methods().ByName("DeleteProviderUnavailability")
-	reservationServiceCreateRoomTypeMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("CreateRoomType")
-	reservationServiceListRoomTypesMethodDescriptor                = reservationServiceServiceDescriptor.Methods().ByName("ListRoomTypes")
-	reservationServiceDeleteRoomTypeMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("DeleteRoomType")
-	reservationServiceCreateRoomMethodDescriptor                   = reservationServiceServiceDescriptor.Methods().ByName("CreateRoom")
-	reservationServiceListRoomsMethodDescriptor                    = reservationServiceServiceDescriptor.Methods().ByName("ListRooms")
-	reservationServiceDeleteRoomMethodDescriptor                   = reservationServiceServiceDescriptor.Methods().ByName("DeleteRoom")
-	reservationServiceAddRoomImageMethodDescriptor                 = reservationServiceServiceDescriptor.Methods().ByName("AddRoomImage")
-	reservationServiceGetRoomImagesMethodDescriptor                = reservationServiceServiceDescriptor.Methods().ByName("GetRoomImages")
-	reservationServiceDeleteRoomImageMethodDescriptor              = reservationServiceServiceDescriptor.Methods().ByName("DeleteRoomImage")
-	reservationServiceCheckRoomAvailabilityMethodDescriptor        = reservationServiceServiceDescriptor.Methods().ByName("CheckRoomAvailability")
-	reservationServiceListRoomAvailabilityMethodDescriptor         = reservationServiceServiceDescriptor.Methods().ByName("ListRoomAvailability")
-	reservationServiceCreateServiceUnavailabilityMethodDescriptor  = reservationServiceServiceDescriptor.Methods().ByName("CreateServiceUnavailability")
-	reservationServiceListServiceUnavailabilityMethodDescriptor    = reservationServiceServiceDescriptor.Methods().ByName("ListServiceUnavailability")
-	reservationServiceDeleteServiceUnavailabilityMethodDescriptor  = reservationServiceServiceDescriptor.Methods().ByName("DeleteServiceUnavailability")
+	reservationServiceDeleteReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("DeleteReservation")
+	reservationServiceGetProviderServicesWithUsersMethodDescriptor = reservationServiceServiceDescriptor.Methods().ByName("GetProviderServicesWithUsers")
 )
 
 // ReservationServiceClient is a client for the reservation.ReservationService service.
@@ -256,59 +168,12 @@ type ReservationServiceClient interface {
 	GetTimeSlotsList(context.Context, *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error)
 	UpdateTimeSlot(context.Context, *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error)
 	RemoveTimeSlots(context.Context, *connect.Request[reservations.RemoveTimeSlotsRequest]) (*connect.Response[reservations.RemoveTimeSlotsResponse], error)
-	// ثبت یک رزرو جدید | Create a new reservation
+	// 🔹  رزرو | Reservation
 	CreateReservation(context.Context, *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error)
-	// لغو رزرو ثبت‌شده | Cancel an existing reservation
-	CancelReservation(context.Context, *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error)
-	// بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
-	UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error)
-	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
-	// افزودن تصویر به فسیلیتی | Add an image to a facility
-	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
-	// حذف تصویر از فسیلیتی | Delete an image from a facility
-	DeleteFacilityImage(context.Context, *connect.Request[reservations.DeleteFacilityImageRequest]) (*connect.Response[reservations.DeleteFacilityImageResponse], error)
-	// دریافت تصاویر فسیلیتی | Get images of a facility
-	GetFacilityImages(context.Context, *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error)
-	// ثبت وضعیت حضور یا عدم حضور کاربر | Mark attendance status for reservation
-	MarkAttendance(context.Context, *connect.Request[reservations.MarkAttendanceRequest]) (*connect.Response[reservations.MarkAttendanceResponse], error)
-	// دریافت لیست رزروهای کاربر | List user reservations
+	UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationRequest]) (*connect.Response[reservations.UpdateReservationResponse], error)
 	ListReservations(context.Context, *connect.Request[reservations.ListReservationsRequest]) (*connect.Response[reservations.ListReservationsResponse], error)
-	// دریافت تایم‌اسلات‌های آزاد برای رزرو | List available time slots
-	ListAvailableTimeSlots(context.Context, *connect.Request[reservations.ListAvailableTimeSlotsRequest]) (*connect.Response[reservations.ListAvailableTimeSlotsResponse], error)
-	// ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider
-	CreateProviderUnavailability(context.Context, *connect.Request[reservations.CreateProviderUnavailabilityRequest]) (*connect.Response[reservations.CreateProviderUnavailabilityResponse], error)
-	// دریافت لیست بازه‌های غیبت ارائه‌دهنده | List unavailability periods of a provider
-	ListProviderUnavailability(context.Context, *connect.Request[reservations.ListProviderUnavailabilityRequest]) (*connect.Response[reservations.ListProviderUnavailabilityResponse], error)
-	// حذف بازه‌ی غیبت ارائه‌دهنده | Delete an unavailability period of a provider
-	DeleteProviderUnavailability(context.Context, *connect.Request[reservations.DeleteProviderUnavailabilityRequest]) (*connect.Response[reservations.DeleteProviderUnavailabilityResponse], error)
-	// ایجاد نوع اتاق | Create room type
-	CreateRoomType(context.Context, *connect.Request[reservations.CreateRoomTypeRequest]) (*connect.Response[reservations.CreateRoomTypeResponse], error)
-	// لیست نوع اتاق‌های یک هتل | List room types for a hotel
-	ListRoomTypes(context.Context, *connect.Request[reservations.ListRoomTypesRequest]) (*connect.Response[reservations.ListRoomTypesResponse], error)
-	// حذف نوع اتاق | Delete room type
-	DeleteRoomType(context.Context, *connect.Request[reservations.DeleteRoomTypeRequest]) (*connect.Response[reservations.DeleteRoomTypeResponse], error)
-	// ایجاد اتاق جدید | Create a room
-	CreateRoom(context.Context, *connect.Request[reservations.CreateRoomRequest]) (*connect.Response[reservations.CreateRoomResponse], error)
-	// لیست اتاق‌های یک هتل | List rooms of a hotel
-	ListRooms(context.Context, *connect.Request[reservations.ListRoomsRequest]) (*connect.Response[reservations.ListRoomsResponse], error)
-	// حذف اتاق | Delete a room
-	DeleteRoom(context.Context, *connect.Request[reservations.DeleteRoomRequest]) (*connect.Response[reservations.DeleteRoomResponse], error)
-	// افزودن تصویر به اتاق | Add image to room
-	AddRoomImage(context.Context, *connect.Request[reservations.AddRoomImageRequest]) (*connect.Response[reservations.AddRoomImageResponse], error)
-	// دریافت تصاویر یک اتاق | Get images of a room
-	GetRoomImages(context.Context, *connect.Request[reservations.GetRoomImagesRequest]) (*connect.Response[reservations.GetRoomImagesResponse], error)
-	// حذف تصویر از اتاق | Delete room image
-	DeleteRoomImage(context.Context, *connect.Request[reservations.DeleteRoomImageRequest]) (*connect.Response[reservations.DeleteRoomImageResponse], error)
-	// بررسی در دسترس بودن اتاق‌ها | Check room availability
-	CheckRoomAvailability(context.Context, *connect.Request[reservations.CheckRoomAvailabilityRequest]) (*connect.Response[reservations.CheckRoomAvailabilityResponse], error)
-	// لیست شب‌هایی که رزرو شده‌اند | List reserved nights for room/service
-	ListRoomAvailability(context.Context, *connect.Request[reservations.ListRoomAvailabilityRequest]) (*connect.Response[reservations.ListRoomAvailabilityResponse], error)
-	// تعریف زمان‌های عدم دسترسی اتاق | Define room/service unavailability
-	CreateServiceUnavailability(context.Context, *connect.Request[reservations.CreateServiceUnavailabilityRequest]) (*connect.Response[reservations.CreateServiceUnavailabilityResponse], error)
-	// دریافت لیست زمان‌های عدم دسترسی اتاق | List service unavailability periods
-	ListServiceUnavailability(context.Context, *connect.Request[reservations.ListServiceUnavailabilityRequest]) (*connect.Response[reservations.ListServiceUnavailabilityResponse], error)
-	// حذف زمان عدم دسترسی | Delete service unavailability
-	DeleteServiceUnavailability(context.Context, *connect.Request[reservations.DeleteServiceUnavailabilityRequest]) (*connect.Response[reservations.DeleteServiceUnavailabilityResponse], error)
+	DeleteReservation(context.Context, *connect.Request[reservations.DeleteReservationRequest]) (*connect.Response[reservations.DeleteReservationResponse], error)
+	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
 }
 
 // NewReservationServiceClient constructs a client for the reservation.ReservationService service.
@@ -435,46 +300,10 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			connect.WithSchema(reservationServiceCreateReservationMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		cancelReservation: connect.NewClient[reservations.CancelReservationRequest, reservations.CancelReservationResponse](
-			httpClient,
-			baseURL+ReservationServiceCancelReservationProcedure,
-			connect.WithSchema(reservationServiceCancelReservationMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		updateReservationStatus: connect.NewClient[reservations.UpdateReservationStatusRequest, reservations.UpdateReservationStatusResponse](
+		updateReservationStatus: connect.NewClient[reservations.UpdateReservationRequest, reservations.UpdateReservationResponse](
 			httpClient,
 			baseURL+ReservationServiceUpdateReservationStatusProcedure,
 			connect.WithSchema(reservationServiceUpdateReservationStatusMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		getProviderServicesWithUsers: connect.NewClient[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse](
-			httpClient,
-			baseURL+ReservationServiceGetProviderServicesWithUsersProcedure,
-			connect.WithSchema(reservationServiceGetProviderServicesWithUsersMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		addFacilityImage: connect.NewClient[reservations.FacilityImage, reservations.FacilityImage](
-			httpClient,
-			baseURL+ReservationServiceAddFacilityImageProcedure,
-			connect.WithSchema(reservationServiceAddFacilityImageMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		deleteFacilityImage: connect.NewClient[reservations.DeleteFacilityImageRequest, reservations.DeleteFacilityImageResponse](
-			httpClient,
-			baseURL+ReservationServiceDeleteFacilityImageProcedure,
-			connect.WithSchema(reservationServiceDeleteFacilityImageMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		getFacilityImages: connect.NewClient[reservations.GetFacilityImagesRequest, reservations.GetFacilityImagesResponse](
-			httpClient,
-			baseURL+ReservationServiceGetFacilityImagesProcedure,
-			connect.WithSchema(reservationServiceGetFacilityImagesMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		markAttendance: connect.NewClient[reservations.MarkAttendanceRequest, reservations.MarkAttendanceResponse](
-			httpClient,
-			baseURL+ReservationServiceMarkAttendanceProcedure,
-			connect.WithSchema(reservationServiceMarkAttendanceMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		listReservations: connect.NewClient[reservations.ListReservationsRequest, reservations.ListReservationsResponse](
@@ -483,112 +312,16 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			connect.WithSchema(reservationServiceListReservationsMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		listAvailableTimeSlots: connect.NewClient[reservations.ListAvailableTimeSlotsRequest, reservations.ListAvailableTimeSlotsResponse](
+		deleteReservation: connect.NewClient[reservations.DeleteReservationRequest, reservations.DeleteReservationResponse](
 			httpClient,
-			baseURL+ReservationServiceListAvailableTimeSlotsProcedure,
-			connect.WithSchema(reservationServiceListAvailableTimeSlotsMethodDescriptor),
+			baseURL+ReservationServiceDeleteReservationProcedure,
+			connect.WithSchema(reservationServiceDeleteReservationMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		createProviderUnavailability: connect.NewClient[reservations.CreateProviderUnavailabilityRequest, reservations.CreateProviderUnavailabilityResponse](
+		getProviderServicesWithUsers: connect.NewClient[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse](
 			httpClient,
-			baseURL+ReservationServiceCreateProviderUnavailabilityProcedure,
-			connect.WithSchema(reservationServiceCreateProviderUnavailabilityMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		listProviderUnavailability: connect.NewClient[reservations.ListProviderUnavailabilityRequest, reservations.ListProviderUnavailabilityResponse](
-			httpClient,
-			baseURL+ReservationServiceListProviderUnavailabilityProcedure,
-			connect.WithSchema(reservationServiceListProviderUnavailabilityMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		deleteProviderUnavailability: connect.NewClient[reservations.DeleteProviderUnavailabilityRequest, reservations.DeleteProviderUnavailabilityResponse](
-			httpClient,
-			baseURL+ReservationServiceDeleteProviderUnavailabilityProcedure,
-			connect.WithSchema(reservationServiceDeleteProviderUnavailabilityMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		createRoomType: connect.NewClient[reservations.CreateRoomTypeRequest, reservations.CreateRoomTypeResponse](
-			httpClient,
-			baseURL+ReservationServiceCreateRoomTypeProcedure,
-			connect.WithSchema(reservationServiceCreateRoomTypeMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		listRoomTypes: connect.NewClient[reservations.ListRoomTypesRequest, reservations.ListRoomTypesResponse](
-			httpClient,
-			baseURL+ReservationServiceListRoomTypesProcedure,
-			connect.WithSchema(reservationServiceListRoomTypesMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		deleteRoomType: connect.NewClient[reservations.DeleteRoomTypeRequest, reservations.DeleteRoomTypeResponse](
-			httpClient,
-			baseURL+ReservationServiceDeleteRoomTypeProcedure,
-			connect.WithSchema(reservationServiceDeleteRoomTypeMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		createRoom: connect.NewClient[reservations.CreateRoomRequest, reservations.CreateRoomResponse](
-			httpClient,
-			baseURL+ReservationServiceCreateRoomProcedure,
-			connect.WithSchema(reservationServiceCreateRoomMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		listRooms: connect.NewClient[reservations.ListRoomsRequest, reservations.ListRoomsResponse](
-			httpClient,
-			baseURL+ReservationServiceListRoomsProcedure,
-			connect.WithSchema(reservationServiceListRoomsMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		deleteRoom: connect.NewClient[reservations.DeleteRoomRequest, reservations.DeleteRoomResponse](
-			httpClient,
-			baseURL+ReservationServiceDeleteRoomProcedure,
-			connect.WithSchema(reservationServiceDeleteRoomMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		addRoomImage: connect.NewClient[reservations.AddRoomImageRequest, reservations.AddRoomImageResponse](
-			httpClient,
-			baseURL+ReservationServiceAddRoomImageProcedure,
-			connect.WithSchema(reservationServiceAddRoomImageMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		getRoomImages: connect.NewClient[reservations.GetRoomImagesRequest, reservations.GetRoomImagesResponse](
-			httpClient,
-			baseURL+ReservationServiceGetRoomImagesProcedure,
-			connect.WithSchema(reservationServiceGetRoomImagesMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		deleteRoomImage: connect.NewClient[reservations.DeleteRoomImageRequest, reservations.DeleteRoomImageResponse](
-			httpClient,
-			baseURL+ReservationServiceDeleteRoomImageProcedure,
-			connect.WithSchema(reservationServiceDeleteRoomImageMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		checkRoomAvailability: connect.NewClient[reservations.CheckRoomAvailabilityRequest, reservations.CheckRoomAvailabilityResponse](
-			httpClient,
-			baseURL+ReservationServiceCheckRoomAvailabilityProcedure,
-			connect.WithSchema(reservationServiceCheckRoomAvailabilityMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		listRoomAvailability: connect.NewClient[reservations.ListRoomAvailabilityRequest, reservations.ListRoomAvailabilityResponse](
-			httpClient,
-			baseURL+ReservationServiceListRoomAvailabilityProcedure,
-			connect.WithSchema(reservationServiceListRoomAvailabilityMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		createServiceUnavailability: connect.NewClient[reservations.CreateServiceUnavailabilityRequest, reservations.CreateServiceUnavailabilityResponse](
-			httpClient,
-			baseURL+ReservationServiceCreateServiceUnavailabilityProcedure,
-			connect.WithSchema(reservationServiceCreateServiceUnavailabilityMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		listServiceUnavailability: connect.NewClient[reservations.ListServiceUnavailabilityRequest, reservations.ListServiceUnavailabilityResponse](
-			httpClient,
-			baseURL+ReservationServiceListServiceUnavailabilityProcedure,
-			connect.WithSchema(reservationServiceListServiceUnavailabilityMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
-		deleteServiceUnavailability: connect.NewClient[reservations.DeleteServiceUnavailabilityRequest, reservations.DeleteServiceUnavailabilityResponse](
-			httpClient,
-			baseURL+ReservationServiceDeleteServiceUnavailabilityProcedure,
-			connect.WithSchema(reservationServiceDeleteServiceUnavailabilityMethodDescriptor),
+			baseURL+ReservationServiceGetProviderServicesWithUsersProcedure,
+			connect.WithSchema(reservationServiceGetProviderServicesWithUsersMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -615,32 +348,10 @@ type reservationServiceClient struct {
 	updateTimeSlot               *connect.Client[reservations.UpdateTimeSlotRequest, reservations.UpdateTimeSlotResponse]
 	removeTimeSlots              *connect.Client[reservations.RemoveTimeSlotsRequest, reservations.RemoveTimeSlotsResponse]
 	createReservation            *connect.Client[reservations.CreateReservationRequest, reservations.CreateReservationResponse]
-	cancelReservation            *connect.Client[reservations.CancelReservationRequest, reservations.CancelReservationResponse]
-	updateReservationStatus      *connect.Client[reservations.UpdateReservationStatusRequest, reservations.UpdateReservationStatusResponse]
-	getProviderServicesWithUsers *connect.Client[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse]
-	addFacilityImage             *connect.Client[reservations.FacilityImage, reservations.FacilityImage]
-	deleteFacilityImage          *connect.Client[reservations.DeleteFacilityImageRequest, reservations.DeleteFacilityImageResponse]
-	getFacilityImages            *connect.Client[reservations.GetFacilityImagesRequest, reservations.GetFacilityImagesResponse]
-	markAttendance               *connect.Client[reservations.MarkAttendanceRequest, reservations.MarkAttendanceResponse]
+	updateReservationStatus      *connect.Client[reservations.UpdateReservationRequest, reservations.UpdateReservationResponse]
 	listReservations             *connect.Client[reservations.ListReservationsRequest, reservations.ListReservationsResponse]
-	listAvailableTimeSlots       *connect.Client[reservations.ListAvailableTimeSlotsRequest, reservations.ListAvailableTimeSlotsResponse]
-	createProviderUnavailability *connect.Client[reservations.CreateProviderUnavailabilityRequest, reservations.CreateProviderUnavailabilityResponse]
-	listProviderUnavailability   *connect.Client[reservations.ListProviderUnavailabilityRequest, reservations.ListProviderUnavailabilityResponse]
-	deleteProviderUnavailability *connect.Client[reservations.DeleteProviderUnavailabilityRequest, reservations.DeleteProviderUnavailabilityResponse]
-	createRoomType               *connect.Client[reservations.CreateRoomTypeRequest, reservations.CreateRoomTypeResponse]
-	listRoomTypes                *connect.Client[reservations.ListRoomTypesRequest, reservations.ListRoomTypesResponse]
-	deleteRoomType               *connect.Client[reservations.DeleteRoomTypeRequest, reservations.DeleteRoomTypeResponse]
-	createRoom                   *connect.Client[reservations.CreateRoomRequest, reservations.CreateRoomResponse]
-	listRooms                    *connect.Client[reservations.ListRoomsRequest, reservations.ListRoomsResponse]
-	deleteRoom                   *connect.Client[reservations.DeleteRoomRequest, reservations.DeleteRoomResponse]
-	addRoomImage                 *connect.Client[reservations.AddRoomImageRequest, reservations.AddRoomImageResponse]
-	getRoomImages                *connect.Client[reservations.GetRoomImagesRequest, reservations.GetRoomImagesResponse]
-	deleteRoomImage              *connect.Client[reservations.DeleteRoomImageRequest, reservations.DeleteRoomImageResponse]
-	checkRoomAvailability        *connect.Client[reservations.CheckRoomAvailabilityRequest, reservations.CheckRoomAvailabilityResponse]
-	listRoomAvailability         *connect.Client[reservations.ListRoomAvailabilityRequest, reservations.ListRoomAvailabilityResponse]
-	createServiceUnavailability  *connect.Client[reservations.CreateServiceUnavailabilityRequest, reservations.CreateServiceUnavailabilityResponse]
-	listServiceUnavailability    *connect.Client[reservations.ListServiceUnavailabilityRequest, reservations.ListServiceUnavailabilityResponse]
-	deleteServiceUnavailability  *connect.Client[reservations.DeleteServiceUnavailabilityRequest, reservations.DeleteServiceUnavailabilityResponse]
+	deleteReservation            *connect.Client[reservations.DeleteReservationRequest, reservations.DeleteReservationResponse]
+	getProviderServicesWithUsers *connect.Client[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse]
 }
 
 // CreateFacility calls reservation.ReservationService.CreateFacility.
@@ -738,39 +449,9 @@ func (c *reservationServiceClient) CreateReservation(ctx context.Context, req *c
 	return c.createReservation.CallUnary(ctx, req)
 }
 
-// CancelReservation calls reservation.ReservationService.CancelReservation.
-func (c *reservationServiceClient) CancelReservation(ctx context.Context, req *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error) {
-	return c.cancelReservation.CallUnary(ctx, req)
-}
-
 // UpdateReservationStatus calls reservation.ReservationService.UpdateReservationStatus.
-func (c *reservationServiceClient) UpdateReservationStatus(ctx context.Context, req *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error) {
+func (c *reservationServiceClient) UpdateReservationStatus(ctx context.Context, req *connect.Request[reservations.UpdateReservationRequest]) (*connect.Response[reservations.UpdateReservationResponse], error) {
 	return c.updateReservationStatus.CallUnary(ctx, req)
-}
-
-// GetProviderServicesWithUsers calls reservation.ReservationService.GetProviderServicesWithUsers.
-func (c *reservationServiceClient) GetProviderServicesWithUsers(ctx context.Context, req *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error) {
-	return c.getProviderServicesWithUsers.CallUnary(ctx, req)
-}
-
-// AddFacilityImage calls reservation.ReservationService.AddFacilityImage.
-func (c *reservationServiceClient) AddFacilityImage(ctx context.Context, req *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error) {
-	return c.addFacilityImage.CallUnary(ctx, req)
-}
-
-// DeleteFacilityImage calls reservation.ReservationService.DeleteFacilityImage.
-func (c *reservationServiceClient) DeleteFacilityImage(ctx context.Context, req *connect.Request[reservations.DeleteFacilityImageRequest]) (*connect.Response[reservations.DeleteFacilityImageResponse], error) {
-	return c.deleteFacilityImage.CallUnary(ctx, req)
-}
-
-// GetFacilityImages calls reservation.ReservationService.GetFacilityImages.
-func (c *reservationServiceClient) GetFacilityImages(ctx context.Context, req *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error) {
-	return c.getFacilityImages.CallUnary(ctx, req)
-}
-
-// MarkAttendance calls reservation.ReservationService.MarkAttendance.
-func (c *reservationServiceClient) MarkAttendance(ctx context.Context, req *connect.Request[reservations.MarkAttendanceRequest]) (*connect.Response[reservations.MarkAttendanceResponse], error) {
-	return c.markAttendance.CallUnary(ctx, req)
 }
 
 // ListReservations calls reservation.ReservationService.ListReservations.
@@ -778,94 +459,14 @@ func (c *reservationServiceClient) ListReservations(ctx context.Context, req *co
 	return c.listReservations.CallUnary(ctx, req)
 }
 
-// ListAvailableTimeSlots calls reservation.ReservationService.ListAvailableTimeSlots.
-func (c *reservationServiceClient) ListAvailableTimeSlots(ctx context.Context, req *connect.Request[reservations.ListAvailableTimeSlotsRequest]) (*connect.Response[reservations.ListAvailableTimeSlotsResponse], error) {
-	return c.listAvailableTimeSlots.CallUnary(ctx, req)
+// DeleteReservation calls reservation.ReservationService.DeleteReservation.
+func (c *reservationServiceClient) DeleteReservation(ctx context.Context, req *connect.Request[reservations.DeleteReservationRequest]) (*connect.Response[reservations.DeleteReservationResponse], error) {
+	return c.deleteReservation.CallUnary(ctx, req)
 }
 
-// CreateProviderUnavailability calls reservation.ReservationService.CreateProviderUnavailability.
-func (c *reservationServiceClient) CreateProviderUnavailability(ctx context.Context, req *connect.Request[reservations.CreateProviderUnavailabilityRequest]) (*connect.Response[reservations.CreateProviderUnavailabilityResponse], error) {
-	return c.createProviderUnavailability.CallUnary(ctx, req)
-}
-
-// ListProviderUnavailability calls reservation.ReservationService.ListProviderUnavailability.
-func (c *reservationServiceClient) ListProviderUnavailability(ctx context.Context, req *connect.Request[reservations.ListProviderUnavailabilityRequest]) (*connect.Response[reservations.ListProviderUnavailabilityResponse], error) {
-	return c.listProviderUnavailability.CallUnary(ctx, req)
-}
-
-// DeleteProviderUnavailability calls reservation.ReservationService.DeleteProviderUnavailability.
-func (c *reservationServiceClient) DeleteProviderUnavailability(ctx context.Context, req *connect.Request[reservations.DeleteProviderUnavailabilityRequest]) (*connect.Response[reservations.DeleteProviderUnavailabilityResponse], error) {
-	return c.deleteProviderUnavailability.CallUnary(ctx, req)
-}
-
-// CreateRoomType calls reservation.ReservationService.CreateRoomType.
-func (c *reservationServiceClient) CreateRoomType(ctx context.Context, req *connect.Request[reservations.CreateRoomTypeRequest]) (*connect.Response[reservations.CreateRoomTypeResponse], error) {
-	return c.createRoomType.CallUnary(ctx, req)
-}
-
-// ListRoomTypes calls reservation.ReservationService.ListRoomTypes.
-func (c *reservationServiceClient) ListRoomTypes(ctx context.Context, req *connect.Request[reservations.ListRoomTypesRequest]) (*connect.Response[reservations.ListRoomTypesResponse], error) {
-	return c.listRoomTypes.CallUnary(ctx, req)
-}
-
-// DeleteRoomType calls reservation.ReservationService.DeleteRoomType.
-func (c *reservationServiceClient) DeleteRoomType(ctx context.Context, req *connect.Request[reservations.DeleteRoomTypeRequest]) (*connect.Response[reservations.DeleteRoomTypeResponse], error) {
-	return c.deleteRoomType.CallUnary(ctx, req)
-}
-
-// CreateRoom calls reservation.ReservationService.CreateRoom.
-func (c *reservationServiceClient) CreateRoom(ctx context.Context, req *connect.Request[reservations.CreateRoomRequest]) (*connect.Response[reservations.CreateRoomResponse], error) {
-	return c.createRoom.CallUnary(ctx, req)
-}
-
-// ListRooms calls reservation.ReservationService.ListRooms.
-func (c *reservationServiceClient) ListRooms(ctx context.Context, req *connect.Request[reservations.ListRoomsRequest]) (*connect.Response[reservations.ListRoomsResponse], error) {
-	return c.listRooms.CallUnary(ctx, req)
-}
-
-// DeleteRoom calls reservation.ReservationService.DeleteRoom.
-func (c *reservationServiceClient) DeleteRoom(ctx context.Context, req *connect.Request[reservations.DeleteRoomRequest]) (*connect.Response[reservations.DeleteRoomResponse], error) {
-	return c.deleteRoom.CallUnary(ctx, req)
-}
-
-// AddRoomImage calls reservation.ReservationService.AddRoomImage.
-func (c *reservationServiceClient) AddRoomImage(ctx context.Context, req *connect.Request[reservations.AddRoomImageRequest]) (*connect.Response[reservations.AddRoomImageResponse], error) {
-	return c.addRoomImage.CallUnary(ctx, req)
-}
-
-// GetRoomImages calls reservation.ReservationService.GetRoomImages.
-func (c *reservationServiceClient) GetRoomImages(ctx context.Context, req *connect.Request[reservations.GetRoomImagesRequest]) (*connect.Response[reservations.GetRoomImagesResponse], error) {
-	return c.getRoomImages.CallUnary(ctx, req)
-}
-
-// DeleteRoomImage calls reservation.ReservationService.DeleteRoomImage.
-func (c *reservationServiceClient) DeleteRoomImage(ctx context.Context, req *connect.Request[reservations.DeleteRoomImageRequest]) (*connect.Response[reservations.DeleteRoomImageResponse], error) {
-	return c.deleteRoomImage.CallUnary(ctx, req)
-}
-
-// CheckRoomAvailability calls reservation.ReservationService.CheckRoomAvailability.
-func (c *reservationServiceClient) CheckRoomAvailability(ctx context.Context, req *connect.Request[reservations.CheckRoomAvailabilityRequest]) (*connect.Response[reservations.CheckRoomAvailabilityResponse], error) {
-	return c.checkRoomAvailability.CallUnary(ctx, req)
-}
-
-// ListRoomAvailability calls reservation.ReservationService.ListRoomAvailability.
-func (c *reservationServiceClient) ListRoomAvailability(ctx context.Context, req *connect.Request[reservations.ListRoomAvailabilityRequest]) (*connect.Response[reservations.ListRoomAvailabilityResponse], error) {
-	return c.listRoomAvailability.CallUnary(ctx, req)
-}
-
-// CreateServiceUnavailability calls reservation.ReservationService.CreateServiceUnavailability.
-func (c *reservationServiceClient) CreateServiceUnavailability(ctx context.Context, req *connect.Request[reservations.CreateServiceUnavailabilityRequest]) (*connect.Response[reservations.CreateServiceUnavailabilityResponse], error) {
-	return c.createServiceUnavailability.CallUnary(ctx, req)
-}
-
-// ListServiceUnavailability calls reservation.ReservationService.ListServiceUnavailability.
-func (c *reservationServiceClient) ListServiceUnavailability(ctx context.Context, req *connect.Request[reservations.ListServiceUnavailabilityRequest]) (*connect.Response[reservations.ListServiceUnavailabilityResponse], error) {
-	return c.listServiceUnavailability.CallUnary(ctx, req)
-}
-
-// DeleteServiceUnavailability calls reservation.ReservationService.DeleteServiceUnavailability.
-func (c *reservationServiceClient) DeleteServiceUnavailability(ctx context.Context, req *connect.Request[reservations.DeleteServiceUnavailabilityRequest]) (*connect.Response[reservations.DeleteServiceUnavailabilityResponse], error) {
-	return c.deleteServiceUnavailability.CallUnary(ctx, req)
+// GetProviderServicesWithUsers calls reservation.ReservationService.GetProviderServicesWithUsers.
+func (c *reservationServiceClient) GetProviderServicesWithUsers(ctx context.Context, req *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error) {
+	return c.getProviderServicesWithUsers.CallUnary(ctx, req)
 }
 
 // ReservationServiceHandler is an implementation of the reservation.ReservationService service.
@@ -904,59 +505,12 @@ type ReservationServiceHandler interface {
 	GetTimeSlotsList(context.Context, *connect.Request[reservations.GetTimeSlotsListRequest]) (*connect.Response[reservations.GetTimeSlotsListResponse], error)
 	UpdateTimeSlot(context.Context, *connect.Request[reservations.UpdateTimeSlotRequest]) (*connect.Response[reservations.UpdateTimeSlotResponse], error)
 	RemoveTimeSlots(context.Context, *connect.Request[reservations.RemoveTimeSlotsRequest]) (*connect.Response[reservations.RemoveTimeSlotsResponse], error)
-	// ثبت یک رزرو جدید | Create a new reservation
+	// 🔹  رزرو | Reservation
 	CreateReservation(context.Context, *connect.Request[reservations.CreateReservationRequest]) (*connect.Response[reservations.CreateReservationResponse], error)
-	// لغو رزرو ثبت‌شده | Cancel an existing reservation
-	CancelReservation(context.Context, *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error)
-	// بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
-	UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error)
-	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
-	// افزودن تصویر به فسیلیتی | Add an image to a facility
-	AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error)
-	// حذف تصویر از فسیلیتی | Delete an image from a facility
-	DeleteFacilityImage(context.Context, *connect.Request[reservations.DeleteFacilityImageRequest]) (*connect.Response[reservations.DeleteFacilityImageResponse], error)
-	// دریافت تصاویر فسیلیتی | Get images of a facility
-	GetFacilityImages(context.Context, *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error)
-	// ثبت وضعیت حضور یا عدم حضور کاربر | Mark attendance status for reservation
-	MarkAttendance(context.Context, *connect.Request[reservations.MarkAttendanceRequest]) (*connect.Response[reservations.MarkAttendanceResponse], error)
-	// دریافت لیست رزروهای کاربر | List user reservations
+	UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationRequest]) (*connect.Response[reservations.UpdateReservationResponse], error)
 	ListReservations(context.Context, *connect.Request[reservations.ListReservationsRequest]) (*connect.Response[reservations.ListReservationsResponse], error)
-	// دریافت تایم‌اسلات‌های آزاد برای رزرو | List available time slots
-	ListAvailableTimeSlots(context.Context, *connect.Request[reservations.ListAvailableTimeSlotsRequest]) (*connect.Response[reservations.ListAvailableTimeSlotsResponse], error)
-	// ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider
-	CreateProviderUnavailability(context.Context, *connect.Request[reservations.CreateProviderUnavailabilityRequest]) (*connect.Response[reservations.CreateProviderUnavailabilityResponse], error)
-	// دریافت لیست بازه‌های غیبت ارائه‌دهنده | List unavailability periods of a provider
-	ListProviderUnavailability(context.Context, *connect.Request[reservations.ListProviderUnavailabilityRequest]) (*connect.Response[reservations.ListProviderUnavailabilityResponse], error)
-	// حذف بازه‌ی غیبت ارائه‌دهنده | Delete an unavailability period of a provider
-	DeleteProviderUnavailability(context.Context, *connect.Request[reservations.DeleteProviderUnavailabilityRequest]) (*connect.Response[reservations.DeleteProviderUnavailabilityResponse], error)
-	// ایجاد نوع اتاق | Create room type
-	CreateRoomType(context.Context, *connect.Request[reservations.CreateRoomTypeRequest]) (*connect.Response[reservations.CreateRoomTypeResponse], error)
-	// لیست نوع اتاق‌های یک هتل | List room types for a hotel
-	ListRoomTypes(context.Context, *connect.Request[reservations.ListRoomTypesRequest]) (*connect.Response[reservations.ListRoomTypesResponse], error)
-	// حذف نوع اتاق | Delete room type
-	DeleteRoomType(context.Context, *connect.Request[reservations.DeleteRoomTypeRequest]) (*connect.Response[reservations.DeleteRoomTypeResponse], error)
-	// ایجاد اتاق جدید | Create a room
-	CreateRoom(context.Context, *connect.Request[reservations.CreateRoomRequest]) (*connect.Response[reservations.CreateRoomResponse], error)
-	// لیست اتاق‌های یک هتل | List rooms of a hotel
-	ListRooms(context.Context, *connect.Request[reservations.ListRoomsRequest]) (*connect.Response[reservations.ListRoomsResponse], error)
-	// حذف اتاق | Delete a room
-	DeleteRoom(context.Context, *connect.Request[reservations.DeleteRoomRequest]) (*connect.Response[reservations.DeleteRoomResponse], error)
-	// افزودن تصویر به اتاق | Add image to room
-	AddRoomImage(context.Context, *connect.Request[reservations.AddRoomImageRequest]) (*connect.Response[reservations.AddRoomImageResponse], error)
-	// دریافت تصاویر یک اتاق | Get images of a room
-	GetRoomImages(context.Context, *connect.Request[reservations.GetRoomImagesRequest]) (*connect.Response[reservations.GetRoomImagesResponse], error)
-	// حذف تصویر از اتاق | Delete room image
-	DeleteRoomImage(context.Context, *connect.Request[reservations.DeleteRoomImageRequest]) (*connect.Response[reservations.DeleteRoomImageResponse], error)
-	// بررسی در دسترس بودن اتاق‌ها | Check room availability
-	CheckRoomAvailability(context.Context, *connect.Request[reservations.CheckRoomAvailabilityRequest]) (*connect.Response[reservations.CheckRoomAvailabilityResponse], error)
-	// لیست شب‌هایی که رزرو شده‌اند | List reserved nights for room/service
-	ListRoomAvailability(context.Context, *connect.Request[reservations.ListRoomAvailabilityRequest]) (*connect.Response[reservations.ListRoomAvailabilityResponse], error)
-	// تعریف زمان‌های عدم دسترسی اتاق | Define room/service unavailability
-	CreateServiceUnavailability(context.Context, *connect.Request[reservations.CreateServiceUnavailabilityRequest]) (*connect.Response[reservations.CreateServiceUnavailabilityResponse], error)
-	// دریافت لیست زمان‌های عدم دسترسی اتاق | List service unavailability periods
-	ListServiceUnavailability(context.Context, *connect.Request[reservations.ListServiceUnavailabilityRequest]) (*connect.Response[reservations.ListServiceUnavailabilityResponse], error)
-	// حذف زمان عدم دسترسی | Delete service unavailability
-	DeleteServiceUnavailability(context.Context, *connect.Request[reservations.DeleteServiceUnavailabilityRequest]) (*connect.Response[reservations.DeleteServiceUnavailabilityResponse], error)
+	DeleteReservation(context.Context, *connect.Request[reservations.DeleteReservationRequest]) (*connect.Response[reservations.DeleteReservationResponse], error)
+	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
 }
 
 // NewReservationServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -1079,46 +633,10 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		connect.WithSchema(reservationServiceCreateReservationMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	reservationServiceCancelReservationHandler := connect.NewUnaryHandler(
-		ReservationServiceCancelReservationProcedure,
-		svc.CancelReservation,
-		connect.WithSchema(reservationServiceCancelReservationMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
 	reservationServiceUpdateReservationStatusHandler := connect.NewUnaryHandler(
 		ReservationServiceUpdateReservationStatusProcedure,
 		svc.UpdateReservationStatus,
 		connect.WithSchema(reservationServiceUpdateReservationStatusMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceGetProviderServicesWithUsersHandler := connect.NewUnaryHandler(
-		ReservationServiceGetProviderServicesWithUsersProcedure,
-		svc.GetProviderServicesWithUsers,
-		connect.WithSchema(reservationServiceGetProviderServicesWithUsersMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceAddFacilityImageHandler := connect.NewUnaryHandler(
-		ReservationServiceAddFacilityImageProcedure,
-		svc.AddFacilityImage,
-		connect.WithSchema(reservationServiceAddFacilityImageMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceDeleteFacilityImageHandler := connect.NewUnaryHandler(
-		ReservationServiceDeleteFacilityImageProcedure,
-		svc.DeleteFacilityImage,
-		connect.WithSchema(reservationServiceDeleteFacilityImageMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceGetFacilityImagesHandler := connect.NewUnaryHandler(
-		ReservationServiceGetFacilityImagesProcedure,
-		svc.GetFacilityImages,
-		connect.WithSchema(reservationServiceGetFacilityImagesMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceMarkAttendanceHandler := connect.NewUnaryHandler(
-		ReservationServiceMarkAttendanceProcedure,
-		svc.MarkAttendance,
-		connect.WithSchema(reservationServiceMarkAttendanceMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceListReservationsHandler := connect.NewUnaryHandler(
@@ -1127,112 +645,16 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		connect.WithSchema(reservationServiceListReservationsMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	reservationServiceListAvailableTimeSlotsHandler := connect.NewUnaryHandler(
-		ReservationServiceListAvailableTimeSlotsProcedure,
-		svc.ListAvailableTimeSlots,
-		connect.WithSchema(reservationServiceListAvailableTimeSlotsMethodDescriptor),
+	reservationServiceDeleteReservationHandler := connect.NewUnaryHandler(
+		ReservationServiceDeleteReservationProcedure,
+		svc.DeleteReservation,
+		connect.WithSchema(reservationServiceDeleteReservationMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	reservationServiceCreateProviderUnavailabilityHandler := connect.NewUnaryHandler(
-		ReservationServiceCreateProviderUnavailabilityProcedure,
-		svc.CreateProviderUnavailability,
-		connect.WithSchema(reservationServiceCreateProviderUnavailabilityMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceListProviderUnavailabilityHandler := connect.NewUnaryHandler(
-		ReservationServiceListProviderUnavailabilityProcedure,
-		svc.ListProviderUnavailability,
-		connect.WithSchema(reservationServiceListProviderUnavailabilityMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceDeleteProviderUnavailabilityHandler := connect.NewUnaryHandler(
-		ReservationServiceDeleteProviderUnavailabilityProcedure,
-		svc.DeleteProviderUnavailability,
-		connect.WithSchema(reservationServiceDeleteProviderUnavailabilityMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceCreateRoomTypeHandler := connect.NewUnaryHandler(
-		ReservationServiceCreateRoomTypeProcedure,
-		svc.CreateRoomType,
-		connect.WithSchema(reservationServiceCreateRoomTypeMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceListRoomTypesHandler := connect.NewUnaryHandler(
-		ReservationServiceListRoomTypesProcedure,
-		svc.ListRoomTypes,
-		connect.WithSchema(reservationServiceListRoomTypesMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceDeleteRoomTypeHandler := connect.NewUnaryHandler(
-		ReservationServiceDeleteRoomTypeProcedure,
-		svc.DeleteRoomType,
-		connect.WithSchema(reservationServiceDeleteRoomTypeMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceCreateRoomHandler := connect.NewUnaryHandler(
-		ReservationServiceCreateRoomProcedure,
-		svc.CreateRoom,
-		connect.WithSchema(reservationServiceCreateRoomMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceListRoomsHandler := connect.NewUnaryHandler(
-		ReservationServiceListRoomsProcedure,
-		svc.ListRooms,
-		connect.WithSchema(reservationServiceListRoomsMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceDeleteRoomHandler := connect.NewUnaryHandler(
-		ReservationServiceDeleteRoomProcedure,
-		svc.DeleteRoom,
-		connect.WithSchema(reservationServiceDeleteRoomMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceAddRoomImageHandler := connect.NewUnaryHandler(
-		ReservationServiceAddRoomImageProcedure,
-		svc.AddRoomImage,
-		connect.WithSchema(reservationServiceAddRoomImageMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceGetRoomImagesHandler := connect.NewUnaryHandler(
-		ReservationServiceGetRoomImagesProcedure,
-		svc.GetRoomImages,
-		connect.WithSchema(reservationServiceGetRoomImagesMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceDeleteRoomImageHandler := connect.NewUnaryHandler(
-		ReservationServiceDeleteRoomImageProcedure,
-		svc.DeleteRoomImage,
-		connect.WithSchema(reservationServiceDeleteRoomImageMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceCheckRoomAvailabilityHandler := connect.NewUnaryHandler(
-		ReservationServiceCheckRoomAvailabilityProcedure,
-		svc.CheckRoomAvailability,
-		connect.WithSchema(reservationServiceCheckRoomAvailabilityMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceListRoomAvailabilityHandler := connect.NewUnaryHandler(
-		ReservationServiceListRoomAvailabilityProcedure,
-		svc.ListRoomAvailability,
-		connect.WithSchema(reservationServiceListRoomAvailabilityMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceCreateServiceUnavailabilityHandler := connect.NewUnaryHandler(
-		ReservationServiceCreateServiceUnavailabilityProcedure,
-		svc.CreateServiceUnavailability,
-		connect.WithSchema(reservationServiceCreateServiceUnavailabilityMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceListServiceUnavailabilityHandler := connect.NewUnaryHandler(
-		ReservationServiceListServiceUnavailabilityProcedure,
-		svc.ListServiceUnavailability,
-		connect.WithSchema(reservationServiceListServiceUnavailabilityMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
-	reservationServiceDeleteServiceUnavailabilityHandler := connect.NewUnaryHandler(
-		ReservationServiceDeleteServiceUnavailabilityProcedure,
-		svc.DeleteServiceUnavailability,
-		connect.WithSchema(reservationServiceDeleteServiceUnavailabilityMethodDescriptor),
+	reservationServiceGetProviderServicesWithUsersHandler := connect.NewUnaryHandler(
+		ReservationServiceGetProviderServicesWithUsersProcedure,
+		svc.GetProviderServicesWithUsers,
+		connect.WithSchema(reservationServiceGetProviderServicesWithUsersMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/reservation.ReservationService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -1275,58 +697,14 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 			reservationServiceRemoveTimeSlotsHandler.ServeHTTP(w, r)
 		case ReservationServiceCreateReservationProcedure:
 			reservationServiceCreateReservationHandler.ServeHTTP(w, r)
-		case ReservationServiceCancelReservationProcedure:
-			reservationServiceCancelReservationHandler.ServeHTTP(w, r)
 		case ReservationServiceUpdateReservationStatusProcedure:
 			reservationServiceUpdateReservationStatusHandler.ServeHTTP(w, r)
-		case ReservationServiceGetProviderServicesWithUsersProcedure:
-			reservationServiceGetProviderServicesWithUsersHandler.ServeHTTP(w, r)
-		case ReservationServiceAddFacilityImageProcedure:
-			reservationServiceAddFacilityImageHandler.ServeHTTP(w, r)
-		case ReservationServiceDeleteFacilityImageProcedure:
-			reservationServiceDeleteFacilityImageHandler.ServeHTTP(w, r)
-		case ReservationServiceGetFacilityImagesProcedure:
-			reservationServiceGetFacilityImagesHandler.ServeHTTP(w, r)
-		case ReservationServiceMarkAttendanceProcedure:
-			reservationServiceMarkAttendanceHandler.ServeHTTP(w, r)
 		case ReservationServiceListReservationsProcedure:
 			reservationServiceListReservationsHandler.ServeHTTP(w, r)
-		case ReservationServiceListAvailableTimeSlotsProcedure:
-			reservationServiceListAvailableTimeSlotsHandler.ServeHTTP(w, r)
-		case ReservationServiceCreateProviderUnavailabilityProcedure:
-			reservationServiceCreateProviderUnavailabilityHandler.ServeHTTP(w, r)
-		case ReservationServiceListProviderUnavailabilityProcedure:
-			reservationServiceListProviderUnavailabilityHandler.ServeHTTP(w, r)
-		case ReservationServiceDeleteProviderUnavailabilityProcedure:
-			reservationServiceDeleteProviderUnavailabilityHandler.ServeHTTP(w, r)
-		case ReservationServiceCreateRoomTypeProcedure:
-			reservationServiceCreateRoomTypeHandler.ServeHTTP(w, r)
-		case ReservationServiceListRoomTypesProcedure:
-			reservationServiceListRoomTypesHandler.ServeHTTP(w, r)
-		case ReservationServiceDeleteRoomTypeProcedure:
-			reservationServiceDeleteRoomTypeHandler.ServeHTTP(w, r)
-		case ReservationServiceCreateRoomProcedure:
-			reservationServiceCreateRoomHandler.ServeHTTP(w, r)
-		case ReservationServiceListRoomsProcedure:
-			reservationServiceListRoomsHandler.ServeHTTP(w, r)
-		case ReservationServiceDeleteRoomProcedure:
-			reservationServiceDeleteRoomHandler.ServeHTTP(w, r)
-		case ReservationServiceAddRoomImageProcedure:
-			reservationServiceAddRoomImageHandler.ServeHTTP(w, r)
-		case ReservationServiceGetRoomImagesProcedure:
-			reservationServiceGetRoomImagesHandler.ServeHTTP(w, r)
-		case ReservationServiceDeleteRoomImageProcedure:
-			reservationServiceDeleteRoomImageHandler.ServeHTTP(w, r)
-		case ReservationServiceCheckRoomAvailabilityProcedure:
-			reservationServiceCheckRoomAvailabilityHandler.ServeHTTP(w, r)
-		case ReservationServiceListRoomAvailabilityProcedure:
-			reservationServiceListRoomAvailabilityHandler.ServeHTTP(w, r)
-		case ReservationServiceCreateServiceUnavailabilityProcedure:
-			reservationServiceCreateServiceUnavailabilityHandler.ServeHTTP(w, r)
-		case ReservationServiceListServiceUnavailabilityProcedure:
-			reservationServiceListServiceUnavailabilityHandler.ServeHTTP(w, r)
-		case ReservationServiceDeleteServiceUnavailabilityProcedure:
-			reservationServiceDeleteServiceUnavailabilityHandler.ServeHTTP(w, r)
+		case ReservationServiceDeleteReservationProcedure:
+			reservationServiceDeleteReservationHandler.ServeHTTP(w, r)
+		case ReservationServiceGetProviderServicesWithUsersProcedure:
+			reservationServiceGetProviderServicesWithUsersHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -1412,106 +790,18 @@ func (UnimplementedReservationServiceHandler) CreateReservation(context.Context,
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CreateReservation is not implemented"))
 }
 
-func (UnimplementedReservationServiceHandler) CancelReservation(context.Context, *connect.Request[reservations.CancelReservationRequest]) (*connect.Response[reservations.CancelReservationResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CancelReservation is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationStatusRequest]) (*connect.Response[reservations.UpdateReservationStatusResponse], error) {
+func (UnimplementedReservationServiceHandler) UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationRequest]) (*connect.Response[reservations.UpdateReservationResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.UpdateReservationStatus is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GetProviderServicesWithUsers is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) AddFacilityImage(context.Context, *connect.Request[reservations.FacilityImage]) (*connect.Response[reservations.FacilityImage], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.AddFacilityImage is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) DeleteFacilityImage(context.Context, *connect.Request[reservations.DeleteFacilityImageRequest]) (*connect.Response[reservations.DeleteFacilityImageResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.DeleteFacilityImage is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) GetFacilityImages(context.Context, *connect.Request[reservations.GetFacilityImagesRequest]) (*connect.Response[reservations.GetFacilityImagesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GetFacilityImages is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) MarkAttendance(context.Context, *connect.Request[reservations.MarkAttendanceRequest]) (*connect.Response[reservations.MarkAttendanceResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.MarkAttendance is not implemented"))
 }
 
 func (UnimplementedReservationServiceHandler) ListReservations(context.Context, *connect.Request[reservations.ListReservationsRequest]) (*connect.Response[reservations.ListReservationsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ListReservations is not implemented"))
 }
 
-func (UnimplementedReservationServiceHandler) ListAvailableTimeSlots(context.Context, *connect.Request[reservations.ListAvailableTimeSlotsRequest]) (*connect.Response[reservations.ListAvailableTimeSlotsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ListAvailableTimeSlots is not implemented"))
+func (UnimplementedReservationServiceHandler) DeleteReservation(context.Context, *connect.Request[reservations.DeleteReservationRequest]) (*connect.Response[reservations.DeleteReservationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.DeleteReservation is not implemented"))
 }
 
-func (UnimplementedReservationServiceHandler) CreateProviderUnavailability(context.Context, *connect.Request[reservations.CreateProviderUnavailabilityRequest]) (*connect.Response[reservations.CreateProviderUnavailabilityResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CreateProviderUnavailability is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) ListProviderUnavailability(context.Context, *connect.Request[reservations.ListProviderUnavailabilityRequest]) (*connect.Response[reservations.ListProviderUnavailabilityResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ListProviderUnavailability is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) DeleteProviderUnavailability(context.Context, *connect.Request[reservations.DeleteProviderUnavailabilityRequest]) (*connect.Response[reservations.DeleteProviderUnavailabilityResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.DeleteProviderUnavailability is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) CreateRoomType(context.Context, *connect.Request[reservations.CreateRoomTypeRequest]) (*connect.Response[reservations.CreateRoomTypeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CreateRoomType is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) ListRoomTypes(context.Context, *connect.Request[reservations.ListRoomTypesRequest]) (*connect.Response[reservations.ListRoomTypesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ListRoomTypes is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) DeleteRoomType(context.Context, *connect.Request[reservations.DeleteRoomTypeRequest]) (*connect.Response[reservations.DeleteRoomTypeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.DeleteRoomType is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) CreateRoom(context.Context, *connect.Request[reservations.CreateRoomRequest]) (*connect.Response[reservations.CreateRoomResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CreateRoom is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) ListRooms(context.Context, *connect.Request[reservations.ListRoomsRequest]) (*connect.Response[reservations.ListRoomsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ListRooms is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) DeleteRoom(context.Context, *connect.Request[reservations.DeleteRoomRequest]) (*connect.Response[reservations.DeleteRoomResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.DeleteRoom is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) AddRoomImage(context.Context, *connect.Request[reservations.AddRoomImageRequest]) (*connect.Response[reservations.AddRoomImageResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.AddRoomImage is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) GetRoomImages(context.Context, *connect.Request[reservations.GetRoomImagesRequest]) (*connect.Response[reservations.GetRoomImagesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GetRoomImages is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) DeleteRoomImage(context.Context, *connect.Request[reservations.DeleteRoomImageRequest]) (*connect.Response[reservations.DeleteRoomImageResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.DeleteRoomImage is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) CheckRoomAvailability(context.Context, *connect.Request[reservations.CheckRoomAvailabilityRequest]) (*connect.Response[reservations.CheckRoomAvailabilityResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CheckRoomAvailability is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) ListRoomAvailability(context.Context, *connect.Request[reservations.ListRoomAvailabilityRequest]) (*connect.Response[reservations.ListRoomAvailabilityResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ListRoomAvailability is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) CreateServiceUnavailability(context.Context, *connect.Request[reservations.CreateServiceUnavailabilityRequest]) (*connect.Response[reservations.CreateServiceUnavailabilityResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CreateServiceUnavailability is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) ListServiceUnavailability(context.Context, *connect.Request[reservations.ListServiceUnavailabilityRequest]) (*connect.Response[reservations.ListServiceUnavailabilityResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ListServiceUnavailability is not implemented"))
-}
-
-func (UnimplementedReservationServiceHandler) DeleteServiceUnavailability(context.Context, *connect.Request[reservations.DeleteServiceUnavailabilityRequest]) (*connect.Response[reservations.DeleteServiceUnavailabilityResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.DeleteServiceUnavailability is not implemented"))
+func (UnimplementedReservationServiceHandler) GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GetProviderServicesWithUsers is not implemented"))
 }

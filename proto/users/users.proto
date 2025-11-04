@@ -23,6 +23,7 @@ enum UserType {
     USER_TYPE_CONTRACT_EMPLOYEE = 3;   // Employee of the contracting party.
     USER_TYPE_CONTRACT_EMPLOYER = 4;   // Employer of the contracting party.
     USER_TYPE_CONTRACT_APPLICANT = 5;  // Applicant for a contract.
+    USER_TYPE_GUEST = 6;               // Guest user created by receptionist.
 }
 
 

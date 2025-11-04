@@ -18,11 +18,30 @@ enum OwnerType {
 
 // وضعیت رزرو | Reservation status
 enum ReservationStatus {
-  PENDING = 0;     // در انتظار تأیید | Waiting for confirmation
-  CONFIRMED = 1;   // تأیید شده | Confirmed
-  CANCELLED = 2;   // لغو شده | Cancelled
-  COMPLETED = 3;   // انجام شده | Completed
+  PENDING = 0;                 // در انتظار تأیید | Waiting for confirmation
+  CONFIRMED = 1;               // تأیید شده | Confirmed
+  COMPLETED = 2;               // انجام شده | Completed
+
+  CANCELLED_BY_USER = 3;       // لغو توسط کاربر | Cancelled by user
+  CANCELLED_BY_RECEPTION = 4;  // لغو توسط پذیرش | Cancelled by reception
+  CANCELLED_BY_PROVIDER = 5;   // لغو توسط سرویس‌دهنده | Cancelled by provider
 }
+
+//
+enum ReservationSource {
+  RESERVATION_SOURCE_ONLINE = 0;   // ثبت توسط کاربر
+  RESERVATION_SOURCE_RECEPTION = 1; // ثبت توسط ریسپشن
+}
+
+// وضعیت پرداخت | Payment status
+enum PaymentStatus {
+  PAYMENT_PENDING = 0;   // پرداخت انجام نشده یا در انتظار
+  PAYMENT_PARTIAL = 1;   // پرداخت بخشی از مبلغ
+  PAYMENT_COMPLETED = 2; // پرداخت کامل
+  PAYMENT_REFUNDED = 3;  // بازپرداخت‌شده
+  PAYMENT_FAILED = 4;    // پرداخت ناموفق
+}
+
 enum SlotSource {
     GENERATED_FROM_WEEKLY = 0; // تولیدشده از برنامه هفتگی
     MANUAL = 1;                // وارد شده به صورت دستی
@@ -218,6 +237,13 @@ message LocalizedString {
   string en = 2;  // انگلیسی
   string ar = 3;  // عربی
 }
+// Pagination options .
+message Pagination {
+    int32 page = 1;                     // Page number (starting from 1).
+    int32 page_size = 2;                // Number of items to return per page.
+    optional string sort_by = 3;        // Field by which to sort the results (e.g., "username").
+    optional bool sort_descending = 4;  // Whether to sort the results in descending order.
+}
 // فسیلیتی یا مکان — مانند مطب، آرایشگاه، هتل، باشگاه
 // Facility such as a clinic, salon, hotel, or gym
 message Facility {
@@ -297,18 +323,42 @@ message TimeSlot {
 
 }
 // رزرو ثبت‌شده توسط کاربر
-// Reservation made by user
+// سرویس انتخاب‌شده در رزرو
+message ReservationServiceItem {
+  string service_id = 1;     // شناسه سرویس
+  LocalizedString name = 2; // نام سرویس مانند "کوتاهی مو" یا "ویزیت عمومی" | Service name
+  google.type.Money booked_price_cents = 3; // مبلغ سرویس در زمان رزرو
+  int32 quantity = 4;        // تعداد
+}
+
+// رزرو کامل
 message Reservation {
   string id = 1;
-  string user_id= 2; // کاربر رزروکننده
-  string provider_user_id = 3; // سرویس‌دهنده
-  string service_id = 4;
-  string facility_id = 5;
-  string time_slot_id = 6;
+  string user_id = 2;
+  string provider_user_id = 3;
+  string facility_id = 4;
+  string time_slot_id = 5;
+
+  repeated ReservationServiceItem services = 6; // سرویس‌های انتخاب‌شده با قیمت فیکس‌شده
+
   ReservationStatus status = 7;
-  string notes = 8;
-  google.protobuf.Timestamp created_at = 9;
+  PaymentStatus payment_status = 8;
+  ReservationSource source = 9;
+  string notes = 10;
+
+// فیلدهای فقط نمایشی (در DB ذخیره نمی‌شوند)
+
+  string user_name = 11;
+  string provider_user_name = 12;
+  string facility_name = 13;
+  google.protobuf.Timestamp created_at = 14;
+  google.protobuf.Timestamp updated_at = 15;
+
+  google.type.Money total_amount = 19; // مبلغ کل رزرو در زمان ثبت
 }
+
+
+
 
 
 // بازه‌های عدم دسترسی ارائه‌دهنده (برای کل روز یا ساعاتی خاص)
@@ -614,250 +664,73 @@ message UpdateTimeSlotResponse {
   string message=2;
 }
 
-
-
-
-// ایجاد رزرو | Create a reservation
+// -------------------- Reservation Requests & Responses --------------------
+// ایجاد رزرو جدید | Create a new reservation
 message CreateReservationRequest {
-  string user_id = 1;             // شناسه کاربر رزروکننده | User ID
-  string provider_user_id = 2;    // شناسه ارائه‌دهنده | Provider user ID
-  string service_id = 3;          // شناسه سرویس | Service ID
-  string time_slot_id = 4;        // شناسه تایم‌اسلات | TimeSlot ID
-  string notes = 5;               // یادداشت‌های کاربر | Optional notes
+  string user_id = 1;                             // کاربر رزروکننده | Booking user
+  string provider_user_id = 2;                    // سرویس‌دهنده | Provider user
+  string facility_id = 3;                         // مرکز | Facility
+  optional string time_slot_id = 4;               // بازه زمانی انتخاب‌شده (اختیاری) | Optional time slot
+  repeated ReservationServiceItem services = 5;   // سرویس‌های انتخاب‌شده برای رزرو | Selected services
+  ReservationStatus reservation_status = 6;       // وضعیت اولیه رزرو | Initial reservation status
+  PaymentStatus payment_status = 7;               // وضعیت اولیه پرداخت | Initial payment status
+  ReservationSource source = 8;                   // منبع رزرو (آنلاین، حضوری و...) | Reservation source
+  string notes = 9;                               // یادداشت اختیاری | Optional notes
 }
 message CreateReservationResponse {
-  string reservation_id = 1;      // شناسه رزرو | Reservation ID
-  string message = 2;             // پیام موفقیت یا خطا | Success or error message
+  Reservation reservation = 1;             // رزرو ایجادشده
+  string message=2;
 }
 
-// لغو رزرو | Cancel reservation
-message CancelReservationRequest {
-  string reservation_id = 1;  // شناسه رزرو | Reservation ID
-}
-message CancelReservationResponse {
-  string message = 1;  // پیام موفقیت | Success message
+
+// بروزرسانی رزرو | Update reservation (برای تأیید، لغو، تغییر وضعیت پرداخت و ...)
+message UpdateReservationRequest {
+  string reservation_id = 1;               // شناسه رزرو
+  ReservationStatus reservation_status = 2; // وضعیت جدید رزرو
+  PaymentStatus payment_status = 3;         // وضعیت پرداخت جدید
+  string notes = 4;                         // توضیحات (مثلاً دلیل لغو)
 }
 
-// ثبت وضعیت حضور | Mark attendance
-message MarkAttendanceRequest {
-  string reservation_id = 1;      // شناسه رزرو | Reservation ID
-  AttendanceStatus status = 2;   // وضعیت حضور | Attendance status
-}
-message MarkAttendanceResponse {
-  string message = 1;  // پیام موفقیت | Success message
+message UpdateReservationResponse {
+  Reservation reservation = 1;             // رزرو بروزشده
+  string message=2;
 }
 
-// دریافت لیست رزروها | List reservations
+// فیلتر رزروها | Reservation filter options
+message ReservationFilter {
+  optional string id = 1;                     // شناسه رزرو | Reservation ID
+  optional string user_id = 2;                // شناسه کاربر رزروکننده | User ID
+  optional string provider_user_id = 3;       // شناسه سرویس‌دهنده | Provider user ID
+  optional string facility_id = 4;            // شناسه مرکز | Facility ID
+  optional ReservationStatus status = 5;      // وضعیت رزرو | Reservation status
+  optional PaymentStatus payment_status = 6;  // وضعیت پرداخت | Payment status
+  optional ReservationSource source = 7;      // منبع رزرو | Reservation source (آنلاین، حضوری و ...)
+  optional google.protobuf.Timestamp start_date = 8; // فیلتر از تاریخ | From date
+  optional google.protobuf.Timestamp end_date = 9;   // فیلتر تا تاریخ | To date
+}
+
+// دریافت لیست رزروها با فیلتر پویا | Get list of reservations with filters
 message ListReservationsRequest {
-  string user_id = 1;              // شناسه کاربر | User ID
-  optional string status = 2;      // فیلتر بر اساس وضعیت | Filter by status
+  ReservationFilter filter = 1;            // فیلتر پویا
+Pagination pagination = 2; // Pagination options.
 }
+
 message ListReservationsResponse {
-  repeated Reservation reservations = 1; // لیست رزروها | List of reservations
-}
-
-// دریافت تایم‌اسلات‌های آزاد | List available time slots
-message ListAvailableTimeSlotsRequest {
-  string provider_user_id = 1;         // شناسه ارائه‌دهنده | Provider ID
-  string service_id = 2;               // شناسه سرویس | Service ID
-  string facility_id = 3;              // شناسه مکان | Facility ID
-  google.protobuf.Timestamp from = 4;  // از تاریخ | From timestamp
-  google.protobuf.Timestamp to = 5;    // تا تاریخ | To timestamp
-}
-message ListAvailableTimeSlotsResponse {
-  repeated TimeSlot time_slots = 1; // لیست تایم‌اسلات‌های آزاد | List of available time slots
-}
-message UpdateReservationStatusRequest {
-  string reservation_id = 1;         // شناسه رزرو | Reservation ID
-  ReservationStatus status = 2;     // وضعیت جدید | New status
-}
-message UpdateReservationStatusResponse {
-  string message = 1;               // پیام موفقیت یا خطا | Success or error message
+  repeated Reservation reservations = 1;   // لیست رزروها
+  int32 total_pages = 2;                         // تعداد کل رکوردها
 }
 
 
-
-// ایجاد عدم دسترسی برای ارائه‌دهنده | Create unavailability for a provider
-message CreateProviderUnavailabilityRequest {
-  ProviderUnavailability unavailability = 1; // اطلاعات بازه‌ی غیبت | Unavailability data
+// حذف کامل رزرو | Permanently delete a reservation
+message DeleteReservationRequest {
+  string reservation_id = 1;               // شناسه رزرو
 }
 
-// پاسخ ایجاد عدم دسترسی | Response for creating unavailability
-message CreateProviderUnavailabilityResponse {
-  string id = 1;         // شناسه غیبت ثبت‌شده | Created unavailability ID
-  string message = 2;    // پیام موفقیت یا خطا | Success or error message
+message DeleteReservationResponse {
+  bool success = 1;                        // نتیجه عملیات
+  string message=2;
 }
 
-// دریافت لیست بازه‌های غیبت ارائه‌دهنده | List unavailability periods for a provider
-message ListProviderUnavailabilityRequest {
-  string provider_user_id = 1;             // شناسه ارائه‌دهنده | Provider ID
-  optional google.protobuf.Timestamp from = 2; // فیلتر از تاریخ | Optional from date
-  optional google.protobuf.Timestamp to = 3;   // فیلتر تا تاریخ | Optional to date
-}
-
-// پاسخ لیست غیبت‌ها | Response with list of unavailability periods
-message ListProviderUnavailabilityResponse {
-  repeated ProviderUnavailability items = 1; // لیست بازه‌های غیبت | List of unavailability items
-}
-
-// حذف یک بازه‌ی غیبت | Delete an unavailability period
-message DeleteProviderUnavailabilityRequest {
-  string id = 1; // شناسه بازه‌ی غیبت | Unavailability ID
-}
-
-// پاسخ حذف غیبت | Response for delete request
-message DeleteProviderUnavailabilityResponse {
-  string message = 1; // پیام موفقیت یا خطا | Success or error message
-}
-// ================= RoomType =================
-message CreateRoomTypeRequest {
-  RoomType room_type = 1; // اطلاعات نوع اتاق | RoomType info
-}
-
-message CreateRoomTypeResponse {
-  string id = 1;
-  string message = 2;
-}
-
-message ListRoomTypesRequest {
-  string facility_id = 1; // شناسه هتل | Hotel ID
-}
-
-message ListRoomTypesResponse {
-  repeated RoomType items = 1;
-}
-
-message DeleteRoomTypeRequest {
-  string id = 1; // شناسه نوع اتاق | RoomType ID
-}
-
-message DeleteRoomTypeResponse {
-  string message = 1;
-}
-
-// ================= Room =================
-message CreateRoomRequest {
-  Room room = 1; // اطلاعات اتاق | Room info
-}
-
-message CreateRoomResponse {
-  string id = 1;
-  string message = 2;
-}
-
-message ListRoomsRequest {
-  string facility_id = 1; // شناسه هتل | Hotel ID
-}
-
-message ListRoomsResponse {
-  repeated Room items = 1;
-}
-
-message DeleteRoomRequest {
-  string id = 1; // شناسه اتاق | Room ID
-}
-
-message DeleteRoomResponse {
-  string message = 1;
-}
-
-// ================= RoomImage =================
-message AddRoomImageRequest {
-  RoomImage image = 1; // اطلاعات تصویر | Image info
-}
-
-message AddRoomImageResponse {
-  string id = 1;
-  string message = 2;
-}
-
-message GetRoomImagesRequest {
-  string room_id = 1; // شناسه اتاق | Room ID
-}
-
-message GetRoomImagesResponse {
-  repeated RoomImage items = 1;
-}
-
-message DeleteRoomImageRequest {
-  string id = 1; // شناسه تصویر | Image ID
-}
-
-message DeleteRoomImageResponse {
-  string message = 1;
-}
-
-// ================= RoomAvailability =================
-message CheckRoomAvailabilityRequest {
-  string service_id = 1; // شناسه سرویس | Service ID (e.g., room)
-  google.protobuf.Timestamp from = 2;
-  google.protobuf.Timestamp to = 3;
-}
-
-message CheckRoomAvailabilityResponse {
-  repeated RoomAvailability items = 1; // وضعیت در دسترس بودن | Availability list
-}
-
-message ListRoomAvailabilityRequest {
-  string service_id = 1;
-  optional google.protobuf.Timestamp from = 2;
-  optional google.protobuf.Timestamp to = 3;
-}
-
-message ListRoomAvailabilityResponse {
-  repeated RoomAvailability items = 1;
-}
-
-// ================= ServiceUnavailability =================
-message CreateServiceUnavailabilityRequest {
-  ServiceUnavailability unavailability = 1;
-}
-
-message CreateServiceUnavailabilityResponse {
-  string id = 1;
-  string message = 2;
-}
-
-message ListServiceUnavailabilityRequest {
-  string service_id = 1;
-  optional google.protobuf.Timestamp from = 2;
-  optional google.protobuf.Timestamp to = 3;
-}
-
-message ListServiceUnavailabilityResponse {
-  repeated ServiceUnavailability items = 1;
-}
-
-message DeleteServiceUnavailabilityRequest {
-  string id = 1;
-}
-
-message DeleteServiceUnavailabilityResponse {
-  string message = 1;
-}
-
-// افزودن تصویر به فسیلیتی | Add image to facility
-message AddFacilityImageRequest {
-  FacilityImage image = 1; // اطلاعات تصویر | Image info
-}
-message AddFacilityImageResponse {
-  string id = 1;       // شناسه تصویر آپلود شده | Uploaded image ID
-  string message = 2;  // پیام موفقیت یا خطا | Success or error message
-}
-// حذف تصویر فسیلیتی | Delete facility image
-message DeleteFacilityImageRequest {
-  string image_id = 1; // شناسه تصویر | Image ID
-}
-message DeleteFacilityImageResponse {
-  string message = 1;  // پیام موفقیت یا خطا | Success or error message
-}
-// دریافت تصاویر فسیلیتی | Get images of a facility
-message GetFacilityImagesRequest {
-  string facility_id = 1; // شناسه فسیلیتی | Facility ID
-}
-message GetFacilityImagesResponse {
-  repeated FacilityImage images = 1; // لیست تصاویر | List of images
-}
 // ========== DOT ==========
 message ProviderServiceData {
   users.User user = 1;
@@ -915,79 +788,25 @@ service ReservationService {
   rpc  UpdateWeeklySchedule(UpdateWeeklyScheduleRequest)  returns (UpdateWeeklyScheduleResponse);
   rpc  RemoveWeeklySchedule(RemoveWeeklyScheduleRequest)  returns (RemoveWeeklyScheduleResponse);
 
-  
+
     // تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
   rpc GenerateTimeSlots(GenerateTimeSlotsRequest) returns (GenerateTimeSlotsResponse);
   rpc GetTimeSlotsList(GetTimeSlotsListRequest) returns (GetTimeSlotsListResponse);
   rpc UpdateTimeSlot(UpdateTimeSlotRequest) returns (UpdateTimeSlotResponse);
   rpc RemoveTimeSlots(RemoveTimeSlotsRequest) returns (RemoveTimeSlotsResponse);
-      // ثبت یک رزرو جدید | Create a new reservation
+
+  // 🔹  رزرو | Reservation     
   rpc CreateReservation(CreateReservationRequest) returns (CreateReservationResponse);
-    // لغو رزرو ثبت‌شده | Cancel an existing reservation
-  rpc CancelReservation(CancelReservationRequest) returns (CancelReservationResponse);
-    // بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
-  rpc UpdateReservationStatus(UpdateReservationStatusRequest) returns (UpdateReservationStatusResponse);
+  rpc UpdateReservationStatus(UpdateReservationRequest) returns (UpdateReservationResponse);
+  rpc ListReservations(ListReservationsRequest) returns (ListReservationsResponse);
+   rpc DeleteReservation(DeleteReservationRequest) returns (DeleteReservationResponse);
+
 
   
   rpc GetProviderServicesWithUsers(GetProviderServicesWithUsersRequest) returns (GetProviderServicesWithUsersResponse);
 
 
 
-
-
-
-
-
-    // افزودن تصویر به فسیلیتی | Add an image to a facility
-  rpc AddFacilityImage(FacilityImage) returns (FacilityImage);
-    // حذف تصویر از فسیلیتی | Delete an image from a facility
-  rpc DeleteFacilityImage(DeleteFacilityImageRequest) returns (DeleteFacilityImageResponse);
-    // دریافت تصاویر فسیلیتی | Get images of a facility
-  rpc GetFacilityImages(GetFacilityImagesRequest) returns (GetFacilityImagesResponse);
-    // ثبت وضعیت حضور یا عدم حضور کاربر | Mark attendance status for reservation
-  rpc MarkAttendance(MarkAttendanceRequest) returns (MarkAttendanceResponse);
-    // دریافت لیست رزروهای کاربر | List user reservations
-  rpc ListReservations(ListReservationsRequest) returns (ListReservationsResponse);
-    // دریافت تایم‌اسلات‌های آزاد برای رزرو | List available time slots
-  rpc ListAvailableTimeSlots(ListAvailableTimeSlotsRequest) returns (ListAvailableTimeSlotsResponse);
-
-    // ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider
-  rpc CreateProviderUnavailability(CreateProviderUnavailabilityRequest) returns (CreateProviderUnavailabilityResponse);
-
-  // دریافت لیست بازه‌های غیبت ارائه‌دهنده | List unavailability periods of a provider
-  rpc ListProviderUnavailability(ListProviderUnavailabilityRequest) returns (ListProviderUnavailabilityResponse);
-
-  // حذف بازه‌ی غیبت ارائه‌دهنده | Delete an unavailability period of a provider
-  rpc DeleteProviderUnavailability(DeleteProviderUnavailabilityRequest) returns (DeleteProviderUnavailabilityResponse);
-
-  // ایجاد نوع اتاق | Create room type
-rpc CreateRoomType(CreateRoomTypeRequest) returns (CreateRoomTypeResponse);
-// لیست نوع اتاق‌های یک هتل | List room types for a hotel
-rpc ListRoomTypes(ListRoomTypesRequest) returns (ListRoomTypesResponse);
-// حذف نوع اتاق | Delete room type
-rpc DeleteRoomType(DeleteRoomTypeRequest) returns (DeleteRoomTypeResponse);
-// ایجاد اتاق جدید | Create a room
-rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
-// لیست اتاق‌های یک هتل | List rooms of a hotel
-rpc ListRooms(ListRoomsRequest) returns (ListRoomsResponse);
-// حذف اتاق | Delete a room
-rpc DeleteRoom(DeleteRoomRequest) returns (DeleteRoomResponse);
-// افزودن تصویر به اتاق | Add image to room
-rpc AddRoomImage(AddRoomImageRequest) returns (AddRoomImageResponse);
-// دریافت تصاویر یک اتاق | Get images of a room
-rpc GetRoomImages(GetRoomImagesRequest) returns (GetRoomImagesResponse);
-// حذف تصویر از اتاق | Delete room image
-rpc DeleteRoomImage(DeleteRoomImageRequest) returns (DeleteRoomImageResponse);
-// بررسی در دسترس بودن اتاق‌ها | Check room availability
-rpc CheckRoomAvailability(CheckRoomAvailabilityRequest) returns (CheckRoomAvailabilityResponse);
-// لیست شب‌هایی که رزرو شده‌اند | List reserved nights for room/service
-rpc ListRoomAvailability(ListRoomAvailabilityRequest) returns (ListRoomAvailabilityResponse);
-// تعریف زمان‌های عدم دسترسی اتاق | Define room/service unavailability
-rpc CreateServiceUnavailability(CreateServiceUnavailabilityRequest) returns (CreateServiceUnavailabilityResponse);
-// دریافت لیست زمان‌های عدم دسترسی اتاق | List service unavailability periods
-rpc ListServiceUnavailability(ListServiceUnavailabilityRequest) returns (ListServiceUnavailabilityResponse);
-// حذف زمان عدم دسترسی | Delete service unavailability
-rpc DeleteServiceUnavailability(DeleteServiceUnavailabilityRequest) returns (DeleteServiceUnavailabilityResponse);
 
 
 }

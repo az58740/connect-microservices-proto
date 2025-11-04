@@ -2773,6 +2773,13 @@ export enum UserType {
    * @generated from enum value: USER_TYPE_CONTRACT_APPLICANT = 5;
    */
   CONTRACT_APPLICANT = 5,
+
+  /**
+   * Guest user created by receptionist.
+   *
+   * @generated from enum value: USER_TYPE_GUEST = 6;
+   */
+  GUEST = 6,
 }
 
 /**

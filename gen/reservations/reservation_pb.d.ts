@@ -6,7 +6,7 @@ import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobu
 import type { Message } from "@bufbuild/protobuf";
 import type { Money } from "../google/type/money_pb.ts";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
-import type { Pagination, User, UserFilter } from "../users/users_pb.ts";
+import type { Pagination as Pagination$1, User, UserFilter } from "../users/users_pb.ts";
 
 /**
  * Describes the file reservations/reservation.proto.
@@ -47,6 +47,47 @@ export declare type LocalizedString = Message<"reservation.LocalizedString"> & {
  * Use `create(LocalizedStringSchema)` to create a new message.
  */
 export declare const LocalizedStringSchema: GenMessage<LocalizedString>;
+
+/**
+ * Pagination options .
+ *
+ * @generated from message reservation.Pagination
+ */
+export declare type Pagination = Message<"reservation.Pagination"> & {
+  /**
+   * Page number (starting from 1).
+   *
+   * @generated from field: int32 page = 1;
+   */
+  page: number;
+
+  /**
+   * Number of items to return per page.
+   *
+   * @generated from field: int32 page_size = 2;
+   */
+  pageSize: number;
+
+  /**
+   * Field by which to sort the results (e.g., "username").
+   *
+   * @generated from field: optional string sort_by = 3;
+   */
+  sortBy?: string;
+
+  /**
+   * Whether to sort the results in descending order.
+   *
+   * @generated from field: optional bool sort_descending = 4;
+   */
+  sortDescending?: boolean;
+};
+
+/**
+ * Describes the message reservation.Pagination.
+ * Use `create(PaginationSchema)` to create a new message.
+ */
+export declare const PaginationSchema: GenMessage<Pagination>;
 
 /**
  * فسیلیتی یا مکان — مانند مطب، آرایشگاه، هتل، باشگاه
@@ -468,7 +509,48 @@ export declare const TimeSlotSchema: GenMessage<TimeSlot>;
 
 /**
  * رزرو ثبت‌شده توسط کاربر
- * Reservation made by user
+ * سرویس انتخاب‌شده در رزرو
+ *
+ * @generated from message reservation.ReservationServiceItem
+ */
+export declare type ReservationServiceItem = Message<"reservation.ReservationServiceItem"> & {
+  /**
+   * شناسه سرویس
+   *
+   * @generated from field: string service_id = 1;
+   */
+  serviceId: string;
+
+  /**
+   * نام سرویس مانند "کوتاهی مو" یا "ویزیت عمومی" | Service name
+   *
+   * @generated from field: reservation.LocalizedString name = 2;
+   */
+  name?: LocalizedString;
+
+  /**
+   * مبلغ سرویس در زمان رزرو
+   *
+   * @generated from field: google.type.Money booked_price_cents = 3;
+   */
+  bookedPriceCents?: Money;
+
+  /**
+   * تعداد
+   *
+   * @generated from field: int32 quantity = 4;
+   */
+  quantity: number;
+};
+
+/**
+ * Describes the message reservation.ReservationServiceItem.
+ * Use `create(ReservationServiceItemSchema)` to create a new message.
+ */
+export declare const ReservationServiceItemSchema: GenMessage<ReservationServiceItem>;
+
+/**
+ * رزرو کامل
  *
  * @generated from message reservation.Reservation
  */
@@ -479,33 +561,31 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
   id: string;
 
   /**
-   * کاربر رزروکننده
-   *
    * @generated from field: string user_id = 2;
    */
   userId: string;
 
   /**
-   * سرویس‌دهنده
-   *
    * @generated from field: string provider_user_id = 3;
    */
   providerUserId: string;
 
   /**
-   * @generated from field: string service_id = 4;
-   */
-  serviceId: string;
-
-  /**
-   * @generated from field: string facility_id = 5;
+   * @generated from field: string facility_id = 4;
    */
   facilityId: string;
 
   /**
-   * @generated from field: string time_slot_id = 6;
+   * @generated from field: string time_slot_id = 5;
    */
   timeSlotId: string;
+
+  /**
+   * سرویس‌های انتخاب‌شده با قیمت فیکس‌شده
+   *
+   * @generated from field: repeated reservation.ReservationServiceItem services = 6;
+   */
+  services: ReservationServiceItem[];
 
   /**
    * @generated from field: reservation.ReservationStatus status = 7;
@@ -513,14 +593,51 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
   status: ReservationStatus;
 
   /**
-   * @generated from field: string notes = 8;
+   * @generated from field: reservation.PaymentStatus payment_status = 8;
+   */
+  paymentStatus: PaymentStatus;
+
+  /**
+   * @generated from field: reservation.ReservationSource source = 9;
+   */
+  source: ReservationSource;
+
+  /**
+   * @generated from field: string notes = 10;
    */
   notes: string;
 
   /**
-   * @generated from field: google.protobuf.Timestamp created_at = 9;
+   * @generated from field: string user_name = 11;
+   */
+  userName: string;
+
+  /**
+   * @generated from field: string provider_user_name = 12;
+   */
+  providerUserName: string;
+
+  /**
+   * @generated from field: string facility_name = 13;
+   */
+  facilityName: string;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 14;
    */
   createdAt?: Timestamp;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp updated_at = 15;
+   */
+  updatedAt?: Timestamp;
+
+  /**
+   * مبلغ کل رزرو در زمان ثبت
+   *
+   * @generated from field: google.type.Money total_amount = 19;
+   */
+  totalAmount?: Money;
 };
 
 /**
@@ -2045,43 +2162,72 @@ export declare type UpdateTimeSlotResponse = Message<"reservation.UpdateTimeSlot
 export declare const UpdateTimeSlotResponseSchema: GenMessage<UpdateTimeSlotResponse>;
 
 /**
- * ایجاد رزرو | Create a reservation
+ * -------------------- Reservation Requests & Responses --------------------
+ * ایجاد رزرو جدید | Create a new reservation
  *
  * @generated from message reservation.CreateReservationRequest
  */
 export declare type CreateReservationRequest = Message<"reservation.CreateReservationRequest"> & {
   /**
-   * شناسه کاربر رزروکننده | User ID
+   * کاربر رزروکننده | Booking user
    *
    * @generated from field: string user_id = 1;
    */
   userId: string;
 
   /**
-   * شناسه ارائه‌دهنده | Provider user ID
+   * سرویس‌دهنده | Provider user
    *
    * @generated from field: string provider_user_id = 2;
    */
   providerUserId: string;
 
   /**
-   * شناسه سرویس | Service ID
+   * مرکز | Facility
    *
-   * @generated from field: string service_id = 3;
+   * @generated from field: string facility_id = 3;
    */
-  serviceId: string;
+  facilityId: string;
 
   /**
-   * شناسه تایم‌اسلات | TimeSlot ID
+   * بازه زمانی انتخاب‌شده (اختیاری) | Optional time slot
    *
-   * @generated from field: string time_slot_id = 4;
+   * @generated from field: optional string time_slot_id = 4;
    */
-  timeSlotId: string;
+  timeSlotId?: string;
 
   /**
-   * یادداشت‌های کاربر | Optional notes
+   * سرویس‌های انتخاب‌شده برای رزرو | Selected services
    *
-   * @generated from field: string notes = 5;
+   * @generated from field: repeated reservation.ReservationServiceItem services = 5;
+   */
+  services: ReservationServiceItem[];
+
+  /**
+   * وضعیت اولیه رزرو | Initial reservation status
+   *
+   * @generated from field: reservation.ReservationStatus reservation_status = 6;
+   */
+  reservationStatus: ReservationStatus;
+
+  /**
+   * وضعیت اولیه پرداخت | Initial payment status
+   *
+   * @generated from field: reservation.PaymentStatus payment_status = 7;
+   */
+  paymentStatus: PaymentStatus;
+
+  /**
+   * منبع رزرو (آنلاین، حضوری و...) | Reservation source
+   *
+   * @generated from field: reservation.ReservationSource source = 8;
+   */
+  source: ReservationSource;
+
+  /**
+   * یادداشت اختیاری | Optional notes
+   *
+   * @generated from field: string notes = 9;
    */
   notes: string;
 };
@@ -2097,15 +2243,13 @@ export declare const CreateReservationRequestSchema: GenMessage<CreateReservatio
  */
 export declare type CreateReservationResponse = Message<"reservation.CreateReservationResponse"> & {
   /**
-   * شناسه رزرو | Reservation ID
+   * رزرو ایجادشده
    *
-   * @generated from field: string reservation_id = 1;
+   * @generated from field: reservation.Reservation reservation = 1;
    */
-  reservationId: string;
+  reservation?: Reservation;
 
   /**
-   * پیام موفقیت یا خطا | Success or error message
-   *
    * @generated from field: string message = 2;
    */
   message: string;
@@ -2118,107 +2262,164 @@ export declare type CreateReservationResponse = Message<"reservation.CreateReser
 export declare const CreateReservationResponseSchema: GenMessage<CreateReservationResponse>;
 
 /**
- * لغو رزرو | Cancel reservation
+ * بروزرسانی رزرو | Update reservation (برای تأیید، لغو، تغییر وضعیت پرداخت و ...)
  *
- * @generated from message reservation.CancelReservationRequest
+ * @generated from message reservation.UpdateReservationRequest
  */
-export declare type CancelReservationRequest = Message<"reservation.CancelReservationRequest"> & {
+export declare type UpdateReservationRequest = Message<"reservation.UpdateReservationRequest"> & {
   /**
-   * شناسه رزرو | Reservation ID
-   *
-   * @generated from field: string reservation_id = 1;
-   */
-  reservationId: string;
-};
-
-/**
- * Describes the message reservation.CancelReservationRequest.
- * Use `create(CancelReservationRequestSchema)` to create a new message.
- */
-export declare const CancelReservationRequestSchema: GenMessage<CancelReservationRequest>;
-
-/**
- * @generated from message reservation.CancelReservationResponse
- */
-export declare type CancelReservationResponse = Message<"reservation.CancelReservationResponse"> & {
-  /**
-   * پیام موفقیت | Success message
-   *
-   * @generated from field: string message = 1;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.CancelReservationResponse.
- * Use `create(CancelReservationResponseSchema)` to create a new message.
- */
-export declare const CancelReservationResponseSchema: GenMessage<CancelReservationResponse>;
-
-/**
- * ثبت وضعیت حضور | Mark attendance
- *
- * @generated from message reservation.MarkAttendanceRequest
- */
-export declare type MarkAttendanceRequest = Message<"reservation.MarkAttendanceRequest"> & {
-  /**
-   * شناسه رزرو | Reservation ID
+   * شناسه رزرو
    *
    * @generated from field: string reservation_id = 1;
    */
   reservationId: string;
 
   /**
-   * وضعیت حضور | Attendance status
+   * وضعیت جدید رزرو
    *
-   * @generated from field: reservation.AttendanceStatus status = 2;
+   * @generated from field: reservation.ReservationStatus reservation_status = 2;
    */
-  status: AttendanceStatus;
+  reservationStatus: ReservationStatus;
+
+  /**
+   * وضعیت پرداخت جدید
+   *
+   * @generated from field: reservation.PaymentStatus payment_status = 3;
+   */
+  paymentStatus: PaymentStatus;
+
+  /**
+   * توضیحات (مثلاً دلیل لغو)
+   *
+   * @generated from field: string notes = 4;
+   */
+  notes: string;
 };
 
 /**
- * Describes the message reservation.MarkAttendanceRequest.
- * Use `create(MarkAttendanceRequestSchema)` to create a new message.
+ * Describes the message reservation.UpdateReservationRequest.
+ * Use `create(UpdateReservationRequestSchema)` to create a new message.
  */
-export declare const MarkAttendanceRequestSchema: GenMessage<MarkAttendanceRequest>;
+export declare const UpdateReservationRequestSchema: GenMessage<UpdateReservationRequest>;
 
 /**
- * @generated from message reservation.MarkAttendanceResponse
+ * @generated from message reservation.UpdateReservationResponse
  */
-export declare type MarkAttendanceResponse = Message<"reservation.MarkAttendanceResponse"> & {
+export declare type UpdateReservationResponse = Message<"reservation.UpdateReservationResponse"> & {
   /**
-   * پیام موفقیت | Success message
+   * رزرو بروزشده
    *
-   * @generated from field: string message = 1;
+   * @generated from field: reservation.Reservation reservation = 1;
+   */
+  reservation?: Reservation;
+
+  /**
+   * @generated from field: string message = 2;
    */
   message: string;
 };
 
 /**
- * Describes the message reservation.MarkAttendanceResponse.
- * Use `create(MarkAttendanceResponseSchema)` to create a new message.
+ * Describes the message reservation.UpdateReservationResponse.
+ * Use `create(UpdateReservationResponseSchema)` to create a new message.
  */
-export declare const MarkAttendanceResponseSchema: GenMessage<MarkAttendanceResponse>;
+export declare const UpdateReservationResponseSchema: GenMessage<UpdateReservationResponse>;
 
 /**
- * دریافت لیست رزروها | List reservations
+ * فیلتر رزروها | Reservation filter options
+ *
+ * @generated from message reservation.ReservationFilter
+ */
+export declare type ReservationFilter = Message<"reservation.ReservationFilter"> & {
+  /**
+   * شناسه رزرو | Reservation ID
+   *
+   * @generated from field: optional string id = 1;
+   */
+  id?: string;
+
+  /**
+   * شناسه کاربر رزروکننده | User ID
+   *
+   * @generated from field: optional string user_id = 2;
+   */
+  userId?: string;
+
+  /**
+   * شناسه سرویس‌دهنده | Provider user ID
+   *
+   * @generated from field: optional string provider_user_id = 3;
+   */
+  providerUserId?: string;
+
+  /**
+   * شناسه مرکز | Facility ID
+   *
+   * @generated from field: optional string facility_id = 4;
+   */
+  facilityId?: string;
+
+  /**
+   * وضعیت رزرو | Reservation status
+   *
+   * @generated from field: optional reservation.ReservationStatus status = 5;
+   */
+  status?: ReservationStatus;
+
+  /**
+   * وضعیت پرداخت | Payment status
+   *
+   * @generated from field: optional reservation.PaymentStatus payment_status = 6;
+   */
+  paymentStatus?: PaymentStatus;
+
+  /**
+   * منبع رزرو | Reservation source (آنلاین، حضوری و ...)
+   *
+   * @generated from field: optional reservation.ReservationSource source = 7;
+   */
+  source?: ReservationSource;
+
+  /**
+   * فیلتر از تاریخ | From date
+   *
+   * @generated from field: optional google.protobuf.Timestamp start_date = 8;
+   */
+  startDate?: Timestamp;
+
+  /**
+   * فیلتر تا تاریخ | To date
+   *
+   * @generated from field: optional google.protobuf.Timestamp end_date = 9;
+   */
+  endDate?: Timestamp;
+};
+
+/**
+ * Describes the message reservation.ReservationFilter.
+ * Use `create(ReservationFilterSchema)` to create a new message.
+ */
+export declare const ReservationFilterSchema: GenMessage<ReservationFilter>;
+
+/**
+ * دریافت لیست رزروها با فیلتر پویا | Get list of reservations with filters
  *
  * @generated from message reservation.ListReservationsRequest
  */
 export declare type ListReservationsRequest = Message<"reservation.ListReservationsRequest"> & {
   /**
-   * شناسه کاربر | User ID
+   * فیلتر پویا
    *
-   * @generated from field: string user_id = 1;
+   * @generated from field: reservation.ReservationFilter filter = 1;
    */
-  userId: string;
+  filter?: ReservationFilter;
 
   /**
-   * فیلتر بر اساس وضعیت | Filter by status
+   * Pagination options.
    *
-   * @generated from field: optional string status = 2;
+   * @generated from field: reservation.Pagination pagination = 2;
    */
-  status?: string;
+  pagination?: Pagination;
 };
 
 /**
@@ -2232,11 +2433,18 @@ export declare const ListReservationsRequestSchema: GenMessage<ListReservationsR
  */
 export declare type ListReservationsResponse = Message<"reservation.ListReservationsResponse"> & {
   /**
-   * لیست رزروها | List of reservations
+   * لیست رزروها
    *
    * @generated from field: repeated reservation.Reservation reservations = 1;
    */
   reservations: Reservation[];
+
+  /**
+   * تعداد کل رکوردها
+   *
+   * @generated from field: int32 total_pages = 2;
+   */
+  totalPages: number;
 };
 
 /**
@@ -2246,283 +2454,35 @@ export declare type ListReservationsResponse = Message<"reservation.ListReservat
 export declare const ListReservationsResponseSchema: GenMessage<ListReservationsResponse>;
 
 /**
- * دریافت تایم‌اسلات‌های آزاد | List available time slots
+ * حذف کامل رزرو | Permanently delete a reservation
  *
- * @generated from message reservation.ListAvailableTimeSlotsRequest
+ * @generated from message reservation.DeleteReservationRequest
  */
-export declare type ListAvailableTimeSlotsRequest = Message<"reservation.ListAvailableTimeSlotsRequest"> & {
+export declare type DeleteReservationRequest = Message<"reservation.DeleteReservationRequest"> & {
   /**
-   * شناسه ارائه‌دهنده | Provider ID
-   *
-   * @generated from field: string provider_user_id = 1;
-   */
-  providerUserId: string;
-
-  /**
-   * شناسه سرویس | Service ID
-   *
-   * @generated from field: string service_id = 2;
-   */
-  serviceId: string;
-
-  /**
-   * شناسه مکان | Facility ID
-   *
-   * @generated from field: string facility_id = 3;
-   */
-  facilityId: string;
-
-  /**
-   * از تاریخ | From timestamp
-   *
-   * @generated from field: google.protobuf.Timestamp from = 4;
-   */
-  from?: Timestamp;
-
-  /**
-   * تا تاریخ | To timestamp
-   *
-   * @generated from field: google.protobuf.Timestamp to = 5;
-   */
-  to?: Timestamp;
-};
-
-/**
- * Describes the message reservation.ListAvailableTimeSlotsRequest.
- * Use `create(ListAvailableTimeSlotsRequestSchema)` to create a new message.
- */
-export declare const ListAvailableTimeSlotsRequestSchema: GenMessage<ListAvailableTimeSlotsRequest>;
-
-/**
- * @generated from message reservation.ListAvailableTimeSlotsResponse
- */
-export declare type ListAvailableTimeSlotsResponse = Message<"reservation.ListAvailableTimeSlotsResponse"> & {
-  /**
-   * لیست تایم‌اسلات‌های آزاد | List of available time slots
-   *
-   * @generated from field: repeated reservation.TimeSlot time_slots = 1;
-   */
-  timeSlots: TimeSlot[];
-};
-
-/**
- * Describes the message reservation.ListAvailableTimeSlotsResponse.
- * Use `create(ListAvailableTimeSlotsResponseSchema)` to create a new message.
- */
-export declare const ListAvailableTimeSlotsResponseSchema: GenMessage<ListAvailableTimeSlotsResponse>;
-
-/**
- * @generated from message reservation.UpdateReservationStatusRequest
- */
-export declare type UpdateReservationStatusRequest = Message<"reservation.UpdateReservationStatusRequest"> & {
-  /**
-   * شناسه رزرو | Reservation ID
+   * شناسه رزرو
    *
    * @generated from field: string reservation_id = 1;
    */
   reservationId: string;
-
-  /**
-   * وضعیت جدید | New status
-   *
-   * @generated from field: reservation.ReservationStatus status = 2;
-   */
-  status: ReservationStatus;
 };
 
 /**
- * Describes the message reservation.UpdateReservationStatusRequest.
- * Use `create(UpdateReservationStatusRequestSchema)` to create a new message.
+ * Describes the message reservation.DeleteReservationRequest.
+ * Use `create(DeleteReservationRequestSchema)` to create a new message.
  */
-export declare const UpdateReservationStatusRequestSchema: GenMessage<UpdateReservationStatusRequest>;
+export declare const DeleteReservationRequestSchema: GenMessage<DeleteReservationRequest>;
 
 /**
- * @generated from message reservation.UpdateReservationStatusResponse
+ * @generated from message reservation.DeleteReservationResponse
  */
-export declare type UpdateReservationStatusResponse = Message<"reservation.UpdateReservationStatusResponse"> & {
+export declare type DeleteReservationResponse = Message<"reservation.DeleteReservationResponse"> & {
   /**
-   * پیام موفقیت یا خطا | Success or error message
+   * نتیجه عملیات
    *
-   * @generated from field: string message = 1;
+   * @generated from field: bool success = 1;
    */
-  message: string;
-};
-
-/**
- * Describes the message reservation.UpdateReservationStatusResponse.
- * Use `create(UpdateReservationStatusResponseSchema)` to create a new message.
- */
-export declare const UpdateReservationStatusResponseSchema: GenMessage<UpdateReservationStatusResponse>;
-
-/**
- * ایجاد عدم دسترسی برای ارائه‌دهنده | Create unavailability for a provider
- *
- * @generated from message reservation.CreateProviderUnavailabilityRequest
- */
-export declare type CreateProviderUnavailabilityRequest = Message<"reservation.CreateProviderUnavailabilityRequest"> & {
-  /**
-   * اطلاعات بازه‌ی غیبت | Unavailability data
-   *
-   * @generated from field: reservation.ProviderUnavailability unavailability = 1;
-   */
-  unavailability?: ProviderUnavailability;
-};
-
-/**
- * Describes the message reservation.CreateProviderUnavailabilityRequest.
- * Use `create(CreateProviderUnavailabilityRequestSchema)` to create a new message.
- */
-export declare const CreateProviderUnavailabilityRequestSchema: GenMessage<CreateProviderUnavailabilityRequest>;
-
-/**
- * پاسخ ایجاد عدم دسترسی | Response for creating unavailability
- *
- * @generated from message reservation.CreateProviderUnavailabilityResponse
- */
-export declare type CreateProviderUnavailabilityResponse = Message<"reservation.CreateProviderUnavailabilityResponse"> & {
-  /**
-   * شناسه غیبت ثبت‌شده | Created unavailability ID
-   *
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * پیام موفقیت یا خطا | Success or error message
-   *
-   * @generated from field: string message = 2;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.CreateProviderUnavailabilityResponse.
- * Use `create(CreateProviderUnavailabilityResponseSchema)` to create a new message.
- */
-export declare const CreateProviderUnavailabilityResponseSchema: GenMessage<CreateProviderUnavailabilityResponse>;
-
-/**
- * دریافت لیست بازه‌های غیبت ارائه‌دهنده | List unavailability periods for a provider
- *
- * @generated from message reservation.ListProviderUnavailabilityRequest
- */
-export declare type ListProviderUnavailabilityRequest = Message<"reservation.ListProviderUnavailabilityRequest"> & {
-  /**
-   * شناسه ارائه‌دهنده | Provider ID
-   *
-   * @generated from field: string provider_user_id = 1;
-   */
-  providerUserId: string;
-
-  /**
-   * فیلتر از تاریخ | Optional from date
-   *
-   * @generated from field: optional google.protobuf.Timestamp from = 2;
-   */
-  from?: Timestamp;
-
-  /**
-   * فیلتر تا تاریخ | Optional to date
-   *
-   * @generated from field: optional google.protobuf.Timestamp to = 3;
-   */
-  to?: Timestamp;
-};
-
-/**
- * Describes the message reservation.ListProviderUnavailabilityRequest.
- * Use `create(ListProviderUnavailabilityRequestSchema)` to create a new message.
- */
-export declare const ListProviderUnavailabilityRequestSchema: GenMessage<ListProviderUnavailabilityRequest>;
-
-/**
- * پاسخ لیست غیبت‌ها | Response with list of unavailability periods
- *
- * @generated from message reservation.ListProviderUnavailabilityResponse
- */
-export declare type ListProviderUnavailabilityResponse = Message<"reservation.ListProviderUnavailabilityResponse"> & {
-  /**
-   * لیست بازه‌های غیبت | List of unavailability items
-   *
-   * @generated from field: repeated reservation.ProviderUnavailability items = 1;
-   */
-  items: ProviderUnavailability[];
-};
-
-/**
- * Describes the message reservation.ListProviderUnavailabilityResponse.
- * Use `create(ListProviderUnavailabilityResponseSchema)` to create a new message.
- */
-export declare const ListProviderUnavailabilityResponseSchema: GenMessage<ListProviderUnavailabilityResponse>;
-
-/**
- * حذف یک بازه‌ی غیبت | Delete an unavailability period
- *
- * @generated from message reservation.DeleteProviderUnavailabilityRequest
- */
-export declare type DeleteProviderUnavailabilityRequest = Message<"reservation.DeleteProviderUnavailabilityRequest"> & {
-  /**
-   * شناسه بازه‌ی غیبت | Unavailability ID
-   *
-   * @generated from field: string id = 1;
-   */
-  id: string;
-};
-
-/**
- * Describes the message reservation.DeleteProviderUnavailabilityRequest.
- * Use `create(DeleteProviderUnavailabilityRequestSchema)` to create a new message.
- */
-export declare const DeleteProviderUnavailabilityRequestSchema: GenMessage<DeleteProviderUnavailabilityRequest>;
-
-/**
- * پاسخ حذف غیبت | Response for delete request
- *
- * @generated from message reservation.DeleteProviderUnavailabilityResponse
- */
-export declare type DeleteProviderUnavailabilityResponse = Message<"reservation.DeleteProviderUnavailabilityResponse"> & {
-  /**
-   * پیام موفقیت یا خطا | Success or error message
-   *
-   * @generated from field: string message = 1;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.DeleteProviderUnavailabilityResponse.
- * Use `create(DeleteProviderUnavailabilityResponseSchema)` to create a new message.
- */
-export declare const DeleteProviderUnavailabilityResponseSchema: GenMessage<DeleteProviderUnavailabilityResponse>;
-
-/**
- * ================= RoomType =================
- *
- * @generated from message reservation.CreateRoomTypeRequest
- */
-export declare type CreateRoomTypeRequest = Message<"reservation.CreateRoomTypeRequest"> & {
-  /**
-   * اطلاعات نوع اتاق | RoomType info
-   *
-   * @generated from field: reservation.RoomType room_type = 1;
-   */
-  roomType?: RoomType;
-};
-
-/**
- * Describes the message reservation.CreateRoomTypeRequest.
- * Use `create(CreateRoomTypeRequestSchema)` to create a new message.
- */
-export declare const CreateRoomTypeRequestSchema: GenMessage<CreateRoomTypeRequest>;
-
-/**
- * @generated from message reservation.CreateRoomTypeResponse
- */
-export declare type CreateRoomTypeResponse = Message<"reservation.CreateRoomTypeResponse"> & {
-  /**
-   * @generated from field: string id = 1;
-   */
-  id: string;
+  success: boolean;
 
   /**
    * @generated from field: string message = 2;
@@ -2531,620 +2491,10 @@ export declare type CreateRoomTypeResponse = Message<"reservation.CreateRoomType
 };
 
 /**
- * Describes the message reservation.CreateRoomTypeResponse.
- * Use `create(CreateRoomTypeResponseSchema)` to create a new message.
+ * Describes the message reservation.DeleteReservationResponse.
+ * Use `create(DeleteReservationResponseSchema)` to create a new message.
  */
-export declare const CreateRoomTypeResponseSchema: GenMessage<CreateRoomTypeResponse>;
-
-/**
- * @generated from message reservation.ListRoomTypesRequest
- */
-export declare type ListRoomTypesRequest = Message<"reservation.ListRoomTypesRequest"> & {
-  /**
-   * شناسه هتل | Hotel ID
-   *
-   * @generated from field: string facility_id = 1;
-   */
-  facilityId: string;
-};
-
-/**
- * Describes the message reservation.ListRoomTypesRequest.
- * Use `create(ListRoomTypesRequestSchema)` to create a new message.
- */
-export declare const ListRoomTypesRequestSchema: GenMessage<ListRoomTypesRequest>;
-
-/**
- * @generated from message reservation.ListRoomTypesResponse
- */
-export declare type ListRoomTypesResponse = Message<"reservation.ListRoomTypesResponse"> & {
-  /**
-   * @generated from field: repeated reservation.RoomType items = 1;
-   */
-  items: RoomType[];
-};
-
-/**
- * Describes the message reservation.ListRoomTypesResponse.
- * Use `create(ListRoomTypesResponseSchema)` to create a new message.
- */
-export declare const ListRoomTypesResponseSchema: GenMessage<ListRoomTypesResponse>;
-
-/**
- * @generated from message reservation.DeleteRoomTypeRequest
- */
-export declare type DeleteRoomTypeRequest = Message<"reservation.DeleteRoomTypeRequest"> & {
-  /**
-   * شناسه نوع اتاق | RoomType ID
-   *
-   * @generated from field: string id = 1;
-   */
-  id: string;
-};
-
-/**
- * Describes the message reservation.DeleteRoomTypeRequest.
- * Use `create(DeleteRoomTypeRequestSchema)` to create a new message.
- */
-export declare const DeleteRoomTypeRequestSchema: GenMessage<DeleteRoomTypeRequest>;
-
-/**
- * @generated from message reservation.DeleteRoomTypeResponse
- */
-export declare type DeleteRoomTypeResponse = Message<"reservation.DeleteRoomTypeResponse"> & {
-  /**
-   * @generated from field: string message = 1;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.DeleteRoomTypeResponse.
- * Use `create(DeleteRoomTypeResponseSchema)` to create a new message.
- */
-export declare const DeleteRoomTypeResponseSchema: GenMessage<DeleteRoomTypeResponse>;
-
-/**
- * ================= Room =================
- *
- * @generated from message reservation.CreateRoomRequest
- */
-export declare type CreateRoomRequest = Message<"reservation.CreateRoomRequest"> & {
-  /**
-   * اطلاعات اتاق | Room info
-   *
-   * @generated from field: reservation.Room room = 1;
-   */
-  room?: Room;
-};
-
-/**
- * Describes the message reservation.CreateRoomRequest.
- * Use `create(CreateRoomRequestSchema)` to create a new message.
- */
-export declare const CreateRoomRequestSchema: GenMessage<CreateRoomRequest>;
-
-/**
- * @generated from message reservation.CreateRoomResponse
- */
-export declare type CreateRoomResponse = Message<"reservation.CreateRoomResponse"> & {
-  /**
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * @generated from field: string message = 2;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.CreateRoomResponse.
- * Use `create(CreateRoomResponseSchema)` to create a new message.
- */
-export declare const CreateRoomResponseSchema: GenMessage<CreateRoomResponse>;
-
-/**
- * @generated from message reservation.ListRoomsRequest
- */
-export declare type ListRoomsRequest = Message<"reservation.ListRoomsRequest"> & {
-  /**
-   * شناسه هتل | Hotel ID
-   *
-   * @generated from field: string facility_id = 1;
-   */
-  facilityId: string;
-};
-
-/**
- * Describes the message reservation.ListRoomsRequest.
- * Use `create(ListRoomsRequestSchema)` to create a new message.
- */
-export declare const ListRoomsRequestSchema: GenMessage<ListRoomsRequest>;
-
-/**
- * @generated from message reservation.ListRoomsResponse
- */
-export declare type ListRoomsResponse = Message<"reservation.ListRoomsResponse"> & {
-  /**
-   * @generated from field: repeated reservation.Room items = 1;
-   */
-  items: Room[];
-};
-
-/**
- * Describes the message reservation.ListRoomsResponse.
- * Use `create(ListRoomsResponseSchema)` to create a new message.
- */
-export declare const ListRoomsResponseSchema: GenMessage<ListRoomsResponse>;
-
-/**
- * @generated from message reservation.DeleteRoomRequest
- */
-export declare type DeleteRoomRequest = Message<"reservation.DeleteRoomRequest"> & {
-  /**
-   * شناسه اتاق | Room ID
-   *
-   * @generated from field: string id = 1;
-   */
-  id: string;
-};
-
-/**
- * Describes the message reservation.DeleteRoomRequest.
- * Use `create(DeleteRoomRequestSchema)` to create a new message.
- */
-export declare const DeleteRoomRequestSchema: GenMessage<DeleteRoomRequest>;
-
-/**
- * @generated from message reservation.DeleteRoomResponse
- */
-export declare type DeleteRoomResponse = Message<"reservation.DeleteRoomResponse"> & {
-  /**
-   * @generated from field: string message = 1;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.DeleteRoomResponse.
- * Use `create(DeleteRoomResponseSchema)` to create a new message.
- */
-export declare const DeleteRoomResponseSchema: GenMessage<DeleteRoomResponse>;
-
-/**
- * ================= RoomImage =================
- *
- * @generated from message reservation.AddRoomImageRequest
- */
-export declare type AddRoomImageRequest = Message<"reservation.AddRoomImageRequest"> & {
-  /**
-   * اطلاعات تصویر | Image info
-   *
-   * @generated from field: reservation.RoomImage image = 1;
-   */
-  image?: RoomImage;
-};
-
-/**
- * Describes the message reservation.AddRoomImageRequest.
- * Use `create(AddRoomImageRequestSchema)` to create a new message.
- */
-export declare const AddRoomImageRequestSchema: GenMessage<AddRoomImageRequest>;
-
-/**
- * @generated from message reservation.AddRoomImageResponse
- */
-export declare type AddRoomImageResponse = Message<"reservation.AddRoomImageResponse"> & {
-  /**
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * @generated from field: string message = 2;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.AddRoomImageResponse.
- * Use `create(AddRoomImageResponseSchema)` to create a new message.
- */
-export declare const AddRoomImageResponseSchema: GenMessage<AddRoomImageResponse>;
-
-/**
- * @generated from message reservation.GetRoomImagesRequest
- */
-export declare type GetRoomImagesRequest = Message<"reservation.GetRoomImagesRequest"> & {
-  /**
-   * شناسه اتاق | Room ID
-   *
-   * @generated from field: string room_id = 1;
-   */
-  roomId: string;
-};
-
-/**
- * Describes the message reservation.GetRoomImagesRequest.
- * Use `create(GetRoomImagesRequestSchema)` to create a new message.
- */
-export declare const GetRoomImagesRequestSchema: GenMessage<GetRoomImagesRequest>;
-
-/**
- * @generated from message reservation.GetRoomImagesResponse
- */
-export declare type GetRoomImagesResponse = Message<"reservation.GetRoomImagesResponse"> & {
-  /**
-   * @generated from field: repeated reservation.RoomImage items = 1;
-   */
-  items: RoomImage[];
-};
-
-/**
- * Describes the message reservation.GetRoomImagesResponse.
- * Use `create(GetRoomImagesResponseSchema)` to create a new message.
- */
-export declare const GetRoomImagesResponseSchema: GenMessage<GetRoomImagesResponse>;
-
-/**
- * @generated from message reservation.DeleteRoomImageRequest
- */
-export declare type DeleteRoomImageRequest = Message<"reservation.DeleteRoomImageRequest"> & {
-  /**
-   * شناسه تصویر | Image ID
-   *
-   * @generated from field: string id = 1;
-   */
-  id: string;
-};
-
-/**
- * Describes the message reservation.DeleteRoomImageRequest.
- * Use `create(DeleteRoomImageRequestSchema)` to create a new message.
- */
-export declare const DeleteRoomImageRequestSchema: GenMessage<DeleteRoomImageRequest>;
-
-/**
- * @generated from message reservation.DeleteRoomImageResponse
- */
-export declare type DeleteRoomImageResponse = Message<"reservation.DeleteRoomImageResponse"> & {
-  /**
-   * @generated from field: string message = 1;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.DeleteRoomImageResponse.
- * Use `create(DeleteRoomImageResponseSchema)` to create a new message.
- */
-export declare const DeleteRoomImageResponseSchema: GenMessage<DeleteRoomImageResponse>;
-
-/**
- * ================= RoomAvailability =================
- *
- * @generated from message reservation.CheckRoomAvailabilityRequest
- */
-export declare type CheckRoomAvailabilityRequest = Message<"reservation.CheckRoomAvailabilityRequest"> & {
-  /**
-   * شناسه سرویس | Service ID (e.g., room)
-   *
-   * @generated from field: string service_id = 1;
-   */
-  serviceId: string;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp from = 2;
-   */
-  from?: Timestamp;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp to = 3;
-   */
-  to?: Timestamp;
-};
-
-/**
- * Describes the message reservation.CheckRoomAvailabilityRequest.
- * Use `create(CheckRoomAvailabilityRequestSchema)` to create a new message.
- */
-export declare const CheckRoomAvailabilityRequestSchema: GenMessage<CheckRoomAvailabilityRequest>;
-
-/**
- * @generated from message reservation.CheckRoomAvailabilityResponse
- */
-export declare type CheckRoomAvailabilityResponse = Message<"reservation.CheckRoomAvailabilityResponse"> & {
-  /**
-   * وضعیت در دسترس بودن | Availability list
-   *
-   * @generated from field: repeated reservation.RoomAvailability items = 1;
-   */
-  items: RoomAvailability[];
-};
-
-/**
- * Describes the message reservation.CheckRoomAvailabilityResponse.
- * Use `create(CheckRoomAvailabilityResponseSchema)` to create a new message.
- */
-export declare const CheckRoomAvailabilityResponseSchema: GenMessage<CheckRoomAvailabilityResponse>;
-
-/**
- * @generated from message reservation.ListRoomAvailabilityRequest
- */
-export declare type ListRoomAvailabilityRequest = Message<"reservation.ListRoomAvailabilityRequest"> & {
-  /**
-   * @generated from field: string service_id = 1;
-   */
-  serviceId: string;
-
-  /**
-   * @generated from field: optional google.protobuf.Timestamp from = 2;
-   */
-  from?: Timestamp;
-
-  /**
-   * @generated from field: optional google.protobuf.Timestamp to = 3;
-   */
-  to?: Timestamp;
-};
-
-/**
- * Describes the message reservation.ListRoomAvailabilityRequest.
- * Use `create(ListRoomAvailabilityRequestSchema)` to create a new message.
- */
-export declare const ListRoomAvailabilityRequestSchema: GenMessage<ListRoomAvailabilityRequest>;
-
-/**
- * @generated from message reservation.ListRoomAvailabilityResponse
- */
-export declare type ListRoomAvailabilityResponse = Message<"reservation.ListRoomAvailabilityResponse"> & {
-  /**
-   * @generated from field: repeated reservation.RoomAvailability items = 1;
-   */
-  items: RoomAvailability[];
-};
-
-/**
- * Describes the message reservation.ListRoomAvailabilityResponse.
- * Use `create(ListRoomAvailabilityResponseSchema)` to create a new message.
- */
-export declare const ListRoomAvailabilityResponseSchema: GenMessage<ListRoomAvailabilityResponse>;
-
-/**
- * ================= ServiceUnavailability =================
- *
- * @generated from message reservation.CreateServiceUnavailabilityRequest
- */
-export declare type CreateServiceUnavailabilityRequest = Message<"reservation.CreateServiceUnavailabilityRequest"> & {
-  /**
-   * @generated from field: reservation.ServiceUnavailability unavailability = 1;
-   */
-  unavailability?: ServiceUnavailability;
-};
-
-/**
- * Describes the message reservation.CreateServiceUnavailabilityRequest.
- * Use `create(CreateServiceUnavailabilityRequestSchema)` to create a new message.
- */
-export declare const CreateServiceUnavailabilityRequestSchema: GenMessage<CreateServiceUnavailabilityRequest>;
-
-/**
- * @generated from message reservation.CreateServiceUnavailabilityResponse
- */
-export declare type CreateServiceUnavailabilityResponse = Message<"reservation.CreateServiceUnavailabilityResponse"> & {
-  /**
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * @generated from field: string message = 2;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.CreateServiceUnavailabilityResponse.
- * Use `create(CreateServiceUnavailabilityResponseSchema)` to create a new message.
- */
-export declare const CreateServiceUnavailabilityResponseSchema: GenMessage<CreateServiceUnavailabilityResponse>;
-
-/**
- * @generated from message reservation.ListServiceUnavailabilityRequest
- */
-export declare type ListServiceUnavailabilityRequest = Message<"reservation.ListServiceUnavailabilityRequest"> & {
-  /**
-   * @generated from field: string service_id = 1;
-   */
-  serviceId: string;
-
-  /**
-   * @generated from field: optional google.protobuf.Timestamp from = 2;
-   */
-  from?: Timestamp;
-
-  /**
-   * @generated from field: optional google.protobuf.Timestamp to = 3;
-   */
-  to?: Timestamp;
-};
-
-/**
- * Describes the message reservation.ListServiceUnavailabilityRequest.
- * Use `create(ListServiceUnavailabilityRequestSchema)` to create a new message.
- */
-export declare const ListServiceUnavailabilityRequestSchema: GenMessage<ListServiceUnavailabilityRequest>;
-
-/**
- * @generated from message reservation.ListServiceUnavailabilityResponse
- */
-export declare type ListServiceUnavailabilityResponse = Message<"reservation.ListServiceUnavailabilityResponse"> & {
-  /**
-   * @generated from field: repeated reservation.ServiceUnavailability items = 1;
-   */
-  items: ServiceUnavailability[];
-};
-
-/**
- * Describes the message reservation.ListServiceUnavailabilityResponse.
- * Use `create(ListServiceUnavailabilityResponseSchema)` to create a new message.
- */
-export declare const ListServiceUnavailabilityResponseSchema: GenMessage<ListServiceUnavailabilityResponse>;
-
-/**
- * @generated from message reservation.DeleteServiceUnavailabilityRequest
- */
-export declare type DeleteServiceUnavailabilityRequest = Message<"reservation.DeleteServiceUnavailabilityRequest"> & {
-  /**
-   * @generated from field: string id = 1;
-   */
-  id: string;
-};
-
-/**
- * Describes the message reservation.DeleteServiceUnavailabilityRequest.
- * Use `create(DeleteServiceUnavailabilityRequestSchema)` to create a new message.
- */
-export declare const DeleteServiceUnavailabilityRequestSchema: GenMessage<DeleteServiceUnavailabilityRequest>;
-
-/**
- * @generated from message reservation.DeleteServiceUnavailabilityResponse
- */
-export declare type DeleteServiceUnavailabilityResponse = Message<"reservation.DeleteServiceUnavailabilityResponse"> & {
-  /**
-   * @generated from field: string message = 1;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.DeleteServiceUnavailabilityResponse.
- * Use `create(DeleteServiceUnavailabilityResponseSchema)` to create a new message.
- */
-export declare const DeleteServiceUnavailabilityResponseSchema: GenMessage<DeleteServiceUnavailabilityResponse>;
-
-/**
- * افزودن تصویر به فسیلیتی | Add image to facility
- *
- * @generated from message reservation.AddFacilityImageRequest
- */
-export declare type AddFacilityImageRequest = Message<"reservation.AddFacilityImageRequest"> & {
-  /**
-   * اطلاعات تصویر | Image info
-   *
-   * @generated from field: reservation.FacilityImage image = 1;
-   */
-  image?: FacilityImage;
-};
-
-/**
- * Describes the message reservation.AddFacilityImageRequest.
- * Use `create(AddFacilityImageRequestSchema)` to create a new message.
- */
-export declare const AddFacilityImageRequestSchema: GenMessage<AddFacilityImageRequest>;
-
-/**
- * @generated from message reservation.AddFacilityImageResponse
- */
-export declare type AddFacilityImageResponse = Message<"reservation.AddFacilityImageResponse"> & {
-  /**
-   * شناسه تصویر آپلود شده | Uploaded image ID
-   *
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * پیام موفقیت یا خطا | Success or error message
-   *
-   * @generated from field: string message = 2;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.AddFacilityImageResponse.
- * Use `create(AddFacilityImageResponseSchema)` to create a new message.
- */
-export declare const AddFacilityImageResponseSchema: GenMessage<AddFacilityImageResponse>;
-
-/**
- * حذف تصویر فسیلیتی | Delete facility image
- *
- * @generated from message reservation.DeleteFacilityImageRequest
- */
-export declare type DeleteFacilityImageRequest = Message<"reservation.DeleteFacilityImageRequest"> & {
-  /**
-   * شناسه تصویر | Image ID
-   *
-   * @generated from field: string image_id = 1;
-   */
-  imageId: string;
-};
-
-/**
- * Describes the message reservation.DeleteFacilityImageRequest.
- * Use `create(DeleteFacilityImageRequestSchema)` to create a new message.
- */
-export declare const DeleteFacilityImageRequestSchema: GenMessage<DeleteFacilityImageRequest>;
-
-/**
- * @generated from message reservation.DeleteFacilityImageResponse
- */
-export declare type DeleteFacilityImageResponse = Message<"reservation.DeleteFacilityImageResponse"> & {
-  /**
-   * پیام موفقیت یا خطا | Success or error message
-   *
-   * @generated from field: string message = 1;
-   */
-  message: string;
-};
-
-/**
- * Describes the message reservation.DeleteFacilityImageResponse.
- * Use `create(DeleteFacilityImageResponseSchema)` to create a new message.
- */
-export declare const DeleteFacilityImageResponseSchema: GenMessage<DeleteFacilityImageResponse>;
-
-/**
- * دریافت تصاویر فسیلیتی | Get images of a facility
- *
- * @generated from message reservation.GetFacilityImagesRequest
- */
-export declare type GetFacilityImagesRequest = Message<"reservation.GetFacilityImagesRequest"> & {
-  /**
-   * شناسه فسیلیتی | Facility ID
-   *
-   * @generated from field: string facility_id = 1;
-   */
-  facilityId: string;
-};
-
-/**
- * Describes the message reservation.GetFacilityImagesRequest.
- * Use `create(GetFacilityImagesRequestSchema)` to create a new message.
- */
-export declare const GetFacilityImagesRequestSchema: GenMessage<GetFacilityImagesRequest>;
-
-/**
- * @generated from message reservation.GetFacilityImagesResponse
- */
-export declare type GetFacilityImagesResponse = Message<"reservation.GetFacilityImagesResponse"> & {
-  /**
-   * لیست تصاویر | List of images
-   *
-   * @generated from field: repeated reservation.FacilityImage images = 1;
-   */
-  images: FacilityImage[];
-};
-
-/**
- * Describes the message reservation.GetFacilityImagesResponse.
- * Use `create(GetFacilityImagesResponseSchema)` to create a new message.
- */
-export declare const GetFacilityImagesResponseSchema: GenMessage<GetFacilityImagesResponse>;
+export declare const DeleteReservationResponseSchema: GenMessage<DeleteReservationResponse>;
 
 /**
  * ========== DOT ==========
@@ -3233,7 +2583,7 @@ export declare type GetProviderServicesWithUsersRequest = Message<"reservation.G
   /**
    * @generated from field: users.Pagination pagination = 3;
    */
-  pagination?: Pagination;
+  pagination?: Pagination$1;
 };
 
 /**
@@ -3290,24 +2640,111 @@ export enum ReservationStatus {
   CONFIRMED = 1,
 
   /**
-   * لغو شده | Cancelled
-   *
-   * @generated from enum value: CANCELLED = 2;
-   */
-  CANCELLED = 2,
-
-  /**
    * انجام شده | Completed
    *
-   * @generated from enum value: COMPLETED = 3;
+   * @generated from enum value: COMPLETED = 2;
    */
-  COMPLETED = 3,
+  COMPLETED = 2,
+
+  /**
+   * لغو توسط کاربر | Cancelled by user
+   *
+   * @generated from enum value: CANCELLED_BY_USER = 3;
+   */
+  CANCELLED_BY_USER = 3,
+
+  /**
+   * لغو توسط پذیرش | Cancelled by reception
+   *
+   * @generated from enum value: CANCELLED_BY_RECEPTION = 4;
+   */
+  CANCELLED_BY_RECEPTION = 4,
+
+  /**
+   * لغو توسط سرویس‌دهنده | Cancelled by provider
+   *
+   * @generated from enum value: CANCELLED_BY_PROVIDER = 5;
+   */
+  CANCELLED_BY_PROVIDER = 5,
 }
 
 /**
  * Describes the enum reservation.ReservationStatus.
  */
 export declare const ReservationStatusSchema: GenEnum<ReservationStatus>;
+
+/**
+ * 
+ *
+ * @generated from enum reservation.ReservationSource
+ */
+export enum ReservationSource {
+  /**
+   * ثبت توسط کاربر
+   *
+   * @generated from enum value: RESERVATION_SOURCE_ONLINE = 0;
+   */
+  ONLINE = 0,
+
+  /**
+   * ثبت توسط ریسپشن
+   *
+   * @generated from enum value: RESERVATION_SOURCE_RECEPTION = 1;
+   */
+  RECEPTION = 1,
+}
+
+/**
+ * Describes the enum reservation.ReservationSource.
+ */
+export declare const ReservationSourceSchema: GenEnum<ReservationSource>;
+
+/**
+ * وضعیت پرداخت | Payment status
+ *
+ * @generated from enum reservation.PaymentStatus
+ */
+export enum PaymentStatus {
+  /**
+   * پرداخت انجام نشده یا در انتظار
+   *
+   * @generated from enum value: PAYMENT_PENDING = 0;
+   */
+  PAYMENT_PENDING = 0,
+
+  /**
+   * پرداخت بخشی از مبلغ
+   *
+   * @generated from enum value: PAYMENT_PARTIAL = 1;
+   */
+  PAYMENT_PARTIAL = 1,
+
+  /**
+   * پرداخت کامل
+   *
+   * @generated from enum value: PAYMENT_COMPLETED = 2;
+   */
+  PAYMENT_COMPLETED = 2,
+
+  /**
+   * بازپرداخت‌شده
+   *
+   * @generated from enum value: PAYMENT_REFUNDED = 3;
+   */
+  PAYMENT_REFUNDED = 3,
+
+  /**
+   * پرداخت ناموفق
+   *
+   * @generated from enum value: PAYMENT_FAILED = 4;
+   */
+  PAYMENT_FAILED = 4,
+}
+
+/**
+ * Describes the enum reservation.PaymentStatus.
+ */
+export declare const PaymentStatusSchema: GenEnum<PaymentStatus>;
 
 /**
  * @generated from enum reservation.SlotSource
@@ -4429,7 +3866,7 @@ export declare const ReservationService: GenService<{
     output: typeof RemoveTimeSlotsResponseSchema;
   },
   /**
-   * ثبت یک رزرو جدید | Create a new reservation
+   * 🔹  رزرو | Reservation     
    *
    * @generated from rpc reservation.ReservationService.CreateReservation
    */
@@ -4439,76 +3876,14 @@ export declare const ReservationService: GenService<{
     output: typeof CreateReservationResponseSchema;
   },
   /**
-   * لغو رزرو ثبت‌شده | Cancel an existing reservation
-   *
-   * @generated from rpc reservation.ReservationService.CancelReservation
-   */
-  cancelReservation: {
-    methodKind: "unary";
-    input: typeof CancelReservationRequestSchema;
-    output: typeof CancelReservationResponseSchema;
-  },
-  /**
-   * بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
-   *
    * @generated from rpc reservation.ReservationService.UpdateReservationStatus
    */
   updateReservationStatus: {
     methodKind: "unary";
-    input: typeof UpdateReservationStatusRequestSchema;
-    output: typeof UpdateReservationStatusResponseSchema;
+    input: typeof UpdateReservationRequestSchema;
+    output: typeof UpdateReservationResponseSchema;
   },
   /**
-   * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
-   */
-  getProviderServicesWithUsers: {
-    methodKind: "unary";
-    input: typeof GetProviderServicesWithUsersRequestSchema;
-    output: typeof GetProviderServicesWithUsersResponseSchema;
-  },
-  /**
-   * افزودن تصویر به فسیلیتی | Add an image to a facility
-   *
-   * @generated from rpc reservation.ReservationService.AddFacilityImage
-   */
-  addFacilityImage: {
-    methodKind: "unary";
-    input: typeof FacilityImageSchema;
-    output: typeof FacilityImageSchema;
-  },
-  /**
-   * حذف تصویر از فسیلیتی | Delete an image from a facility
-   *
-   * @generated from rpc reservation.ReservationService.DeleteFacilityImage
-   */
-  deleteFacilityImage: {
-    methodKind: "unary";
-    input: typeof DeleteFacilityImageRequestSchema;
-    output: typeof DeleteFacilityImageResponseSchema;
-  },
-  /**
-   * دریافت تصاویر فسیلیتی | Get images of a facility
-   *
-   * @generated from rpc reservation.ReservationService.GetFacilityImages
-   */
-  getFacilityImages: {
-    methodKind: "unary";
-    input: typeof GetFacilityImagesRequestSchema;
-    output: typeof GetFacilityImagesResponseSchema;
-  },
-  /**
-   * ثبت وضعیت حضور یا عدم حضور کاربر | Mark attendance status for reservation
-   *
-   * @generated from rpc reservation.ReservationService.MarkAttendance
-   */
-  markAttendance: {
-    methodKind: "unary";
-    input: typeof MarkAttendanceRequestSchema;
-    output: typeof MarkAttendanceResponseSchema;
-  },
-  /**
-   * دریافت لیست رزروهای کاربر | List user reservations
-   *
    * @generated from rpc reservation.ReservationService.ListReservations
    */
   listReservations: {
@@ -4517,184 +3892,20 @@ export declare const ReservationService: GenService<{
     output: typeof ListReservationsResponseSchema;
   },
   /**
-   * دریافت تایم‌اسلات‌های آزاد برای رزرو | List available time slots
-   *
-   * @generated from rpc reservation.ReservationService.ListAvailableTimeSlots
+   * @generated from rpc reservation.ReservationService.DeleteReservation
    */
-  listAvailableTimeSlots: {
+  deleteReservation: {
     methodKind: "unary";
-    input: typeof ListAvailableTimeSlotsRequestSchema;
-    output: typeof ListAvailableTimeSlotsResponseSchema;
+    input: typeof DeleteReservationRequestSchema;
+    output: typeof DeleteReservationResponseSchema;
   },
   /**
-   * ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider
-   *
-   * @generated from rpc reservation.ReservationService.CreateProviderUnavailability
+   * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
    */
-  createProviderUnavailability: {
+  getProviderServicesWithUsers: {
     methodKind: "unary";
-    input: typeof CreateProviderUnavailabilityRequestSchema;
-    output: typeof CreateProviderUnavailabilityResponseSchema;
-  },
-  /**
-   * دریافت لیست بازه‌های غیبت ارائه‌دهنده | List unavailability periods of a provider
-   *
-   * @generated from rpc reservation.ReservationService.ListProviderUnavailability
-   */
-  listProviderUnavailability: {
-    methodKind: "unary";
-    input: typeof ListProviderUnavailabilityRequestSchema;
-    output: typeof ListProviderUnavailabilityResponseSchema;
-  },
-  /**
-   * حذف بازه‌ی غیبت ارائه‌دهنده | Delete an unavailability period of a provider
-   *
-   * @generated from rpc reservation.ReservationService.DeleteProviderUnavailability
-   */
-  deleteProviderUnavailability: {
-    methodKind: "unary";
-    input: typeof DeleteProviderUnavailabilityRequestSchema;
-    output: typeof DeleteProviderUnavailabilityResponseSchema;
-  },
-  /**
-   * ایجاد نوع اتاق | Create room type
-   *
-   * @generated from rpc reservation.ReservationService.CreateRoomType
-   */
-  createRoomType: {
-    methodKind: "unary";
-    input: typeof CreateRoomTypeRequestSchema;
-    output: typeof CreateRoomTypeResponseSchema;
-  },
-  /**
-   * لیست نوع اتاق‌های یک هتل | List room types for a hotel
-   *
-   * @generated from rpc reservation.ReservationService.ListRoomTypes
-   */
-  listRoomTypes: {
-    methodKind: "unary";
-    input: typeof ListRoomTypesRequestSchema;
-    output: typeof ListRoomTypesResponseSchema;
-  },
-  /**
-   * حذف نوع اتاق | Delete room type
-   *
-   * @generated from rpc reservation.ReservationService.DeleteRoomType
-   */
-  deleteRoomType: {
-    methodKind: "unary";
-    input: typeof DeleteRoomTypeRequestSchema;
-    output: typeof DeleteRoomTypeResponseSchema;
-  },
-  /**
-   * ایجاد اتاق جدید | Create a room
-   *
-   * @generated from rpc reservation.ReservationService.CreateRoom
-   */
-  createRoom: {
-    methodKind: "unary";
-    input: typeof CreateRoomRequestSchema;
-    output: typeof CreateRoomResponseSchema;
-  },
-  /**
-   * لیست اتاق‌های یک هتل | List rooms of a hotel
-   *
-   * @generated from rpc reservation.ReservationService.ListRooms
-   */
-  listRooms: {
-    methodKind: "unary";
-    input: typeof ListRoomsRequestSchema;
-    output: typeof ListRoomsResponseSchema;
-  },
-  /**
-   * حذف اتاق | Delete a room
-   *
-   * @generated from rpc reservation.ReservationService.DeleteRoom
-   */
-  deleteRoom: {
-    methodKind: "unary";
-    input: typeof DeleteRoomRequestSchema;
-    output: typeof DeleteRoomResponseSchema;
-  },
-  /**
-   * افزودن تصویر به اتاق | Add image to room
-   *
-   * @generated from rpc reservation.ReservationService.AddRoomImage
-   */
-  addRoomImage: {
-    methodKind: "unary";
-    input: typeof AddRoomImageRequestSchema;
-    output: typeof AddRoomImageResponseSchema;
-  },
-  /**
-   * دریافت تصاویر یک اتاق | Get images of a room
-   *
-   * @generated from rpc reservation.ReservationService.GetRoomImages
-   */
-  getRoomImages: {
-    methodKind: "unary";
-    input: typeof GetRoomImagesRequestSchema;
-    output: typeof GetRoomImagesResponseSchema;
-  },
-  /**
-   * حذف تصویر از اتاق | Delete room image
-   *
-   * @generated from rpc reservation.ReservationService.DeleteRoomImage
-   */
-  deleteRoomImage: {
-    methodKind: "unary";
-    input: typeof DeleteRoomImageRequestSchema;
-    output: typeof DeleteRoomImageResponseSchema;
-  },
-  /**
-   * بررسی در دسترس بودن اتاق‌ها | Check room availability
-   *
-   * @generated from rpc reservation.ReservationService.CheckRoomAvailability
-   */
-  checkRoomAvailability: {
-    methodKind: "unary";
-    input: typeof CheckRoomAvailabilityRequestSchema;
-    output: typeof CheckRoomAvailabilityResponseSchema;
-  },
-  /**
-   * لیست شب‌هایی که رزرو شده‌اند | List reserved nights for room/service
-   *
-   * @generated from rpc reservation.ReservationService.ListRoomAvailability
-   */
-  listRoomAvailability: {
-    methodKind: "unary";
-    input: typeof ListRoomAvailabilityRequestSchema;
-    output: typeof ListRoomAvailabilityResponseSchema;
-  },
-  /**
-   * تعریف زمان‌های عدم دسترسی اتاق | Define room/service unavailability
-   *
-   * @generated from rpc reservation.ReservationService.CreateServiceUnavailability
-   */
-  createServiceUnavailability: {
-    methodKind: "unary";
-    input: typeof CreateServiceUnavailabilityRequestSchema;
-    output: typeof CreateServiceUnavailabilityResponseSchema;
-  },
-  /**
-   * دریافت لیست زمان‌های عدم دسترسی اتاق | List service unavailability periods
-   *
-   * @generated from rpc reservation.ReservationService.ListServiceUnavailability
-   */
-  listServiceUnavailability: {
-    methodKind: "unary";
-    input: typeof ListServiceUnavailabilityRequestSchema;
-    output: typeof ListServiceUnavailabilityResponseSchema;
-  },
-  /**
-   * حذف زمان عدم دسترسی | Delete service unavailability
-   *
-   * @generated from rpc reservation.ReservationService.DeleteServiceUnavailability
-   */
-  deleteServiceUnavailability: {
-    methodKind: "unary";
-    input: typeof DeleteServiceUnavailabilityRequestSchema;
-    output: typeof DeleteServiceUnavailabilityResponseSchema;
+    input: typeof GetProviderServicesWithUsersRequestSchema;
+    output: typeof GetProviderServicesWithUsersResponseSchema;
   },
 }>;
 

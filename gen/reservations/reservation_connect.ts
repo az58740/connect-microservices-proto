@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AddRoomImageRequest, AddRoomImageResponse, AssignServiceToProviderRequest, AssignServiceToProviderResponse, CancelReservationRequest, CancelReservationResponse, CheckRoomAvailabilityRequest, CheckRoomAvailabilityResponse, CreateFacilityRequest, CreateFacilityResponse, CreateProviderUnavailabilityRequest, CreateProviderUnavailabilityResponse, CreateReservationRequest, CreateReservationResponse, CreateRoomRequest, CreateRoomResponse, CreateRoomTypeRequest, CreateRoomTypeResponse, CreateServiceRequest, CreateServiceResponse, CreateServiceUnavailabilityRequest, CreateServiceUnavailabilityResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteFacilityImageRequest, DeleteFacilityImageResponse, DeleteProviderUnavailabilityRequest, DeleteProviderUnavailabilityResponse, DeleteRoomImageRequest, DeleteRoomImageResponse, DeleteRoomRequest, DeleteRoomResponse, DeleteRoomTypeRequest, DeleteRoomTypeResponse, DeleteServiceUnavailabilityRequest, DeleteServiceUnavailabilityResponse, FacilityImage, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetFacilityImagesRequest, GetFacilityImagesResponse, GetProviderServicesListRequest, GetProviderServicesListResponse, GetProviderServicesWithUsersRequest, GetProviderServicesWithUsersResponse, GetRoomImagesRequest, GetRoomImagesResponse, GetTimeSlotsListRequest, GetTimeSlotsListResponse, GetWeeklyScheduleListRequest, GetWeeklyScheduleListResponse, ListAvailableTimeSlotsRequest, ListAvailableTimeSlotsResponse, ListFacilitiesRequest, ListFacilitiesResponse, ListProviderUnavailabilityRequest, ListProviderUnavailabilityResponse, ListReservationsRequest, ListReservationsResponse, ListRoomAvailabilityRequest, ListRoomAvailabilityResponse, ListRoomsRequest, ListRoomsResponse, ListRoomTypesRequest, ListRoomTypesResponse, ListServicesRequest, ListServicesResponse, ListServiceUnavailabilityRequest, ListServiceUnavailabilityResponse, MarkAttendanceRequest, MarkAttendanceResponse, RemoveServiceFromProviderRequest, RemoveServiceFromProviderResponse, RemoveTimeSlotsRequest, RemoveTimeSlotsResponse, RemoveWeeklyScheduleRequest, RemoveWeeklyScheduleResponse, UpdateFacilityRequest, UpdateFacilityResponse, UpdateProviderServiceRequest, UpdateProviderServiceResponse, UpdateReservationStatusRequest, UpdateReservationStatusResponse, UpdateServiceRequest, UpdateServiceResponse, UpdateTimeSlotRequest, UpdateTimeSlotResponse, UpdateWeeklyScheduleRequest, UpdateWeeklyScheduleResponse } from "./reservation_pb.js";
+import { AssignServiceToProviderRequest, AssignServiceToProviderResponse, CreateFacilityRequest, CreateFacilityResponse, CreateReservationRequest, CreateReservationResponse, CreateServiceRequest, CreateServiceResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteReservationRequest, DeleteReservationResponse, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetProviderServicesListRequest, GetProviderServicesListResponse, GetProviderServicesWithUsersRequest, GetProviderServicesWithUsersResponse, GetTimeSlotsListRequest, GetTimeSlotsListResponse, GetWeeklyScheduleListRequest, GetWeeklyScheduleListResponse, ListFacilitiesRequest, ListFacilitiesResponse, ListReservationsRequest, ListReservationsResponse, ListServicesRequest, ListServicesResponse, RemoveServiceFromProviderRequest, RemoveServiceFromProviderResponse, RemoveTimeSlotsRequest, RemoveTimeSlotsResponse, RemoveWeeklyScheduleRequest, RemoveWeeklyScheduleResponse, UpdateFacilityRequest, UpdateFacilityResponse, UpdateProviderServiceRequest, UpdateProviderServiceResponse, UpdateReservationRequest, UpdateReservationResponse, UpdateServiceRequest, UpdateServiceResponse, UpdateTimeSlotRequest, UpdateTimeSlotResponse, UpdateWeeklyScheduleRequest, UpdateWeeklyScheduleResponse } from "./reservation_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -205,7 +205,7 @@ export const ReservationService = {
       kind: MethodKind.Unary,
     },
     /**
-     * ثبت یک رزرو جدید | Create a new reservation
+     * 🔹  رزرو | Reservation     
      *
      * @generated from rpc reservation.ReservationService.CreateReservation
      */
@@ -216,83 +216,15 @@ export const ReservationService = {
       kind: MethodKind.Unary,
     },
     /**
-     * لغو رزرو ثبت‌شده | Cancel an existing reservation
-     *
-     * @generated from rpc reservation.ReservationService.CancelReservation
-     */
-    cancelReservation: {
-      name: "CancelReservation",
-      I: CancelReservationRequest,
-      O: CancelReservationResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * بروزرسانی وضعیت رزرو (تأیید، لغو، انجام‌شده) | Update reservation status
-     *
      * @generated from rpc reservation.ReservationService.UpdateReservationStatus
      */
     updateReservationStatus: {
       name: "UpdateReservationStatus",
-      I: UpdateReservationStatusRequest,
-      O: UpdateReservationStatusResponse,
+      I: UpdateReservationRequest,
+      O: UpdateReservationResponse,
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
-     */
-    getProviderServicesWithUsers: {
-      name: "GetProviderServicesWithUsers",
-      I: GetProviderServicesWithUsersRequest,
-      O: GetProviderServicesWithUsersResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * افزودن تصویر به فسیلیتی | Add an image to a facility
-     *
-     * @generated from rpc reservation.ReservationService.AddFacilityImage
-     */
-    addFacilityImage: {
-      name: "AddFacilityImage",
-      I: FacilityImage,
-      O: FacilityImage,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * حذف تصویر از فسیلیتی | Delete an image from a facility
-     *
-     * @generated from rpc reservation.ReservationService.DeleteFacilityImage
-     */
-    deleteFacilityImage: {
-      name: "DeleteFacilityImage",
-      I: DeleteFacilityImageRequest,
-      O: DeleteFacilityImageResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * دریافت تصاویر فسیلیتی | Get images of a facility
-     *
-     * @generated from rpc reservation.ReservationService.GetFacilityImages
-     */
-    getFacilityImages: {
-      name: "GetFacilityImages",
-      I: GetFacilityImagesRequest,
-      O: GetFacilityImagesResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * ثبت وضعیت حضور یا عدم حضور کاربر | Mark attendance status for reservation
-     *
-     * @generated from rpc reservation.ReservationService.MarkAttendance
-     */
-    markAttendance: {
-      name: "MarkAttendance",
-      I: MarkAttendanceRequest,
-      O: MarkAttendanceResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * دریافت لیست رزروهای کاربر | List user reservations
-     *
      * @generated from rpc reservation.ReservationService.ListReservations
      */
     listReservations: {
@@ -302,201 +234,21 @@ export const ReservationService = {
       kind: MethodKind.Unary,
     },
     /**
-     * دریافت تایم‌اسلات‌های آزاد برای رزرو | List available time slots
-     *
-     * @generated from rpc reservation.ReservationService.ListAvailableTimeSlots
+     * @generated from rpc reservation.ReservationService.DeleteReservation
      */
-    listAvailableTimeSlots: {
-      name: "ListAvailableTimeSlots",
-      I: ListAvailableTimeSlotsRequest,
-      O: ListAvailableTimeSlotsResponse,
+    deleteReservation: {
+      name: "DeleteReservation",
+      I: DeleteReservationRequest,
+      O: DeleteReservationResponse,
       kind: MethodKind.Unary,
     },
     /**
-     * ایجاد بازه‌ی غیبت برای ارائه‌دهنده | Create unavailability period for a provider
-     *
-     * @generated from rpc reservation.ReservationService.CreateProviderUnavailability
+     * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
      */
-    createProviderUnavailability: {
-      name: "CreateProviderUnavailability",
-      I: CreateProviderUnavailabilityRequest,
-      O: CreateProviderUnavailabilityResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * دریافت لیست بازه‌های غیبت ارائه‌دهنده | List unavailability periods of a provider
-     *
-     * @generated from rpc reservation.ReservationService.ListProviderUnavailability
-     */
-    listProviderUnavailability: {
-      name: "ListProviderUnavailability",
-      I: ListProviderUnavailabilityRequest,
-      O: ListProviderUnavailabilityResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * حذف بازه‌ی غیبت ارائه‌دهنده | Delete an unavailability period of a provider
-     *
-     * @generated from rpc reservation.ReservationService.DeleteProviderUnavailability
-     */
-    deleteProviderUnavailability: {
-      name: "DeleteProviderUnavailability",
-      I: DeleteProviderUnavailabilityRequest,
-      O: DeleteProviderUnavailabilityResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * ایجاد نوع اتاق | Create room type
-     *
-     * @generated from rpc reservation.ReservationService.CreateRoomType
-     */
-    createRoomType: {
-      name: "CreateRoomType",
-      I: CreateRoomTypeRequest,
-      O: CreateRoomTypeResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * لیست نوع اتاق‌های یک هتل | List room types for a hotel
-     *
-     * @generated from rpc reservation.ReservationService.ListRoomTypes
-     */
-    listRoomTypes: {
-      name: "ListRoomTypes",
-      I: ListRoomTypesRequest,
-      O: ListRoomTypesResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * حذف نوع اتاق | Delete room type
-     *
-     * @generated from rpc reservation.ReservationService.DeleteRoomType
-     */
-    deleteRoomType: {
-      name: "DeleteRoomType",
-      I: DeleteRoomTypeRequest,
-      O: DeleteRoomTypeResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * ایجاد اتاق جدید | Create a room
-     *
-     * @generated from rpc reservation.ReservationService.CreateRoom
-     */
-    createRoom: {
-      name: "CreateRoom",
-      I: CreateRoomRequest,
-      O: CreateRoomResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * لیست اتاق‌های یک هتل | List rooms of a hotel
-     *
-     * @generated from rpc reservation.ReservationService.ListRooms
-     */
-    listRooms: {
-      name: "ListRooms",
-      I: ListRoomsRequest,
-      O: ListRoomsResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * حذف اتاق | Delete a room
-     *
-     * @generated from rpc reservation.ReservationService.DeleteRoom
-     */
-    deleteRoom: {
-      name: "DeleteRoom",
-      I: DeleteRoomRequest,
-      O: DeleteRoomResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * افزودن تصویر به اتاق | Add image to room
-     *
-     * @generated from rpc reservation.ReservationService.AddRoomImage
-     */
-    addRoomImage: {
-      name: "AddRoomImage",
-      I: AddRoomImageRequest,
-      O: AddRoomImageResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * دریافت تصاویر یک اتاق | Get images of a room
-     *
-     * @generated from rpc reservation.ReservationService.GetRoomImages
-     */
-    getRoomImages: {
-      name: "GetRoomImages",
-      I: GetRoomImagesRequest,
-      O: GetRoomImagesResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * حذف تصویر از اتاق | Delete room image
-     *
-     * @generated from rpc reservation.ReservationService.DeleteRoomImage
-     */
-    deleteRoomImage: {
-      name: "DeleteRoomImage",
-      I: DeleteRoomImageRequest,
-      O: DeleteRoomImageResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * بررسی در دسترس بودن اتاق‌ها | Check room availability
-     *
-     * @generated from rpc reservation.ReservationService.CheckRoomAvailability
-     */
-    checkRoomAvailability: {
-      name: "CheckRoomAvailability",
-      I: CheckRoomAvailabilityRequest,
-      O: CheckRoomAvailabilityResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * لیست شب‌هایی که رزرو شده‌اند | List reserved nights for room/service
-     *
-     * @generated from rpc reservation.ReservationService.ListRoomAvailability
-     */
-    listRoomAvailability: {
-      name: "ListRoomAvailability",
-      I: ListRoomAvailabilityRequest,
-      O: ListRoomAvailabilityResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * تعریف زمان‌های عدم دسترسی اتاق | Define room/service unavailability
-     *
-     * @generated from rpc reservation.ReservationService.CreateServiceUnavailability
-     */
-    createServiceUnavailability: {
-      name: "CreateServiceUnavailability",
-      I: CreateServiceUnavailabilityRequest,
-      O: CreateServiceUnavailabilityResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * دریافت لیست زمان‌های عدم دسترسی اتاق | List service unavailability periods
-     *
-     * @generated from rpc reservation.ReservationService.ListServiceUnavailability
-     */
-    listServiceUnavailability: {
-      name: "ListServiceUnavailability",
-      I: ListServiceUnavailabilityRequest,
-      O: ListServiceUnavailabilityResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * حذف زمان عدم دسترسی | Delete service unavailability
-     *
-     * @generated from rpc reservation.ReservationService.DeleteServiceUnavailability
-     */
-    deleteServiceUnavailability: {
-      name: "DeleteServiceUnavailability",
-      I: DeleteServiceUnavailabilityRequest,
-      O: DeleteServiceUnavailabilityResponse,
+    getProviderServicesWithUsers: {
+      name: "GetProviderServicesWithUsers",
+      I: GetProviderServicesWithUsersRequest,
+      O: GetProviderServicesWithUsersResponse,
       kind: MethodKind.Unary,
     },
   }
