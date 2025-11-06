@@ -351,7 +351,7 @@ message Reservation {
   // نمایش
   string user_name = 11;
   string provider_user_name = 12;
-  string facility_name = 13;
+  LocalizedString facility_name = 13;
   google.protobuf.Timestamp created_at = 14;
   google.protobuf.Timestamp updated_at = 15;
   

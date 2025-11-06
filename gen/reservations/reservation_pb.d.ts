@@ -625,9 +625,9 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
   providerUserName: string;
 
   /**
-   * @generated from field: string facility_name = 13;
+   * @generated from field: reservation.LocalizedString facility_name = 13;
    */
-  facilityName: string;
+  facilityName?: LocalizedString;
 
   /**
    * @generated from field: google.protobuf.Timestamp created_at = 14;
