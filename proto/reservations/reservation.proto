@@ -327,9 +327,10 @@ message TimeSlot {
 // سرویس انتخاب‌شده در رزرو
 message ReservationServiceItem {
   string service_id = 1;     // شناسه سرویس
-  LocalizedString name = 2; // نام سرویس مانند "کوتاهی مو" یا "ویزیت عمومی" | Service name
-  google.type.Money booked_price_cents = 3; // مبلغ سرویس در زمان رزرو
-  int32 quantity = 4;        // تعداد
+  string reservation_id=2;   // شناسه رزرواسیون
+  LocalizedString service_name = 3; // نام سرویس مانند "کوتاهی مو" یا "ویزیت عمومی" | Service name
+  google.type.Money booked_price = 4; // مبلغ سرویس در زمان رزرو
+  int32 quantity = 5;        // تعداد
 }
 
 // رزرو کامل
@@ -353,6 +354,7 @@ message Reservation {
   string facility_name = 13;
   google.protobuf.Timestamp created_at = 14;
   google.protobuf.Timestamp updated_at = 15;
+  
 
   google.type.Money total_amount = 19;
 

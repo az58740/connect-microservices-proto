@@ -522,23 +522,30 @@ export declare type ReservationServiceItem = Message<"reservation.ReservationSer
   serviceId: string;
 
   /**
+   * شناسه رزرواسیون
+   *
+   * @generated from field: string reservation_id = 2;
+   */
+  reservationId: string;
+
+  /**
    * نام سرویس مانند "کوتاهی مو" یا "ویزیت عمومی" | Service name
    *
-   * @generated from field: reservation.LocalizedString name = 2;
+   * @generated from field: reservation.LocalizedString service_name = 3;
    */
-  name?: LocalizedString;
+  serviceName?: LocalizedString;
 
   /**
    * مبلغ سرویس در زمان رزرو
    *
-   * @generated from field: google.type.Money booked_price_cents = 3;
+   * @generated from field: google.type.Money booked_price = 4;
    */
-  bookedPriceCents?: Money;
+  bookedPrice?: Money;
 
   /**
    * تعداد
    *
-   * @generated from field: int32 quantity = 4;
+   * @generated from field: int32 quantity = 5;
    */
   quantity: number;
 };
