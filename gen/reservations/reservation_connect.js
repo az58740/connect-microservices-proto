@@ -234,10 +234,10 @@ export const ReservationService = {
       kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc reservation.ReservationService.DeleteReservation
+     * @generated from rpc reservation.ReservationService.RemoveReservation
      */
-    deleteReservation: {
-      name: "DeleteReservation",
+    removeReservation: {
+      name: "RemoveReservation",
       I: DeleteReservationRequest,
       O: DeleteReservationResponse,
       kind: MethodKind.Unary,

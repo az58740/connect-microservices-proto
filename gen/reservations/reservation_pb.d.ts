@@ -581,8 +581,6 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
   timeSlotId: string;
 
   /**
-   * سرویس‌های انتخاب‌شده با قیمت فیکس‌شده
-   *
    * @generated from field: repeated reservation.ReservationServiceItem services = 6;
    */
   services: ReservationServiceItem[];
@@ -608,6 +606,8 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
   notes: string;
 
   /**
+   * نمایش
+   *
    * @generated from field: string user_name = 11;
    */
   userName: string;
@@ -633,11 +633,25 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
   updatedAt?: Timestamp;
 
   /**
-   * مبلغ کل رزرو در زمان ثبت
-   *
    * @generated from field: google.type.Money total_amount = 19;
    */
   totalAmount?: Money;
+
+  /**
+   * --- جدید: شروع و پایان رزرو ---
+   *
+   * زمان شروع رزرو
+   *
+   * @generated from field: google.protobuf.Timestamp start_time = 20;
+   */
+  startTime?: Timestamp;
+
+  /**
+   * زمان پایان رزرو
+   *
+   * @generated from field: google.protobuf.Timestamp end_time = 21;
+   */
+  endTime?: Timestamp;
 };
 
 /**
@@ -2164,6 +2178,7 @@ export declare const UpdateTimeSlotResponseSchema: GenMessage<UpdateTimeSlotResp
 /**
  * -------------------- Reservation Requests & Responses --------------------
  * ایجاد رزرو جدید | Create a new reservation
+ * ایجاد رزرو جدید | Create a new reservation
  *
  * @generated from message reservation.CreateReservationRequest
  */
@@ -2230,6 +2245,22 @@ export declare type CreateReservationRequest = Message<"reservation.CreateReserv
    * @generated from field: string notes = 9;
    */
   notes: string;
+
+  /**
+   * --- جدید: شروع و پایان رزرو ---
+   *
+   * زمان شروع رزرو
+   *
+   * @generated from field: google.protobuf.Timestamp start_time = 10;
+   */
+  startTime?: Timestamp;
+
+  /**
+   * زمان پایان رزرو
+   *
+   * @generated from field: google.protobuf.Timestamp end_time = 11;
+   */
+  endTime?: Timestamp;
 };
 
 /**
@@ -2262,7 +2293,7 @@ export declare type CreateReservationResponse = Message<"reservation.CreateReser
 export declare const CreateReservationResponseSchema: GenMessage<CreateReservationResponse>;
 
 /**
- * بروزرسانی رزرو | Update reservation (برای تأیید، لغو، تغییر وضعیت پرداخت و ...)
+ * بروزرسانی رزرو | Update reservation (برای تأیید، لغو، تغییر وضعیت پرداخت و بروزرسانی سرویس‌ها)
  *
  * @generated from message reservation.UpdateReservationRequest
  */
@@ -2275,25 +2306,55 @@ export declare type UpdateReservationRequest = Message<"reservation.UpdateReserv
   reservationId: string;
 
   /**
+   * سرویس‌دهنده | Provider user
+   *
+   * @generated from field: string provider_user_id = 2;
+   */
+  providerUserId: string;
+
+  /**
    * وضعیت جدید رزرو
    *
-   * @generated from field: reservation.ReservationStatus reservation_status = 2;
+   * @generated from field: reservation.ReservationStatus reservation_status = 3;
    */
   reservationStatus: ReservationStatus;
 
   /**
    * وضعیت پرداخت جدید
    *
-   * @generated from field: reservation.PaymentStatus payment_status = 3;
+   * @generated from field: reservation.PaymentStatus payment_status = 4;
    */
   paymentStatus: PaymentStatus;
 
   /**
    * توضیحات (مثلاً دلیل لغو)
    *
-   * @generated from field: string notes = 4;
+   * @generated from field: string notes = 5;
    */
   notes: string;
+
+  /**
+   * سرویس‌های جدید یا بروزشده رزرو
+   *
+   * @generated from field: repeated reservation.ReservationServiceItem services = 6;
+   */
+  services: ReservationServiceItem[];
+
+  /**
+   * --- جدید: شروع و پایان رزرو ---
+   *
+   * زمان شروع رزرو
+   *
+   * @generated from field: google.protobuf.Timestamp start_time = 7;
+   */
+  startTime?: Timestamp;
+
+  /**
+   * زمان پایان رزرو
+   *
+   * @generated from field: google.protobuf.Timestamp end_time = 8;
+   */
+  endTime?: Timestamp;
 };
 
 /**
@@ -3892,9 +3953,9 @@ export declare const ReservationService: GenService<{
     output: typeof ListReservationsResponseSchema;
   },
   /**
-   * @generated from rpc reservation.ReservationService.DeleteReservation
+   * @generated from rpc reservation.ReservationService.RemoveReservation
    */
-  deleteReservation: {
+  removeReservation: {
     methodKind: "unary";
     input: typeof DeleteReservationRequestSchema;
     output: typeof DeleteReservationResponseSchema;

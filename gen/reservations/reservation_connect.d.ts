@@ -234,10 +234,10 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
-     * @generated from rpc reservation.ReservationService.DeleteReservation
+     * @generated from rpc reservation.ReservationService.RemoveReservation
      */
-    readonly deleteReservation: {
-      readonly name: "DeleteReservation",
+    readonly removeReservation: {
+      readonly name: "RemoveReservation",
       readonly I: typeof DeleteReservationRequest,
       readonly O: typeof DeleteReservationResponse,
       readonly kind: MethodKind.Unary,
