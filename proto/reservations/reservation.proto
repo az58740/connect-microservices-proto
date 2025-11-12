@@ -231,6 +231,15 @@ enum Status {
   ACTIVE = 0;     // پیش‌فرض: فعال
   INACTIVE = 1;   // غیرفعال
 }
+// نوع مشتری | Customer type
+enum CustomerType {
+  CUSTOMER_REGULAR = 0;     // مشتری عادی | Regular customer
+  CUSTOMER_VIP = 1;         // مشتری ویژه | VIP customer
+  CUSTOMER_WALK_IN = 2;     // مشتری حضوری (بدون حساب کاربری) | Walk-in customer
+  CUSTOMER_STAFF_REL = 3;   // وابسته کارمند یا اعضای سالن | Staff-relative customer
+  CUSTOMER_CORPORATE = 4;   // مشتری سازمانی یا شرکتی | Corporate customer
+}
+
 // ========== ENTITIES ==========
 // رشته قابل ترجمه در چند زبان | Translatable string with multiple languages
 message LocalizedString {
@@ -363,8 +372,50 @@ message Reservation {
   google.protobuf.Timestamp end_time = 21;   // زمان پایان رزرو
 }
 
+message Customer {
+   string Id =1;
+    string OwnerUserId=2;      // صاحب مشتری = سالن
+ optional string   ProviderUserId =3;  // عضو سالن که مشتری ازش سرویس گرفته
+  optional string LinkedUserId =4;     // اگر مشتری خودش حساب دارد
+   string  Name =5;            
+   string Phone =6;          
+   optional string  Email =7;          
+ Status status =8;
+ CustomerType type=9;
 
+    google.protobuf.Timestamp CreatedAt =10; 
 
+}
+message CustomerFilter {
+  optional string Id =1;
+   optional string Name=2;
+   optional string OwnerUserId=3;      // صاحب مشتری = سالن
+ optional string   ProviderUserId =4;
+  optional string   FacilityId =5;
+ optional    string Phone =6; 
+ optional Status status =7; 
+ optional  CustomerType type=8;
+}
+message CreateCustomerRequest{
+  Customer customer=1;
+}
+message CreateCustomerResponse{
+  string customerId=1;
+  string message=2;
+}
+message UpdateCustomerRequest{
+  Customer customer=1;
+}
+message UpdateCustomerResponse{
+  Customer customer=1;
+  string message=2;
+}
+message ListCustomerRequest{
+  CustomerFilter filter=1;
+}
+message ListCustomerResponse{
+  repeated Customer customers=1;
+}
 
 
 
@@ -819,6 +870,11 @@ service ReservationService {
   rpc UpdateReservationStatus(UpdateReservationRequest) returns (UpdateReservationResponse);
   rpc ListReservations(ListReservationsRequest) returns (ListReservationsResponse);
    rpc RemoveReservation(DeleteReservationRequest) returns (DeleteReservationResponse);
+  // 🔹  Customer      
+  rpc CreateCustomer(CreateCustomerRequest) returns (CreateCustomerResponse);
+  rpc UpdateCustomer(UpdateCustomerRequest) returns (UpdateCustomerResponse);
+  rpc ListCustomer(ListCustomerRequest) returns (ListCustomerResponse);
+ 
 
 
   

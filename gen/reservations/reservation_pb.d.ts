@@ -668,6 +668,232 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
 export declare const ReservationSchema: GenMessage<Reservation>;
 
 /**
+ * @generated from message reservation.Customer
+ */
+export declare type Customer = Message<"reservation.Customer"> & {
+  /**
+   * @generated from field: string Id = 1;
+   */
+  Id: string;
+
+  /**
+   * صاحب مشتری = سالن
+   *
+   * @generated from field: string OwnerUserId = 2;
+   */
+  OwnerUserId: string;
+
+  /**
+   * عضو سالن که مشتری ازش سرویس گرفته
+   *
+   * @generated from field: optional string ProviderUserId = 3;
+   */
+  ProviderUserId?: string;
+
+  /**
+   * اگر مشتری خودش حساب دارد
+   *
+   * @generated from field: optional string LinkedUserId = 4;
+   */
+  LinkedUserId?: string;
+
+  /**
+   * @generated from field: string Name = 5;
+   */
+  Name: string;
+
+  /**
+   * @generated from field: string Phone = 6;
+   */
+  Phone: string;
+
+  /**
+   * @generated from field: optional string Email = 7;
+   */
+  Email?: string;
+
+  /**
+   * @generated from field: reservation.Status status = 8;
+   */
+  status: Status;
+
+  /**
+   * @generated from field: reservation.CustomerType type = 9;
+   */
+  type: CustomerType;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp CreatedAt = 10;
+   */
+  CreatedAt?: Timestamp;
+};
+
+/**
+ * Describes the message reservation.Customer.
+ * Use `create(CustomerSchema)` to create a new message.
+ */
+export declare const CustomerSchema: GenMessage<Customer>;
+
+/**
+ * @generated from message reservation.CustomerFilter
+ */
+export declare type CustomerFilter = Message<"reservation.CustomerFilter"> & {
+  /**
+   * @generated from field: optional string Id = 1;
+   */
+  Id?: string;
+
+  /**
+   * @generated from field: optional string Name = 2;
+   */
+  Name?: string;
+
+  /**
+   * صاحب مشتری = سالن
+   *
+   * @generated from field: optional string OwnerUserId = 3;
+   */
+  OwnerUserId?: string;
+
+  /**
+   * @generated from field: optional string ProviderUserId = 4;
+   */
+  ProviderUserId?: string;
+
+  /**
+   * @generated from field: optional string FacilityId = 5;
+   */
+  FacilityId?: string;
+
+  /**
+   * @generated from field: optional string Phone = 6;
+   */
+  Phone?: string;
+
+  /**
+   * @generated from field: optional reservation.Status status = 7;
+   */
+  status?: Status;
+
+  /**
+   * @generated from field: optional reservation.CustomerType type = 8;
+   */
+  type?: CustomerType;
+};
+
+/**
+ * Describes the message reservation.CustomerFilter.
+ * Use `create(CustomerFilterSchema)` to create a new message.
+ */
+export declare const CustomerFilterSchema: GenMessage<CustomerFilter>;
+
+/**
+ * @generated from message reservation.CreateCustomerRequest
+ */
+export declare type CreateCustomerRequest = Message<"reservation.CreateCustomerRequest"> & {
+  /**
+   * @generated from field: reservation.Customer customer = 1;
+   */
+  customer?: Customer;
+};
+
+/**
+ * Describes the message reservation.CreateCustomerRequest.
+ * Use `create(CreateCustomerRequestSchema)` to create a new message.
+ */
+export declare const CreateCustomerRequestSchema: GenMessage<CreateCustomerRequest>;
+
+/**
+ * @generated from message reservation.CreateCustomerResponse
+ */
+export declare type CreateCustomerResponse = Message<"reservation.CreateCustomerResponse"> & {
+  /**
+   * @generated from field: string customerId = 1;
+   */
+  customerId: string;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.CreateCustomerResponse.
+ * Use `create(CreateCustomerResponseSchema)` to create a new message.
+ */
+export declare const CreateCustomerResponseSchema: GenMessage<CreateCustomerResponse>;
+
+/**
+ * @generated from message reservation.UpdateCustomerRequest
+ */
+export declare type UpdateCustomerRequest = Message<"reservation.UpdateCustomerRequest"> & {
+  /**
+   * @generated from field: reservation.Customer customer = 1;
+   */
+  customer?: Customer;
+};
+
+/**
+ * Describes the message reservation.UpdateCustomerRequest.
+ * Use `create(UpdateCustomerRequestSchema)` to create a new message.
+ */
+export declare const UpdateCustomerRequestSchema: GenMessage<UpdateCustomerRequest>;
+
+/**
+ * @generated from message reservation.UpdateCustomerResponse
+ */
+export declare type UpdateCustomerResponse = Message<"reservation.UpdateCustomerResponse"> & {
+  /**
+   * @generated from field: reservation.Customer customer = 1;
+   */
+  customer?: Customer;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message reservation.UpdateCustomerResponse.
+ * Use `create(UpdateCustomerResponseSchema)` to create a new message.
+ */
+export declare const UpdateCustomerResponseSchema: GenMessage<UpdateCustomerResponse>;
+
+/**
+ * @generated from message reservation.ListCustomerRequest
+ */
+export declare type ListCustomerRequest = Message<"reservation.ListCustomerRequest"> & {
+  /**
+   * @generated from field: reservation.CustomerFilter filter = 1;
+   */
+  filter?: CustomerFilter;
+};
+
+/**
+ * Describes the message reservation.ListCustomerRequest.
+ * Use `create(ListCustomerRequestSchema)` to create a new message.
+ */
+export declare const ListCustomerRequestSchema: GenMessage<ListCustomerRequest>;
+
+/**
+ * @generated from message reservation.ListCustomerResponse
+ */
+export declare type ListCustomerResponse = Message<"reservation.ListCustomerResponse"> & {
+  /**
+   * @generated from field: repeated reservation.Customer customers = 1;
+   */
+  customers: Customer[];
+};
+
+/**
+ * Describes the message reservation.ListCustomerResponse.
+ * Use `create(ListCustomerResponseSchema)` to create a new message.
+ */
+export declare const ListCustomerResponseSchema: GenMessage<ListCustomerResponse>;
+
+/**
  * بازه‌های عدم دسترسی ارائه‌دهنده (برای کل روز یا ساعاتی خاص)
  * Periods when the provider is not available (full day or specific hours)
  *
@@ -3756,6 +3982,53 @@ export enum Status {
 export declare const StatusSchema: GenEnum<Status>;
 
 /**
+ * نوع مشتری | Customer type
+ *
+ * @generated from enum reservation.CustomerType
+ */
+export enum CustomerType {
+  /**
+   * مشتری عادی | Regular customer
+   *
+   * @generated from enum value: CUSTOMER_REGULAR = 0;
+   */
+  CUSTOMER_REGULAR = 0,
+
+  /**
+   * مشتری ویژه | VIP customer
+   *
+   * @generated from enum value: CUSTOMER_VIP = 1;
+   */
+  CUSTOMER_VIP = 1,
+
+  /**
+   * مشتری حضوری (بدون حساب کاربری) | Walk-in customer
+   *
+   * @generated from enum value: CUSTOMER_WALK_IN = 2;
+   */
+  CUSTOMER_WALK_IN = 2,
+
+  /**
+   * وابسته کارمند یا اعضای سالن | Staff-relative customer
+   *
+   * @generated from enum value: CUSTOMER_STAFF_REL = 3;
+   */
+  CUSTOMER_STAFF_REL = 3,
+
+  /**
+   * مشتری سازمانی یا شرکتی | Corporate customer
+   *
+   * @generated from enum value: CUSTOMER_CORPORATE = 4;
+   */
+  CUSTOMER_CORPORATE = 4,
+}
+
+/**
+ * Describes the enum reservation.CustomerType.
+ */
+export declare const CustomerTypeSchema: GenEnum<CustomerType>;
+
+/**
  * سرویس رزرو | Reservation Service
  *
  * @generated from service reservation.ReservationService
@@ -3966,6 +4239,32 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof DeleteReservationRequestSchema;
     output: typeof DeleteReservationResponseSchema;
+  },
+  /**
+   * 🔹  Customer      
+   *
+   * @generated from rpc reservation.ReservationService.CreateCustomer
+   */
+  createCustomer: {
+    methodKind: "unary";
+    input: typeof CreateCustomerRequestSchema;
+    output: typeof CreateCustomerResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.UpdateCustomer
+   */
+  updateCustomer: {
+    methodKind: "unary";
+    input: typeof UpdateCustomerRequestSchema;
+    output: typeof UpdateCustomerResponseSchema;
+  },
+  /**
+   * @generated from rpc reservation.ReservationService.ListCustomer
+   */
+  listCustomer: {
+    methodKind: "unary";
+    input: typeof ListCustomerRequestSchema;
+    output: typeof ListCustomerResponseSchema;
   },
   /**
    * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers

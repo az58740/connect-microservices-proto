@@ -99,6 +99,15 @@ const (
 	// ReservationServiceRemoveReservationProcedure is the fully-qualified name of the
 	// ReservationService's RemoveReservation RPC.
 	ReservationServiceRemoveReservationProcedure = "/reservation.ReservationService/RemoveReservation"
+	// ReservationServiceCreateCustomerProcedure is the fully-qualified name of the ReservationService's
+	// CreateCustomer RPC.
+	ReservationServiceCreateCustomerProcedure = "/reservation.ReservationService/CreateCustomer"
+	// ReservationServiceUpdateCustomerProcedure is the fully-qualified name of the ReservationService's
+	// UpdateCustomer RPC.
+	ReservationServiceUpdateCustomerProcedure = "/reservation.ReservationService/UpdateCustomer"
+	// ReservationServiceListCustomerProcedure is the fully-qualified name of the ReservationService's
+	// ListCustomer RPC.
+	ReservationServiceListCustomerProcedure = "/reservation.ReservationService/ListCustomer"
 	// ReservationServiceGetProviderServicesWithUsersProcedure is the fully-qualified name of the
 	// ReservationService's GetProviderServicesWithUsers RPC.
 	ReservationServiceGetProviderServicesWithUsersProcedure = "/reservation.ReservationService/GetProviderServicesWithUsers"
@@ -129,6 +138,9 @@ var (
 	reservationServiceUpdateReservationStatusMethodDescriptor      = reservationServiceServiceDescriptor.Methods().ByName("UpdateReservationStatus")
 	reservationServiceListReservationsMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("ListReservations")
 	reservationServiceRemoveReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("RemoveReservation")
+	reservationServiceCreateCustomerMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("CreateCustomer")
+	reservationServiceUpdateCustomerMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("UpdateCustomer")
+	reservationServiceListCustomerMethodDescriptor                 = reservationServiceServiceDescriptor.Methods().ByName("ListCustomer")
 	reservationServiceGetProviderServicesWithUsersMethodDescriptor = reservationServiceServiceDescriptor.Methods().ByName("GetProviderServicesWithUsers")
 )
 
@@ -173,6 +185,10 @@ type ReservationServiceClient interface {
 	UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationRequest]) (*connect.Response[reservations.UpdateReservationResponse], error)
 	ListReservations(context.Context, *connect.Request[reservations.ListReservationsRequest]) (*connect.Response[reservations.ListReservationsResponse], error)
 	RemoveReservation(context.Context, *connect.Request[reservations.DeleteReservationRequest]) (*connect.Response[reservations.DeleteReservationResponse], error)
+	// 🔹  Customer
+	CreateCustomer(context.Context, *connect.Request[reservations.CreateCustomerRequest]) (*connect.Response[reservations.CreateCustomerResponse], error)
+	UpdateCustomer(context.Context, *connect.Request[reservations.UpdateCustomerRequest]) (*connect.Response[reservations.UpdateCustomerResponse], error)
+	ListCustomer(context.Context, *connect.Request[reservations.ListCustomerRequest]) (*connect.Response[reservations.ListCustomerResponse], error)
 	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
 }
 
@@ -318,6 +334,24 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			connect.WithSchema(reservationServiceRemoveReservationMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		createCustomer: connect.NewClient[reservations.CreateCustomerRequest, reservations.CreateCustomerResponse](
+			httpClient,
+			baseURL+ReservationServiceCreateCustomerProcedure,
+			connect.WithSchema(reservationServiceCreateCustomerMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		updateCustomer: connect.NewClient[reservations.UpdateCustomerRequest, reservations.UpdateCustomerResponse](
+			httpClient,
+			baseURL+ReservationServiceUpdateCustomerProcedure,
+			connect.WithSchema(reservationServiceUpdateCustomerMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		listCustomer: connect.NewClient[reservations.ListCustomerRequest, reservations.ListCustomerResponse](
+			httpClient,
+			baseURL+ReservationServiceListCustomerProcedure,
+			connect.WithSchema(reservationServiceListCustomerMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		getProviderServicesWithUsers: connect.NewClient[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse](
 			httpClient,
 			baseURL+ReservationServiceGetProviderServicesWithUsersProcedure,
@@ -351,6 +385,9 @@ type reservationServiceClient struct {
 	updateReservationStatus      *connect.Client[reservations.UpdateReservationRequest, reservations.UpdateReservationResponse]
 	listReservations             *connect.Client[reservations.ListReservationsRequest, reservations.ListReservationsResponse]
 	removeReservation            *connect.Client[reservations.DeleteReservationRequest, reservations.DeleteReservationResponse]
+	createCustomer               *connect.Client[reservations.CreateCustomerRequest, reservations.CreateCustomerResponse]
+	updateCustomer               *connect.Client[reservations.UpdateCustomerRequest, reservations.UpdateCustomerResponse]
+	listCustomer                 *connect.Client[reservations.ListCustomerRequest, reservations.ListCustomerResponse]
 	getProviderServicesWithUsers *connect.Client[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse]
 }
 
@@ -464,6 +501,21 @@ func (c *reservationServiceClient) RemoveReservation(ctx context.Context, req *c
 	return c.removeReservation.CallUnary(ctx, req)
 }
 
+// CreateCustomer calls reservation.ReservationService.CreateCustomer.
+func (c *reservationServiceClient) CreateCustomer(ctx context.Context, req *connect.Request[reservations.CreateCustomerRequest]) (*connect.Response[reservations.CreateCustomerResponse], error) {
+	return c.createCustomer.CallUnary(ctx, req)
+}
+
+// UpdateCustomer calls reservation.ReservationService.UpdateCustomer.
+func (c *reservationServiceClient) UpdateCustomer(ctx context.Context, req *connect.Request[reservations.UpdateCustomerRequest]) (*connect.Response[reservations.UpdateCustomerResponse], error) {
+	return c.updateCustomer.CallUnary(ctx, req)
+}
+
+// ListCustomer calls reservation.ReservationService.ListCustomer.
+func (c *reservationServiceClient) ListCustomer(ctx context.Context, req *connect.Request[reservations.ListCustomerRequest]) (*connect.Response[reservations.ListCustomerResponse], error) {
+	return c.listCustomer.CallUnary(ctx, req)
+}
+
 // GetProviderServicesWithUsers calls reservation.ReservationService.GetProviderServicesWithUsers.
 func (c *reservationServiceClient) GetProviderServicesWithUsers(ctx context.Context, req *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error) {
 	return c.getProviderServicesWithUsers.CallUnary(ctx, req)
@@ -510,6 +562,10 @@ type ReservationServiceHandler interface {
 	UpdateReservationStatus(context.Context, *connect.Request[reservations.UpdateReservationRequest]) (*connect.Response[reservations.UpdateReservationResponse], error)
 	ListReservations(context.Context, *connect.Request[reservations.ListReservationsRequest]) (*connect.Response[reservations.ListReservationsResponse], error)
 	RemoveReservation(context.Context, *connect.Request[reservations.DeleteReservationRequest]) (*connect.Response[reservations.DeleteReservationResponse], error)
+	// 🔹  Customer
+	CreateCustomer(context.Context, *connect.Request[reservations.CreateCustomerRequest]) (*connect.Response[reservations.CreateCustomerResponse], error)
+	UpdateCustomer(context.Context, *connect.Request[reservations.UpdateCustomerRequest]) (*connect.Response[reservations.UpdateCustomerResponse], error)
+	ListCustomer(context.Context, *connect.Request[reservations.ListCustomerRequest]) (*connect.Response[reservations.ListCustomerResponse], error)
 	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
 }
 
@@ -651,6 +707,24 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		connect.WithSchema(reservationServiceRemoveReservationMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	reservationServiceCreateCustomerHandler := connect.NewUnaryHandler(
+		ReservationServiceCreateCustomerProcedure,
+		svc.CreateCustomer,
+		connect.WithSchema(reservationServiceCreateCustomerMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceUpdateCustomerHandler := connect.NewUnaryHandler(
+		ReservationServiceUpdateCustomerProcedure,
+		svc.UpdateCustomer,
+		connect.WithSchema(reservationServiceUpdateCustomerMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	reservationServiceListCustomerHandler := connect.NewUnaryHandler(
+		ReservationServiceListCustomerProcedure,
+		svc.ListCustomer,
+		connect.WithSchema(reservationServiceListCustomerMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	reservationServiceGetProviderServicesWithUsersHandler := connect.NewUnaryHandler(
 		ReservationServiceGetProviderServicesWithUsersProcedure,
 		svc.GetProviderServicesWithUsers,
@@ -703,6 +777,12 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 			reservationServiceListReservationsHandler.ServeHTTP(w, r)
 		case ReservationServiceRemoveReservationProcedure:
 			reservationServiceRemoveReservationHandler.ServeHTTP(w, r)
+		case ReservationServiceCreateCustomerProcedure:
+			reservationServiceCreateCustomerHandler.ServeHTTP(w, r)
+		case ReservationServiceUpdateCustomerProcedure:
+			reservationServiceUpdateCustomerHandler.ServeHTTP(w, r)
+		case ReservationServiceListCustomerProcedure:
+			reservationServiceListCustomerHandler.ServeHTTP(w, r)
 		case ReservationServiceGetProviderServicesWithUsersProcedure:
 			reservationServiceGetProviderServicesWithUsersHandler.ServeHTTP(w, r)
 		default:
@@ -800,6 +880,18 @@ func (UnimplementedReservationServiceHandler) ListReservations(context.Context, 
 
 func (UnimplementedReservationServiceHandler) RemoveReservation(context.Context, *connect.Request[reservations.DeleteReservationRequest]) (*connect.Response[reservations.DeleteReservationResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.RemoveReservation is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) CreateCustomer(context.Context, *connect.Request[reservations.CreateCustomerRequest]) (*connect.Response[reservations.CreateCustomerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.CreateCustomer is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) UpdateCustomer(context.Context, *connect.Request[reservations.UpdateCustomerRequest]) (*connect.Response[reservations.UpdateCustomerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.UpdateCustomer is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) ListCustomer(context.Context, *connect.Request[reservations.ListCustomerRequest]) (*connect.Response[reservations.ListCustomerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ListCustomer is not implemented"))
 }
 
 func (UnimplementedReservationServiceHandler) GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error) {

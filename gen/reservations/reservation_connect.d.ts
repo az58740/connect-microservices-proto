@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AssignServiceToProviderRequest, AssignServiceToProviderResponse, CreateFacilityRequest, CreateFacilityResponse, CreateReservationRequest, CreateReservationResponse, CreateServiceRequest, CreateServiceResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteReservationRequest, DeleteReservationResponse, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetProviderServicesListRequest, GetProviderServicesListResponse, GetProviderServicesWithUsersRequest, GetProviderServicesWithUsersResponse, GetTimeSlotsListRequest, GetTimeSlotsListResponse, GetWeeklyScheduleListRequest, GetWeeklyScheduleListResponse, ListFacilitiesRequest, ListFacilitiesResponse, ListReservationsRequest, ListReservationsResponse, ListServicesRequest, ListServicesResponse, RemoveServiceFromProviderRequest, RemoveServiceFromProviderResponse, RemoveTimeSlotsRequest, RemoveTimeSlotsResponse, RemoveWeeklyScheduleRequest, RemoveWeeklyScheduleResponse, UpdateFacilityRequest, UpdateFacilityResponse, UpdateProviderServiceRequest, UpdateProviderServiceResponse, UpdateReservationRequest, UpdateReservationResponse, UpdateServiceRequest, UpdateServiceResponse, UpdateTimeSlotRequest, UpdateTimeSlotResponse, UpdateWeeklyScheduleRequest, UpdateWeeklyScheduleResponse } from "./reservation_pb.js";
+import { AssignServiceToProviderRequest, AssignServiceToProviderResponse, CreateCustomerRequest, CreateCustomerResponse, CreateFacilityRequest, CreateFacilityResponse, CreateReservationRequest, CreateReservationResponse, CreateServiceRequest, CreateServiceResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteReservationRequest, DeleteReservationResponse, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetProviderServicesListRequest, GetProviderServicesListResponse, GetProviderServicesWithUsersRequest, GetProviderServicesWithUsersResponse, GetTimeSlotsListRequest, GetTimeSlotsListResponse, GetWeeklyScheduleListRequest, GetWeeklyScheduleListResponse, ListCustomerRequest, ListCustomerResponse, ListFacilitiesRequest, ListFacilitiesResponse, ListReservationsRequest, ListReservationsResponse, ListServicesRequest, ListServicesResponse, RemoveServiceFromProviderRequest, RemoveServiceFromProviderResponse, RemoveTimeSlotsRequest, RemoveTimeSlotsResponse, RemoveWeeklyScheduleRequest, RemoveWeeklyScheduleResponse, UpdateCustomerRequest, UpdateCustomerResponse, UpdateFacilityRequest, UpdateFacilityResponse, UpdateProviderServiceRequest, UpdateProviderServiceResponse, UpdateReservationRequest, UpdateReservationResponse, UpdateServiceRequest, UpdateServiceResponse, UpdateTimeSlotRequest, UpdateTimeSlotResponse, UpdateWeeklyScheduleRequest, UpdateWeeklyScheduleResponse } from "./reservation_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -240,6 +240,35 @@ export declare const ReservationService: {
       readonly name: "RemoveReservation",
       readonly I: typeof DeleteReservationRequest,
       readonly O: typeof DeleteReservationResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * 🔹  Customer      
+     *
+     * @generated from rpc reservation.ReservationService.CreateCustomer
+     */
+    readonly createCustomer: {
+      readonly name: "CreateCustomer",
+      readonly I: typeof CreateCustomerRequest,
+      readonly O: typeof CreateCustomerResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.UpdateCustomer
+     */
+    readonly updateCustomer: {
+      readonly name: "UpdateCustomer",
+      readonly I: typeof UpdateCustomerRequest,
+      readonly O: typeof UpdateCustomerResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc reservation.ReservationService.ListCustomer
+     */
+    readonly listCustomer: {
+      readonly name: "ListCustomer",
+      readonly I: typeof ListCustomerRequest,
+      readonly O: typeof ListCustomerResponse,
       readonly kind: MethodKind.Unary,
     },
     /**
