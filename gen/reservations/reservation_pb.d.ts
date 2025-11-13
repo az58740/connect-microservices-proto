@@ -779,6 +779,11 @@ export declare type CustomerFilter = Message<"reservation.CustomerFilter"> & {
    * @generated from field: optional reservation.CustomerType type = 8;
    */
   type?: CustomerType;
+
+  /**
+   * @generated from field: optional string LinkedUserId = 9;
+   */
+  LinkedUserId?: string;
 };
 
 /**

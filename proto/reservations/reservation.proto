@@ -395,6 +395,7 @@ message CustomerFilter {
  optional    string Phone =6; 
  optional Status status =7; 
  optional  CustomerType type=8;
+  optional string LinkedUserId =9;  
 }
 message CreateCustomerRequest{
   Customer customer=1;
