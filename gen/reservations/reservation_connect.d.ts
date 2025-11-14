@@ -272,6 +272,8 @@ export declare const ReservationService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * DOT
+     *
      * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
      */
     readonly getProviderServicesWithUsers: {

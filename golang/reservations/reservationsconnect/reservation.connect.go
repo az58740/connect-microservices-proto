@@ -189,6 +189,7 @@ type ReservationServiceClient interface {
 	CreateCustomer(context.Context, *connect.Request[reservations.CreateCustomerRequest]) (*connect.Response[reservations.CreateCustomerResponse], error)
 	UpdateCustomer(context.Context, *connect.Request[reservations.UpdateCustomerRequest]) (*connect.Response[reservations.UpdateCustomerResponse], error)
 	ListCustomer(context.Context, *connect.Request[reservations.ListCustomerRequest]) (*connect.Response[reservations.ListCustomerResponse], error)
+	// DOT
 	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
 }
 
@@ -566,6 +567,7 @@ type ReservationServiceHandler interface {
 	CreateCustomer(context.Context, *connect.Request[reservations.CreateCustomerRequest]) (*connect.Response[reservations.CreateCustomerResponse], error)
 	UpdateCustomer(context.Context, *connect.Request[reservations.UpdateCustomerRequest]) (*connect.Response[reservations.UpdateCustomerResponse], error)
 	ListCustomer(context.Context, *connect.Request[reservations.ListCustomerRequest]) (*connect.Response[reservations.ListCustomerResponse], error)
+	// DOT
 	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
 }
 

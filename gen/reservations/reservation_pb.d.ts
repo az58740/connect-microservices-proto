@@ -698,32 +698,37 @@ export declare type Customer = Message<"reservation.Customer"> & {
   LinkedUserId?: string;
 
   /**
-   * @generated from field: string Name = 5;
+   * @generated from field: optional string FacilityId = 5;
+   */
+  FacilityId?: string;
+
+  /**
+   * @generated from field: string Name = 6;
    */
   Name: string;
 
   /**
-   * @generated from field: string Phone = 6;
+   * @generated from field: string Phone = 7;
    */
   Phone: string;
 
   /**
-   * @generated from field: optional string Email = 7;
+   * @generated from field: optional string Email = 8;
    */
   Email?: string;
 
   /**
-   * @generated from field: reservation.Status status = 8;
+   * @generated from field: reservation.Status status = 9;
    */
   status: Status;
 
   /**
-   * @generated from field: reservation.CustomerType type = 9;
+   * @generated from field: reservation.CustomerType type = 10;
    */
   type: CustomerType;
 
   /**
-   * @generated from field: google.protobuf.Timestamp CreatedAt = 10;
+   * @generated from field: google.protobuf.Timestamp CreatedAt = 11;
    */
   CreatedAt?: Timestamp;
 };
@@ -4272,6 +4277,8 @@ export declare const ReservationService: GenService<{
     output: typeof ListCustomerResponseSchema;
   },
   /**
+   * DOT
+   *
    * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
    */
   getProviderServicesWithUsers: {

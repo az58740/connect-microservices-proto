@@ -377,13 +377,14 @@ message Customer {
     string OwnerUserId=2;      // صاحب مشتری = سالن
  optional string   ProviderUserId =3;  // عضو سالن که مشتری ازش سرویس گرفته
   optional string LinkedUserId =4;     // اگر مشتری خودش حساب دارد
-   string  Name =5;            
-   string Phone =6;          
-   optional string  Email =7;          
- Status status =8;
- CustomerType type=9;
+  optional string FacilityId=5;
+   string  Name =6;            
+   string Phone =7;          
+   optional string  Email =8;          
+ Status status =9;
+ CustomerType type=10;
 
-    google.protobuf.Timestamp CreatedAt =10; 
+    google.protobuf.Timestamp CreatedAt =11; 
 
 }
 message CustomerFilter {
@@ -878,7 +879,7 @@ service ReservationService {
  
 
 
-  
+  //DOT
   rpc GetProviderServicesWithUsers(GetProviderServicesWithUsersRequest) returns (GetProviderServicesWithUsersResponse);
 
 

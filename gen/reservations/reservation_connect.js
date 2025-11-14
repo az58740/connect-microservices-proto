@@ -272,6 +272,8 @@ export const ReservationService = {
       kind: MethodKind.Unary,
     },
     /**
+     * DOT
+     *
      * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
      */
     getProviderServicesWithUsers: {
