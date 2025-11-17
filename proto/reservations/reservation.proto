@@ -383,8 +383,12 @@ message Customer {
    optional string  Email =8;          
  Status status =9;
  CustomerType type=10;
+ //just for display
+   optional string  OwnerName =11;            
+   optional string   ProviderName =12;            
+optional string   LinkedUserName =13;  
 
-    google.protobuf.Timestamp CreatedAt =11; 
+    google.protobuf.Timestamp CreatedAt =14; 
 
 }
 message CustomerFilter {

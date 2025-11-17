@@ -728,7 +728,24 @@ export declare type Customer = Message<"reservation.Customer"> & {
   type: CustomerType;
 
   /**
-   * @generated from field: google.protobuf.Timestamp CreatedAt = 11;
+   * just for display
+   *
+   * @generated from field: optional string OwnerName = 11;
+   */
+  OwnerName?: string;
+
+  /**
+   * @generated from field: optional string ProviderName = 12;
+   */
+  ProviderName?: string;
+
+  /**
+   * @generated from field: optional string LinkedUserName = 13;
+   */
+  LinkedUserName?: string;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp CreatedAt = 14;
    */
   CreatedAt?: Timestamp;
 };
