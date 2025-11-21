@@ -418,6 +418,7 @@ message UpdateCustomerResponse{
 }
 message ListCustomerRequest{
   CustomerFilter filter=1;
+  Pagination pagination=2;
 }
 message ListCustomerResponse{
   repeated Customer customers=1;

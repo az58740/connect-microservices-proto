@@ -896,6 +896,11 @@ export declare type ListCustomerRequest = Message<"reservation.ListCustomerReque
    * @generated from field: reservation.CustomerFilter filter = 1;
    */
   filter?: CustomerFilter;
+
+  /**
+   * @generated from field: reservation.Pagination pagination = 2;
+   */
+  pagination?: Pagination;
 };
 
 /**
