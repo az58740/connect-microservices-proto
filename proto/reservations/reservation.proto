@@ -422,6 +422,8 @@ message ListCustomerRequest{
 }
 message ListCustomerResponse{
   repeated Customer customers=1;
+    string next_page_token = 2;  // Token for the next page of results (optional).
+    int32 total_pages = 3;       // Total number of users in the system.
 }
 
 

@@ -917,6 +917,20 @@ export declare type ListCustomerResponse = Message<"reservation.ListCustomerResp
    * @generated from field: repeated reservation.Customer customers = 1;
    */
   customers: Customer[];
+
+  /**
+   * Token for the next page of results (optional).
+   *
+   * @generated from field: string next_page_token = 2;
+   */
+  nextPageToken: string;
+
+  /**
+   * Total number of users in the system.
+   *
+   * @generated from field: int32 total_pages = 3;
+   */
+  totalPages: number;
 };
 
 /**
