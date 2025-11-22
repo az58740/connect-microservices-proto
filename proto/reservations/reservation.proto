@@ -392,15 +392,15 @@ optional string   LinkedUserName =13;
 
 }
 message CustomerFilter {
-   string Id =1;
-    string Name=2;
-    string OwnerUserId=3;      // صاحب مشتری = سالن
-  string   ProviderUserId =4;
-   string   FacilityId =5;
-     string Phone =6; 
-  Status status =7; 
-   CustomerType type=8;
-   string LinkedUserId =9;  
+  optional string Id =1;
+   optional string Name=2;
+   optional string OwnerUserId=3;      // صاحب مشتری = سالن
+ optional string   ProviderUserId =4;
+  optional string   FacilityId =5;
+ optional    string Phone =6; 
+ optional string status =7; 
+ optional  string type=8;
+  optional string LinkedUserId =9;  
 }
 message CreateCustomerRequest{
   Customer customer=1;
