@@ -761,51 +761,51 @@ export declare const CustomerSchema: GenMessage<Customer>;
  */
 export declare type CustomerFilter = Message<"reservation.CustomerFilter"> & {
   /**
-   * @generated from field: optional string Id = 1;
+   * @generated from field: string Id = 1;
    */
-  Id?: string;
+  Id: string;
 
   /**
-   * @generated from field: optional string Name = 2;
+   * @generated from field: string Name = 2;
    */
-  Name?: string;
+  Name: string;
 
   /**
    * صاحب مشتری = سالن
    *
-   * @generated from field: optional string OwnerUserId = 3;
+   * @generated from field: string OwnerUserId = 3;
    */
-  OwnerUserId?: string;
+  OwnerUserId: string;
 
   /**
-   * @generated from field: optional string ProviderUserId = 4;
+   * @generated from field: string ProviderUserId = 4;
    */
-  ProviderUserId?: string;
+  ProviderUserId: string;
 
   /**
-   * @generated from field: optional string FacilityId = 5;
+   * @generated from field: string FacilityId = 5;
    */
-  FacilityId?: string;
+  FacilityId: string;
 
   /**
-   * @generated from field: optional string Phone = 6;
+   * @generated from field: string Phone = 6;
    */
-  Phone?: string;
+  Phone: string;
 
   /**
-   * @generated from field: optional string status = 7;
+   * @generated from field: string status = 7;
    */
-  status?: string;
+  status: string;
 
   /**
-   * @generated from field: optional string type = 8;
+   * @generated from field: string type = 8;
    */
-  type?: string;
+  type: string;
 
   /**
-   * @generated from field: optional string LinkedUserId = 9;
+   * @generated from field: string LinkedUserId = 9;
    */
-  LinkedUserId?: string;
+  LinkedUserId: string;
 };
 
 /**
