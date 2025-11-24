@@ -187,6 +187,7 @@ message UserFilter {
     string oppositeType= 14;             // Reverting all users except for this one statuse.
     string oppositeTyp2 = 15;            // Reverting all users except for this one type.
     string phoneNumber=16;                //Filter by phone number
+    string favoriteUserId=17;              //Filtered by favorite user Id 
 }
 
 // Pagination options for listing users or roles.

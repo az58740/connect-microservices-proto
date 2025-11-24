@@ -396,6 +396,13 @@ export declare type UserFilter = Message<"users.UserFilter"> & {
    * @generated from field: string phoneNumber = 16;
    */
   phoneNumber: string;
+
+  /**
+   * Filtered by favorite user Id 
+   *
+   * @generated from field: string favoriteUserId = 17;
+   */
+  favoriteUserId: string;
 };
 
 /**
