@@ -111,6 +111,9 @@ const (
 	// ReservationServiceGetProviderServicesWithUsersProcedure is the fully-qualified name of the
 	// ReservationService's GetProviderServicesWithUsers RPC.
 	ReservationServiceGetProviderServicesWithUsersProcedure = "/reservation.ReservationService/GetProviderServicesWithUsers"
+	// ReservationServiceProcessAudioProcedure is the fully-qualified name of the ReservationService's
+	// ProcessAudio RPC.
+	ReservationServiceProcessAudioProcedure = "/reservation.ReservationService/ProcessAudio"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
@@ -142,6 +145,7 @@ var (
 	reservationServiceUpdateCustomerMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("UpdateCustomer")
 	reservationServiceListCustomerMethodDescriptor                 = reservationServiceServiceDescriptor.Methods().ByName("ListCustomer")
 	reservationServiceGetProviderServicesWithUsersMethodDescriptor = reservationServiceServiceDescriptor.Methods().ByName("GetProviderServicesWithUsers")
+	reservationServiceProcessAudioMethodDescriptor                 = reservationServiceServiceDescriptor.Methods().ByName("ProcessAudio")
 )
 
 // ReservationServiceClient is a client for the reservation.ReservationService service.
@@ -191,6 +195,9 @@ type ReservationServiceClient interface {
 	ListCustomer(context.Context, *connect.Request[reservations.ListCustomerRequest]) (*connect.Response[reservations.ListCustomerResponse], error)
 	// DOT
 	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
+	// پردازش یک فایل صوتی و برگرداندن متن و فیلترها
+	// برای شروع ساده: درخواست تک با بایت‌های فایل (مناسب برای فایلی تا چندین مگ)
+	ProcessAudio(context.Context, *connect.Request[reservations.ProcessAudioRequest]) (*connect.Response[reservations.ProcessAudioResponse], error)
 }
 
 // NewReservationServiceClient constructs a client for the reservation.ReservationService service.
@@ -359,6 +366,12 @@ func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, 
 			connect.WithSchema(reservationServiceGetProviderServicesWithUsersMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		processAudio: connect.NewClient[reservations.ProcessAudioRequest, reservations.ProcessAudioResponse](
+			httpClient,
+			baseURL+ReservationServiceProcessAudioProcedure,
+			connect.WithSchema(reservationServiceProcessAudioMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -390,6 +403,7 @@ type reservationServiceClient struct {
 	updateCustomer               *connect.Client[reservations.UpdateCustomerRequest, reservations.UpdateCustomerResponse]
 	listCustomer                 *connect.Client[reservations.ListCustomerRequest, reservations.ListCustomerResponse]
 	getProviderServicesWithUsers *connect.Client[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse]
+	processAudio                 *connect.Client[reservations.ProcessAudioRequest, reservations.ProcessAudioResponse]
 }
 
 // CreateFacility calls reservation.ReservationService.CreateFacility.
@@ -522,6 +536,11 @@ func (c *reservationServiceClient) GetProviderServicesWithUsers(ctx context.Cont
 	return c.getProviderServicesWithUsers.CallUnary(ctx, req)
 }
 
+// ProcessAudio calls reservation.ReservationService.ProcessAudio.
+func (c *reservationServiceClient) ProcessAudio(ctx context.Context, req *connect.Request[reservations.ProcessAudioRequest]) (*connect.Response[reservations.ProcessAudioResponse], error) {
+	return c.processAudio.CallUnary(ctx, req)
+}
+
 // ReservationServiceHandler is an implementation of the reservation.ReservationService service.
 type ReservationServiceHandler interface {
 	// facility related methods
@@ -569,6 +588,9 @@ type ReservationServiceHandler interface {
 	ListCustomer(context.Context, *connect.Request[reservations.ListCustomerRequest]) (*connect.Response[reservations.ListCustomerResponse], error)
 	// DOT
 	GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error)
+	// پردازش یک فایل صوتی و برگرداندن متن و فیلترها
+	// برای شروع ساده: درخواست تک با بایت‌های فایل (مناسب برای فایلی تا چندین مگ)
+	ProcessAudio(context.Context, *connect.Request[reservations.ProcessAudioRequest]) (*connect.Response[reservations.ProcessAudioResponse], error)
 }
 
 // NewReservationServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -733,6 +755,12 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 		connect.WithSchema(reservationServiceGetProviderServicesWithUsersMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	reservationServiceProcessAudioHandler := connect.NewUnaryHandler(
+		ReservationServiceProcessAudioProcedure,
+		svc.ProcessAudio,
+		connect.WithSchema(reservationServiceProcessAudioMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/reservation.ReservationService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ReservationServiceCreateFacilityProcedure:
@@ -787,6 +815,8 @@ func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect
 			reservationServiceListCustomerHandler.ServeHTTP(w, r)
 		case ReservationServiceGetProviderServicesWithUsersProcedure:
 			reservationServiceGetProviderServicesWithUsersHandler.ServeHTTP(w, r)
+		case ReservationServiceProcessAudioProcedure:
+			reservationServiceProcessAudioHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -898,4 +928,8 @@ func (UnimplementedReservationServiceHandler) ListCustomer(context.Context, *con
 
 func (UnimplementedReservationServiceHandler) GetProviderServicesWithUsers(context.Context, *connect.Request[reservations.GetProviderServicesWithUsersRequest]) (*connect.Response[reservations.GetProviderServicesWithUsersResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.GetProviderServicesWithUsers is not implemented"))
+}
+
+func (UnimplementedReservationServiceHandler) ProcessAudio(context.Context, *connect.Request[reservations.ProcessAudioRequest]) (*connect.Response[reservations.ProcessAudioResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("reservation.ReservationService.ProcessAudio is not implemented"))
 }

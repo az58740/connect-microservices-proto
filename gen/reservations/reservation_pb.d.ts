@@ -2933,6 +2933,100 @@ export declare type GetProviderServicesWithUsersRequest = Message<"reservation.G
 export declare const GetProviderServicesWithUsersRequestSchema: GenMessage<GetProviderServicesWithUsersRequest>;
 
 /**
+ * ========== Voice Process ==========
+ *
+ * @generated from message reservation.ProcessAudioRequest
+ */
+export declare type ProcessAudioRequest = Message<"reservation.ProcessAudioRequest"> & {
+  /**
+   * محتوای فایل صوتی
+   *
+   * @generated from field: bytes audio = 1;
+   */
+  audio: Uint8Array;
+
+  /**
+   * e.g. "audio/webm" یا "audio/wav"
+   *
+   * @generated from field: string content_type = 2;
+   */
+  contentType: string;
+
+  /**
+   * optional: "fa" | "ar" | "en"
+   *
+   * @generated from field: string lang_hint = 3;
+   */
+  langHint: string;
+};
+
+/**
+ * Describes the message reservation.ProcessAudioRequest.
+ * Use `create(ProcessAudioRequestSchema)` to create a new message.
+ */
+export declare const ProcessAudioRequestSchema: GenMessage<ProcessAudioRequest>;
+
+/**
+ * @generated from message reservation.Filter
+ */
+export declare type Filter = Message<"reservation.Filter"> & {
+  /**
+   * @generated from field: string key = 1;
+   */
+  key: string;
+
+  /**
+   * @generated from field: string value = 2;
+   */
+  value: string;
+};
+
+/**
+ * Describes the message reservation.Filter.
+ * Use `create(FilterSchema)` to create a new message.
+ */
+export declare const FilterSchema: GenMessage<Filter>;
+
+/**
+ * @generated from message reservation.ProcessAudioResponse
+ */
+export declare type ProcessAudioResponse = Message<"reservation.ProcessAudioResponse"> & {
+  /**
+   * متن استخراج‌شده
+   *
+   * @generated from field: string text = 1;
+   */
+  text: string;
+
+  /**
+   * فیلترهای استخراج‌شده (key/value)
+   *
+   * @generated from field: repeated reservation.Filter filters = 2;
+   */
+  filters: Filter[];
+
+  /**
+   * در صورت لزوم برای session handling
+   *
+   * @generated from field: bool expired = 3;
+   */
+  expired: boolean;
+
+  /**
+   * در صورت خطا پیام
+   *
+   * @generated from field: string error = 4;
+   */
+  error: string;
+};
+
+/**
+ * Describes the message reservation.ProcessAudioResponse.
+ * Use `create(ProcessAudioResponseSchema)` to create a new message.
+ */
+export declare const ProcessAudioResponseSchema: GenMessage<ProcessAudioResponse>;
+
+/**
  * نوع مالک تایم‌اسلات — تعیین می‌کند که تایم‌اسلات متعلق به فرد است یا فضای مشترک
  * TimeSlot owner type — defines whether it's owned by an individual (e.g., doctor) or shared (e.g., room)
  *
@@ -4321,6 +4415,17 @@ export declare const ReservationService: GenService<{
     methodKind: "unary";
     input: typeof GetProviderServicesWithUsersRequestSchema;
     output: typeof GetProviderServicesWithUsersResponseSchema;
+  },
+  /**
+   * پردازش یک فایل صوتی و برگرداندن متن و فیلترها
+   * برای شروع ساده: درخواست تک با بایت‌های فایل (مناسب برای فایلی تا چندین مگ)
+   *
+   * @generated from rpc reservation.ReservationService.ProcessAudio
+   */
+  processAudio: {
+    methodKind: "unary";
+    input: typeof ProcessAudioRequestSchema;
+    output: typeof ProcessAudioResponseSchema;
   },
 }>;
 

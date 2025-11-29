@@ -833,6 +833,26 @@ message GetProviderServicesWithUsersRequest {
   users.Pagination pagination = 3;
 }
 
+// ========== Voice Process ==========
+message ProcessAudioRequest {
+  bytes audio = 1;           // محتوای فایل صوتی
+  string content_type = 2;   // e.g. "audio/webm" یا "audio/wav"
+  string lang_hint = 3;      // optional: "fa" | "ar" | "en"
+}
+
+message Filter {
+  string key = 1;
+  string value = 2;
+}
+
+message ProcessAudioResponse {
+  string text = 1;               // متن استخراج‌شده
+  repeated Filter filters = 2;   // فیلترهای استخراج‌شده (key/value)
+  bool expired = 3;              // در صورت لزوم برای session handling
+  string error = 4;              // در صورت خطا پیام
+}
+
+
 // ========== SERVICE ==========
 
 // سرویس رزرو | Reservation Service
@@ -889,6 +909,9 @@ service ReservationService {
   //DOT
   rpc GetProviderServicesWithUsers(GetProviderServicesWithUsersRequest) returns (GetProviderServicesWithUsersResponse);
 
+   // پردازش یک فایل صوتی و برگرداندن متن و فیلترها
+  // برای شروع ساده: درخواست تک با بایت‌های فایل (مناسب برای فایلی تا چندین مگ)
+  rpc ProcessAudio (ProcessAudioRequest) returns (ProcessAudioResponse);
 
 
 

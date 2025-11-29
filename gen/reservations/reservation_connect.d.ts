@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AssignServiceToProviderRequest, AssignServiceToProviderResponse, CreateCustomerRequest, CreateCustomerResponse, CreateFacilityRequest, CreateFacilityResponse, CreateReservationRequest, CreateReservationResponse, CreateServiceRequest, CreateServiceResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteReservationRequest, DeleteReservationResponse, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetProviderServicesListRequest, GetProviderServicesListResponse, GetProviderServicesWithUsersRequest, GetProviderServicesWithUsersResponse, GetTimeSlotsListRequest, GetTimeSlotsListResponse, GetWeeklyScheduleListRequest, GetWeeklyScheduleListResponse, ListCustomerRequest, ListCustomerResponse, ListFacilitiesRequest, ListFacilitiesResponse, ListReservationsRequest, ListReservationsResponse, ListServicesRequest, ListServicesResponse, RemoveServiceFromProviderRequest, RemoveServiceFromProviderResponse, RemoveTimeSlotsRequest, RemoveTimeSlotsResponse, RemoveWeeklyScheduleRequest, RemoveWeeklyScheduleResponse, UpdateCustomerRequest, UpdateCustomerResponse, UpdateFacilityRequest, UpdateFacilityResponse, UpdateProviderServiceRequest, UpdateProviderServiceResponse, UpdateReservationRequest, UpdateReservationResponse, UpdateServiceRequest, UpdateServiceResponse, UpdateTimeSlotRequest, UpdateTimeSlotResponse, UpdateWeeklyScheduleRequest, UpdateWeeklyScheduleResponse } from "./reservation_pb.js";
+import { AssignServiceToProviderRequest, AssignServiceToProviderResponse, CreateCustomerRequest, CreateCustomerResponse, CreateFacilityRequest, CreateFacilityResponse, CreateReservationRequest, CreateReservationResponse, CreateServiceRequest, CreateServiceResponse, CreateWeeklyScheduleRequest, CreateWeeklyScheduleResponse, DeleteReservationRequest, DeleteReservationResponse, GenerateTimeSlotsRequest, GenerateTimeSlotsResponse, GetProviderServicesListRequest, GetProviderServicesListResponse, GetProviderServicesWithUsersRequest, GetProviderServicesWithUsersResponse, GetTimeSlotsListRequest, GetTimeSlotsListResponse, GetWeeklyScheduleListRequest, GetWeeklyScheduleListResponse, ListCustomerRequest, ListCustomerResponse, ListFacilitiesRequest, ListFacilitiesResponse, ListReservationsRequest, ListReservationsResponse, ListServicesRequest, ListServicesResponse, ProcessAudioRequest, ProcessAudioResponse, RemoveServiceFromProviderRequest, RemoveServiceFromProviderResponse, RemoveTimeSlotsRequest, RemoveTimeSlotsResponse, RemoveWeeklyScheduleRequest, RemoveWeeklyScheduleResponse, UpdateCustomerRequest, UpdateCustomerResponse, UpdateFacilityRequest, UpdateFacilityResponse, UpdateProviderServiceRequest, UpdateProviderServiceResponse, UpdateReservationRequest, UpdateReservationResponse, UpdateServiceRequest, UpdateServiceResponse, UpdateTimeSlotRequest, UpdateTimeSlotResponse, UpdateWeeklyScheduleRequest, UpdateWeeklyScheduleResponse } from "./reservation_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -280,6 +280,18 @@ export declare const ReservationService: {
       readonly name: "GetProviderServicesWithUsers",
       readonly I: typeof GetProviderServicesWithUsersRequest,
       readonly O: typeof GetProviderServicesWithUsersResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * پردازش یک فایل صوتی و برگرداندن متن و فیلترها
+     * برای شروع ساده: درخواست تک با بایت‌های فایل (مناسب برای فایلی تا چندین مگ)
+     *
+     * @generated from rpc reservation.ReservationService.ProcessAudio
+     */
+    readonly processAudio: {
+      readonly name: "ProcessAudio",
+      readonly I: typeof ProcessAudioRequest,
+      readonly O: typeof ProcessAudioResponse,
       readonly kind: MethodKind.Unary,
     },
   }
