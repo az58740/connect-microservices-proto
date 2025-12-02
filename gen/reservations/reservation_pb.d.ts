@@ -3006,18 +3006,11 @@ export declare type ProcessAudioResponse = Message<"reservation.ProcessAudioResp
   filters: Filter[];
 
   /**
-   * در صورت لزوم برای session handling
+   * search result نتیجه جستجو 
    *
-   * @generated from field: bool expired = 3;
+   * @generated from field: repeated reservation.ProviderTeam items = 3;
    */
-  expired: boolean;
-
-  /**
-   * در صورت خطا پیام
-   *
-   * @generated from field: string error = 4;
-   */
-  error: string;
+  items: ProviderTeam[];
 };
 
 /**

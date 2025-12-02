@@ -848,8 +848,7 @@ message Filter {
 message ProcessAudioResponse {
   string text = 1;               // متن استخراج‌شده
   repeated Filter filters = 2;   // فیلترهای استخراج‌شده (key/value)
-  bool expired = 3;              // در صورت لزوم برای session handling
-  string error = 4;              // در صورت خطا پیام
+ repeated ProviderTeam items = 3; //search result نتیجه جستجو 
 }
 
 
