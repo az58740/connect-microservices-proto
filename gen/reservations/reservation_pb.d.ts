@@ -2481,51 +2481,58 @@ export declare type CreateReservationRequest = Message<"reservation.CreateReserv
   providerUserId: string;
 
   /**
+   * صاحب | owner user
+   *
+   * @generated from field: string owner_user_id = 3;
+   */
+  ownerUserId: string;
+
+  /**
    * مرکز | Facility
    *
-   * @generated from field: string facility_id = 3;
+   * @generated from field: string facility_id = 4;
    */
   facilityId: string;
 
   /**
    * بازه زمانی انتخاب‌شده (اختیاری) | Optional time slot
    *
-   * @generated from field: optional string time_slot_id = 4;
+   * @generated from field: optional string time_slot_id = 5;
    */
   timeSlotId?: string;
 
   /**
    * سرویس‌های انتخاب‌شده برای رزرو | Selected services
    *
-   * @generated from field: repeated reservation.ReservationServiceItem services = 5;
+   * @generated from field: repeated reservation.ReservationServiceItem services = 6;
    */
   services: ReservationServiceItem[];
 
   /**
    * وضعیت اولیه رزرو | Initial reservation status
    *
-   * @generated from field: reservation.ReservationStatus reservation_status = 6;
+   * @generated from field: reservation.ReservationStatus reservation_status = 7;
    */
   reservationStatus: ReservationStatus;
 
   /**
    * وضعیت اولیه پرداخت | Initial payment status
    *
-   * @generated from field: reservation.PaymentStatus payment_status = 7;
+   * @generated from field: reservation.PaymentStatus payment_status = 8;
    */
   paymentStatus: PaymentStatus;
 
   /**
    * منبع رزرو (آنلاین، حضوری و...) | Reservation source
    *
-   * @generated from field: reservation.ReservationSource source = 8;
+   * @generated from field: reservation.ReservationSource source = 9;
    */
   source: ReservationSource;
 
   /**
    * یادداشت اختیاری | Optional notes
    *
-   * @generated from field: string notes = 9;
+   * @generated from field: string notes = 10;
    */
   notes: string;
 
@@ -2534,14 +2541,14 @@ export declare type CreateReservationRequest = Message<"reservation.CreateReserv
    *
    * زمان شروع رزرو
    *
-   * @generated from field: google.protobuf.Timestamp start_time = 10;
+   * @generated from field: google.protobuf.Timestamp start_time = 11;
    */
   startTime?: Timestamp;
 
   /**
    * زمان پایان رزرو
    *
-   * @generated from field: google.protobuf.Timestamp end_time = 11;
+   * @generated from field: google.protobuf.Timestamp end_time = 12;
    */
   endTime?: Timestamp;
 };
