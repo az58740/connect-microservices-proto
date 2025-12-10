@@ -578,69 +578,74 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
   providerUserId: string;
 
   /**
-   * @generated from field: string facility_id = 4;
+   * @generated from field: string OwnerUserId = 4;
+   */
+  OwnerUserId: string;
+
+  /**
+   * @generated from field: string facility_id = 5;
    */
   facilityId: string;
 
   /**
-   * @generated from field: string time_slot_id = 5;
+   * @generated from field: string time_slot_id = 6;
    */
   timeSlotId: string;
 
   /**
-   * @generated from field: repeated reservation.ReservationServiceItem services = 6;
+   * @generated from field: repeated reservation.ReservationServiceItem services = 7;
    */
   services: ReservationServiceItem[];
 
   /**
-   * @generated from field: reservation.ReservationStatus status = 7;
+   * @generated from field: reservation.ReservationStatus status = 8;
    */
   status: ReservationStatus;
 
   /**
-   * @generated from field: reservation.PaymentStatus payment_status = 8;
+   * @generated from field: reservation.PaymentStatus payment_status = 9;
    */
   paymentStatus: PaymentStatus;
 
   /**
-   * @generated from field: reservation.ReservationSource source = 9;
+   * @generated from field: reservation.ReservationSource source = 10;
    */
   source: ReservationSource;
 
   /**
-   * @generated from field: string notes = 10;
+   * @generated from field: string notes = 11;
    */
   notes: string;
 
   /**
    * نمایش
    *
-   * @generated from field: string user_name = 11;
+   * @generated from field: string user_name = 12;
    */
   userName: string;
 
   /**
-   * @generated from field: string provider_user_name = 12;
+   * @generated from field: string provider_user_name = 13;
    */
   providerUserName: string;
 
   /**
-   * @generated from field: reservation.LocalizedString facility_name = 13;
+   * @generated from field: reservation.LocalizedString facility_name = 14;
    */
   facilityName?: LocalizedString;
 
   /**
-   * @generated from field: google.protobuf.Timestamp created_at = 14;
+   * @generated from field: google.protobuf.Timestamp created_at = 15;
    */
   createdAt?: Timestamp;
 
   /**
-   * @generated from field: google.protobuf.Timestamp updated_at = 15;
+   * @generated from field: google.protobuf.Timestamp updated_at = 16;
    */
   updatedAt?: Timestamp;
 
   /**
-   * @generated from field: google.type.Money total_amount = 19;
+   * @generated from field: google.type.Money total_amount = 17;
    */
   totalAmount?: Money;
 
@@ -649,14 +654,14 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
    *
    * زمان شروع رزرو
    *
-   * @generated from field: google.protobuf.Timestamp start_time = 20;
+   * @generated from field: google.protobuf.Timestamp start_time = 18;
    */
   startTime?: Timestamp;
 
   /**
    * زمان پایان رزرو
    *
-   * @generated from field: google.protobuf.Timestamp end_time = 21;
+   * @generated from field: google.protobuf.Timestamp end_time = 19;
    */
   endTime?: Timestamp;
 };
@@ -2457,7 +2462,6 @@ export declare const UpdateTimeSlotResponseSchema: GenMessage<UpdateTimeSlotResp
 /**
  * -------------------- Reservation Requests & Responses --------------------
  * ایجاد رزرو جدید | Create a new reservation
- * ایجاد رزرو جدید | Create a new reservation
  *
  * @generated from message reservation.CreateReservationRequest
  */
@@ -2693,44 +2697,51 @@ export declare type ReservationFilter = Message<"reservation.ReservationFilter">
   providerUserId?: string;
 
   /**
+   * شناسه سرویس‌دهنده | Owner user ID
+   *
+   * @generated from field: optional string owner_user_id = 4;
+   */
+  ownerUserId?: string;
+
+  /**
    * شناسه مرکز | Facility ID
    *
-   * @generated from field: optional string facility_id = 4;
+   * @generated from field: optional string facility_id = 5;
    */
   facilityId?: string;
 
   /**
    * وضعیت رزرو | Reservation status
    *
-   * @generated from field: optional reservation.ReservationStatus status = 5;
+   * @generated from field: optional reservation.ReservationStatus status = 6;
    */
   status?: ReservationStatus;
 
   /**
    * وضعیت پرداخت | Payment status
    *
-   * @generated from field: optional reservation.PaymentStatus payment_status = 6;
+   * @generated from field: optional reservation.PaymentStatus payment_status = 7;
    */
   paymentStatus?: PaymentStatus;
 
   /**
    * منبع رزرو | Reservation source (آنلاین، حضوری و ...)
    *
-   * @generated from field: optional reservation.ReservationSource source = 7;
+   * @generated from field: optional reservation.ReservationSource source = 8;
    */
   source?: ReservationSource;
 
   /**
    * فیلتر از تاریخ | From date
    *
-   * @generated from field: optional google.protobuf.Timestamp start_date = 8;
+   * @generated from field: optional google.protobuf.Timestamp start_date = 9;
    */
   startDate?: Timestamp;
 
   /**
    * فیلتر تا تاریخ | To date
    *
-   * @generated from field: optional google.protobuf.Timestamp end_date = 9;
+   * @generated from field: optional google.protobuf.Timestamp end_date = 10;
    */
   endDate?: Timestamp;
 };

@@ -347,29 +347,31 @@ message Reservation {
   string id = 1;
   string user_id = 2;
   string provider_user_id = 3;
-  string facility_id = 4;
-  string time_slot_id = 5;
+  string OwnerUserId=4;  
 
-  repeated ReservationServiceItem services = 6;
+  string facility_id = 5;
+  string time_slot_id = 6;
 
-  ReservationStatus status = 7;
-  PaymentStatus payment_status = 8;
-  ReservationSource source = 9;
-  string notes = 10;
+  repeated ReservationServiceItem services = 7;
+
+  ReservationStatus status = 8;
+  PaymentStatus payment_status = 9;
+  ReservationSource source = 10;
+  string notes = 11;
 
   // نمایش
-  string user_name = 11;
-  string provider_user_name = 12;
-  LocalizedString facility_name = 13;
-  google.protobuf.Timestamp created_at = 14;
-  google.protobuf.Timestamp updated_at = 15;
+  string user_name = 12;
+  string provider_user_name = 13;
+  LocalizedString facility_name = 14;
+  google.protobuf.Timestamp created_at = 15;
+  google.protobuf.Timestamp updated_at = 16;
   
 
-  google.type.Money total_amount = 19;
+  google.type.Money total_amount = 17;
 
   // --- جدید: شروع و پایان رزرو ---
-  google.protobuf.Timestamp start_time = 20; // زمان شروع رزرو
-  google.protobuf.Timestamp end_time = 21;   // زمان پایان رزرو
+  google.protobuf.Timestamp start_time = 18; // زمان شروع رزرو
+  google.protobuf.Timestamp end_time = 19;   // زمان پایان رزرو
 }
 
 message Customer {
@@ -733,7 +735,6 @@ message UpdateTimeSlotResponse {
 
 // -------------------- Reservation Requests & Responses --------------------
 // ایجاد رزرو جدید | Create a new reservation
-// ایجاد رزرو جدید | Create a new reservation
 message CreateReservationRequest {
   string user_id = 1;                             // کاربر رزروکننده | Booking user
   string provider_user_id = 2;                    // سرویس‌دهنده | Provider user
@@ -780,12 +781,14 @@ message ReservationFilter {
   optional string id = 1;                     // شناسه رزرو | Reservation ID
   optional string user_id = 2;                // شناسه کاربر رزروکننده | User ID
   optional string provider_user_id = 3;       // شناسه سرویس‌دهنده | Provider user ID
-  optional string facility_id = 4;            // شناسه مرکز | Facility ID
-  optional ReservationStatus status = 5;      // وضعیت رزرو | Reservation status
-  optional PaymentStatus payment_status = 6;  // وضعیت پرداخت | Payment status
-  optional ReservationSource source = 7;      // منبع رزرو | Reservation source (آنلاین، حضوری و ...)
-  optional google.protobuf.Timestamp start_date = 8; // فیلتر از تاریخ | From date
-  optional google.protobuf.Timestamp end_date = 9;   // فیلتر تا تاریخ | To date
+  optional string owner_user_id = 4;          // شناسه سرویس‌دهنده | Owner user ID
+
+  optional string facility_id = 5;            // شناسه مرکز | Facility ID
+  optional ReservationStatus status = 6;      // وضعیت رزرو | Reservation status
+  optional PaymentStatus payment_status = 7;  // وضعیت پرداخت | Payment status
+  optional ReservationSource source = 8;      // منبع رزرو | Reservation source (آنلاین، حضوری و ...)
+  optional google.protobuf.Timestamp start_date = 9; // فیلتر از تاریخ | From date
+  optional google.protobuf.Timestamp end_date = 10;   // فیلتر تا تاریخ | To date
 }
 
 // دریافت لیست رزروها با فیلتر پویا | Get list of reservations with filters
