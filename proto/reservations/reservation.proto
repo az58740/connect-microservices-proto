@@ -738,7 +738,7 @@ message UpdateTimeSlotResponse {
 message CreateReservationRequest {
   string user_id = 1;                             // کاربر رزروکننده | Booking user
   string provider_user_id = 2;                    // سرویس‌دهنده | Provider user
-    string owner_user_id = 3;                    // صاحب | owner user
+  string owner_user_id = 3;                    // صاحب | owner user
 
   string facility_id = 4;                         // مرکز | Facility
   optional string time_slot_id = 5;               // بازه زمانی انتخاب‌شده (اختیاری) | Optional time slot
@@ -747,10 +747,11 @@ message CreateReservationRequest {
   PaymentStatus payment_status = 8;               // وضعیت اولیه پرداخت | Initial payment status
   ReservationSource source = 9;                   // منبع رزرو (آنلاین، حضوری و...) | Reservation source
   string notes = 10;                               // یادداشت اختیاری | Optional notes
+  google.type.Money total_amount = 11;
 
   // --- جدید: شروع و پایان رزرو ---
-  google.protobuf.Timestamp start_time = 11; // زمان شروع رزرو
-  google.protobuf.Timestamp end_time = 12;   // زمان پایان رزرو
+  google.protobuf.Timestamp start_time = 12; // زمان شروع رزرو
+  google.protobuf.Timestamp end_time = 13;   // زمان پایان رزرو
 }
 
 

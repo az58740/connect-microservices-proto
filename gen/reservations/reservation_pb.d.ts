@@ -2537,18 +2537,23 @@ export declare type CreateReservationRequest = Message<"reservation.CreateReserv
   notes: string;
 
   /**
+   * @generated from field: google.type.Money total_amount = 11;
+   */
+  totalAmount?: Money;
+
+  /**
    * --- جدید: شروع و پایان رزرو ---
    *
    * زمان شروع رزرو
    *
-   * @generated from field: google.protobuf.Timestamp start_time = 11;
+   * @generated from field: google.protobuf.Timestamp start_time = 12;
    */
   startTime?: Timestamp;
 
   /**
    * زمان پایان رزرو
    *
-   * @generated from field: google.protobuf.Timestamp end_time = 12;
+   * @generated from field: google.protobuf.Timestamp end_time = 13;
    */
   endTime?: Timestamp;
 };
