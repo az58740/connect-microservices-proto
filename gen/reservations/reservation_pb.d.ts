@@ -2463,9 +2463,9 @@ export declare const UpdateTimeSlotResponseSchema: GenMessage<UpdateTimeSlotResp
  * -------------------- Reservation Requests & Responses --------------------
  * ایجاد رزرو جدید | Create a new reservation
  *
- * @generated from message reservation.CreateReservationRequest
+ * @generated from message reservation.CreateReservationRequest1
  */
-export declare type CreateReservationRequest = Message<"reservation.CreateReservationRequest"> & {
+export declare type CreateReservationRequest1 = Message<"reservation.CreateReservationRequest1"> & {
   /**
    * کاربر رزروکننده | Booking user
    *
@@ -2559,6 +2559,22 @@ export declare type CreateReservationRequest = Message<"reservation.CreateReserv
 };
 
 /**
+ * Describes the message reservation.CreateReservationRequest1.
+ * Use `create(CreateReservationRequest1Schema)` to create a new message.
+ */
+export declare const CreateReservationRequest1Schema: GenMessage<CreateReservationRequest1>;
+
+/**
+ * @generated from message reservation.CreateReservationRequest
+ */
+export declare type CreateReservationRequest = Message<"reservation.CreateReservationRequest"> & {
+  /**
+   * @generated from field: reservation.Reservation reservation = 1;
+   */
+  reservation?: Reservation;
+};
+
+/**
  * Describes the message reservation.CreateReservationRequest.
  * Use `create(CreateReservationRequestSchema)` to create a new message.
  */
@@ -2571,9 +2587,9 @@ export declare type CreateReservationResponse = Message<"reservation.CreateReser
   /**
    * رزرو ایجادشده
    *
-   * @generated from field: reservation.Reservation reservation = 1;
+   * @generated from field: string reservationID = 1;
    */
-  reservation?: Reservation;
+  reservationID: string;
 
   /**
    * @generated from field: string message = 2;
@@ -2636,18 +2652,23 @@ export declare type UpdateReservationRequest = Message<"reservation.UpdateReserv
   services: ReservationServiceItem[];
 
   /**
+   * @generated from field: google.type.Money total_amount = 7;
+   */
+  totalAmount?: Money;
+
+  /**
    * --- جدید: شروع و پایان رزرو ---
    *
    * زمان شروع رزرو
    *
-   * @generated from field: google.protobuf.Timestamp start_time = 7;
+   * @generated from field: google.protobuf.Timestamp start_time = 8;
    */
   startTime?: Timestamp;
 
   /**
    * زمان پایان رزرو
    *
-   * @generated from field: google.protobuf.Timestamp end_time = 8;
+   * @generated from field: google.protobuf.Timestamp end_time = 9;
    */
   endTime?: Timestamp;
 };

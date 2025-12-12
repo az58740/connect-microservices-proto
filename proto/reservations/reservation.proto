@@ -735,7 +735,7 @@ message UpdateTimeSlotResponse {
 
 // -------------------- Reservation Requests & Responses --------------------
 // ایجاد رزرو جدید | Create a new reservation
-message CreateReservationRequest {
+message CreateReservationRequest1 {
   string user_id = 1;                             // کاربر رزروکننده | Booking user
   string provider_user_id = 2;                    // سرویس‌دهنده | Provider user
   string owner_user_id = 3;                    // صاحب | owner user
@@ -753,11 +753,11 @@ message CreateReservationRequest {
   google.protobuf.Timestamp start_time = 12; // زمان شروع رزرو
   google.protobuf.Timestamp end_time = 13;   // زمان پایان رزرو
 }
-
-
-
+message CreateReservationRequest {
+   Reservation reservation = 1; 
+}
 message CreateReservationResponse {
-  Reservation reservation = 1;             // رزرو ایجادشده
+  string reservationID = 1;             // رزرو ایجادشده
   string message=2;
 }
 // بروزرسانی رزرو | Update reservation (برای تأیید، لغو، تغییر وضعیت پرداخت و بروزرسانی سرویس‌ها)
@@ -768,10 +768,11 @@ message UpdateReservationRequest {
   PaymentStatus payment_status = 4;         // وضعیت پرداخت جدید
   string notes = 5;                         // توضیحات (مثلاً دلیل لغو)
   repeated ReservationServiceItem services = 6; // سرویس‌های جدید یا بروزشده رزرو
+   google.type.Money total_amount = 7;
 
   // --- جدید: شروع و پایان رزرو ---
-  google.protobuf.Timestamp start_time = 7; // زمان شروع رزرو
-  google.protobuf.Timestamp end_time = 8;   // زمان پایان رزرو
+  google.protobuf.Timestamp start_time = 8; // زمان شروع رزرو
+  google.protobuf.Timestamp end_time = 9;   // زمان پایان رزرو
 }
 
 message UpdateReservationResponse {
