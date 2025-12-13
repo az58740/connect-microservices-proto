@@ -735,24 +735,6 @@ message UpdateTimeSlotResponse {
 
 // -------------------- Reservation Requests & Responses --------------------
 // ایجاد رزرو جدید | Create a new reservation
-message CreateReservationRequest1 {
-  string user_id = 1;                             // کاربر رزروکننده | Booking user
-  string provider_user_id = 2;                    // سرویس‌دهنده | Provider user
-  string owner_user_id = 3;                    // صاحب | owner user
-
-  string facility_id = 4;                         // مرکز | Facility
-  optional string time_slot_id = 5;               // بازه زمانی انتخاب‌شده (اختیاری) | Optional time slot
-  repeated ReservationServiceItem services = 6;   // سرویس‌های انتخاب‌شده برای رزرو | Selected services
-  ReservationStatus reservation_status = 7;       // وضعیت اولیه رزرو | Initial reservation status
-  PaymentStatus payment_status = 8;               // وضعیت اولیه پرداخت | Initial payment status
-  ReservationSource source = 9;                   // منبع رزرو (آنلاین، حضوری و...) | Reservation source
-  string notes = 10;                               // یادداشت اختیاری | Optional notes
-  google.type.Money total_amount = 11;
-
-  // --- جدید: شروع و پایان رزرو ---
-  google.protobuf.Timestamp start_time = 12; // زمان شروع رزرو
-  google.protobuf.Timestamp end_time = 13;   // زمان پایان رزرو
-}
 message CreateReservationRequest {
    Reservation reservation = 1; 
 }
@@ -798,7 +780,7 @@ message ReservationFilter {
 // دریافت لیست رزروها با فیلتر پویا | Get list of reservations with filters
 message ListReservationsRequest {
   ReservationFilter filter = 1;            // فیلتر پویا
-Pagination pagination = 2; // Pagination options.
+  Pagination pagination = 2; // Pagination options.
 }
 
 message ListReservationsResponse {
@@ -877,7 +859,7 @@ service ReservationService {
   rpc UpdateService (UpdateServiceRequest) returns (UpdateServiceResponse);
           // دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
   rpc ListServices (ListServicesRequest) returns (ListServicesResponse);
-//ُProvider Service  related methods
+     //ُProvider Service  related methods
     // تخصیص یک سرویس به ارائه‌دهنده | Assign a service to a provider
   rpc AssignServiceToProvider(AssignServiceToProviderRequest) returns (AssignServiceToProviderResponse);
     // خذف یک سرویس از ارائه‌دهنده | Remove a service from a provider
