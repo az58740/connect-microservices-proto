@@ -348,30 +348,32 @@ message Reservation {
   string user_id = 2;
   string provider_user_id = 3;
   string OwnerUserId=4;  
+    string linkedUserId=5;  
 
-  string facility_id = 5;
-  string time_slot_id = 6;
 
-  repeated ReservationServiceItem services = 7;
+  string facility_id = 6;
+  string time_slot_id = 7;
 
-  ReservationStatus status = 8;
-  PaymentStatus payment_status = 9;
-  ReservationSource source = 10;
-  string notes = 11;
+  repeated ReservationServiceItem services = 8;
+
+  ReservationStatus status = 9;
+  PaymentStatus payment_status = 10;
+  ReservationSource source = 11;
+  string notes = 12;
 
   // نمایش
-  string user_name = 12;
-  string provider_user_name = 13;
-  LocalizedString facility_name = 14;
-  google.protobuf.Timestamp created_at = 15;
-  google.protobuf.Timestamp updated_at = 16;
+  string user_name = 13;
+  string provider_user_name = 14;
+  LocalizedString facility_name = 15;
+  google.protobuf.Timestamp created_at = 16;
+  google.protobuf.Timestamp updated_at = 17;
   
 
-  google.type.Money total_amount = 17;
+  google.type.Money total_amount = 18;
 
   // --- جدید: شروع و پایان رزرو ---
-  google.protobuf.Timestamp start_time = 18; // زمان شروع رزرو
-  google.protobuf.Timestamp end_time = 19;   // زمان پایان رزرو
+  google.protobuf.Timestamp start_time = 19; // زمان شروع رزرو
+  google.protobuf.Timestamp end_time = 20;   // زمان پایان رزرو
 }
 
 message Customer {
@@ -768,13 +770,14 @@ message ReservationFilter {
   optional string user_id = 2;                // شناسه کاربر رزروکننده | User ID
   optional string provider_user_id = 3;       // شناسه سرویس‌دهنده | Provider user ID
   optional string owner_user_id = 4;          // شناسه سرویس‌دهنده | Owner user ID
+  optional string linked_user_id = 5;         // شناسه کاربر ایجاد کننده رزرو |Linked user ID
 
-  optional string facility_id = 5;            // شناسه مرکز | Facility ID
-  optional ReservationStatus status = 6;      // وضعیت رزرو | Reservation status
-  optional PaymentStatus payment_status = 7;  // وضعیت پرداخت | Payment status
-  optional ReservationSource source = 8;      // منبع رزرو | Reservation source (آنلاین، حضوری و ...)
-  optional google.protobuf.Timestamp start_date = 9; // فیلتر از تاریخ | From date
-  optional google.protobuf.Timestamp end_date = 10;   // فیلتر تا تاریخ | To date
+  optional string facility_id = 6;            // شناسه مرکز | Facility ID
+  optional ReservationStatus status = 7;      // وضعیت رزرو | Reservation status
+  optional PaymentStatus payment_status = 8;  // وضعیت پرداخت | Payment status
+  optional ReservationSource source = 9;      // منبع رزرو | Reservation source (آنلاین، حضوری و ...)
+  optional google.protobuf.Timestamp start_date = 10; // فیلتر از تاریخ | From date
+  optional google.protobuf.Timestamp end_date = 11;   // فیلتر تا تاریخ | To date
 }
 
 // دریافت لیست رزروها با فیلتر پویا | Get list of reservations with filters
