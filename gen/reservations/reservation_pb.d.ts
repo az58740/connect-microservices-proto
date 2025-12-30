@@ -2513,67 +2513,9 @@ export declare const CreateReservationResponseSchema: GenMessage<CreateReservati
  */
 export declare type UpdateReservationRequest = Message<"reservation.UpdateReservationRequest"> & {
   /**
-   * شناسه رزرو
-   *
-   * @generated from field: string reservation_id = 1;
+   * @generated from field: reservation.Reservation reservation = 1;
    */
-  reservationId: string;
-
-  /**
-   * سرویس‌دهنده | Provider user
-   *
-   * @generated from field: string provider_user_id = 2;
-   */
-  providerUserId: string;
-
-  /**
-   * وضعیت جدید رزرو
-   *
-   * @generated from field: reservation.ReservationStatus reservation_status = 3;
-   */
-  reservationStatus: ReservationStatus;
-
-  /**
-   * وضعیت پرداخت جدید
-   *
-   * @generated from field: reservation.PaymentStatus payment_status = 4;
-   */
-  paymentStatus: PaymentStatus;
-
-  /**
-   * توضیحات (مثلاً دلیل لغو)
-   *
-   * @generated from field: string notes = 5;
-   */
-  notes: string;
-
-  /**
-   * سرویس‌های جدید یا بروزشده رزرو
-   *
-   * @generated from field: repeated reservation.ReservationServiceItem services = 6;
-   */
-  services: ReservationServiceItem[];
-
-  /**
-   * @generated from field: google.type.Money total_amount = 7;
-   */
-  totalAmount?: Money;
-
-  /**
-   * --- جدید: شروع و پایان رزرو ---
-   *
-   * زمان شروع رزرو
-   *
-   * @generated from field: google.protobuf.Timestamp start_time = 8;
-   */
-  startTime?: Timestamp;
-
-  /**
-   * زمان پایان رزرو
-   *
-   * @generated from field: google.protobuf.Timestamp end_time = 9;
-   */
-  endTime?: Timestamp;
+  reservation?: Reservation;
 };
 
 /**
