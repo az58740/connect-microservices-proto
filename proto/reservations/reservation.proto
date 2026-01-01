@@ -56,7 +56,6 @@ enum WeekDay {
   THURSDAY = 4;   // پنج‌شنبه | Thursday
   FRIDAY = 5;     // جمعه | Friday
   SATURDAY = 6;   // شنبه | Saturday
-
 }
 
 // وضعیت حضور | Attendance status
@@ -330,7 +329,6 @@ message TimeSlot {
   WeekDay day = 12;                     // روز هفته | Day of the week (e.g. Saturday)
   int32 capacity = 13; // ظرفیت کل
   int32 reserved_count = 14; // تعداد رزروهای انجام شده
-
 }
 // رزرو ثبت‌شده توسط کاربر
 // سرویس انتخاب‌شده در رزرو
@@ -348,7 +346,7 @@ message Reservation {
   string user_id = 2;
   string provider_user_id = 3;
   string OwnerUserId=4;  
-    string linkedUserId=5;  
+  string linkedUserId=5;  
 
 
   string facility_id = 6;
@@ -364,16 +362,17 @@ message Reservation {
   // نمایش
   string user_name = 13;
   string provider_user_name = 14;
-  LocalizedString facility_name = 15;
-  google.protobuf.Timestamp created_at = 16;
-  google.protobuf.Timestamp updated_at = 17;
+  string owner_user_name = 15;
+  LocalizedString facility_name = 16;
+  google.protobuf.Timestamp created_at = 17;
+  google.protobuf.Timestamp updated_at = 18;
   
 
-  google.type.Money total_amount = 18;
+  google.type.Money total_amount = 19;
 
   // --- جدید: شروع و پایان رزرو ---
-  google.protobuf.Timestamp start_time = 19; // زمان شروع رزرو
-  google.protobuf.Timestamp end_time = 20;   // زمان پایان رزرو
+  google.protobuf.Timestamp start_time = 20; // زمان شروع رزرو
+  google.protobuf.Timestamp end_time = 21;   // زمان پایان رزرو
 }
 
 message Customer {
@@ -391,9 +390,7 @@ message Customer {
    optional string  OwnerName =11;            
    optional string   ProviderName =12;            
 optional string   LinkedUserName =13;  
-
-    google.protobuf.Timestamp CreatedAt =14; 
-
+google.protobuf.Timestamp CreatedAt =14; 
 }
 message CustomerFilter {
   optional string Id =1;

@@ -635,22 +635,27 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
   providerUserName: string;
 
   /**
-   * @generated from field: reservation.LocalizedString facility_name = 15;
+   * @generated from field: string owner_user_name = 15;
+   */
+  ownerUserName: string;
+
+  /**
+   * @generated from field: reservation.LocalizedString facility_name = 16;
    */
   facilityName?: LocalizedString;
 
   /**
-   * @generated from field: google.protobuf.Timestamp created_at = 16;
+   * @generated from field: google.protobuf.Timestamp created_at = 17;
    */
   createdAt?: Timestamp;
 
   /**
-   * @generated from field: google.protobuf.Timestamp updated_at = 17;
+   * @generated from field: google.protobuf.Timestamp updated_at = 18;
    */
   updatedAt?: Timestamp;
 
   /**
-   * @generated from field: google.type.Money total_amount = 18;
+   * @generated from field: google.type.Money total_amount = 19;
    */
   totalAmount?: Money;
 
@@ -659,14 +664,14 @@ export declare type Reservation = Message<"reservation.Reservation"> & {
    *
    * زمان شروع رزرو
    *
-   * @generated from field: google.protobuf.Timestamp start_time = 19;
+   * @generated from field: google.protobuf.Timestamp start_time = 20;
    */
   startTime?: Timestamp;
 
   /**
    * زمان پایان رزرو
    *
-   * @generated from field: google.protobuf.Timestamp end_time = 20;
+   * @generated from field: google.protobuf.Timestamp end_time = 21;
    */
   endTime?: Timestamp;
 };
