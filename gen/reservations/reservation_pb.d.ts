@@ -1838,6 +1838,21 @@ export declare type UpdateProviderServiceRequest = Message<"reservation.UpdatePr
    * @generated from field: optional google.type.Money price = 4;
    */
   price?: Money;
+
+  /**
+   * @generated from field: optional reservation.LocalizedString name = 5;
+   */
+  name?: LocalizedString;
+
+  /**
+   * @generated from field: optional reservation.LocalizedString description = 6;
+   */
+  description?: LocalizedString;
+
+  /**
+   * @generated from field: optional string facility_id = 7;
+   */
+  facilityId?: string;
 };
 
 /**

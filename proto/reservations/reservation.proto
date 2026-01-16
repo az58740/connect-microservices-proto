@@ -610,6 +610,9 @@ message UpdateProviderServiceRequest {
   optional bool is_available = 2;
   optional int32 duration_minutes = 3;
   optional google.type.Money price = 4;
+    optional LocalizedString name = 5;
+  optional LocalizedString description = 6;
+   optional  string facility_id = 7;
 }
 message UpdateProviderServiceResponse {
   ProviderService service = 1;
