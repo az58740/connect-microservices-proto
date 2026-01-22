@@ -19,11 +19,12 @@ enum UserStatus {
 enum UserType {
     USER_TYPE_DEFAULT = 0;             // Default normal user.
     USER_TYPE_ADMIN = 1;               // System administrator.
-    USER_TYPE_CONTRACT_PARTY = 2;      // General contracting party.
-    USER_TYPE_CONTRACT_EMPLOYEE = 3;   // Employee of the contracting party.
-    USER_TYPE_CONTRACT_EMPLOYER = 4;   // Employer of the contracting party.
-    USER_TYPE_CONTRACT_APPLICANT = 5;  // Applicant for a contract.
-    USER_TYPE_GUEST = 6;               // Guest user created by receptionist.
+    USER_TYPE_System_AGENCY = 2;      // System Agency.
+    USER_TYPE_CONTRACT_PARTY = 3;      // General contracting party.
+    USER_TYPE_CONTRACT_EMPLOYEE =4;   // Employee of the contracting party.
+    USER_TYPE_CONTRACT_EMPLOYER = 5;   // Employer of the contracting party.
+    USER_TYPE_CONTRACT_APPLICANT = 6;  // Applicant for a contract.
+    USER_TYPE_GUEST = 7;               // Guest user created by receptionist.
 }
 
 
@@ -59,8 +60,8 @@ enum ContractStatus {
 // Enum for contract statuses.
 enum ContractType {
     CONTRACT_Type_WithEmployer = 0; // Default .
-    CONTRACT_Type_WithAdmin = 1;     // .
- 
+    CONTRACT_Type_WithAdmin = 1;     // 
+    CONTRACT_TYPE_System_AGENCY = 2;      // System Agency. 
 }
 enum FacilityType {
   Facility_BOOKABLE = 0;         // قابل رزرو (مثلاً آرایشگاه، پزشک)
@@ -86,40 +87,43 @@ enum Action {
   DELETE = 4;
   CURD=5;
 }
+
+
 enum Resource {
-  RESOURCE_UNSPECIFIED = 0; // منبع نامشخص (پیش‌فرض)
+  ROLE_UNSPECIFIED = 0;
 
-  // Core - هسته سیستم
-  USER = 1; // کاربر (مدیریت حساب‌های کاربران)
-  ROLE = 2; // نقش (تعریف و تخصیص نقش‌ها)
-  PERMISSION = 3; // دسترسی (سطوح دسترسی برای نقش‌ها و کاربران)
-  UserDashboard = 4; // داشبورد کاربر (نمای کلی اطلاعات کاربر)
+  // ===============================
+  // System Only
+  // ===============================
+  SYSTEM_ADMIN = 1;          // مدیر کل سیستم (Full Access)
+ 
 
-  // HR - منابع انسانی
-  EMPLOYEE = 10; // کارمند (اطلاعات کارکنان)
-  JOB_POST = 11; // آگهی شغلی (موقعیت‌های شغلی منتشر شده)
-  APPLICATION = 12; // درخواست استخدام (فرم‌ها یا رزومه‌های ارسالی)
-  CONTRACT = 13; // قرارداد (مدیریت قراردادهای کاری)
+  // ===============================
+  // Shared / Context-Aware Roles
+  // ===============================
+  DASHBOARD_ADMIN = 10;      // مدیریت داشبورد
+  USER_ADMIN = 11;           // مدیریت کاربران
+  EMPLOYER_ADMIN = 12;       // مدیریت Employer / مراکز
+   SYSTEM_AGENCY = 13;         // نمایندگی سیستم (محدود)
 
-  // Sales - فروش
-  PRODUCT = 20; // محصول (کالاها یا خدمات قابل فروش)
-  ORDER = 21; // سفارش (ثبت سفارش مشتریان)
-  INVOICE = 22; // فاکتور (صورتحساب‌های صادر شده)
+  CUSTOMER_ADMIN = 14;       // مدیریت مشتریان
+  RESERVATION_ADMIN = 15;    // مدیریت رزرواسیون
+  FINANCE_ADMIN = 16;        // مدیریت مالی
+  FINANCE_MANAGER = 17;      // صندوق / عملیات مالی
 
-  // Marketing - بازاریابی
-  CAMPAIGN = 30; // کمپین (کمپین‌های تبلیغاتی یا بازاریابی)
-  LEAD = 31; // سرنخ فروش (مشتریان بالقوه)
+  SALES_ADMIN = 18;          // مدیریت فروش
+  SALES_AGENT = 19;          // فروشنده
 
-  // Support - پشتیبانی
-  TICKET = 40; // تیکت پشتیبانی (درخواست‌های مشتریان)
-
-  // Content - محتوا
-  ARTICLE = 50; // مقاله (مطالب یا صفحات منتشر شده)
-  COMMENT = 51; // نظر (دیدگاه‌های کاربران)
-
-  // Finance - مالی
-  PAYMENT = 60; // پرداخت (تراکنش‌های مالی یا دریافتی‌ها)
+  // ===============================
+  // Basic Roles
+  // ===============================
+  EMPLOYEE = 30;             // کارمند
+  CUSTOMER = 40;             // مشتری
+  GUEST = 41;                // مهمان
 }
+
+
+
 // ==================== USER-RELATED MESSAGES ====================
 // Message for defining a permission related to user roles.
 message Permission {

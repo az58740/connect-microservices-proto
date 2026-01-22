@@ -2754,39 +2754,46 @@ export enum UserType {
   ADMIN = 1,
 
   /**
+   * System Agency.
+   *
+   * @generated from enum value: USER_TYPE_System_AGENCY = 2;
+   */
+  System_AGENCY = 2,
+
+  /**
    * General contracting party.
    *
-   * @generated from enum value: USER_TYPE_CONTRACT_PARTY = 2;
+   * @generated from enum value: USER_TYPE_CONTRACT_PARTY = 3;
    */
-  CONTRACT_PARTY = 2,
+  CONTRACT_PARTY = 3,
 
   /**
    * Employee of the contracting party.
    *
-   * @generated from enum value: USER_TYPE_CONTRACT_EMPLOYEE = 3;
+   * @generated from enum value: USER_TYPE_CONTRACT_EMPLOYEE = 4;
    */
-  CONTRACT_EMPLOYEE = 3,
+  CONTRACT_EMPLOYEE = 4,
 
   /**
    * Employer of the contracting party.
    *
-   * @generated from enum value: USER_TYPE_CONTRACT_EMPLOYER = 4;
+   * @generated from enum value: USER_TYPE_CONTRACT_EMPLOYER = 5;
    */
-  CONTRACT_EMPLOYER = 4,
+  CONTRACT_EMPLOYER = 5,
 
   /**
    * Applicant for a contract.
    *
-   * @generated from enum value: USER_TYPE_CONTRACT_APPLICANT = 5;
+   * @generated from enum value: USER_TYPE_CONTRACT_APPLICANT = 6;
    */
-  CONTRACT_APPLICANT = 5,
+  CONTRACT_APPLICANT = 6,
 
   /**
    * Guest user created by receptionist.
    *
-   * @generated from enum value: USER_TYPE_GUEST = 6;
+   * @generated from enum value: USER_TYPE_GUEST = 7;
    */
-  GUEST = 6,
+  GUEST = 7,
 }
 
 /**
@@ -2964,11 +2971,18 @@ export enum ContractType {
   WithEmployer = 0,
 
   /**
-   * .
+   * 
    *
    * @generated from enum value: CONTRACT_Type_WithAdmin = 1;
    */
   WithAdmin = 1,
+
+  /**
+   * System Agency. 
+   *
+   * @generated from enum value: CONTRACT_TYPE_System_AGENCY = 2;
+   */
+  System_AGENCY = 2,
 }
 
 /**
@@ -3100,144 +3114,119 @@ export declare const ActionSchema: GenEnum<Action>;
  */
 export enum Resource {
   /**
-   * منبع نامشخص (پیش‌فرض)
-   *
-   * @generated from enum value: RESOURCE_UNSPECIFIED = 0;
+   * @generated from enum value: ROLE_UNSPECIFIED = 0;
    */
-  RESOURCE_UNSPECIFIED = 0,
+  ROLE_UNSPECIFIED = 0,
 
   /**
-   * Core - هسته سیستم
+   * ===============================
+   * System Only
+   * ===============================
    *
-   * کاربر (مدیریت حساب‌های کاربران)
+   * مدیر کل سیستم (Full Access)
    *
-   * @generated from enum value: USER = 1;
+   * @generated from enum value: SYSTEM_ADMIN = 1;
    */
-  USER = 1,
+  SYSTEM_ADMIN = 1,
 
   /**
-   * نقش (تعریف و تخصیص نقش‌ها)
+   * ===============================
+   * Shared / Context-Aware Roles
+   * ===============================
    *
-   * @generated from enum value: ROLE = 2;
+   * مدیریت داشبورد
+   *
+   * @generated from enum value: DASHBOARD_ADMIN = 10;
    */
-  ROLE = 2,
+  DASHBOARD_ADMIN = 10,
 
   /**
-   * دسترسی (سطوح دسترسی برای نقش‌ها و کاربران)
+   * مدیریت کاربران
    *
-   * @generated from enum value: PERMISSION = 3;
+   * @generated from enum value: USER_ADMIN = 11;
    */
-  PERMISSION = 3,
+  USER_ADMIN = 11,
 
   /**
-   * داشبورد کاربر (نمای کلی اطلاعات کاربر)
+   * مدیریت Employer / مراکز
    *
-   * @generated from enum value: UserDashboard = 4;
+   * @generated from enum value: EMPLOYER_ADMIN = 12;
    */
-  UserDashboard = 4,
+  EMPLOYER_ADMIN = 12,
 
   /**
-   * HR - منابع انسانی
+   * نمایندگی سیستم (محدود)
    *
-   * کارمند (اطلاعات کارکنان)
-   *
-   * @generated from enum value: EMPLOYEE = 10;
+   * @generated from enum value: SYSTEM_AGENCY = 13;
    */
-  EMPLOYEE = 10,
+  SYSTEM_AGENCY = 13,
 
   /**
-   * آگهی شغلی (موقعیت‌های شغلی منتشر شده)
+   * مدیریت مشتریان
    *
-   * @generated from enum value: JOB_POST = 11;
+   * @generated from enum value: CUSTOMER_ADMIN = 14;
    */
-  JOB_POST = 11,
+  CUSTOMER_ADMIN = 14,
 
   /**
-   * درخواست استخدام (فرم‌ها یا رزومه‌های ارسالی)
+   * مدیریت رزرواسیون
    *
-   * @generated from enum value: APPLICATION = 12;
+   * @generated from enum value: RESERVATION_ADMIN = 15;
    */
-  APPLICATION = 12,
+  RESERVATION_ADMIN = 15,
 
   /**
-   * قرارداد (مدیریت قراردادهای کاری)
+   * مدیریت مالی
    *
-   * @generated from enum value: CONTRACT = 13;
+   * @generated from enum value: FINANCE_ADMIN = 16;
    */
-  CONTRACT = 13,
+  FINANCE_ADMIN = 16,
 
   /**
-   * Sales - فروش
+   * صندوق / عملیات مالی
    *
-   * محصول (کالاها یا خدمات قابل فروش)
-   *
-   * @generated from enum value: PRODUCT = 20;
+   * @generated from enum value: FINANCE_MANAGER = 17;
    */
-  PRODUCT = 20,
+  FINANCE_MANAGER = 17,
 
   /**
-   * سفارش (ثبت سفارش مشتریان)
+   * مدیریت فروش
    *
-   * @generated from enum value: ORDER = 21;
+   * @generated from enum value: SALES_ADMIN = 18;
    */
-  ORDER = 21,
+  SALES_ADMIN = 18,
 
   /**
-   * فاکتور (صورتحساب‌های صادر شده)
+   * فروشنده
    *
-   * @generated from enum value: INVOICE = 22;
+   * @generated from enum value: SALES_AGENT = 19;
    */
-  INVOICE = 22,
+  SALES_AGENT = 19,
 
   /**
-   * Marketing - بازاریابی
+   * ===============================
+   * Basic Roles
+   * ===============================
    *
-   * کمپین (کمپین‌های تبلیغاتی یا بازاریابی)
+   * کارمند
    *
-   * @generated from enum value: CAMPAIGN = 30;
+   * @generated from enum value: EMPLOYEE = 30;
    */
-  CAMPAIGN = 30,
+  EMPLOYEE = 30,
 
   /**
-   * سرنخ فروش (مشتریان بالقوه)
+   * مشتری
    *
-   * @generated from enum value: LEAD = 31;
+   * @generated from enum value: CUSTOMER = 40;
    */
-  LEAD = 31,
+  CUSTOMER = 40,
 
   /**
-   * Support - پشتیبانی
+   * مهمان
    *
-   * تیکت پشتیبانی (درخواست‌های مشتریان)
-   *
-   * @generated from enum value: TICKET = 40;
+   * @generated from enum value: GUEST = 41;
    */
-  TICKET = 40,
-
-  /**
-   * Content - محتوا
-   *
-   * مقاله (مطالب یا صفحات منتشر شده)
-   *
-   * @generated from enum value: ARTICLE = 50;
-   */
-  ARTICLE = 50,
-
-  /**
-   * نظر (دیدگاه‌های کاربران)
-   *
-   * @generated from enum value: COMMENT = 51;
-   */
-  COMMENT = 51,
-
-  /**
-   * Finance - مالی
-   *
-   * پرداخت (تراکنش‌های مالی یا دریافتی‌ها)
-   *
-   * @generated from enum value: PAYMENT = 60;
-   */
-  PAYMENT = 60,
+  GUEST = 41,
 }
 
 /**
