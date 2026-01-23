@@ -8,6 +8,7 @@ require (
 	google.golang.org/protobuf v1.36.6
 =======
 go 1.24.0
+<<<<<<< HEAD
 
 require (
 	connectrpc.com/connect v1.18.1
@@ -15,3 +16,5 @@ require (
 	google.golang.org/protobuf v1.36.11
 >>>>>>> cad3f2a (go update)
 )
+=======
+>>>>>>> 5a367d0 (update)
