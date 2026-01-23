@@ -11,4 +11,9 @@ fi
 
 # bash 
 #./generate.sh npx buf generate
+<<<<<<< HEAD
 #./generate.sh buf generate
+=======
+#./generate.sh buf generate
+# D:\User-Managment\connect-microservices-proto\gen
+>>>>>>> cad3f2a (go update)
