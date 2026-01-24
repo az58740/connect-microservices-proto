@@ -20,4 +20,6 @@ fi
 #pnpm dev
 # خاموش کردن پروکسی در گولنق go env -w GOPROXY=off
 # کاملا فقط لوکال   go env -w GOPROXY=direct
-#go clean -modcache  
+#go clean -modcache
+#$env:GOPROXY = "https://goproxy.io,direct"
+  
