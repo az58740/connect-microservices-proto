@@ -18,3 +18,6 @@ fi
 #NEXT_TELEMETRY_DISABLED=1 pnpm dev
 #setx NEXT_TELEMETRY_DISABLED 1
 #pnpm dev
+# خاموش کردن پروکسی در گولنق go env -w GOPROXY=off
+# کاملا فقط لوکال   go env -w GOPROXY=direct
+#go clean -modcache  
