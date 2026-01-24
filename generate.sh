@@ -22,4 +22,6 @@ fi
 # کاملا فقط لوکال   go env -w GOPROXY=direct
 #go clean -modcache
 #$env:GOPROXY = "https://goproxy.io,direct"
+#$env:GOPROXY="https://proxy.golang.org,direct"
+#github.com/az58740/connect-microservices-proto/golang/reservations/reservationsconnect 
   
