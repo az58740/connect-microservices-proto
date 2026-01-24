@@ -88,8 +88,41 @@ enum Action {
   CURD=5;
 }
 
-
 enum Resource {
+  RESOURCE_UNSPECIFIED = 0; // منبع نامشخص (پیش‌فرض)
+
+  // Core - هسته سیستم
+  USER = 1; // کاربر (مدیریت حساب‌های کاربران)
+  ROLE = 2; // نقش (تعریف و تخصیص نقش‌ها)
+  PERMISSION = 3; // دسترسی (سطوح دسترسی برای نقش‌ها و کاربران)
+  UserDashboard = 4; // داشبورد کاربر (نمای کلی اطلاعات کاربر)
+
+  // HR - منابع انسانی
+  EMPLOYEE = 10; // کارمند (اطلاعات کارکنان)
+  JOB_POST = 11; // آگهی شغلی (موقعیت‌های شغلی منتشر شده)
+  APPLICATION = 12; // درخواست استخدام (فرم‌ها یا رزومه‌های ارسالی)
+  CONTRACT = 13; // قرارداد (مدیریت قراردادهای کاری)
+
+  // Sales - فروش
+  PRODUCT = 20; // محصول (کالاها یا خدمات قابل فروش)
+  ORDER = 21; // سفارش (ثبت سفارش مشتریان)
+  INVOICE = 22; // فاکتور (صورتحساب‌های صادر شده)
+
+  // Marketing - بازاریابی
+  CAMPAIGN = 30; // کمپین (کمپین‌های تبلیغاتی یا بازاریابی)
+  LEAD = 31; // سرنخ فروش (مشتریان بالقوه)
+
+  // Support - پشتیبانی
+  TICKET = 40; // تیکت پشتیبانی (درخواست‌های مشتریان)
+
+  // Content - محتوا
+  ARTICLE = 50; // مقاله (مطالب یا صفحات منتشر شده)
+  COMMENT = 51; // نظر (دیدگاه‌های کاربران)
+
+  // Finance - مالی
+  PAYMENT = 60; // پرداخت (تراکنش‌های مالی یا دریافتی‌ها)
+}
+enum RoleEnum {
   ROLE_UNSPECIFIED = 0;
 
   // ===============================
@@ -575,6 +608,8 @@ message PermissionResponse {
 message CreateRoleRequest {
   string name = 1;
   string description=2;
+  string resourceId=3;
+  string roleType=4;
 }
 
 message RoleResponse {
