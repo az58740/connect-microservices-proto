@@ -153,9 +153,9 @@ enum RoleEnum {
   // ===============================
   // Basic Roles
   // ===============================
-  EMPLOYEE = 30;             // کارمند
-  CUSTOMER = 40;             // مشتری
-  GUEST = 41;                // مهمان
+  EMPLOYE_EROLE = 30;             // کارمند
+  CUSTOME_RROLE = 40;             // مشتری
+  GUEST_ROLE = 41;                // مهمان
 }
 
 
