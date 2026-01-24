@@ -70,6 +70,16 @@ export declare type Role = Message<"users.Role"> & {
    * @generated from field: repeated users.Permission permissions = 4;
    */
   permissions: Permission[];
+
+  /**
+   * @generated from field: string resourceId = 5;
+   */
+  resourceId: string;
+
+  /**
+   * @generated from field: string type = 6;
+   */
+  type: string;
 };
 
 /**

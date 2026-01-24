@@ -106,7 +106,7 @@ enum Resource {
   EMPLOYER_ADMIN = 12;       // مدیریت Employer / مراکز
    SYSTEM_AGENCY = 13;         // نمایندگی سیستم (محدود)
   CUSTOMER_ADMIN = 14;       // مدیریت مشتریان
-  
+
   RESERVATION_ADMIN = 15;    // مدیریت رزرواسیون
   FINANCE_ADMIN = 16;        // مدیریت مالی
   FINANCE_MANAGER = 17;      // صندوق / عملیات مالی
@@ -141,6 +141,8 @@ message Role {
   string name = 2;
   string description=3;
   repeated Permission permissions = 4;
+  string resourceId=5;
+  string type=6;
 }
 
 // Represents a user's profile, which contains personal and contact information.
