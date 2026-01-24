@@ -11,9 +11,10 @@ fi
 
 # bash 
 #./generate.sh npx buf generate
-<<<<<<< HEAD
 #./generate.sh buf generate
-=======
 #./generate.sh buf generate
-# D:\User-Managment\connect-microservices-proto\gen
->>>>>>> cad3f2a (go update)
+# D:\User-Managment\connect-microservices-proto
+#اجرای Next.js بدون fetch نسخه
+#NEXT_TELEMETRY_DISABLED=1 pnpm dev
+#setx NEXT_TELEMETRY_DISABLED 1
+#pnpm dev

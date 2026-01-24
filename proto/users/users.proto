@@ -105,11 +105,14 @@ enum Resource {
   USER_ADMIN = 11;           // مدیریت کاربران
   EMPLOYER_ADMIN = 12;       // مدیریت Employer / مراکز
    SYSTEM_AGENCY = 13;         // نمایندگی سیستم (محدود)
-
   CUSTOMER_ADMIN = 14;       // مدیریت مشتریان
+  
   RESERVATION_ADMIN = 15;    // مدیریت رزرواسیون
   FINANCE_ADMIN = 16;        // مدیریت مالی
   FINANCE_MANAGER = 17;      // صندوق / عملیات مالی
+
+
+
 
   SALES_ADMIN = 18;          // مدیریت فروش
   SALES_AGENT = 19;          // فروشنده
