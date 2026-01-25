@@ -2161,24 +2161,9 @@ export declare const PermissionResponseSchema: GenMessage<PermissionResponse>;
  */
 export declare type CreateRoleRequest = Message<"users.CreateRoleRequest"> & {
   /**
-   * @generated from field: string name = 1;
+   * @generated from field: users.Role role = 1;
    */
-  name: string;
-
-  /**
-   * @generated from field: string description = 2;
-   */
-  description: string;
-
-  /**
-   * @generated from field: string resourceId = 3;
-   */
-  resourceId: string;
-
-  /**
-   * @generated from field: string roleType = 4;
-   */
-  roleType: string;
+  role?: Role;
 };
 
 /**

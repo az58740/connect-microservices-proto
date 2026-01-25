@@ -625,10 +625,7 @@ message PermissionResponse {
 // ========== Create And Update Role ==========
 
 message CreateRoleRequest {
-  string name = 1;
-  string description=2;
-  string resourceId=3;
-  string roleType=4;
+Role role = 1; 
 }
 
 message RoleResponse {
