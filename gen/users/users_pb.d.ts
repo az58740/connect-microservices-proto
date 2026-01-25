@@ -57,9 +57,9 @@ export declare type Role = Message<"users.Role"> & {
   id: string;
 
   /**
-   * @generated from field: string name = 2;
+   * @generated from field: users.LocalizedString name = 2;
    */
-  name: string;
+  name?: LocalizedString;
 
   /**
    * @generated from field: string description = 3;
@@ -77,9 +77,9 @@ export declare type Role = Message<"users.Role"> & {
   resourceId: string;
 
   /**
-   * @generated from field: string type = 6;
+   * @generated from field: users.RoleType type = 6;
    */
-  type: string;
+  type: RoleType;
 };
 
 /**
@@ -2706,9 +2706,6 @@ export declare type ListFavoritesResponse = Message<"users.ListFavoritesResponse
 export declare const ListFavoritesResponseSchema: GenMessage<ListFavoritesResponse>;
 
 /**
- * ==================== ENUMS ====================
- * Enum for user status.
- *
  * @generated from enum users.UserStatus
  */
 export enum UserStatus {
@@ -3403,6 +3400,42 @@ export enum RoleEnum {
  * Describes the enum users.RoleEnum.
  */
 export declare const RoleEnumSchema: GenEnum<RoleEnum>;
+
+/**
+ * @generated from enum users.RoleType
+ */
+export enum RoleType {
+  /**
+   * *
+   * نامشخص
+   *
+   * @generated from enum value: ROLE_TYPE_UNSPECIFIED = 0;
+   */
+  ROLE_TYPE_UNSPECIFIED = 0,
+
+  /**
+   * *
+   * نقش سیستمی
+   * فقط توسط سیستم، قابل تخصیص محدود
+   *
+   * @generated from enum value: SYSTEM = 1;
+   */
+  SYSTEM = 1,
+
+  /**
+   * *
+   * نقش غیرسیستمی
+   * نقش‌های قابل مدیریت توسط ادمین‌ها
+   *
+   * @generated from enum value: NON_SYSTEM = 2;
+   */
+  NON_SYSTEM = 2,
+}
+
+/**
+ * Describes the enum users.RoleType.
+ */
+export declare const RoleTypeSchema: GenEnum<RoleType>;
 
 /**
  * ========== Favorit User ==========

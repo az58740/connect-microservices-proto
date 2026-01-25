@@ -8,6 +8,7 @@ package users;
 
 // ==================== ENUMS ====================
 // Enum for user status.
+
 enum UserStatus {
     USER_STATUS_UNSPECIFIED = 0; // Default value.
     USER_STATUS_ACTIVE = 1;      // Active user.
@@ -157,6 +158,24 @@ enum RoleEnum {
   CUSTOME_RROLE = 40;             // مشتری
   GUEST_ROLE = 41;                // مهمان
 }
+enum RoleType {
+  /**
+   * نامشخص
+   */
+  ROLE_TYPE_UNSPECIFIED = 0;
+
+  /**
+   * نقش سیستمی
+   * فقط توسط سیستم، قابل تخصیص محدود
+   */
+  SYSTEM = 1;
+
+  /**
+   * نقش غیرسیستمی
+   * نقش‌های قابل مدیریت توسط ادمین‌ها
+   */
+  NON_SYSTEM = 2;
+}
 
 
 
@@ -171,11 +190,11 @@ message Permission {
 // Message for defining a user role.
 message Role {
   string id = 1;
-  string name = 2;
+   LocalizedString name = 2;
   string description=3;
   repeated Permission permissions = 4;
   string resourceId=5;
-  string type=6;
+  RoleType type=6;
 }
 
 // Represents a user's profile, which contains personal and contact information.
