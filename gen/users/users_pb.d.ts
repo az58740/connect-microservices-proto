@@ -2393,6 +2393,16 @@ export declare type RolesListFilter = Message<"users.RolesListFilter"> & {
    * @generated from field: optional string userId = 2;
    */
   userId?: string;
+
+  /**
+   * @generated from field: optional int32 type = 3;
+   */
+  type?: number;
+
+  /**
+   * @generated from field: optional int32 oppositeType = 4;
+   */
+  oppositeType?: number;
 };
 
 /**
@@ -3153,11 +3163,28 @@ export enum Resource {
   Dashboard_Managment = 4,
 
   /**
+   * مدیریت کل منابع سیستم 
+   *
+   * @generated from enum value: System_Admin = 5;
+   */
+  System_Admin = 5,
+
+  /**
    * reservation
    *
    * @generated from enum value: RESERVATION_Managment = 10;
    */
   RESERVATION_Managment = 10,
+
+  /**
+   * @generated from enum value: Salon_Managment = 11;
+   */
+  Salon_Managment = 11,
+
+  /**
+   * @generated from enum value: Reception = 12;
+   */
+  Reception = 12,
 
   /**
    * Contract 
