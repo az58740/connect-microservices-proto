@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Empty, JoinRoomRequest, SignalMessage } from "./webrtc_pb.js";
+import { Empty, JoinRoomRequest, LeaveRoomRequest, SignalMessage } from "./webrtc_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -27,6 +27,15 @@ export const SignalingService = {
     sendSignal: {
       name: "SendSignal",
       I: SignalMessage,
+      O: Empty,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc signaling.v1.SignalingService.LeaveRoom
+     */
+    leaveRoom: {
+      name: "LeaveRoom",
+      I: LeaveRoomRequest,
       O: Empty,
       kind: MethodKind.Unary,
     },

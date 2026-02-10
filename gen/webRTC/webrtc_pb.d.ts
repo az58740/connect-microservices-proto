@@ -87,6 +87,27 @@ export declare type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
 export declare const SignalMessageSchema: GenMessage<SignalMessage>;
 
 /**
+ * @generated from message signaling.v1.LeaveRoomRequest
+ */
+export declare type LeaveRoomRequest = Message<"signaling.v1.LeaveRoomRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: string user_id = 2;
+   */
+  userId: string;
+};
+
+/**
+ * Describes the message signaling.v1.LeaveRoomRequest.
+ * Use `create(LeaveRoomRequestSchema)` to create a new message.
+ */
+export declare const LeaveRoomRequestSchema: GenMessage<LeaveRoomRequest>;
+
+/**
  * @generated from message signaling.v1.Empty
  */
 export declare type Empty = Message<"signaling.v1.Empty"> & {
@@ -116,6 +137,14 @@ export declare const SignalingService: GenService<{
   sendSignal: {
     methodKind: "unary";
     input: typeof SignalMessageSchema;
+    output: typeof EmptySchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.LeaveRoom
+   */
+  leaveRoom: {
+    methodKind: "unary";
+    input: typeof LeaveRoomRequestSchema;
     output: typeof EmptySchema;
   },
 }>;

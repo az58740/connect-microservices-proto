@@ -39,6 +39,9 @@ const (
 	// SignalingServiceSendSignalProcedure is the fully-qualified name of the SignalingService's
 	// SendSignal RPC.
 	SignalingServiceSendSignalProcedure = "/signaling.v1.SignalingService/SendSignal"
+	// SignalingServiceLeaveRoomProcedure is the fully-qualified name of the SignalingService's
+	// LeaveRoom RPC.
+	SignalingServiceLeaveRoomProcedure = "/signaling.v1.SignalingService/LeaveRoom"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
@@ -46,12 +49,14 @@ var (
 	signalingServiceServiceDescriptor          = gen.File_webRTC_webrtc_proto.Services().ByName("SignalingService")
 	signalingServiceJoinRoomMethodDescriptor   = signalingServiceServiceDescriptor.Methods().ByName("JoinRoom")
 	signalingServiceSendSignalMethodDescriptor = signalingServiceServiceDescriptor.Methods().ByName("SendSignal")
+	signalingServiceLeaveRoomMethodDescriptor  = signalingServiceServiceDescriptor.Methods().ByName("LeaveRoom")
 )
 
 // SignalingServiceClient is a client for the signaling.v1.SignalingService service.
 type SignalingServiceClient interface {
 	JoinRoom(context.Context, *connect.Request[gen.JoinRoomRequest]) (*connect.ServerStreamForClient[gen.SignalMessage], error)
 	SendSignal(context.Context, *connect.Request[gen.SignalMessage]) (*connect.Response[gen.Empty], error)
+	LeaveRoom(context.Context, *connect.Request[gen.LeaveRoomRequest]) (*connect.Response[gen.Empty], error)
 }
 
 // NewSignalingServiceClient constructs a client for the signaling.v1.SignalingService service. By
@@ -76,6 +81,12 @@ func NewSignalingServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(signalingServiceSendSignalMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		leaveRoom: connect.NewClient[gen.LeaveRoomRequest, gen.Empty](
+			httpClient,
+			baseURL+SignalingServiceLeaveRoomProcedure,
+			connect.WithSchema(signalingServiceLeaveRoomMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -83,6 +94,7 @@ func NewSignalingServiceClient(httpClient connect.HTTPClient, baseURL string, op
 type signalingServiceClient struct {
 	joinRoom   *connect.Client[gen.JoinRoomRequest, gen.SignalMessage]
 	sendSignal *connect.Client[gen.SignalMessage, gen.Empty]
+	leaveRoom  *connect.Client[gen.LeaveRoomRequest, gen.Empty]
 }
 
 // JoinRoom calls signaling.v1.SignalingService.JoinRoom.
@@ -95,10 +107,16 @@ func (c *signalingServiceClient) SendSignal(ctx context.Context, req *connect.Re
 	return c.sendSignal.CallUnary(ctx, req)
 }
 
+// LeaveRoom calls signaling.v1.SignalingService.LeaveRoom.
+func (c *signalingServiceClient) LeaveRoom(ctx context.Context, req *connect.Request[gen.LeaveRoomRequest]) (*connect.Response[gen.Empty], error) {
+	return c.leaveRoom.CallUnary(ctx, req)
+}
+
 // SignalingServiceHandler is an implementation of the signaling.v1.SignalingService service.
 type SignalingServiceHandler interface {
 	JoinRoom(context.Context, *connect.Request[gen.JoinRoomRequest], *connect.ServerStream[gen.SignalMessage]) error
 	SendSignal(context.Context, *connect.Request[gen.SignalMessage]) (*connect.Response[gen.Empty], error)
+	LeaveRoom(context.Context, *connect.Request[gen.LeaveRoomRequest]) (*connect.Response[gen.Empty], error)
 }
 
 // NewSignalingServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -119,12 +137,20 @@ func NewSignalingServiceHandler(svc SignalingServiceHandler, opts ...connect.Han
 		connect.WithSchema(signalingServiceSendSignalMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	signalingServiceLeaveRoomHandler := connect.NewUnaryHandler(
+		SignalingServiceLeaveRoomProcedure,
+		svc.LeaveRoom,
+		connect.WithSchema(signalingServiceLeaveRoomMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/signaling.v1.SignalingService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case SignalingServiceJoinRoomProcedure:
 			signalingServiceJoinRoomHandler.ServeHTTP(w, r)
 		case SignalingServiceSendSignalProcedure:
 			signalingServiceSendSignalHandler.ServeHTTP(w, r)
+		case SignalingServiceLeaveRoomProcedure:
+			signalingServiceLeaveRoomHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -140,4 +166,8 @@ func (UnimplementedSignalingServiceHandler) JoinRoom(context.Context, *connect.R
 
 func (UnimplementedSignalingServiceHandler) SendSignal(context.Context, *connect.Request[gen.SignalMessage]) (*connect.Response[gen.Empty], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.SendSignal is not implemented"))
+}
+
+func (UnimplementedSignalingServiceHandler) LeaveRoom(context.Context, *connect.Request[gen.LeaveRoomRequest]) (*connect.Response[gen.Empty], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.LeaveRoom is not implemented"))
 }

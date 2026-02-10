@@ -7,6 +7,8 @@ option go_package = "github.com/yourname/signaling/gen;signaling";
 service SignalingService {
   rpc JoinRoom(JoinRoomRequest) returns (stream SignalMessage);
   rpc SendSignal(SignalMessage) returns (Empty);
+  rpc LeaveRoom(LeaveRoomRequest) returns (Empty);
+
 }
 
 message JoinRoomRequest {
@@ -24,5 +26,11 @@ message SignalMessage {
   string type = 6; // offer | answer | ice
   string payload = 7; // SDP or ICE json
 }
+
+message LeaveRoomRequest {
+  string room_id = 1;
+  string user_id = 2;
+}
+
 
 message Empty {}

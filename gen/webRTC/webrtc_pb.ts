@@ -10,7 +10,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file webRTC/webrtc.proto.
  */
 export const file_webRTC_webrtc: GenFile = /*@__PURE__*/
-  fileDesc("ChN3ZWJSVEMvd2VicnRjLnByb3RvEgxzaWduYWxpbmcudjEiRgoPSm9pblJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIRCgl1c2VyX25hbWUYAyABKAkikQEKDVNpZ25hbE1lc3NhZ2USDwoHcm9vbV9pZBgBIAEoCRIRCglmcm9tX3VzZXIYAiABKAkSFgoOZnJvbV91c2VyX25hbWUYAyABKAkSDwoHdG9fdXNlchgEIAEoCRIUCgx0b191c2VyX25hbWUYBSABKAkSDAoEdHlwZRgGIAEoCRIPCgdwYXlsb2FkGAcgASgJIgcKBUVtcHR5MpwBChBTaWduYWxpbmdTZXJ2aWNlEkgKCEpvaW5Sb29tEh0uc2lnbmFsaW5nLnYxLkpvaW5Sb29tUmVxdWVzdBobLnNpZ25hbGluZy52MS5TaWduYWxNZXNzYWdlMAESPgoKU2VuZFNpZ25hbBIbLnNpZ25hbGluZy52MS5TaWduYWxNZXNzYWdlGhMuc2lnbmFsaW5nLnYxLkVtcHR5Qi1aK2dpdGh1Yi5jb20veW91cm5hbWUvc2lnbmFsaW5nL2dlbjtzaWduYWxpbmdiBnByb3RvMw");
+  fileDesc("ChN3ZWJSVEMvd2VicnRjLnByb3RvEgxzaWduYWxpbmcudjEiRgoPSm9pblJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIRCgl1c2VyX25hbWUYAyABKAkikQEKDVNpZ25hbE1lc3NhZ2USDwoHcm9vbV9pZBgBIAEoCRIRCglmcm9tX3VzZXIYAiABKAkSFgoOZnJvbV91c2VyX25hbWUYAyABKAkSDwoHdG9fdXNlchgEIAEoCRIUCgx0b191c2VyX25hbWUYBSABKAkSDAoEdHlwZRgGIAEoCRIPCgdwYXlsb2FkGAcgASgJIjQKEExlYXZlUm9vbVJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJIgcKBUVtcHR5Mt4BChBTaWduYWxpbmdTZXJ2aWNlEkgKCEpvaW5Sb29tEh0uc2lnbmFsaW5nLnYxLkpvaW5Sb29tUmVxdWVzdBobLnNpZ25hbGluZy52MS5TaWduYWxNZXNzYWdlMAESPgoKU2VuZFNpZ25hbBIbLnNpZ25hbGluZy52MS5TaWduYWxNZXNzYWdlGhMuc2lnbmFsaW5nLnYxLkVtcHR5EkAKCUxlYXZlUm9vbRIeLnNpZ25hbGluZy52MS5MZWF2ZVJvb21SZXF1ZXN0GhMuc2lnbmFsaW5nLnYxLkVtcHR5Qi1aK2dpdGh1Yi5jb20veW91cm5hbWUvc2lnbmFsaW5nL2dlbjtzaWduYWxpbmdiBnByb3RvMw");
 
 /**
  * @generated from message signaling.v1.JoinRoomRequest
@@ -91,6 +91,28 @@ export const SignalMessageSchema: GenMessage<SignalMessage> = /*@__PURE__*/
   messageDesc(file_webRTC_webrtc, 1);
 
 /**
+ * @generated from message signaling.v1.LeaveRoomRequest
+ */
+export type LeaveRoomRequest = Message<"signaling.v1.LeaveRoomRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: string user_id = 2;
+   */
+  userId: string;
+};
+
+/**
+ * Describes the message signaling.v1.LeaveRoomRequest.
+ * Use `create(LeaveRoomRequestSchema)` to create a new message.
+ */
+export const LeaveRoomRequestSchema: GenMessage<LeaveRoomRequest> = /*@__PURE__*/
+  messageDesc(file_webRTC_webrtc, 2);
+
+/**
  * @generated from message signaling.v1.Empty
  */
 export type Empty = Message<"signaling.v1.Empty"> & {
@@ -101,7 +123,7 @@ export type Empty = Message<"signaling.v1.Empty"> & {
  * Use `create(EmptySchema)` to create a new message.
  */
 export const EmptySchema: GenMessage<Empty> = /*@__PURE__*/
-  messageDesc(file_webRTC_webrtc, 2);
+  messageDesc(file_webRTC_webrtc, 3);
 
 /**
  * @generated from service signaling.v1.SignalingService
@@ -121,6 +143,14 @@ export const SignalingService: GenService<{
   sendSignal: {
     methodKind: "unary";
     input: typeof SignalMessageSchema;
+    output: typeof EmptySchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.LeaveRoom
+   */
+  leaveRoom: {
+    methodKind: "unary";
+    input: typeof LeaveRoomRequestSchema;
     output: typeof EmptySchema;
   },
 }> = /*@__PURE__*/
