@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package signaling.v1;
+
+option go_package = "github.com/yourname/signaling/gen;signaling";
+
+service SignalingService {
+  rpc JoinRoom(JoinRoomRequest) returns (stream SignalMessage);
+  rpc SendSignal(SignalMessage) returns (Empty);
+}
+
+message JoinRoomRequest {
+  string room_id = 1;
+  string user_id = 2;
+  string user_name=3;
+}
+
+message SignalMessage {
+  string room_id = 1;
+  string from_user = 2;
+  string from_user_name = 3;
+  string to_user = 4;
+  string to_user_name = 5;
+  string type = 6; // offer | answer | ice
+  string payload = 7; // SDP or ICE json
+}
+
+message Empty {}
