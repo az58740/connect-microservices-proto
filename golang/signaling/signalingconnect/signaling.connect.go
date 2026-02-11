@@ -8,7 +8,7 @@ import (
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	signaling "github.com/yourname/signaling"
+	signaling "github.com/az58740/connect-microservices-proto/golang/signaling"
 	http "net/http"
 	strings "strings"
 )

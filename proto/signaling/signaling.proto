@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package signaling.v1;
 
-option go_package = "github.com/yourname/signaling;signaling";
+option go_package = "github.com/az58740/connect-microservices-proto/golang/signaling;signaling";
 
 enum SignalType {
   SIGNAL_TYPE_UNSPECIFIED = 0;
