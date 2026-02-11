@@ -1,0 +1,12 @@
+connectrpc.com/connect v1.19.1 h1:R5M57z05+90EfEvCY1b7hBxDVOUl45PrtXtAV2fOC14=
+connectrpc.com/connect v1.19.1/go.mod h1:tN20fjdGlewnSFeZxLKb0xwIZ6ozc3OQs2hTXy4du9w=
+github.com/az58740/connect-microservices-proto/golang/reservations v0.0.0-20260211142048-7a34906f3d07 h1:B4W1j9gP5r3OBFPuIxyTmCYRj/vGPlsznPud859AoxQ=
+github.com/az58740/connect-microservices-proto/golang/reservations v0.0.0-20260211142048-7a34906f3d07/go.mod h1:OGFCbDMugJ1Zy30ZgtLSmwLK7ncjqi6SVxhPCG1X2pQ=
+github.com/az58740/connect-microservices-proto/golang/users v0.0.0-20260211134023-fcdf545c423d h1:gq26evJVXXg9EHJsgtvgYjRlltPnReSV7J6V/MGIfLc=
+github.com/az58740/connect-microservices-proto/golang/users v0.0.0-20260211134023-fcdf545c423d/go.mod h1:IyoRW10PADgVpk3VaVR+aakTfuCcGRggNwBC2CD8neI=
+github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
+github.com/google/go-cmp v0.7.0/go.mod h1:pXiqmnSA92OHEEa9HXL2W4E7lf9JzCmGVUdgjX3N/iU=
+google.golang.org/genproto v0.0.0-20260209200024-4cfbd4190f57 h1:uZSB/r2MjH9IsqpG2vRNSV1Juteix90oHe8oTcLW9tk=
+google.golang.org/genproto v0.0.0-20260209200024-4cfbd4190f57/go.mod h1:nGuPfp0lnDJcJD0J47StV0Skgnw3qMSQhjsLKiejq5Y=
+google.golang.org/protobuf v1.36.11 h1:fV6ZwhNocDyBLK0dj+fg8ektcVegBBuEolpbTQyBNVE=
+google.golang.org/protobuf v1.36.11/go.mod h1:HTf+CrKn2C3g5S8VImy6tdcUvCska2kB7j23XfzDpco=
