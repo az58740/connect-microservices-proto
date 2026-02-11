@@ -1,4 +1,4 @@
-module github.com/az58740/connect-microservices-proto/golang/signaling/signalingconnect
+module github.com/az58740/connect-microservices-proto/golang/signaling
 
 go 1.25.1
 
