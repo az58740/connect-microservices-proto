@@ -2,13 +2,13 @@
 // @generated from file webRTC/webrtc.proto (package signaling.v1, syntax proto3)
 /* eslint-disable */
 
-import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import { enumDesc, fileDesc, messageDesc, serviceDesc, tsEnum } from "@bufbuild/protobuf/codegenv1";
 
 /**
  * Describes the file webRTC/webrtc.proto.
  */
 export const file_webRTC_webrtc = /*@__PURE__*/
-  fileDesc("ChN3ZWJSVEMvd2VicnRjLnByb3RvEgxzaWduYWxpbmcudjEiRgoPSm9pblJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIRCgl1c2VyX25hbWUYAyABKAkikQEKDVNpZ25hbE1lc3NhZ2USDwoHcm9vbV9pZBgBIAEoCRIRCglmcm9tX3VzZXIYAiABKAkSFgoOZnJvbV91c2VyX25hbWUYAyABKAkSDwoHdG9fdXNlchgEIAEoCRIUCgx0b191c2VyX25hbWUYBSABKAkSDAoEdHlwZRgGIAEoCRIPCgdwYXlsb2FkGAcgASgJIjQKEExlYXZlUm9vbVJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJIgcKBUVtcHR5Mt4BChBTaWduYWxpbmdTZXJ2aWNlEkgKCEpvaW5Sb29tEh0uc2lnbmFsaW5nLnYxLkpvaW5Sb29tUmVxdWVzdBobLnNpZ25hbGluZy52MS5TaWduYWxNZXNzYWdlMAESPgoKU2VuZFNpZ25hbBIbLnNpZ25hbGluZy52MS5TaWduYWxNZXNzYWdlGhMuc2lnbmFsaW5nLnYxLkVtcHR5EkAKCUxlYXZlUm9vbRIeLnNpZ25hbGluZy52MS5MZWF2ZVJvb21SZXF1ZXN0GhMuc2lnbmFsaW5nLnYxLkVtcHR5Qi1aK2dpdGh1Yi5jb20veW91cm5hbWUvc2lnbmFsaW5nL2dlbjtzaWduYWxpbmdiBnByb3RvMw");
+  fileDesc("ChN3ZWJSVEMvd2VicnRjLnByb3RvEgxzaWduYWxpbmcudjEiRgoPSm9pblJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIRCgl1c2VyX25hbWUYAyABKAkiqwEKDVNpZ25hbE1lc3NhZ2USDwoHcm9vbV9pZBgBIAEoCRIRCglmcm9tX3VzZXIYAiABKAkSFgoOZnJvbV91c2VyX25hbWUYAyABKAkSDwoHdG9fdXNlchgEIAEoCRIUCgx0b191c2VyX25hbWUYBSABKAkSJgoEdHlwZRgGIAEoDjIYLnNpZ25hbGluZy52MS5TaWduYWxUeXBlEg8KB3BheWxvYWQYByABKAkiNAoQTGVhdmVSb29tUmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkiBwoFRW1wdHkqigEKClNpZ25hbFR5cGUSGwoXU0lHTkFMX1RZUEVfVU5TUEVDSUZJRUQQABIVChFTSUdOQUxfVFlQRV9PRkZFUhABEhYKElNJR05BTF9UWVBFX0FOU1dFUhACEhkKFVNJR05BTF9UWVBFX0NBTkRJREFURRADEhUKEVNJR05BTF9UWVBFX0xFQVZFEAQy3gEKEFNpZ25hbGluZ1NlcnZpY2USSAoISm9pblJvb20SHS5zaWduYWxpbmcudjEuSm9pblJvb21SZXF1ZXN0Ghsuc2lnbmFsaW5nLnYxLlNpZ25hbE1lc3NhZ2UwARI+CgpTZW5kU2lnbmFsEhsuc2lnbmFsaW5nLnYxLlNpZ25hbE1lc3NhZ2UaEy5zaWduYWxpbmcudjEuRW1wdHkSQAoJTGVhdmVSb29tEh4uc2lnbmFsaW5nLnYxLkxlYXZlUm9vbVJlcXVlc3QaEy5zaWduYWxpbmcudjEuRW1wdHlCLVorZ2l0aHViLmNvbS95b3VybmFtZS9zaWduYWxpbmcvZ2VuO3NpZ25hbGluZ2IGcHJvdG8z");
 
 /**
  * Describes the message signaling.v1.JoinRoomRequest.
@@ -37,6 +37,18 @@ export const LeaveRoomRequestSchema = /*@__PURE__*/
  */
 export const EmptySchema = /*@__PURE__*/
   messageDesc(file_webRTC_webrtc, 3);
+
+/**
+ * Describes the enum signaling.v1.SignalType.
+ */
+export const SignalTypeSchema = /*@__PURE__*/
+  enumDesc(file_webRTC_webrtc, 0);
+
+/**
+ * @generated from enum signaling.v1.SignalType
+ */
+export const SignalType = /*@__PURE__*/
+  tsEnum(SignalTypeSchema);
 
 /**
  * @generated from service signaling.v1.SignalingService

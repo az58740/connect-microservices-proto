@@ -4,6 +4,14 @@ package signaling.v1;
 
 option go_package = "github.com/yourname/signaling/gen;signaling";
 
+enum SignalType {
+  SIGNAL_TYPE_UNSPECIFIED = 0;
+  SIGNAL_TYPE_OFFER = 1;
+  SIGNAL_TYPE_ANSWER = 2;
+  SIGNAL_TYPE_CANDIDATE = 3;
+  SIGNAL_TYPE_LEAVE = 4;
+}
+
 service SignalingService {
   rpc JoinRoom(JoinRoomRequest) returns (stream SignalMessage);
   rpc SendSignal(SignalMessage) returns (Empty);
@@ -23,9 +31,10 @@ message SignalMessage {
   string from_user_name = 3;
   string to_user = 4;
   string to_user_name = 5;
-  string type = 6; // offer | answer | ice
+  SignalType type = 6; // offer | answer | ice
   string payload = 7; // SDP or ICE json
 }
+
 
 message LeaveRoomRequest {
   string room_id = 1;

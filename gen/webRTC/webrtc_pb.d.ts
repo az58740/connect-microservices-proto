@@ -2,7 +2,7 @@
 // @generated from file webRTC/webrtc.proto (package signaling.v1, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
@@ -68,9 +68,9 @@ export declare type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
   /**
    * offer | answer | ice
    *
-   * @generated from field: string type = 6;
+   * @generated from field: signaling.v1.SignalType type = 6;
    */
-  type: string;
+  type: SignalType;
 
   /**
    * SDP or ICE json
@@ -118,6 +118,41 @@ export declare type Empty = Message<"signaling.v1.Empty"> & {
  * Use `create(EmptySchema)` to create a new message.
  */
 export declare const EmptySchema: GenMessage<Empty>;
+
+/**
+ * @generated from enum signaling.v1.SignalType
+ */
+export enum SignalType {
+  /**
+   * @generated from enum value: SIGNAL_TYPE_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * @generated from enum value: SIGNAL_TYPE_OFFER = 1;
+   */
+  OFFER = 1,
+
+  /**
+   * @generated from enum value: SIGNAL_TYPE_ANSWER = 2;
+   */
+  ANSWER = 2,
+
+  /**
+   * @generated from enum value: SIGNAL_TYPE_CANDIDATE = 3;
+   */
+  CANDIDATE = 3,
+
+  /**
+   * @generated from enum value: SIGNAL_TYPE_LEAVE = 4;
+   */
+  LEAVE = 4,
+}
+
+/**
+ * Describes the enum signaling.v1.SignalType.
+ */
+export declare const SignalTypeSchema: GenEnum<SignalType>;
 
 /**
  * @generated from service signaling.v1.SignalingService
