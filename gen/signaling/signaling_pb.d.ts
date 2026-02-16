@@ -66,7 +66,7 @@ export declare type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
   toUserName: string;
 
   /**
-   * offer | answer | ice
+   * offer | answer | ice |chat
    *
    * @generated from field: signaling.v1.SignalType type = 6;
    */
@@ -78,6 +78,13 @@ export declare type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
    * @generated from field: string payload = 7;
    */
   payload: string;
+
+  /**
+   * متن چت یا اعلان
+   *
+   * @generated from field: string message = 8;
+   */
+  message: string;
 };
 
 /**
@@ -147,6 +154,11 @@ export enum SignalType {
    * @generated from enum value: SIGNAL_TYPE_LEAVE = 4;
    */
   LEAVE = 4,
+
+  /**
+   * @generated from enum value: SIGNAL_TYPE_CHAT = 5;
+   */
+  CHAT = 5,
 }
 
 /**
