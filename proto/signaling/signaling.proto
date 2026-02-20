@@ -11,6 +11,7 @@ enum SignalType {
   SIGNAL_TYPE_CANDIDATE = 3;
   SIGNAL_TYPE_LEAVE = 4;
   SIGNAL_TYPE_CHAT = 5;
+   SIGNAL_USER_JOINED=6;
 }
 
 service SignalingService {

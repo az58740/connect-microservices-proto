@@ -133,32 +133,37 @@ export enum SignalType {
   /**
    * @generated from enum value: SIGNAL_TYPE_UNSPECIFIED = 0;
    */
-  UNSPECIFIED = 0,
+  SIGNAL_TYPE_UNSPECIFIED = 0,
 
   /**
    * @generated from enum value: SIGNAL_TYPE_OFFER = 1;
    */
-  OFFER = 1,
+  SIGNAL_TYPE_OFFER = 1,
 
   /**
    * @generated from enum value: SIGNAL_TYPE_ANSWER = 2;
    */
-  ANSWER = 2,
+  SIGNAL_TYPE_ANSWER = 2,
 
   /**
    * @generated from enum value: SIGNAL_TYPE_CANDIDATE = 3;
    */
-  CANDIDATE = 3,
+  SIGNAL_TYPE_CANDIDATE = 3,
 
   /**
    * @generated from enum value: SIGNAL_TYPE_LEAVE = 4;
    */
-  LEAVE = 4,
+  SIGNAL_TYPE_LEAVE = 4,
 
   /**
    * @generated from enum value: SIGNAL_TYPE_CHAT = 5;
    */
-  CHAT = 5,
+  SIGNAL_TYPE_CHAT = 5,
+
+  /**
+   * @generated from enum value: SIGNAL_USER_JOINED = 6;
+   */
+  SIGNAL_USER_JOINED = 6,
 }
 
 /**
