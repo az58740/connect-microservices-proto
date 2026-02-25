@@ -11,20 +11,27 @@ enum SignalType {
   SIGNAL_TYPE_CANDIDATE = 3;
   SIGNAL_TYPE_LEAVE = 4;
   SIGNAL_TYPE_CHAT = 5;
-   SIGNAL_USER_JOINED=6;
+  SIGNAL_USER_JOINED = 6;
+  
+  // انواع جدید برای سناریوی مشاوره
+  SIGNAL_TYPE_REQUEST_JOIN = 7;   // درخواست ورود به اتاق
+  SIGNAL_TYPE_APPROVE_JOIN = 8;    // تایید درخواست
+  SIGNAL_TYPE_REJECT_JOIN = 9;     // رد درخواست
+  SIGNAL_TYPE_OWNER_LEFT = 10;      // صاحب روم خارج شد
 }
 
 service SignalingService {
   rpc JoinRoom(JoinRoomRequest) returns (stream SignalMessage);
   rpc SendSignal(SignalMessage) returns (Empty);
   rpc LeaveRoom(LeaveRoomRequest) returns (Empty);
-
 }
 
+// اضافه کردن فیلد is_owner برای تشخیص صاحب روم
 message JoinRoomRequest {
   string room_id = 1;
   string user_id = 2;
-  string user_name=3;
+  string user_name = 3;
+  bool is_owner = 4;  // true اگر صاحب روم است (دکتر)
 }
 
 message SignalMessage {
@@ -33,16 +40,14 @@ message SignalMessage {
   string from_user_name = 3;
   string to_user = 4;
   string to_user_name = 5;
-  SignalType type = 6; // offer | answer | ice |chat
-  string payload = 7; // SDP or ICE json
-    string message = 8; // متن چت یا اعلان
+  SignalType type = 6;
+  string payload = 7; // می‌تواند شامل اطلاعات درخواست/تایید باشد
+  string message = 8; // متن چت یا اعلان
 }
-
 
 message LeaveRoomRequest {
   string room_id = 1;
   string user_id = 2;
 }
-
 
 message Empty {}

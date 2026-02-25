@@ -11,6 +11,8 @@ import type { Message } from "@bufbuild/protobuf";
 export declare const file_signaling_signaling: GenFile;
 
 /**
+ * اضافه کردن فیلد is_owner برای تشخیص صاحب روم
+ *
  * @generated from message signaling.v1.JoinRoomRequest
  */
 export declare type JoinRoomRequest = Message<"signaling.v1.JoinRoomRequest"> & {
@@ -28,6 +30,13 @@ export declare type JoinRoomRequest = Message<"signaling.v1.JoinRoomRequest"> & 
    * @generated from field: string user_name = 3;
    */
   userName: string;
+
+  /**
+   * true اگر صاحب روم است (دکتر)
+   *
+   * @generated from field: bool is_owner = 4;
+   */
+  isOwner: boolean;
 };
 
 /**
@@ -66,14 +75,12 @@ export declare type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
   toUserName: string;
 
   /**
-   * offer | answer | ice |chat
-   *
    * @generated from field: signaling.v1.SignalType type = 6;
    */
   type: SignalType;
 
   /**
-   * SDP or ICE json
+   * می‌تواند شامل اطلاعات درخواست/تایید باشد
    *
    * @generated from field: string payload = 7;
    */
@@ -164,6 +171,36 @@ export enum SignalType {
    * @generated from enum value: SIGNAL_USER_JOINED = 6;
    */
   SIGNAL_USER_JOINED = 6,
+
+  /**
+   * انواع جدید برای سناریوی مشاوره
+   *
+   * درخواست ورود به اتاق
+   *
+   * @generated from enum value: SIGNAL_TYPE_REQUEST_JOIN = 7;
+   */
+  SIGNAL_TYPE_REQUEST_JOIN = 7,
+
+  /**
+   * تایید درخواست
+   *
+   * @generated from enum value: SIGNAL_TYPE_APPROVE_JOIN = 8;
+   */
+  SIGNAL_TYPE_APPROVE_JOIN = 8,
+
+  /**
+   * رد درخواست
+   *
+   * @generated from enum value: SIGNAL_TYPE_REJECT_JOIN = 9;
+   */
+  SIGNAL_TYPE_REJECT_JOIN = 9,
+
+  /**
+   * صاحب روم خارج شد
+   *
+   * @generated from enum value: SIGNAL_TYPE_OWNER_LEFT = 10;
+   */
+  SIGNAL_TYPE_OWNER_LEFT = 10,
 }
 
 /**

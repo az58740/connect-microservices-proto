@@ -10,9 +10,11 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file signaling/signaling.proto.
  */
 export const file_signaling_signaling: GenFile = /*@__PURE__*/
-  fileDesc("ChlzaWduYWxpbmcvc2lnbmFsaW5nLnByb3RvEgxzaWduYWxpbmcudjEiRgoPSm9pblJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIRCgl1c2VyX25hbWUYAyABKAkivAEKDVNpZ25hbE1lc3NhZ2USDwoHcm9vbV9pZBgBIAEoCRIRCglmcm9tX3VzZXIYAiABKAkSFgoOZnJvbV91c2VyX25hbWUYAyABKAkSDwoHdG9fdXNlchgEIAEoCRIUCgx0b191c2VyX25hbWUYBSABKAkSJgoEdHlwZRgGIAEoDjIYLnNpZ25hbGluZy52MS5TaWduYWxUeXBlEg8KB3BheWxvYWQYByABKAkSDwoHbWVzc2FnZRgIIAEoCSI0ChBMZWF2ZVJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCSIHCgVFbXB0eSq4AQoKU2lnbmFsVHlwZRIbChdTSUdOQUxfVFlQRV9VTlNQRUNJRklFRBAAEhUKEVNJR05BTF9UWVBFX09GRkVSEAESFgoSU0lHTkFMX1RZUEVfQU5TV0VSEAISGQoVU0lHTkFMX1RZUEVfQ0FORElEQVRFEAMSFQoRU0lHTkFMX1RZUEVfTEVBVkUQBBIUChBTSUdOQUxfVFlQRV9DSEFUEAUSFgoSU0lHTkFMX1VTRVJfSk9JTkVEEAYy3gEKEFNpZ25hbGluZ1NlcnZpY2USSAoISm9pblJvb20SHS5zaWduYWxpbmcudjEuSm9pblJvb21SZXF1ZXN0Ghsuc2lnbmFsaW5nLnYxLlNpZ25hbE1lc3NhZ2UwARI+CgpTZW5kU2lnbmFsEhsuc2lnbmFsaW5nLnYxLlNpZ25hbE1lc3NhZ2UaEy5zaWduYWxpbmcudjEuRW1wdHkSQAoJTGVhdmVSb29tEh4uc2lnbmFsaW5nLnYxLkxlYXZlUm9vbVJlcXVlc3QaEy5zaWduYWxpbmcudjEuRW1wdHlCS1pJZ2l0aHViLmNvbS9hejU4NzQwL2Nvbm5lY3QtbWljcm9zZXJ2aWNlcy1wcm90by9nb2xhbmcvc2lnbmFsaW5nO3NpZ25hbGluZ2IGcHJvdG8z");
+  fileDesc("ChlzaWduYWxpbmcvc2lnbmFsaW5nLnByb3RvEgxzaWduYWxpbmcudjEiWAoPSm9pblJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIRCgl1c2VyX25hbWUYAyABKAkSEAoIaXNfb3duZXIYBCABKAgivAEKDVNpZ25hbE1lc3NhZ2USDwoHcm9vbV9pZBgBIAEoCRIRCglmcm9tX3VzZXIYAiABKAkSFgoOZnJvbV91c2VyX25hbWUYAyABKAkSDwoHdG9fdXNlchgEIAEoCRIUCgx0b191c2VyX25hbWUYBSABKAkSJgoEdHlwZRgGIAEoDjIYLnNpZ25hbGluZy52MS5TaWduYWxUeXBlEg8KB3BheWxvYWQYByABKAkSDwoHbWVzc2FnZRgIIAEoCSI0ChBMZWF2ZVJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCSIHCgVFbXB0eSqtAgoKU2lnbmFsVHlwZRIbChdTSUdOQUxfVFlQRV9VTlNQRUNJRklFRBAAEhUKEVNJR05BTF9UWVBFX09GRkVSEAESFgoSU0lHTkFMX1RZUEVfQU5TV0VSEAISGQoVU0lHTkFMX1RZUEVfQ0FORElEQVRFEAMSFQoRU0lHTkFMX1RZUEVfTEVBVkUQBBIUChBTSUdOQUxfVFlQRV9DSEFUEAUSFgoSU0lHTkFMX1VTRVJfSk9JTkVEEAYSHAoYU0lHTkFMX1RZUEVfUkVRVUVTVF9KT0lOEAcSHAoYU0lHTkFMX1RZUEVfQVBQUk9WRV9KT0lOEAgSGwoXU0lHTkFMX1RZUEVfUkVKRUNUX0pPSU4QCRIaChZTSUdOQUxfVFlQRV9PV05FUl9MRUZUEAoy3gEKEFNpZ25hbGluZ1NlcnZpY2USSAoISm9pblJvb20SHS5zaWduYWxpbmcudjEuSm9pblJvb21SZXF1ZXN0Ghsuc2lnbmFsaW5nLnYxLlNpZ25hbE1lc3NhZ2UwARI+CgpTZW5kU2lnbmFsEhsuc2lnbmFsaW5nLnYxLlNpZ25hbE1lc3NhZ2UaEy5zaWduYWxpbmcudjEuRW1wdHkSQAoJTGVhdmVSb29tEh4uc2lnbmFsaW5nLnYxLkxlYXZlUm9vbVJlcXVlc3QaEy5zaWduYWxpbmcudjEuRW1wdHlCS1pJZ2l0aHViLmNvbS9hejU4NzQwL2Nvbm5lY3QtbWljcm9zZXJ2aWNlcy1wcm90by9nb2xhbmcvc2lnbmFsaW5nO3NpZ25hbGluZ2IGcHJvdG8z");
 
 /**
+ * اضافه کردن فیلد is_owner برای تشخیص صاحب روم
+ *
  * @generated from message signaling.v1.JoinRoomRequest
  */
 export type JoinRoomRequest = Message<"signaling.v1.JoinRoomRequest"> & {
@@ -30,6 +32,13 @@ export type JoinRoomRequest = Message<"signaling.v1.JoinRoomRequest"> & {
    * @generated from field: string user_name = 3;
    */
   userName: string;
+
+  /**
+   * true اگر صاحب روم است (دکتر)
+   *
+   * @generated from field: bool is_owner = 4;
+   */
+  isOwner: boolean;
 };
 
 /**
@@ -69,14 +78,12 @@ export type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
   toUserName: string;
 
   /**
-   * offer | answer | ice |chat
-   *
    * @generated from field: signaling.v1.SignalType type = 6;
    */
   type: SignalType;
 
   /**
-   * SDP or ICE json
+   * می‌تواند شامل اطلاعات درخواست/تایید باشد
    *
    * @generated from field: string payload = 7;
    */
@@ -170,6 +177,36 @@ export enum SignalType {
    * @generated from enum value: SIGNAL_USER_JOINED = 6;
    */
   SIGNAL_USER_JOINED = 6,
+
+  /**
+   * انواع جدید برای سناریوی مشاوره
+   *
+   * درخواست ورود به اتاق
+   *
+   * @generated from enum value: SIGNAL_TYPE_REQUEST_JOIN = 7;
+   */
+  SIGNAL_TYPE_REQUEST_JOIN = 7,
+
+  /**
+   * تایید درخواست
+   *
+   * @generated from enum value: SIGNAL_TYPE_APPROVE_JOIN = 8;
+   */
+  SIGNAL_TYPE_APPROVE_JOIN = 8,
+
+  /**
+   * رد درخواست
+   *
+   * @generated from enum value: SIGNAL_TYPE_REJECT_JOIN = 9;
+   */
+  SIGNAL_TYPE_REJECT_JOIN = 9,
+
+  /**
+   * صاحب روم خارج شد
+   *
+   * @generated from enum value: SIGNAL_TYPE_OWNER_LEFT = 10;
+   */
+  SIGNAL_TYPE_OWNER_LEFT = 10,
 }
 
 /**
