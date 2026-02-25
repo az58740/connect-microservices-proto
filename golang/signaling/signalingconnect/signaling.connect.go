@@ -42,14 +42,18 @@ const (
 	// SignalingServiceLeaveRoomProcedure is the fully-qualified name of the SignalingService's
 	// LeaveRoom RPC.
 	SignalingServiceLeaveRoomProcedure = "/signaling.v1.SignalingService/LeaveRoom"
+	// SignalingServiceGetRoomInfoProcedure is the fully-qualified name of the SignalingService's
+	// GetRoomInfo RPC.
+	SignalingServiceGetRoomInfoProcedure = "/signaling.v1.SignalingService/GetRoomInfo"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
 var (
-	signalingServiceServiceDescriptor          = signaling.File_signaling_signaling_proto.Services().ByName("SignalingService")
-	signalingServiceJoinRoomMethodDescriptor   = signalingServiceServiceDescriptor.Methods().ByName("JoinRoom")
-	signalingServiceSendSignalMethodDescriptor = signalingServiceServiceDescriptor.Methods().ByName("SendSignal")
-	signalingServiceLeaveRoomMethodDescriptor  = signalingServiceServiceDescriptor.Methods().ByName("LeaveRoom")
+	signalingServiceServiceDescriptor           = signaling.File_signaling_signaling_proto.Services().ByName("SignalingService")
+	signalingServiceJoinRoomMethodDescriptor    = signalingServiceServiceDescriptor.Methods().ByName("JoinRoom")
+	signalingServiceSendSignalMethodDescriptor  = signalingServiceServiceDescriptor.Methods().ByName("SendSignal")
+	signalingServiceLeaveRoomMethodDescriptor   = signalingServiceServiceDescriptor.Methods().ByName("LeaveRoom")
+	signalingServiceGetRoomInfoMethodDescriptor = signalingServiceServiceDescriptor.Methods().ByName("GetRoomInfo")
 )
 
 // SignalingServiceClient is a client for the signaling.v1.SignalingService service.
@@ -57,6 +61,7 @@ type SignalingServiceClient interface {
 	JoinRoom(context.Context, *connect.Request[signaling.JoinRoomRequest]) (*connect.ServerStreamForClient[signaling.SignalMessage], error)
 	SendSignal(context.Context, *connect.Request[signaling.SignalMessage]) (*connect.Response[signaling.Empty], error)
 	LeaveRoom(context.Context, *connect.Request[signaling.LeaveRoomRequest]) (*connect.Response[signaling.Empty], error)
+	GetRoomInfo(context.Context, *connect.Request[signaling.GetRoomInfoRequest]) (*connect.Response[signaling.RoomInfo], error)
 }
 
 // NewSignalingServiceClient constructs a client for the signaling.v1.SignalingService service. By
@@ -87,14 +92,21 @@ func NewSignalingServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(signalingServiceLeaveRoomMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		getRoomInfo: connect.NewClient[signaling.GetRoomInfoRequest, signaling.RoomInfo](
+			httpClient,
+			baseURL+SignalingServiceGetRoomInfoProcedure,
+			connect.WithSchema(signalingServiceGetRoomInfoMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // signalingServiceClient implements SignalingServiceClient.
 type signalingServiceClient struct {
-	joinRoom   *connect.Client[signaling.JoinRoomRequest, signaling.SignalMessage]
-	sendSignal *connect.Client[signaling.SignalMessage, signaling.Empty]
-	leaveRoom  *connect.Client[signaling.LeaveRoomRequest, signaling.Empty]
+	joinRoom    *connect.Client[signaling.JoinRoomRequest, signaling.SignalMessage]
+	sendSignal  *connect.Client[signaling.SignalMessage, signaling.Empty]
+	leaveRoom   *connect.Client[signaling.LeaveRoomRequest, signaling.Empty]
+	getRoomInfo *connect.Client[signaling.GetRoomInfoRequest, signaling.RoomInfo]
 }
 
 // JoinRoom calls signaling.v1.SignalingService.JoinRoom.
@@ -112,11 +124,17 @@ func (c *signalingServiceClient) LeaveRoom(ctx context.Context, req *connect.Req
 	return c.leaveRoom.CallUnary(ctx, req)
 }
 
+// GetRoomInfo calls signaling.v1.SignalingService.GetRoomInfo.
+func (c *signalingServiceClient) GetRoomInfo(ctx context.Context, req *connect.Request[signaling.GetRoomInfoRequest]) (*connect.Response[signaling.RoomInfo], error) {
+	return c.getRoomInfo.CallUnary(ctx, req)
+}
+
 // SignalingServiceHandler is an implementation of the signaling.v1.SignalingService service.
 type SignalingServiceHandler interface {
 	JoinRoom(context.Context, *connect.Request[signaling.JoinRoomRequest], *connect.ServerStream[signaling.SignalMessage]) error
 	SendSignal(context.Context, *connect.Request[signaling.SignalMessage]) (*connect.Response[signaling.Empty], error)
 	LeaveRoom(context.Context, *connect.Request[signaling.LeaveRoomRequest]) (*connect.Response[signaling.Empty], error)
+	GetRoomInfo(context.Context, *connect.Request[signaling.GetRoomInfoRequest]) (*connect.Response[signaling.RoomInfo], error)
 }
 
 // NewSignalingServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -143,6 +161,12 @@ func NewSignalingServiceHandler(svc SignalingServiceHandler, opts ...connect.Han
 		connect.WithSchema(signalingServiceLeaveRoomMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	signalingServiceGetRoomInfoHandler := connect.NewUnaryHandler(
+		SignalingServiceGetRoomInfoProcedure,
+		svc.GetRoomInfo,
+		connect.WithSchema(signalingServiceGetRoomInfoMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/signaling.v1.SignalingService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case SignalingServiceJoinRoomProcedure:
@@ -151,6 +175,8 @@ func NewSignalingServiceHandler(svc SignalingServiceHandler, opts ...connect.Han
 			signalingServiceSendSignalHandler.ServeHTTP(w, r)
 		case SignalingServiceLeaveRoomProcedure:
 			signalingServiceLeaveRoomHandler.ServeHTTP(w, r)
+		case SignalingServiceGetRoomInfoProcedure:
+			signalingServiceGetRoomInfoHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -170,4 +196,8 @@ func (UnimplementedSignalingServiceHandler) SendSignal(context.Context, *connect
 
 func (UnimplementedSignalingServiceHandler) LeaveRoom(context.Context, *connect.Request[signaling.LeaveRoomRequest]) (*connect.Response[signaling.Empty], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.LeaveRoom is not implemented"))
+}
+
+func (UnimplementedSignalingServiceHandler) GetRoomInfo(context.Context, *connect.Request[signaling.GetRoomInfoRequest]) (*connect.Response[signaling.RoomInfo], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.GetRoomInfo is not implemented"))
 }

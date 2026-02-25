@@ -11,8 +11,6 @@ import type { Message } from "@bufbuild/protobuf";
 export declare const file_signaling_signaling: GenFile;
 
 /**
- * اضافه کردن فیلد is_owner برای تشخیص صاحب روم
- *
  * @generated from message signaling.v1.JoinRoomRequest
  */
 export declare type JoinRoomRequest = Message<"signaling.v1.JoinRoomRequest"> & {
@@ -80,7 +78,7 @@ export declare type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
   type: SignalType;
 
   /**
-   * می‌تواند شامل اطلاعات درخواست/تایید باشد
+   * اطلاعات اضافی به صورت JSON
    *
    * @generated from field: string payload = 7;
    */
@@ -120,6 +118,123 @@ export declare type LeaveRoomRequest = Message<"signaling.v1.LeaveRoomRequest"> 
  * Use `create(LeaveRoomRequestSchema)` to create a new message.
  */
 export declare const LeaveRoomRequestSchema: GenMessage<LeaveRoomRequest>;
+
+/**
+ * اطلاعات یک کاربر
+ *
+ * @generated from message signaling.v1.UserInfo
+ */
+export declare type UserInfo = Message<"signaling.v1.UserInfo"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: string user_name = 2;
+   */
+  userName: string;
+
+  /**
+   * @generated from field: signaling.v1.UserRole role = 3;
+   */
+  role: UserRole;
+
+  /**
+   * ISO timestamp
+   *
+   * @generated from field: string joined_at = 4;
+   */
+  joinedAt: string;
+};
+
+/**
+ * Describes the message signaling.v1.UserInfo.
+ * Use `create(UserInfoSchema)` to create a new message.
+ */
+export declare const UserInfoSchema: GenMessage<UserInfo>;
+
+/**
+ * اطلاعات کامل اتاق
+ *
+ * @generated from message signaling.v1.RoomInfo
+ */
+export declare type RoomInfo = Message<"signaling.v1.RoomInfo"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: signaling.v1.RoomType room_type = 2;
+   */
+  roomType: RoomType;
+
+  /**
+   * @generated from field: string owner_id = 3;
+   */
+  ownerId: string;
+
+  /**
+   * @generated from field: string owner_name = 4;
+   */
+  ownerName: string;
+
+  /**
+   * کاربران حاضر (تایید شده)
+   *
+   * @generated from field: repeated signaling.v1.UserInfo users = 5;
+   */
+  users: UserInfo[];
+
+  /**
+   * کاربران در انتظار تایید
+   *
+   * @generated from field: repeated signaling.v1.UserInfo pending_users = 6;
+   */
+  pendingUsers: UserInfo[];
+
+  /**
+   * حداکثر شرکت‌کننده (مثلاً 3 نفر)
+   *
+   * @generated from field: int32 max_participants = 7;
+   */
+  maxParticipants: number;
+
+  /**
+   * زمان ایجاد اتاق
+   *
+   * @generated from field: string created_at = 8;
+   */
+  createdAt: string;
+};
+
+/**
+ * Describes the message signaling.v1.RoomInfo.
+ * Use `create(RoomInfoSchema)` to create a new message.
+ */
+export declare const RoomInfoSchema: GenMessage<RoomInfo>;
+
+/**
+ * @generated from message signaling.v1.GetRoomInfoRequest
+ */
+export declare type GetRoomInfoRequest = Message<"signaling.v1.GetRoomInfoRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: string user_id = 2;
+   */
+  userId: string;
+};
+
+/**
+ * Describes the message signaling.v1.GetRoomInfoRequest.
+ * Use `create(GetRoomInfoRequestSchema)` to create a new message.
+ */
+export declare const GetRoomInfoRequestSchema: GenMessage<GetRoomInfoRequest>;
 
 /**
  * @generated from message signaling.v1.Empty
@@ -201,12 +316,95 @@ export enum SignalType {
    * @generated from enum value: SIGNAL_TYPE_OWNER_LEFT = 10;
    */
   SIGNAL_TYPE_OWNER_LEFT = 10,
+
+  /**
+   * اطلاعات اتاق
+   *
+   * @generated from enum value: SIGNAL_TYPE_ROOM_INFO = 11;
+   */
+  SIGNAL_TYPE_ROOM_INFO = 11,
+
+  /**
+   * لیست کاربران منتظر
+   *
+   * @generated from enum value: SIGNAL_TYPE_PENDING_USERS = 12;
+   */
+  SIGNAL_TYPE_PENDING_USERS = 12,
 }
 
 /**
  * Describes the enum signaling.v1.SignalType.
  */
 export declare const SignalTypeSchema: GenEnum<SignalType>;
+
+/**
+ * نوع اتاق
+ *
+ * @generated from enum signaling.v1.RoomType
+ */
+export enum RoomType {
+  /**
+   * @generated from enum value: ROOM_TYPE_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * اتاق مشاوره (یک صاحب، چند شرکت‌کننده)
+   *
+   * @generated from enum value: ROOM_TYPE_CONSULTATION = 1;
+   */
+  CONSULTATION = 1,
+
+  /**
+   * اتاق همتا به همتا (دوطرفه)
+   *
+   * @generated from enum value: ROOM_TYPE_PEER = 2;
+   */
+  PEER = 2,
+}
+
+/**
+ * Describes the enum signaling.v1.RoomType.
+ */
+export declare const RoomTypeSchema: GenEnum<RoomType>;
+
+/**
+ * نقش کاربر در اتاق
+ *
+ * @generated from enum signaling.v1.UserRole
+ */
+export enum UserRole {
+  /**
+   * @generated from enum value: USER_ROLE_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * صاحب روم (دکتر)
+   *
+   * @generated from enum value: USER_ROLE_OWNER = 1;
+   */
+  OWNER = 1,
+
+  /**
+   * شرکت‌کننده تایید شده
+   *
+   * @generated from enum value: USER_ROLE_PARTICIPANT = 2;
+   */
+  PARTICIPANT = 2,
+
+  /**
+   * در انتظار تایید
+   *
+   * @generated from enum value: USER_ROLE_PENDING = 3;
+   */
+  PENDING = 3,
+}
+
+/**
+ * Describes the enum signaling.v1.UserRole.
+ */
+export declare const UserRoleSchema: GenEnum<UserRole>;
 
 /**
  * @generated from service signaling.v1.SignalingService
@@ -235,6 +433,16 @@ export declare const SignalingService: GenService<{
     methodKind: "unary";
     input: typeof LeaveRoomRequestSchema;
     output: typeof EmptySchema;
+  },
+  /**
+   * دریافت اطلاعات اتاق
+   *
+   * @generated from rpc signaling.v1.SignalingService.GetRoomInfo
+   */
+  getRoomInfo: {
+    methodKind: "unary";
+    input: typeof GetRoomInfoRequestSchema;
+    output: typeof RoomInfoSchema;
   },
 }>;
 

@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Empty, JoinRoomRequest, LeaveRoomRequest, SignalMessage } from "./signaling_pb.js";
+import { Empty, GetRoomInfoRequest, JoinRoomRequest, LeaveRoomRequest, RoomInfo, SignalMessage } from "./signaling_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -37,6 +37,17 @@ export declare const SignalingService: {
       readonly name: "LeaveRoom",
       readonly I: typeof LeaveRoomRequest,
       readonly O: typeof Empty,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * دریافت اطلاعات اتاق
+     *
+     * @generated from rpc signaling.v1.SignalingService.GetRoomInfo
+     */
+    readonly getRoomInfo: {
+      readonly name: "GetRoomInfo",
+      readonly I: typeof GetRoomInfoRequest,
+      readonly O: typeof RoomInfo,
       readonly kind: MethodKind.Unary,
     },
   }
