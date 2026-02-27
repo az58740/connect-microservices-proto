@@ -3,16 +3,20 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Empty, GetRoomInfoRequest, JoinRoomRequest, LeaveRoomRequest, RoomInfo, SignalMessage } from "./signaling_pb.js";
+import { CloseRoomRequest, CloseRoomResponse, CreateRoomRequest, CreateRoomResponse, GetRoomClientsRequest, GetRoomClientsResponse, GetRoomsRequest, GetRoomsResponse, JoinRoomRequest, LeaveRoomRequest, LeaveRoomResponse, SendSignalRequest, SendSignalResponse, SignalMessage, UpdateClientStatusRequest, UpdateClientStatusResponse, UpdateRoomSettingsRequest, UpdateRoomSettingsResponse } from "./signaling_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
+ * ================ Services ================
+ *
  * @generated from service signaling.v1.SignalingService
  */
 export const SignalingService = {
   typeName: "signaling.v1.SignalingService",
   methods: {
     /**
+     * متدهای پایه
+     *
      * @generated from rpc signaling.v1.SignalingService.JoinRoom
      */
     joinRoom: {
@@ -26,8 +30,8 @@ export const SignalingService = {
      */
     sendSignal: {
       name: "SendSignal",
-      I: SignalMessage,
-      O: Empty,
+      I: SendSignalRequest,
+      O: SendSignalResponse,
       kind: MethodKind.Unary,
     },
     /**
@@ -36,18 +40,67 @@ export const SignalingService = {
     leaveRoom: {
       name: "LeaveRoom",
       I: LeaveRoomRequest,
-      O: Empty,
+      O: LeaveRoomResponse,
       kind: MethodKind.Unary,
     },
     /**
-     * دریافت اطلاعات اتاق
+     * متد دریافت روم‌ها با فیلتر
      *
-     * @generated from rpc signaling.v1.SignalingService.GetRoomInfo
+     * @generated from rpc signaling.v1.SignalingService.GetRooms
      */
-    getRoomInfo: {
-      name: "GetRoomInfo",
-      I: GetRoomInfoRequest,
-      O: RoomInfo,
+    getRooms: {
+      name: "GetRooms",
+      I: GetRoomsRequest,
+      O: GetRoomsResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * متدهای مدیریت روم
+     *
+     * @generated from rpc signaling.v1.SignalingService.CreateRoom
+     */
+    createRoom: {
+      name: "CreateRoom",
+      I: CreateRoomRequest,
+      O: CreateRoomResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc signaling.v1.SignalingService.UpdateRoomSettings
+     */
+    updateRoomSettings: {
+      name: "UpdateRoomSettings",
+      I: UpdateRoomSettingsRequest,
+      O: UpdateRoomSettingsResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc signaling.v1.SignalingService.CloseRoom
+     */
+    closeRoom: {
+      name: "CloseRoom",
+      I: CloseRoomRequest,
+      O: CloseRoomResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * متدهای کاربران
+     *
+     * @generated from rpc signaling.v1.SignalingService.GetRoomClients
+     */
+    getRoomClients: {
+      name: "GetRoomClients",
+      I: GetRoomClientsRequest,
+      O: GetRoomClientsResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc signaling.v1.SignalingService.UpdateClientStatus
+     */
+    updateClientStatus: {
+      name: "UpdateClientStatus",
+      I: UpdateClientStatusRequest,
+      O: UpdateClientStatusResponse,
       kind: MethodKind.Unary,
     },
   }

@@ -4,6 +4,12 @@ package signaling.v1;
 
 option go_package = "github.com/az58740/connect-microservices-proto/golang/signaling;signaling";
 
+// ================ Imports ================
+// (در صورت نیاز به import در آینده)
+
+// ================ Enums ================
+
+// Signal Types
 enum SignalType {
   SIGNAL_TYPE_UNSPECIFIED = 0;
   SIGNAL_TYPE_OFFER = 1;
@@ -13,44 +19,125 @@ enum SignalType {
   SIGNAL_TYPE_CHAT = 5;
   SIGNAL_USER_JOINED = 6;
   
-  // انواع جدید برای سناریوی مشاوره
-  SIGNAL_TYPE_REQUEST_JOIN = 7;   // درخواست ورود به اتاق
-  SIGNAL_TYPE_APPROVE_JOIN = 8;    // تایید درخواست
-  SIGNAL_TYPE_REJECT_JOIN = 9;     // رد درخواست
-  SIGNAL_TYPE_OWNER_LEFT = 10;      // صاحب روم خارج شد
-  SIGNAL_TYPE_ROOM_INFO = 11;       // اطلاعات اتاق
-  SIGNAL_TYPE_PENDING_USERS = 12;   // لیست کاربران منتظر
+  // انواع برای سناریوی مشاوره
+  SIGNAL_TYPE_REQUEST_JOIN = 7;
+  SIGNAL_TYPE_APPROVE_JOIN = 8;
+  SIGNAL_TYPE_REJECT_JOIN = 9;
+  SIGNAL_TYPE_OWNER_LEFT = 10;
+  SIGNAL_TYPE_ROOM_INFO = 11;
+  SIGNAL_TYPE_PENDING_USERS = 12;
+  
+  // انواع جدید برای مدیریت روم
+  SIGNAL_TYPE_ROOM_UPDATED = 13;
+  SIGNAL_TYPE_USER_STATUS_CHANGED = 14;
 }
 
-// نوع اتاق
+// Room Types
 enum RoomType {
   ROOM_TYPE_UNSPECIFIED = 0;
-  ROOM_TYPE_CONSULTATION = 1;  // اتاق مشاوره (یک صاحب، چند شرکت‌کننده)
-  ROOM_TYPE_PEER = 2;           // اتاق همتا به همتا (دوطرفه)
+  ROOM_TYPE_PEER = 1;           // همتا به همتا (دکتر و بیمار)
+  ROOM_TYPE_CONSULTATION = 2;   // یک استاد، چند دانشجو (مشاوره)
+  ROOM_TYPE_BROADCAST = 3;      // یک به چند (وبینار، کلاس)
+  ROOM_TYPE_GROUP = 4;          // گروهی چند به چند
 }
 
-// نقش کاربر در اتاق
+// Room Status
+enum RoomStatus {
+  ROOM_STATUS_UNSPECIFIED = 0;
+  ROOM_STATUS_ACTIVE = 1;        // آنلاین - در حال فعالیت
+  ROOM_STATUS_INACTIVE = 2;      // آفلاین - همه خارج شدند
+  ROOM_STATUS_CLOSED = 3;        // بسته شده توسط صاحب
+  ROOM_STATUS_ARCHIVED = 4;      // آرشیو شده برای گزارش‌گیری
+}
+
+// Room Category
+enum RoomCategory {
+  ROOM_CATEGORY_UNSPECIFIED = 0;
+  ROOM_CATEGORY_MEDICAL = 1;           // مشاوره پزشکی
+  ROOM_CATEGORY_SKIN_HAIR_BEAUTY = 2;  // مشاوره پوست، مو و زیبایی
+  ROOM_CATEGORY_LASER_BEAUTY = 3;      // مشاوره زیبایی و لیزر
+  ROOM_CATEGORY_COSMETIC_BEAUTY = 4;   // مشاوره زیبایی و آرایشی
+  ROOM_CATEGORY_EDUCATIONAL = 5;       // دوره آموزشی و کارگاه
+  ROOM_CATEGORY_OTHER = 6;              // سایر
+}
+
+// User Role
 enum UserRole {
   USER_ROLE_UNSPECIFIED = 0;
-  USER_ROLE_OWNER = 1;        // صاحب روم (دکتر)
+  USER_ROLE_OWNER = 1;        // صاحب روم (دکتر، استاد، مشاور)
   USER_ROLE_PARTICIPANT = 2;  // شرکت‌کننده تایید شده
-  USER_ROLE_PENDING = 3;       // در انتظار تایید
+  USER_ROLE_PENDING = 3;      // در انتظار تایید
+  USER_ROLE_MODERATOR = 4;    // مدیر جلسه (برای کلاس‌های بزرگ)
 }
 
-service SignalingService {
-  rpc JoinRoom(JoinRoomRequest) returns (stream SignalMessage);
-  rpc SendSignal(SignalMessage) returns (Empty);
-  rpc LeaveRoom(LeaveRoomRequest) returns (Empty);
-  rpc GetRoomInfo(GetRoomInfoRequest) returns (RoomInfo); // دریافت اطلاعات اتاق
+// User Status
+enum UserStatus {
+  USER_STATUS_UNSPECIFIED = 0;
+  USER_STATUS_ONLINE = 1;      // آنلاین
+  USER_STATUS_OFFLINE = 2;     // آفلاین
+  USER_STATUS_AWAY = 3;        // موقتاً خارج
 }
 
-message JoinRoomRequest {
+// ================ Info Messages ================
+
+// Client
+message Client {
+  string user_id = 1;
+  string user_name = 2;
+  UserRole role = 3;
+  UserStatus status = 4;
+  string joined_at = 5;
+  string last_seen_at = 6;
+  map<string, string> metadata = 7;
+  int32 duration = 8;               // مدت حضور (ثانیه) - فقط برای اعضای روم
+  bool is_muted = 9;                 // میکروفن خاموش؟ - فقط برای اعضای روم
+  bool is_video_off = 10;             // ویدیو خاموش؟ - فقط برای اعضای روم
+}
+
+// Room
+message Room {
+  // اطلاعات پایه
   string room_id = 1;
-  string user_id = 2;
-  string user_name = 3;
-  bool is_owner = 4;  // true اگر صاحب روم است (دکتر)
+  string name = 2;                    // عنوان کامل با جزئیات
+  string description = 3;              // توضیحات
+  RoomType room_type = 4;
+  RoomCategory category = 5;            // دسته‌بندی کلی
+  RoomStatus status = 6;
+  
+  // اطلاعات صاحب
+  string owner_id = 7;
+  string owner_name = 8;
+  
+  // کاربران
+  repeated Client clients = 9;          // کاربران حاضر (تایید شده)
+  repeated Client pending_clients = 10;  // کاربران در انتظار تایید
+  int32 online_count = 11;
+  
+  // تنظیمات
+  int32 max_participants = 12;
+  bool is_private = 13;
+  bool has_password = 14;
+  
+  // زمان‌ها
+  string created_at = 15;
+  string started_at = 16;                // زمان شروع جلسه
+  string last_active_at = 17;             // آخرین فعالیت
+  
+  // آمار
+  int32 total_participants = 18;          // کل شرکت‌کنندگان
+  int32 peak_participants = 19;            // بیشترین تعداد همزمان
+  
+  // اطلاعات اضافی
+  float price_per_minute = 20;
+  repeated string tags = 21;
+  map<string, string> metadata = 22;
+  map<string, string> settings = 23;
+  string thumbnail_url = 24;               // تصویر (اختیاری)
+  float rating = 25;                        // امتیاز (برای روم‌های مشاوره)
+  int32 review_count = 26;                  // تعداد نظرات
 }
 
+// SignalMessage (برای stream)
 message SignalMessage {
   string room_id = 1;
   string from_user = 2;
@@ -58,38 +145,184 @@ message SignalMessage {
   string to_user = 4;
   string to_user_name = 5;
   SignalType type = 6;
-  string payload = 7; // اطلاعات اضافی به صورت JSON
-  string message = 8; // متن چت یا اعلان
+  string payload = 7;
+  string message = 8;
+  int64 timestamp = 9;
 }
 
+// ================ Services ================
+service SignalingService {
+  // متدهای پایه
+  rpc JoinRoom(JoinRoomRequest) returns (stream SignalMessage);
+  rpc SendSignal(SendSignalRequest) returns (SendSignalResponse);
+  rpc LeaveRoom(LeaveRoomRequest) returns (LeaveRoomResponse);
+  
+  // متد دریافت روم‌ها با فیلتر
+  rpc GetRooms(GetRoomsRequest) returns (GetRoomsResponse);
+  
+  // متدهای مدیریت روم
+  rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
+  rpc UpdateRoomSettings(UpdateRoomSettingsRequest) returns (UpdateRoomSettingsResponse);
+  rpc CloseRoom(CloseRoomRequest) returns (CloseRoomResponse);
+  
+  // متدهای کاربران
+  rpc GetRoomClients(GetRoomClientsRequest) returns (GetRoomClientsResponse);
+  rpc UpdateClientStatus(UpdateClientStatusRequest) returns (UpdateClientStatusResponse);
+}
+
+// ================ Request/Response Messages ================
+
+// JoinRoom
+message JoinRoomRequest {
+  string room_id = 1;
+  string user_id = 2;
+  string user_name = 3;
+  bool is_owner = 4;
+  string password = 5;
+}
+
+message JoinRoomResponse {
+  Room room = 1;
+}
+
+// SendSignal
+message SendSignalRequest {
+  string room_id = 1;
+  string from_user = 2;
+  string to_user = 3;
+  SignalType type = 4;
+  string payload = 5;
+  string message = 6;
+}
+
+message SendSignalResponse {
+  bool delivered = 1;
+}
+
+// LeaveRoom
 message LeaveRoomRequest {
   string room_id = 1;
   string user_id = 2;
 }
 
-// اطلاعات یک کاربر
-message UserInfo {
-  string user_id = 1;
-  string user_name = 2;
-  UserRole role = 3;
-  string joined_at = 4; // ISO timestamp
+message LeaveRoomResponse {
+  bool success = 1;
 }
 
-// اطلاعات کامل اتاق
-message RoomInfo {
+// GetRooms
+message GetRoomsRequest {
+  // فیلتر بر اساس شناسه (برای دریافت یک روم خاص)
   string room_id = 1;
-  RoomType room_type = 2;
-  string owner_id = 3;
-  string owner_name = 4;
-  repeated UserInfo users = 5;        // کاربران حاضر (تایید شده)
-  repeated UserInfo pending_users = 6; // کاربران در انتظار تایید
-  int32 max_participants = 7;          // حداکثر شرکت‌کننده (مثلاً 3 نفر)
-  string created_at = 8;                // زمان ایجاد اتاق
+  
+  // فیلتر بر اساس وضعیت
+  RoomStatus status = 2;
+  bool only_online = 3;                    // فقط روم‌های آنلاین
+  
+  // فیلتر بر اساس دسته‌بندی کلی
+  RoomCategory category = 4;
+  
+  // فیلتر بر اساس نوع روم
+  RoomType room_type = 5;
+  
+  // فیلتر بر اساس صاحب روم
+  string owner_id = 6;
+  
+  // فیلتر بر اساس کاربر عضو
+  string member_user_id = 7;                // روم‌هایی که کاربر خاصی عضو است
+  
+  // جستجو در متن (name و description)
+  string search_query = 8;
+  
+  // محدوده قیمت
+  float min_price = 9;
+  float max_price = 10;
+  
+  // برچسب‌ها
+  repeated string tags = 11;                  // روم‌هایی که این برچسب‌ها را دارند
 }
 
-message GetRoomInfoRequest {
+message GetRoomsResponse {
+  // اگر room_id در درخواست مشخص شده بود
+  Room room = 1;
+  
+  // اگر درخواست لیست بود
+  repeated Room rooms = 2;
+  
+  // تعداد کل نتایج
+  int32 total_count = 3;
+}
+
+// CreateRoom
+message CreateRoomRequest {
+  string room_id = 1;                    // اگر خالی بود، سرور تولید می‌کند
+  string name = 2;
+  string description = 3;
+  RoomType room_type = 4;
+  RoomCategory category = 5;
+  int32 max_participants = 6;
+  bool is_private = 7;
+  string password = 8;
+  map<string, string> settings = 9;
+  float price_per_minute = 10;
+  repeated string tags = 11;
+}
+
+message CreateRoomResponse {
+  Room room = 1;
+}
+
+// UpdateRoomSettings
+message UpdateRoomSettingsRequest {
+  string room_id = 1;
+  string user_id = 2;                    // برای اعتبارسنجی (فقط owner می‌تواند)
+  string name = 3;
+  string description = 4;
+  RoomCategory category = 5;
+  int32 max_participants = 6;
+  bool is_private = 7;
+  string password = 8;
+  map<string, string> settings = 9;
+  float price_per_minute = 10;
+  repeated string tags = 11;
+}
+
+message UpdateRoomSettingsResponse {
+  Room room = 1;
+}
+
+// CloseRoom
+message CloseRoomRequest {
+  string room_id = 1;
+  string user_id = 2;                    // برای اعتبارسنجی (فقط owner می‌تواند)
+}
+
+message CloseRoomResponse {
+  bool success = 1;
+}
+
+// GetRoomClients
+message GetRoomClientsRequest {
+  string room_id = 1;
+  string user_id = 2;                    // برای اعتبارسنجی
+  bool include_pending = 3;               // آیا کاربران در انتظار هم برگردند؟
+}
+
+message GetRoomClientsResponse {
+  repeated Client clients = 1;             // کاربران حاضر (تایید شده)
+  repeated Client pending_clients = 2;     // کاربران در انتظار تایید
+  int32 total_count = 3;
+  int32 online_count = 4;
+}
+
+// UpdateClientStatus
+message UpdateClientStatusRequest {
   string room_id = 1;
   string user_id = 2;
+  UserStatus status = 3;
+  bool is_muted = 4;
+  bool is_video_off = 5;
 }
 
-message Empty {}
+message UpdateClientStatusResponse {
+  bool success = 1;
+}

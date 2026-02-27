@@ -10,43 +10,263 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file signaling/signaling.proto.
  */
 export const file_signaling_signaling: GenFile = /*@__PURE__*/
-  fileDesc("ChlzaWduYWxpbmcvc2lnbmFsaW5nLnByb3RvEgxzaWduYWxpbmcudjEiWAoPSm9pblJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIRCgl1c2VyX25hbWUYAyABKAkSEAoIaXNfb3duZXIYBCABKAgivAEKDVNpZ25hbE1lc3NhZ2USDwoHcm9vbV9pZBgBIAEoCRIRCglmcm9tX3VzZXIYAiABKAkSFgoOZnJvbV91c2VyX25hbWUYAyABKAkSDwoHdG9fdXNlchgEIAEoCRIUCgx0b191c2VyX25hbWUYBSABKAkSJgoEdHlwZRgGIAEoDjIYLnNpZ25hbGluZy52MS5TaWduYWxUeXBlEg8KB3BheWxvYWQYByABKAkSDwoHbWVzc2FnZRgIIAEoCSI0ChBMZWF2ZVJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCSJnCghVc2VySW5mbxIPCgd1c2VyX2lkGAEgASgJEhEKCXVzZXJfbmFtZRgCIAEoCRIkCgRyb2xlGAMgASgOMhYuc2lnbmFsaW5nLnYxLlVzZXJSb2xlEhEKCWpvaW5lZF9hdBgEIAEoCSLwAQoIUm9vbUluZm8SDwoHcm9vbV9pZBgBIAEoCRIpCglyb29tX3R5cGUYAiABKA4yFi5zaWduYWxpbmcudjEuUm9vbVR5cGUSEAoIb3duZXJfaWQYAyABKAkSEgoKb3duZXJfbmFtZRgEIAEoCRIlCgV1c2VycxgFIAMoCzIWLnNpZ25hbGluZy52MS5Vc2VySW5mbxItCg1wZW5kaW5nX3VzZXJzGAYgAygLMhYuc2lnbmFsaW5nLnYxLlVzZXJJbmZvEhgKEG1heF9wYXJ0aWNpcGFudHMYByABKAUSEgoKY3JlYXRlZF9hdBgIIAEoCSI2ChJHZXRSb29tSW5mb1JlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJIgcKBUVtcHR5KucCCgpTaWduYWxUeXBlEhsKF1NJR05BTF9UWVBFX1VOU1BFQ0lGSUVEEAASFQoRU0lHTkFMX1RZUEVfT0ZGRVIQARIWChJTSUdOQUxfVFlQRV9BTlNXRVIQAhIZChVTSUdOQUxfVFlQRV9DQU5ESURBVEUQAxIVChFTSUdOQUxfVFlQRV9MRUFWRRAEEhQKEFNJR05BTF9UWVBFX0NIQVQQBRIWChJTSUdOQUxfVVNFUl9KT0lORUQQBhIcChhTSUdOQUxfVFlQRV9SRVFVRVNUX0pPSU4QBxIcChhTSUdOQUxfVFlQRV9BUFBST1ZFX0pPSU4QCBIbChdTSUdOQUxfVFlQRV9SRUpFQ1RfSk9JThAJEhoKFlNJR05BTF9UWVBFX09XTkVSX0xFRlQQChIZChVTSUdOQUxfVFlQRV9ST09NX0lORk8QCxIdChlTSUdOQUxfVFlQRV9QRU5ESU5HX1VTRVJTEAwqVQoIUm9vbVR5cGUSGQoVUk9PTV9UWVBFX1VOU1BFQ0lGSUVEEAASGgoWUk9PTV9UWVBFX0NPTlNVTFRBVElPThABEhIKDlJPT01fVFlQRV9QRUVSEAIqbAoIVXNlclJvbGUSGQoVVVNFUl9ST0xFX1VOU1BFQ0lGSUVEEAASEwoPVVNFUl9ST0xFX09XTkVSEAESGQoVVVNFUl9ST0xFX1BBUlRJQ0lQQU5UEAISFQoRVVNFUl9ST0xFX1BFTkRJTkcQAzKnAgoQU2lnbmFsaW5nU2VydmljZRJICghKb2luUm9vbRIdLnNpZ25hbGluZy52MS5Kb2luUm9vbVJlcXVlc3QaGy5zaWduYWxpbmcudjEuU2lnbmFsTWVzc2FnZTABEj4KClNlbmRTaWduYWwSGy5zaWduYWxpbmcudjEuU2lnbmFsTWVzc2FnZRoTLnNpZ25hbGluZy52MS5FbXB0eRJACglMZWF2ZVJvb20SHi5zaWduYWxpbmcudjEuTGVhdmVSb29tUmVxdWVzdBoTLnNpZ25hbGluZy52MS5FbXB0eRJHCgtHZXRSb29tSW5mbxIgLnNpZ25hbGluZy52MS5HZXRSb29tSW5mb1JlcXVlc3QaFi5zaWduYWxpbmcudjEuUm9vbUluZm9CS1pJZ2l0aHViLmNvbS9hejU4NzQwL2Nvbm5lY3QtbWljcm9zZXJ2aWNlcy1wcm90by9nb2xhbmcvc2lnbmFsaW5nO3NpZ25hbGluZ2IGcHJvdG8z");
+  fileDesc("ChlzaWduYWxpbmcvc2lnbmFsaW5nLnByb3RvEgxzaWduYWxpbmcudjEixgIKBkNsaWVudBIPCgd1c2VyX2lkGAEgASgJEhEKCXVzZXJfbmFtZRgCIAEoCRIkCgRyb2xlGAMgASgOMhYuc2lnbmFsaW5nLnYxLlVzZXJSb2xlEigKBnN0YXR1cxgEIAEoDjIYLnNpZ25hbGluZy52MS5Vc2VyU3RhdHVzEhEKCWpvaW5lZF9hdBgFIAEoCRIUCgxsYXN0X3NlZW5fYXQYBiABKAkSNAoIbWV0YWRhdGEYByADKAsyIi5zaWduYWxpbmcudjEuQ2xpZW50Lk1ldGFkYXRhRW50cnkSEAoIZHVyYXRpb24YCCABKAUSEAoIaXNfbXV0ZWQYCSABKAgSFAoMaXNfdmlkZW9fb2ZmGAogASgIGi8KDU1ldGFkYXRhRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASK5BgoEUm9vbRIPCgdyb29tX2lkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkSKQoJcm9vbV90eXBlGAQgASgOMhYuc2lnbmFsaW5nLnYxLlJvb21UeXBlEiwKCGNhdGVnb3J5GAUgASgOMhouc2lnbmFsaW5nLnYxLlJvb21DYXRlZ29yeRIoCgZzdGF0dXMYBiABKA4yGC5zaWduYWxpbmcudjEuUm9vbVN0YXR1cxIQCghvd25lcl9pZBgHIAEoCRISCgpvd25lcl9uYW1lGAggASgJEiUKB2NsaWVudHMYCSADKAsyFC5zaWduYWxpbmcudjEuQ2xpZW50Ei0KD3BlbmRpbmdfY2xpZW50cxgKIAMoCzIULnNpZ25hbGluZy52MS5DbGllbnQSFAoMb25saW5lX2NvdW50GAsgASgFEhgKEG1heF9wYXJ0aWNpcGFudHMYDCABKAUSEgoKaXNfcHJpdmF0ZRgNIAEoCBIUCgxoYXNfcGFzc3dvcmQYDiABKAgSEgoKY3JlYXRlZF9hdBgPIAEoCRISCgpzdGFydGVkX2F0GBAgASgJEhYKDmxhc3RfYWN0aXZlX2F0GBEgASgJEhoKEnRvdGFsX3BhcnRpY2lwYW50cxgSIAEoBRIZChFwZWFrX3BhcnRpY2lwYW50cxgTIAEoBRIYChBwcmljZV9wZXJfbWludXRlGBQgASgCEgwKBHRhZ3MYFSADKAkSMgoIbWV0YWRhdGEYFiADKAsyIC5zaWduYWxpbmcudjEuUm9vbS5NZXRhZGF0YUVudHJ5EjIKCHNldHRpbmdzGBcgAygLMiAuc2lnbmFsaW5nLnYxLlJvb20uU2V0dGluZ3NFbnRyeRIVCg10aHVtYm5haWxfdXJsGBggASgJEg4KBnJhdGluZxgZIAEoAhIUCgxyZXZpZXdfY291bnQYGiABKAUaLwoNTWV0YWRhdGFFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBGi8KDVNldHRpbmdzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASLPAQoNU2lnbmFsTWVzc2FnZRIPCgdyb29tX2lkGAEgASgJEhEKCWZyb21fdXNlchgCIAEoCRIWCg5mcm9tX3VzZXJfbmFtZRgDIAEoCRIPCgd0b191c2VyGAQgASgJEhQKDHRvX3VzZXJfbmFtZRgFIAEoCRImCgR0eXBlGAYgASgOMhguc2lnbmFsaW5nLnYxLlNpZ25hbFR5cGUSDwoHcGF5bG9hZBgHIAEoCRIPCgdtZXNzYWdlGAggASgJEhEKCXRpbWVzdGFtcBgJIAEoAyJqCg9Kb2luUm9vbVJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEhEKCXVzZXJfbmFtZRgDIAEoCRIQCghpc19vd25lchgEIAEoCBIQCghwYXNzd29yZBgFIAEoCSI0ChBKb2luUm9vbVJlc3BvbnNlEiAKBHJvb20YASABKAsyEi5zaWduYWxpbmcudjEuUm9vbSKSAQoRU2VuZFNpZ25hbFJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIRCglmcm9tX3VzZXIYAiABKAkSDwoHdG9fdXNlchgDIAEoCRImCgR0eXBlGAQgASgOMhguc2lnbmFsaW5nLnYxLlNpZ25hbFR5cGUSDwoHcGF5bG9hZBgFIAEoCRIPCgdtZXNzYWdlGAYgASgJIicKElNlbmRTaWduYWxSZXNwb25zZRIRCglkZWxpdmVyZWQYASABKAgiNAoQTGVhdmVSb29tUmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkiJAoRTGVhdmVSb29tUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCCKuAgoPR2V0Um9vbXNSZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSKAoGc3RhdHVzGAIgASgOMhguc2lnbmFsaW5nLnYxLlJvb21TdGF0dXMSEwoLb25seV9vbmxpbmUYAyABKAgSLAoIY2F0ZWdvcnkYBCABKA4yGi5zaWduYWxpbmcudjEuUm9vbUNhdGVnb3J5EikKCXJvb21fdHlwZRgFIAEoDjIWLnNpZ25hbGluZy52MS5Sb29tVHlwZRIQCghvd25lcl9pZBgGIAEoCRIWCg5tZW1iZXJfdXNlcl9pZBgHIAEoCRIUCgxzZWFyY2hfcXVlcnkYCCABKAkSEQoJbWluX3ByaWNlGAkgASgCEhEKCW1heF9wcmljZRgKIAEoAhIMCgR0YWdzGAsgAygJImwKEEdldFJvb21zUmVzcG9uc2USIAoEcm9vbRgBIAEoCzISLnNpZ25hbGluZy52MS5Sb29tEiEKBXJvb21zGAIgAygLMhIuc2lnbmFsaW5nLnYxLlJvb20SEwoLdG90YWxfY291bnQYAyABKAUi+gIKEUNyZWF0ZVJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDAoEbmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRIpCglyb29tX3R5cGUYBCABKA4yFi5zaWduYWxpbmcudjEuUm9vbVR5cGUSLAoIY2F0ZWdvcnkYBSABKA4yGi5zaWduYWxpbmcudjEuUm9vbUNhdGVnb3J5EhgKEG1heF9wYXJ0aWNpcGFudHMYBiABKAUSEgoKaXNfcHJpdmF0ZRgHIAEoCBIQCghwYXNzd29yZBgIIAEoCRI/CghzZXR0aW5ncxgJIAMoCzItLnNpZ25hbGluZy52MS5DcmVhdGVSb29tUmVxdWVzdC5TZXR0aW5nc0VudHJ5EhgKEHByaWNlX3Blcl9taW51dGUYCiABKAISDAoEdGFncxgLIAMoCRovCg1TZXR0aW5nc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiNgoSQ3JlYXRlUm9vbVJlc3BvbnNlEiAKBHJvb20YASABKAsyEi5zaWduYWxpbmcudjEuUm9vbSLwAgoZVXBkYXRlUm9vbVNldHRpbmdzUmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkSDAoEbmFtZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEoCRIsCghjYXRlZ29yeRgFIAEoDjIaLnNpZ25hbGluZy52MS5Sb29tQ2F0ZWdvcnkSGAoQbWF4X3BhcnRpY2lwYW50cxgGIAEoBRISCgppc19wcml2YXRlGAcgASgIEhAKCHBhc3N3b3JkGAggASgJEkcKCHNldHRpbmdzGAkgAygLMjUuc2lnbmFsaW5nLnYxLlVwZGF0ZVJvb21TZXR0aW5nc1JlcXVlc3QuU2V0dGluZ3NFbnRyeRIYChBwcmljZV9wZXJfbWludXRlGAogASgCEgwKBHRhZ3MYCyADKAkaLwoNU2V0dGluZ3NFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIj4KGlVwZGF0ZVJvb21TZXR0aW5nc1Jlc3BvbnNlEiAKBHJvb20YASABKAsyEi5zaWduYWxpbmcudjEuUm9vbSI0ChBDbG9zZVJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCSIkChFDbG9zZVJvb21SZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIIlIKFUdldFJvb21DbGllbnRzUmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkSFwoPaW5jbHVkZV9wZW5kaW5nGAMgASgIIpkBChZHZXRSb29tQ2xpZW50c1Jlc3BvbnNlEiUKB2NsaWVudHMYASADKAsyFC5zaWduYWxpbmcudjEuQ2xpZW50Ei0KD3BlbmRpbmdfY2xpZW50cxgCIAMoCzIULnNpZ25hbGluZy52MS5DbGllbnQSEwoLdG90YWxfY291bnQYAyABKAUSFAoMb25saW5lX2NvdW50GAQgASgFIo8BChlVcGRhdGVDbGllbnRTdGF0dXNSZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIoCgZzdGF0dXMYAyABKA4yGC5zaWduYWxpbmcudjEuVXNlclN0YXR1cxIQCghpc19tdXRlZBgEIAEoCBIUCgxpc192aWRlb19vZmYYBSABKAgiLQoaVXBkYXRlQ2xpZW50U3RhdHVzUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCCqqAwoKU2lnbmFsVHlwZRIbChdTSUdOQUxfVFlQRV9VTlNQRUNJRklFRBAAEhUKEVNJR05BTF9UWVBFX09GRkVSEAESFgoSU0lHTkFMX1RZUEVfQU5TV0VSEAISGQoVU0lHTkFMX1RZUEVfQ0FORElEQVRFEAMSFQoRU0lHTkFMX1RZUEVfTEVBVkUQBBIUChBTSUdOQUxfVFlQRV9DSEFUEAUSFgoSU0lHTkFMX1VTRVJfSk9JTkVEEAYSHAoYU0lHTkFMX1RZUEVfUkVRVUVTVF9KT0lOEAcSHAoYU0lHTkFMX1RZUEVfQVBQUk9WRV9KT0lOEAgSGwoXU0lHTkFMX1RZUEVfUkVKRUNUX0pPSU4QCRIaChZTSUdOQUxfVFlQRV9PV05FUl9MRUZUEAoSGQoVU0lHTkFMX1RZUEVfUk9PTV9JTkZPEAsSHQoZU0lHTkFMX1RZUEVfUEVORElOR19VU0VSUxAMEhwKGFNJR05BTF9UWVBFX1JPT01fVVBEQVRFRBANEiMKH1NJR05BTF9UWVBFX1VTRVJfU1RBVFVTX0NIQU5HRUQQDiqDAQoIUm9vbVR5cGUSGQoVUk9PTV9UWVBFX1VOU1BFQ0lGSUVEEAASEgoOUk9PTV9UWVBFX1BFRVIQARIaChZST09NX1RZUEVfQ09OU1VMVEFUSU9OEAISFwoTUk9PTV9UWVBFX0JST0FEQ0FTVBADEhMKD1JPT01fVFlQRV9HUk9VUBAEKo0BCgpSb29tU3RhdHVzEhsKF1JPT01fU1RBVFVTX1VOU1BFQ0lGSUVEEAASFgoSUk9PTV9TVEFUVVNfQUNUSVZFEAESGAoUUk9PTV9TVEFUVVNfSU5BQ1RJVkUQAhIWChJST09NX1NUQVRVU19DTE9TRUQQAxIYChRST09NX1NUQVRVU19BUkNISVZFRBAEKucBCgxSb29tQ2F0ZWdvcnkSHQoZUk9PTV9DQVRFR09SWV9VTlNQRUNJRklFRBAAEhkKFVJPT01fQ0FURUdPUllfTUVESUNBTBABEiIKHlJPT01fQ0FURUdPUllfU0tJTl9IQUlSX0JFQVVUWRACEh4KGlJPT01fQ0FURUdPUllfTEFTRVJfQkVBVVRZEAMSIQodUk9PTV9DQVRFR09SWV9DT1NNRVRJQ19CRUFVVFkQBBIdChlST09NX0NBVEVHT1JZX0VEVUNBVElPTkFMEAUSFwoTUk9PTV9DQVRFR09SWV9PVEhFUhAGKoUBCghVc2VyUm9sZRIZChVVU0VSX1JPTEVfVU5TUEVDSUZJRUQQABITCg9VU0VSX1JPTEVfT1dORVIQARIZChVVU0VSX1JPTEVfUEFSVElDSVBBTlQQAhIVChFVU0VSX1JPTEVfUEVORElORxADEhcKE1VTRVJfUk9MRV9NT0RFUkFUT1IQBCpwCgpVc2VyU3RhdHVzEhsKF1VTRVJfU1RBVFVTX1VOU1BFQ0lGSUVEEAASFgoSVVNFUl9TVEFUVVNfT05MSU5FEAESFwoTVVNFUl9TVEFUVVNfT0ZGTElORRACEhQKEFVTRVJfU1RBVFVTX0FXQVkQAzKUBgoQU2lnbmFsaW5nU2VydmljZRJICghKb2luUm9vbRIdLnNpZ25hbGluZy52MS5Kb2luUm9vbVJlcXVlc3QaGy5zaWduYWxpbmcudjEuU2lnbmFsTWVzc2FnZTABEk8KClNlbmRTaWduYWwSHy5zaWduYWxpbmcudjEuU2VuZFNpZ25hbFJlcXVlc3QaIC5zaWduYWxpbmcudjEuU2VuZFNpZ25hbFJlc3BvbnNlEkwKCUxlYXZlUm9vbRIeLnNpZ25hbGluZy52MS5MZWF2ZVJvb21SZXF1ZXN0Gh8uc2lnbmFsaW5nLnYxLkxlYXZlUm9vbVJlc3BvbnNlEkkKCEdldFJvb21zEh0uc2lnbmFsaW5nLnYxLkdldFJvb21zUmVxdWVzdBoeLnNpZ25hbGluZy52MS5HZXRSb29tc1Jlc3BvbnNlEk8KCkNyZWF0ZVJvb20SHy5zaWduYWxpbmcudjEuQ3JlYXRlUm9vbVJlcXVlc3QaIC5zaWduYWxpbmcudjEuQ3JlYXRlUm9vbVJlc3BvbnNlEmcKElVwZGF0ZVJvb21TZXR0aW5ncxInLnNpZ25hbGluZy52MS5VcGRhdGVSb29tU2V0dGluZ3NSZXF1ZXN0Giguc2lnbmFsaW5nLnYxLlVwZGF0ZVJvb21TZXR0aW5nc1Jlc3BvbnNlEkwKCUNsb3NlUm9vbRIeLnNpZ25hbGluZy52MS5DbG9zZVJvb21SZXF1ZXN0Gh8uc2lnbmFsaW5nLnYxLkNsb3NlUm9vbVJlc3BvbnNlElsKDkdldFJvb21DbGllbnRzEiMuc2lnbmFsaW5nLnYxLkdldFJvb21DbGllbnRzUmVxdWVzdBokLnNpZ25hbGluZy52MS5HZXRSb29tQ2xpZW50c1Jlc3BvbnNlEmcKElVwZGF0ZUNsaWVudFN0YXR1cxInLnNpZ25hbGluZy52MS5VcGRhdGVDbGllbnRTdGF0dXNSZXF1ZXN0Giguc2lnbmFsaW5nLnYxLlVwZGF0ZUNsaWVudFN0YXR1c1Jlc3BvbnNlQktaSWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3NpZ25hbGluZztzaWduYWxpbmdiBnByb3RvMw");
 
 /**
- * @generated from message signaling.v1.JoinRoomRequest
+ * Client
+ *
+ * @generated from message signaling.v1.Client
  */
-export type JoinRoomRequest = Message<"signaling.v1.JoinRoomRequest"> & {
+export type Client = Message<"signaling.v1.Client"> & {
   /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: string user_name = 2;
+   */
+  userName: string;
+
+  /**
+   * @generated from field: signaling.v1.UserRole role = 3;
+   */
+  role: UserRole;
+
+  /**
+   * @generated from field: signaling.v1.UserStatus status = 4;
+   */
+  status: UserStatus;
+
+  /**
+   * @generated from field: string joined_at = 5;
+   */
+  joinedAt: string;
+
+  /**
+   * @generated from field: string last_seen_at = 6;
+   */
+  lastSeenAt: string;
+
+  /**
+   * @generated from field: map<string, string> metadata = 7;
+   */
+  metadata: { [key: string]: string };
+
+  /**
+   * مدت حضور (ثانیه) - فقط برای اعضای روم
+   *
+   * @generated from field: int32 duration = 8;
+   */
+  duration: number;
+
+  /**
+   * میکروفن خاموش؟ - فقط برای اعضای روم
+   *
+   * @generated from field: bool is_muted = 9;
+   */
+  isMuted: boolean;
+
+  /**
+   * ویدیو خاموش؟ - فقط برای اعضای روم
+   *
+   * @generated from field: bool is_video_off = 10;
+   */
+  isVideoOff: boolean;
+};
+
+/**
+ * Describes the message signaling.v1.Client.
+ * Use `create(ClientSchema)` to create a new message.
+ */
+export const ClientSchema: GenMessage<Client> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 0);
+
+/**
+ * Room
+ *
+ * @generated from message signaling.v1.Room
+ */
+export type Room = Message<"signaling.v1.Room"> & {
+  /**
+   * اطلاعات پایه
+   *
    * @generated from field: string room_id = 1;
    */
   roomId: string;
 
   /**
-   * @generated from field: string user_id = 2;
-   */
-  userId: string;
-
-  /**
-   * @generated from field: string user_name = 3;
-   */
-  userName: string;
-
-  /**
-   * true اگر صاحب روم است (دکتر)
+   * عنوان کامل با جزئیات
    *
-   * @generated from field: bool is_owner = 4;
+   * @generated from field: string name = 2;
    */
-  isOwner: boolean;
+  name: string;
+
+  /**
+   * توضیحات
+   *
+   * @generated from field: string description = 3;
+   */
+  description: string;
+
+  /**
+   * @generated from field: signaling.v1.RoomType room_type = 4;
+   */
+  roomType: RoomType;
+
+  /**
+   * دسته‌بندی کلی
+   *
+   * @generated from field: signaling.v1.RoomCategory category = 5;
+   */
+  category: RoomCategory;
+
+  /**
+   * @generated from field: signaling.v1.RoomStatus status = 6;
+   */
+  status: RoomStatus;
+
+  /**
+   * اطلاعات صاحب
+   *
+   * @generated from field: string owner_id = 7;
+   */
+  ownerId: string;
+
+  /**
+   * @generated from field: string owner_name = 8;
+   */
+  ownerName: string;
+
+  /**
+   * کاربران
+   *
+   * کاربران حاضر (تایید شده)
+   *
+   * @generated from field: repeated signaling.v1.Client clients = 9;
+   */
+  clients: Client[];
+
+  /**
+   * کاربران در انتظار تایید
+   *
+   * @generated from field: repeated signaling.v1.Client pending_clients = 10;
+   */
+  pendingClients: Client[];
+
+  /**
+   * @generated from field: int32 online_count = 11;
+   */
+  onlineCount: number;
+
+  /**
+   * تنظیمات
+   *
+   * @generated from field: int32 max_participants = 12;
+   */
+  maxParticipants: number;
+
+  /**
+   * @generated from field: bool is_private = 13;
+   */
+  isPrivate: boolean;
+
+  /**
+   * @generated from field: bool has_password = 14;
+   */
+  hasPassword: boolean;
+
+  /**
+   * زمان‌ها
+   *
+   * @generated from field: string created_at = 15;
+   */
+  createdAt: string;
+
+  /**
+   * زمان شروع جلسه
+   *
+   * @generated from field: string started_at = 16;
+   */
+  startedAt: string;
+
+  /**
+   * آخرین فعالیت
+   *
+   * @generated from field: string last_active_at = 17;
+   */
+  lastActiveAt: string;
+
+  /**
+   * آمار
+   *
+   * کل شرکت‌کنندگان
+   *
+   * @generated from field: int32 total_participants = 18;
+   */
+  totalParticipants: number;
+
+  /**
+   * بیشترین تعداد همزمان
+   *
+   * @generated from field: int32 peak_participants = 19;
+   */
+  peakParticipants: number;
+
+  /**
+   * اطلاعات اضافی
+   *
+   * @generated from field: float price_per_minute = 20;
+   */
+  pricePerMinute: number;
+
+  /**
+   * @generated from field: repeated string tags = 21;
+   */
+  tags: string[];
+
+  /**
+   * @generated from field: map<string, string> metadata = 22;
+   */
+  metadata: { [key: string]: string };
+
+  /**
+   * @generated from field: map<string, string> settings = 23;
+   */
+  settings: { [key: string]: string };
+
+  /**
+   * تصویر (اختیاری)
+   *
+   * @generated from field: string thumbnail_url = 24;
+   */
+  thumbnailUrl: string;
+
+  /**
+   * امتیاز (برای روم‌های مشاوره)
+   *
+   * @generated from field: float rating = 25;
+   */
+  rating: number;
+
+  /**
+   * تعداد نظرات
+   *
+   * @generated from field: int32 review_count = 26;
+   */
+  reviewCount: number;
 };
 
 /**
- * Describes the message signaling.v1.JoinRoomRequest.
- * Use `create(JoinRoomRequestSchema)` to create a new message.
+ * Describes the message signaling.v1.Room.
+ * Use `create(RoomSchema)` to create a new message.
  */
-export const JoinRoomRequestSchema: GenMessage<JoinRoomRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 0);
+export const RoomSchema: GenMessage<Room> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 1);
 
 /**
+ * SignalMessage (برای stream)
+ *
  * @generated from message signaling.v1.SignalMessage
  */
 export type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
@@ -81,18 +301,19 @@ export type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
   type: SignalType;
 
   /**
-   * اطلاعات اضافی به صورت JSON
-   *
    * @generated from field: string payload = 7;
    */
   payload: string;
 
   /**
-   * متن چت یا اعلان
-   *
    * @generated from field: string message = 8;
    */
   message: string;
+
+  /**
+   * @generated from field: int64 timestamp = 9;
+   */
+  timestamp: bigint;
 };
 
 /**
@@ -100,9 +321,128 @@ export type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
  * Use `create(SignalMessageSchema)` to create a new message.
  */
 export const SignalMessageSchema: GenMessage<SignalMessage> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 1);
+  messageDesc(file_signaling_signaling, 2);
 
 /**
+ * JoinRoom
+ *
+ * @generated from message signaling.v1.JoinRoomRequest
+ */
+export type JoinRoomRequest = Message<"signaling.v1.JoinRoomRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: string user_id = 2;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: string user_name = 3;
+   */
+  userName: string;
+
+  /**
+   * @generated from field: bool is_owner = 4;
+   */
+  isOwner: boolean;
+
+  /**
+   * @generated from field: string password = 5;
+   */
+  password: string;
+};
+
+/**
+ * Describes the message signaling.v1.JoinRoomRequest.
+ * Use `create(JoinRoomRequestSchema)` to create a new message.
+ */
+export const JoinRoomRequestSchema: GenMessage<JoinRoomRequest> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 3);
+
+/**
+ * @generated from message signaling.v1.JoinRoomResponse
+ */
+export type JoinRoomResponse = Message<"signaling.v1.JoinRoomResponse"> & {
+  /**
+   * @generated from field: signaling.v1.Room room = 1;
+   */
+  room?: Room;
+};
+
+/**
+ * Describes the message signaling.v1.JoinRoomResponse.
+ * Use `create(JoinRoomResponseSchema)` to create a new message.
+ */
+export const JoinRoomResponseSchema: GenMessage<JoinRoomResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 4);
+
+/**
+ * SendSignal
+ *
+ * @generated from message signaling.v1.SendSignalRequest
+ */
+export type SendSignalRequest = Message<"signaling.v1.SendSignalRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: string from_user = 2;
+   */
+  fromUser: string;
+
+  /**
+   * @generated from field: string to_user = 3;
+   */
+  toUser: string;
+
+  /**
+   * @generated from field: signaling.v1.SignalType type = 4;
+   */
+  type: SignalType;
+
+  /**
+   * @generated from field: string payload = 5;
+   */
+  payload: string;
+
+  /**
+   * @generated from field: string message = 6;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message signaling.v1.SendSignalRequest.
+ * Use `create(SendSignalRequestSchema)` to create a new message.
+ */
+export const SendSignalRequestSchema: GenMessage<SendSignalRequest> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 5);
+
+/**
+ * @generated from message signaling.v1.SendSignalResponse
+ */
+export type SendSignalResponse = Message<"signaling.v1.SendSignalResponse"> & {
+  /**
+   * @generated from field: bool delivered = 1;
+   */
+  delivered: boolean;
+};
+
+/**
+ * Describes the message signaling.v1.SendSignalResponse.
+ * Use `create(SendSignalResponseSchema)` to create a new message.
+ */
+export const SendSignalResponseSchema: GenMessage<SendSignalResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 6);
+
+/**
+ * LeaveRoom
+ *
  * @generated from message signaling.v1.LeaveRoomRequest
  */
 export type LeaveRoomRequest = Message<"signaling.v1.LeaveRoomRequest"> & {
@@ -122,110 +462,445 @@ export type LeaveRoomRequest = Message<"signaling.v1.LeaveRoomRequest"> & {
  * Use `create(LeaveRoomRequestSchema)` to create a new message.
  */
 export const LeaveRoomRequestSchema: GenMessage<LeaveRoomRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 2);
+  messageDesc(file_signaling_signaling, 7);
 
 /**
- * اطلاعات یک کاربر
- *
- * @generated from message signaling.v1.UserInfo
+ * @generated from message signaling.v1.LeaveRoomResponse
  */
-export type UserInfo = Message<"signaling.v1.UserInfo"> & {
+export type LeaveRoomResponse = Message<"signaling.v1.LeaveRoomResponse"> & {
   /**
-   * @generated from field: string user_id = 1;
+   * @generated from field: bool success = 1;
    */
-  userId: string;
-
-  /**
-   * @generated from field: string user_name = 2;
-   */
-  userName: string;
-
-  /**
-   * @generated from field: signaling.v1.UserRole role = 3;
-   */
-  role: UserRole;
-
-  /**
-   * ISO timestamp
-   *
-   * @generated from field: string joined_at = 4;
-   */
-  joinedAt: string;
+  success: boolean;
 };
 
 /**
- * Describes the message signaling.v1.UserInfo.
- * Use `create(UserInfoSchema)` to create a new message.
+ * Describes the message signaling.v1.LeaveRoomResponse.
+ * Use `create(LeaveRoomResponseSchema)` to create a new message.
  */
-export const UserInfoSchema: GenMessage<UserInfo> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 3);
+export const LeaveRoomResponseSchema: GenMessage<LeaveRoomResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 8);
 
 /**
- * اطلاعات کامل اتاق
+ * GetRooms
  *
- * @generated from message signaling.v1.RoomInfo
+ * @generated from message signaling.v1.GetRoomsRequest
  */
-export type RoomInfo = Message<"signaling.v1.RoomInfo"> & {
+export type GetRoomsRequest = Message<"signaling.v1.GetRoomsRequest"> & {
+  /**
+   * فیلتر بر اساس شناسه (برای دریافت یک روم خاص)
+   *
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * فیلتر بر اساس وضعیت
+   *
+   * @generated from field: signaling.v1.RoomStatus status = 2;
+   */
+  status: RoomStatus;
+
+  /**
+   * فقط روم‌های آنلاین
+   *
+   * @generated from field: bool only_online = 3;
+   */
+  onlyOnline: boolean;
+
+  /**
+   * فیلتر بر اساس دسته‌بندی کلی
+   *
+   * @generated from field: signaling.v1.RoomCategory category = 4;
+   */
+  category: RoomCategory;
+
+  /**
+   * فیلتر بر اساس نوع روم
+   *
+   * @generated from field: signaling.v1.RoomType room_type = 5;
+   */
+  roomType: RoomType;
+
+  /**
+   * فیلتر بر اساس صاحب روم
+   *
+   * @generated from field: string owner_id = 6;
+   */
+  ownerId: string;
+
+  /**
+   * فیلتر بر اساس کاربر عضو
+   *
+   * روم‌هایی که کاربر خاصی عضو است
+   *
+   * @generated from field: string member_user_id = 7;
+   */
+  memberUserId: string;
+
+  /**
+   * جستجو در متن (name و description)
+   *
+   * @generated from field: string search_query = 8;
+   */
+  searchQuery: string;
+
+  /**
+   * محدوده قیمت
+   *
+   * @generated from field: float min_price = 9;
+   */
+  minPrice: number;
+
+  /**
+   * @generated from field: float max_price = 10;
+   */
+  maxPrice: number;
+
+  /**
+   * برچسب‌ها
+   *
+   * روم‌هایی که این برچسب‌ها را دارند
+   *
+   * @generated from field: repeated string tags = 11;
+   */
+  tags: string[];
+};
+
+/**
+ * Describes the message signaling.v1.GetRoomsRequest.
+ * Use `create(GetRoomsRequestSchema)` to create a new message.
+ */
+export const GetRoomsRequestSchema: GenMessage<GetRoomsRequest> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 9);
+
+/**
+ * @generated from message signaling.v1.GetRoomsResponse
+ */
+export type GetRoomsResponse = Message<"signaling.v1.GetRoomsResponse"> & {
+  /**
+   * اگر room_id در درخواست مشخص شده بود
+   *
+   * @generated from field: signaling.v1.Room room = 1;
+   */
+  room?: Room;
+
+  /**
+   * اگر درخواست لیست بود
+   *
+   * @generated from field: repeated signaling.v1.Room rooms = 2;
+   */
+  rooms: Room[];
+
+  /**
+   * تعداد کل نتایج
+   *
+   * @generated from field: int32 total_count = 3;
+   */
+  totalCount: number;
+};
+
+/**
+ * Describes the message signaling.v1.GetRoomsResponse.
+ * Use `create(GetRoomsResponseSchema)` to create a new message.
+ */
+export const GetRoomsResponseSchema: GenMessage<GetRoomsResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 10);
+
+/**
+ * CreateRoom
+ *
+ * @generated from message signaling.v1.CreateRoomRequest
+ */
+export type CreateRoomRequest = Message<"signaling.v1.CreateRoomRequest"> & {
+  /**
+   * اگر خالی بود، سرور تولید می‌کند
+   *
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: string name = 2;
+   */
+  name: string;
+
+  /**
+   * @generated from field: string description = 3;
+   */
+  description: string;
+
+  /**
+   * @generated from field: signaling.v1.RoomType room_type = 4;
+   */
+  roomType: RoomType;
+
+  /**
+   * @generated from field: signaling.v1.RoomCategory category = 5;
+   */
+  category: RoomCategory;
+
+  /**
+   * @generated from field: int32 max_participants = 6;
+   */
+  maxParticipants: number;
+
+  /**
+   * @generated from field: bool is_private = 7;
+   */
+  isPrivate: boolean;
+
+  /**
+   * @generated from field: string password = 8;
+   */
+  password: string;
+
+  /**
+   * @generated from field: map<string, string> settings = 9;
+   */
+  settings: { [key: string]: string };
+
+  /**
+   * @generated from field: float price_per_minute = 10;
+   */
+  pricePerMinute: number;
+
+  /**
+   * @generated from field: repeated string tags = 11;
+   */
+  tags: string[];
+};
+
+/**
+ * Describes the message signaling.v1.CreateRoomRequest.
+ * Use `create(CreateRoomRequestSchema)` to create a new message.
+ */
+export const CreateRoomRequestSchema: GenMessage<CreateRoomRequest> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 11);
+
+/**
+ * @generated from message signaling.v1.CreateRoomResponse
+ */
+export type CreateRoomResponse = Message<"signaling.v1.CreateRoomResponse"> & {
+  /**
+   * @generated from field: signaling.v1.Room room = 1;
+   */
+  room?: Room;
+};
+
+/**
+ * Describes the message signaling.v1.CreateRoomResponse.
+ * Use `create(CreateRoomResponseSchema)` to create a new message.
+ */
+export const CreateRoomResponseSchema: GenMessage<CreateRoomResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 12);
+
+/**
+ * UpdateRoomSettings
+ *
+ * @generated from message signaling.v1.UpdateRoomSettingsRequest
+ */
+export type UpdateRoomSettingsRequest = Message<"signaling.v1.UpdateRoomSettingsRequest"> & {
   /**
    * @generated from field: string room_id = 1;
    */
   roomId: string;
 
   /**
-   * @generated from field: signaling.v1.RoomType room_type = 2;
-   */
-  roomType: RoomType;
-
-  /**
-   * @generated from field: string owner_id = 3;
-   */
-  ownerId: string;
-
-  /**
-   * @generated from field: string owner_name = 4;
-   */
-  ownerName: string;
-
-  /**
-   * کاربران حاضر (تایید شده)
+   * برای اعتبارسنجی (فقط owner می‌تواند)
    *
-   * @generated from field: repeated signaling.v1.UserInfo users = 5;
+   * @generated from field: string user_id = 2;
    */
-  users: UserInfo[];
+  userId: string;
 
   /**
-   * کاربران در انتظار تایید
-   *
-   * @generated from field: repeated signaling.v1.UserInfo pending_users = 6;
+   * @generated from field: string name = 3;
    */
-  pendingUsers: UserInfo[];
+  name: string;
 
   /**
-   * حداکثر شرکت‌کننده (مثلاً 3 نفر)
-   *
-   * @generated from field: int32 max_participants = 7;
+   * @generated from field: string description = 4;
+   */
+  description: string;
+
+  /**
+   * @generated from field: signaling.v1.RoomCategory category = 5;
+   */
+  category: RoomCategory;
+
+  /**
+   * @generated from field: int32 max_participants = 6;
    */
   maxParticipants: number;
 
   /**
-   * زمان ایجاد اتاق
-   *
-   * @generated from field: string created_at = 8;
+   * @generated from field: bool is_private = 7;
    */
-  createdAt: string;
+  isPrivate: boolean;
+
+  /**
+   * @generated from field: string password = 8;
+   */
+  password: string;
+
+  /**
+   * @generated from field: map<string, string> settings = 9;
+   */
+  settings: { [key: string]: string };
+
+  /**
+   * @generated from field: float price_per_minute = 10;
+   */
+  pricePerMinute: number;
+
+  /**
+   * @generated from field: repeated string tags = 11;
+   */
+  tags: string[];
 };
 
 /**
- * Describes the message signaling.v1.RoomInfo.
- * Use `create(RoomInfoSchema)` to create a new message.
+ * Describes the message signaling.v1.UpdateRoomSettingsRequest.
+ * Use `create(UpdateRoomSettingsRequestSchema)` to create a new message.
  */
-export const RoomInfoSchema: GenMessage<RoomInfo> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 4);
+export const UpdateRoomSettingsRequestSchema: GenMessage<UpdateRoomSettingsRequest> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 13);
 
 /**
- * @generated from message signaling.v1.GetRoomInfoRequest
+ * @generated from message signaling.v1.UpdateRoomSettingsResponse
  */
-export type GetRoomInfoRequest = Message<"signaling.v1.GetRoomInfoRequest"> & {
+export type UpdateRoomSettingsResponse = Message<"signaling.v1.UpdateRoomSettingsResponse"> & {
+  /**
+   * @generated from field: signaling.v1.Room room = 1;
+   */
+  room?: Room;
+};
+
+/**
+ * Describes the message signaling.v1.UpdateRoomSettingsResponse.
+ * Use `create(UpdateRoomSettingsResponseSchema)` to create a new message.
+ */
+export const UpdateRoomSettingsResponseSchema: GenMessage<UpdateRoomSettingsResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 14);
+
+/**
+ * CloseRoom
+ *
+ * @generated from message signaling.v1.CloseRoomRequest
+ */
+export type CloseRoomRequest = Message<"signaling.v1.CloseRoomRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * برای اعتبارسنجی (فقط owner می‌تواند)
+   *
+   * @generated from field: string user_id = 2;
+   */
+  userId: string;
+};
+
+/**
+ * Describes the message signaling.v1.CloseRoomRequest.
+ * Use `create(CloseRoomRequestSchema)` to create a new message.
+ */
+export const CloseRoomRequestSchema: GenMessage<CloseRoomRequest> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 15);
+
+/**
+ * @generated from message signaling.v1.CloseRoomResponse
+ */
+export type CloseRoomResponse = Message<"signaling.v1.CloseRoomResponse"> & {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
+};
+
+/**
+ * Describes the message signaling.v1.CloseRoomResponse.
+ * Use `create(CloseRoomResponseSchema)` to create a new message.
+ */
+export const CloseRoomResponseSchema: GenMessage<CloseRoomResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 16);
+
+/**
+ * GetRoomClients
+ *
+ * @generated from message signaling.v1.GetRoomClientsRequest
+ */
+export type GetRoomClientsRequest = Message<"signaling.v1.GetRoomClientsRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * برای اعتبارسنجی
+   *
+   * @generated from field: string user_id = 2;
+   */
+  userId: string;
+
+  /**
+   * آیا کاربران در انتظار هم برگردند؟
+   *
+   * @generated from field: bool include_pending = 3;
+   */
+  includePending: boolean;
+};
+
+/**
+ * Describes the message signaling.v1.GetRoomClientsRequest.
+ * Use `create(GetRoomClientsRequestSchema)` to create a new message.
+ */
+export const GetRoomClientsRequestSchema: GenMessage<GetRoomClientsRequest> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 17);
+
+/**
+ * @generated from message signaling.v1.GetRoomClientsResponse
+ */
+export type GetRoomClientsResponse = Message<"signaling.v1.GetRoomClientsResponse"> & {
+  /**
+   * کاربران حاضر (تایید شده)
+   *
+   * @generated from field: repeated signaling.v1.Client clients = 1;
+   */
+  clients: Client[];
+
+  /**
+   * کاربران در انتظار تایید
+   *
+   * @generated from field: repeated signaling.v1.Client pending_clients = 2;
+   */
+  pendingClients: Client[];
+
+  /**
+   * @generated from field: int32 total_count = 3;
+   */
+  totalCount: number;
+
+  /**
+   * @generated from field: int32 online_count = 4;
+   */
+  onlineCount: number;
+};
+
+/**
+ * Describes the message signaling.v1.GetRoomClientsResponse.
+ * Use `create(GetRoomClientsResponseSchema)` to create a new message.
+ */
+export const GetRoomClientsResponseSchema: GenMessage<GetRoomClientsResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 18);
+
+/**
+ * UpdateClientStatus
+ *
+ * @generated from message signaling.v1.UpdateClientStatusRequest
+ */
+export type UpdateClientStatusRequest = Message<"signaling.v1.UpdateClientStatusRequest"> & {
   /**
    * @generated from field: string room_id = 1;
    */
@@ -235,29 +910,50 @@ export type GetRoomInfoRequest = Message<"signaling.v1.GetRoomInfoRequest"> & {
    * @generated from field: string user_id = 2;
    */
   userId: string;
+
+  /**
+   * @generated from field: signaling.v1.UserStatus status = 3;
+   */
+  status: UserStatus;
+
+  /**
+   * @generated from field: bool is_muted = 4;
+   */
+  isMuted: boolean;
+
+  /**
+   * @generated from field: bool is_video_off = 5;
+   */
+  isVideoOff: boolean;
 };
 
 /**
- * Describes the message signaling.v1.GetRoomInfoRequest.
- * Use `create(GetRoomInfoRequestSchema)` to create a new message.
+ * Describes the message signaling.v1.UpdateClientStatusRequest.
+ * Use `create(UpdateClientStatusRequestSchema)` to create a new message.
  */
-export const GetRoomInfoRequestSchema: GenMessage<GetRoomInfoRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 5);
+export const UpdateClientStatusRequestSchema: GenMessage<UpdateClientStatusRequest> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 19);
 
 /**
- * @generated from message signaling.v1.Empty
+ * @generated from message signaling.v1.UpdateClientStatusResponse
  */
-export type Empty = Message<"signaling.v1.Empty"> & {
+export type UpdateClientStatusResponse = Message<"signaling.v1.UpdateClientStatusResponse"> & {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
 };
 
 /**
- * Describes the message signaling.v1.Empty.
- * Use `create(EmptySchema)` to create a new message.
+ * Describes the message signaling.v1.UpdateClientStatusResponse.
+ * Use `create(UpdateClientStatusResponseSchema)` to create a new message.
  */
-export const EmptySchema: GenMessage<Empty> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 6);
+export const UpdateClientStatusResponseSchema: GenMessage<UpdateClientStatusResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 20);
 
 /**
+ * Signal Types
+ *
  * @generated from enum signaling.v1.SignalType
  */
 export enum SignalType {
@@ -297,48 +993,48 @@ export enum SignalType {
   SIGNAL_USER_JOINED = 6,
 
   /**
-   * انواع جدید برای سناریوی مشاوره
-   *
-   * درخواست ورود به اتاق
+   * انواع برای سناریوی مشاوره
    *
    * @generated from enum value: SIGNAL_TYPE_REQUEST_JOIN = 7;
    */
   SIGNAL_TYPE_REQUEST_JOIN = 7,
 
   /**
-   * تایید درخواست
-   *
    * @generated from enum value: SIGNAL_TYPE_APPROVE_JOIN = 8;
    */
   SIGNAL_TYPE_APPROVE_JOIN = 8,
 
   /**
-   * رد درخواست
-   *
    * @generated from enum value: SIGNAL_TYPE_REJECT_JOIN = 9;
    */
   SIGNAL_TYPE_REJECT_JOIN = 9,
 
   /**
-   * صاحب روم خارج شد
-   *
    * @generated from enum value: SIGNAL_TYPE_OWNER_LEFT = 10;
    */
   SIGNAL_TYPE_OWNER_LEFT = 10,
 
   /**
-   * اطلاعات اتاق
-   *
    * @generated from enum value: SIGNAL_TYPE_ROOM_INFO = 11;
    */
   SIGNAL_TYPE_ROOM_INFO = 11,
 
   /**
-   * لیست کاربران منتظر
-   *
    * @generated from enum value: SIGNAL_TYPE_PENDING_USERS = 12;
    */
   SIGNAL_TYPE_PENDING_USERS = 12,
+
+  /**
+   * انواع جدید برای مدیریت روم
+   *
+   * @generated from enum value: SIGNAL_TYPE_ROOM_UPDATED = 13;
+   */
+  SIGNAL_TYPE_ROOM_UPDATED = 13,
+
+  /**
+   * @generated from enum value: SIGNAL_TYPE_USER_STATUS_CHANGED = 14;
+   */
+  SIGNAL_TYPE_USER_STATUS_CHANGED = 14,
 }
 
 /**
@@ -348,7 +1044,7 @@ export const SignalTypeSchema: GenEnum<SignalType> = /*@__PURE__*/
   enumDesc(file_signaling_signaling, 0);
 
 /**
- * نوع اتاق
+ * Room Types
  *
  * @generated from enum signaling.v1.RoomType
  */
@@ -359,18 +1055,32 @@ export enum RoomType {
   UNSPECIFIED = 0,
 
   /**
-   * اتاق مشاوره (یک صاحب، چند شرکت‌کننده)
+   * همتا به همتا (دکتر و بیمار)
    *
-   * @generated from enum value: ROOM_TYPE_CONSULTATION = 1;
+   * @generated from enum value: ROOM_TYPE_PEER = 1;
    */
-  CONSULTATION = 1,
+  PEER = 1,
 
   /**
-   * اتاق همتا به همتا (دوطرفه)
+   * یک استاد، چند دانشجو (مشاوره)
    *
-   * @generated from enum value: ROOM_TYPE_PEER = 2;
+   * @generated from enum value: ROOM_TYPE_CONSULTATION = 2;
    */
-  PEER = 2,
+  CONSULTATION = 2,
+
+  /**
+   * یک به چند (وبینار، کلاس)
+   *
+   * @generated from enum value: ROOM_TYPE_BROADCAST = 3;
+   */
+  BROADCAST = 3,
+
+  /**
+   * گروهی چند به چند
+   *
+   * @generated from enum value: ROOM_TYPE_GROUP = 4;
+   */
+  GROUP = 4,
 }
 
 /**
@@ -380,7 +1090,113 @@ export const RoomTypeSchema: GenEnum<RoomType> = /*@__PURE__*/
   enumDesc(file_signaling_signaling, 1);
 
 /**
- * نقش کاربر در اتاق
+ * Room Status
+ *
+ * @generated from enum signaling.v1.RoomStatus
+ */
+export enum RoomStatus {
+  /**
+   * @generated from enum value: ROOM_STATUS_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * آنلاین - در حال فعالیت
+   *
+   * @generated from enum value: ROOM_STATUS_ACTIVE = 1;
+   */
+  ACTIVE = 1,
+
+  /**
+   * آفلاین - همه خارج شدند
+   *
+   * @generated from enum value: ROOM_STATUS_INACTIVE = 2;
+   */
+  INACTIVE = 2,
+
+  /**
+   * بسته شده توسط صاحب
+   *
+   * @generated from enum value: ROOM_STATUS_CLOSED = 3;
+   */
+  CLOSED = 3,
+
+  /**
+   * آرشیو شده برای گزارش‌گیری
+   *
+   * @generated from enum value: ROOM_STATUS_ARCHIVED = 4;
+   */
+  ARCHIVED = 4,
+}
+
+/**
+ * Describes the enum signaling.v1.RoomStatus.
+ */
+export const RoomStatusSchema: GenEnum<RoomStatus> = /*@__PURE__*/
+  enumDesc(file_signaling_signaling, 2);
+
+/**
+ * Room Category
+ *
+ * @generated from enum signaling.v1.RoomCategory
+ */
+export enum RoomCategory {
+  /**
+   * @generated from enum value: ROOM_CATEGORY_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * مشاوره پزشکی
+   *
+   * @generated from enum value: ROOM_CATEGORY_MEDICAL = 1;
+   */
+  MEDICAL = 1,
+
+  /**
+   * مشاوره پوست، مو و زیبایی
+   *
+   * @generated from enum value: ROOM_CATEGORY_SKIN_HAIR_BEAUTY = 2;
+   */
+  SKIN_HAIR_BEAUTY = 2,
+
+  /**
+   * مشاوره زیبایی و لیزر
+   *
+   * @generated from enum value: ROOM_CATEGORY_LASER_BEAUTY = 3;
+   */
+  LASER_BEAUTY = 3,
+
+  /**
+   * مشاوره زیبایی و آرایشی
+   *
+   * @generated from enum value: ROOM_CATEGORY_COSMETIC_BEAUTY = 4;
+   */
+  COSMETIC_BEAUTY = 4,
+
+  /**
+   * دوره آموزشی و کارگاه
+   *
+   * @generated from enum value: ROOM_CATEGORY_EDUCATIONAL = 5;
+   */
+  EDUCATIONAL = 5,
+
+  /**
+   * سایر
+   *
+   * @generated from enum value: ROOM_CATEGORY_OTHER = 6;
+   */
+  OTHER = 6,
+}
+
+/**
+ * Describes the enum signaling.v1.RoomCategory.
+ */
+export const RoomCategorySchema: GenEnum<RoomCategory> = /*@__PURE__*/
+  enumDesc(file_signaling_signaling, 3);
+
+/**
+ * User Role
  *
  * @generated from enum signaling.v1.UserRole
  */
@@ -391,7 +1207,7 @@ export enum UserRole {
   UNSPECIFIED = 0,
 
   /**
-   * صاحب روم (دکتر)
+   * صاحب روم (دکتر، استاد، مشاور)
    *
    * @generated from enum value: USER_ROLE_OWNER = 1;
    */
@@ -410,19 +1226,69 @@ export enum UserRole {
    * @generated from enum value: USER_ROLE_PENDING = 3;
    */
   PENDING = 3,
+
+  /**
+   * مدیر جلسه (برای کلاس‌های بزرگ)
+   *
+   * @generated from enum value: USER_ROLE_MODERATOR = 4;
+   */
+  MODERATOR = 4,
 }
 
 /**
  * Describes the enum signaling.v1.UserRole.
  */
 export const UserRoleSchema: GenEnum<UserRole> = /*@__PURE__*/
-  enumDesc(file_signaling_signaling, 2);
+  enumDesc(file_signaling_signaling, 4);
 
 /**
+ * User Status
+ *
+ * @generated from enum signaling.v1.UserStatus
+ */
+export enum UserStatus {
+  /**
+   * @generated from enum value: USER_STATUS_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * آنلاین
+   *
+   * @generated from enum value: USER_STATUS_ONLINE = 1;
+   */
+  ONLINE = 1,
+
+  /**
+   * آفلاین
+   *
+   * @generated from enum value: USER_STATUS_OFFLINE = 2;
+   */
+  OFFLINE = 2,
+
+  /**
+   * موقتاً خارج
+   *
+   * @generated from enum value: USER_STATUS_AWAY = 3;
+   */
+  AWAY = 3,
+}
+
+/**
+ * Describes the enum signaling.v1.UserStatus.
+ */
+export const UserStatusSchema: GenEnum<UserStatus> = /*@__PURE__*/
+  enumDesc(file_signaling_signaling, 5);
+
+/**
+ * ================ Services ================
+ *
  * @generated from service signaling.v1.SignalingService
  */
 export const SignalingService: GenService<{
   /**
+   * متدهای پایه
+   *
    * @generated from rpc signaling.v1.SignalingService.JoinRoom
    */
   joinRoom: {
@@ -435,8 +1301,8 @@ export const SignalingService: GenService<{
    */
   sendSignal: {
     methodKind: "unary";
-    input: typeof SignalMessageSchema;
-    output: typeof EmptySchema;
+    input: typeof SendSignalRequestSchema;
+    output: typeof SendSignalResponseSchema;
   },
   /**
    * @generated from rpc signaling.v1.SignalingService.LeaveRoom
@@ -444,17 +1310,61 @@ export const SignalingService: GenService<{
   leaveRoom: {
     methodKind: "unary";
     input: typeof LeaveRoomRequestSchema;
-    output: typeof EmptySchema;
+    output: typeof LeaveRoomResponseSchema;
   },
   /**
-   * دریافت اطلاعات اتاق
+   * متد دریافت روم‌ها با فیلتر
    *
-   * @generated from rpc signaling.v1.SignalingService.GetRoomInfo
+   * @generated from rpc signaling.v1.SignalingService.GetRooms
    */
-  getRoomInfo: {
+  getRooms: {
     methodKind: "unary";
-    input: typeof GetRoomInfoRequestSchema;
-    output: typeof RoomInfoSchema;
+    input: typeof GetRoomsRequestSchema;
+    output: typeof GetRoomsResponseSchema;
+  },
+  /**
+   * متدهای مدیریت روم
+   *
+   * @generated from rpc signaling.v1.SignalingService.CreateRoom
+   */
+  createRoom: {
+    methodKind: "unary";
+    input: typeof CreateRoomRequestSchema;
+    output: typeof CreateRoomResponseSchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.UpdateRoomSettings
+   */
+  updateRoomSettings: {
+    methodKind: "unary";
+    input: typeof UpdateRoomSettingsRequestSchema;
+    output: typeof UpdateRoomSettingsResponseSchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.CloseRoom
+   */
+  closeRoom: {
+    methodKind: "unary";
+    input: typeof CloseRoomRequestSchema;
+    output: typeof CloseRoomResponseSchema;
+  },
+  /**
+   * متدهای کاربران
+   *
+   * @generated from rpc signaling.v1.SignalingService.GetRoomClients
+   */
+  getRoomClients: {
+    methodKind: "unary";
+    input: typeof GetRoomClientsRequestSchema;
+    output: typeof GetRoomClientsResponseSchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.UpdateClientStatus
+   */
+  updateClientStatus: {
+    methodKind: "unary";
+    input: typeof UpdateClientStatusRequestSchema;
+    output: typeof UpdateClientStatusResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_signaling_signaling, 0);

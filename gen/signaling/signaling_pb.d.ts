@@ -11,39 +11,258 @@ import type { Message } from "@bufbuild/protobuf";
 export declare const file_signaling_signaling: GenFile;
 
 /**
- * @generated from message signaling.v1.JoinRoomRequest
+ * Client
+ *
+ * @generated from message signaling.v1.Client
  */
-export declare type JoinRoomRequest = Message<"signaling.v1.JoinRoomRequest"> & {
+export declare type Client = Message<"signaling.v1.Client"> & {
   /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: string user_name = 2;
+   */
+  userName: string;
+
+  /**
+   * @generated from field: signaling.v1.UserRole role = 3;
+   */
+  role: UserRole;
+
+  /**
+   * @generated from field: signaling.v1.UserStatus status = 4;
+   */
+  status: UserStatus;
+
+  /**
+   * @generated from field: string joined_at = 5;
+   */
+  joinedAt: string;
+
+  /**
+   * @generated from field: string last_seen_at = 6;
+   */
+  lastSeenAt: string;
+
+  /**
+   * @generated from field: map<string, string> metadata = 7;
+   */
+  metadata: { [key: string]: string };
+
+  /**
+   * مدت حضور (ثانیه) - فقط برای اعضای روم
+   *
+   * @generated from field: int32 duration = 8;
+   */
+  duration: number;
+
+  /**
+   * میکروفن خاموش؟ - فقط برای اعضای روم
+   *
+   * @generated from field: bool is_muted = 9;
+   */
+  isMuted: boolean;
+
+  /**
+   * ویدیو خاموش؟ - فقط برای اعضای روم
+   *
+   * @generated from field: bool is_video_off = 10;
+   */
+  isVideoOff: boolean;
+};
+
+/**
+ * Describes the message signaling.v1.Client.
+ * Use `create(ClientSchema)` to create a new message.
+ */
+export declare const ClientSchema: GenMessage<Client>;
+
+/**
+ * Room
+ *
+ * @generated from message signaling.v1.Room
+ */
+export declare type Room = Message<"signaling.v1.Room"> & {
+  /**
+   * اطلاعات پایه
+   *
    * @generated from field: string room_id = 1;
    */
   roomId: string;
 
   /**
-   * @generated from field: string user_id = 2;
-   */
-  userId: string;
-
-  /**
-   * @generated from field: string user_name = 3;
-   */
-  userName: string;
-
-  /**
-   * true اگر صاحب روم است (دکتر)
+   * عنوان کامل با جزئیات
    *
-   * @generated from field: bool is_owner = 4;
+   * @generated from field: string name = 2;
    */
-  isOwner: boolean;
+  name: string;
+
+  /**
+   * توضیحات
+   *
+   * @generated from field: string description = 3;
+   */
+  description: string;
+
+  /**
+   * @generated from field: signaling.v1.RoomType room_type = 4;
+   */
+  roomType: RoomType;
+
+  /**
+   * دسته‌بندی کلی
+   *
+   * @generated from field: signaling.v1.RoomCategory category = 5;
+   */
+  category: RoomCategory;
+
+  /**
+   * @generated from field: signaling.v1.RoomStatus status = 6;
+   */
+  status: RoomStatus;
+
+  /**
+   * اطلاعات صاحب
+   *
+   * @generated from field: string owner_id = 7;
+   */
+  ownerId: string;
+
+  /**
+   * @generated from field: string owner_name = 8;
+   */
+  ownerName: string;
+
+  /**
+   * کاربران
+   *
+   * کاربران حاضر (تایید شده)
+   *
+   * @generated from field: repeated signaling.v1.Client clients = 9;
+   */
+  clients: Client[];
+
+  /**
+   * کاربران در انتظار تایید
+   *
+   * @generated from field: repeated signaling.v1.Client pending_clients = 10;
+   */
+  pendingClients: Client[];
+
+  /**
+   * @generated from field: int32 online_count = 11;
+   */
+  onlineCount: number;
+
+  /**
+   * تنظیمات
+   *
+   * @generated from field: int32 max_participants = 12;
+   */
+  maxParticipants: number;
+
+  /**
+   * @generated from field: bool is_private = 13;
+   */
+  isPrivate: boolean;
+
+  /**
+   * @generated from field: bool has_password = 14;
+   */
+  hasPassword: boolean;
+
+  /**
+   * زمان‌ها
+   *
+   * @generated from field: string created_at = 15;
+   */
+  createdAt: string;
+
+  /**
+   * زمان شروع جلسه
+   *
+   * @generated from field: string started_at = 16;
+   */
+  startedAt: string;
+
+  /**
+   * آخرین فعالیت
+   *
+   * @generated from field: string last_active_at = 17;
+   */
+  lastActiveAt: string;
+
+  /**
+   * آمار
+   *
+   * کل شرکت‌کنندگان
+   *
+   * @generated from field: int32 total_participants = 18;
+   */
+  totalParticipants: number;
+
+  /**
+   * بیشترین تعداد همزمان
+   *
+   * @generated from field: int32 peak_participants = 19;
+   */
+  peakParticipants: number;
+
+  /**
+   * اطلاعات اضافی
+   *
+   * @generated from field: float price_per_minute = 20;
+   */
+  pricePerMinute: number;
+
+  /**
+   * @generated from field: repeated string tags = 21;
+   */
+  tags: string[];
+
+  /**
+   * @generated from field: map<string, string> metadata = 22;
+   */
+  metadata: { [key: string]: string };
+
+  /**
+   * @generated from field: map<string, string> settings = 23;
+   */
+  settings: { [key: string]: string };
+
+  /**
+   * تصویر (اختیاری)
+   *
+   * @generated from field: string thumbnail_url = 24;
+   */
+  thumbnailUrl: string;
+
+  /**
+   * امتیاز (برای روم‌های مشاوره)
+   *
+   * @generated from field: float rating = 25;
+   */
+  rating: number;
+
+  /**
+   * تعداد نظرات
+   *
+   * @generated from field: int32 review_count = 26;
+   */
+  reviewCount: number;
 };
 
 /**
- * Describes the message signaling.v1.JoinRoomRequest.
- * Use `create(JoinRoomRequestSchema)` to create a new message.
+ * Describes the message signaling.v1.Room.
+ * Use `create(RoomSchema)` to create a new message.
  */
-export declare const JoinRoomRequestSchema: GenMessage<JoinRoomRequest>;
+export declare const RoomSchema: GenMessage<Room>;
 
 /**
+ * SignalMessage (برای stream)
+ *
  * @generated from message signaling.v1.SignalMessage
  */
 export declare type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
@@ -78,18 +297,19 @@ export declare type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
   type: SignalType;
 
   /**
-   * اطلاعات اضافی به صورت JSON
-   *
    * @generated from field: string payload = 7;
    */
   payload: string;
 
   /**
-   * متن چت یا اعلان
-   *
    * @generated from field: string message = 8;
    */
   message: string;
+
+  /**
+   * @generated from field: int64 timestamp = 9;
+   */
+  timestamp: bigint;
 };
 
 /**
@@ -99,6 +319,121 @@ export declare type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
 export declare const SignalMessageSchema: GenMessage<SignalMessage>;
 
 /**
+ * JoinRoom
+ *
+ * @generated from message signaling.v1.JoinRoomRequest
+ */
+export declare type JoinRoomRequest = Message<"signaling.v1.JoinRoomRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: string user_id = 2;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: string user_name = 3;
+   */
+  userName: string;
+
+  /**
+   * @generated from field: bool is_owner = 4;
+   */
+  isOwner: boolean;
+
+  /**
+   * @generated from field: string password = 5;
+   */
+  password: string;
+};
+
+/**
+ * Describes the message signaling.v1.JoinRoomRequest.
+ * Use `create(JoinRoomRequestSchema)` to create a new message.
+ */
+export declare const JoinRoomRequestSchema: GenMessage<JoinRoomRequest>;
+
+/**
+ * @generated from message signaling.v1.JoinRoomResponse
+ */
+export declare type JoinRoomResponse = Message<"signaling.v1.JoinRoomResponse"> & {
+  /**
+   * @generated from field: signaling.v1.Room room = 1;
+   */
+  room?: Room;
+};
+
+/**
+ * Describes the message signaling.v1.JoinRoomResponse.
+ * Use `create(JoinRoomResponseSchema)` to create a new message.
+ */
+export declare const JoinRoomResponseSchema: GenMessage<JoinRoomResponse>;
+
+/**
+ * SendSignal
+ *
+ * @generated from message signaling.v1.SendSignalRequest
+ */
+export declare type SendSignalRequest = Message<"signaling.v1.SendSignalRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: string from_user = 2;
+   */
+  fromUser: string;
+
+  /**
+   * @generated from field: string to_user = 3;
+   */
+  toUser: string;
+
+  /**
+   * @generated from field: signaling.v1.SignalType type = 4;
+   */
+  type: SignalType;
+
+  /**
+   * @generated from field: string payload = 5;
+   */
+  payload: string;
+
+  /**
+   * @generated from field: string message = 6;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message signaling.v1.SendSignalRequest.
+ * Use `create(SendSignalRequestSchema)` to create a new message.
+ */
+export declare const SendSignalRequestSchema: GenMessage<SendSignalRequest>;
+
+/**
+ * @generated from message signaling.v1.SendSignalResponse
+ */
+export declare type SendSignalResponse = Message<"signaling.v1.SendSignalResponse"> & {
+  /**
+   * @generated from field: bool delivered = 1;
+   */
+  delivered: boolean;
+};
+
+/**
+ * Describes the message signaling.v1.SendSignalResponse.
+ * Use `create(SendSignalResponseSchema)` to create a new message.
+ */
+export declare const SendSignalResponseSchema: GenMessage<SendSignalResponse>;
+
+/**
+ * LeaveRoom
+ *
  * @generated from message signaling.v1.LeaveRoomRequest
  */
 export declare type LeaveRoomRequest = Message<"signaling.v1.LeaveRoomRequest"> & {
@@ -120,105 +455,431 @@ export declare type LeaveRoomRequest = Message<"signaling.v1.LeaveRoomRequest"> 
 export declare const LeaveRoomRequestSchema: GenMessage<LeaveRoomRequest>;
 
 /**
- * اطلاعات یک کاربر
- *
- * @generated from message signaling.v1.UserInfo
+ * @generated from message signaling.v1.LeaveRoomResponse
  */
-export declare type UserInfo = Message<"signaling.v1.UserInfo"> & {
+export declare type LeaveRoomResponse = Message<"signaling.v1.LeaveRoomResponse"> & {
   /**
-   * @generated from field: string user_id = 1;
+   * @generated from field: bool success = 1;
    */
-  userId: string;
-
-  /**
-   * @generated from field: string user_name = 2;
-   */
-  userName: string;
-
-  /**
-   * @generated from field: signaling.v1.UserRole role = 3;
-   */
-  role: UserRole;
-
-  /**
-   * ISO timestamp
-   *
-   * @generated from field: string joined_at = 4;
-   */
-  joinedAt: string;
+  success: boolean;
 };
 
 /**
- * Describes the message signaling.v1.UserInfo.
- * Use `create(UserInfoSchema)` to create a new message.
+ * Describes the message signaling.v1.LeaveRoomResponse.
+ * Use `create(LeaveRoomResponseSchema)` to create a new message.
  */
-export declare const UserInfoSchema: GenMessage<UserInfo>;
+export declare const LeaveRoomResponseSchema: GenMessage<LeaveRoomResponse>;
 
 /**
- * اطلاعات کامل اتاق
+ * GetRooms
  *
- * @generated from message signaling.v1.RoomInfo
+ * @generated from message signaling.v1.GetRoomsRequest
  */
-export declare type RoomInfo = Message<"signaling.v1.RoomInfo"> & {
+export declare type GetRoomsRequest = Message<"signaling.v1.GetRoomsRequest"> & {
+  /**
+   * فیلتر بر اساس شناسه (برای دریافت یک روم خاص)
+   *
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * فیلتر بر اساس وضعیت
+   *
+   * @generated from field: signaling.v1.RoomStatus status = 2;
+   */
+  status: RoomStatus;
+
+  /**
+   * فقط روم‌های آنلاین
+   *
+   * @generated from field: bool only_online = 3;
+   */
+  onlyOnline: boolean;
+
+  /**
+   * فیلتر بر اساس دسته‌بندی کلی
+   *
+   * @generated from field: signaling.v1.RoomCategory category = 4;
+   */
+  category: RoomCategory;
+
+  /**
+   * فیلتر بر اساس نوع روم
+   *
+   * @generated from field: signaling.v1.RoomType room_type = 5;
+   */
+  roomType: RoomType;
+
+  /**
+   * فیلتر بر اساس صاحب روم
+   *
+   * @generated from field: string owner_id = 6;
+   */
+  ownerId: string;
+
+  /**
+   * فیلتر بر اساس کاربر عضو
+   *
+   * روم‌هایی که کاربر خاصی عضو است
+   *
+   * @generated from field: string member_user_id = 7;
+   */
+  memberUserId: string;
+
+  /**
+   * جستجو در متن (name و description)
+   *
+   * @generated from field: string search_query = 8;
+   */
+  searchQuery: string;
+
+  /**
+   * محدوده قیمت
+   *
+   * @generated from field: float min_price = 9;
+   */
+  minPrice: number;
+
+  /**
+   * @generated from field: float max_price = 10;
+   */
+  maxPrice: number;
+
+  /**
+   * برچسب‌ها
+   *
+   * روم‌هایی که این برچسب‌ها را دارند
+   *
+   * @generated from field: repeated string tags = 11;
+   */
+  tags: string[];
+};
+
+/**
+ * Describes the message signaling.v1.GetRoomsRequest.
+ * Use `create(GetRoomsRequestSchema)` to create a new message.
+ */
+export declare const GetRoomsRequestSchema: GenMessage<GetRoomsRequest>;
+
+/**
+ * @generated from message signaling.v1.GetRoomsResponse
+ */
+export declare type GetRoomsResponse = Message<"signaling.v1.GetRoomsResponse"> & {
+  /**
+   * اگر room_id در درخواست مشخص شده بود
+   *
+   * @generated from field: signaling.v1.Room room = 1;
+   */
+  room?: Room;
+
+  /**
+   * اگر درخواست لیست بود
+   *
+   * @generated from field: repeated signaling.v1.Room rooms = 2;
+   */
+  rooms: Room[];
+
+  /**
+   * تعداد کل نتایج
+   *
+   * @generated from field: int32 total_count = 3;
+   */
+  totalCount: number;
+};
+
+/**
+ * Describes the message signaling.v1.GetRoomsResponse.
+ * Use `create(GetRoomsResponseSchema)` to create a new message.
+ */
+export declare const GetRoomsResponseSchema: GenMessage<GetRoomsResponse>;
+
+/**
+ * CreateRoom
+ *
+ * @generated from message signaling.v1.CreateRoomRequest
+ */
+export declare type CreateRoomRequest = Message<"signaling.v1.CreateRoomRequest"> & {
+  /**
+   * اگر خالی بود، سرور تولید می‌کند
+   *
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: string name = 2;
+   */
+  name: string;
+
+  /**
+   * @generated from field: string description = 3;
+   */
+  description: string;
+
+  /**
+   * @generated from field: signaling.v1.RoomType room_type = 4;
+   */
+  roomType: RoomType;
+
+  /**
+   * @generated from field: signaling.v1.RoomCategory category = 5;
+   */
+  category: RoomCategory;
+
+  /**
+   * @generated from field: int32 max_participants = 6;
+   */
+  maxParticipants: number;
+
+  /**
+   * @generated from field: bool is_private = 7;
+   */
+  isPrivate: boolean;
+
+  /**
+   * @generated from field: string password = 8;
+   */
+  password: string;
+
+  /**
+   * @generated from field: map<string, string> settings = 9;
+   */
+  settings: { [key: string]: string };
+
+  /**
+   * @generated from field: float price_per_minute = 10;
+   */
+  pricePerMinute: number;
+
+  /**
+   * @generated from field: repeated string tags = 11;
+   */
+  tags: string[];
+};
+
+/**
+ * Describes the message signaling.v1.CreateRoomRequest.
+ * Use `create(CreateRoomRequestSchema)` to create a new message.
+ */
+export declare const CreateRoomRequestSchema: GenMessage<CreateRoomRequest>;
+
+/**
+ * @generated from message signaling.v1.CreateRoomResponse
+ */
+export declare type CreateRoomResponse = Message<"signaling.v1.CreateRoomResponse"> & {
+  /**
+   * @generated from field: signaling.v1.Room room = 1;
+   */
+  room?: Room;
+};
+
+/**
+ * Describes the message signaling.v1.CreateRoomResponse.
+ * Use `create(CreateRoomResponseSchema)` to create a new message.
+ */
+export declare const CreateRoomResponseSchema: GenMessage<CreateRoomResponse>;
+
+/**
+ * UpdateRoomSettings
+ *
+ * @generated from message signaling.v1.UpdateRoomSettingsRequest
+ */
+export declare type UpdateRoomSettingsRequest = Message<"signaling.v1.UpdateRoomSettingsRequest"> & {
   /**
    * @generated from field: string room_id = 1;
    */
   roomId: string;
 
   /**
-   * @generated from field: signaling.v1.RoomType room_type = 2;
-   */
-  roomType: RoomType;
-
-  /**
-   * @generated from field: string owner_id = 3;
-   */
-  ownerId: string;
-
-  /**
-   * @generated from field: string owner_name = 4;
-   */
-  ownerName: string;
-
-  /**
-   * کاربران حاضر (تایید شده)
+   * برای اعتبارسنجی (فقط owner می‌تواند)
    *
-   * @generated from field: repeated signaling.v1.UserInfo users = 5;
+   * @generated from field: string user_id = 2;
    */
-  users: UserInfo[];
+  userId: string;
 
   /**
-   * کاربران در انتظار تایید
-   *
-   * @generated from field: repeated signaling.v1.UserInfo pending_users = 6;
+   * @generated from field: string name = 3;
    */
-  pendingUsers: UserInfo[];
+  name: string;
 
   /**
-   * حداکثر شرکت‌کننده (مثلاً 3 نفر)
-   *
-   * @generated from field: int32 max_participants = 7;
+   * @generated from field: string description = 4;
+   */
+  description: string;
+
+  /**
+   * @generated from field: signaling.v1.RoomCategory category = 5;
+   */
+  category: RoomCategory;
+
+  /**
+   * @generated from field: int32 max_participants = 6;
    */
   maxParticipants: number;
 
   /**
-   * زمان ایجاد اتاق
-   *
-   * @generated from field: string created_at = 8;
+   * @generated from field: bool is_private = 7;
    */
-  createdAt: string;
+  isPrivate: boolean;
+
+  /**
+   * @generated from field: string password = 8;
+   */
+  password: string;
+
+  /**
+   * @generated from field: map<string, string> settings = 9;
+   */
+  settings: { [key: string]: string };
+
+  /**
+   * @generated from field: float price_per_minute = 10;
+   */
+  pricePerMinute: number;
+
+  /**
+   * @generated from field: repeated string tags = 11;
+   */
+  tags: string[];
 };
 
 /**
- * Describes the message signaling.v1.RoomInfo.
- * Use `create(RoomInfoSchema)` to create a new message.
+ * Describes the message signaling.v1.UpdateRoomSettingsRequest.
+ * Use `create(UpdateRoomSettingsRequestSchema)` to create a new message.
  */
-export declare const RoomInfoSchema: GenMessage<RoomInfo>;
+export declare const UpdateRoomSettingsRequestSchema: GenMessage<UpdateRoomSettingsRequest>;
 
 /**
- * @generated from message signaling.v1.GetRoomInfoRequest
+ * @generated from message signaling.v1.UpdateRoomSettingsResponse
  */
-export declare type GetRoomInfoRequest = Message<"signaling.v1.GetRoomInfoRequest"> & {
+export declare type UpdateRoomSettingsResponse = Message<"signaling.v1.UpdateRoomSettingsResponse"> & {
+  /**
+   * @generated from field: signaling.v1.Room room = 1;
+   */
+  room?: Room;
+};
+
+/**
+ * Describes the message signaling.v1.UpdateRoomSettingsResponse.
+ * Use `create(UpdateRoomSettingsResponseSchema)` to create a new message.
+ */
+export declare const UpdateRoomSettingsResponseSchema: GenMessage<UpdateRoomSettingsResponse>;
+
+/**
+ * CloseRoom
+ *
+ * @generated from message signaling.v1.CloseRoomRequest
+ */
+export declare type CloseRoomRequest = Message<"signaling.v1.CloseRoomRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * برای اعتبارسنجی (فقط owner می‌تواند)
+   *
+   * @generated from field: string user_id = 2;
+   */
+  userId: string;
+};
+
+/**
+ * Describes the message signaling.v1.CloseRoomRequest.
+ * Use `create(CloseRoomRequestSchema)` to create a new message.
+ */
+export declare const CloseRoomRequestSchema: GenMessage<CloseRoomRequest>;
+
+/**
+ * @generated from message signaling.v1.CloseRoomResponse
+ */
+export declare type CloseRoomResponse = Message<"signaling.v1.CloseRoomResponse"> & {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
+};
+
+/**
+ * Describes the message signaling.v1.CloseRoomResponse.
+ * Use `create(CloseRoomResponseSchema)` to create a new message.
+ */
+export declare const CloseRoomResponseSchema: GenMessage<CloseRoomResponse>;
+
+/**
+ * GetRoomClients
+ *
+ * @generated from message signaling.v1.GetRoomClientsRequest
+ */
+export declare type GetRoomClientsRequest = Message<"signaling.v1.GetRoomClientsRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * برای اعتبارسنجی
+   *
+   * @generated from field: string user_id = 2;
+   */
+  userId: string;
+
+  /**
+   * آیا کاربران در انتظار هم برگردند؟
+   *
+   * @generated from field: bool include_pending = 3;
+   */
+  includePending: boolean;
+};
+
+/**
+ * Describes the message signaling.v1.GetRoomClientsRequest.
+ * Use `create(GetRoomClientsRequestSchema)` to create a new message.
+ */
+export declare const GetRoomClientsRequestSchema: GenMessage<GetRoomClientsRequest>;
+
+/**
+ * @generated from message signaling.v1.GetRoomClientsResponse
+ */
+export declare type GetRoomClientsResponse = Message<"signaling.v1.GetRoomClientsResponse"> & {
+  /**
+   * کاربران حاضر (تایید شده)
+   *
+   * @generated from field: repeated signaling.v1.Client clients = 1;
+   */
+  clients: Client[];
+
+  /**
+   * کاربران در انتظار تایید
+   *
+   * @generated from field: repeated signaling.v1.Client pending_clients = 2;
+   */
+  pendingClients: Client[];
+
+  /**
+   * @generated from field: int32 total_count = 3;
+   */
+  totalCount: number;
+
+  /**
+   * @generated from field: int32 online_count = 4;
+   */
+  onlineCount: number;
+};
+
+/**
+ * Describes the message signaling.v1.GetRoomClientsResponse.
+ * Use `create(GetRoomClientsResponseSchema)` to create a new message.
+ */
+export declare const GetRoomClientsResponseSchema: GenMessage<GetRoomClientsResponse>;
+
+/**
+ * UpdateClientStatus
+ *
+ * @generated from message signaling.v1.UpdateClientStatusRequest
+ */
+export declare type UpdateClientStatusRequest = Message<"signaling.v1.UpdateClientStatusRequest"> & {
   /**
    * @generated from field: string room_id = 1;
    */
@@ -228,27 +889,48 @@ export declare type GetRoomInfoRequest = Message<"signaling.v1.GetRoomInfoReques
    * @generated from field: string user_id = 2;
    */
   userId: string;
+
+  /**
+   * @generated from field: signaling.v1.UserStatus status = 3;
+   */
+  status: UserStatus;
+
+  /**
+   * @generated from field: bool is_muted = 4;
+   */
+  isMuted: boolean;
+
+  /**
+   * @generated from field: bool is_video_off = 5;
+   */
+  isVideoOff: boolean;
 };
 
 /**
- * Describes the message signaling.v1.GetRoomInfoRequest.
- * Use `create(GetRoomInfoRequestSchema)` to create a new message.
+ * Describes the message signaling.v1.UpdateClientStatusRequest.
+ * Use `create(UpdateClientStatusRequestSchema)` to create a new message.
  */
-export declare const GetRoomInfoRequestSchema: GenMessage<GetRoomInfoRequest>;
+export declare const UpdateClientStatusRequestSchema: GenMessage<UpdateClientStatusRequest>;
 
 /**
- * @generated from message signaling.v1.Empty
+ * @generated from message signaling.v1.UpdateClientStatusResponse
  */
-export declare type Empty = Message<"signaling.v1.Empty"> & {
+export declare type UpdateClientStatusResponse = Message<"signaling.v1.UpdateClientStatusResponse"> & {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
 };
 
 /**
- * Describes the message signaling.v1.Empty.
- * Use `create(EmptySchema)` to create a new message.
+ * Describes the message signaling.v1.UpdateClientStatusResponse.
+ * Use `create(UpdateClientStatusResponseSchema)` to create a new message.
  */
-export declare const EmptySchema: GenMessage<Empty>;
+export declare const UpdateClientStatusResponseSchema: GenMessage<UpdateClientStatusResponse>;
 
 /**
+ * Signal Types
+ *
  * @generated from enum signaling.v1.SignalType
  */
 export enum SignalType {
@@ -288,48 +970,48 @@ export enum SignalType {
   SIGNAL_USER_JOINED = 6,
 
   /**
-   * انواع جدید برای سناریوی مشاوره
-   *
-   * درخواست ورود به اتاق
+   * انواع برای سناریوی مشاوره
    *
    * @generated from enum value: SIGNAL_TYPE_REQUEST_JOIN = 7;
    */
   SIGNAL_TYPE_REQUEST_JOIN = 7,
 
   /**
-   * تایید درخواست
-   *
    * @generated from enum value: SIGNAL_TYPE_APPROVE_JOIN = 8;
    */
   SIGNAL_TYPE_APPROVE_JOIN = 8,
 
   /**
-   * رد درخواست
-   *
    * @generated from enum value: SIGNAL_TYPE_REJECT_JOIN = 9;
    */
   SIGNAL_TYPE_REJECT_JOIN = 9,
 
   /**
-   * صاحب روم خارج شد
-   *
    * @generated from enum value: SIGNAL_TYPE_OWNER_LEFT = 10;
    */
   SIGNAL_TYPE_OWNER_LEFT = 10,
 
   /**
-   * اطلاعات اتاق
-   *
    * @generated from enum value: SIGNAL_TYPE_ROOM_INFO = 11;
    */
   SIGNAL_TYPE_ROOM_INFO = 11,
 
   /**
-   * لیست کاربران منتظر
-   *
    * @generated from enum value: SIGNAL_TYPE_PENDING_USERS = 12;
    */
   SIGNAL_TYPE_PENDING_USERS = 12,
+
+  /**
+   * انواع جدید برای مدیریت روم
+   *
+   * @generated from enum value: SIGNAL_TYPE_ROOM_UPDATED = 13;
+   */
+  SIGNAL_TYPE_ROOM_UPDATED = 13,
+
+  /**
+   * @generated from enum value: SIGNAL_TYPE_USER_STATUS_CHANGED = 14;
+   */
+  SIGNAL_TYPE_USER_STATUS_CHANGED = 14,
 }
 
 /**
@@ -338,7 +1020,7 @@ export enum SignalType {
 export declare const SignalTypeSchema: GenEnum<SignalType>;
 
 /**
- * نوع اتاق
+ * Room Types
  *
  * @generated from enum signaling.v1.RoomType
  */
@@ -349,18 +1031,32 @@ export enum RoomType {
   UNSPECIFIED = 0,
 
   /**
-   * اتاق مشاوره (یک صاحب، چند شرکت‌کننده)
+   * همتا به همتا (دکتر و بیمار)
    *
-   * @generated from enum value: ROOM_TYPE_CONSULTATION = 1;
+   * @generated from enum value: ROOM_TYPE_PEER = 1;
    */
-  CONSULTATION = 1,
+  PEER = 1,
 
   /**
-   * اتاق همتا به همتا (دوطرفه)
+   * یک استاد، چند دانشجو (مشاوره)
    *
-   * @generated from enum value: ROOM_TYPE_PEER = 2;
+   * @generated from enum value: ROOM_TYPE_CONSULTATION = 2;
    */
-  PEER = 2,
+  CONSULTATION = 2,
+
+  /**
+   * یک به چند (وبینار، کلاس)
+   *
+   * @generated from enum value: ROOM_TYPE_BROADCAST = 3;
+   */
+  BROADCAST = 3,
+
+  /**
+   * گروهی چند به چند
+   *
+   * @generated from enum value: ROOM_TYPE_GROUP = 4;
+   */
+  GROUP = 4,
 }
 
 /**
@@ -369,7 +1065,111 @@ export enum RoomType {
 export declare const RoomTypeSchema: GenEnum<RoomType>;
 
 /**
- * نقش کاربر در اتاق
+ * Room Status
+ *
+ * @generated from enum signaling.v1.RoomStatus
+ */
+export enum RoomStatus {
+  /**
+   * @generated from enum value: ROOM_STATUS_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * آنلاین - در حال فعالیت
+   *
+   * @generated from enum value: ROOM_STATUS_ACTIVE = 1;
+   */
+  ACTIVE = 1,
+
+  /**
+   * آفلاین - همه خارج شدند
+   *
+   * @generated from enum value: ROOM_STATUS_INACTIVE = 2;
+   */
+  INACTIVE = 2,
+
+  /**
+   * بسته شده توسط صاحب
+   *
+   * @generated from enum value: ROOM_STATUS_CLOSED = 3;
+   */
+  CLOSED = 3,
+
+  /**
+   * آرشیو شده برای گزارش‌گیری
+   *
+   * @generated from enum value: ROOM_STATUS_ARCHIVED = 4;
+   */
+  ARCHIVED = 4,
+}
+
+/**
+ * Describes the enum signaling.v1.RoomStatus.
+ */
+export declare const RoomStatusSchema: GenEnum<RoomStatus>;
+
+/**
+ * Room Category
+ *
+ * @generated from enum signaling.v1.RoomCategory
+ */
+export enum RoomCategory {
+  /**
+   * @generated from enum value: ROOM_CATEGORY_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * مشاوره پزشکی
+   *
+   * @generated from enum value: ROOM_CATEGORY_MEDICAL = 1;
+   */
+  MEDICAL = 1,
+
+  /**
+   * مشاوره پوست، مو و زیبایی
+   *
+   * @generated from enum value: ROOM_CATEGORY_SKIN_HAIR_BEAUTY = 2;
+   */
+  SKIN_HAIR_BEAUTY = 2,
+
+  /**
+   * مشاوره زیبایی و لیزر
+   *
+   * @generated from enum value: ROOM_CATEGORY_LASER_BEAUTY = 3;
+   */
+  LASER_BEAUTY = 3,
+
+  /**
+   * مشاوره زیبایی و آرایشی
+   *
+   * @generated from enum value: ROOM_CATEGORY_COSMETIC_BEAUTY = 4;
+   */
+  COSMETIC_BEAUTY = 4,
+
+  /**
+   * دوره آموزشی و کارگاه
+   *
+   * @generated from enum value: ROOM_CATEGORY_EDUCATIONAL = 5;
+   */
+  EDUCATIONAL = 5,
+
+  /**
+   * سایر
+   *
+   * @generated from enum value: ROOM_CATEGORY_OTHER = 6;
+   */
+  OTHER = 6,
+}
+
+/**
+ * Describes the enum signaling.v1.RoomCategory.
+ */
+export declare const RoomCategorySchema: GenEnum<RoomCategory>;
+
+/**
+ * User Role
  *
  * @generated from enum signaling.v1.UserRole
  */
@@ -380,7 +1180,7 @@ export enum UserRole {
   UNSPECIFIED = 0,
 
   /**
-   * صاحب روم (دکتر)
+   * صاحب روم (دکتر، استاد، مشاور)
    *
    * @generated from enum value: USER_ROLE_OWNER = 1;
    */
@@ -399,6 +1199,13 @@ export enum UserRole {
    * @generated from enum value: USER_ROLE_PENDING = 3;
    */
   PENDING = 3,
+
+  /**
+   * مدیر جلسه (برای کلاس‌های بزرگ)
+   *
+   * @generated from enum value: USER_ROLE_MODERATOR = 4;
+   */
+  MODERATOR = 4,
 }
 
 /**
@@ -407,10 +1214,52 @@ export enum UserRole {
 export declare const UserRoleSchema: GenEnum<UserRole>;
 
 /**
+ * User Status
+ *
+ * @generated from enum signaling.v1.UserStatus
+ */
+export enum UserStatus {
+  /**
+   * @generated from enum value: USER_STATUS_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * آنلاین
+   *
+   * @generated from enum value: USER_STATUS_ONLINE = 1;
+   */
+  ONLINE = 1,
+
+  /**
+   * آفلاین
+   *
+   * @generated from enum value: USER_STATUS_OFFLINE = 2;
+   */
+  OFFLINE = 2,
+
+  /**
+   * موقتاً خارج
+   *
+   * @generated from enum value: USER_STATUS_AWAY = 3;
+   */
+  AWAY = 3,
+}
+
+/**
+ * Describes the enum signaling.v1.UserStatus.
+ */
+export declare const UserStatusSchema: GenEnum<UserStatus>;
+
+/**
+ * ================ Services ================
+ *
  * @generated from service signaling.v1.SignalingService
  */
 export declare const SignalingService: GenService<{
   /**
+   * متدهای پایه
+   *
    * @generated from rpc signaling.v1.SignalingService.JoinRoom
    */
   joinRoom: {
@@ -423,8 +1272,8 @@ export declare const SignalingService: GenService<{
    */
   sendSignal: {
     methodKind: "unary";
-    input: typeof SignalMessageSchema;
-    output: typeof EmptySchema;
+    input: typeof SendSignalRequestSchema;
+    output: typeof SendSignalResponseSchema;
   },
   /**
    * @generated from rpc signaling.v1.SignalingService.LeaveRoom
@@ -432,17 +1281,61 @@ export declare const SignalingService: GenService<{
   leaveRoom: {
     methodKind: "unary";
     input: typeof LeaveRoomRequestSchema;
-    output: typeof EmptySchema;
+    output: typeof LeaveRoomResponseSchema;
   },
   /**
-   * دریافت اطلاعات اتاق
+   * متد دریافت روم‌ها با فیلتر
    *
-   * @generated from rpc signaling.v1.SignalingService.GetRoomInfo
+   * @generated from rpc signaling.v1.SignalingService.GetRooms
    */
-  getRoomInfo: {
+  getRooms: {
     methodKind: "unary";
-    input: typeof GetRoomInfoRequestSchema;
-    output: typeof RoomInfoSchema;
+    input: typeof GetRoomsRequestSchema;
+    output: typeof GetRoomsResponseSchema;
+  },
+  /**
+   * متدهای مدیریت روم
+   *
+   * @generated from rpc signaling.v1.SignalingService.CreateRoom
+   */
+  createRoom: {
+    methodKind: "unary";
+    input: typeof CreateRoomRequestSchema;
+    output: typeof CreateRoomResponseSchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.UpdateRoomSettings
+   */
+  updateRoomSettings: {
+    methodKind: "unary";
+    input: typeof UpdateRoomSettingsRequestSchema;
+    output: typeof UpdateRoomSettingsResponseSchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.CloseRoom
+   */
+  closeRoom: {
+    methodKind: "unary";
+    input: typeof CloseRoomRequestSchema;
+    output: typeof CloseRoomResponseSchema;
+  },
+  /**
+   * متدهای کاربران
+   *
+   * @generated from rpc signaling.v1.SignalingService.GetRoomClients
+   */
+  getRoomClients: {
+    methodKind: "unary";
+    input: typeof GetRoomClientsRequestSchema;
+    output: typeof GetRoomClientsResponseSchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.UpdateClientStatus
+   */
+  updateClientStatus: {
+    methodKind: "unary";
+    input: typeof UpdateClientStatusRequestSchema;
+    output: typeof UpdateClientStatusResponseSchema;
   },
 }>;
 
