@@ -27,48 +27,60 @@ export declare type Client = Message<"signaling.v1.Client"> & {
   userName: string;
 
   /**
-   * @generated from field: signaling.v1.UserRole role = 3;
+   * @generated from field: string room_id = 3;
+   */
+  roomId: string;
+
+  /**
+   * User's phone number.
+   *
+   * @generated from field: string user_phonenumber = 4;
+   */
+  userPhonenumber: string;
+
+  /**
+   * @generated from field: signaling.v1.UserRole role = 5;
    */
   role: UserRole;
 
   /**
-   * @generated from field: signaling.v1.UserStatus status = 4;
+   * @generated from field: signaling.v1.UserStatus status = 6;
    */
   status: UserStatus;
 
   /**
-   * @generated from field: string joined_at = 5;
+   * @generated from field: string joined_at = 7;
    */
   joinedAt: string;
 
   /**
-   * @generated from field: string last_seen_at = 6;
+   * @generated from field: string last_seen_at = 8;
    */
   lastSeenAt: string;
 
   /**
-   * @generated from field: map<string, string> metadata = 7;
+   * @generated from field: map<string, string> metadata = 9;
    */
   metadata: { [key: string]: string };
 
   /**
    * مدت حضور (ثانیه) - فقط برای اعضای روم
    *
-   * @generated from field: int32 duration = 8;
+   * @generated from field: int32 duration = 10;
    */
   duration: number;
 
   /**
    * میکروفن خاموش؟ - فقط برای اعضای روم
    *
-   * @generated from field: bool is_muted = 9;
+   * @generated from field: bool is_muted = 11;
    */
   isMuted: boolean;
 
   /**
    * ویدیو خاموش؟ - فقط برای اعضای روم
    *
-   * @generated from field: bool is_video_off = 10;
+   * @generated from field: bool is_video_off = 12;
    */
   isVideoOff: boolean;
 };
@@ -78,6 +90,48 @@ export declare type Client = Message<"signaling.v1.Client"> & {
  * Use `create(ClientSchema)` to create a new message.
  */
 export declare const ClientSchema: GenMessage<Client>;
+
+/**
+ * @generated from message signaling.v1.ClientFilter
+ */
+export declare type ClientFilter = Message<"signaling.v1.ClientFilter"> & {
+  /**
+   * برای دریافت   یک روم خاص
+   *
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * برای دریافت کلاینت های یک روم خاص
+   *
+   * @generated from field: string room_id = 2;
+   */
+  roomId: string;
+
+  /**
+   * فیلتر بر اساس وضعیت
+   *
+   * @generated from field: int32 status = 3;
+   */
+  status: number;
+
+  /**
+   * @generated from field: string phonenumber = 4;
+   */
+  phonenumber: string;
+
+  /**
+   * @generated from field: int32 role = 5;
+   */
+  role: number;
+};
+
+/**
+ * Describes the message signaling.v1.ClientFilter.
+ * Use `create(ClientFilterSchema)` to create a new message.
+ */
+export declare const ClientFilterSchema: GenMessage<ClientFilter>;
 
 /**
  * Room
@@ -473,6 +527,94 @@ export declare const LeaveRoomResponseSchema: GenMessage<LeaveRoomResponse>;
 /**
  * GetRooms
  *
+ * @generated from message signaling.v1.RoomFilter
+ */
+export declare type RoomFilter = Message<"signaling.v1.RoomFilter"> & {
+  /**
+   * فیلتر بر اساس شناسه (برای دریافت یک روم خاص)
+   *
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * فیلتر بر اساس وضعیت
+   *
+   * @generated from field: signaling.v1.RoomStatus status = 2;
+   */
+  status: RoomStatus;
+
+  /**
+   * فقط روم‌های آنلاین
+   *
+   * @generated from field: bool only_online = 3;
+   */
+  onlyOnline: boolean;
+
+  /**
+   * فیلتر بر اساس دسته‌بندی کلی
+   *
+   * @generated from field: signaling.v1.RoomCategory category = 4;
+   */
+  category: RoomCategory;
+
+  /**
+   * فیلتر بر اساس نوع روم
+   *
+   * @generated from field: signaling.v1.RoomType room_type = 5;
+   */
+  roomType: RoomType;
+
+  /**
+   * فیلتر بر اساس صاحب روم
+   *
+   * @generated from field: string owner_id = 6;
+   */
+  ownerId: string;
+
+  /**
+   * فیلتر بر اساس کاربر عضو
+   *
+   * روم‌هایی که کاربر خاصی عضو است
+   *
+   * @generated from field: string member_user_id = 7;
+   */
+  memberUserId: string;
+
+  /**
+   * جستجو در متن (name و description)
+   *
+   * @generated from field: string search_query = 8;
+   */
+  searchQuery: string;
+
+  /**
+   * محدوده قیمت
+   *
+   * @generated from field: float min_price = 9;
+   */
+  minPrice: number;
+
+  /**
+   * @generated from field: float max_price = 10;
+   */
+  maxPrice: number;
+
+  /**
+   * برچسب‌ها
+   *
+   * @generated from field: repeated string tags = 11;
+   */
+  tags: string[];
+};
+
+/**
+ * Describes the message signaling.v1.RoomFilter.
+ * Use `create(RoomFilterSchema)` to create a new message.
+ */
+export declare const RoomFilterSchema: GenMessage<RoomFilter>;
+
+/**
  * @generated from message signaling.v1.GetRoomsRequest
  */
 export declare type GetRoomsRequest = Message<"signaling.v1.GetRoomsRequest"> & {
@@ -656,6 +798,16 @@ export declare type CreateRoomRequest = Message<"signaling.v1.CreateRoomRequest"
    * @generated from field: repeated string tags = 11;
    */
   tags: string[];
+
+  /**
+   * @generated from field: string owner_id = 12;
+   */
+  ownerId: string;
+
+  /**
+   * @generated from field: signaling.v1.RoomStatus status = 13;
+   */
+  status: RoomStatus;
 };
 
 /**
@@ -799,6 +951,11 @@ export declare type CloseRoomResponse = Message<"signaling.v1.CloseRoomResponse"
    * @generated from field: bool success = 1;
    */
   success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
 };
 
 /**
@@ -808,29 +965,120 @@ export declare type CloseRoomResponse = Message<"signaling.v1.CloseRoomResponse"
 export declare const CloseRoomResponseSchema: GenMessage<CloseRoomResponse>;
 
 /**
- * GetRoomClients
+ * RemoveRoom
  *
- * @generated from message signaling.v1.GetRoomClientsRequest
+ * @generated from message signaling.v1.RemoveRoomRequest
  */
-export declare type GetRoomClientsRequest = Message<"signaling.v1.GetRoomClientsRequest"> & {
+export declare type RemoveRoomRequest = Message<"signaling.v1.RemoveRoomRequest"> & {
   /**
    * @generated from field: string room_id = 1;
    */
   roomId: string;
 
   /**
-   * برای اعتبارسنجی
+   * برای اعتبارسنجی (فقط owner می‌تواند)
    *
    * @generated from field: string user_id = 2;
    */
   userId: string;
+};
+
+/**
+ * Describes the message signaling.v1.RemoveRoomRequest.
+ * Use `create(RemoveRoomRequestSchema)` to create a new message.
+ */
+export declare const RemoveRoomRequestSchema: GenMessage<RemoveRoomRequest>;
+
+/**
+ * @generated from message signaling.v1.RemoveRoomResponse
+ */
+export declare type RemoveRoomResponse = Message<"signaling.v1.RemoveRoomResponse"> & {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
 
   /**
-   * آیا کاربران در انتظار هم برگردند؟
-   *
-   * @generated from field: bool include_pending = 3;
+   * @generated from field: string message = 2;
    */
-  includePending: boolean;
+  message: string;
+};
+
+/**
+ * Describes the message signaling.v1.RemoveRoomResponse.
+ * Use `create(RemoveRoomResponseSchema)` to create a new message.
+ */
+export declare const RemoveRoomResponseSchema: GenMessage<RemoveRoomResponse>;
+
+/**
+ * CreateClient 
+ *
+ * @generated from message signaling.v1.CreateClientRequest
+ */
+export declare type CreateClientRequest = Message<"signaling.v1.CreateClientRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: string name = 2;
+   */
+  name: string;
+
+  /**
+   * @generated from field: string room_id = 3;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: string phonenumber = 4;
+   */
+  phonenumber: string;
+
+  /**
+   * @generated from field: signaling.v1.UserRole role = 5;
+   */
+  role: UserRole;
+
+  /**
+   * @generated from field: signaling.v1.UserStatus status = 6;
+   */
+  status: UserStatus;
+};
+
+/**
+ * Describes the message signaling.v1.CreateClientRequest.
+ * Use `create(CreateClientRequestSchema)` to create a new message.
+ */
+export declare const CreateClientRequestSchema: GenMessage<CreateClientRequest>;
+
+/**
+ * @generated from message signaling.v1.CreateClientResponse
+ */
+export declare type CreateClientResponse = Message<"signaling.v1.CreateClientResponse"> & {
+  /**
+   * @generated from field: signaling.v1.Client client = 1;
+   */
+  client?: Client;
+};
+
+/**
+ * Describes the message signaling.v1.CreateClientResponse.
+ * Use `create(CreateClientResponseSchema)` to create a new message.
+ */
+export declare const CreateClientResponseSchema: GenMessage<CreateClientResponse>;
+
+/**
+ * GetRoomClients
+ *
+ * @generated from message signaling.v1.GetRoomClientsRequest
+ */
+export declare type GetRoomClientsRequest = Message<"signaling.v1.GetRoomClientsRequest"> & {
+  /**
+   * @generated from field: signaling.v1.ClientFilter filter = 1;
+   */
+  filter?: ClientFilter;
 };
 
 /**
@@ -920,6 +1168,11 @@ export declare type UpdateClientStatusResponse = Message<"signaling.v1.UpdateCli
    * @generated from field: bool success = 1;
    */
   success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
 };
 
 /**
@@ -927,6 +1180,48 @@ export declare type UpdateClientStatusResponse = Message<"signaling.v1.UpdateCli
  * Use `create(UpdateClientStatusResponseSchema)` to create a new message.
  */
 export declare const UpdateClientStatusResponseSchema: GenMessage<UpdateClientStatusResponse>;
+
+/**
+ * @generated from message signaling.v1.RemoveClientRequest
+ */
+export declare type RemoveClientRequest = Message<"signaling.v1.RemoveClientRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: string room_id = 2;
+   */
+  roomId: string;
+};
+
+/**
+ * Describes the message signaling.v1.RemoveClientRequest.
+ * Use `create(RemoveClientRequestSchema)` to create a new message.
+ */
+export declare const RemoveClientRequestSchema: GenMessage<RemoveClientRequest>;
+
+/**
+ * @generated from message signaling.v1.RemoveClientResponse
+ */
+export declare type RemoveClientResponse = Message<"signaling.v1.RemoveClientResponse"> & {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message signaling.v1.RemoveClientResponse.
+ * Use `create(RemoveClientResponseSchema)` to create a new message.
+ */
+export declare const RemoveClientResponseSchema: GenMessage<RemoveClientResponse>;
 
 /**
  * Signal Types
@@ -1286,22 +1581,20 @@ export declare const SignalingService: GenService<{
   /**
    * متد دریافت روم‌ها با فیلتر
    *
-   * @generated from rpc signaling.v1.SignalingService.GetRooms
-   */
-  getRooms: {
-    methodKind: "unary";
-    input: typeof GetRoomsRequestSchema;
-    output: typeof GetRoomsResponseSchema;
-  },
-  /**
-   * متدهای مدیریت روم
-   *
    * @generated from rpc signaling.v1.SignalingService.CreateRoom
    */
   createRoom: {
     methodKind: "unary";
     input: typeof CreateRoomRequestSchema;
     output: typeof CreateRoomResponseSchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.GetRooms
+   */
+  getRooms: {
+    methodKind: "unary";
+    input: typeof GetRoomsRequestSchema;
+    output: typeof GetRoomsResponseSchema;
   },
   /**
    * @generated from rpc signaling.v1.SignalingService.UpdateRoomSettings
@@ -1320,8 +1613,24 @@ export declare const SignalingService: GenService<{
     output: typeof CloseRoomResponseSchema;
   },
   /**
+   * @generated from rpc signaling.v1.SignalingService.RemoveRoom
+   */
+  removeRoom: {
+    methodKind: "unary";
+    input: typeof RemoveRoomRequestSchema;
+    output: typeof RemoveRoomResponseSchema;
+  },
+  /**
    * متدهای کاربران
    *
+   * @generated from rpc signaling.v1.SignalingService.CreateClient
+   */
+  createClient: {
+    methodKind: "unary";
+    input: typeof CreateClientRequestSchema;
+    output: typeof CreateClientResponseSchema;
+  },
+  /**
    * @generated from rpc signaling.v1.SignalingService.GetRoomClients
    */
   getRoomClients: {
@@ -1336,6 +1645,14 @@ export declare const SignalingService: GenService<{
     methodKind: "unary";
     input: typeof UpdateClientStatusRequestSchema;
     output: typeof UpdateClientStatusResponseSchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.RemoveClient
+   */
+  removeClient: {
+    methodKind: "unary";
+    input: typeof RemoveClientRequestSchema;
+    output: typeof RemoveClientResponseSchema;
   },
 }>;
 

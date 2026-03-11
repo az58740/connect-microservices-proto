@@ -84,16 +84,26 @@ enum UserStatus {
 message Client {
   string user_id = 1;
   string user_name = 2;
-  UserRole role = 3;
-  UserStatus status = 4;
-  string joined_at = 5;
-  string last_seen_at = 6;
-  map<string, string> metadata = 7;
-  int32 duration = 8;               // مدت حضور (ثانیه) - فقط برای اعضای روم
-  bool is_muted = 9;                 // میکروفن خاموش؟ - فقط برای اعضای روم
-  bool is_video_off = 10;             // ویدیو خاموش؟ - فقط برای اعضای روم
+   string room_id = 3;
+  string user_phonenumber = 4; // User's phone number.
+  
+  UserRole role = 5;
+  UserStatus status = 6;
+  string joined_at = 7;
+  string last_seen_at = 8;
+  map<string, string> metadata =9;
+  int32 duration = 10;               // مدت حضور (ثانیه) - فقط برای اعضای روم
+  bool is_muted = 11;                 // میکروفن خاموش؟ - فقط برای اعضای روم
+  bool is_video_off = 12;             // ویدیو خاموش؟ - فقط برای اعضای روم
 }
 
+message ClientFilter  {
+	string user_id=1; // برای دریافت   یک روم خاص
+  string room_id=2; // برای دریافت کلاینت های یک روم خاص
+  int32   status=3; // فیلتر بر اساس وضعیت
+	string phonenumber=4;
+	int32 role=5;
+}
 // Room
 message Room {
   // اطلاعات پایه
@@ -158,16 +168,17 @@ service SignalingService {
   rpc LeaveRoom(LeaveRoomRequest) returns (LeaveRoomResponse);
   
   // متد دریافت روم‌ها با فیلتر
-  rpc GetRooms(GetRoomsRequest) returns (GetRoomsResponse);
-  
-  // متدهای مدیریت روم
-  rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
+   rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
+   rpc GetRooms(GetRoomsRequest) returns (GetRoomsResponse); 
   rpc UpdateRoomSettings(UpdateRoomSettingsRequest) returns (UpdateRoomSettingsResponse);
   rpc CloseRoom(CloseRoomRequest) returns (CloseRoomResponse);
+  rpc RemoveRoom(RemoveRoomRequest) returns (RemoveRoomResponse);
   
   // متدهای کاربران
+  rpc CreateClient(CreateClientRequest) returns (CreateClientResponse);
   rpc GetRoomClients(GetRoomClientsRequest) returns (GetRoomClientsResponse);
   rpc UpdateClientStatus(UpdateClientStatusRequest) returns (UpdateClientStatusResponse);
+	rpc RemoveClient(RemoveClientRequest) returns (RemoveClientResponse);
 }
 
 // ================ Request/Response Messages ================
@@ -210,6 +221,36 @@ message LeaveRoomResponse {
 }
 
 // GetRooms
+message RoomFilter  {
+  // فیلتر بر اساس شناسه (برای دریافت یک روم خاص)
+  string room_id = 1;
+  
+  // فیلتر بر اساس وضعیت
+  RoomStatus status = 2;
+  bool only_online = 3;                    // فقط روم‌های آنلاین
+  
+  // فیلتر بر اساس دسته‌بندی کلی
+  RoomCategory category = 4;
+  
+  // فیلتر بر اساس نوع روم
+  RoomType room_type = 5;
+  
+  // فیلتر بر اساس صاحب روم
+  string owner_id = 6;
+  
+  // فیلتر بر اساس کاربر عضو
+  string member_user_id = 7;                // روم‌هایی که کاربر خاصی عضو است
+  
+  // جستجو در متن (name و description)
+  string search_query = 8;
+  
+  // محدوده قیمت
+  float min_price = 9;
+  float max_price = 10;
+  
+  // برچسب‌ها
+  repeated string tags = 11;   
+}
 message GetRoomsRequest {
   // فیلتر بر اساس شناسه (برای دریافت یک روم خاص)
   string room_id = 1;
@@ -265,6 +306,8 @@ message CreateRoomRequest {
   map<string, string> settings = 9;
   float price_per_minute = 10;
   repeated string tags = 11;
+  string owner_id = 12;
+  RoomStatus status=13;
 }
 
 message CreateRoomResponse {
@@ -298,13 +341,33 @@ message CloseRoomRequest {
 
 message CloseRoomResponse {
   bool success = 1;
+  string message=2;
+}
+// RemoveRoom
+message RemoveRoomRequest {
+  string room_id = 1;
+  string user_id = 2;                    // برای اعتبارسنجی (فقط owner می‌تواند)
 }
 
+message RemoveRoomResponse {
+  bool success = 1;
+  string message=2;
+}
+//CreateClient 
+message CreateClientRequest{
+	string user_id=1;
+	string name=2;
+  string room_id=3;
+	string phonenumber=4;
+	UserRole  role=5;
+	UserStatus status=6;    
+}
+message CreateClientResponse{
+Client client=1;
+}
 // GetRoomClients
 message GetRoomClientsRequest {
-  string room_id = 1;
-  string user_id = 2;                    // برای اعتبارسنجی
-  bool include_pending = 3;               // آیا کاربران در انتظار هم برگردند؟
+ClientFilter filter=1;
 }
 
 message GetRoomClientsResponse {
@@ -325,4 +388,13 @@ message UpdateClientStatusRequest {
 
 message UpdateClientStatusResponse {
   bool success = 1;
+  string message=2;
+}
+message RemoveClientRequest{
+  string user_id=1;
+  string room_id=2;
+}
+message RemoveClientResponse{
+  bool success=1;
+  string message=2;
 }

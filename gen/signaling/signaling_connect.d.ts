@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CloseRoomRequest, CloseRoomResponse, CreateRoomRequest, CreateRoomResponse, GetRoomClientsRequest, GetRoomClientsResponse, GetRoomsRequest, GetRoomsResponse, JoinRoomRequest, LeaveRoomRequest, LeaveRoomResponse, SendSignalRequest, SendSignalResponse, SignalMessage, UpdateClientStatusRequest, UpdateClientStatusResponse, UpdateRoomSettingsRequest, UpdateRoomSettingsResponse } from "./signaling_pb.js";
+import { CloseRoomRequest, CloseRoomResponse, CreateClientRequest, CreateClientResponse, CreateRoomRequest, CreateRoomResponse, GetRoomClientsRequest, GetRoomClientsResponse, GetRoomsRequest, GetRoomsResponse, JoinRoomRequest, LeaveRoomRequest, LeaveRoomResponse, RemoveClientRequest, RemoveClientResponse, RemoveRoomRequest, RemoveRoomResponse, SendSignalRequest, SendSignalResponse, SignalMessage, UpdateClientStatusRequest, UpdateClientStatusResponse, UpdateRoomSettingsRequest, UpdateRoomSettingsResponse } from "./signaling_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -46,23 +46,21 @@ export declare const SignalingService: {
     /**
      * متد دریافت روم‌ها با فیلتر
      *
-     * @generated from rpc signaling.v1.SignalingService.GetRooms
-     */
-    readonly getRooms: {
-      readonly name: "GetRooms",
-      readonly I: typeof GetRoomsRequest,
-      readonly O: typeof GetRoomsResponse,
-      readonly kind: MethodKind.Unary,
-    },
-    /**
-     * متدهای مدیریت روم
-     *
      * @generated from rpc signaling.v1.SignalingService.CreateRoom
      */
     readonly createRoom: {
       readonly name: "CreateRoom",
       readonly I: typeof CreateRoomRequest,
       readonly O: typeof CreateRoomResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc signaling.v1.SignalingService.GetRooms
+     */
+    readonly getRooms: {
+      readonly name: "GetRooms",
+      readonly I: typeof GetRoomsRequest,
+      readonly O: typeof GetRoomsResponse,
       readonly kind: MethodKind.Unary,
     },
     /**
@@ -84,8 +82,26 @@ export declare const SignalingService: {
       readonly kind: MethodKind.Unary,
     },
     /**
+     * @generated from rpc signaling.v1.SignalingService.RemoveRoom
+     */
+    readonly removeRoom: {
+      readonly name: "RemoveRoom",
+      readonly I: typeof RemoveRoomRequest,
+      readonly O: typeof RemoveRoomResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
      * متدهای کاربران
      *
+     * @generated from rpc signaling.v1.SignalingService.CreateClient
+     */
+    readonly createClient: {
+      readonly name: "CreateClient",
+      readonly I: typeof CreateClientRequest,
+      readonly O: typeof CreateClientResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
      * @generated from rpc signaling.v1.SignalingService.GetRoomClients
      */
     readonly getRoomClients: {
@@ -101,6 +117,15 @@ export declare const SignalingService: {
       readonly name: "UpdateClientStatus",
       readonly I: typeof UpdateClientStatusRequest,
       readonly O: typeof UpdateClientStatusResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc signaling.v1.SignalingService.RemoveClient
+     */
+    readonly removeClient: {
+      readonly name: "RemoveClient",
+      readonly I: typeof RemoveClientRequest,
+      readonly O: typeof RemoveClientResponse,
       readonly kind: MethodKind.Unary,
     },
   }

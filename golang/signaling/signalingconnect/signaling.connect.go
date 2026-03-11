@@ -42,24 +42,33 @@ const (
 	// SignalingServiceLeaveRoomProcedure is the fully-qualified name of the SignalingService's
 	// LeaveRoom RPC.
 	SignalingServiceLeaveRoomProcedure = "/signaling.v1.SignalingService/LeaveRoom"
-	// SignalingServiceGetRoomsProcedure is the fully-qualified name of the SignalingService's GetRooms
-	// RPC.
-	SignalingServiceGetRoomsProcedure = "/signaling.v1.SignalingService/GetRooms"
 	// SignalingServiceCreateRoomProcedure is the fully-qualified name of the SignalingService's
 	// CreateRoom RPC.
 	SignalingServiceCreateRoomProcedure = "/signaling.v1.SignalingService/CreateRoom"
+	// SignalingServiceGetRoomsProcedure is the fully-qualified name of the SignalingService's GetRooms
+	// RPC.
+	SignalingServiceGetRoomsProcedure = "/signaling.v1.SignalingService/GetRooms"
 	// SignalingServiceUpdateRoomSettingsProcedure is the fully-qualified name of the SignalingService's
 	// UpdateRoomSettings RPC.
 	SignalingServiceUpdateRoomSettingsProcedure = "/signaling.v1.SignalingService/UpdateRoomSettings"
 	// SignalingServiceCloseRoomProcedure is the fully-qualified name of the SignalingService's
 	// CloseRoom RPC.
 	SignalingServiceCloseRoomProcedure = "/signaling.v1.SignalingService/CloseRoom"
+	// SignalingServiceRemoveRoomProcedure is the fully-qualified name of the SignalingService's
+	// RemoveRoom RPC.
+	SignalingServiceRemoveRoomProcedure = "/signaling.v1.SignalingService/RemoveRoom"
+	// SignalingServiceCreateClientProcedure is the fully-qualified name of the SignalingService's
+	// CreateClient RPC.
+	SignalingServiceCreateClientProcedure = "/signaling.v1.SignalingService/CreateClient"
 	// SignalingServiceGetRoomClientsProcedure is the fully-qualified name of the SignalingService's
 	// GetRoomClients RPC.
 	SignalingServiceGetRoomClientsProcedure = "/signaling.v1.SignalingService/GetRoomClients"
 	// SignalingServiceUpdateClientStatusProcedure is the fully-qualified name of the SignalingService's
 	// UpdateClientStatus RPC.
 	SignalingServiceUpdateClientStatusProcedure = "/signaling.v1.SignalingService/UpdateClientStatus"
+	// SignalingServiceRemoveClientProcedure is the fully-qualified name of the SignalingService's
+	// RemoveClient RPC.
+	SignalingServiceRemoveClientProcedure = "/signaling.v1.SignalingService/RemoveClient"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
@@ -68,12 +77,15 @@ var (
 	signalingServiceJoinRoomMethodDescriptor           = signalingServiceServiceDescriptor.Methods().ByName("JoinRoom")
 	signalingServiceSendSignalMethodDescriptor         = signalingServiceServiceDescriptor.Methods().ByName("SendSignal")
 	signalingServiceLeaveRoomMethodDescriptor          = signalingServiceServiceDescriptor.Methods().ByName("LeaveRoom")
-	signalingServiceGetRoomsMethodDescriptor           = signalingServiceServiceDescriptor.Methods().ByName("GetRooms")
 	signalingServiceCreateRoomMethodDescriptor         = signalingServiceServiceDescriptor.Methods().ByName("CreateRoom")
+	signalingServiceGetRoomsMethodDescriptor           = signalingServiceServiceDescriptor.Methods().ByName("GetRooms")
 	signalingServiceUpdateRoomSettingsMethodDescriptor = signalingServiceServiceDescriptor.Methods().ByName("UpdateRoomSettings")
 	signalingServiceCloseRoomMethodDescriptor          = signalingServiceServiceDescriptor.Methods().ByName("CloseRoom")
+	signalingServiceRemoveRoomMethodDescriptor         = signalingServiceServiceDescriptor.Methods().ByName("RemoveRoom")
+	signalingServiceCreateClientMethodDescriptor       = signalingServiceServiceDescriptor.Methods().ByName("CreateClient")
 	signalingServiceGetRoomClientsMethodDescriptor     = signalingServiceServiceDescriptor.Methods().ByName("GetRoomClients")
 	signalingServiceUpdateClientStatusMethodDescriptor = signalingServiceServiceDescriptor.Methods().ByName("UpdateClientStatus")
+	signalingServiceRemoveClientMethodDescriptor       = signalingServiceServiceDescriptor.Methods().ByName("RemoveClient")
 )
 
 // SignalingServiceClient is a client for the signaling.v1.SignalingService service.
@@ -83,14 +95,16 @@ type SignalingServiceClient interface {
 	SendSignal(context.Context, *connect.Request[signaling.SendSignalRequest]) (*connect.Response[signaling.SendSignalResponse], error)
 	LeaveRoom(context.Context, *connect.Request[signaling.LeaveRoomRequest]) (*connect.Response[signaling.LeaveRoomResponse], error)
 	// متد دریافت روم‌ها با فیلتر
-	GetRooms(context.Context, *connect.Request[signaling.GetRoomsRequest]) (*connect.Response[signaling.GetRoomsResponse], error)
-	// متدهای مدیریت روم
 	CreateRoom(context.Context, *connect.Request[signaling.CreateRoomRequest]) (*connect.Response[signaling.CreateRoomResponse], error)
+	GetRooms(context.Context, *connect.Request[signaling.GetRoomsRequest]) (*connect.Response[signaling.GetRoomsResponse], error)
 	UpdateRoomSettings(context.Context, *connect.Request[signaling.UpdateRoomSettingsRequest]) (*connect.Response[signaling.UpdateRoomSettingsResponse], error)
 	CloseRoom(context.Context, *connect.Request[signaling.CloseRoomRequest]) (*connect.Response[signaling.CloseRoomResponse], error)
+	RemoveRoom(context.Context, *connect.Request[signaling.RemoveRoomRequest]) (*connect.Response[signaling.RemoveRoomResponse], error)
 	// متدهای کاربران
+	CreateClient(context.Context, *connect.Request[signaling.CreateClientRequest]) (*connect.Response[signaling.CreateClientResponse], error)
 	GetRoomClients(context.Context, *connect.Request[signaling.GetRoomClientsRequest]) (*connect.Response[signaling.GetRoomClientsResponse], error)
 	UpdateClientStatus(context.Context, *connect.Request[signaling.UpdateClientStatusRequest]) (*connect.Response[signaling.UpdateClientStatusResponse], error)
+	RemoveClient(context.Context, *connect.Request[signaling.RemoveClientRequest]) (*connect.Response[signaling.RemoveClientResponse], error)
 }
 
 // NewSignalingServiceClient constructs a client for the signaling.v1.SignalingService service. By
@@ -121,16 +135,16 @@ func NewSignalingServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(signalingServiceLeaveRoomMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		getRooms: connect.NewClient[signaling.GetRoomsRequest, signaling.GetRoomsResponse](
-			httpClient,
-			baseURL+SignalingServiceGetRoomsProcedure,
-			connect.WithSchema(signalingServiceGetRoomsMethodDescriptor),
-			connect.WithClientOptions(opts...),
-		),
 		createRoom: connect.NewClient[signaling.CreateRoomRequest, signaling.CreateRoomResponse](
 			httpClient,
 			baseURL+SignalingServiceCreateRoomProcedure,
 			connect.WithSchema(signalingServiceCreateRoomMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		getRooms: connect.NewClient[signaling.GetRoomsRequest, signaling.GetRoomsResponse](
+			httpClient,
+			baseURL+SignalingServiceGetRoomsProcedure,
+			connect.WithSchema(signalingServiceGetRoomsMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		updateRoomSettings: connect.NewClient[signaling.UpdateRoomSettingsRequest, signaling.UpdateRoomSettingsResponse](
@@ -145,6 +159,18 @@ func NewSignalingServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(signalingServiceCloseRoomMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		removeRoom: connect.NewClient[signaling.RemoveRoomRequest, signaling.RemoveRoomResponse](
+			httpClient,
+			baseURL+SignalingServiceRemoveRoomProcedure,
+			connect.WithSchema(signalingServiceRemoveRoomMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		createClient: connect.NewClient[signaling.CreateClientRequest, signaling.CreateClientResponse](
+			httpClient,
+			baseURL+SignalingServiceCreateClientProcedure,
+			connect.WithSchema(signalingServiceCreateClientMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 		getRoomClients: connect.NewClient[signaling.GetRoomClientsRequest, signaling.GetRoomClientsResponse](
 			httpClient,
 			baseURL+SignalingServiceGetRoomClientsProcedure,
@@ -157,6 +183,12 @@ func NewSignalingServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(signalingServiceUpdateClientStatusMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
+		removeClient: connect.NewClient[signaling.RemoveClientRequest, signaling.RemoveClientResponse](
+			httpClient,
+			baseURL+SignalingServiceRemoveClientProcedure,
+			connect.WithSchema(signalingServiceRemoveClientMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -165,12 +197,15 @@ type signalingServiceClient struct {
 	joinRoom           *connect.Client[signaling.JoinRoomRequest, signaling.SignalMessage]
 	sendSignal         *connect.Client[signaling.SendSignalRequest, signaling.SendSignalResponse]
 	leaveRoom          *connect.Client[signaling.LeaveRoomRequest, signaling.LeaveRoomResponse]
-	getRooms           *connect.Client[signaling.GetRoomsRequest, signaling.GetRoomsResponse]
 	createRoom         *connect.Client[signaling.CreateRoomRequest, signaling.CreateRoomResponse]
+	getRooms           *connect.Client[signaling.GetRoomsRequest, signaling.GetRoomsResponse]
 	updateRoomSettings *connect.Client[signaling.UpdateRoomSettingsRequest, signaling.UpdateRoomSettingsResponse]
 	closeRoom          *connect.Client[signaling.CloseRoomRequest, signaling.CloseRoomResponse]
+	removeRoom         *connect.Client[signaling.RemoveRoomRequest, signaling.RemoveRoomResponse]
+	createClient       *connect.Client[signaling.CreateClientRequest, signaling.CreateClientResponse]
 	getRoomClients     *connect.Client[signaling.GetRoomClientsRequest, signaling.GetRoomClientsResponse]
 	updateClientStatus *connect.Client[signaling.UpdateClientStatusRequest, signaling.UpdateClientStatusResponse]
+	removeClient       *connect.Client[signaling.RemoveClientRequest, signaling.RemoveClientResponse]
 }
 
 // JoinRoom calls signaling.v1.SignalingService.JoinRoom.
@@ -188,14 +223,14 @@ func (c *signalingServiceClient) LeaveRoom(ctx context.Context, req *connect.Req
 	return c.leaveRoom.CallUnary(ctx, req)
 }
 
-// GetRooms calls signaling.v1.SignalingService.GetRooms.
-func (c *signalingServiceClient) GetRooms(ctx context.Context, req *connect.Request[signaling.GetRoomsRequest]) (*connect.Response[signaling.GetRoomsResponse], error) {
-	return c.getRooms.CallUnary(ctx, req)
-}
-
 // CreateRoom calls signaling.v1.SignalingService.CreateRoom.
 func (c *signalingServiceClient) CreateRoom(ctx context.Context, req *connect.Request[signaling.CreateRoomRequest]) (*connect.Response[signaling.CreateRoomResponse], error) {
 	return c.createRoom.CallUnary(ctx, req)
+}
+
+// GetRooms calls signaling.v1.SignalingService.GetRooms.
+func (c *signalingServiceClient) GetRooms(ctx context.Context, req *connect.Request[signaling.GetRoomsRequest]) (*connect.Response[signaling.GetRoomsResponse], error) {
+	return c.getRooms.CallUnary(ctx, req)
 }
 
 // UpdateRoomSettings calls signaling.v1.SignalingService.UpdateRoomSettings.
@@ -208,6 +243,16 @@ func (c *signalingServiceClient) CloseRoom(ctx context.Context, req *connect.Req
 	return c.closeRoom.CallUnary(ctx, req)
 }
 
+// RemoveRoom calls signaling.v1.SignalingService.RemoveRoom.
+func (c *signalingServiceClient) RemoveRoom(ctx context.Context, req *connect.Request[signaling.RemoveRoomRequest]) (*connect.Response[signaling.RemoveRoomResponse], error) {
+	return c.removeRoom.CallUnary(ctx, req)
+}
+
+// CreateClient calls signaling.v1.SignalingService.CreateClient.
+func (c *signalingServiceClient) CreateClient(ctx context.Context, req *connect.Request[signaling.CreateClientRequest]) (*connect.Response[signaling.CreateClientResponse], error) {
+	return c.createClient.CallUnary(ctx, req)
+}
+
 // GetRoomClients calls signaling.v1.SignalingService.GetRoomClients.
 func (c *signalingServiceClient) GetRoomClients(ctx context.Context, req *connect.Request[signaling.GetRoomClientsRequest]) (*connect.Response[signaling.GetRoomClientsResponse], error) {
 	return c.getRoomClients.CallUnary(ctx, req)
@@ -218,6 +263,11 @@ func (c *signalingServiceClient) UpdateClientStatus(ctx context.Context, req *co
 	return c.updateClientStatus.CallUnary(ctx, req)
 }
 
+// RemoveClient calls signaling.v1.SignalingService.RemoveClient.
+func (c *signalingServiceClient) RemoveClient(ctx context.Context, req *connect.Request[signaling.RemoveClientRequest]) (*connect.Response[signaling.RemoveClientResponse], error) {
+	return c.removeClient.CallUnary(ctx, req)
+}
+
 // SignalingServiceHandler is an implementation of the signaling.v1.SignalingService service.
 type SignalingServiceHandler interface {
 	// متدهای پایه
@@ -225,14 +275,16 @@ type SignalingServiceHandler interface {
 	SendSignal(context.Context, *connect.Request[signaling.SendSignalRequest]) (*connect.Response[signaling.SendSignalResponse], error)
 	LeaveRoom(context.Context, *connect.Request[signaling.LeaveRoomRequest]) (*connect.Response[signaling.LeaveRoomResponse], error)
 	// متد دریافت روم‌ها با فیلتر
-	GetRooms(context.Context, *connect.Request[signaling.GetRoomsRequest]) (*connect.Response[signaling.GetRoomsResponse], error)
-	// متدهای مدیریت روم
 	CreateRoom(context.Context, *connect.Request[signaling.CreateRoomRequest]) (*connect.Response[signaling.CreateRoomResponse], error)
+	GetRooms(context.Context, *connect.Request[signaling.GetRoomsRequest]) (*connect.Response[signaling.GetRoomsResponse], error)
 	UpdateRoomSettings(context.Context, *connect.Request[signaling.UpdateRoomSettingsRequest]) (*connect.Response[signaling.UpdateRoomSettingsResponse], error)
 	CloseRoom(context.Context, *connect.Request[signaling.CloseRoomRequest]) (*connect.Response[signaling.CloseRoomResponse], error)
+	RemoveRoom(context.Context, *connect.Request[signaling.RemoveRoomRequest]) (*connect.Response[signaling.RemoveRoomResponse], error)
 	// متدهای کاربران
+	CreateClient(context.Context, *connect.Request[signaling.CreateClientRequest]) (*connect.Response[signaling.CreateClientResponse], error)
 	GetRoomClients(context.Context, *connect.Request[signaling.GetRoomClientsRequest]) (*connect.Response[signaling.GetRoomClientsResponse], error)
 	UpdateClientStatus(context.Context, *connect.Request[signaling.UpdateClientStatusRequest]) (*connect.Response[signaling.UpdateClientStatusResponse], error)
+	RemoveClient(context.Context, *connect.Request[signaling.RemoveClientRequest]) (*connect.Response[signaling.RemoveClientResponse], error)
 }
 
 // NewSignalingServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -259,16 +311,16 @@ func NewSignalingServiceHandler(svc SignalingServiceHandler, opts ...connect.Han
 		connect.WithSchema(signalingServiceLeaveRoomMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	signalingServiceGetRoomsHandler := connect.NewUnaryHandler(
-		SignalingServiceGetRoomsProcedure,
-		svc.GetRooms,
-		connect.WithSchema(signalingServiceGetRoomsMethodDescriptor),
-		connect.WithHandlerOptions(opts...),
-	)
 	signalingServiceCreateRoomHandler := connect.NewUnaryHandler(
 		SignalingServiceCreateRoomProcedure,
 		svc.CreateRoom,
 		connect.WithSchema(signalingServiceCreateRoomMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	signalingServiceGetRoomsHandler := connect.NewUnaryHandler(
+		SignalingServiceGetRoomsProcedure,
+		svc.GetRooms,
+		connect.WithSchema(signalingServiceGetRoomsMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceUpdateRoomSettingsHandler := connect.NewUnaryHandler(
@@ -283,6 +335,18 @@ func NewSignalingServiceHandler(svc SignalingServiceHandler, opts ...connect.Han
 		connect.WithSchema(signalingServiceCloseRoomMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	signalingServiceRemoveRoomHandler := connect.NewUnaryHandler(
+		SignalingServiceRemoveRoomProcedure,
+		svc.RemoveRoom,
+		connect.WithSchema(signalingServiceRemoveRoomMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	signalingServiceCreateClientHandler := connect.NewUnaryHandler(
+		SignalingServiceCreateClientProcedure,
+		svc.CreateClient,
+		connect.WithSchema(signalingServiceCreateClientMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	signalingServiceGetRoomClientsHandler := connect.NewUnaryHandler(
 		SignalingServiceGetRoomClientsProcedure,
 		svc.GetRoomClients,
@@ -295,6 +359,12 @@ func NewSignalingServiceHandler(svc SignalingServiceHandler, opts ...connect.Han
 		connect.WithSchema(signalingServiceUpdateClientStatusMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
+	signalingServiceRemoveClientHandler := connect.NewUnaryHandler(
+		SignalingServiceRemoveClientProcedure,
+		svc.RemoveClient,
+		connect.WithSchema(signalingServiceRemoveClientMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/signaling.v1.SignalingService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case SignalingServiceJoinRoomProcedure:
@@ -303,18 +373,24 @@ func NewSignalingServiceHandler(svc SignalingServiceHandler, opts ...connect.Han
 			signalingServiceSendSignalHandler.ServeHTTP(w, r)
 		case SignalingServiceLeaveRoomProcedure:
 			signalingServiceLeaveRoomHandler.ServeHTTP(w, r)
-		case SignalingServiceGetRoomsProcedure:
-			signalingServiceGetRoomsHandler.ServeHTTP(w, r)
 		case SignalingServiceCreateRoomProcedure:
 			signalingServiceCreateRoomHandler.ServeHTTP(w, r)
+		case SignalingServiceGetRoomsProcedure:
+			signalingServiceGetRoomsHandler.ServeHTTP(w, r)
 		case SignalingServiceUpdateRoomSettingsProcedure:
 			signalingServiceUpdateRoomSettingsHandler.ServeHTTP(w, r)
 		case SignalingServiceCloseRoomProcedure:
 			signalingServiceCloseRoomHandler.ServeHTTP(w, r)
+		case SignalingServiceRemoveRoomProcedure:
+			signalingServiceRemoveRoomHandler.ServeHTTP(w, r)
+		case SignalingServiceCreateClientProcedure:
+			signalingServiceCreateClientHandler.ServeHTTP(w, r)
 		case SignalingServiceGetRoomClientsProcedure:
 			signalingServiceGetRoomClientsHandler.ServeHTTP(w, r)
 		case SignalingServiceUpdateClientStatusProcedure:
 			signalingServiceUpdateClientStatusHandler.ServeHTTP(w, r)
+		case SignalingServiceRemoveClientProcedure:
+			signalingServiceRemoveClientHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -336,12 +412,12 @@ func (UnimplementedSignalingServiceHandler) LeaveRoom(context.Context, *connect.
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.LeaveRoom is not implemented"))
 }
 
-func (UnimplementedSignalingServiceHandler) GetRooms(context.Context, *connect.Request[signaling.GetRoomsRequest]) (*connect.Response[signaling.GetRoomsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.GetRooms is not implemented"))
-}
-
 func (UnimplementedSignalingServiceHandler) CreateRoom(context.Context, *connect.Request[signaling.CreateRoomRequest]) (*connect.Response[signaling.CreateRoomResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.CreateRoom is not implemented"))
+}
+
+func (UnimplementedSignalingServiceHandler) GetRooms(context.Context, *connect.Request[signaling.GetRoomsRequest]) (*connect.Response[signaling.GetRoomsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.GetRooms is not implemented"))
 }
 
 func (UnimplementedSignalingServiceHandler) UpdateRoomSettings(context.Context, *connect.Request[signaling.UpdateRoomSettingsRequest]) (*connect.Response[signaling.UpdateRoomSettingsResponse], error) {
@@ -352,10 +428,22 @@ func (UnimplementedSignalingServiceHandler) CloseRoom(context.Context, *connect.
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.CloseRoom is not implemented"))
 }
 
+func (UnimplementedSignalingServiceHandler) RemoveRoom(context.Context, *connect.Request[signaling.RemoveRoomRequest]) (*connect.Response[signaling.RemoveRoomResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.RemoveRoom is not implemented"))
+}
+
+func (UnimplementedSignalingServiceHandler) CreateClient(context.Context, *connect.Request[signaling.CreateClientRequest]) (*connect.Response[signaling.CreateClientResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.CreateClient is not implemented"))
+}
+
 func (UnimplementedSignalingServiceHandler) GetRoomClients(context.Context, *connect.Request[signaling.GetRoomClientsRequest]) (*connect.Response[signaling.GetRoomClientsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.GetRoomClients is not implemented"))
 }
 
 func (UnimplementedSignalingServiceHandler) UpdateClientStatus(context.Context, *connect.Request[signaling.UpdateClientStatusRequest]) (*connect.Response[signaling.UpdateClientStatusResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.UpdateClientStatus is not implemented"))
+}
+
+func (UnimplementedSignalingServiceHandler) RemoveClient(context.Context, *connect.Request[signaling.RemoveClientRequest]) (*connect.Response[signaling.RemoveClientResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("signaling.v1.SignalingService.RemoveClient is not implemented"))
 }

@@ -10,7 +10,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file signaling/signaling.proto.
  */
 export const file_signaling_signaling: GenFile = /*@__PURE__*/
-  fileDesc("ChlzaWduYWxpbmcvc2lnbmFsaW5nLnByb3RvEgxzaWduYWxpbmcudjEixgIKBkNsaWVudBIPCgd1c2VyX2lkGAEgASgJEhEKCXVzZXJfbmFtZRgCIAEoCRIkCgRyb2xlGAMgASgOMhYuc2lnbmFsaW5nLnYxLlVzZXJSb2xlEigKBnN0YXR1cxgEIAEoDjIYLnNpZ25hbGluZy52MS5Vc2VyU3RhdHVzEhEKCWpvaW5lZF9hdBgFIAEoCRIUCgxsYXN0X3NlZW5fYXQYBiABKAkSNAoIbWV0YWRhdGEYByADKAsyIi5zaWduYWxpbmcudjEuQ2xpZW50Lk1ldGFkYXRhRW50cnkSEAoIZHVyYXRpb24YCCABKAUSEAoIaXNfbXV0ZWQYCSABKAgSFAoMaXNfdmlkZW9fb2ZmGAogASgIGi8KDU1ldGFkYXRhRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASK5BgoEUm9vbRIPCgdyb29tX2lkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkSKQoJcm9vbV90eXBlGAQgASgOMhYuc2lnbmFsaW5nLnYxLlJvb21UeXBlEiwKCGNhdGVnb3J5GAUgASgOMhouc2lnbmFsaW5nLnYxLlJvb21DYXRlZ29yeRIoCgZzdGF0dXMYBiABKA4yGC5zaWduYWxpbmcudjEuUm9vbVN0YXR1cxIQCghvd25lcl9pZBgHIAEoCRISCgpvd25lcl9uYW1lGAggASgJEiUKB2NsaWVudHMYCSADKAsyFC5zaWduYWxpbmcudjEuQ2xpZW50Ei0KD3BlbmRpbmdfY2xpZW50cxgKIAMoCzIULnNpZ25hbGluZy52MS5DbGllbnQSFAoMb25saW5lX2NvdW50GAsgASgFEhgKEG1heF9wYXJ0aWNpcGFudHMYDCABKAUSEgoKaXNfcHJpdmF0ZRgNIAEoCBIUCgxoYXNfcGFzc3dvcmQYDiABKAgSEgoKY3JlYXRlZF9hdBgPIAEoCRISCgpzdGFydGVkX2F0GBAgASgJEhYKDmxhc3RfYWN0aXZlX2F0GBEgASgJEhoKEnRvdGFsX3BhcnRpY2lwYW50cxgSIAEoBRIZChFwZWFrX3BhcnRpY2lwYW50cxgTIAEoBRIYChBwcmljZV9wZXJfbWludXRlGBQgASgCEgwKBHRhZ3MYFSADKAkSMgoIbWV0YWRhdGEYFiADKAsyIC5zaWduYWxpbmcudjEuUm9vbS5NZXRhZGF0YUVudHJ5EjIKCHNldHRpbmdzGBcgAygLMiAuc2lnbmFsaW5nLnYxLlJvb20uU2V0dGluZ3NFbnRyeRIVCg10aHVtYm5haWxfdXJsGBggASgJEg4KBnJhdGluZxgZIAEoAhIUCgxyZXZpZXdfY291bnQYGiABKAUaLwoNTWV0YWRhdGFFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBGi8KDVNldHRpbmdzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASLPAQoNU2lnbmFsTWVzc2FnZRIPCgdyb29tX2lkGAEgASgJEhEKCWZyb21fdXNlchgCIAEoCRIWCg5mcm9tX3VzZXJfbmFtZRgDIAEoCRIPCgd0b191c2VyGAQgASgJEhQKDHRvX3VzZXJfbmFtZRgFIAEoCRImCgR0eXBlGAYgASgOMhguc2lnbmFsaW5nLnYxLlNpZ25hbFR5cGUSDwoHcGF5bG9hZBgHIAEoCRIPCgdtZXNzYWdlGAggASgJEhEKCXRpbWVzdGFtcBgJIAEoAyJqCg9Kb2luUm9vbVJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEhEKCXVzZXJfbmFtZRgDIAEoCRIQCghpc19vd25lchgEIAEoCBIQCghwYXNzd29yZBgFIAEoCSI0ChBKb2luUm9vbVJlc3BvbnNlEiAKBHJvb20YASABKAsyEi5zaWduYWxpbmcudjEuUm9vbSKSAQoRU2VuZFNpZ25hbFJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIRCglmcm9tX3VzZXIYAiABKAkSDwoHdG9fdXNlchgDIAEoCRImCgR0eXBlGAQgASgOMhguc2lnbmFsaW5nLnYxLlNpZ25hbFR5cGUSDwoHcGF5bG9hZBgFIAEoCRIPCgdtZXNzYWdlGAYgASgJIicKElNlbmRTaWduYWxSZXNwb25zZRIRCglkZWxpdmVyZWQYASABKAgiNAoQTGVhdmVSb29tUmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkiJAoRTGVhdmVSb29tUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCCKuAgoPR2V0Um9vbXNSZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSKAoGc3RhdHVzGAIgASgOMhguc2lnbmFsaW5nLnYxLlJvb21TdGF0dXMSEwoLb25seV9vbmxpbmUYAyABKAgSLAoIY2F0ZWdvcnkYBCABKA4yGi5zaWduYWxpbmcudjEuUm9vbUNhdGVnb3J5EikKCXJvb21fdHlwZRgFIAEoDjIWLnNpZ25hbGluZy52MS5Sb29tVHlwZRIQCghvd25lcl9pZBgGIAEoCRIWCg5tZW1iZXJfdXNlcl9pZBgHIAEoCRIUCgxzZWFyY2hfcXVlcnkYCCABKAkSEQoJbWluX3ByaWNlGAkgASgCEhEKCW1heF9wcmljZRgKIAEoAhIMCgR0YWdzGAsgAygJImwKEEdldFJvb21zUmVzcG9uc2USIAoEcm9vbRgBIAEoCzISLnNpZ25hbGluZy52MS5Sb29tEiEKBXJvb21zGAIgAygLMhIuc2lnbmFsaW5nLnYxLlJvb20SEwoLdG90YWxfY291bnQYAyABKAUi+gIKEUNyZWF0ZVJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDAoEbmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRIpCglyb29tX3R5cGUYBCABKA4yFi5zaWduYWxpbmcudjEuUm9vbVR5cGUSLAoIY2F0ZWdvcnkYBSABKA4yGi5zaWduYWxpbmcudjEuUm9vbUNhdGVnb3J5EhgKEG1heF9wYXJ0aWNpcGFudHMYBiABKAUSEgoKaXNfcHJpdmF0ZRgHIAEoCBIQCghwYXNzd29yZBgIIAEoCRI/CghzZXR0aW5ncxgJIAMoCzItLnNpZ25hbGluZy52MS5DcmVhdGVSb29tUmVxdWVzdC5TZXR0aW5nc0VudHJ5EhgKEHByaWNlX3Blcl9taW51dGUYCiABKAISDAoEdGFncxgLIAMoCRovCg1TZXR0aW5nc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiNgoSQ3JlYXRlUm9vbVJlc3BvbnNlEiAKBHJvb20YASABKAsyEi5zaWduYWxpbmcudjEuUm9vbSLwAgoZVXBkYXRlUm9vbVNldHRpbmdzUmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkSDAoEbmFtZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEoCRIsCghjYXRlZ29yeRgFIAEoDjIaLnNpZ25hbGluZy52MS5Sb29tQ2F0ZWdvcnkSGAoQbWF4X3BhcnRpY2lwYW50cxgGIAEoBRISCgppc19wcml2YXRlGAcgASgIEhAKCHBhc3N3b3JkGAggASgJEkcKCHNldHRpbmdzGAkgAygLMjUuc2lnbmFsaW5nLnYxLlVwZGF0ZVJvb21TZXR0aW5nc1JlcXVlc3QuU2V0dGluZ3NFbnRyeRIYChBwcmljZV9wZXJfbWludXRlGAogASgCEgwKBHRhZ3MYCyADKAkaLwoNU2V0dGluZ3NFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIj4KGlVwZGF0ZVJvb21TZXR0aW5nc1Jlc3BvbnNlEiAKBHJvb20YASABKAsyEi5zaWduYWxpbmcudjEuUm9vbSI0ChBDbG9zZVJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCSIkChFDbG9zZVJvb21SZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIIlIKFUdldFJvb21DbGllbnRzUmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkSFwoPaW5jbHVkZV9wZW5kaW5nGAMgASgIIpkBChZHZXRSb29tQ2xpZW50c1Jlc3BvbnNlEiUKB2NsaWVudHMYASADKAsyFC5zaWduYWxpbmcudjEuQ2xpZW50Ei0KD3BlbmRpbmdfY2xpZW50cxgCIAMoCzIULnNpZ25hbGluZy52MS5DbGllbnQSEwoLdG90YWxfY291bnQYAyABKAUSFAoMb25saW5lX2NvdW50GAQgASgFIo8BChlVcGRhdGVDbGllbnRTdGF0dXNSZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIoCgZzdGF0dXMYAyABKA4yGC5zaWduYWxpbmcudjEuVXNlclN0YXR1cxIQCghpc19tdXRlZBgEIAEoCBIUCgxpc192aWRlb19vZmYYBSABKAgiLQoaVXBkYXRlQ2xpZW50U3RhdHVzUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCCqqAwoKU2lnbmFsVHlwZRIbChdTSUdOQUxfVFlQRV9VTlNQRUNJRklFRBAAEhUKEVNJR05BTF9UWVBFX09GRkVSEAESFgoSU0lHTkFMX1RZUEVfQU5TV0VSEAISGQoVU0lHTkFMX1RZUEVfQ0FORElEQVRFEAMSFQoRU0lHTkFMX1RZUEVfTEVBVkUQBBIUChBTSUdOQUxfVFlQRV9DSEFUEAUSFgoSU0lHTkFMX1VTRVJfSk9JTkVEEAYSHAoYU0lHTkFMX1RZUEVfUkVRVUVTVF9KT0lOEAcSHAoYU0lHTkFMX1RZUEVfQVBQUk9WRV9KT0lOEAgSGwoXU0lHTkFMX1RZUEVfUkVKRUNUX0pPSU4QCRIaChZTSUdOQUxfVFlQRV9PV05FUl9MRUZUEAoSGQoVU0lHTkFMX1RZUEVfUk9PTV9JTkZPEAsSHQoZU0lHTkFMX1RZUEVfUEVORElOR19VU0VSUxAMEhwKGFNJR05BTF9UWVBFX1JPT01fVVBEQVRFRBANEiMKH1NJR05BTF9UWVBFX1VTRVJfU1RBVFVTX0NIQU5HRUQQDiqDAQoIUm9vbVR5cGUSGQoVUk9PTV9UWVBFX1VOU1BFQ0lGSUVEEAASEgoOUk9PTV9UWVBFX1BFRVIQARIaChZST09NX1RZUEVfQ09OU1VMVEFUSU9OEAISFwoTUk9PTV9UWVBFX0JST0FEQ0FTVBADEhMKD1JPT01fVFlQRV9HUk9VUBAEKo0BCgpSb29tU3RhdHVzEhsKF1JPT01fU1RBVFVTX1VOU1BFQ0lGSUVEEAASFgoSUk9PTV9TVEFUVVNfQUNUSVZFEAESGAoUUk9PTV9TVEFUVVNfSU5BQ1RJVkUQAhIWChJST09NX1NUQVRVU19DTE9TRUQQAxIYChRST09NX1NUQVRVU19BUkNISVZFRBAEKucBCgxSb29tQ2F0ZWdvcnkSHQoZUk9PTV9DQVRFR09SWV9VTlNQRUNJRklFRBAAEhkKFVJPT01fQ0FURUdPUllfTUVESUNBTBABEiIKHlJPT01fQ0FURUdPUllfU0tJTl9IQUlSX0JFQVVUWRACEh4KGlJPT01fQ0FURUdPUllfTEFTRVJfQkVBVVRZEAMSIQodUk9PTV9DQVRFR09SWV9DT1NNRVRJQ19CRUFVVFkQBBIdChlST09NX0NBVEVHT1JZX0VEVUNBVElPTkFMEAUSFwoTUk9PTV9DQVRFR09SWV9PVEhFUhAGKoUBCghVc2VyUm9sZRIZChVVU0VSX1JPTEVfVU5TUEVDSUZJRUQQABITCg9VU0VSX1JPTEVfT1dORVIQARIZChVVU0VSX1JPTEVfUEFSVElDSVBBTlQQAhIVChFVU0VSX1JPTEVfUEVORElORxADEhcKE1VTRVJfUk9MRV9NT0RFUkFUT1IQBCpwCgpVc2VyU3RhdHVzEhsKF1VTRVJfU1RBVFVTX1VOU1BFQ0lGSUVEEAASFgoSVVNFUl9TVEFUVVNfT05MSU5FEAESFwoTVVNFUl9TVEFUVVNfT0ZGTElORRACEhQKEFVTRVJfU1RBVFVTX0FXQVkQAzKUBgoQU2lnbmFsaW5nU2VydmljZRJICghKb2luUm9vbRIdLnNpZ25hbGluZy52MS5Kb2luUm9vbVJlcXVlc3QaGy5zaWduYWxpbmcudjEuU2lnbmFsTWVzc2FnZTABEk8KClNlbmRTaWduYWwSHy5zaWduYWxpbmcudjEuU2VuZFNpZ25hbFJlcXVlc3QaIC5zaWduYWxpbmcudjEuU2VuZFNpZ25hbFJlc3BvbnNlEkwKCUxlYXZlUm9vbRIeLnNpZ25hbGluZy52MS5MZWF2ZVJvb21SZXF1ZXN0Gh8uc2lnbmFsaW5nLnYxLkxlYXZlUm9vbVJlc3BvbnNlEkkKCEdldFJvb21zEh0uc2lnbmFsaW5nLnYxLkdldFJvb21zUmVxdWVzdBoeLnNpZ25hbGluZy52MS5HZXRSb29tc1Jlc3BvbnNlEk8KCkNyZWF0ZVJvb20SHy5zaWduYWxpbmcudjEuQ3JlYXRlUm9vbVJlcXVlc3QaIC5zaWduYWxpbmcudjEuQ3JlYXRlUm9vbVJlc3BvbnNlEmcKElVwZGF0ZVJvb21TZXR0aW5ncxInLnNpZ25hbGluZy52MS5VcGRhdGVSb29tU2V0dGluZ3NSZXF1ZXN0Giguc2lnbmFsaW5nLnYxLlVwZGF0ZVJvb21TZXR0aW5nc1Jlc3BvbnNlEkwKCUNsb3NlUm9vbRIeLnNpZ25hbGluZy52MS5DbG9zZVJvb21SZXF1ZXN0Gh8uc2lnbmFsaW5nLnYxLkNsb3NlUm9vbVJlc3BvbnNlElsKDkdldFJvb21DbGllbnRzEiMuc2lnbmFsaW5nLnYxLkdldFJvb21DbGllbnRzUmVxdWVzdBokLnNpZ25hbGluZy52MS5HZXRSb29tQ2xpZW50c1Jlc3BvbnNlEmcKElVwZGF0ZUNsaWVudFN0YXR1cxInLnNpZ25hbGluZy52MS5VcGRhdGVDbGllbnRTdGF0dXNSZXF1ZXN0Giguc2lnbmFsaW5nLnYxLlVwZGF0ZUNsaWVudFN0YXR1c1Jlc3BvbnNlQktaSWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3NpZ25hbGluZztzaWduYWxpbmdiBnByb3RvMw");
+  fileDesc("ChlzaWduYWxpbmcvc2lnbmFsaW5nLnByb3RvEgxzaWduYWxpbmcudjEi8QIKBkNsaWVudBIPCgd1c2VyX2lkGAEgASgJEhEKCXVzZXJfbmFtZRgCIAEoCRIPCgdyb29tX2lkGAMgASgJEhgKEHVzZXJfcGhvbmVudW1iZXIYBCABKAkSJAoEcm9sZRgFIAEoDjIWLnNpZ25hbGluZy52MS5Vc2VyUm9sZRIoCgZzdGF0dXMYBiABKA4yGC5zaWduYWxpbmcudjEuVXNlclN0YXR1cxIRCglqb2luZWRfYXQYByABKAkSFAoMbGFzdF9zZWVuX2F0GAggASgJEjQKCG1ldGFkYXRhGAkgAygLMiIuc2lnbmFsaW5nLnYxLkNsaWVudC5NZXRhZGF0YUVudHJ5EhAKCGR1cmF0aW9uGAogASgFEhAKCGlzX211dGVkGAsgASgIEhQKDGlzX3ZpZGVvX29mZhgMIAEoCBovCg1NZXRhZGF0YUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiYwoMQ2xpZW50RmlsdGVyEg8KB3VzZXJfaWQYASABKAkSDwoHcm9vbV9pZBgCIAEoCRIOCgZzdGF0dXMYAyABKAUSEwoLcGhvbmVudW1iZXIYBCABKAkSDAoEcm9sZRgFIAEoBSK5BgoEUm9vbRIPCgdyb29tX2lkGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyABKAkSKQoJcm9vbV90eXBlGAQgASgOMhYuc2lnbmFsaW5nLnYxLlJvb21UeXBlEiwKCGNhdGVnb3J5GAUgASgOMhouc2lnbmFsaW5nLnYxLlJvb21DYXRlZ29yeRIoCgZzdGF0dXMYBiABKA4yGC5zaWduYWxpbmcudjEuUm9vbVN0YXR1cxIQCghvd25lcl9pZBgHIAEoCRISCgpvd25lcl9uYW1lGAggASgJEiUKB2NsaWVudHMYCSADKAsyFC5zaWduYWxpbmcudjEuQ2xpZW50Ei0KD3BlbmRpbmdfY2xpZW50cxgKIAMoCzIULnNpZ25hbGluZy52MS5DbGllbnQSFAoMb25saW5lX2NvdW50GAsgASgFEhgKEG1heF9wYXJ0aWNpcGFudHMYDCABKAUSEgoKaXNfcHJpdmF0ZRgNIAEoCBIUCgxoYXNfcGFzc3dvcmQYDiABKAgSEgoKY3JlYXRlZF9hdBgPIAEoCRISCgpzdGFydGVkX2F0GBAgASgJEhYKDmxhc3RfYWN0aXZlX2F0GBEgASgJEhoKEnRvdGFsX3BhcnRpY2lwYW50cxgSIAEoBRIZChFwZWFrX3BhcnRpY2lwYW50cxgTIAEoBRIYChBwcmljZV9wZXJfbWludXRlGBQgASgCEgwKBHRhZ3MYFSADKAkSMgoIbWV0YWRhdGEYFiADKAsyIC5zaWduYWxpbmcudjEuUm9vbS5NZXRhZGF0YUVudHJ5EjIKCHNldHRpbmdzGBcgAygLMiAuc2lnbmFsaW5nLnYxLlJvb20uU2V0dGluZ3NFbnRyeRIVCg10aHVtYm5haWxfdXJsGBggASgJEg4KBnJhdGluZxgZIAEoAhIUCgxyZXZpZXdfY291bnQYGiABKAUaLwoNTWV0YWRhdGFFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBGi8KDVNldHRpbmdzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASLPAQoNU2lnbmFsTWVzc2FnZRIPCgdyb29tX2lkGAEgASgJEhEKCWZyb21fdXNlchgCIAEoCRIWCg5mcm9tX3VzZXJfbmFtZRgDIAEoCRIPCgd0b191c2VyGAQgASgJEhQKDHRvX3VzZXJfbmFtZRgFIAEoCRImCgR0eXBlGAYgASgOMhguc2lnbmFsaW5nLnYxLlNpZ25hbFR5cGUSDwoHcGF5bG9hZBgHIAEoCRIPCgdtZXNzYWdlGAggASgJEhEKCXRpbWVzdGFtcBgJIAEoAyJqCg9Kb2luUm9vbVJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEhEKCXVzZXJfbmFtZRgDIAEoCRIQCghpc19vd25lchgEIAEoCBIQCghwYXNzd29yZBgFIAEoCSI0ChBKb2luUm9vbVJlc3BvbnNlEiAKBHJvb20YASABKAsyEi5zaWduYWxpbmcudjEuUm9vbSKSAQoRU2VuZFNpZ25hbFJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIRCglmcm9tX3VzZXIYAiABKAkSDwoHdG9fdXNlchgDIAEoCRImCgR0eXBlGAQgASgOMhguc2lnbmFsaW5nLnYxLlNpZ25hbFR5cGUSDwoHcGF5bG9hZBgFIAEoCRIPCgdtZXNzYWdlGAYgASgJIicKElNlbmRTaWduYWxSZXNwb25zZRIRCglkZWxpdmVyZWQYASABKAgiNAoQTGVhdmVSb29tUmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkiJAoRTGVhdmVSb29tUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCCKpAgoKUm9vbUZpbHRlchIPCgdyb29tX2lkGAEgASgJEigKBnN0YXR1cxgCIAEoDjIYLnNpZ25hbGluZy52MS5Sb29tU3RhdHVzEhMKC29ubHlfb25saW5lGAMgASgIEiwKCGNhdGVnb3J5GAQgASgOMhouc2lnbmFsaW5nLnYxLlJvb21DYXRlZ29yeRIpCglyb29tX3R5cGUYBSABKA4yFi5zaWduYWxpbmcudjEuUm9vbVR5cGUSEAoIb3duZXJfaWQYBiABKAkSFgoObWVtYmVyX3VzZXJfaWQYByABKAkSFAoMc2VhcmNoX3F1ZXJ5GAggASgJEhEKCW1pbl9wcmljZRgJIAEoAhIRCgltYXhfcHJpY2UYCiABKAISDAoEdGFncxgLIAMoCSKuAgoPR2V0Um9vbXNSZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSKAoGc3RhdHVzGAIgASgOMhguc2lnbmFsaW5nLnYxLlJvb21TdGF0dXMSEwoLb25seV9vbmxpbmUYAyABKAgSLAoIY2F0ZWdvcnkYBCABKA4yGi5zaWduYWxpbmcudjEuUm9vbUNhdGVnb3J5EikKCXJvb21fdHlwZRgFIAEoDjIWLnNpZ25hbGluZy52MS5Sb29tVHlwZRIQCghvd25lcl9pZBgGIAEoCRIWCg5tZW1iZXJfdXNlcl9pZBgHIAEoCRIUCgxzZWFyY2hfcXVlcnkYCCABKAkSEQoJbWluX3ByaWNlGAkgASgCEhEKCW1heF9wcmljZRgKIAEoAhIMCgR0YWdzGAsgAygJImwKEEdldFJvb21zUmVzcG9uc2USIAoEcm9vbRgBIAEoCzISLnNpZ25hbGluZy52MS5Sb29tEiEKBXJvb21zGAIgAygLMhIuc2lnbmFsaW5nLnYxLlJvb20SEwoLdG90YWxfY291bnQYAyABKAUitgMKEUNyZWF0ZVJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDAoEbmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRIpCglyb29tX3R5cGUYBCABKA4yFi5zaWduYWxpbmcudjEuUm9vbVR5cGUSLAoIY2F0ZWdvcnkYBSABKA4yGi5zaWduYWxpbmcudjEuUm9vbUNhdGVnb3J5EhgKEG1heF9wYXJ0aWNpcGFudHMYBiABKAUSEgoKaXNfcHJpdmF0ZRgHIAEoCBIQCghwYXNzd29yZBgIIAEoCRI/CghzZXR0aW5ncxgJIAMoCzItLnNpZ25hbGluZy52MS5DcmVhdGVSb29tUmVxdWVzdC5TZXR0aW5nc0VudHJ5EhgKEHByaWNlX3Blcl9taW51dGUYCiABKAISDAoEdGFncxgLIAMoCRIQCghvd25lcl9pZBgMIAEoCRIoCgZzdGF0dXMYDSABKA4yGC5zaWduYWxpbmcudjEuUm9vbVN0YXR1cxovCg1TZXR0aW5nc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiNgoSQ3JlYXRlUm9vbVJlc3BvbnNlEiAKBHJvb20YASABKAsyEi5zaWduYWxpbmcudjEuUm9vbSLwAgoZVXBkYXRlUm9vbVNldHRpbmdzUmVxdWVzdBIPCgdyb29tX2lkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkSDAoEbmFtZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEoCRIsCghjYXRlZ29yeRgFIAEoDjIaLnNpZ25hbGluZy52MS5Sb29tQ2F0ZWdvcnkSGAoQbWF4X3BhcnRpY2lwYW50cxgGIAEoBRISCgppc19wcml2YXRlGAcgASgIEhAKCHBhc3N3b3JkGAggASgJEkcKCHNldHRpbmdzGAkgAygLMjUuc2lnbmFsaW5nLnYxLlVwZGF0ZVJvb21TZXR0aW5nc1JlcXVlc3QuU2V0dGluZ3NFbnRyeRIYChBwcmljZV9wZXJfbWludXRlGAogASgCEgwKBHRhZ3MYCyADKAkaLwoNU2V0dGluZ3NFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIj4KGlVwZGF0ZVJvb21TZXR0aW5nc1Jlc3BvbnNlEiAKBHJvb20YASABKAsyEi5zaWduYWxpbmcudjEuUm9vbSI0ChBDbG9zZVJvb21SZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCSI1ChFDbG9zZVJvb21SZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIEg8KB21lc3NhZ2UYAiABKAkiNQoRUmVtb3ZlUm9vbVJlcXVlc3QSDwoHcm9vbV9pZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJIjYKElJlbW92ZVJvb21SZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIEg8KB21lc3NhZ2UYAiABKAkiqgEKE0NyZWF0ZUNsaWVudFJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRIMCgRuYW1lGAIgASgJEg8KB3Jvb21faWQYAyABKAkSEwoLcGhvbmVudW1iZXIYBCABKAkSJAoEcm9sZRgFIAEoDjIWLnNpZ25hbGluZy52MS5Vc2VyUm9sZRIoCgZzdGF0dXMYBiABKA4yGC5zaWduYWxpbmcudjEuVXNlclN0YXR1cyI8ChRDcmVhdGVDbGllbnRSZXNwb25zZRIkCgZjbGllbnQYASABKAsyFC5zaWduYWxpbmcudjEuQ2xpZW50IkMKFUdldFJvb21DbGllbnRzUmVxdWVzdBIqCgZmaWx0ZXIYASABKAsyGi5zaWduYWxpbmcudjEuQ2xpZW50RmlsdGVyIpkBChZHZXRSb29tQ2xpZW50c1Jlc3BvbnNlEiUKB2NsaWVudHMYASADKAsyFC5zaWduYWxpbmcudjEuQ2xpZW50Ei0KD3BlbmRpbmdfY2xpZW50cxgCIAMoCzIULnNpZ25hbGluZy52MS5DbGllbnQSEwoLdG90YWxfY291bnQYAyABKAUSFAoMb25saW5lX2NvdW50GAQgASgFIo8BChlVcGRhdGVDbGllbnRTdGF0dXNSZXF1ZXN0Eg8KB3Jvb21faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIoCgZzdGF0dXMYAyABKA4yGC5zaWduYWxpbmcudjEuVXNlclN0YXR1cxIQCghpc19tdXRlZBgEIAEoCBIUCgxpc192aWRlb19vZmYYBSABKAgiPgoaVXBkYXRlQ2xpZW50U3RhdHVzUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCBIPCgdtZXNzYWdlGAIgASgJIjcKE1JlbW92ZUNsaWVudFJlcXVlc3QSDwoHdXNlcl9pZBgBIAEoCRIPCgdyb29tX2lkGAIgASgJIjgKFFJlbW92ZUNsaWVudFJlc3BvbnNlEg8KB3N1Y2Nlc3MYASABKAgSDwoHbWVzc2FnZRgCIAEoCSqqAwoKU2lnbmFsVHlwZRIbChdTSUdOQUxfVFlQRV9VTlNQRUNJRklFRBAAEhUKEVNJR05BTF9UWVBFX09GRkVSEAESFgoSU0lHTkFMX1RZUEVfQU5TV0VSEAISGQoVU0lHTkFMX1RZUEVfQ0FORElEQVRFEAMSFQoRU0lHTkFMX1RZUEVfTEVBVkUQBBIUChBTSUdOQUxfVFlQRV9DSEFUEAUSFgoSU0lHTkFMX1VTRVJfSk9JTkVEEAYSHAoYU0lHTkFMX1RZUEVfUkVRVUVTVF9KT0lOEAcSHAoYU0lHTkFMX1RZUEVfQVBQUk9WRV9KT0lOEAgSGwoXU0lHTkFMX1RZUEVfUkVKRUNUX0pPSU4QCRIaChZTSUdOQUxfVFlQRV9PV05FUl9MRUZUEAoSGQoVU0lHTkFMX1RZUEVfUk9PTV9JTkZPEAsSHQoZU0lHTkFMX1RZUEVfUEVORElOR19VU0VSUxAMEhwKGFNJR05BTF9UWVBFX1JPT01fVVBEQVRFRBANEiMKH1NJR05BTF9UWVBFX1VTRVJfU1RBVFVTX0NIQU5HRUQQDiqDAQoIUm9vbVR5cGUSGQoVUk9PTV9UWVBFX1VOU1BFQ0lGSUVEEAASEgoOUk9PTV9UWVBFX1BFRVIQARIaChZST09NX1RZUEVfQ09OU1VMVEFUSU9OEAISFwoTUk9PTV9UWVBFX0JST0FEQ0FTVBADEhMKD1JPT01fVFlQRV9HUk9VUBAEKo0BCgpSb29tU3RhdHVzEhsKF1JPT01fU1RBVFVTX1VOU1BFQ0lGSUVEEAASFgoSUk9PTV9TVEFUVVNfQUNUSVZFEAESGAoUUk9PTV9TVEFUVVNfSU5BQ1RJVkUQAhIWChJST09NX1NUQVRVU19DTE9TRUQQAxIYChRST09NX1NUQVRVU19BUkNISVZFRBAEKucBCgxSb29tQ2F0ZWdvcnkSHQoZUk9PTV9DQVRFR09SWV9VTlNQRUNJRklFRBAAEhkKFVJPT01fQ0FURUdPUllfTUVESUNBTBABEiIKHlJPT01fQ0FURUdPUllfU0tJTl9IQUlSX0JFQVVUWRACEh4KGlJPT01fQ0FURUdPUllfTEFTRVJfQkVBVVRZEAMSIQodUk9PTV9DQVRFR09SWV9DT1NNRVRJQ19CRUFVVFkQBBIdChlST09NX0NBVEVHT1JZX0VEVUNBVElPTkFMEAUSFwoTUk9PTV9DQVRFR09SWV9PVEhFUhAGKoUBCghVc2VyUm9sZRIZChVVU0VSX1JPTEVfVU5TUEVDSUZJRUQQABITCg9VU0VSX1JPTEVfT1dORVIQARIZChVVU0VSX1JPTEVfUEFSVElDSVBBTlQQAhIVChFVU0VSX1JPTEVfUEVORElORxADEhcKE1VTRVJfUk9MRV9NT0RFUkFUT1IQBCpwCgpVc2VyU3RhdHVzEhsKF1VTRVJfU1RBVFVTX1VOU1BFQ0lGSUVEEAASFgoSVVNFUl9TVEFUVVNfT05MSU5FEAESFwoTVVNFUl9TVEFUVVNfT0ZGTElORRACEhQKEFVTRVJfU1RBVFVTX0FXQVkQAzKTCAoQU2lnbmFsaW5nU2VydmljZRJICghKb2luUm9vbRIdLnNpZ25hbGluZy52MS5Kb2luUm9vbVJlcXVlc3QaGy5zaWduYWxpbmcudjEuU2lnbmFsTWVzc2FnZTABEk8KClNlbmRTaWduYWwSHy5zaWduYWxpbmcudjEuU2VuZFNpZ25hbFJlcXVlc3QaIC5zaWduYWxpbmcudjEuU2VuZFNpZ25hbFJlc3BvbnNlEkwKCUxlYXZlUm9vbRIeLnNpZ25hbGluZy52MS5MZWF2ZVJvb21SZXF1ZXN0Gh8uc2lnbmFsaW5nLnYxLkxlYXZlUm9vbVJlc3BvbnNlEk8KCkNyZWF0ZVJvb20SHy5zaWduYWxpbmcudjEuQ3JlYXRlUm9vbVJlcXVlc3QaIC5zaWduYWxpbmcudjEuQ3JlYXRlUm9vbVJlc3BvbnNlEkkKCEdldFJvb21zEh0uc2lnbmFsaW5nLnYxLkdldFJvb21zUmVxdWVzdBoeLnNpZ25hbGluZy52MS5HZXRSb29tc1Jlc3BvbnNlEmcKElVwZGF0ZVJvb21TZXR0aW5ncxInLnNpZ25hbGluZy52MS5VcGRhdGVSb29tU2V0dGluZ3NSZXF1ZXN0Giguc2lnbmFsaW5nLnYxLlVwZGF0ZVJvb21TZXR0aW5nc1Jlc3BvbnNlEkwKCUNsb3NlUm9vbRIeLnNpZ25hbGluZy52MS5DbG9zZVJvb21SZXF1ZXN0Gh8uc2lnbmFsaW5nLnYxLkNsb3NlUm9vbVJlc3BvbnNlEk8KClJlbW92ZVJvb20SHy5zaWduYWxpbmcudjEuUmVtb3ZlUm9vbVJlcXVlc3QaIC5zaWduYWxpbmcudjEuUmVtb3ZlUm9vbVJlc3BvbnNlElUKDENyZWF0ZUNsaWVudBIhLnNpZ25hbGluZy52MS5DcmVhdGVDbGllbnRSZXF1ZXN0GiIuc2lnbmFsaW5nLnYxLkNyZWF0ZUNsaWVudFJlc3BvbnNlElsKDkdldFJvb21DbGllbnRzEiMuc2lnbmFsaW5nLnYxLkdldFJvb21DbGllbnRzUmVxdWVzdBokLnNpZ25hbGluZy52MS5HZXRSb29tQ2xpZW50c1Jlc3BvbnNlEmcKElVwZGF0ZUNsaWVudFN0YXR1cxInLnNpZ25hbGluZy52MS5VcGRhdGVDbGllbnRTdGF0dXNSZXF1ZXN0Giguc2lnbmFsaW5nLnYxLlVwZGF0ZUNsaWVudFN0YXR1c1Jlc3BvbnNlElUKDFJlbW92ZUNsaWVudBIhLnNpZ25hbGluZy52MS5SZW1vdmVDbGllbnRSZXF1ZXN0GiIuc2lnbmFsaW5nLnYxLlJlbW92ZUNsaWVudFJlc3BvbnNlQktaSWdpdGh1Yi5jb20vYXo1ODc0MC9jb25uZWN0LW1pY3Jvc2VydmljZXMtcHJvdG8vZ29sYW5nL3NpZ25hbGluZztzaWduYWxpbmdiBnByb3RvMw");
 
 /**
  * Client
@@ -29,48 +29,60 @@ export type Client = Message<"signaling.v1.Client"> & {
   userName: string;
 
   /**
-   * @generated from field: signaling.v1.UserRole role = 3;
+   * @generated from field: string room_id = 3;
+   */
+  roomId: string;
+
+  /**
+   * User's phone number.
+   *
+   * @generated from field: string user_phonenumber = 4;
+   */
+  userPhonenumber: string;
+
+  /**
+   * @generated from field: signaling.v1.UserRole role = 5;
    */
   role: UserRole;
 
   /**
-   * @generated from field: signaling.v1.UserStatus status = 4;
+   * @generated from field: signaling.v1.UserStatus status = 6;
    */
   status: UserStatus;
 
   /**
-   * @generated from field: string joined_at = 5;
+   * @generated from field: string joined_at = 7;
    */
   joinedAt: string;
 
   /**
-   * @generated from field: string last_seen_at = 6;
+   * @generated from field: string last_seen_at = 8;
    */
   lastSeenAt: string;
 
   /**
-   * @generated from field: map<string, string> metadata = 7;
+   * @generated from field: map<string, string> metadata = 9;
    */
   metadata: { [key: string]: string };
 
   /**
    * مدت حضور (ثانیه) - فقط برای اعضای روم
    *
-   * @generated from field: int32 duration = 8;
+   * @generated from field: int32 duration = 10;
    */
   duration: number;
 
   /**
    * میکروفن خاموش؟ - فقط برای اعضای روم
    *
-   * @generated from field: bool is_muted = 9;
+   * @generated from field: bool is_muted = 11;
    */
   isMuted: boolean;
 
   /**
    * ویدیو خاموش؟ - فقط برای اعضای روم
    *
-   * @generated from field: bool is_video_off = 10;
+   * @generated from field: bool is_video_off = 12;
    */
   isVideoOff: boolean;
 };
@@ -81,6 +93,49 @@ export type Client = Message<"signaling.v1.Client"> & {
  */
 export const ClientSchema: GenMessage<Client> = /*@__PURE__*/
   messageDesc(file_signaling_signaling, 0);
+
+/**
+ * @generated from message signaling.v1.ClientFilter
+ */
+export type ClientFilter = Message<"signaling.v1.ClientFilter"> & {
+  /**
+   * برای دریافت   یک روم خاص
+   *
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * برای دریافت کلاینت های یک روم خاص
+   *
+   * @generated from field: string room_id = 2;
+   */
+  roomId: string;
+
+  /**
+   * فیلتر بر اساس وضعیت
+   *
+   * @generated from field: int32 status = 3;
+   */
+  status: number;
+
+  /**
+   * @generated from field: string phonenumber = 4;
+   */
+  phonenumber: string;
+
+  /**
+   * @generated from field: int32 role = 5;
+   */
+  role: number;
+};
+
+/**
+ * Describes the message signaling.v1.ClientFilter.
+ * Use `create(ClientFilterSchema)` to create a new message.
+ */
+export const ClientFilterSchema: GenMessage<ClientFilter> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 1);
 
 /**
  * Room
@@ -262,7 +317,7 @@ export type Room = Message<"signaling.v1.Room"> & {
  * Use `create(RoomSchema)` to create a new message.
  */
 export const RoomSchema: GenMessage<Room> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 1);
+  messageDesc(file_signaling_signaling, 2);
 
 /**
  * SignalMessage (برای stream)
@@ -321,7 +376,7 @@ export type SignalMessage = Message<"signaling.v1.SignalMessage"> & {
  * Use `create(SignalMessageSchema)` to create a new message.
  */
 export const SignalMessageSchema: GenMessage<SignalMessage> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 2);
+  messageDesc(file_signaling_signaling, 3);
 
 /**
  * JoinRoom
@@ -360,7 +415,7 @@ export type JoinRoomRequest = Message<"signaling.v1.JoinRoomRequest"> & {
  * Use `create(JoinRoomRequestSchema)` to create a new message.
  */
 export const JoinRoomRequestSchema: GenMessage<JoinRoomRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 3);
+  messageDesc(file_signaling_signaling, 4);
 
 /**
  * @generated from message signaling.v1.JoinRoomResponse
@@ -377,7 +432,7 @@ export type JoinRoomResponse = Message<"signaling.v1.JoinRoomResponse"> & {
  * Use `create(JoinRoomResponseSchema)` to create a new message.
  */
 export const JoinRoomResponseSchema: GenMessage<JoinRoomResponse> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 4);
+  messageDesc(file_signaling_signaling, 5);
 
 /**
  * SendSignal
@@ -421,7 +476,7 @@ export type SendSignalRequest = Message<"signaling.v1.SendSignalRequest"> & {
  * Use `create(SendSignalRequestSchema)` to create a new message.
  */
 export const SendSignalRequestSchema: GenMessage<SendSignalRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 5);
+  messageDesc(file_signaling_signaling, 6);
 
 /**
  * @generated from message signaling.v1.SendSignalResponse
@@ -438,7 +493,7 @@ export type SendSignalResponse = Message<"signaling.v1.SendSignalResponse"> & {
  * Use `create(SendSignalResponseSchema)` to create a new message.
  */
 export const SendSignalResponseSchema: GenMessage<SendSignalResponse> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 6);
+  messageDesc(file_signaling_signaling, 7);
 
 /**
  * LeaveRoom
@@ -462,7 +517,7 @@ export type LeaveRoomRequest = Message<"signaling.v1.LeaveRoomRequest"> & {
  * Use `create(LeaveRoomRequestSchema)` to create a new message.
  */
 export const LeaveRoomRequestSchema: GenMessage<LeaveRoomRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 7);
+  messageDesc(file_signaling_signaling, 8);
 
 /**
  * @generated from message signaling.v1.LeaveRoomResponse
@@ -479,11 +534,100 @@ export type LeaveRoomResponse = Message<"signaling.v1.LeaveRoomResponse"> & {
  * Use `create(LeaveRoomResponseSchema)` to create a new message.
  */
 export const LeaveRoomResponseSchema: GenMessage<LeaveRoomResponse> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 8);
+  messageDesc(file_signaling_signaling, 9);
 
 /**
  * GetRooms
  *
+ * @generated from message signaling.v1.RoomFilter
+ */
+export type RoomFilter = Message<"signaling.v1.RoomFilter"> & {
+  /**
+   * فیلتر بر اساس شناسه (برای دریافت یک روم خاص)
+   *
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * فیلتر بر اساس وضعیت
+   *
+   * @generated from field: signaling.v1.RoomStatus status = 2;
+   */
+  status: RoomStatus;
+
+  /**
+   * فقط روم‌های آنلاین
+   *
+   * @generated from field: bool only_online = 3;
+   */
+  onlyOnline: boolean;
+
+  /**
+   * فیلتر بر اساس دسته‌بندی کلی
+   *
+   * @generated from field: signaling.v1.RoomCategory category = 4;
+   */
+  category: RoomCategory;
+
+  /**
+   * فیلتر بر اساس نوع روم
+   *
+   * @generated from field: signaling.v1.RoomType room_type = 5;
+   */
+  roomType: RoomType;
+
+  /**
+   * فیلتر بر اساس صاحب روم
+   *
+   * @generated from field: string owner_id = 6;
+   */
+  ownerId: string;
+
+  /**
+   * فیلتر بر اساس کاربر عضو
+   *
+   * روم‌هایی که کاربر خاصی عضو است
+   *
+   * @generated from field: string member_user_id = 7;
+   */
+  memberUserId: string;
+
+  /**
+   * جستجو در متن (name و description)
+   *
+   * @generated from field: string search_query = 8;
+   */
+  searchQuery: string;
+
+  /**
+   * محدوده قیمت
+   *
+   * @generated from field: float min_price = 9;
+   */
+  minPrice: number;
+
+  /**
+   * @generated from field: float max_price = 10;
+   */
+  maxPrice: number;
+
+  /**
+   * برچسب‌ها
+   *
+   * @generated from field: repeated string tags = 11;
+   */
+  tags: string[];
+};
+
+/**
+ * Describes the message signaling.v1.RoomFilter.
+ * Use `create(RoomFilterSchema)` to create a new message.
+ */
+export const RoomFilterSchema: GenMessage<RoomFilter> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 10);
+
+/**
  * @generated from message signaling.v1.GetRoomsRequest
  */
 export type GetRoomsRequest = Message<"signaling.v1.GetRoomsRequest"> & {
@@ -572,7 +716,7 @@ export type GetRoomsRequest = Message<"signaling.v1.GetRoomsRequest"> & {
  * Use `create(GetRoomsRequestSchema)` to create a new message.
  */
 export const GetRoomsRequestSchema: GenMessage<GetRoomsRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 9);
+  messageDesc(file_signaling_signaling, 11);
 
 /**
  * @generated from message signaling.v1.GetRoomsResponse
@@ -605,7 +749,7 @@ export type GetRoomsResponse = Message<"signaling.v1.GetRoomsResponse"> & {
  * Use `create(GetRoomsResponseSchema)` to create a new message.
  */
 export const GetRoomsResponseSchema: GenMessage<GetRoomsResponse> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 10);
+  messageDesc(file_signaling_signaling, 12);
 
 /**
  * CreateRoom
@@ -669,6 +813,16 @@ export type CreateRoomRequest = Message<"signaling.v1.CreateRoomRequest"> & {
    * @generated from field: repeated string tags = 11;
    */
   tags: string[];
+
+  /**
+   * @generated from field: string owner_id = 12;
+   */
+  ownerId: string;
+
+  /**
+   * @generated from field: signaling.v1.RoomStatus status = 13;
+   */
+  status: RoomStatus;
 };
 
 /**
@@ -676,7 +830,7 @@ export type CreateRoomRequest = Message<"signaling.v1.CreateRoomRequest"> & {
  * Use `create(CreateRoomRequestSchema)` to create a new message.
  */
 export const CreateRoomRequestSchema: GenMessage<CreateRoomRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 11);
+  messageDesc(file_signaling_signaling, 13);
 
 /**
  * @generated from message signaling.v1.CreateRoomResponse
@@ -693,7 +847,7 @@ export type CreateRoomResponse = Message<"signaling.v1.CreateRoomResponse"> & {
  * Use `create(CreateRoomResponseSchema)` to create a new message.
  */
 export const CreateRoomResponseSchema: GenMessage<CreateRoomResponse> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 12);
+  messageDesc(file_signaling_signaling, 14);
 
 /**
  * UpdateRoomSettings
@@ -764,7 +918,7 @@ export type UpdateRoomSettingsRequest = Message<"signaling.v1.UpdateRoomSettings
  * Use `create(UpdateRoomSettingsRequestSchema)` to create a new message.
  */
 export const UpdateRoomSettingsRequestSchema: GenMessage<UpdateRoomSettingsRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 13);
+  messageDesc(file_signaling_signaling, 15);
 
 /**
  * @generated from message signaling.v1.UpdateRoomSettingsResponse
@@ -781,7 +935,7 @@ export type UpdateRoomSettingsResponse = Message<"signaling.v1.UpdateRoomSetting
  * Use `create(UpdateRoomSettingsResponseSchema)` to create a new message.
  */
 export const UpdateRoomSettingsResponseSchema: GenMessage<UpdateRoomSettingsResponse> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 14);
+  messageDesc(file_signaling_signaling, 16);
 
 /**
  * CloseRoom
@@ -807,7 +961,7 @@ export type CloseRoomRequest = Message<"signaling.v1.CloseRoomRequest"> & {
  * Use `create(CloseRoomRequestSchema)` to create a new message.
  */
 export const CloseRoomRequestSchema: GenMessage<CloseRoomRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 15);
+  messageDesc(file_signaling_signaling, 17);
 
 /**
  * @generated from message signaling.v1.CloseRoomResponse
@@ -817,6 +971,11 @@ export type CloseRoomResponse = Message<"signaling.v1.CloseRoomResponse"> & {
    * @generated from field: bool success = 1;
    */
   success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
 };
 
 /**
@@ -824,7 +983,116 @@ export type CloseRoomResponse = Message<"signaling.v1.CloseRoomResponse"> & {
  * Use `create(CloseRoomResponseSchema)` to create a new message.
  */
 export const CloseRoomResponseSchema: GenMessage<CloseRoomResponse> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 16);
+  messageDesc(file_signaling_signaling, 18);
+
+/**
+ * RemoveRoom
+ *
+ * @generated from message signaling.v1.RemoveRoomRequest
+ */
+export type RemoveRoomRequest = Message<"signaling.v1.RemoveRoomRequest"> & {
+  /**
+   * @generated from field: string room_id = 1;
+   */
+  roomId: string;
+
+  /**
+   * برای اعتبارسنجی (فقط owner می‌تواند)
+   *
+   * @generated from field: string user_id = 2;
+   */
+  userId: string;
+};
+
+/**
+ * Describes the message signaling.v1.RemoveRoomRequest.
+ * Use `create(RemoveRoomRequestSchema)` to create a new message.
+ */
+export const RemoveRoomRequestSchema: GenMessage<RemoveRoomRequest> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 19);
+
+/**
+ * @generated from message signaling.v1.RemoveRoomResponse
+ */
+export type RemoveRoomResponse = Message<"signaling.v1.RemoveRoomResponse"> & {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message signaling.v1.RemoveRoomResponse.
+ * Use `create(RemoveRoomResponseSchema)` to create a new message.
+ */
+export const RemoveRoomResponseSchema: GenMessage<RemoveRoomResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 20);
+
+/**
+ * CreateClient 
+ *
+ * @generated from message signaling.v1.CreateClientRequest
+ */
+export type CreateClientRequest = Message<"signaling.v1.CreateClientRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: string name = 2;
+   */
+  name: string;
+
+  /**
+   * @generated from field: string room_id = 3;
+   */
+  roomId: string;
+
+  /**
+   * @generated from field: string phonenumber = 4;
+   */
+  phonenumber: string;
+
+  /**
+   * @generated from field: signaling.v1.UserRole role = 5;
+   */
+  role: UserRole;
+
+  /**
+   * @generated from field: signaling.v1.UserStatus status = 6;
+   */
+  status: UserStatus;
+};
+
+/**
+ * Describes the message signaling.v1.CreateClientRequest.
+ * Use `create(CreateClientRequestSchema)` to create a new message.
+ */
+export const CreateClientRequestSchema: GenMessage<CreateClientRequest> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 21);
+
+/**
+ * @generated from message signaling.v1.CreateClientResponse
+ */
+export type CreateClientResponse = Message<"signaling.v1.CreateClientResponse"> & {
+  /**
+   * @generated from field: signaling.v1.Client client = 1;
+   */
+  client?: Client;
+};
+
+/**
+ * Describes the message signaling.v1.CreateClientResponse.
+ * Use `create(CreateClientResponseSchema)` to create a new message.
+ */
+export const CreateClientResponseSchema: GenMessage<CreateClientResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 22);
 
 /**
  * GetRoomClients
@@ -833,23 +1101,9 @@ export const CloseRoomResponseSchema: GenMessage<CloseRoomResponse> = /*@__PURE_
  */
 export type GetRoomClientsRequest = Message<"signaling.v1.GetRoomClientsRequest"> & {
   /**
-   * @generated from field: string room_id = 1;
+   * @generated from field: signaling.v1.ClientFilter filter = 1;
    */
-  roomId: string;
-
-  /**
-   * برای اعتبارسنجی
-   *
-   * @generated from field: string user_id = 2;
-   */
-  userId: string;
-
-  /**
-   * آیا کاربران در انتظار هم برگردند؟
-   *
-   * @generated from field: bool include_pending = 3;
-   */
-  includePending: boolean;
+  filter?: ClientFilter;
 };
 
 /**
@@ -857,7 +1111,7 @@ export type GetRoomClientsRequest = Message<"signaling.v1.GetRoomClientsRequest"
  * Use `create(GetRoomClientsRequestSchema)` to create a new message.
  */
 export const GetRoomClientsRequestSchema: GenMessage<GetRoomClientsRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 17);
+  messageDesc(file_signaling_signaling, 23);
 
 /**
  * @generated from message signaling.v1.GetRoomClientsResponse
@@ -893,7 +1147,7 @@ export type GetRoomClientsResponse = Message<"signaling.v1.GetRoomClientsRespons
  * Use `create(GetRoomClientsResponseSchema)` to create a new message.
  */
 export const GetRoomClientsResponseSchema: GenMessage<GetRoomClientsResponse> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 18);
+  messageDesc(file_signaling_signaling, 24);
 
 /**
  * UpdateClientStatus
@@ -932,7 +1186,7 @@ export type UpdateClientStatusRequest = Message<"signaling.v1.UpdateClientStatus
  * Use `create(UpdateClientStatusRequestSchema)` to create a new message.
  */
 export const UpdateClientStatusRequestSchema: GenMessage<UpdateClientStatusRequest> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 19);
+  messageDesc(file_signaling_signaling, 25);
 
 /**
  * @generated from message signaling.v1.UpdateClientStatusResponse
@@ -942,6 +1196,11 @@ export type UpdateClientStatusResponse = Message<"signaling.v1.UpdateClientStatu
    * @generated from field: bool success = 1;
    */
   success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
 };
 
 /**
@@ -949,7 +1208,51 @@ export type UpdateClientStatusResponse = Message<"signaling.v1.UpdateClientStatu
  * Use `create(UpdateClientStatusResponseSchema)` to create a new message.
  */
 export const UpdateClientStatusResponseSchema: GenMessage<UpdateClientStatusResponse> = /*@__PURE__*/
-  messageDesc(file_signaling_signaling, 20);
+  messageDesc(file_signaling_signaling, 26);
+
+/**
+ * @generated from message signaling.v1.RemoveClientRequest
+ */
+export type RemoveClientRequest = Message<"signaling.v1.RemoveClientRequest"> & {
+  /**
+   * @generated from field: string user_id = 1;
+   */
+  userId: string;
+
+  /**
+   * @generated from field: string room_id = 2;
+   */
+  roomId: string;
+};
+
+/**
+ * Describes the message signaling.v1.RemoveClientRequest.
+ * Use `create(RemoveClientRequestSchema)` to create a new message.
+ */
+export const RemoveClientRequestSchema: GenMessage<RemoveClientRequest> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 27);
+
+/**
+ * @generated from message signaling.v1.RemoveClientResponse
+ */
+export type RemoveClientResponse = Message<"signaling.v1.RemoveClientResponse"> & {
+  /**
+   * @generated from field: bool success = 1;
+   */
+  success: boolean;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+};
+
+/**
+ * Describes the message signaling.v1.RemoveClientResponse.
+ * Use `create(RemoveClientResponseSchema)` to create a new message.
+ */
+export const RemoveClientResponseSchema: GenMessage<RemoveClientResponse> = /*@__PURE__*/
+  messageDesc(file_signaling_signaling, 28);
 
 /**
  * Signal Types
@@ -1315,22 +1618,20 @@ export const SignalingService: GenService<{
   /**
    * متد دریافت روم‌ها با فیلتر
    *
-   * @generated from rpc signaling.v1.SignalingService.GetRooms
-   */
-  getRooms: {
-    methodKind: "unary";
-    input: typeof GetRoomsRequestSchema;
-    output: typeof GetRoomsResponseSchema;
-  },
-  /**
-   * متدهای مدیریت روم
-   *
    * @generated from rpc signaling.v1.SignalingService.CreateRoom
    */
   createRoom: {
     methodKind: "unary";
     input: typeof CreateRoomRequestSchema;
     output: typeof CreateRoomResponseSchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.GetRooms
+   */
+  getRooms: {
+    methodKind: "unary";
+    input: typeof GetRoomsRequestSchema;
+    output: typeof GetRoomsResponseSchema;
   },
   /**
    * @generated from rpc signaling.v1.SignalingService.UpdateRoomSettings
@@ -1349,8 +1650,24 @@ export const SignalingService: GenService<{
     output: typeof CloseRoomResponseSchema;
   },
   /**
+   * @generated from rpc signaling.v1.SignalingService.RemoveRoom
+   */
+  removeRoom: {
+    methodKind: "unary";
+    input: typeof RemoveRoomRequestSchema;
+    output: typeof RemoveRoomResponseSchema;
+  },
+  /**
    * متدهای کاربران
    *
+   * @generated from rpc signaling.v1.SignalingService.CreateClient
+   */
+  createClient: {
+    methodKind: "unary";
+    input: typeof CreateClientRequestSchema;
+    output: typeof CreateClientResponseSchema;
+  },
+  /**
    * @generated from rpc signaling.v1.SignalingService.GetRoomClients
    */
   getRoomClients: {
@@ -1365,6 +1682,14 @@ export const SignalingService: GenService<{
     methodKind: "unary";
     input: typeof UpdateClientStatusRequestSchema;
     output: typeof UpdateClientStatusResponseSchema;
+  },
+  /**
+   * @generated from rpc signaling.v1.SignalingService.RemoveClient
+   */
+  removeClient: {
+    methodKind: "unary";
+    input: typeof RemoveClientRequestSchema;
+    output: typeof RemoveClientResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_signaling_signaling, 0);
