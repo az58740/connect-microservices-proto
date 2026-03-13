@@ -433,34 +433,9 @@ export declare const JoinRoomResponseSchema: GenMessage<JoinRoomResponse>;
  */
 export declare type SendSignalRequest = Message<"signaling.v1.SendSignalRequest"> & {
   /**
-   * @generated from field: string room_id = 1;
+   * @generated from field: signaling.v1.SignalMessage signal = 1;
    */
-  roomId: string;
-
-  /**
-   * @generated from field: string from_user = 2;
-   */
-  fromUser: string;
-
-  /**
-   * @generated from field: string to_user = 3;
-   */
-  toUser: string;
-
-  /**
-   * @generated from field: signaling.v1.SignalType type = 4;
-   */
-  type: SignalType;
-
-  /**
-   * @generated from field: string payload = 5;
-   */
-  payload: string;
-
-  /**
-   * @generated from field: string message = 6;
-   */
-  message: string;
+  signal?: SignalMessage;
 };
 
 /**

@@ -198,12 +198,7 @@ message JoinRoomResponse {
 
 // SendSignal
 message SendSignalRequest {
-  string room_id = 1;
-  string from_user = 2;
-  string to_user = 3;
-  SignalType type = 4;
-  string payload = 5;
-  string message = 6;
+SignalMessage signal=1;
 }
 
 message SendSignalResponse {
