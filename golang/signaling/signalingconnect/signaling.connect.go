@@ -71,23 +71,6 @@ const (
 	SignalingServiceRemoveClientProcedure = "/signaling.v1.SignalingService/RemoveClient"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	signalingServiceServiceDescriptor                  = signaling.File_signaling_signaling_proto.Services().ByName("SignalingService")
-	signalingServiceJoinRoomMethodDescriptor           = signalingServiceServiceDescriptor.Methods().ByName("JoinRoom")
-	signalingServiceSendSignalMethodDescriptor         = signalingServiceServiceDescriptor.Methods().ByName("SendSignal")
-	signalingServiceLeaveRoomMethodDescriptor          = signalingServiceServiceDescriptor.Methods().ByName("LeaveRoom")
-	signalingServiceCreateRoomMethodDescriptor         = signalingServiceServiceDescriptor.Methods().ByName("CreateRoom")
-	signalingServiceGetRoomsMethodDescriptor           = signalingServiceServiceDescriptor.Methods().ByName("GetRooms")
-	signalingServiceUpdateRoomSettingsMethodDescriptor = signalingServiceServiceDescriptor.Methods().ByName("UpdateRoomSettings")
-	signalingServiceCloseRoomMethodDescriptor          = signalingServiceServiceDescriptor.Methods().ByName("CloseRoom")
-	signalingServiceRemoveRoomMethodDescriptor         = signalingServiceServiceDescriptor.Methods().ByName("RemoveRoom")
-	signalingServiceCreateClientMethodDescriptor       = signalingServiceServiceDescriptor.Methods().ByName("CreateClient")
-	signalingServiceGetRoomClientsMethodDescriptor     = signalingServiceServiceDescriptor.Methods().ByName("GetRoomClients")
-	signalingServiceUpdateClientStatusMethodDescriptor = signalingServiceServiceDescriptor.Methods().ByName("UpdateClientStatus")
-	signalingServiceRemoveClientMethodDescriptor       = signalingServiceServiceDescriptor.Methods().ByName("RemoveClient")
-)
-
 // SignalingServiceClient is a client for the signaling.v1.SignalingService service.
 type SignalingServiceClient interface {
 	// متدهای پایه
@@ -116,77 +99,78 @@ type SignalingServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewSignalingServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) SignalingServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	signalingServiceMethods := signaling.File_signaling_signaling_proto.Services().ByName("SignalingService").Methods()
 	return &signalingServiceClient{
 		joinRoom: connect.NewClient[signaling.JoinRoomRequest, signaling.SignalMessage](
 			httpClient,
 			baseURL+SignalingServiceJoinRoomProcedure,
-			connect.WithSchema(signalingServiceJoinRoomMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("JoinRoom")),
 			connect.WithClientOptions(opts...),
 		),
 		sendSignal: connect.NewClient[signaling.SendSignalRequest, signaling.SendSignalResponse](
 			httpClient,
 			baseURL+SignalingServiceSendSignalProcedure,
-			connect.WithSchema(signalingServiceSendSignalMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("SendSignal")),
 			connect.WithClientOptions(opts...),
 		),
 		leaveRoom: connect.NewClient[signaling.LeaveRoomRequest, signaling.LeaveRoomResponse](
 			httpClient,
 			baseURL+SignalingServiceLeaveRoomProcedure,
-			connect.WithSchema(signalingServiceLeaveRoomMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("LeaveRoom")),
 			connect.WithClientOptions(opts...),
 		),
 		createRoom: connect.NewClient[signaling.CreateRoomRequest, signaling.CreateRoomResponse](
 			httpClient,
 			baseURL+SignalingServiceCreateRoomProcedure,
-			connect.WithSchema(signalingServiceCreateRoomMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("CreateRoom")),
 			connect.WithClientOptions(opts...),
 		),
 		getRooms: connect.NewClient[signaling.GetRoomsRequest, signaling.GetRoomsResponse](
 			httpClient,
 			baseURL+SignalingServiceGetRoomsProcedure,
-			connect.WithSchema(signalingServiceGetRoomsMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("GetRooms")),
 			connect.WithClientOptions(opts...),
 		),
 		updateRoomSettings: connect.NewClient[signaling.UpdateRoomSettingsRequest, signaling.UpdateRoomSettingsResponse](
 			httpClient,
 			baseURL+SignalingServiceUpdateRoomSettingsProcedure,
-			connect.WithSchema(signalingServiceUpdateRoomSettingsMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("UpdateRoomSettings")),
 			connect.WithClientOptions(opts...),
 		),
 		closeRoom: connect.NewClient[signaling.CloseRoomRequest, signaling.CloseRoomResponse](
 			httpClient,
 			baseURL+SignalingServiceCloseRoomProcedure,
-			connect.WithSchema(signalingServiceCloseRoomMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("CloseRoom")),
 			connect.WithClientOptions(opts...),
 		),
 		removeRoom: connect.NewClient[signaling.RemoveRoomRequest, signaling.RemoveRoomResponse](
 			httpClient,
 			baseURL+SignalingServiceRemoveRoomProcedure,
-			connect.WithSchema(signalingServiceRemoveRoomMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("RemoveRoom")),
 			connect.WithClientOptions(opts...),
 		),
 		createClient: connect.NewClient[signaling.CreateClientRequest, signaling.CreateClientResponse](
 			httpClient,
 			baseURL+SignalingServiceCreateClientProcedure,
-			connect.WithSchema(signalingServiceCreateClientMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("CreateClient")),
 			connect.WithClientOptions(opts...),
 		),
 		getRoomClients: connect.NewClient[signaling.GetRoomClientsRequest, signaling.GetRoomClientsResponse](
 			httpClient,
 			baseURL+SignalingServiceGetRoomClientsProcedure,
-			connect.WithSchema(signalingServiceGetRoomClientsMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("GetRoomClients")),
 			connect.WithClientOptions(opts...),
 		),
 		updateClientStatus: connect.NewClient[signaling.UpdateClientStatusRequest, signaling.UpdateClientStatusResponse](
 			httpClient,
 			baseURL+SignalingServiceUpdateClientStatusProcedure,
-			connect.WithSchema(signalingServiceUpdateClientStatusMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("UpdateClientStatus")),
 			connect.WithClientOptions(opts...),
 		),
 		removeClient: connect.NewClient[signaling.RemoveClientRequest, signaling.RemoveClientResponse](
 			httpClient,
 			baseURL+SignalingServiceRemoveClientProcedure,
-			connect.WithSchema(signalingServiceRemoveClientMethodDescriptor),
+			connect.WithSchema(signalingServiceMethods.ByName("RemoveClient")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -293,76 +277,77 @@ type SignalingServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewSignalingServiceHandler(svc SignalingServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	signalingServiceMethods := signaling.File_signaling_signaling_proto.Services().ByName("SignalingService").Methods()
 	signalingServiceJoinRoomHandler := connect.NewServerStreamHandler(
 		SignalingServiceJoinRoomProcedure,
 		svc.JoinRoom,
-		connect.WithSchema(signalingServiceJoinRoomMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("JoinRoom")),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceSendSignalHandler := connect.NewUnaryHandler(
 		SignalingServiceSendSignalProcedure,
 		svc.SendSignal,
-		connect.WithSchema(signalingServiceSendSignalMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("SendSignal")),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceLeaveRoomHandler := connect.NewUnaryHandler(
 		SignalingServiceLeaveRoomProcedure,
 		svc.LeaveRoom,
-		connect.WithSchema(signalingServiceLeaveRoomMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("LeaveRoom")),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceCreateRoomHandler := connect.NewUnaryHandler(
 		SignalingServiceCreateRoomProcedure,
 		svc.CreateRoom,
-		connect.WithSchema(signalingServiceCreateRoomMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("CreateRoom")),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceGetRoomsHandler := connect.NewUnaryHandler(
 		SignalingServiceGetRoomsProcedure,
 		svc.GetRooms,
-		connect.WithSchema(signalingServiceGetRoomsMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("GetRooms")),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceUpdateRoomSettingsHandler := connect.NewUnaryHandler(
 		SignalingServiceUpdateRoomSettingsProcedure,
 		svc.UpdateRoomSettings,
-		connect.WithSchema(signalingServiceUpdateRoomSettingsMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("UpdateRoomSettings")),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceCloseRoomHandler := connect.NewUnaryHandler(
 		SignalingServiceCloseRoomProcedure,
 		svc.CloseRoom,
-		connect.WithSchema(signalingServiceCloseRoomMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("CloseRoom")),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceRemoveRoomHandler := connect.NewUnaryHandler(
 		SignalingServiceRemoveRoomProcedure,
 		svc.RemoveRoom,
-		connect.WithSchema(signalingServiceRemoveRoomMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("RemoveRoom")),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceCreateClientHandler := connect.NewUnaryHandler(
 		SignalingServiceCreateClientProcedure,
 		svc.CreateClient,
-		connect.WithSchema(signalingServiceCreateClientMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("CreateClient")),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceGetRoomClientsHandler := connect.NewUnaryHandler(
 		SignalingServiceGetRoomClientsProcedure,
 		svc.GetRoomClients,
-		connect.WithSchema(signalingServiceGetRoomClientsMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("GetRoomClients")),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceUpdateClientStatusHandler := connect.NewUnaryHandler(
 		SignalingServiceUpdateClientStatusProcedure,
 		svc.UpdateClientStatus,
-		connect.WithSchema(signalingServiceUpdateClientStatusMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("UpdateClientStatus")),
 		connect.WithHandlerOptions(opts...),
 	)
 	signalingServiceRemoveClientHandler := connect.NewUnaryHandler(
 		SignalingServiceRemoveClientProcedure,
 		svc.RemoveClient,
-		connect.WithSchema(signalingServiceRemoveClientMethodDescriptor),
+		connect.WithSchema(signalingServiceMethods.ByName("RemoveClient")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/signaling.v1.SignalingService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
