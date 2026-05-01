@@ -13,18 +13,8 @@ fi
 #./generate.sh npx buf generate
 #./generate.sh buf generate
 
-#npm install --save-dev @bufbuild/protoc-gen-es @connectrpc/protoc-gen-connect-es
+# export PATH="$PATH:$(pwd)/node_modules/.bin"S
 
-# Install protoc-gen-go
-#go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-
-# Install protoc-gen-connect-go
-#go install connectrpc.com/connect/cmd/protoc-gen-connect-go@latest
-# Check if GOPATH/bin is in PATH
-#echo $PATH | grep $(go env GOPATH)/bin
-
-# If not, add it (add this to your ~/.bashrc or ~/.zshrc for permanence)
-#export PATH=$PATH:$(go env GOPATH)/bin
 
 
 
