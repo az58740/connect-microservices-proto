@@ -10,10 +10,13 @@ else
 fi
 
 # bash 
+# export PATH="$PATH:$(pwd)/node_modules/.bin"
 #./generate.sh npx buf generate
+
+#export PATH=$PATH:/c/Users/EMZA/go/bin
 #./generate.sh buf generate
 
-# export PATH="$PATH:$(pwd)/node_modules/.bin"S
+
 
 
 
