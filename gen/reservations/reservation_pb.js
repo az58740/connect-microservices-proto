@@ -129,6 +129,7 @@ export const FacilityGroup = /*@__PURE__*/ proto3.makeEnum(
     {no: 10, name: "PROFESSIONAL_SERVICES"},
     {no: 11, name: "INDUSTRIAL_FACILITIES"},
     {no: 12, name: "ONLINE_BUSINESSES"},
+    {no: 13, name: "ONLINE_CONSULTATION"},
   ],
 );
 
@@ -215,6 +216,9 @@ export const FacilityTitle = /*@__PURE__*/ proto3.makeEnum(
     {no: 72, name: "FREELANCE_PROFESSIONAL"},
     {no: 73, name: "ONLINE_SHOP"},
     {no: 74, name: "REMOTE_WORKSPACE"},
+    {no: 75, name: "ONLINE_BEAUTY_CONSULTATION"},
+    {no: 76, name: "ONLINE_PSYCHOLOGICAL_CONSULTATION"},
+    {no: 77, name: "ONLINE_SKINCARE_PRODUCT_CONSULTATION"},
   ],
 );
 

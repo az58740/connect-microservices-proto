@@ -361,6 +361,15 @@ export declare enum FacilityGroup {
    * @generated from enum value: ONLINE_BUSINESSES = 12;
    */
   ONLINE_BUSINESSES = 12,
+
+  /**
+   * 13. مشاوره آنلاین
+   *
+   * شامل:مشاوره پوست مو و زیبایی , روانشناسی و ...
+   *
+   * @generated from enum value: ONLINE_CONSULTATION = 13;
+   */
+  ONLINE_CONSULTATION = 13,
 }
 
 /**
@@ -919,6 +928,29 @@ export declare enum FacilityTitle {
    * @generated from enum value: REMOTE_WORKSPACE = 74;
    */
   REMOTE_WORKSPACE = 74,
+
+  /**
+   * گروه: Online Consultation — مشاوره آنلاین
+   *
+   *  پوست مو و زیبایی مشاوره آنلاین | Online Consultation (e.g., beauty, psychology)
+   *
+   * @generated from enum value: ONLINE_BEAUTY_CONSULTATION = 75;
+   */
+  ONLINE_BEAUTY_CONSULTATION = 75,
+
+  /**
+   * مشاوره روانشناسی آنلاین | Online Psychological Consultation
+   *
+   * @generated from enum value: ONLINE_PSYCHOLOGICAL_CONSULTATION = 76;
+   */
+  ONLINE_PSYCHOLOGICAL_CONSULTATION = 76,
+
+  /**
+   *   مشاوره محصولات مراقبت پوست و مو | Online Consultation for skincare products
+   *
+   * @generated from enum value: ONLINE_SKINCARE_PRODUCT_CONSULTATION = 77;
+   */
+  ONLINE_SKINCARE_PRODUCT_CONSULTATION = 77,
 }
 
 /**

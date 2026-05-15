@@ -409,6 +409,15 @@ export enum FacilityGroup {
    * @generated from enum value: ONLINE_BUSINESSES = 12;
    */
   ONLINE_BUSINESSES = 12,
+
+  /**
+   * 13. مشاوره آنلاین
+   *
+   * شامل:مشاوره پوست مو و زیبایی , روانشناسی و ...
+   *
+   * @generated from enum value: ONLINE_CONSULTATION = 13;
+   */
+  ONLINE_CONSULTATION = 13,
 }
 // Retrieve enum metadata with: proto3.getEnumType(FacilityGroup)
 proto3.util.setEnumType(FacilityGroup, "reservation.FacilityGroup", [
@@ -425,6 +434,7 @@ proto3.util.setEnumType(FacilityGroup, "reservation.FacilityGroup", [
   { no: 10, name: "PROFESSIONAL_SERVICES" },
   { no: 11, name: "INDUSTRIAL_FACILITIES" },
   { no: 12, name: "ONLINE_BUSINESSES" },
+  { no: 13, name: "ONLINE_CONSULTATION" },
 ]);
 
 /**
@@ -983,6 +993,29 @@ export enum FacilityTitle {
    * @generated from enum value: REMOTE_WORKSPACE = 74;
    */
   REMOTE_WORKSPACE = 74,
+
+  /**
+   * گروه: Online Consultation — مشاوره آنلاین
+   *
+   *  پوست مو و زیبایی مشاوره آنلاین | Online Consultation (e.g., beauty, psychology)
+   *
+   * @generated from enum value: ONLINE_BEAUTY_CONSULTATION = 75;
+   */
+  ONLINE_BEAUTY_CONSULTATION = 75,
+
+  /**
+   * مشاوره روانشناسی آنلاین | Online Psychological Consultation
+   *
+   * @generated from enum value: ONLINE_PSYCHOLOGICAL_CONSULTATION = 76;
+   */
+  ONLINE_PSYCHOLOGICAL_CONSULTATION = 76,
+
+  /**
+   *   مشاوره محصولات مراقبت پوست و مو | Online Consultation for skincare products
+   *
+   * @generated from enum value: ONLINE_SKINCARE_PRODUCT_CONSULTATION = 77;
+   */
+  ONLINE_SKINCARE_PRODUCT_CONSULTATION = 77,
 }
 // Retrieve enum metadata with: proto3.getEnumType(FacilityTitle)
 proto3.util.setEnumType(FacilityTitle, "reservation.FacilityTitle", [
@@ -1061,6 +1094,9 @@ proto3.util.setEnumType(FacilityTitle, "reservation.FacilityTitle", [
   { no: 72, name: "FREELANCE_PROFESSIONAL" },
   { no: 73, name: "ONLINE_SHOP" },
   { no: 74, name: "REMOTE_WORKSPACE" },
+  { no: 75, name: "ONLINE_BEAUTY_CONSULTATION" },
+  { no: 76, name: "ONLINE_PSYCHOLOGICAL_CONSULTATION" },
+  { no: 77, name: "ONLINE_SKINCARE_PRODUCT_CONSULTATION" },
 ]);
 
 /**

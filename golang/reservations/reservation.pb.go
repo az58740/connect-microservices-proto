@@ -420,6 +420,8 @@ const (
 	FacilityGroup_INDUSTRIAL_FACILITIES FacilityGroup = 11 // شامل: کارخانه، انبار، لجستیک
 	// 12. فعالیت‌های آنلاین
 	FacilityGroup_ONLINE_BUSINESSES FacilityGroup = 12 // شامل: فروشگاه اینترنتی، فریلنسرها
+	//13. مشاوره آنلاین
+	FacilityGroup_ONLINE_CONSULTATION FacilityGroup = 13 // شامل:مشاوره پوست مو و زیبایی , روانشناسی و ...
 )
 
 // Enum value maps for FacilityGroup.
@@ -438,6 +440,7 @@ var (
 		10: "PROFESSIONAL_SERVICES",
 		11: "INDUSTRIAL_FACILITIES",
 		12: "ONLINE_BUSINESSES",
+		13: "ONLINE_CONSULTATION",
 	}
 	FacilityGroup_value = map[string]int32{
 		"UNKNOWN_GROUP":         0,
@@ -453,6 +456,7 @@ var (
 		"PROFESSIONAL_SERVICES": 10,
 		"INDUSTRIAL_FACILITIES": 11,
 		"ONLINE_BUSINESSES":     12,
+		"ONLINE_CONSULTATION":   13,
 	}
 )
 
@@ -575,6 +579,10 @@ const (
 	FacilityTitle_FREELANCE_PROFESSIONAL FacilityTitle = 72 // فریلنسر | Freelance Professional
 	FacilityTitle_ONLINE_SHOP            FacilityTitle = 73 // فروشگاه اینترنتی | Online Shop
 	FacilityTitle_REMOTE_WORKSPACE       FacilityTitle = 74 // محیط کار آنلاین | Remote Workspace
+	// گروه: Online Consultation — مشاوره آنلاین
+	FacilityTitle_ONLINE_BEAUTY_CONSULTATION           FacilityTitle = 75 //  پوست مو و زیبایی مشاوره آنلاین | Online Consultation (e.g., beauty, psychology)
+	FacilityTitle_ONLINE_PSYCHOLOGICAL_CONSULTATION    FacilityTitle = 76 // مشاوره روانشناسی آنلاین | Online Psychological Consultation
+	FacilityTitle_ONLINE_SKINCARE_PRODUCT_CONSULTATION FacilityTitle = 77 //   مشاوره محصولات مراقبت پوست و مو | Online Consultation for skincare products
 )
 
 // Enum value maps for FacilityTitle.
@@ -655,83 +663,89 @@ var (
 		72: "FREELANCE_PROFESSIONAL",
 		73: "ONLINE_SHOP",
 		74: "REMOTE_WORKSPACE",
+		75: "ONLINE_BEAUTY_CONSULTATION",
+		76: "ONLINE_PSYCHOLOGICAL_CONSULTATION",
+		77: "ONLINE_SKINCARE_PRODUCT_CONSULTATION",
 	}
 	FacilityTitle_value = map[string]int32{
-		"UNKNOWN":                0,
-		"CLINIC":                 1,
-		"HOSPITAL":               2,
-		"LABORATORY":             3,
-		"PHARMACY":               4,
-		"DENTAL_CLINIC":          5,
-		"PHYSIOTHERAPY_CENTER":   6,
-		"VETERINARY_CLINIC":      7,
-		"GENERAL_PHYSICIAN":      8,
-		"DENTIST":                9,
-		"CARDIOLOGIST":           10,
-		"NEUROLOGIST":            11,
-		"PEDIATRICIAN":           12,
-		"DERMATOLOGIST":          13,
-		"ORTHOPEDIC_SURGEON":     14,
-		"GYNECOLOGIST":           15,
-		"EYE_SPECIALIST":         16,
-		"ENT_SPECIALIST":         17,
-		"PSYCHIATRIST":           18,
-		"DIETITIAN":              19,
-		"UROLOGIST":              20,
-		"ONCOLOGIST":             21,
-		"SURGEON":                22,
-		"ANESTHESIOLOGIST":       23,
-		"RADIOLOGIST":            24,
-		"BEAUTY_SALON":           25,
-		"BARBERSHOP":             26,
-		"SPA":                    27,
-		"COSMETICS_STORE":        28,
-		"HYGIENE_STORE":          29,
-		"GYM":                    30,
-		"SWIMMING_POOL":          31,
-		"YOGA_CENTER":            32,
-		"SPORTS_CLUB":            33,
-		"GROCERY_STORE":          34,
-		"CLOTHING_STORE":         35,
-		"ELECTRONICS_STORE":      36,
-		"PET_SHOP":               37,
-		"BOOKSTORE":              38,
-		"TOY_STORE":              39,
-		"SHOPPING_MALL":          40,
-		"HYPERMARKET":            41,
-		"MARKETPLACE":            42,
-		"CINEMA":                 43,
-		"GAME_CENTER":            44,
-		"PLAYGROUND":             45,
-		"THEATER":                46,
-		"HOTEL":                  47,
-		"MOTEL":                  48,
-		"HOSTEL":                 49,
-		"RESORT":                 50,
-		"CAMPING_SITE":           51,
-		"RESTAURANT":             52,
-		"FAST_FOOD":              53,
-		"CAFE":                   54,
-		"COFFEE_SHOP":            55,
-		"BAKERY":                 56,
-		"SCHOOL":                 57,
-		"UNIVERSITY":             58,
-		"LANGUAGE_SCHOOL":        59,
-		"TUTORING_CENTER":        60,
-		"CODING_BOOTCAMP":        61,
-		"LAW_FIRM":               62,
-		"ACCOUNTING_OFFICE":      63,
-		"CONSULTING_FIRM":        64,
-		"REAL_ESTATE_AGENCY":     65,
-		"INSURANCE_AGENCY":       66,
-		"TRAVEL_AGENCY":          67,
-		"MANUFACTURING_PLANT":    68,
-		"WAREHOUSE":              69,
-		"LOGISTICS_CENTER":       70,
-		"FACTORY":                71,
-		"FREELANCE_PROFESSIONAL": 72,
-		"ONLINE_SHOP":            73,
-		"REMOTE_WORKSPACE":       74,
+		"UNKNOWN":                              0,
+		"CLINIC":                               1,
+		"HOSPITAL":                             2,
+		"LABORATORY":                           3,
+		"PHARMACY":                             4,
+		"DENTAL_CLINIC":                        5,
+		"PHYSIOTHERAPY_CENTER":                 6,
+		"VETERINARY_CLINIC":                    7,
+		"GENERAL_PHYSICIAN":                    8,
+		"DENTIST":                              9,
+		"CARDIOLOGIST":                         10,
+		"NEUROLOGIST":                          11,
+		"PEDIATRICIAN":                         12,
+		"DERMATOLOGIST":                        13,
+		"ORTHOPEDIC_SURGEON":                   14,
+		"GYNECOLOGIST":                         15,
+		"EYE_SPECIALIST":                       16,
+		"ENT_SPECIALIST":                       17,
+		"PSYCHIATRIST":                         18,
+		"DIETITIAN":                            19,
+		"UROLOGIST":                            20,
+		"ONCOLOGIST":                           21,
+		"SURGEON":                              22,
+		"ANESTHESIOLOGIST":                     23,
+		"RADIOLOGIST":                          24,
+		"BEAUTY_SALON":                         25,
+		"BARBERSHOP":                           26,
+		"SPA":                                  27,
+		"COSMETICS_STORE":                      28,
+		"HYGIENE_STORE":                        29,
+		"GYM":                                  30,
+		"SWIMMING_POOL":                        31,
+		"YOGA_CENTER":                          32,
+		"SPORTS_CLUB":                          33,
+		"GROCERY_STORE":                        34,
+		"CLOTHING_STORE":                       35,
+		"ELECTRONICS_STORE":                    36,
+		"PET_SHOP":                             37,
+		"BOOKSTORE":                            38,
+		"TOY_STORE":                            39,
+		"SHOPPING_MALL":                        40,
+		"HYPERMARKET":                          41,
+		"MARKETPLACE":                          42,
+		"CINEMA":                               43,
+		"GAME_CENTER":                          44,
+		"PLAYGROUND":                           45,
+		"THEATER":                              46,
+		"HOTEL":                                47,
+		"MOTEL":                                48,
+		"HOSTEL":                               49,
+		"RESORT":                               50,
+		"CAMPING_SITE":                         51,
+		"RESTAURANT":                           52,
+		"FAST_FOOD":                            53,
+		"CAFE":                                 54,
+		"COFFEE_SHOP":                          55,
+		"BAKERY":                               56,
+		"SCHOOL":                               57,
+		"UNIVERSITY":                           58,
+		"LANGUAGE_SCHOOL":                      59,
+		"TUTORING_CENTER":                      60,
+		"CODING_BOOTCAMP":                      61,
+		"LAW_FIRM":                             62,
+		"ACCOUNTING_OFFICE":                    63,
+		"CONSULTING_FIRM":                      64,
+		"REAL_ESTATE_AGENCY":                   65,
+		"INSURANCE_AGENCY":                     66,
+		"TRAVEL_AGENCY":                        67,
+		"MANUFACTURING_PLANT":                  68,
+		"WAREHOUSE":                            69,
+		"LOGISTICS_CENTER":                     70,
+		"FACTORY":                              71,
+		"FREELANCE_PROFESSIONAL":               72,
+		"ONLINE_SHOP":                          73,
+		"REMOTE_WORKSPACE":                     74,
+		"ONLINE_BEAUTY_CONSULTATION":           75,
+		"ONLINE_PSYCHOLOGICAL_CONSULTATION":    76,
+		"ONLINE_SKINCARE_PRODUCT_CONSULTATION": 77,
 	}
 )
 
@@ -7219,7 +7233,7 @@ const file_reservations_reservation_proto_rawDesc = "" +
 	"\x10AttendanceStatus\x12\x12\n" +
 	"\x0eUNKNOWN_Status\x10\x00\x12\f\n" +
 	"\bATTENDED\x10\x01\x12\v\n" +
-	"\aNO_SHOW\x10\x02*\xa9\x02\n" +
+	"\aNO_SHOW\x10\x02*\xc2\x02\n" +
 	"\rFacilityGroup\x12\x11\n" +
 	"\rUNKNOWN_GROUP\x10\x00\x12\x14\n" +
 	"\x10MEDICAL_SERVICES\x10\x01\x12\x11\n" +
@@ -7234,8 +7248,8 @@ const file_reservations_reservation_proto_rawDesc = "" +
 	"\x15PROFESSIONAL_SERVICES\x10\n" +
 	"\x12\x19\n" +
 	"\x15INDUSTRIAL_FACILITIES\x10\v\x12\x15\n" +
-	"\x11ONLINE_BUSINESSES\x10\f*\x9e\n" +
-	"\n" +
+	"\x11ONLINE_BUSINESSES\x10\f\x12\x17\n" +
+	"\x13ONLINE_CONSULTATION\x10\r*\x8f\v\n" +
 	"\rFacilityTitle\x12\v\n" +
 	"\aUNKNOWN\x10\x00\x12\n" +
 	"\n" +
@@ -7324,7 +7338,10 @@ const file_reservations_reservation_proto_rawDesc = "" +
 	"\aFACTORY\x10G\x12\x1a\n" +
 	"\x16FREELANCE_PROFESSIONAL\x10H\x12\x0f\n" +
 	"\vONLINE_SHOP\x10I\x12\x14\n" +
-	"\x10REMOTE_WORKSPACE\x10J*\x8b\x01\n" +
+	"\x10REMOTE_WORKSPACE\x10J\x12\x1e\n" +
+	"\x1aONLINE_BEAUTY_CONSULTATION\x10K\x12%\n" +
+	"!ONLINE_PSYCHOLOGICAL_CONSULTATION\x10L\x12(\n" +
+	"$ONLINE_SKINCARE_PRODUCT_CONSULTATION\x10M*\x8b\x01\n" +
 	"\fFacilityType\x12\x15\n" +
 	"\x11Facility_BOOKABLE\x10\x00\x12\x18\n" +
 	"\x14Facility_PURCHASABLE\x10\x01\x12\x13\n" +
