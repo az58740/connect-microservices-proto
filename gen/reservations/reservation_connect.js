@@ -295,5 +295,5 @@ export const ReservationService = {
       kind: MethodKind.Unary,
     },
   }
-} as const;
+};
 

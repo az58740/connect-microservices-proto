@@ -129,5 +129,5 @@ export const SignalingService = {
       kind: MethodKind.Unary,
     },
   }
-} as const;
+};
 

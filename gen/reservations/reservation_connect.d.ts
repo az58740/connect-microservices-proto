@@ -11,42 +11,42 @@ import { MethodKind } from "@bufbuild/protobuf";
  *
  * @generated from service reservation.ReservationService
  */
-export const ReservationService = {
-  typeName: "reservation.ReservationService",
-  methods: {
+export declare const ReservationService: {
+  readonly typeName: "reservation.ReservationService",
+  readonly methods: {
     /**
      * facility related methods
      * ایجاد یک فسیلیتی جدید | Create a new facility
      *
      * @generated from rpc reservation.ReservationService.CreateFacility
      */
-    createFacility: {
-      name: "CreateFacility",
-      I: CreateFacilityRequest,
-      O: CreateFacilityResponse,
-      kind: MethodKind.Unary,
+    readonly createFacility: {
+      readonly name: "CreateFacility",
+      readonly I: typeof CreateFacilityRequest,
+      readonly O: typeof CreateFacilityResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * ویرایش یم فسیلیتی| update a  facility
      *
      * @generated from rpc reservation.ReservationService.UpdateFacility
      */
-    updateFacility: {
-      name: "UpdateFacility",
-      I: UpdateFacilityRequest,
-      O: UpdateFacilityResponse,
-      kind: MethodKind.Unary,
+    readonly updateFacility: {
+      readonly name: "UpdateFacility",
+      readonly I: typeof UpdateFacilityRequest,
+      readonly O: typeof UpdateFacilityResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * دریافت لیست مکان‌ها | List all facilities
      *
      * @generated from rpc reservation.ReservationService.ListFacilities
      */
-    listFacilities: {
-      name: "ListFacilities",
-      I: ListFacilitiesRequest,
-      O: ListFacilitiesResponse,
-      kind: MethodKind.Unary,
+    readonly listFacilities: {
+      readonly name: "ListFacilities",
+      readonly I: typeof ListFacilitiesRequest,
+      readonly O: typeof ListFacilitiesResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * Service related methods
@@ -54,33 +54,33 @@ export const ReservationService = {
      *
      * @generated from rpc reservation.ReservationService.CreateService
      */
-    createService: {
-      name: "CreateService",
-      I: CreateServiceRequest,
-      O: CreateServiceResponse,
-      kind: MethodKind.Unary,
+    readonly createService: {
+      readonly name: "CreateService",
+      readonly I: typeof CreateServiceRequest,
+      readonly O: typeof CreateServiceResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * ویرایش سرویس  | Update a service for a facility
      *
      * @generated from rpc reservation.ReservationService.UpdateService
      */
-    updateService: {
-      name: "UpdateService",
-      I: UpdateServiceRequest,
-      O: UpdateServiceResponse,
-      kind: MethodKind.Unary,
+    readonly updateService: {
+      readonly name: "UpdateService",
+      readonly I: typeof UpdateServiceRequest,
+      readonly O: typeof UpdateServiceResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * دریافت لیست سرویس‌های یک فسیلیتی | List services of a facility
      *
      * @generated from rpc reservation.ReservationService.ListServices
      */
-    listServices: {
-      name: "ListServices",
-      I: ListServicesRequest,
-      O: ListServicesResponse,
-      kind: MethodKind.Unary,
+    readonly listServices: {
+      readonly name: "ListServices",
+      readonly I: typeof ListServicesRequest,
+      readonly O: typeof ListServicesResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * ُProvider Service  related methods
@@ -88,44 +88,44 @@ export const ReservationService = {
      *
      * @generated from rpc reservation.ReservationService.AssignServiceToProvider
      */
-    assignServiceToProvider: {
-      name: "AssignServiceToProvider",
-      I: AssignServiceToProviderRequest,
-      O: AssignServiceToProviderResponse,
-      kind: MethodKind.Unary,
+    readonly assignServiceToProvider: {
+      readonly name: "AssignServiceToProvider",
+      readonly I: typeof AssignServiceToProviderRequest,
+      readonly O: typeof AssignServiceToProviderResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * خذف یک سرویس از ارائه‌دهنده | Remove a service from a provider
      *
      * @generated from rpc reservation.ReservationService.RemoveServiceFromProvider
      */
-    removeServiceFromProvider: {
-      name: "RemoveServiceFromProvider",
-      I: RemoveServiceFromProviderRequest,
-      O: RemoveServiceFromProviderResponse,
-      kind: MethodKind.Unary,
+    readonly removeServiceFromProvider: {
+      readonly name: "RemoveServiceFromProvider",
+      readonly I: typeof RemoveServiceFromProviderRequest,
+      readonly O: typeof RemoveServiceFromProviderResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      *  دریافت لیست سرویس‌های یک ارائه‌دهنده| Get provider services 
      *
      * @generated from rpc reservation.ReservationService.GetProviderServicesList
      */
-    getProviderServicesList: {
-      name: "GetProviderServicesList",
-      I: GetProviderServicesListRequest,
-      O: GetProviderServicesListResponse,
-      kind: MethodKind.Unary,
+    readonly getProviderServicesList: {
+      readonly name: "GetProviderServicesList",
+      readonly I: typeof GetProviderServicesListRequest,
+      readonly O: typeof GetProviderServicesListResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * ویرایش سرویس  | Update a service for a provider
      *
      * @generated from rpc reservation.ReservationService.UpdateProviderService
      */
-    updateProviderService: {
-      name: "UpdateProviderService",
-      I: UpdateProviderServiceRequest,
-      O: UpdateProviderServiceResponse,
-      kind: MethodKind.Unary,
+    readonly updateProviderService: {
+      readonly name: "UpdateProviderService",
+      readonly I: typeof UpdateProviderServiceRequest,
+      readonly O: typeof UpdateProviderServiceResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * WeeklySchedule and TimeSlot releated methods 
@@ -133,154 +133,154 @@ export const ReservationService = {
      *
      * @generated from rpc reservation.ReservationService.CreateWeeklySchedule
      */
-    createWeeklySchedule: {
-      name: "CreateWeeklySchedule",
-      I: CreateWeeklyScheduleRequest,
-      O: CreateWeeklyScheduleResponse,
-      kind: MethodKind.Unary,
+    readonly createWeeklySchedule: {
+      readonly name: "CreateWeeklySchedule",
+      readonly I: typeof CreateWeeklyScheduleRequest,
+      readonly O: typeof CreateWeeklyScheduleResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc reservation.ReservationService.GetWeeklyScheduleList
      */
-    getWeeklyScheduleList: {
-      name: "GetWeeklyScheduleList",
-      I: GetWeeklyScheduleListRequest,
-      O: GetWeeklyScheduleListResponse,
-      kind: MethodKind.Unary,
+    readonly getWeeklyScheduleList: {
+      readonly name: "GetWeeklyScheduleList",
+      readonly I: typeof GetWeeklyScheduleListRequest,
+      readonly O: typeof GetWeeklyScheduleListResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc reservation.ReservationService.UpdateWeeklySchedule
      */
-    updateWeeklySchedule: {
-      name: "UpdateWeeklySchedule",
-      I: UpdateWeeklyScheduleRequest,
-      O: UpdateWeeklyScheduleResponse,
-      kind: MethodKind.Unary,
+    readonly updateWeeklySchedule: {
+      readonly name: "UpdateWeeklySchedule",
+      readonly I: typeof UpdateWeeklyScheduleRequest,
+      readonly O: typeof UpdateWeeklyScheduleResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc reservation.ReservationService.RemoveWeeklySchedule
      */
-    removeWeeklySchedule: {
-      name: "RemoveWeeklySchedule",
-      I: RemoveWeeklyScheduleRequest,
-      O: RemoveWeeklyScheduleResponse,
-      kind: MethodKind.Unary,
+    readonly removeWeeklySchedule: {
+      readonly name: "RemoveWeeklySchedule",
+      readonly I: typeof RemoveWeeklyScheduleRequest,
+      readonly O: typeof RemoveWeeklyScheduleResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * تولید تایم‌اسلات‌ها بر اساس برنامه‌ هفتگی | Generate time slots from weekly schedule
      *
      * @generated from rpc reservation.ReservationService.GenerateTimeSlots
      */
-    generateTimeSlots: {
-      name: "GenerateTimeSlots",
-      I: GenerateTimeSlotsRequest,
-      O: GenerateTimeSlotsResponse,
-      kind: MethodKind.Unary,
+    readonly generateTimeSlots: {
+      readonly name: "GenerateTimeSlots",
+      readonly I: typeof GenerateTimeSlotsRequest,
+      readonly O: typeof GenerateTimeSlotsResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc reservation.ReservationService.GetTimeSlotsList
      */
-    getTimeSlotsList: {
-      name: "GetTimeSlotsList",
-      I: GetTimeSlotsListRequest,
-      O: GetTimeSlotsListResponse,
-      kind: MethodKind.Unary,
+    readonly getTimeSlotsList: {
+      readonly name: "GetTimeSlotsList",
+      readonly I: typeof GetTimeSlotsListRequest,
+      readonly O: typeof GetTimeSlotsListResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc reservation.ReservationService.UpdateTimeSlot
      */
-    updateTimeSlot: {
-      name: "UpdateTimeSlot",
-      I: UpdateTimeSlotRequest,
-      O: UpdateTimeSlotResponse,
-      kind: MethodKind.Unary,
+    readonly updateTimeSlot: {
+      readonly name: "UpdateTimeSlot",
+      readonly I: typeof UpdateTimeSlotRequest,
+      readonly O: typeof UpdateTimeSlotResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc reservation.ReservationService.RemoveTimeSlots
      */
-    removeTimeSlots: {
-      name: "RemoveTimeSlots",
-      I: RemoveTimeSlotsRequest,
-      O: RemoveTimeSlotsResponse,
-      kind: MethodKind.Unary,
+    readonly removeTimeSlots: {
+      readonly name: "RemoveTimeSlots",
+      readonly I: typeof RemoveTimeSlotsRequest,
+      readonly O: typeof RemoveTimeSlotsResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * 🔹  رزرو | Reservation     
      *
      * @generated from rpc reservation.ReservationService.CreateReservation
      */
-    createReservation: {
-      name: "CreateReservation",
-      I: CreateReservationRequest,
-      O: CreateReservationResponse,
-      kind: MethodKind.Unary,
+    readonly createReservation: {
+      readonly name: "CreateReservation",
+      readonly I: typeof CreateReservationRequest,
+      readonly O: typeof CreateReservationResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc reservation.ReservationService.UpdateReservationStatus
      */
-    updateReservationStatus: {
-      name: "UpdateReservationStatus",
-      I: UpdateReservationRequest,
-      O: UpdateReservationResponse,
-      kind: MethodKind.Unary,
+    readonly updateReservationStatus: {
+      readonly name: "UpdateReservationStatus",
+      readonly I: typeof UpdateReservationRequest,
+      readonly O: typeof UpdateReservationResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc reservation.ReservationService.ListReservations
      */
-    listReservations: {
-      name: "ListReservations",
-      I: ListReservationsRequest,
-      O: ListReservationsResponse,
-      kind: MethodKind.Unary,
+    readonly listReservations: {
+      readonly name: "ListReservations",
+      readonly I: typeof ListReservationsRequest,
+      readonly O: typeof ListReservationsResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc reservation.ReservationService.RemoveReservation
      */
-    removeReservation: {
-      name: "RemoveReservation",
-      I: DeleteReservationRequest,
-      O: DeleteReservationResponse,
-      kind: MethodKind.Unary,
+    readonly removeReservation: {
+      readonly name: "RemoveReservation",
+      readonly I: typeof DeleteReservationRequest,
+      readonly O: typeof DeleteReservationResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * 🔹  Customer      
      *
      * @generated from rpc reservation.ReservationService.CreateCustomer
      */
-    createCustomer: {
-      name: "CreateCustomer",
-      I: CreateCustomerRequest,
-      O: CreateCustomerResponse,
-      kind: MethodKind.Unary,
+    readonly createCustomer: {
+      readonly name: "CreateCustomer",
+      readonly I: typeof CreateCustomerRequest,
+      readonly O: typeof CreateCustomerResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc reservation.ReservationService.UpdateCustomer
      */
-    updateCustomer: {
-      name: "UpdateCustomer",
-      I: UpdateCustomerRequest,
-      O: UpdateCustomerResponse,
-      kind: MethodKind.Unary,
+    readonly updateCustomer: {
+      readonly name: "UpdateCustomer",
+      readonly I: typeof UpdateCustomerRequest,
+      readonly O: typeof UpdateCustomerResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * @generated from rpc reservation.ReservationService.ListCustomer
      */
-    listCustomer: {
-      name: "ListCustomer",
-      I: ListCustomerRequest,
-      O: ListCustomerResponse,
-      kind: MethodKind.Unary,
+    readonly listCustomer: {
+      readonly name: "ListCustomer",
+      readonly I: typeof ListCustomerRequest,
+      readonly O: typeof ListCustomerResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * DOT
      *
      * @generated from rpc reservation.ReservationService.GetProviderServicesWithUsers
      */
-    getProviderServicesWithUsers: {
-      name: "GetProviderServicesWithUsers",
-      I: GetProviderServicesWithUsersRequest,
-      O: GetProviderServicesWithUsersResponse,
-      kind: MethodKind.Unary,
+    readonly getProviderServicesWithUsers: {
+      readonly name: "GetProviderServicesWithUsers",
+      readonly I: typeof GetProviderServicesWithUsersRequest,
+      readonly O: typeof GetProviderServicesWithUsersResponse,
+      readonly kind: MethodKind.Unary,
     },
     /**
      * پردازش یک فایل صوتی و برگرداندن متن و فیلترها
@@ -288,12 +288,12 @@ export const ReservationService = {
      *
      * @generated from rpc reservation.ReservationService.ProcessAudio
      */
-    processAudio: {
-      name: "ProcessAudio",
-      I: ProcessAudioRequest,
-      O: ProcessAudioResponse,
-      kind: MethodKind.Unary,
+    readonly processAudio: {
+      readonly name: "ProcessAudio",
+      readonly I: typeof ProcessAudioRequest,
+      readonly O: typeof ProcessAudioResponse,
+      readonly kind: MethodKind.Unary,
     },
   }
-} as const;
+};
 

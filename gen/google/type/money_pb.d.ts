@@ -18,20 +18,20 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { Message, proto3 } from "@bufbuild/protobuf";
 
 /**
  * Represents an amount of money with its currency type.
  *
  * @generated from message google.type.Money
  */
-export class Money extends Message<Money> {
+export declare class Money extends Message<Money> {
   /**
    * The three-letter currency code defined in ISO 4217.
    *
    * @generated from field: string currency_code = 1;
    */
-  currencyCode = "";
+  currencyCode: string;
 
   /**
    * The whole units of the amount.
@@ -39,7 +39,7 @@ export class Money extends Message<Money> {
    *
    * @generated from field: int64 units = 2;
    */
-  units = protoInt64.zero;
+  units: bigint;
 
   /**
    * Number of nano (10^-9) units of the amount.
@@ -51,35 +51,20 @@ export class Money extends Message<Money> {
    *
    * @generated from field: int32 nanos = 3;
    */
-  nanos = 0;
+  nanos: number;
 
-  constructor(data?: PartialMessage<Money>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
+  constructor(data?: PartialMessage<Money>);
 
-  static readonly runtime: typeof proto3 = proto3;
+  static readonly runtime: typeof proto3;
   static readonly typeName = "google.type.Money";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "currency_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "units", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 3, name: "nanos", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
-  ]);
+  static readonly fields: FieldList;
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Money {
-    return new Money().fromBinary(bytes, options);
-  }
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Money;
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Money {
-    return new Money().fromJson(jsonValue, options);
-  }
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Money;
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Money {
-    return new Money().fromJsonString(jsonString, options);
-  }
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Money;
 
-  static equals(a: Money | PlainMessage<Money> | undefined, b: Money | PlainMessage<Money> | undefined): boolean {
-    return proto3.util.equals(Money, a, b);
-  }
+  static equals(a: Money | PlainMessage<Money> | undefined, b: Money | PlainMessage<Money> | undefined): boolean;
 }
 
