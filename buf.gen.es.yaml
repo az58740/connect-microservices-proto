@@ -1,22 +1,10 @@
+
 version: v2
-
-clean: false
-
+clean: true
 plugins:
-     # Generate code for web (TypeScript/JavaScript)
-      # npx buf generate
-      # This will invoke protoc-gen-es and write output to web/gen
   - local: protoc-gen-es
     out: gen
-    opt: 
-     - target=ts+js+dts
-     - import_extension=js
-     - import_extension=ts
-    # json_types=true
-
-  # This will invoke protoc-gen-connect-es
+    opt: target=ts  # فقط typescript تولید کن
   - local: protoc-gen-connect-es
     out: gen
-    # Add more plugin options here
-    opt: target=ts+js+dts
-
+    opt: target=ts
