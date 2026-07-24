@@ -136,47 +136,6 @@ const (
 	UsersServiceListFavoritesProcedure = "/users.UsersService/ListFavorites"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	usersServiceServiceDescriptor                        = users.File_users_users_proto.Services().ByName("UsersService")
-	usersServiceRegisterUserMethodDescriptor             = usersServiceServiceDescriptor.Methods().ByName("RegisterUser")
-	usersServiceLoginUserMethodDescriptor                = usersServiceServiceDescriptor.Methods().ByName("LoginUser")
-	usersServiceListUsersMethodDescriptor                = usersServiceServiceDescriptor.Methods().ByName("ListUsers")
-	usersServiceUpdateUserMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("UpdateUser")
-	usersServiceForgotPasswordMethodDescriptor           = usersServiceServiceDescriptor.Methods().ByName("ForgotPassword")
-	usersServiceCreateOrganizationGroupMethodDescriptor  = usersServiceServiceDescriptor.Methods().ByName("CreateOrganizationGroup")
-	usersServiceUpdateOrganizationGroupMethodDescriptor  = usersServiceServiceDescriptor.Methods().ByName("UpdateOrganizationGroup")
-	usersServiceDeleteOrganizationGroupMethodDescriptor  = usersServiceServiceDescriptor.Methods().ByName("DeleteOrganizationGroup")
-	usersServiceListOrganizationGroupMethodDescriptor    = usersServiceServiceDescriptor.Methods().ByName("ListOrganizationGroup")
-	usersServiceCreateOrganizationMethodDescriptor       = usersServiceServiceDescriptor.Methods().ByName("CreateOrganization")
-	usersServiceUpdateOrganizationMethodDescriptor       = usersServiceServiceDescriptor.Methods().ByName("UpdateOrganization")
-	usersServiceDeleteOrganizationMethodDescriptor       = usersServiceServiceDescriptor.Methods().ByName("DeleteOrganization")
-	usersServiceListOrganizationMethodDescriptor         = usersServiceServiceDescriptor.Methods().ByName("ListOrganization")
-	usersServiceCreateContractMethodDescriptor           = usersServiceServiceDescriptor.Methods().ByName("CreateContract")
-	usersServiceUpdateContractMethodDescriptor           = usersServiceServiceDescriptor.Methods().ByName("UpdateContract")
-	usersServiceDeleteContractMethodDescriptor           = usersServiceServiceDescriptor.Methods().ByName("DeleteContract")
-	usersServiceListContractMethodDescriptor             = usersServiceServiceDescriptor.Methods().ByName("ListContract")
-	usersServiceGetCountriesMethodDescriptor             = usersServiceServiceDescriptor.Methods().ByName("GetCountries")
-	usersServiceGetProvincesMethodDescriptor             = usersServiceServiceDescriptor.Methods().ByName("GetProvinces")
-	usersServiceGetCitiesMethodDescriptor                = usersServiceServiceDescriptor.Methods().ByName("GetCities")
-	usersServiceGetResetTokenByShortCodeMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("GetResetTokenByShortCode")
-	usersServiceDeleteResetTokenMethodDescriptor         = usersServiceServiceDescriptor.Methods().ByName("DeleteResetToken")
-	usersServiceCreatePermissionMethodDescriptor         = usersServiceServiceDescriptor.Methods().ByName("CreatePermission")
-	usersServiceListPermissionsMethodDescriptor          = usersServiceServiceDescriptor.Methods().ByName("ListPermissions")
-	usersServiceCreateRoleMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("CreateRole")
-	usersServiceUpdateRoleMethodDescriptor               = usersServiceServiceDescriptor.Methods().ByName("UpdateRole")
-	usersServiceListRolesMethodDescriptor                = usersServiceServiceDescriptor.Methods().ByName("ListRoles")
-	usersServiceAssignPermissionsToRoleMethodDescriptor  = usersServiceServiceDescriptor.Methods().ByName("AssignPermissionsToRole")
-	usersServiceRemovePermissionFromRoleMethodDescriptor = usersServiceServiceDescriptor.Methods().ByName("RemovePermissionFromRole")
-	usersServiceAssignRolesToUserMethodDescriptor        = usersServiceServiceDescriptor.Methods().ByName("AssignRolesToUser")
-	usersServiceRemoveUserRoleMethodDescriptor           = usersServiceServiceDescriptor.Methods().ByName("RemoveUserRole")
-	usersServiceGetUserRolesMethodDescriptor             = usersServiceServiceDescriptor.Methods().ByName("GetUserRoles")
-	usersServiceCheckPermissionMethodDescriptor          = usersServiceServiceDescriptor.Methods().ByName("CheckPermission")
-	usersServiceAddFavoriteMethodDescriptor              = usersServiceServiceDescriptor.Methods().ByName("AddFavorite")
-	usersServiceRemoveFavoriteMethodDescriptor           = usersServiceServiceDescriptor.Methods().ByName("RemoveFavorite")
-	usersServiceListFavoritesMethodDescriptor            = usersServiceServiceDescriptor.Methods().ByName("ListFavorites")
-)
-
 // UsersServiceClient is a client for the users.UsersService service.
 type UsersServiceClient interface {
 	// User-related methods
@@ -233,221 +192,222 @@ type UsersServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewUsersServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) UsersServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	usersServiceMethods := users.File_users_users_proto.Services().ByName("UsersService").Methods()
 	return &usersServiceClient{
 		registerUser: connect.NewClient[users.RegisterRequest, users.RegisterResponse](
 			httpClient,
 			baseURL+UsersServiceRegisterUserProcedure,
-			connect.WithSchema(usersServiceRegisterUserMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("RegisterUser")),
 			connect.WithClientOptions(opts...),
 		),
 		loginUser: connect.NewClient[users.LoginRequest, users.LoginResponse](
 			httpClient,
 			baseURL+UsersServiceLoginUserProcedure,
-			connect.WithSchema(usersServiceLoginUserMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("LoginUser")),
 			connect.WithClientOptions(opts...),
 		),
 		listUsers: connect.NewClient[users.ListUsersRequest, users.ListUsersResponse](
 			httpClient,
 			baseURL+UsersServiceListUsersProcedure,
-			connect.WithSchema(usersServiceListUsersMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("ListUsers")),
 			connect.WithClientOptions(opts...),
 		),
 		updateUser: connect.NewClient[users.UpdateUserRequest, users.UpdateUserResponse](
 			httpClient,
 			baseURL+UsersServiceUpdateUserProcedure,
-			connect.WithSchema(usersServiceUpdateUserMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("UpdateUser")),
 			connect.WithClientOptions(opts...),
 		),
 		forgotPassword: connect.NewClient[users.ForgotPasswordRequest, users.ForgotPasswordResponse](
 			httpClient,
 			baseURL+UsersServiceForgotPasswordProcedure,
-			connect.WithSchema(usersServiceForgotPasswordMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("ForgotPassword")),
 			connect.WithClientOptions(opts...),
 		),
 		createOrganizationGroup: connect.NewClient[users.CreateOrganizationGroupRequest, users.CreateOrganizationGroupResponse](
 			httpClient,
 			baseURL+UsersServiceCreateOrganizationGroupProcedure,
-			connect.WithSchema(usersServiceCreateOrganizationGroupMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("CreateOrganizationGroup")),
 			connect.WithClientOptions(opts...),
 		),
 		updateOrganizationGroup: connect.NewClient[users.UpdateOrganizationGroupRequest, users.UpdateOrganizationGroupResponse](
 			httpClient,
 			baseURL+UsersServiceUpdateOrganizationGroupProcedure,
-			connect.WithSchema(usersServiceUpdateOrganizationGroupMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("UpdateOrganizationGroup")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteOrganizationGroup: connect.NewClient[users.DeleteOrganizationGroupRequest, users.DeleteOrganizationGroupResponse](
 			httpClient,
 			baseURL+UsersServiceDeleteOrganizationGroupProcedure,
-			connect.WithSchema(usersServiceDeleteOrganizationGroupMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("DeleteOrganizationGroup")),
 			connect.WithClientOptions(opts...),
 		),
 		listOrganizationGroup: connect.NewClient[users.ListOrganizationGroupRequest, users.ListOrganizationGroupResponse](
 			httpClient,
 			baseURL+UsersServiceListOrganizationGroupProcedure,
-			connect.WithSchema(usersServiceListOrganizationGroupMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("ListOrganizationGroup")),
 			connect.WithClientOptions(opts...),
 		),
 		createOrganization: connect.NewClient[users.CreateOrganizationRequest, users.CreateOrganizationResponse](
 			httpClient,
 			baseURL+UsersServiceCreateOrganizationProcedure,
-			connect.WithSchema(usersServiceCreateOrganizationMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("CreateOrganization")),
 			connect.WithClientOptions(opts...),
 		),
 		updateOrganization: connect.NewClient[users.UpdateOrganizationRequest, users.UpdateOrganizationResponse](
 			httpClient,
 			baseURL+UsersServiceUpdateOrganizationProcedure,
-			connect.WithSchema(usersServiceUpdateOrganizationMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("UpdateOrganization")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteOrganization: connect.NewClient[users.DeleteOrganizationRequest, users.DeleteOrganizationResponse](
 			httpClient,
 			baseURL+UsersServiceDeleteOrganizationProcedure,
-			connect.WithSchema(usersServiceDeleteOrganizationMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("DeleteOrganization")),
 			connect.WithClientOptions(opts...),
 		),
 		listOrganization: connect.NewClient[users.ListOrganizationRequest, users.ListOrganizationResponse](
 			httpClient,
 			baseURL+UsersServiceListOrganizationProcedure,
-			connect.WithSchema(usersServiceListOrganizationMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("ListOrganization")),
 			connect.WithClientOptions(opts...),
 		),
 		createContract: connect.NewClient[users.CreateContractRequest, users.CreateContractResponse](
 			httpClient,
 			baseURL+UsersServiceCreateContractProcedure,
-			connect.WithSchema(usersServiceCreateContractMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("CreateContract")),
 			connect.WithClientOptions(opts...),
 		),
 		updateContract: connect.NewClient[users.UpdateContractRequest, users.UpdateContractResponse](
 			httpClient,
 			baseURL+UsersServiceUpdateContractProcedure,
-			connect.WithSchema(usersServiceUpdateContractMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("UpdateContract")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteContract: connect.NewClient[users.DeleteContractRequest, users.DeleteContractResponse](
 			httpClient,
 			baseURL+UsersServiceDeleteContractProcedure,
-			connect.WithSchema(usersServiceDeleteContractMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("DeleteContract")),
 			connect.WithClientOptions(opts...),
 		),
 		listContract: connect.NewClient[users.ListContractRequest, users.ListContractResponse](
 			httpClient,
 			baseURL+UsersServiceListContractProcedure,
-			connect.WithSchema(usersServiceListContractMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("ListContract")),
 			connect.WithClientOptions(opts...),
 		),
 		getCountries: connect.NewClient[users.GetGeolocationRequest, users.GetGeolocationResponse](
 			httpClient,
 			baseURL+UsersServiceGetCountriesProcedure,
-			connect.WithSchema(usersServiceGetCountriesMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("GetCountries")),
 			connect.WithClientOptions(opts...),
 		),
 		getProvinces: connect.NewClient[users.GetGeolocationRequest, users.GetGeolocationResponse](
 			httpClient,
 			baseURL+UsersServiceGetProvincesProcedure,
-			connect.WithSchema(usersServiceGetProvincesMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("GetProvinces")),
 			connect.WithClientOptions(opts...),
 		),
 		getCities: connect.NewClient[users.GetGeolocationRequest, users.GetGeolocationResponse](
 			httpClient,
 			baseURL+UsersServiceGetCitiesProcedure,
-			connect.WithSchema(usersServiceGetCitiesMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("GetCities")),
 			connect.WithClientOptions(opts...),
 		),
 		getResetTokenByShortCode: connect.NewClient[users.GetResetTokenRequest, users.GetResetTokenResponse](
 			httpClient,
 			baseURL+UsersServiceGetResetTokenByShortCodeProcedure,
-			connect.WithSchema(usersServiceGetResetTokenByShortCodeMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("GetResetTokenByShortCode")),
 			connect.WithClientOptions(opts...),
 		),
 		deleteResetToken: connect.NewClient[users.DeleteResetTokenRequest, users.DeleteResetTokenResponse](
 			httpClient,
 			baseURL+UsersServiceDeleteResetTokenProcedure,
-			connect.WithSchema(usersServiceDeleteResetTokenMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("DeleteResetToken")),
 			connect.WithClientOptions(opts...),
 		),
 		createPermission: connect.NewClient[users.CreatePermissionRequest, users.PermissionResponse](
 			httpClient,
 			baseURL+UsersServiceCreatePermissionProcedure,
-			connect.WithSchema(usersServiceCreatePermissionMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("CreatePermission")),
 			connect.WithClientOptions(opts...),
 		),
 		listPermissions: connect.NewClient[users.ListPermissionsRequest, users.ListPermissionsResponse](
 			httpClient,
 			baseURL+UsersServiceListPermissionsProcedure,
-			connect.WithSchema(usersServiceListPermissionsMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("ListPermissions")),
 			connect.WithClientOptions(opts...),
 		),
 		createRole: connect.NewClient[users.CreateRoleRequest, users.RoleResponse](
 			httpClient,
 			baseURL+UsersServiceCreateRoleProcedure,
-			connect.WithSchema(usersServiceCreateRoleMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("CreateRole")),
 			connect.WithClientOptions(opts...),
 		),
 		updateRole: connect.NewClient[users.UpdateRoleRequest, users.UpdateRoleResponse](
 			httpClient,
 			baseURL+UsersServiceUpdateRoleProcedure,
-			connect.WithSchema(usersServiceUpdateRoleMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("UpdateRole")),
 			connect.WithClientOptions(opts...),
 		),
 		listRoles: connect.NewClient[users.ListRolesRequest, users.ListRolesResponse](
 			httpClient,
 			baseURL+UsersServiceListRolesProcedure,
-			connect.WithSchema(usersServiceListRolesMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("ListRoles")),
 			connect.WithClientOptions(opts...),
 		),
 		assignPermissionsToRole: connect.NewClient[users.AssignPermissionsToRoleRequest, users.RoleResponse](
 			httpClient,
 			baseURL+UsersServiceAssignPermissionsToRoleProcedure,
-			connect.WithSchema(usersServiceAssignPermissionsToRoleMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("AssignPermissionsToRole")),
 			connect.WithClientOptions(opts...),
 		),
 		removePermissionFromRole: connect.NewClient[users.RemovePermissionRequest, users.RoleResponse](
 			httpClient,
 			baseURL+UsersServiceRemovePermissionFromRoleProcedure,
-			connect.WithSchema(usersServiceRemovePermissionFromRoleMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("RemovePermissionFromRole")),
 			connect.WithClientOptions(opts...),
 		),
 		assignRolesToUser: connect.NewClient[users.AssignRolesToUserRequest, users.User](
 			httpClient,
 			baseURL+UsersServiceAssignRolesToUserProcedure,
-			connect.WithSchema(usersServiceAssignRolesToUserMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("AssignRolesToUser")),
 			connect.WithClientOptions(opts...),
 		),
 		removeUserRole: connect.NewClient[users.RemoveUserRoleRequest, users.User](
 			httpClient,
 			baseURL+UsersServiceRemoveUserRoleProcedure,
-			connect.WithSchema(usersServiceRemoveUserRoleMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("RemoveUserRole")),
 			connect.WithClientOptions(opts...),
 		),
 		getUserRoles: connect.NewClient[users.GetUserRolesRequest, users.GetUserRolesResponse](
 			httpClient,
 			baseURL+UsersServiceGetUserRolesProcedure,
-			connect.WithSchema(usersServiceGetUserRolesMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("GetUserRoles")),
 			connect.WithClientOptions(opts...),
 		),
 		checkPermission: connect.NewClient[users.CheckPermissionRequest, users.CheckPermissionResponse](
 			httpClient,
 			baseURL+UsersServiceCheckPermissionProcedure,
-			connect.WithSchema(usersServiceCheckPermissionMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("CheckPermission")),
 			connect.WithClientOptions(opts...),
 		),
 		addFavorite: connect.NewClient[users.AddFavoriteRequest, users.AddFavoriteResponse](
 			httpClient,
 			baseURL+UsersServiceAddFavoriteProcedure,
-			connect.WithSchema(usersServiceAddFavoriteMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("AddFavorite")),
 			connect.WithClientOptions(opts...),
 		),
 		removeFavorite: connect.NewClient[users.RemoveFavoriteRequest, users.RemoveFavoriteResponse](
 			httpClient,
 			baseURL+UsersServiceRemoveFavoriteProcedure,
-			connect.WithSchema(usersServiceRemoveFavoriteMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("RemoveFavorite")),
 			connect.WithClientOptions(opts...),
 		),
 		listFavorites: connect.NewClient[users.ListFavoritesRequest, users.ListFavoritesResponse](
 			httpClient,
 			baseURL+UsersServiceListFavoritesProcedure,
-			connect.WithSchema(usersServiceListFavoritesMethodDescriptor),
+			connect.WithSchema(usersServiceMethods.ByName("ListFavorites")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -726,220 +686,221 @@ type UsersServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewUsersServiceHandler(svc UsersServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	usersServiceMethods := users.File_users_users_proto.Services().ByName("UsersService").Methods()
 	usersServiceRegisterUserHandler := connect.NewUnaryHandler(
 		UsersServiceRegisterUserProcedure,
 		svc.RegisterUser,
-		connect.WithSchema(usersServiceRegisterUserMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("RegisterUser")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceLoginUserHandler := connect.NewUnaryHandler(
 		UsersServiceLoginUserProcedure,
 		svc.LoginUser,
-		connect.WithSchema(usersServiceLoginUserMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("LoginUser")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceListUsersHandler := connect.NewUnaryHandler(
 		UsersServiceListUsersProcedure,
 		svc.ListUsers,
-		connect.WithSchema(usersServiceListUsersMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("ListUsers")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceUpdateUserHandler := connect.NewUnaryHandler(
 		UsersServiceUpdateUserProcedure,
 		svc.UpdateUser,
-		connect.WithSchema(usersServiceUpdateUserMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("UpdateUser")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceForgotPasswordHandler := connect.NewUnaryHandler(
 		UsersServiceForgotPasswordProcedure,
 		svc.ForgotPassword,
-		connect.WithSchema(usersServiceForgotPasswordMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("ForgotPassword")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceCreateOrganizationGroupHandler := connect.NewUnaryHandler(
 		UsersServiceCreateOrganizationGroupProcedure,
 		svc.CreateOrganizationGroup,
-		connect.WithSchema(usersServiceCreateOrganizationGroupMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("CreateOrganizationGroup")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceUpdateOrganizationGroupHandler := connect.NewUnaryHandler(
 		UsersServiceUpdateOrganizationGroupProcedure,
 		svc.UpdateOrganizationGroup,
-		connect.WithSchema(usersServiceUpdateOrganizationGroupMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("UpdateOrganizationGroup")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceDeleteOrganizationGroupHandler := connect.NewUnaryHandler(
 		UsersServiceDeleteOrganizationGroupProcedure,
 		svc.DeleteOrganizationGroup,
-		connect.WithSchema(usersServiceDeleteOrganizationGroupMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("DeleteOrganizationGroup")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceListOrganizationGroupHandler := connect.NewUnaryHandler(
 		UsersServiceListOrganizationGroupProcedure,
 		svc.ListOrganizationGroup,
-		connect.WithSchema(usersServiceListOrganizationGroupMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("ListOrganizationGroup")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceCreateOrganizationHandler := connect.NewUnaryHandler(
 		UsersServiceCreateOrganizationProcedure,
 		svc.CreateOrganization,
-		connect.WithSchema(usersServiceCreateOrganizationMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("CreateOrganization")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceUpdateOrganizationHandler := connect.NewUnaryHandler(
 		UsersServiceUpdateOrganizationProcedure,
 		svc.UpdateOrganization,
-		connect.WithSchema(usersServiceUpdateOrganizationMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("UpdateOrganization")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceDeleteOrganizationHandler := connect.NewUnaryHandler(
 		UsersServiceDeleteOrganizationProcedure,
 		svc.DeleteOrganization,
-		connect.WithSchema(usersServiceDeleteOrganizationMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("DeleteOrganization")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceListOrganizationHandler := connect.NewUnaryHandler(
 		UsersServiceListOrganizationProcedure,
 		svc.ListOrganization,
-		connect.WithSchema(usersServiceListOrganizationMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("ListOrganization")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceCreateContractHandler := connect.NewUnaryHandler(
 		UsersServiceCreateContractProcedure,
 		svc.CreateContract,
-		connect.WithSchema(usersServiceCreateContractMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("CreateContract")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceUpdateContractHandler := connect.NewUnaryHandler(
 		UsersServiceUpdateContractProcedure,
 		svc.UpdateContract,
-		connect.WithSchema(usersServiceUpdateContractMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("UpdateContract")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceDeleteContractHandler := connect.NewUnaryHandler(
 		UsersServiceDeleteContractProcedure,
 		svc.DeleteContract,
-		connect.WithSchema(usersServiceDeleteContractMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("DeleteContract")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceListContractHandler := connect.NewUnaryHandler(
 		UsersServiceListContractProcedure,
 		svc.ListContract,
-		connect.WithSchema(usersServiceListContractMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("ListContract")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceGetCountriesHandler := connect.NewUnaryHandler(
 		UsersServiceGetCountriesProcedure,
 		svc.GetCountries,
-		connect.WithSchema(usersServiceGetCountriesMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("GetCountries")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceGetProvincesHandler := connect.NewUnaryHandler(
 		UsersServiceGetProvincesProcedure,
 		svc.GetProvinces,
-		connect.WithSchema(usersServiceGetProvincesMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("GetProvinces")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceGetCitiesHandler := connect.NewUnaryHandler(
 		UsersServiceGetCitiesProcedure,
 		svc.GetCities,
-		connect.WithSchema(usersServiceGetCitiesMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("GetCities")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceGetResetTokenByShortCodeHandler := connect.NewUnaryHandler(
 		UsersServiceGetResetTokenByShortCodeProcedure,
 		svc.GetResetTokenByShortCode,
-		connect.WithSchema(usersServiceGetResetTokenByShortCodeMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("GetResetTokenByShortCode")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceDeleteResetTokenHandler := connect.NewUnaryHandler(
 		UsersServiceDeleteResetTokenProcedure,
 		svc.DeleteResetToken,
-		connect.WithSchema(usersServiceDeleteResetTokenMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("DeleteResetToken")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceCreatePermissionHandler := connect.NewUnaryHandler(
 		UsersServiceCreatePermissionProcedure,
 		svc.CreatePermission,
-		connect.WithSchema(usersServiceCreatePermissionMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("CreatePermission")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceListPermissionsHandler := connect.NewUnaryHandler(
 		UsersServiceListPermissionsProcedure,
 		svc.ListPermissions,
-		connect.WithSchema(usersServiceListPermissionsMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("ListPermissions")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceCreateRoleHandler := connect.NewUnaryHandler(
 		UsersServiceCreateRoleProcedure,
 		svc.CreateRole,
-		connect.WithSchema(usersServiceCreateRoleMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("CreateRole")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceUpdateRoleHandler := connect.NewUnaryHandler(
 		UsersServiceUpdateRoleProcedure,
 		svc.UpdateRole,
-		connect.WithSchema(usersServiceUpdateRoleMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("UpdateRole")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceListRolesHandler := connect.NewUnaryHandler(
 		UsersServiceListRolesProcedure,
 		svc.ListRoles,
-		connect.WithSchema(usersServiceListRolesMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("ListRoles")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceAssignPermissionsToRoleHandler := connect.NewUnaryHandler(
 		UsersServiceAssignPermissionsToRoleProcedure,
 		svc.AssignPermissionsToRole,
-		connect.WithSchema(usersServiceAssignPermissionsToRoleMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("AssignPermissionsToRole")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceRemovePermissionFromRoleHandler := connect.NewUnaryHandler(
 		UsersServiceRemovePermissionFromRoleProcedure,
 		svc.RemovePermissionFromRole,
-		connect.WithSchema(usersServiceRemovePermissionFromRoleMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("RemovePermissionFromRole")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceAssignRolesToUserHandler := connect.NewUnaryHandler(
 		UsersServiceAssignRolesToUserProcedure,
 		svc.AssignRolesToUser,
-		connect.WithSchema(usersServiceAssignRolesToUserMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("AssignRolesToUser")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceRemoveUserRoleHandler := connect.NewUnaryHandler(
 		UsersServiceRemoveUserRoleProcedure,
 		svc.RemoveUserRole,
-		connect.WithSchema(usersServiceRemoveUserRoleMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("RemoveUserRole")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceGetUserRolesHandler := connect.NewUnaryHandler(
 		UsersServiceGetUserRolesProcedure,
 		svc.GetUserRoles,
-		connect.WithSchema(usersServiceGetUserRolesMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("GetUserRoles")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceCheckPermissionHandler := connect.NewUnaryHandler(
 		UsersServiceCheckPermissionProcedure,
 		svc.CheckPermission,
-		connect.WithSchema(usersServiceCheckPermissionMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("CheckPermission")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceAddFavoriteHandler := connect.NewUnaryHandler(
 		UsersServiceAddFavoriteProcedure,
 		svc.AddFavorite,
-		connect.WithSchema(usersServiceAddFavoriteMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("AddFavorite")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceRemoveFavoriteHandler := connect.NewUnaryHandler(
 		UsersServiceRemoveFavoriteProcedure,
 		svc.RemoveFavorite,
-		connect.WithSchema(usersServiceRemoveFavoriteMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("RemoveFavorite")),
 		connect.WithHandlerOptions(opts...),
 	)
 	usersServiceListFavoritesHandler := connect.NewUnaryHandler(
 		UsersServiceListFavoritesProcedure,
 		svc.ListFavorites,
-		connect.WithSchema(usersServiceListFavoritesMethodDescriptor),
+		connect.WithSchema(usersServiceMethods.ByName("ListFavorites")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/users.UsersService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

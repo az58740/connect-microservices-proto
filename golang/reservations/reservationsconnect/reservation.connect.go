@@ -116,38 +116,6 @@ const (
 	ReservationServiceProcessAudioProcedure = "/reservation.ReservationService/ProcessAudio"
 )
 
-// These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
-var (
-	reservationServiceServiceDescriptor                            = reservations.File_reservations_reservation_proto.Services().ByName("ReservationService")
-	reservationServiceCreateFacilityMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("CreateFacility")
-	reservationServiceUpdateFacilityMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("UpdateFacility")
-	reservationServiceListFacilitiesMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("ListFacilities")
-	reservationServiceCreateServiceMethodDescriptor                = reservationServiceServiceDescriptor.Methods().ByName("CreateService")
-	reservationServiceUpdateServiceMethodDescriptor                = reservationServiceServiceDescriptor.Methods().ByName("UpdateService")
-	reservationServiceListServicesMethodDescriptor                 = reservationServiceServiceDescriptor.Methods().ByName("ListServices")
-	reservationServiceAssignServiceToProviderMethodDescriptor      = reservationServiceServiceDescriptor.Methods().ByName("AssignServiceToProvider")
-	reservationServiceRemoveServiceFromProviderMethodDescriptor    = reservationServiceServiceDescriptor.Methods().ByName("RemoveServiceFromProvider")
-	reservationServiceGetProviderServicesListMethodDescriptor      = reservationServiceServiceDescriptor.Methods().ByName("GetProviderServicesList")
-	reservationServiceUpdateProviderServiceMethodDescriptor        = reservationServiceServiceDescriptor.Methods().ByName("UpdateProviderService")
-	reservationServiceCreateWeeklyScheduleMethodDescriptor         = reservationServiceServiceDescriptor.Methods().ByName("CreateWeeklySchedule")
-	reservationServiceGetWeeklyScheduleListMethodDescriptor        = reservationServiceServiceDescriptor.Methods().ByName("GetWeeklyScheduleList")
-	reservationServiceUpdateWeeklyScheduleMethodDescriptor         = reservationServiceServiceDescriptor.Methods().ByName("UpdateWeeklySchedule")
-	reservationServiceRemoveWeeklyScheduleMethodDescriptor         = reservationServiceServiceDescriptor.Methods().ByName("RemoveWeeklySchedule")
-	reservationServiceGenerateTimeSlotsMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("GenerateTimeSlots")
-	reservationServiceGetTimeSlotsListMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("GetTimeSlotsList")
-	reservationServiceUpdateTimeSlotMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("UpdateTimeSlot")
-	reservationServiceRemoveTimeSlotsMethodDescriptor              = reservationServiceServiceDescriptor.Methods().ByName("RemoveTimeSlots")
-	reservationServiceCreateReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("CreateReservation")
-	reservationServiceUpdateReservationStatusMethodDescriptor      = reservationServiceServiceDescriptor.Methods().ByName("UpdateReservationStatus")
-	reservationServiceListReservationsMethodDescriptor             = reservationServiceServiceDescriptor.Methods().ByName("ListReservations")
-	reservationServiceRemoveReservationMethodDescriptor            = reservationServiceServiceDescriptor.Methods().ByName("RemoveReservation")
-	reservationServiceCreateCustomerMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("CreateCustomer")
-	reservationServiceUpdateCustomerMethodDescriptor               = reservationServiceServiceDescriptor.Methods().ByName("UpdateCustomer")
-	reservationServiceListCustomerMethodDescriptor                 = reservationServiceServiceDescriptor.Methods().ByName("ListCustomer")
-	reservationServiceGetProviderServicesWithUsersMethodDescriptor = reservationServiceServiceDescriptor.Methods().ByName("GetProviderServicesWithUsers")
-	reservationServiceProcessAudioMethodDescriptor                 = reservationServiceServiceDescriptor.Methods().ByName("ProcessAudio")
-)
-
 // ReservationServiceClient is a client for the reservation.ReservationService service.
 type ReservationServiceClient interface {
 	// facility related methods
@@ -209,167 +177,168 @@ type ReservationServiceClient interface {
 // http://api.acme.com or https://acme.com/grpc).
 func NewReservationServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ReservationServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
+	reservationServiceMethods := reservations.File_reservations_reservation_proto.Services().ByName("ReservationService").Methods()
 	return &reservationServiceClient{
 		createFacility: connect.NewClient[reservations.CreateFacilityRequest, reservations.CreateFacilityResponse](
 			httpClient,
 			baseURL+ReservationServiceCreateFacilityProcedure,
-			connect.WithSchema(reservationServiceCreateFacilityMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("CreateFacility")),
 			connect.WithClientOptions(opts...),
 		),
 		updateFacility: connect.NewClient[reservations.UpdateFacilityRequest, reservations.UpdateFacilityResponse](
 			httpClient,
 			baseURL+ReservationServiceUpdateFacilityProcedure,
-			connect.WithSchema(reservationServiceUpdateFacilityMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("UpdateFacility")),
 			connect.WithClientOptions(opts...),
 		),
 		listFacilities: connect.NewClient[reservations.ListFacilitiesRequest, reservations.ListFacilitiesResponse](
 			httpClient,
 			baseURL+ReservationServiceListFacilitiesProcedure,
-			connect.WithSchema(reservationServiceListFacilitiesMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("ListFacilities")),
 			connect.WithClientOptions(opts...),
 		),
 		createService: connect.NewClient[reservations.CreateServiceRequest, reservations.CreateServiceResponse](
 			httpClient,
 			baseURL+ReservationServiceCreateServiceProcedure,
-			connect.WithSchema(reservationServiceCreateServiceMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("CreateService")),
 			connect.WithClientOptions(opts...),
 		),
 		updateService: connect.NewClient[reservations.UpdateServiceRequest, reservations.UpdateServiceResponse](
 			httpClient,
 			baseURL+ReservationServiceUpdateServiceProcedure,
-			connect.WithSchema(reservationServiceUpdateServiceMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("UpdateService")),
 			connect.WithClientOptions(opts...),
 		),
 		listServices: connect.NewClient[reservations.ListServicesRequest, reservations.ListServicesResponse](
 			httpClient,
 			baseURL+ReservationServiceListServicesProcedure,
-			connect.WithSchema(reservationServiceListServicesMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("ListServices")),
 			connect.WithClientOptions(opts...),
 		),
 		assignServiceToProvider: connect.NewClient[reservations.AssignServiceToProviderRequest, reservations.AssignServiceToProviderResponse](
 			httpClient,
 			baseURL+ReservationServiceAssignServiceToProviderProcedure,
-			connect.WithSchema(reservationServiceAssignServiceToProviderMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("AssignServiceToProvider")),
 			connect.WithClientOptions(opts...),
 		),
 		removeServiceFromProvider: connect.NewClient[reservations.RemoveServiceFromProviderRequest, reservations.RemoveServiceFromProviderResponse](
 			httpClient,
 			baseURL+ReservationServiceRemoveServiceFromProviderProcedure,
-			connect.WithSchema(reservationServiceRemoveServiceFromProviderMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("RemoveServiceFromProvider")),
 			connect.WithClientOptions(opts...),
 		),
 		getProviderServicesList: connect.NewClient[reservations.GetProviderServicesListRequest, reservations.GetProviderServicesListResponse](
 			httpClient,
 			baseURL+ReservationServiceGetProviderServicesListProcedure,
-			connect.WithSchema(reservationServiceGetProviderServicesListMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("GetProviderServicesList")),
 			connect.WithClientOptions(opts...),
 		),
 		updateProviderService: connect.NewClient[reservations.UpdateProviderServiceRequest, reservations.UpdateProviderServiceResponse](
 			httpClient,
 			baseURL+ReservationServiceUpdateProviderServiceProcedure,
-			connect.WithSchema(reservationServiceUpdateProviderServiceMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("UpdateProviderService")),
 			connect.WithClientOptions(opts...),
 		),
 		createWeeklySchedule: connect.NewClient[reservations.CreateWeeklyScheduleRequest, reservations.CreateWeeklyScheduleResponse](
 			httpClient,
 			baseURL+ReservationServiceCreateWeeklyScheduleProcedure,
-			connect.WithSchema(reservationServiceCreateWeeklyScheduleMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("CreateWeeklySchedule")),
 			connect.WithClientOptions(opts...),
 		),
 		getWeeklyScheduleList: connect.NewClient[reservations.GetWeeklyScheduleListRequest, reservations.GetWeeklyScheduleListResponse](
 			httpClient,
 			baseURL+ReservationServiceGetWeeklyScheduleListProcedure,
-			connect.WithSchema(reservationServiceGetWeeklyScheduleListMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("GetWeeklyScheduleList")),
 			connect.WithClientOptions(opts...),
 		),
 		updateWeeklySchedule: connect.NewClient[reservations.UpdateWeeklyScheduleRequest, reservations.UpdateWeeklyScheduleResponse](
 			httpClient,
 			baseURL+ReservationServiceUpdateWeeklyScheduleProcedure,
-			connect.WithSchema(reservationServiceUpdateWeeklyScheduleMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("UpdateWeeklySchedule")),
 			connect.WithClientOptions(opts...),
 		),
 		removeWeeklySchedule: connect.NewClient[reservations.RemoveWeeklyScheduleRequest, reservations.RemoveWeeklyScheduleResponse](
 			httpClient,
 			baseURL+ReservationServiceRemoveWeeklyScheduleProcedure,
-			connect.WithSchema(reservationServiceRemoveWeeklyScheduleMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("RemoveWeeklySchedule")),
 			connect.WithClientOptions(opts...),
 		),
 		generateTimeSlots: connect.NewClient[reservations.GenerateTimeSlotsRequest, reservations.GenerateTimeSlotsResponse](
 			httpClient,
 			baseURL+ReservationServiceGenerateTimeSlotsProcedure,
-			connect.WithSchema(reservationServiceGenerateTimeSlotsMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("GenerateTimeSlots")),
 			connect.WithClientOptions(opts...),
 		),
 		getTimeSlotsList: connect.NewClient[reservations.GetTimeSlotsListRequest, reservations.GetTimeSlotsListResponse](
 			httpClient,
 			baseURL+ReservationServiceGetTimeSlotsListProcedure,
-			connect.WithSchema(reservationServiceGetTimeSlotsListMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("GetTimeSlotsList")),
 			connect.WithClientOptions(opts...),
 		),
 		updateTimeSlot: connect.NewClient[reservations.UpdateTimeSlotRequest, reservations.UpdateTimeSlotResponse](
 			httpClient,
 			baseURL+ReservationServiceUpdateTimeSlotProcedure,
-			connect.WithSchema(reservationServiceUpdateTimeSlotMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("UpdateTimeSlot")),
 			connect.WithClientOptions(opts...),
 		),
 		removeTimeSlots: connect.NewClient[reservations.RemoveTimeSlotsRequest, reservations.RemoveTimeSlotsResponse](
 			httpClient,
 			baseURL+ReservationServiceRemoveTimeSlotsProcedure,
-			connect.WithSchema(reservationServiceRemoveTimeSlotsMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("RemoveTimeSlots")),
 			connect.WithClientOptions(opts...),
 		),
 		createReservation: connect.NewClient[reservations.CreateReservationRequest, reservations.CreateReservationResponse](
 			httpClient,
 			baseURL+ReservationServiceCreateReservationProcedure,
-			connect.WithSchema(reservationServiceCreateReservationMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("CreateReservation")),
 			connect.WithClientOptions(opts...),
 		),
 		updateReservationStatus: connect.NewClient[reservations.UpdateReservationRequest, reservations.UpdateReservationResponse](
 			httpClient,
 			baseURL+ReservationServiceUpdateReservationStatusProcedure,
-			connect.WithSchema(reservationServiceUpdateReservationStatusMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("UpdateReservationStatus")),
 			connect.WithClientOptions(opts...),
 		),
 		listReservations: connect.NewClient[reservations.ListReservationsRequest, reservations.ListReservationsResponse](
 			httpClient,
 			baseURL+ReservationServiceListReservationsProcedure,
-			connect.WithSchema(reservationServiceListReservationsMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("ListReservations")),
 			connect.WithClientOptions(opts...),
 		),
 		removeReservation: connect.NewClient[reservations.DeleteReservationRequest, reservations.DeleteReservationResponse](
 			httpClient,
 			baseURL+ReservationServiceRemoveReservationProcedure,
-			connect.WithSchema(reservationServiceRemoveReservationMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("RemoveReservation")),
 			connect.WithClientOptions(opts...),
 		),
 		createCustomer: connect.NewClient[reservations.CreateCustomerRequest, reservations.CreateCustomerResponse](
 			httpClient,
 			baseURL+ReservationServiceCreateCustomerProcedure,
-			connect.WithSchema(reservationServiceCreateCustomerMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("CreateCustomer")),
 			connect.WithClientOptions(opts...),
 		),
 		updateCustomer: connect.NewClient[reservations.UpdateCustomerRequest, reservations.UpdateCustomerResponse](
 			httpClient,
 			baseURL+ReservationServiceUpdateCustomerProcedure,
-			connect.WithSchema(reservationServiceUpdateCustomerMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("UpdateCustomer")),
 			connect.WithClientOptions(opts...),
 		),
 		listCustomer: connect.NewClient[reservations.ListCustomerRequest, reservations.ListCustomerResponse](
 			httpClient,
 			baseURL+ReservationServiceListCustomerProcedure,
-			connect.WithSchema(reservationServiceListCustomerMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("ListCustomer")),
 			connect.WithClientOptions(opts...),
 		),
 		getProviderServicesWithUsers: connect.NewClient[reservations.GetProviderServicesWithUsersRequest, reservations.GetProviderServicesWithUsersResponse](
 			httpClient,
 			baseURL+ReservationServiceGetProviderServicesWithUsersProcedure,
-			connect.WithSchema(reservationServiceGetProviderServicesWithUsersMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("GetProviderServicesWithUsers")),
 			connect.WithClientOptions(opts...),
 		),
 		processAudio: connect.NewClient[reservations.ProcessAudioRequest, reservations.ProcessAudioResponse](
 			httpClient,
 			baseURL+ReservationServiceProcessAudioProcedure,
-			connect.WithSchema(reservationServiceProcessAudioMethodDescriptor),
+			connect.WithSchema(reservationServiceMethods.ByName("ProcessAudio")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -599,166 +568,167 @@ type ReservationServiceHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewReservationServiceHandler(svc ReservationServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	reservationServiceMethods := reservations.File_reservations_reservation_proto.Services().ByName("ReservationService").Methods()
 	reservationServiceCreateFacilityHandler := connect.NewUnaryHandler(
 		ReservationServiceCreateFacilityProcedure,
 		svc.CreateFacility,
-		connect.WithSchema(reservationServiceCreateFacilityMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("CreateFacility")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceUpdateFacilityHandler := connect.NewUnaryHandler(
 		ReservationServiceUpdateFacilityProcedure,
 		svc.UpdateFacility,
-		connect.WithSchema(reservationServiceUpdateFacilityMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("UpdateFacility")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceListFacilitiesHandler := connect.NewUnaryHandler(
 		ReservationServiceListFacilitiesProcedure,
 		svc.ListFacilities,
-		connect.WithSchema(reservationServiceListFacilitiesMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("ListFacilities")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceCreateServiceHandler := connect.NewUnaryHandler(
 		ReservationServiceCreateServiceProcedure,
 		svc.CreateService,
-		connect.WithSchema(reservationServiceCreateServiceMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("CreateService")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceUpdateServiceHandler := connect.NewUnaryHandler(
 		ReservationServiceUpdateServiceProcedure,
 		svc.UpdateService,
-		connect.WithSchema(reservationServiceUpdateServiceMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("UpdateService")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceListServicesHandler := connect.NewUnaryHandler(
 		ReservationServiceListServicesProcedure,
 		svc.ListServices,
-		connect.WithSchema(reservationServiceListServicesMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("ListServices")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceAssignServiceToProviderHandler := connect.NewUnaryHandler(
 		ReservationServiceAssignServiceToProviderProcedure,
 		svc.AssignServiceToProvider,
-		connect.WithSchema(reservationServiceAssignServiceToProviderMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("AssignServiceToProvider")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceRemoveServiceFromProviderHandler := connect.NewUnaryHandler(
 		ReservationServiceRemoveServiceFromProviderProcedure,
 		svc.RemoveServiceFromProvider,
-		connect.WithSchema(reservationServiceRemoveServiceFromProviderMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("RemoveServiceFromProvider")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceGetProviderServicesListHandler := connect.NewUnaryHandler(
 		ReservationServiceGetProviderServicesListProcedure,
 		svc.GetProviderServicesList,
-		connect.WithSchema(reservationServiceGetProviderServicesListMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("GetProviderServicesList")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceUpdateProviderServiceHandler := connect.NewUnaryHandler(
 		ReservationServiceUpdateProviderServiceProcedure,
 		svc.UpdateProviderService,
-		connect.WithSchema(reservationServiceUpdateProviderServiceMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("UpdateProviderService")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceCreateWeeklyScheduleHandler := connect.NewUnaryHandler(
 		ReservationServiceCreateWeeklyScheduleProcedure,
 		svc.CreateWeeklySchedule,
-		connect.WithSchema(reservationServiceCreateWeeklyScheduleMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("CreateWeeklySchedule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceGetWeeklyScheduleListHandler := connect.NewUnaryHandler(
 		ReservationServiceGetWeeklyScheduleListProcedure,
 		svc.GetWeeklyScheduleList,
-		connect.WithSchema(reservationServiceGetWeeklyScheduleListMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("GetWeeklyScheduleList")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceUpdateWeeklyScheduleHandler := connect.NewUnaryHandler(
 		ReservationServiceUpdateWeeklyScheduleProcedure,
 		svc.UpdateWeeklySchedule,
-		connect.WithSchema(reservationServiceUpdateWeeklyScheduleMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("UpdateWeeklySchedule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceRemoveWeeklyScheduleHandler := connect.NewUnaryHandler(
 		ReservationServiceRemoveWeeklyScheduleProcedure,
 		svc.RemoveWeeklySchedule,
-		connect.WithSchema(reservationServiceRemoveWeeklyScheduleMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("RemoveWeeklySchedule")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceGenerateTimeSlotsHandler := connect.NewUnaryHandler(
 		ReservationServiceGenerateTimeSlotsProcedure,
 		svc.GenerateTimeSlots,
-		connect.WithSchema(reservationServiceGenerateTimeSlotsMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("GenerateTimeSlots")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceGetTimeSlotsListHandler := connect.NewUnaryHandler(
 		ReservationServiceGetTimeSlotsListProcedure,
 		svc.GetTimeSlotsList,
-		connect.WithSchema(reservationServiceGetTimeSlotsListMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("GetTimeSlotsList")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceUpdateTimeSlotHandler := connect.NewUnaryHandler(
 		ReservationServiceUpdateTimeSlotProcedure,
 		svc.UpdateTimeSlot,
-		connect.WithSchema(reservationServiceUpdateTimeSlotMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("UpdateTimeSlot")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceRemoveTimeSlotsHandler := connect.NewUnaryHandler(
 		ReservationServiceRemoveTimeSlotsProcedure,
 		svc.RemoveTimeSlots,
-		connect.WithSchema(reservationServiceRemoveTimeSlotsMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("RemoveTimeSlots")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceCreateReservationHandler := connect.NewUnaryHandler(
 		ReservationServiceCreateReservationProcedure,
 		svc.CreateReservation,
-		connect.WithSchema(reservationServiceCreateReservationMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("CreateReservation")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceUpdateReservationStatusHandler := connect.NewUnaryHandler(
 		ReservationServiceUpdateReservationStatusProcedure,
 		svc.UpdateReservationStatus,
-		connect.WithSchema(reservationServiceUpdateReservationStatusMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("UpdateReservationStatus")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceListReservationsHandler := connect.NewUnaryHandler(
 		ReservationServiceListReservationsProcedure,
 		svc.ListReservations,
-		connect.WithSchema(reservationServiceListReservationsMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("ListReservations")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceRemoveReservationHandler := connect.NewUnaryHandler(
 		ReservationServiceRemoveReservationProcedure,
 		svc.RemoveReservation,
-		connect.WithSchema(reservationServiceRemoveReservationMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("RemoveReservation")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceCreateCustomerHandler := connect.NewUnaryHandler(
 		ReservationServiceCreateCustomerProcedure,
 		svc.CreateCustomer,
-		connect.WithSchema(reservationServiceCreateCustomerMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("CreateCustomer")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceUpdateCustomerHandler := connect.NewUnaryHandler(
 		ReservationServiceUpdateCustomerProcedure,
 		svc.UpdateCustomer,
-		connect.WithSchema(reservationServiceUpdateCustomerMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("UpdateCustomer")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceListCustomerHandler := connect.NewUnaryHandler(
 		ReservationServiceListCustomerProcedure,
 		svc.ListCustomer,
-		connect.WithSchema(reservationServiceListCustomerMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("ListCustomer")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceGetProviderServicesWithUsersHandler := connect.NewUnaryHandler(
 		ReservationServiceGetProviderServicesWithUsersProcedure,
 		svc.GetProviderServicesWithUsers,
-		connect.WithSchema(reservationServiceGetProviderServicesWithUsersMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("GetProviderServicesWithUsers")),
 		connect.WithHandlerOptions(opts...),
 	)
 	reservationServiceProcessAudioHandler := connect.NewUnaryHandler(
 		ReservationServiceProcessAudioProcedure,
 		svc.ProcessAudio,
-		connect.WithSchema(reservationServiceProcessAudioMethodDescriptor),
+		connect.WithSchema(reservationServiceMethods.ByName("ProcessAudio")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/reservation.ReservationService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

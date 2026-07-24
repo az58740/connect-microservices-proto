@@ -1,0 +1,619 @@
+syntax = "proto3";
+
+package session;
+option go_package = "github.com/az58740/connect-microservices-proto/golang/sessions;sessions";
+
+
+// ================ Imports ================
+import "google/protobuf/timestamp.proto";
+
+// ================ Enums ================
+// SessionType represents the business type of a session.
+// نوع کسب‌وکار یا کاربرد جلسه را مشخص می‌کند.
+enum SessionType {
+  // Default value.
+  // مقدار پیش‌فرض.
+  SESSION_TYPE_UNSPECIFIED = 0;
+
+  // One-to-one online consultation.
+  // جلسه مشاوره خصوصی.
+  CONSULTATION = 1;
+
+  // Online education or training course.
+  // دوره آموزشی آنلاین.
+  COURSE = 2;
+
+  // Group training class.
+  // کلاس آموزشی گروهی.
+  GROUP_TRAINING = 3;
+
+  // Webinar or seminar.
+  // وبینار یا سمینار آنلاین.
+  WEBINAR = 4;
+
+  // Live shopping event.
+  // پخش زنده فروش محصولات.
+  LIVE_SHOPPING = 5;
+
+  // General meeting.
+  // جلسه عمومی.
+  MEETING = 6;
+}
+// SessionStatus represents the lifecycle of a session.
+// وضعیت چرخه حیات جلسه.
+enum SessionStatus {
+
+  // Default value.
+  // مقدار پیش‌فرض.
+  SESSION_STATUS_UNSPECIFIED = 0;
+
+  // Session created but not published.
+  // جلسه ایجاد شده اما هنوز منتشر نشده است.
+  DRAFT = 1;
+
+  // Published and waiting for start time.
+  // منتشر شده و منتظر زمان شروع.
+  SCHEDULED = 2;
+
+  // Room created and waiting for participants.
+  // اتاق ایجاد شده و منتظر ورود کاربران.
+  WAITING = 3;
+
+  // Session is currently active.
+  // جلسه در حال برگزاری است.
+  LIVE = 4;
+
+  // Session completed successfully.
+  // جلسه با موفقیت پایان یافته است.
+  FINISHED = 5;
+
+  // Session cancelled.
+  // جلسه لغو شده است.
+  CANCELLED = 6;
+
+  // Session expired before starting.
+  // زمان جلسه گذشته و شروع نشده است.
+  EXPIRED = 7;
+}
+// JoinPolicy defines how participants can join.
+// سیاست ورود کاربران به جلسه.
+enum JoinPolicy {
+
+  // Default value.
+  // مقدار پیش‌فرض.
+  JOIN_POLICY_UNSPECIFIED = 0;
+
+  // Everyone can join immediately.
+  // ورود برای همه آزاد است.
+  AUTO_ACCEPT = 1;
+
+  // Host must approve participants.
+  // ورود نیازمند تأیید برگزارکننده است.
+  HOST_APPROVAL = 2;
+
+  // Only invited users may join.
+  // فقط کاربران دعوت شده می‌توانند وارد شوند.
+  INVITE_ONLY = 3;
+}
+// RoomStatus represents the media room state.
+// وضعیت اتاق ارتباطی.
+enum RoomStatus {
+
+  ROOM_STATUS_UNSPECIFIED = 0;
+
+  // Room is being created.
+  // اتاق در حال ایجاد است.
+  CREATING = 1;
+
+  // Room is ready.
+  // اتاق آماده استفاده است.
+  READY = 2;
+
+  // Room is active.
+  // اتاق فعال است.
+  ACTIVE = 3;
+
+  // Room has been closed.
+  // اتاق بسته شده است.
+  CLOSED = 4;
+
+  // Room creation failed.
+  // ایجاد اتاق با خطا مواجه شده است.
+  ROOMFAILED = 5;
+}
+// ParticipantRole represents user's role in the session.
+// نقش کاربر در جلسه.
+enum ParticipantRole {
+
+  PARTICIPANT_ROLE_UNSPECIFIED = 0;
+
+  // Session owner.
+  // برگزارکننده جلسه.
+  HOST = 1;
+
+  // Additional host.
+  // کمک برگزارکننده.
+  CO_HOST = 2;
+
+  // Teacher or speaker.
+  // مدرس یا سخنران.
+  SPEAKER = 3;
+
+  // Moderator.
+  // مدیر جلسه.
+  MODERATOR = 4;
+
+  // Normal participant.
+  // شرکت‌کننده عادی.
+  PARTICIPANT = 5;
+
+  // Observer only.
+  // فقط مشاهده‌کننده.
+  VIEWER = 6;
+}
+// ParticipantStatus represents participant state.
+// وضعیت شرکت‌کننده.
+enum ParticipantStatus {
+
+  PARTICIPANT_STATUS_UNSPECIFIED = 0;
+
+  // Waiting for host approval.
+  // منتظر تأیید برگزارکننده.
+  REQUESTED = 1;
+
+  // Approved by host.
+  // توسط برگزارکننده تأیید شده است.
+  PARTICIPANTAPPROVED = 2;
+
+  // Rejected by host.
+  // درخواست رد شده است.
+  REJECTED = 3;
+
+  // Joined the room.
+  // وارد اتاق شده است.
+  JOINED = 4;
+
+  // Left voluntarily.
+  // جلسه را ترک کرده است.
+  LEFT = 5;
+
+  // Removed by host.
+  // توسط برگزارکننده از جلسه حذف شده است.
+  REMOVED = 6;
+
+  // Connection lost.
+  // ارتباط کاربر قطع شده است.
+  DISCONNECTED = 7;
+}
+// PaymentStatus represents the participant's payment status.
+//
+// وضعیت پرداخت شرکت‌کننده را نمایش می‌دهد.
+enum PaymentStatus {
+
+  // Default value.
+  // مقدار پیش‌فرض.
+  PAYMENT_STATUS_UNSPECIFIED = 0;
+
+  // Payment is not required.
+  // جلسه رایگان است و نیازی به پرداخت نیست.
+  NOT_REQUIRED = 1;
+
+  // Waiting for payment.
+  // در انتظار پرداخت.
+  PENDING = 2;
+
+  // Payment completed successfully.
+  // پرداخت با موفقیت انجام شده است.
+  PAID = 3;
+
+  // Payment failed.
+  // پرداخت ناموفق بوده است.
+  PAYMENTSTATUSFAILED = 4;
+
+  // Payment has been refunded.
+  // مبلغ به کاربر بازگردانده شده است.
+  REFUNDED = 5;
+}
+
+enum JoinResult {
+
+  JOIN_RESULT_UNSPECIFIED = 0;
+
+  JoinResultAPPROVED = 1;
+
+  WAITING_FOR_APPROVAL = 2;
+
+  SESSION_NOT_STARTED = 3;
+
+  SESSION_ENDED = 4;
+
+  SESSION_FULL = 5;
+
+  PAYMENT_REQUIRED = 6;
+
+  PAYMENT_NOT_COMPLETED = 7;
+
+  ACCESS_DENIED = 8;
+}
+
+
+// ================ Messages ================
+// Session represents an online session such as consultation,
+// webinar, live shopping or online course.
+//
+// جلسه آنلاین مانند مشاوره، وبینار، لایو فروش یا کلاس آموزشی.
+message Session {
+
+  // Unique session identifier.
+  // شناسه یکتای جلسه.
+  uint64 id = 1;
+
+  // Owner and creator of the session.
+  // شناسه برگزارکننده و ایجادکننده جلسه.
+  uint64 host_user_id = 2;
+
+  // Facility that owns this session.
+  // شناسه مرکز زیبایی، کلینیک یا فروشگاه.
+  uint64 facility_id = 3;
+  string facility_name=4;
+
+  // Business type of the session.
+  // نوع جلسه.
+  SessionType type = 5;
+
+  // Current session status.
+  // وضعیت فعلی جلسه.
+  SessionStatus status = 6;
+
+  // Session title.
+  // عنوان جلسه.
+  string title =7;
+
+  // Session description.
+  // توضیحات جلسه.
+  string description = 8;
+
+  // Planned start time.
+  // زمان شروع جلسه.
+  google.protobuf.Timestamp start_time = 9;
+
+  // Planned end time.
+  // زمان پایان جلسه.
+  google.protobuf.Timestamp end_time = 10;
+
+  // Maximum number of participants.
+  // حداکثر تعداد شرکت‌کنندگان.
+  uint32 max_participants = 11;
+
+  // Policy for joining the session.
+  // سیاست ورود به جلسه.
+  JoinPolicy join_policy = 12;
+
+  // Whether recording is enabled.
+  // آیا ضبط جلسه فعال است یا خیر.
+  bool is_recorded = 13;
+
+   // Session price.
+  // هزینه شرکت در جلسه.
+  double price = 14;
+
+  // Currency code based on ISO-4217 (e.g. IRR, USD, EUR).
+  // کد واحد پول بر اساس استاندارد ISO-4217 مانند IRR ،USD یا EUR.
+  string currency = 15;
+  // Creation timestamp.
+  // زمان ایجاد.
+  google.protobuf.Timestamp created_at = 16;
+
+  // Last update timestamp.
+  // زمان آخرین ویرایش.
+  google.protobuf.Timestamp updated_at = 17;
+}
+// SessionParticipant represents a participant in a session.
+//
+// شرکت‌کننده در یک جلسه را نمایش می‌دهد.
+message SessionParticipant {
+
+  // Unique participant identifier.
+  // شناسه یکتای شرکت‌کننده.
+  uint64 id = 1;
+
+  // Related session identifier.
+  // شناسه جلسه.
+  uint64 session_id = 2;
+
+  // User identifier.
+  // شناسه کاربر.
+  uint64 user_id = 3;
+
+  // Participant role in the session.
+  // نقش کاربر در جلسه.
+  ParticipantRole role = 4;
+
+  // Current participant status.
+  // وضعیت فعلی شرکت‌کننده.
+  ParticipantStatus status = 5;
+
+  // Participant payment status.
+  // وضعیت پرداخت شرکت‌کننده.
+  PaymentStatus payment_status = 6;
+
+  // Indicates whether the participant's microphone is muted.
+  // مشخص می‌کند میکروفون شرکت‌کننده بی‌صدا است یا خیر.
+  bool is_muted = 7;
+
+  // Indicates whether the participant's camera is enabled.
+  // مشخص می‌کند دوربین شرکت‌کننده روشن است یا خیر.
+  bool is_camera_enabled = 8;
+
+  // Time when the participant joined the session.
+  // زمان ورود شرکت‌کننده به جلسه.
+  google.protobuf.Timestamp joined_at = 9;
+
+  // Time when the participant left the session.
+  // زمان خروج شرکت‌کننده از جلسه.
+  google.protobuf.Timestamp left_at = 10;
+
+  // Creation timestamp.
+  // زمان ایجاد رکورد.
+  google.protobuf.Timestamp created_at = 11;
+
+  // Last update timestamp.
+  // زمان آخرین ویرایش رکورد.
+  google.protobuf.Timestamp updated_at = 12;
+}
+// Room represents the media room associated with a session.
+//
+// اتاق ارتباطی مربوط به یک جلسه را نمایش می‌دهد.
+message Room {
+
+  // Unique room identifier.
+  // شناسه یکتای اتاق.
+  uint64 id = 1;
+
+  // Related session identifier.
+  // شناسه جلسه‌ای که این اتاق متعلق به آن است.
+  uint64 session_id = 2;
+
+  // Unique room name.
+  // نام یکتای اتاق.
+  string room_name = 3;
+
+  // Current room status.
+  // وضعیت فعلی اتاق.
+  RoomStatus status =4;
+  // Creation time.
+  // زمان ایجاد اتاق.
+  google.protobuf.Timestamp created_at =5;
+
+  // Closing time.
+  // زمان بسته شدن اتاق.
+  google.protobuf.Timestamp closed_at = 6;
+}
+
+// ================ RPC Methods ================
+
+service SessionService {
+
+  // Session Management
+  rpc CreateSession(CreateSessionRequest)
+      returns (CreateSessionResponse);
+
+  rpc UpdateSession(UpdateSessionRequest)
+      returns (UpdateSessionResponse);
+
+  rpc DeleteSession(DeleteSessionRequest)
+      returns (DeleteSessionResponse);
+
+  rpc GetSession(GetSessionRequest)
+      returns (GetSessionResponse);
+
+  rpc ListSessions(ListSessionsRequest)
+      returns (ListSessionsResponse);
+
+  // Session Lifecycle
+  rpc PublishSession(PublishSessionRequest)
+      returns (PublishSessionResponse);
+
+  rpc StartSession(StartSessionRequest)
+      returns (StartSessionResponse);
+
+  rpc EndSession(EndSessionRequest)
+      returns (EndSessionResponse);
+
+  rpc CancelSession(CancelSessionRequest)
+      returns (CancelSessionResponse);
+
+  // Participant
+  rpc JoinSession(JoinSessionRequest)
+      returns (JoinSessionResponse);
+
+  rpc LeaveSession(LeaveSessionRequest) returns (LeaveSessionResponse);
+    // Updates the status and properties of a session participant.
+   // وضعیت و مشخصات شرکت‌کننده جلسه را به‌روزرسانی می‌کند.
+  rpc UpdateParticipantStatus(UpdateParticipantStatusRequest)
+    returns (UpdateParticipantStatusResponse);
+  rpc RemoveParticipant(RemoveParticipantRequest)
+      returns (RemoveParticipantResponse);
+
+  rpc ListParticipants(ListParticipantsRequest)
+      returns (ListParticipantsResponse);
+}
+
+// ================ Rquest and Responce Messeages ================
+message CreateSessionRequest {
+  Session session = 1;
+}
+
+message CreateSessionResponse {
+  Session session = 1;
+}
+message UpdateSessionRequest {
+  Session session = 1;
+}
+
+message UpdateSessionResponse {
+  Session session = 1;
+}
+message DeleteSessionRequest {
+  uint64 id = 1;
+}
+
+message DeleteSessionResponse {
+}
+message GetSessionRequest {
+  uint64 id = 1;
+}
+
+message GetSessionResponse {
+  Session session = 1;
+}
+message SessionFilter {
+
+  uint64 host_user_id = 1;
+
+  uint64 facility_id = 2;
+
+  SessionStatus status = 3;
+
+  SessionType type = 4;
+}
+message ListSessionsRequest {
+  SessionFilter filter = 1;
+}
+
+message ListSessionsResponse {
+
+  repeated Session sessions = 1;
+
+ 
+}
+
+message StartSessionRequest {
+
+  uint64 session_id = 1;
+
+  uint64 host_user_id = 2;
+}
+
+message StartSessionResponse {
+
+  Session session = 1;
+
+  string access_token = 2;
+
+  string server_url = 3;
+}
+
+message JoinSessionRequest {
+
+  uint64 session_id = 1;
+
+  uint64 user_id = 2;
+}
+message JoinSessionResponse {
+
+ JoinResult result = 1;
+
+  string message = 2;
+
+  SessionParticipant participant = 3;
+
+  string access_token = 4;
+
+  string server_url = 5;
+}
+
+message LeaveSessionRequest {
+
+  uint64 session_id = 1;
+
+  uint64 user_id = 2;
+}
+
+message LeaveSessionResponse {
+}
+
+message UpdateParticipantStatusRequest {
+
+  // Session identifier.
+  // شناسه جلسه.
+  uint64 session_id = 1;
+
+  // Participant user identifier.
+  // شناسه کاربر.
+  uint64 user_id = 2;
+
+  // Participant status.
+  // وضعیت شرکت‌کننده.
+  optional ParticipantStatus participant_status = 3;
+
+  // Payment status.
+  // وضعیت پرداخت.
+  optional PaymentStatus payment_status = 4;
+}
+message UpdateParticipantStatusResponse {
+
+  // Updated participant.
+  // اطلاعات به‌روزشده شرکت‌کننده.
+  SessionParticipant participant = 1;
+}
+message ListParticipantsRequest {
+
+  uint64 session_id = 1;
+}
+
+message ListParticipantsResponse {
+
+  repeated SessionParticipant participants = 1;
+}
+message PublishSessionRequest {
+
+  // Session identifier.
+  // شناسه جلسه.
+  uint64 session_id = 1;
+}
+
+message PublishSessionResponse {
+
+  // Published session.
+  // جلسه منتشر شده.
+  Session session = 1;
+}
+message EndSessionRequest {
+
+  // Session identifier.
+  // شناسه جلسه.
+  uint64 session_id = 1;
+}
+
+message EndSessionResponse {
+
+  // Updated session.
+  // اطلاعات جلسه پس از پایان.
+  Session session = 1;
+}
+message CancelSessionRequest {
+
+  // Session identifier.
+  // شناسه جلسه.
+  uint64 session_id = 1;
+}
+
+message CancelSessionResponse {
+
+  // Updated session.
+  // اطلاعات جلسه پس از لغو.
+  Session session = 1;
+}
+message RemoveParticipantRequest {
+
+  // Session identifier.
+  // شناسه جلسه.
+  uint64 session_id = 1;
+
+  // Participant user identifier.
+  // شناسه کاربر.
+  uint64 user_id = 2;
+}
+
+message RemoveParticipantResponse {}
