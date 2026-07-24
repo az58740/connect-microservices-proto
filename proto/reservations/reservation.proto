@@ -103,6 +103,8 @@ enum FacilityGroup {
 
   // 12. فعالیت‌های آنلاین
   ONLINE_BUSINESSES = 12;    // شامل: فروشگاه اینترنتی، فریلنسرها
+  //13. مشاوره آنلاین
+  ONLINE_CONSULTATION = 13; // شامل:مشاوره پوست مو و زیبایی , روانشناسی و ...
 }
 // عنوان یا نوع کسب‌وکار، مرکز، یا شغل | Business type, workplace, or job title
 enum FacilityTitle {
@@ -207,6 +209,10 @@ enum FacilityTitle {
   FREELANCE_PROFESSIONAL = 72; // فریلنسر | Freelance Professional
   ONLINE_SHOP = 73;            // فروشگاه اینترنتی | Online Shop
   REMOTE_WORKSPACE = 74;       // محیط کار آنلاین | Remote Workspace
+  // گروه: Online Consultation — مشاوره آنلاین
+  ONLINE_BEAUTY_CONSULTATION = 75;    //  پوست مو و زیبایی مشاوره آنلاین | Online Consultation (e.g., beauty, psychology)
+  ONLINE_PSYCHOLOGICAL_CONSULTATION = 76; // مشاوره روانشناسی آنلاین | Online Psychological Consultation
+  ONLINE_SKINCARE_PRODUCT_CONSULTATION = 77; //   مشاوره محصولات مراقبت پوست و مو | Online Consultation for skincare products
 }
 enum FacilityType {
   Facility_BOOKABLE = 0;         // قابل رزرو (مثلاً آرایشگاه، پزشک)

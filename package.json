@@ -1,6 +1,7 @@
 {
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@bufbuild/protobuf": "^2.5.0",
     "@connectrpc/connect": "^2.0.2",
     "@connectrpc/connect-node": "^2.0.1",
@@ -13,5 +14,17 @@
     "@bufbuild/buf": "1.50.0",
     "@bufbuild/protoc-gen-es": "^2.2.3",
     "@connectrpc/protoc-gen-connect-es": "1.7.0"
+=======
+    "@bufbuild/protobuf": "1.10.1",
+    "@connectrpc/connect": "1.6.1",
+    "@connectrpc/connect-next": "1.6.1",
+    "@connectrpc/connect-node": "1.6.1",
+    "@connectrpc/connect-web": "1.6.1"
+  },
+  "devDependencies": {
+    "@bufbuild/buf": "1.47.2",
+    "@bufbuild/protoc-gen-es": "1.10.1",
+    "@connectrpc/protoc-gen-connect-es": "1.6.1"
+>>>>>>> b9f4f311463019d57058de49503f39d45c509abc
   }
 }
