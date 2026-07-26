@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CancelSessionRequest, CancelSessionResponse, CreateSessionRequest, CreateSessionResponse, DeleteSessionRequest, DeleteSessionResponse, EndSessionRequest, EndSessionResponse, GetSessionRequest, GetSessionResponse, JoinSessionRequest, JoinSessionResponse, LeaveSessionRequest, LeaveSessionResponse, ListParticipantsRequest, ListParticipantsResponse, ListSessionsRequest, ListSessionsResponse, PublishSessionRequest, PublishSessionResponse, RemoveParticipantRequest, RemoveParticipantResponse, StartSessionRequest, StartSessionResponse, UpdateParticipantStatusRequest, UpdateParticipantStatusResponse, UpdateSessionRequest, UpdateSessionResponse } from "./session_pb.js";
+import { CancelSessionRequest, CancelSessionResponse, CreateParticipantRequest, CreateParticipantResponse, CreateSessionRequest, CreateSessionResponse, DeleteSessionRequest, DeleteSessionResponse, EndSessionRequest, EndSessionResponse, GetSessionRequest, GetSessionResponse, JoinSessionRequest, JoinSessionResponse, LeaveSessionRequest, LeaveSessionResponse, ListParticipantsRequest, ListParticipantsResponse, ListSessionsRequest, ListSessionsResponse, PublishSessionRequest, PublishSessionResponse, RemoveParticipantRequest, RemoveParticipantResponse, StartSessionRequest, StartSessionResponse, UpdateParticipantStatusRequest, UpdateParticipantStatusResponse, UpdateSessionRequest, UpdateSessionResponse } from "./session_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -100,6 +100,15 @@ export const SessionService = {
     /**
      * Participant
      *
+     * @generated from rpc session.SessionService.CreateParticipant
+     */
+    createParticipant: {
+      name: "CreateParticipant",
+      I: CreateParticipantRequest,
+      O: CreateParticipantResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
      * @generated from rpc session.SessionService.JoinSession
      */
     joinSession: {

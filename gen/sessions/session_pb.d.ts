@@ -662,6 +662,76 @@ export declare type LeaveSessionResponse = Message<"session.LeaveSessionResponse
 export declare const LeaveSessionResponseSchema: GenMessage<LeaveSessionResponse>;
 
 /**
+ * @generated from message session.CreateParticipantRequest
+ */
+export declare type CreateParticipantRequest = Message<"session.CreateParticipantRequest"> & {
+  /**
+   * Session identifier.
+   * شناسه جلسه.
+   *
+   * @generated from field: uint64 session_id = 1;
+   */
+  sessionId: bigint;
+
+  /**
+   * Participant user identifier.
+   * شناسه کاربر.
+   *
+   * @generated from field: uint64 user_id = 2;
+   */
+  userId: bigint;
+
+  /**
+   * Participant role.
+   * نقش شرکت‌کننده.
+   *
+   * @generated from field: session.ParticipantRole role = 3;
+   */
+  role: ParticipantRole;
+
+  /**
+   * Initial participant status.
+   * وضعیت اولیه شرکت‌کننده.
+   *
+   * @generated from field: session.ParticipantStatus participant_status = 4;
+   */
+  participantStatus: ParticipantStatus;
+
+  /**
+   * Initial payment status.
+   * وضعیت اولیه پرداخت.
+   *
+   * @generated from field: session.PaymentStatus payment_status = 5;
+   */
+  paymentStatus: PaymentStatus;
+};
+
+/**
+ * Describes the message session.CreateParticipantRequest.
+ * Use `create(CreateParticipantRequestSchema)` to create a new message.
+ */
+export declare const CreateParticipantRequestSchema: GenMessage<CreateParticipantRequest>;
+
+/**
+ * @generated from message session.CreateParticipantResponse
+ */
+export declare type CreateParticipantResponse = Message<"session.CreateParticipantResponse"> & {
+  /**
+   * Created participant.
+   * اطلاعات شرکت‌کننده ایجاد شده.
+   *
+   * @generated from field: session.SessionParticipant participant = 1;
+   */
+  participant?: SessionParticipant | undefined;
+};
+
+/**
+ * Describes the message session.CreateParticipantResponse.
+ * Use `create(CreateParticipantResponseSchema)` to create a new message.
+ */
+export declare const CreateParticipantResponseSchema: GenMessage<CreateParticipantResponse>;
+
+/**
  * @generated from message session.UpdateParticipantStatusRequest
  */
 export declare type UpdateParticipantStatusRequest = Message<"session.UpdateParticipantStatusRequest"> & {
@@ -1498,6 +1568,14 @@ export declare const SessionService: GenService<{
   /**
    * Participant
    *
+   * @generated from rpc session.SessionService.CreateParticipant
+   */
+  createParticipant: {
+    methodKind: "unary";
+    input: typeof CreateParticipantRequestSchema;
+    output: typeof CreateParticipantResponseSchema;
+  },
+  /**
    * @generated from rpc session.SessionService.JoinSession
    */
   joinSession: {

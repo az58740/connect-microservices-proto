@@ -1905,6 +1905,138 @@ func (*LeaveSessionResponse) Descriptor() ([]byte, []int) {
 	return file_sessions_session_proto_rawDescGZIP(), []int{19}
 }
 
+type CreateParticipantRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Session identifier.
+	// شناسه جلسه.
+	SessionId uint64 `protobuf:"varint,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
+	// Participant user identifier.
+	// شناسه کاربر.
+	UserId uint64 `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	// Participant role.
+	// نقش شرکت‌کننده.
+	Role ParticipantRole `protobuf:"varint,3,opt,name=role,proto3,enum=session.ParticipantRole" json:"role,omitempty"`
+	// Initial participant status.
+	// وضعیت اولیه شرکت‌کننده.
+	ParticipantStatus ParticipantStatus `protobuf:"varint,4,opt,name=participant_status,json=participantStatus,proto3,enum=session.ParticipantStatus" json:"participant_status,omitempty"`
+	// Initial payment status.
+	// وضعیت اولیه پرداخت.
+	PaymentStatus PaymentStatus `protobuf:"varint,5,opt,name=payment_status,json=paymentStatus,proto3,enum=session.PaymentStatus" json:"payment_status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateParticipantRequest) Reset() {
+	*x = CreateParticipantRequest{}
+	mi := &file_sessions_session_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateParticipantRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateParticipantRequest) ProtoMessage() {}
+
+func (x *CreateParticipantRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sessions_session_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateParticipantRequest.ProtoReflect.Descriptor instead.
+func (*CreateParticipantRequest) Descriptor() ([]byte, []int) {
+	return file_sessions_session_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *CreateParticipantRequest) GetSessionId() uint64 {
+	if x != nil {
+		return x.SessionId
+	}
+	return 0
+}
+
+func (x *CreateParticipantRequest) GetUserId() uint64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *CreateParticipantRequest) GetRole() ParticipantRole {
+	if x != nil {
+		return x.Role
+	}
+	return ParticipantRole_PARTICIPANT_ROLE_UNSPECIFIED
+}
+
+func (x *CreateParticipantRequest) GetParticipantStatus() ParticipantStatus {
+	if x != nil {
+		return x.ParticipantStatus
+	}
+	return ParticipantStatus_PARTICIPANT_STATUS_UNSPECIFIED
+}
+
+func (x *CreateParticipantRequest) GetPaymentStatus() PaymentStatus {
+	if x != nil {
+		return x.PaymentStatus
+	}
+	return PaymentStatus_PAYMENT_STATUS_UNSPECIFIED
+}
+
+type CreateParticipantResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Created participant.
+	// اطلاعات شرکت‌کننده ایجاد شده.
+	Participant   *SessionParticipant `protobuf:"bytes,1,opt,name=participant,proto3" json:"participant,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateParticipantResponse) Reset() {
+	*x = CreateParticipantResponse{}
+	mi := &file_sessions_session_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateParticipantResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateParticipantResponse) ProtoMessage() {}
+
+func (x *CreateParticipantResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sessions_session_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateParticipantResponse.ProtoReflect.Descriptor instead.
+func (*CreateParticipantResponse) Descriptor() ([]byte, []int) {
+	return file_sessions_session_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *CreateParticipantResponse) GetParticipant() *SessionParticipant {
+	if x != nil {
+		return x.Participant
+	}
+	return nil
+}
+
 type UpdateParticipantStatusRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Session identifier.
@@ -1925,7 +2057,7 @@ type UpdateParticipantStatusRequest struct {
 
 func (x *UpdateParticipantStatusRequest) Reset() {
 	*x = UpdateParticipantStatusRequest{}
-	mi := &file_sessions_session_proto_msgTypes[20]
+	mi := &file_sessions_session_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1937,7 +2069,7 @@ func (x *UpdateParticipantStatusRequest) String() string {
 func (*UpdateParticipantStatusRequest) ProtoMessage() {}
 
 func (x *UpdateParticipantStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[20]
+	mi := &file_sessions_session_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1950,7 +2082,7 @@ func (x *UpdateParticipantStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateParticipantStatusRequest.ProtoReflect.Descriptor instead.
 func (*UpdateParticipantStatusRequest) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{20}
+	return file_sessions_session_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *UpdateParticipantStatusRequest) GetSessionId() uint64 {
@@ -1992,7 +2124,7 @@ type UpdateParticipantStatusResponse struct {
 
 func (x *UpdateParticipantStatusResponse) Reset() {
 	*x = UpdateParticipantStatusResponse{}
-	mi := &file_sessions_session_proto_msgTypes[21]
+	mi := &file_sessions_session_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2004,7 +2136,7 @@ func (x *UpdateParticipantStatusResponse) String() string {
 func (*UpdateParticipantStatusResponse) ProtoMessage() {}
 
 func (x *UpdateParticipantStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[21]
+	mi := &file_sessions_session_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2017,7 +2149,7 @@ func (x *UpdateParticipantStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateParticipantStatusResponse.ProtoReflect.Descriptor instead.
 func (*UpdateParticipantStatusResponse) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{21}
+	return file_sessions_session_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *UpdateParticipantStatusResponse) GetParticipant() *SessionParticipant {
@@ -2036,7 +2168,7 @@ type ListParticipantsRequest struct {
 
 func (x *ListParticipantsRequest) Reset() {
 	*x = ListParticipantsRequest{}
-	mi := &file_sessions_session_proto_msgTypes[22]
+	mi := &file_sessions_session_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2048,7 +2180,7 @@ func (x *ListParticipantsRequest) String() string {
 func (*ListParticipantsRequest) ProtoMessage() {}
 
 func (x *ListParticipantsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[22]
+	mi := &file_sessions_session_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2061,7 +2193,7 @@ func (x *ListParticipantsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListParticipantsRequest.ProtoReflect.Descriptor instead.
 func (*ListParticipantsRequest) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{22}
+	return file_sessions_session_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ListParticipantsRequest) GetSessionId() uint64 {
@@ -2080,7 +2212,7 @@ type ListParticipantsResponse struct {
 
 func (x *ListParticipantsResponse) Reset() {
 	*x = ListParticipantsResponse{}
-	mi := &file_sessions_session_proto_msgTypes[23]
+	mi := &file_sessions_session_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2092,7 +2224,7 @@ func (x *ListParticipantsResponse) String() string {
 func (*ListParticipantsResponse) ProtoMessage() {}
 
 func (x *ListParticipantsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[23]
+	mi := &file_sessions_session_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2105,7 +2237,7 @@ func (x *ListParticipantsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListParticipantsResponse.ProtoReflect.Descriptor instead.
 func (*ListParticipantsResponse) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{23}
+	return file_sessions_session_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ListParticipantsResponse) GetParticipants() []*SessionParticipant {
@@ -2126,7 +2258,7 @@ type PublishSessionRequest struct {
 
 func (x *PublishSessionRequest) Reset() {
 	*x = PublishSessionRequest{}
-	mi := &file_sessions_session_proto_msgTypes[24]
+	mi := &file_sessions_session_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2138,7 +2270,7 @@ func (x *PublishSessionRequest) String() string {
 func (*PublishSessionRequest) ProtoMessage() {}
 
 func (x *PublishSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[24]
+	mi := &file_sessions_session_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2151,7 +2283,7 @@ func (x *PublishSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PublishSessionRequest.ProtoReflect.Descriptor instead.
 func (*PublishSessionRequest) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{24}
+	return file_sessions_session_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *PublishSessionRequest) GetSessionId() uint64 {
@@ -2172,7 +2304,7 @@ type PublishSessionResponse struct {
 
 func (x *PublishSessionResponse) Reset() {
 	*x = PublishSessionResponse{}
-	mi := &file_sessions_session_proto_msgTypes[25]
+	mi := &file_sessions_session_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2184,7 +2316,7 @@ func (x *PublishSessionResponse) String() string {
 func (*PublishSessionResponse) ProtoMessage() {}
 
 func (x *PublishSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[25]
+	mi := &file_sessions_session_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2197,7 +2329,7 @@ func (x *PublishSessionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PublishSessionResponse.ProtoReflect.Descriptor instead.
 func (*PublishSessionResponse) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{25}
+	return file_sessions_session_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *PublishSessionResponse) GetSession() *Session {
@@ -2218,7 +2350,7 @@ type EndSessionRequest struct {
 
 func (x *EndSessionRequest) Reset() {
 	*x = EndSessionRequest{}
-	mi := &file_sessions_session_proto_msgTypes[26]
+	mi := &file_sessions_session_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2230,7 +2362,7 @@ func (x *EndSessionRequest) String() string {
 func (*EndSessionRequest) ProtoMessage() {}
 
 func (x *EndSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[26]
+	mi := &file_sessions_session_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2243,7 +2375,7 @@ func (x *EndSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndSessionRequest.ProtoReflect.Descriptor instead.
 func (*EndSessionRequest) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{26}
+	return file_sessions_session_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *EndSessionRequest) GetSessionId() uint64 {
@@ -2264,7 +2396,7 @@ type EndSessionResponse struct {
 
 func (x *EndSessionResponse) Reset() {
 	*x = EndSessionResponse{}
-	mi := &file_sessions_session_proto_msgTypes[27]
+	mi := &file_sessions_session_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2276,7 +2408,7 @@ func (x *EndSessionResponse) String() string {
 func (*EndSessionResponse) ProtoMessage() {}
 
 func (x *EndSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[27]
+	mi := &file_sessions_session_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2289,7 +2421,7 @@ func (x *EndSessionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndSessionResponse.ProtoReflect.Descriptor instead.
 func (*EndSessionResponse) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{27}
+	return file_sessions_session_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *EndSessionResponse) GetSession() *Session {
@@ -2310,7 +2442,7 @@ type CancelSessionRequest struct {
 
 func (x *CancelSessionRequest) Reset() {
 	*x = CancelSessionRequest{}
-	mi := &file_sessions_session_proto_msgTypes[28]
+	mi := &file_sessions_session_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2322,7 +2454,7 @@ func (x *CancelSessionRequest) String() string {
 func (*CancelSessionRequest) ProtoMessage() {}
 
 func (x *CancelSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[28]
+	mi := &file_sessions_session_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2335,7 +2467,7 @@ func (x *CancelSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelSessionRequest.ProtoReflect.Descriptor instead.
 func (*CancelSessionRequest) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{28}
+	return file_sessions_session_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *CancelSessionRequest) GetSessionId() uint64 {
@@ -2356,7 +2488,7 @@ type CancelSessionResponse struct {
 
 func (x *CancelSessionResponse) Reset() {
 	*x = CancelSessionResponse{}
-	mi := &file_sessions_session_proto_msgTypes[29]
+	mi := &file_sessions_session_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2368,7 +2500,7 @@ func (x *CancelSessionResponse) String() string {
 func (*CancelSessionResponse) ProtoMessage() {}
 
 func (x *CancelSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[29]
+	mi := &file_sessions_session_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2381,7 +2513,7 @@ func (x *CancelSessionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelSessionResponse.ProtoReflect.Descriptor instead.
 func (*CancelSessionResponse) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{29}
+	return file_sessions_session_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *CancelSessionResponse) GetSession() *Session {
@@ -2405,7 +2537,7 @@ type RemoveParticipantRequest struct {
 
 func (x *RemoveParticipantRequest) Reset() {
 	*x = RemoveParticipantRequest{}
-	mi := &file_sessions_session_proto_msgTypes[30]
+	mi := &file_sessions_session_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2417,7 +2549,7 @@ func (x *RemoveParticipantRequest) String() string {
 func (*RemoveParticipantRequest) ProtoMessage() {}
 
 func (x *RemoveParticipantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[30]
+	mi := &file_sessions_session_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2430,7 +2562,7 @@ func (x *RemoveParticipantRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveParticipantRequest.ProtoReflect.Descriptor instead.
 func (*RemoveParticipantRequest) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{30}
+	return file_sessions_session_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *RemoveParticipantRequest) GetSessionId() uint64 {
@@ -2455,7 +2587,7 @@ type RemoveParticipantResponse struct {
 
 func (x *RemoveParticipantResponse) Reset() {
 	*x = RemoveParticipantResponse{}
-	mi := &file_sessions_session_proto_msgTypes[31]
+	mi := &file_sessions_session_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2467,7 +2599,7 @@ func (x *RemoveParticipantResponse) String() string {
 func (*RemoveParticipantResponse) ProtoMessage() {}
 
 func (x *RemoveParticipantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sessions_session_proto_msgTypes[31]
+	mi := &file_sessions_session_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2480,7 +2612,7 @@ func (x *RemoveParticipantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveParticipantResponse.ProtoReflect.Descriptor instead.
 func (*RemoveParticipantResponse) Descriptor() ([]byte, []int) {
-	return file_sessions_session_proto_rawDescGZIP(), []int{31}
+	return file_sessions_session_proto_rawDescGZIP(), []int{33}
 }
 
 var File_sessions_session_proto protoreflect.FileDescriptor
@@ -2591,7 +2723,16 @@ const file_sessions_session_proto_rawDesc = "" +
 	"\n" +
 	"session_id\x18\x01 \x01(\x04R\tsessionId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\x04R\x06userId\"\x16\n" +
-	"\x14LeaveSessionResponse\"\x96\x02\n" +
+	"\x14LeaveSessionResponse\"\x8a\x02\n" +
+	"\x18CreateParticipantRequest\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x01 \x01(\x04R\tsessionId\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\x04R\x06userId\x12,\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x18.session.ParticipantRoleR\x04role\x12I\n" +
+	"\x12participant_status\x18\x04 \x01(\x0e2\x1a.session.ParticipantStatusR\x11participantStatus\x12=\n" +
+	"\x0epayment_status\x18\x05 \x01(\x0e2\x16.session.PaymentStatusR\rpaymentStatus\"Z\n" +
+	"\x19CreateParticipantResponse\x12=\n" +
+	"\vparticipant\x18\x01 \x01(\v2\x1b.session.SessionParticipantR\vparticipant\"\x96\x02\n" +
 	"\x1eUpdateParticipantStatusRequest\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\x04R\tsessionId\x12\x17\n" +
@@ -2698,7 +2839,7 @@ const file_sessions_session_proto_rawDesc = "" +
 	"\fSESSION_FULL\x10\x05\x12\x14\n" +
 	"\x10PAYMENT_REQUIRED\x10\x06\x12\x19\n" +
 	"\x15PAYMENT_NOT_COMPLETED\x10\a\x12\x11\n" +
-	"\rACCESS_DENIED\x10\b2\x85\t\n" +
+	"\rACCESS_DENIED\x10\b2\xe1\t\n" +
 	"\x0eSessionService\x12N\n" +
 	"\rCreateSession\x12\x1d.session.CreateSessionRequest\x1a\x1e.session.CreateSessionResponse\x12N\n" +
 	"\rUpdateSession\x12\x1d.session.UpdateSessionRequest\x1a\x1e.session.UpdateSessionResponse\x12N\n" +
@@ -2710,7 +2851,8 @@ const file_sessions_session_proto_rawDesc = "" +
 	"\fStartSession\x12\x1c.session.StartSessionRequest\x1a\x1d.session.StartSessionResponse\x12E\n" +
 	"\n" +
 	"EndSession\x12\x1a.session.EndSessionRequest\x1a\x1b.session.EndSessionResponse\x12N\n" +
-	"\rCancelSession\x12\x1d.session.CancelSessionRequest\x1a\x1e.session.CancelSessionResponse\x12H\n" +
+	"\rCancelSession\x12\x1d.session.CancelSessionRequest\x1a\x1e.session.CancelSessionResponse\x12Z\n" +
+	"\x11CreateParticipant\x12!.session.CreateParticipantRequest\x1a\".session.CreateParticipantResponse\x12H\n" +
 	"\vJoinSession\x12\x1b.session.JoinSessionRequest\x1a\x1c.session.JoinSessionResponse\x12K\n" +
 	"\fLeaveSession\x12\x1c.session.LeaveSessionRequest\x1a\x1d.session.LeaveSessionResponse\x12l\n" +
 	"\x17UpdateParticipantStatus\x12'.session.UpdateParticipantStatusRequest\x1a(.session.UpdateParticipantStatusResponse\x12Z\n" +
@@ -2730,7 +2872,7 @@ func file_sessions_session_proto_rawDescGZIP() []byte {
 }
 
 var file_sessions_session_proto_enumTypes = make([]protoimpl.EnumInfo, 8)
-var file_sessions_session_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
+var file_sessions_session_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_sessions_session_proto_goTypes = []any{
 	(SessionType)(0),                        // 0: session.SessionType
 	(SessionStatus)(0),                      // 1: session.SessionStatus
@@ -2760,38 +2902,40 @@ var file_sessions_session_proto_goTypes = []any{
 	(*JoinSessionResponse)(nil),             // 25: session.JoinSessionResponse
 	(*LeaveSessionRequest)(nil),             // 26: session.LeaveSessionRequest
 	(*LeaveSessionResponse)(nil),            // 27: session.LeaveSessionResponse
-	(*UpdateParticipantStatusRequest)(nil),  // 28: session.UpdateParticipantStatusRequest
-	(*UpdateParticipantStatusResponse)(nil), // 29: session.UpdateParticipantStatusResponse
-	(*ListParticipantsRequest)(nil),         // 30: session.ListParticipantsRequest
-	(*ListParticipantsResponse)(nil),        // 31: session.ListParticipantsResponse
-	(*PublishSessionRequest)(nil),           // 32: session.PublishSessionRequest
-	(*PublishSessionResponse)(nil),          // 33: session.PublishSessionResponse
-	(*EndSessionRequest)(nil),               // 34: session.EndSessionRequest
-	(*EndSessionResponse)(nil),              // 35: session.EndSessionResponse
-	(*CancelSessionRequest)(nil),            // 36: session.CancelSessionRequest
-	(*CancelSessionResponse)(nil),           // 37: session.CancelSessionResponse
-	(*RemoveParticipantRequest)(nil),        // 38: session.RemoveParticipantRequest
-	(*RemoveParticipantResponse)(nil),       // 39: session.RemoveParticipantResponse
-	(*timestamppb.Timestamp)(nil),           // 40: google.protobuf.Timestamp
+	(*CreateParticipantRequest)(nil),        // 28: session.CreateParticipantRequest
+	(*CreateParticipantResponse)(nil),       // 29: session.CreateParticipantResponse
+	(*UpdateParticipantStatusRequest)(nil),  // 30: session.UpdateParticipantStatusRequest
+	(*UpdateParticipantStatusResponse)(nil), // 31: session.UpdateParticipantStatusResponse
+	(*ListParticipantsRequest)(nil),         // 32: session.ListParticipantsRequest
+	(*ListParticipantsResponse)(nil),        // 33: session.ListParticipantsResponse
+	(*PublishSessionRequest)(nil),           // 34: session.PublishSessionRequest
+	(*PublishSessionResponse)(nil),          // 35: session.PublishSessionResponse
+	(*EndSessionRequest)(nil),               // 36: session.EndSessionRequest
+	(*EndSessionResponse)(nil),              // 37: session.EndSessionResponse
+	(*CancelSessionRequest)(nil),            // 38: session.CancelSessionRequest
+	(*CancelSessionResponse)(nil),           // 39: session.CancelSessionResponse
+	(*RemoveParticipantRequest)(nil),        // 40: session.RemoveParticipantRequest
+	(*RemoveParticipantResponse)(nil),       // 41: session.RemoveParticipantResponse
+	(*timestamppb.Timestamp)(nil),           // 42: google.protobuf.Timestamp
 }
 var file_sessions_session_proto_depIdxs = []int32{
 	0,  // 0: session.Session.type:type_name -> session.SessionType
 	1,  // 1: session.Session.status:type_name -> session.SessionStatus
-	40, // 2: session.Session.start_time:type_name -> google.protobuf.Timestamp
-	40, // 3: session.Session.end_time:type_name -> google.protobuf.Timestamp
+	42, // 2: session.Session.start_time:type_name -> google.protobuf.Timestamp
+	42, // 3: session.Session.end_time:type_name -> google.protobuf.Timestamp
 	2,  // 4: session.Session.join_policy:type_name -> session.JoinPolicy
-	40, // 5: session.Session.created_at:type_name -> google.protobuf.Timestamp
-	40, // 6: session.Session.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 5: session.Session.created_at:type_name -> google.protobuf.Timestamp
+	42, // 6: session.Session.updated_at:type_name -> google.protobuf.Timestamp
 	4,  // 7: session.SessionParticipant.role:type_name -> session.ParticipantRole
 	5,  // 8: session.SessionParticipant.status:type_name -> session.ParticipantStatus
 	6,  // 9: session.SessionParticipant.payment_status:type_name -> session.PaymentStatus
-	40, // 10: session.SessionParticipant.joined_at:type_name -> google.protobuf.Timestamp
-	40, // 11: session.SessionParticipant.left_at:type_name -> google.protobuf.Timestamp
-	40, // 12: session.SessionParticipant.created_at:type_name -> google.protobuf.Timestamp
-	40, // 13: session.SessionParticipant.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 10: session.SessionParticipant.joined_at:type_name -> google.protobuf.Timestamp
+	42, // 11: session.SessionParticipant.left_at:type_name -> google.protobuf.Timestamp
+	42, // 12: session.SessionParticipant.created_at:type_name -> google.protobuf.Timestamp
+	42, // 13: session.SessionParticipant.updated_at:type_name -> google.protobuf.Timestamp
 	3,  // 14: session.Room.status:type_name -> session.RoomStatus
-	40, // 15: session.Room.created_at:type_name -> google.protobuf.Timestamp
-	40, // 16: session.Room.closed_at:type_name -> google.protobuf.Timestamp
+	42, // 15: session.Room.created_at:type_name -> google.protobuf.Timestamp
+	42, // 16: session.Room.closed_at:type_name -> google.protobuf.Timestamp
 	8,  // 17: session.CreateSessionRequest.session:type_name -> session.Session
 	8,  // 18: session.CreateSessionResponse.session:type_name -> session.Session
 	8,  // 19: session.UpdateSessionRequest.session:type_name -> session.Session
@@ -2804,46 +2948,52 @@ var file_sessions_session_proto_depIdxs = []int32{
 	8,  // 26: session.StartSessionResponse.session:type_name -> session.Session
 	7,  // 27: session.JoinSessionResponse.result:type_name -> session.JoinResult
 	9,  // 28: session.JoinSessionResponse.participant:type_name -> session.SessionParticipant
-	5,  // 29: session.UpdateParticipantStatusRequest.participant_status:type_name -> session.ParticipantStatus
-	6,  // 30: session.UpdateParticipantStatusRequest.payment_status:type_name -> session.PaymentStatus
-	9,  // 31: session.UpdateParticipantStatusResponse.participant:type_name -> session.SessionParticipant
-	9,  // 32: session.ListParticipantsResponse.participants:type_name -> session.SessionParticipant
-	8,  // 33: session.PublishSessionResponse.session:type_name -> session.Session
-	8,  // 34: session.EndSessionResponse.session:type_name -> session.Session
-	8,  // 35: session.CancelSessionResponse.session:type_name -> session.Session
-	11, // 36: session.SessionService.CreateSession:input_type -> session.CreateSessionRequest
-	13, // 37: session.SessionService.UpdateSession:input_type -> session.UpdateSessionRequest
-	15, // 38: session.SessionService.DeleteSession:input_type -> session.DeleteSessionRequest
-	17, // 39: session.SessionService.GetSession:input_type -> session.GetSessionRequest
-	20, // 40: session.SessionService.ListSessions:input_type -> session.ListSessionsRequest
-	32, // 41: session.SessionService.PublishSession:input_type -> session.PublishSessionRequest
-	22, // 42: session.SessionService.StartSession:input_type -> session.StartSessionRequest
-	34, // 43: session.SessionService.EndSession:input_type -> session.EndSessionRequest
-	36, // 44: session.SessionService.CancelSession:input_type -> session.CancelSessionRequest
-	24, // 45: session.SessionService.JoinSession:input_type -> session.JoinSessionRequest
-	26, // 46: session.SessionService.LeaveSession:input_type -> session.LeaveSessionRequest
-	28, // 47: session.SessionService.UpdateParticipantStatus:input_type -> session.UpdateParticipantStatusRequest
-	38, // 48: session.SessionService.RemoveParticipant:input_type -> session.RemoveParticipantRequest
-	30, // 49: session.SessionService.ListParticipants:input_type -> session.ListParticipantsRequest
-	12, // 50: session.SessionService.CreateSession:output_type -> session.CreateSessionResponse
-	14, // 51: session.SessionService.UpdateSession:output_type -> session.UpdateSessionResponse
-	16, // 52: session.SessionService.DeleteSession:output_type -> session.DeleteSessionResponse
-	18, // 53: session.SessionService.GetSession:output_type -> session.GetSessionResponse
-	21, // 54: session.SessionService.ListSessions:output_type -> session.ListSessionsResponse
-	33, // 55: session.SessionService.PublishSession:output_type -> session.PublishSessionResponse
-	23, // 56: session.SessionService.StartSession:output_type -> session.StartSessionResponse
-	35, // 57: session.SessionService.EndSession:output_type -> session.EndSessionResponse
-	37, // 58: session.SessionService.CancelSession:output_type -> session.CancelSessionResponse
-	25, // 59: session.SessionService.JoinSession:output_type -> session.JoinSessionResponse
-	27, // 60: session.SessionService.LeaveSession:output_type -> session.LeaveSessionResponse
-	29, // 61: session.SessionService.UpdateParticipantStatus:output_type -> session.UpdateParticipantStatusResponse
-	39, // 62: session.SessionService.RemoveParticipant:output_type -> session.RemoveParticipantResponse
-	31, // 63: session.SessionService.ListParticipants:output_type -> session.ListParticipantsResponse
-	50, // [50:64] is the sub-list for method output_type
-	36, // [36:50] is the sub-list for method input_type
-	36, // [36:36] is the sub-list for extension type_name
-	36, // [36:36] is the sub-list for extension extendee
-	0,  // [0:36] is the sub-list for field type_name
+	4,  // 29: session.CreateParticipantRequest.role:type_name -> session.ParticipantRole
+	5,  // 30: session.CreateParticipantRequest.participant_status:type_name -> session.ParticipantStatus
+	6,  // 31: session.CreateParticipantRequest.payment_status:type_name -> session.PaymentStatus
+	9,  // 32: session.CreateParticipantResponse.participant:type_name -> session.SessionParticipant
+	5,  // 33: session.UpdateParticipantStatusRequest.participant_status:type_name -> session.ParticipantStatus
+	6,  // 34: session.UpdateParticipantStatusRequest.payment_status:type_name -> session.PaymentStatus
+	9,  // 35: session.UpdateParticipantStatusResponse.participant:type_name -> session.SessionParticipant
+	9,  // 36: session.ListParticipantsResponse.participants:type_name -> session.SessionParticipant
+	8,  // 37: session.PublishSessionResponse.session:type_name -> session.Session
+	8,  // 38: session.EndSessionResponse.session:type_name -> session.Session
+	8,  // 39: session.CancelSessionResponse.session:type_name -> session.Session
+	11, // 40: session.SessionService.CreateSession:input_type -> session.CreateSessionRequest
+	13, // 41: session.SessionService.UpdateSession:input_type -> session.UpdateSessionRequest
+	15, // 42: session.SessionService.DeleteSession:input_type -> session.DeleteSessionRequest
+	17, // 43: session.SessionService.GetSession:input_type -> session.GetSessionRequest
+	20, // 44: session.SessionService.ListSessions:input_type -> session.ListSessionsRequest
+	34, // 45: session.SessionService.PublishSession:input_type -> session.PublishSessionRequest
+	22, // 46: session.SessionService.StartSession:input_type -> session.StartSessionRequest
+	36, // 47: session.SessionService.EndSession:input_type -> session.EndSessionRequest
+	38, // 48: session.SessionService.CancelSession:input_type -> session.CancelSessionRequest
+	28, // 49: session.SessionService.CreateParticipant:input_type -> session.CreateParticipantRequest
+	24, // 50: session.SessionService.JoinSession:input_type -> session.JoinSessionRequest
+	26, // 51: session.SessionService.LeaveSession:input_type -> session.LeaveSessionRequest
+	30, // 52: session.SessionService.UpdateParticipantStatus:input_type -> session.UpdateParticipantStatusRequest
+	40, // 53: session.SessionService.RemoveParticipant:input_type -> session.RemoveParticipantRequest
+	32, // 54: session.SessionService.ListParticipants:input_type -> session.ListParticipantsRequest
+	12, // 55: session.SessionService.CreateSession:output_type -> session.CreateSessionResponse
+	14, // 56: session.SessionService.UpdateSession:output_type -> session.UpdateSessionResponse
+	16, // 57: session.SessionService.DeleteSession:output_type -> session.DeleteSessionResponse
+	18, // 58: session.SessionService.GetSession:output_type -> session.GetSessionResponse
+	21, // 59: session.SessionService.ListSessions:output_type -> session.ListSessionsResponse
+	35, // 60: session.SessionService.PublishSession:output_type -> session.PublishSessionResponse
+	23, // 61: session.SessionService.StartSession:output_type -> session.StartSessionResponse
+	37, // 62: session.SessionService.EndSession:output_type -> session.EndSessionResponse
+	39, // 63: session.SessionService.CancelSession:output_type -> session.CancelSessionResponse
+	29, // 64: session.SessionService.CreateParticipant:output_type -> session.CreateParticipantResponse
+	25, // 65: session.SessionService.JoinSession:output_type -> session.JoinSessionResponse
+	27, // 66: session.SessionService.LeaveSession:output_type -> session.LeaveSessionResponse
+	31, // 67: session.SessionService.UpdateParticipantStatus:output_type -> session.UpdateParticipantStatusResponse
+	41, // 68: session.SessionService.RemoveParticipant:output_type -> session.RemoveParticipantResponse
+	33, // 69: session.SessionService.ListParticipants:output_type -> session.ListParticipantsResponse
+	55, // [55:70] is the sub-list for method output_type
+	40, // [40:55] is the sub-list for method input_type
+	40, // [40:40] is the sub-list for extension type_name
+	40, // [40:40] is the sub-list for extension extendee
+	0,  // [0:40] is the sub-list for field type_name
 }
 
 func init() { file_sessions_session_proto_init() }
@@ -2851,14 +3001,14 @@ func file_sessions_session_proto_init() {
 	if File_sessions_session_proto != nil {
 		return
 	}
-	file_sessions_session_proto_msgTypes[20].OneofWrappers = []any{}
+	file_sessions_session_proto_msgTypes[22].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sessions_session_proto_rawDesc), len(file_sessions_session_proto_rawDesc)),
 			NumEnums:      8,
-			NumMessages:   32,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -60,6 +60,9 @@ const (
 	// SessionServiceCancelSessionProcedure is the fully-qualified name of the SessionService's
 	// CancelSession RPC.
 	SessionServiceCancelSessionProcedure = "/session.SessionService/CancelSession"
+	// SessionServiceCreateParticipantProcedure is the fully-qualified name of the SessionService's
+	// CreateParticipant RPC.
+	SessionServiceCreateParticipantProcedure = "/session.SessionService/CreateParticipant"
 	// SessionServiceJoinSessionProcedure is the fully-qualified name of the SessionService's
 	// JoinSession RPC.
 	SessionServiceJoinSessionProcedure = "/session.SessionService/JoinSession"
@@ -91,6 +94,7 @@ type SessionServiceClient interface {
 	EndSession(context.Context, *connect.Request[sessions.EndSessionRequest]) (*connect.Response[sessions.EndSessionResponse], error)
 	CancelSession(context.Context, *connect.Request[sessions.CancelSessionRequest]) (*connect.Response[sessions.CancelSessionResponse], error)
 	// Participant
+	CreateParticipant(context.Context, *connect.Request[sessions.CreateParticipantRequest]) (*connect.Response[sessions.CreateParticipantResponse], error)
 	JoinSession(context.Context, *connect.Request[sessions.JoinSessionRequest]) (*connect.Response[sessions.JoinSessionResponse], error)
 	LeaveSession(context.Context, *connect.Request[sessions.LeaveSessionRequest]) (*connect.Response[sessions.LeaveSessionResponse], error)
 	// Updates the status and properties of a session participant.
@@ -165,6 +169,12 @@ func NewSessionServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(sessionServiceMethods.ByName("CancelSession")),
 			connect.WithClientOptions(opts...),
 		),
+		createParticipant: connect.NewClient[sessions.CreateParticipantRequest, sessions.CreateParticipantResponse](
+			httpClient,
+			baseURL+SessionServiceCreateParticipantProcedure,
+			connect.WithSchema(sessionServiceMethods.ByName("CreateParticipant")),
+			connect.WithClientOptions(opts...),
+		),
 		joinSession: connect.NewClient[sessions.JoinSessionRequest, sessions.JoinSessionResponse](
 			httpClient,
 			baseURL+SessionServiceJoinSessionProcedure,
@@ -209,6 +219,7 @@ type sessionServiceClient struct {
 	startSession            *connect.Client[sessions.StartSessionRequest, sessions.StartSessionResponse]
 	endSession              *connect.Client[sessions.EndSessionRequest, sessions.EndSessionResponse]
 	cancelSession           *connect.Client[sessions.CancelSessionRequest, sessions.CancelSessionResponse]
+	createParticipant       *connect.Client[sessions.CreateParticipantRequest, sessions.CreateParticipantResponse]
 	joinSession             *connect.Client[sessions.JoinSessionRequest, sessions.JoinSessionResponse]
 	leaveSession            *connect.Client[sessions.LeaveSessionRequest, sessions.LeaveSessionResponse]
 	updateParticipantStatus *connect.Client[sessions.UpdateParticipantStatusRequest, sessions.UpdateParticipantStatusResponse]
@@ -261,6 +272,11 @@ func (c *sessionServiceClient) CancelSession(ctx context.Context, req *connect.R
 	return c.cancelSession.CallUnary(ctx, req)
 }
 
+// CreateParticipant calls session.SessionService.CreateParticipant.
+func (c *sessionServiceClient) CreateParticipant(ctx context.Context, req *connect.Request[sessions.CreateParticipantRequest]) (*connect.Response[sessions.CreateParticipantResponse], error) {
+	return c.createParticipant.CallUnary(ctx, req)
+}
+
 // JoinSession calls session.SessionService.JoinSession.
 func (c *sessionServiceClient) JoinSession(ctx context.Context, req *connect.Request[sessions.JoinSessionRequest]) (*connect.Response[sessions.JoinSessionResponse], error) {
 	return c.joinSession.CallUnary(ctx, req)
@@ -300,6 +316,7 @@ type SessionServiceHandler interface {
 	EndSession(context.Context, *connect.Request[sessions.EndSessionRequest]) (*connect.Response[sessions.EndSessionResponse], error)
 	CancelSession(context.Context, *connect.Request[sessions.CancelSessionRequest]) (*connect.Response[sessions.CancelSessionResponse], error)
 	// Participant
+	CreateParticipant(context.Context, *connect.Request[sessions.CreateParticipantRequest]) (*connect.Response[sessions.CreateParticipantResponse], error)
 	JoinSession(context.Context, *connect.Request[sessions.JoinSessionRequest]) (*connect.Response[sessions.JoinSessionResponse], error)
 	LeaveSession(context.Context, *connect.Request[sessions.LeaveSessionRequest]) (*connect.Response[sessions.LeaveSessionResponse], error)
 	// Updates the status and properties of a session participant.
@@ -370,6 +387,12 @@ func NewSessionServiceHandler(svc SessionServiceHandler, opts ...connect.Handler
 		connect.WithSchema(sessionServiceMethods.ByName("CancelSession")),
 		connect.WithHandlerOptions(opts...),
 	)
+	sessionServiceCreateParticipantHandler := connect.NewUnaryHandler(
+		SessionServiceCreateParticipantProcedure,
+		svc.CreateParticipant,
+		connect.WithSchema(sessionServiceMethods.ByName("CreateParticipant")),
+		connect.WithHandlerOptions(opts...),
+	)
 	sessionServiceJoinSessionHandler := connect.NewUnaryHandler(
 		SessionServiceJoinSessionProcedure,
 		svc.JoinSession,
@@ -420,6 +443,8 @@ func NewSessionServiceHandler(svc SessionServiceHandler, opts ...connect.Handler
 			sessionServiceEndSessionHandler.ServeHTTP(w, r)
 		case SessionServiceCancelSessionProcedure:
 			sessionServiceCancelSessionHandler.ServeHTTP(w, r)
+		case SessionServiceCreateParticipantProcedure:
+			sessionServiceCreateParticipantHandler.ServeHTTP(w, r)
 		case SessionServiceJoinSessionProcedure:
 			sessionServiceJoinSessionHandler.ServeHTTP(w, r)
 		case SessionServiceLeaveSessionProcedure:
@@ -473,6 +498,10 @@ func (UnimplementedSessionServiceHandler) EndSession(context.Context, *connect.R
 
 func (UnimplementedSessionServiceHandler) CancelSession(context.Context, *connect.Request[sessions.CancelSessionRequest]) (*connect.Response[sessions.CancelSessionResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("session.SessionService.CancelSession is not implemented"))
+}
+
+func (UnimplementedSessionServiceHandler) CreateParticipant(context.Context, *connect.Request[sessions.CreateParticipantRequest]) (*connect.Response[sessions.CreateParticipantResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("session.SessionService.CreateParticipant is not implemented"))
 }
 
 func (UnimplementedSessionServiceHandler) JoinSession(context.Context, *connect.Request[sessions.JoinSessionRequest]) (*connect.Response[sessions.JoinSessionResponse], error) {

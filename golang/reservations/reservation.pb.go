@@ -7233,11 +7233,7 @@ const file_reservations_reservation_proto_rawDesc = "" +
 	"\x10AttendanceStatus\x12\x12\n" +
 	"\x0eUNKNOWN_Status\x10\x00\x12\f\n" +
 	"\bATTENDED\x10\x01\x12\v\n" +
-<<<<<<< HEAD
-	"\aNO_SHOW\x10\x02*\xa9\x02\n" +
-=======
 	"\aNO_SHOW\x10\x02*\xc2\x02\n" +
->>>>>>> b9f4f311463019d57058de49503f39d45c509abc
 	"\rFacilityGroup\x12\x11\n" +
 	"\rUNKNOWN_GROUP\x10\x00\x12\x14\n" +
 	"\x10MEDICAL_SERVICES\x10\x01\x12\x11\n" +
@@ -7252,13 +7248,8 @@ const file_reservations_reservation_proto_rawDesc = "" +
 	"\x15PROFESSIONAL_SERVICES\x10\n" +
 	"\x12\x19\n" +
 	"\x15INDUSTRIAL_FACILITIES\x10\v\x12\x15\n" +
-<<<<<<< HEAD
-	"\x11ONLINE_BUSINESSES\x10\f*\x9e\n" +
-	"\n" +
-=======
 	"\x11ONLINE_BUSINESSES\x10\f\x12\x17\n" +
 	"\x13ONLINE_CONSULTATION\x10\r*\x8f\v\n" +
->>>>>>> b9f4f311463019d57058de49503f39d45c509abc
 	"\rFacilityTitle\x12\v\n" +
 	"\aUNKNOWN\x10\x00\x12\n" +
 	"\n" +
@@ -7347,14 +7338,10 @@ const file_reservations_reservation_proto_rawDesc = "" +
 	"\aFACTORY\x10G\x12\x1a\n" +
 	"\x16FREELANCE_PROFESSIONAL\x10H\x12\x0f\n" +
 	"\vONLINE_SHOP\x10I\x12\x14\n" +
-<<<<<<< HEAD
-	"\x10REMOTE_WORKSPACE\x10J*\x8b\x01\n" +
-=======
 	"\x10REMOTE_WORKSPACE\x10J\x12\x1e\n" +
 	"\x1aONLINE_BEAUTY_CONSULTATION\x10K\x12%\n" +
 	"!ONLINE_PSYCHOLOGICAL_CONSULTATION\x10L\x12(\n" +
 	"$ONLINE_SKINCARE_PRODUCT_CONSULTATION\x10M*\x8b\x01\n" +
->>>>>>> b9f4f311463019d57058de49503f39d45c509abc
 	"\fFacilityType\x12\x15\n" +
 	"\x11Facility_BOOKABLE\x10\x00\x12\x18\n" +
 	"\x14Facility_PURCHASABLE\x10\x01\x12\x13\n" +

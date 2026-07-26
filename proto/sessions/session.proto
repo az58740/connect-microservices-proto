@@ -424,9 +424,10 @@ service SessionService {
       returns (CancelSessionResponse);
 
   // Participant
+  rpc CreateParticipant(CreateParticipantRequest)
+    returns (CreateParticipantResponse);
   rpc JoinSession(JoinSessionRequest)
       returns (JoinSessionResponse);
-
   rpc LeaveSession(LeaveSessionRequest) returns (LeaveSessionResponse);
     // Updates the status and properties of a session participant.
    // وضعیت و مشخصات شرکت‌کننده جلسه را به‌روزرسانی می‌کند.
@@ -531,6 +532,35 @@ message LeaveSessionRequest {
 }
 
 message LeaveSessionResponse {
+}
+message CreateParticipantRequest {
+
+  // Session identifier.
+  // شناسه جلسه.
+  uint64 session_id = 1;
+
+  // Participant user identifier.
+  // شناسه کاربر.
+  uint64 user_id = 2;
+
+  // Participant role.
+  // نقش شرکت‌کننده.
+  ParticipantRole role = 3;
+
+  // Initial participant status.
+  // وضعیت اولیه شرکت‌کننده.
+  ParticipantStatus participant_status = 4;
+
+  // Initial payment status.
+  // وضعیت اولیه پرداخت.
+  PaymentStatus payment_status = 5;
+}
+
+message CreateParticipantResponse {
+
+  // Created participant.
+  // اطلاعات شرکت‌کننده ایجاد شده.
+  SessionParticipant participant = 1;
 }
 
 message UpdateParticipantStatusRequest {
