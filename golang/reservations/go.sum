@@ -1,0 +1,8 @@
+connectrpc.com/connect v1.20.0 h1:6TNDAB+WeNd2uolWNlYczB5E0KNNaVMNUEx8JEUsPmQ=
+connectrpc.com/connect v1.20.0/go.mod h1:A2ygJrukXwWy32vkCAAHNVguZrqZ+jeZ9rGRnGR4dN4=
+github.com/az58740/connect-microservices-proto v0.0.0-20260726160614-903cc274d2ae h1:ixv3yRTkIU9g0HofJ6QtSy8pc9OBP8LwDS7ScJm5U3k=
+github.com/az58740/connect-microservices-proto v0.0.0-20260726160614-903cc274d2ae/go.mod h1:bHA7enm/l/12dRi6vYJP93++QsnRRY4MbZPzYhbmcXk=
+google.golang.org/genproto v0.0.0-20260727163830-6c54dddc4772 h1:mHefkC3WOZ14x+Ou97jNey+DPQLLA3Pa/90NahmTqK4=
+google.golang.org/genproto v0.0.0-20260727163830-6c54dddc4772/go.mod h1:4RPHZcXMGptb7aRZb+M43xI7ixmjEtASEf2VtOOBZbU=
+google.golang.org/protobuf v1.36.11 h1:fV6ZwhNocDyBLK0dj+fg8ektcVegBBuEolpbTQyBNVE=
+google.golang.org/protobuf v1.36.11/go.mod h1:HTf+CrKn2C3g5S8VImy6tdcUvCska2kB7j23XfzDpco=
