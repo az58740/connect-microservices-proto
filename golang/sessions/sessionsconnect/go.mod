@@ -1,4 +1,4 @@
-module github.com/az58740/connect-microservices-proto/sessions/sessionsconnect
+module github.com/az58740/connect-microservices-proto/golang/sessions/sessionsconnect
 
 go 1.26.0
 
