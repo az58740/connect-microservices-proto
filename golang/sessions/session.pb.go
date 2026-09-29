@@ -111,24 +111,21 @@ const (
 	// Session created but not published.
 	// جلسه ایجاد شده اما هنوز منتشر نشده است.
 	SessionStatus_DRAFT SessionStatus = 1
+	// Session published and ready for scheduling.
+	// جلسه منتشر شده و آماده زمان‌بندی است.
+	SessionStatus_PUBLISHED SessionStatus = 2
 	// Published and waiting for start time.
 	// منتشر شده و منتظر زمان شروع.
-	SessionStatus_SCHEDULED SessionStatus = 2
-	// Room created and waiting for participants.
-	// اتاق ایجاد شده و منتظر ورود کاربران.
-	SessionStatus_WAITING SessionStatus = 3
+	SessionStatus_SCHEDULED SessionStatus = 3
 	// Session is currently active.
 	// جلسه در حال برگزاری است.
 	SessionStatus_LIVE SessionStatus = 4
 	// Session completed successfully.
 	// جلسه با موفقیت پایان یافته است.
-	SessionStatus_FINISHED SessionStatus = 5
+	SessionStatus_ENDED SessionStatus = 5
 	// Session cancelled.
 	// جلسه لغو شده است.
 	SessionStatus_CANCELLED SessionStatus = 6
-	// Session expired before starting.
-	// زمان جلسه گذشته و شروع نشده است.
-	SessionStatus_EXPIRED SessionStatus = 7
 )
 
 // Enum value maps for SessionStatus.
@@ -136,22 +133,20 @@ var (
 	SessionStatus_name = map[int32]string{
 		0: "SESSION_STATUS_UNSPECIFIED",
 		1: "DRAFT",
-		2: "SCHEDULED",
-		3: "WAITING",
+		2: "PUBLISHED",
+		3: "SCHEDULED",
 		4: "LIVE",
-		5: "FINISHED",
+		5: "ENDED",
 		6: "CANCELLED",
-		7: "EXPIRED",
 	}
 	SessionStatus_value = map[string]int32{
 		"SESSION_STATUS_UNSPECIFIED": 0,
 		"DRAFT":                      1,
-		"SCHEDULED":                  2,
-		"WAITING":                    3,
+		"PUBLISHED":                  2,
+		"SCHEDULED":                  3,
 		"LIVE":                       4,
-		"FINISHED":                   5,
+		"ENDED":                      5,
 		"CANCELLED":                  6,
-		"EXPIRED":                    7,
 	}
 )
 
@@ -192,28 +187,28 @@ const (
 	JoinPolicy_JOIN_POLICY_UNSPECIFIED JoinPolicy = 0
 	// Everyone can join immediately.
 	// ورود برای همه آزاد است.
-	JoinPolicy_AUTO_ACCEPT JoinPolicy = 1
+	JoinPolicy_OPEN JoinPolicy = 1
 	// Host must approve participants.
 	// ورود نیازمند تأیید برگزارکننده است.
-	JoinPolicy_HOST_APPROVAL JoinPolicy = 2
-	// Only invited users may join.
-	// فقط کاربران دعوت شده می‌توانند وارد شوند.
-	JoinPolicy_INVITE_ONLY JoinPolicy = 3
+	JoinPolicy_APPROVAL JoinPolicy = 2
+	// Payment is required before joining.
+	// برای ورود نیاز به پرداخت است.
+	JoinPolicy_PAID JoinPolicy = 3
 )
 
 // Enum value maps for JoinPolicy.
 var (
 	JoinPolicy_name = map[int32]string{
 		0: "JOIN_POLICY_UNSPECIFIED",
-		1: "AUTO_ACCEPT",
-		2: "HOST_APPROVAL",
-		3: "INVITE_ONLY",
+		1: "OPEN",
+		2: "APPROVAL",
+		3: "PAID",
 	}
 	JoinPolicy_value = map[string]int32{
 		"JOIN_POLICY_UNSPECIFIED": 0,
-		"AUTO_ACCEPT":             1,
-		"HOST_APPROVAL":           2,
-		"INVITE_ONLY":             3,
+		"OPEN":                    1,
+		"APPROVAL":                2,
+		"PAID":                    3,
 	}
 )
 
@@ -320,45 +315,30 @@ type ParticipantRole int32
 
 const (
 	ParticipantRole_PARTICIPANT_ROLE_UNSPECIFIED ParticipantRole = 0
-	// Session owner.
-	// برگزارکننده جلسه.
-	ParticipantRole_HOST ParticipantRole = 1
-	// Additional host.
-	// کمک برگزارکننده.
-	ParticipantRole_CO_HOST ParticipantRole = 2
-	// Teacher or speaker.
-	// مدرس یا سخنران.
-	ParticipantRole_SPEAKER ParticipantRole = 3
-	// Moderator.
-	// مدیر جلسه.
-	ParticipantRole_MODERATOR ParticipantRole = 4
 	// Normal participant.
 	// شرکت‌کننده عادی.
-	ParticipantRole_PARTICIPANT ParticipantRole = 5
-	// Observer only.
-	// فقط مشاهده‌کننده.
-	ParticipantRole_VIEWER ParticipantRole = 6
+	ParticipantRole_ATTENDEE ParticipantRole = 1
+	// Session owner.
+	// برگزارکننده جلسه.
+	ParticipantRole_HOST ParticipantRole = 2
+	// Moderator.
+	// مدیر جلسه.
+	ParticipantRole_MODERATOR ParticipantRole = 3
 )
 
 // Enum value maps for ParticipantRole.
 var (
 	ParticipantRole_name = map[int32]string{
 		0: "PARTICIPANT_ROLE_UNSPECIFIED",
-		1: "HOST",
-		2: "CO_HOST",
-		3: "SPEAKER",
-		4: "MODERATOR",
-		5: "PARTICIPANT",
-		6: "VIEWER",
+		1: "ATTENDEE",
+		2: "HOST",
+		3: "MODERATOR",
 	}
 	ParticipantRole_value = map[string]int32{
 		"PARTICIPANT_ROLE_UNSPECIFIED": 0,
-		"HOST":                         1,
-		"CO_HOST":                      2,
-		"SPEAKER":                      3,
-		"MODERATOR":                    4,
-		"PARTICIPANT":                  5,
-		"VIEWER":                       6,
+		"ATTENDEE":                     1,
+		"HOST":                         2,
+		"MODERATOR":                    3,
 	}
 )
 
@@ -395,50 +375,45 @@ type ParticipantStatus int32
 
 const (
 	ParticipantStatus_PARTICIPANT_STATUS_UNSPECIFIED ParticipantStatus = 0
-	// Waiting for host approval.
+	// Waiting for approval.
 	// منتظر تأیید برگزارکننده.
-	ParticipantStatus_REQUESTED ParticipantStatus = 1
+	ParticipantStatus_PENDING ParticipantStatus = 1
 	// Approved by host.
 	// توسط برگزارکننده تأیید شده است.
-	ParticipantStatus_PARTICIPANTAPPROVED ParticipantStatus = 2
+	ParticipantStatus_APPROVED ParticipantStatus = 2
 	// Rejected by host.
 	// درخواست رد شده است.
 	ParticipantStatus_REJECTED ParticipantStatus = 3
-	// Joined the room.
-	// وارد اتاق شده است.
-	ParticipantStatus_JOINED ParticipantStatus = 4
-	// Left voluntarily.
-	// جلسه را ترک کرده است.
-	ParticipantStatus_LEFT ParticipantStatus = 5
 	// Removed by host.
 	// توسط برگزارکننده از جلسه حذف شده است.
-	ParticipantStatus_REMOVED ParticipantStatus = 6
-	// Connection lost.
-	// ارتباط کاربر قطع شده است.
-	ParticipantStatus_DISCONNECTED ParticipantStatus = 7
+	ParticipantStatus_REMOVED ParticipantStatus = 4
+	// Joined the room.
+	// وارد اتاق شده است.
+	ParticipantStatus_JOINED ParticipantStatus = 5
+	// Left voluntarily.
+	// جلسه را ترک کرده است.
+	ParticipantStatus_LEFT ParticipantStatus = 6
 )
 
 // Enum value maps for ParticipantStatus.
 var (
 	ParticipantStatus_name = map[int32]string{
 		0: "PARTICIPANT_STATUS_UNSPECIFIED",
-		1: "REQUESTED",
-		2: "PARTICIPANTAPPROVED",
+		1: "PENDING",
+		2: "APPROVED",
 		3: "REJECTED",
-		4: "JOINED",
-		5: "LEFT",
-		6: "REMOVED",
-		7: "DISCONNECTED",
+		4: "REMOVED",
+		5: "JOINED",
+		6: "LEFT",
 	}
 	ParticipantStatus_value = map[string]int32{
 		"PARTICIPANT_STATUS_UNSPECIFIED": 0,
-		"REQUESTED":                      1,
-		"PARTICIPANTAPPROVED":            2,
+		"PENDING":                        1,
+		"APPROVED":                       2,
 		"REJECTED":                       3,
-		"JOINED":                         4,
-		"LEFT":                           5,
-		"REMOVED":                        6,
-		"DISCONNECTED":                   7,
+		"REMOVED":                        4,
+		"JOINED":                         5,
+		"LEFT":                           6,
 	}
 )
 
@@ -475,43 +450,38 @@ func (ParticipantStatus) EnumDescriptor() ([]byte, []int) {
 type PaymentStatus int32
 
 const (
-	// Default value.
-	// مقدار پیش‌فرض.
-	PaymentStatus_PAYMENT_STATUS_UNSPECIFIED PaymentStatus = 0
 	// Payment is not required.
 	// جلسه رایگان است و نیازی به پرداخت نیست.
-	PaymentStatus_NOT_REQUIRED PaymentStatus = 1
+	PaymentStatus_PAYMENT_STATUS_NOT_REQUIRED PaymentStatus = 0
 	// Waiting for payment.
 	// در انتظار پرداخت.
-	PaymentStatus_PENDING PaymentStatus = 2
+	PaymentStatus_PaymentStatus_PENDING PaymentStatus = 1
 	// Payment completed successfully.
 	// پرداخت با موفقیت انجام شده است.
-	PaymentStatus_PAID PaymentStatus = 3
+	PaymentStatus_PaymentStatus_PAID PaymentStatus = 2
 	// Payment failed.
 	// پرداخت ناموفق بوده است.
-	PaymentStatus_PAYMENTSTATUSFAILED PaymentStatus = 4
+	PaymentStatus_FAILED PaymentStatus = 3
 	// Payment has been refunded.
 	// مبلغ به کاربر بازگردانده شده است.
-	PaymentStatus_REFUNDED PaymentStatus = 5
+	PaymentStatus_REFUNDED PaymentStatus = 4
 )
 
 // Enum value maps for PaymentStatus.
 var (
 	PaymentStatus_name = map[int32]string{
-		0: "PAYMENT_STATUS_UNSPECIFIED",
-		1: "NOT_REQUIRED",
-		2: "PENDING",
-		3: "PAID",
-		4: "PAYMENTSTATUSFAILED",
-		5: "REFUNDED",
+		0: "PAYMENT_STATUS_NOT_REQUIRED",
+		1: "PaymentStatus_PENDING",
+		2: "PaymentStatus_PAID",
+		3: "FAILED",
+		4: "REFUNDED",
 	}
 	PaymentStatus_value = map[string]int32{
-		"PAYMENT_STATUS_UNSPECIFIED": 0,
-		"NOT_REQUIRED":               1,
-		"PENDING":                    2,
-		"PAID":                       3,
-		"PAYMENTSTATUSFAILED":        4,
-		"REFUNDED":                   5,
+		"PAYMENT_STATUS_NOT_REQUIRED": 0,
+		"PaymentStatus_PENDING":       1,
+		"PaymentStatus_PAID":          2,
+		"FAILED":                      3,
+		"REFUNDED":                    4,
 	}
 )
 
@@ -626,45 +596,47 @@ type Session struct {
 	// شناسه مرکز زیبایی، کلینیک یا فروشگاه.
 	FacilityId   uint64 `protobuf:"varint,3,opt,name=facility_id,json=facilityId,proto3" json:"facility_id,omitempty"`
 	FacilityName string `protobuf:"bytes,4,opt,name=facility_name,json=facilityName,proto3" json:"facility_name,omitempty"`
+	// Reservation that created this session.
+	ReservationId uint64 `protobuf:"varint,5,opt,name=reservation_id,json=reservationId,proto3" json:"reservation_id,omitempty"`
 	// Business type of the session.
 	// نوع جلسه.
-	Type SessionType `protobuf:"varint,5,opt,name=type,proto3,enum=session.SessionType" json:"type,omitempty"`
+	Type SessionType `protobuf:"varint,6,opt,name=type,proto3,enum=session.SessionType" json:"type,omitempty"`
 	// Current session status.
 	// وضعیت فعلی جلسه.
-	Status SessionStatus `protobuf:"varint,6,opt,name=status,proto3,enum=session.SessionStatus" json:"status,omitempty"`
+	Status SessionStatus `protobuf:"varint,7,opt,name=status,proto3,enum=session.SessionStatus" json:"status,omitempty"`
 	// Session title.
 	// عنوان جلسه.
-	Title string `protobuf:"bytes,7,opt,name=title,proto3" json:"title,omitempty"`
+	Title string `protobuf:"bytes,8,opt,name=title,proto3" json:"title,omitempty"`
 	// Session description.
 	// توضیحات جلسه.
-	Description string `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
+	Description string `protobuf:"bytes,9,opt,name=description,proto3" json:"description,omitempty"`
 	// Planned start time.
 	// زمان شروع جلسه.
-	StartTime *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Planned end time.
 	// زمان پایان جلسه.
-	EndTime *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Maximum number of participants.
 	// حداکثر تعداد شرکت‌کنندگان.
-	MaxParticipants uint32 `protobuf:"varint,11,opt,name=max_participants,json=maxParticipants,proto3" json:"max_participants,omitempty"`
+	MaxParticipants uint32 `protobuf:"varint,12,opt,name=max_participants,json=maxParticipants,proto3" json:"max_participants,omitempty"`
 	// Policy for joining the session.
 	// سیاست ورود به جلسه.
-	JoinPolicy JoinPolicy `protobuf:"varint,12,opt,name=join_policy,json=joinPolicy,proto3,enum=session.JoinPolicy" json:"join_policy,omitempty"`
+	JoinPolicy JoinPolicy `protobuf:"varint,13,opt,name=join_policy,json=joinPolicy,proto3,enum=session.JoinPolicy" json:"join_policy,omitempty"`
 	// Whether recording is enabled.
 	// آیا ضبط جلسه فعال است یا خیر.
-	IsRecorded bool `protobuf:"varint,13,opt,name=is_recorded,json=isRecorded,proto3" json:"is_recorded,omitempty"`
+	IsRecorded bool `protobuf:"varint,14,opt,name=is_recorded,json=isRecorded,proto3" json:"is_recorded,omitempty"`
 	// Session price.
 	// هزینه شرکت در جلسه.
-	Price float64 `protobuf:"fixed64,14,opt,name=price,proto3" json:"price,omitempty"`
+	Price float64 `protobuf:"fixed64,15,opt,name=price,proto3" json:"price,omitempty"`
 	// Currency code based on ISO-4217 (e.g. IRR, USD, EUR).
 	// کد واحد پول بر اساس استاندارد ISO-4217 مانند IRR ،USD یا EUR.
-	Currency string `protobuf:"bytes,15,opt,name=currency,proto3" json:"currency,omitempty"`
+	Currency string `protobuf:"bytes,16,opt,name=currency,proto3" json:"currency,omitempty"`
 	// Creation timestamp.
 	// زمان ایجاد.
-	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
 	// زمان آخرین ویرایش.
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -725,6 +697,13 @@ func (x *Session) GetFacilityName() string {
 		return x.FacilityName
 	}
 	return ""
+}
+
+func (x *Session) GetReservationId() uint64 {
+	if x != nil {
+		return x.ReservationId
+	}
+	return 0
 }
 
 func (x *Session) GetType() SessionType {
@@ -857,7 +836,7 @@ type SessionParticipant struct {
 	// زمان ایجاد رکورد.
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
-	// زمان آخرین ویرایش رکورد.
+	// زمان آخرین به‌روزرسانی رکورد.
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -932,7 +911,7 @@ func (x *SessionParticipant) GetPaymentStatus() PaymentStatus {
 	if x != nil {
 		return x.PaymentStatus
 	}
-	return PaymentStatus_PAYMENT_STATUS_UNSPECIFIED
+	return PaymentStatus_PAYMENT_STATUS_NOT_REQUIRED
 }
 
 func (x *SessionParticipant) GetIsMuted() bool {
@@ -1076,7 +1055,6 @@ func (x *Room) GetClosedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-// ================ Rquest and Responce Messeages ================
 type CreateSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Session       *Session               `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
@@ -1988,7 +1966,7 @@ func (x *CreateParticipantRequest) GetPaymentStatus() PaymentStatus {
 	if x != nil {
 		return x.PaymentStatus
 	}
-	return PaymentStatus_PAYMENT_STATUS_UNSPECIFIED
+	return PaymentStatus_PAYMENT_STATUS_NOT_REQUIRED
 }
 
 type CreateParticipantResponse struct {
@@ -2110,7 +2088,7 @@ func (x *UpdateParticipantStatusRequest) GetPaymentStatus() PaymentStatus {
 	if x != nil && x.PaymentStatus != nil {
 		return *x.PaymentStatus
 	}
-	return PaymentStatus_PAYMENT_STATUS_UNSPECIFIED
+	return PaymentStatus_PAYMENT_STATUS_NOT_REQUIRED
 }
 
 type UpdateParticipantStatusResponse struct {
@@ -2619,33 +2597,34 @@ var File_sessions_session_proto protoreflect.FileDescriptor
 
 const file_sessions_session_proto_rawDesc = "" +
 	"\n" +
-	"\x16sessions/session.proto\x12\asession\x1a\x1fgoogle/protobuf/timestamp.proto\"\xaf\x05\n" +
+	"\x16sessions/session.proto\x12\asession\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd6\x05\n" +
 	"\aSession\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12 \n" +
 	"\fhost_user_id\x18\x02 \x01(\x04R\n" +
 	"hostUserId\x12\x1f\n" +
 	"\vfacility_id\x18\x03 \x01(\x04R\n" +
 	"facilityId\x12#\n" +
-	"\rfacility_name\x18\x04 \x01(\tR\ffacilityName\x12(\n" +
-	"\x04type\x18\x05 \x01(\x0e2\x14.session.SessionTypeR\x04type\x12.\n" +
-	"\x06status\x18\x06 \x01(\x0e2\x16.session.SessionStatusR\x06status\x12\x14\n" +
-	"\x05title\x18\a \x01(\tR\x05title\x12 \n" +
-	"\vdescription\x18\b \x01(\tR\vdescription\x129\n" +
+	"\rfacility_name\x18\x04 \x01(\tR\ffacilityName\x12%\n" +
+	"\x0ereservation_id\x18\x05 \x01(\x04R\rreservationId\x12(\n" +
+	"\x04type\x18\x06 \x01(\x0e2\x14.session.SessionTypeR\x04type\x12.\n" +
+	"\x06status\x18\a \x01(\x0e2\x16.session.SessionStatusR\x06status\x12\x14\n" +
+	"\x05title\x18\b \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\t \x01(\tR\vdescription\x129\n" +
 	"\n" +
-	"start_time\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
-	"\bend_time\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12)\n" +
-	"\x10max_participants\x18\v \x01(\rR\x0fmaxParticipants\x124\n" +
-	"\vjoin_policy\x18\f \x01(\x0e2\x13.session.JoinPolicyR\n" +
+	"start_time\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
+	"\bend_time\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\x12)\n" +
+	"\x10max_participants\x18\f \x01(\rR\x0fmaxParticipants\x124\n" +
+	"\vjoin_policy\x18\r \x01(\x0e2\x13.session.JoinPolicyR\n" +
 	"joinPolicy\x12\x1f\n" +
-	"\vis_recorded\x18\r \x01(\bR\n" +
+	"\vis_recorded\x18\x0e \x01(\bR\n" +
 	"isRecorded\x12\x14\n" +
-	"\x05price\x18\x0e \x01(\x01R\x05price\x12\x1a\n" +
-	"\bcurrency\x18\x0f \x01(\tR\bcurrency\x129\n" +
+	"\x05price\x18\x0f \x01(\x01R\x05price\x12\x1a\n" +
+	"\bcurrency\x18\x10 \x01(\tR\bcurrency\x129\n" +
 	"\n" +
-	"created_at\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xa8\x04\n" +
+	"updated_at\x18\x12 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xa8\x04\n" +
 	"\x12SessionParticipant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n" +
 	"\n" +
@@ -2776,22 +2755,21 @@ const file_sessions_session_proto_rawDesc = "" +
 	"\x0eGROUP_TRAINING\x10\x03\x12\v\n" +
 	"\aWEBINAR\x10\x04\x12\x11\n" +
 	"\rLIVE_SHOPPING\x10\x05\x12\v\n" +
-	"\aMEETING\x10\x06*\x8a\x01\n" +
+	"\aMEETING\x10\x06*|\n" +
 	"\rSessionStatus\x12\x1e\n" +
 	"\x1aSESSION_STATUS_UNSPECIFIED\x10\x00\x12\t\n" +
 	"\x05DRAFT\x10\x01\x12\r\n" +
-	"\tSCHEDULED\x10\x02\x12\v\n" +
-	"\aWAITING\x10\x03\x12\b\n" +
-	"\x04LIVE\x10\x04\x12\f\n" +
-	"\bFINISHED\x10\x05\x12\r\n" +
-	"\tCANCELLED\x10\x06\x12\v\n" +
-	"\aEXPIRED\x10\a*^\n" +
+	"\tPUBLISHED\x10\x02\x12\r\n" +
+	"\tSCHEDULED\x10\x03\x12\b\n" +
+	"\x04LIVE\x10\x04\x12\t\n" +
+	"\x05ENDED\x10\x05\x12\r\n" +
+	"\tCANCELLED\x10\x06*K\n" +
 	"\n" +
 	"JoinPolicy\x12\x1b\n" +
-	"\x17JOIN_POLICY_UNSPECIFIED\x10\x00\x12\x0f\n" +
-	"\vAUTO_ACCEPT\x10\x01\x12\x11\n" +
-	"\rHOST_APPROVAL\x10\x02\x12\x0f\n" +
-	"\vINVITE_ONLY\x10\x03*j\n" +
+	"\x17JOIN_POLICY_UNSPECIFIED\x10\x00\x12\b\n" +
+	"\x04OPEN\x10\x01\x12\f\n" +
+	"\bAPPROVAL\x10\x02\x12\b\n" +
+	"\x04PAID\x10\x03*j\n" +
 	"\n" +
 	"RoomStatus\x12\x1b\n" +
 	"\x17ROOM_STATUS_UNSPECIFIED\x10\x00\x12\f\n" +
@@ -2802,33 +2780,28 @@ const file_sessions_session_proto_rawDesc = "" +
 	"\n" +
 	"\x06CLOSED\x10\x04\x12\x0e\n" +
 	"\n" +
-	"ROOMFAILED\x10\x05*\x83\x01\n" +
+	"ROOMFAILED\x10\x05*Z\n" +
 	"\x0fParticipantRole\x12 \n" +
-	"\x1cPARTICIPANT_ROLE_UNSPECIFIED\x10\x00\x12\b\n" +
-	"\x04HOST\x10\x01\x12\v\n" +
-	"\aCO_HOST\x10\x02\x12\v\n" +
-	"\aSPEAKER\x10\x03\x12\r\n" +
-	"\tMODERATOR\x10\x04\x12\x0f\n" +
-	"\vPARTICIPANT\x10\x05\x12\n" +
-	"\n" +
-	"\x06VIEWER\x10\x06*\xa2\x01\n" +
+	"\x1cPARTICIPANT_ROLE_UNSPECIFIED\x10\x00\x12\f\n" +
+	"\bATTENDEE\x10\x01\x12\b\n" +
+	"\x04HOST\x10\x02\x12\r\n" +
+	"\tMODERATOR\x10\x03*\x83\x01\n" +
 	"\x11ParticipantStatus\x12\"\n" +
-	"\x1ePARTICIPANT_STATUS_UNSPECIFIED\x10\x00\x12\r\n" +
-	"\tREQUESTED\x10\x01\x12\x17\n" +
-	"\x13PARTICIPANTAPPROVED\x10\x02\x12\f\n" +
-	"\bREJECTED\x10\x03\x12\n" +
+	"\x1ePARTICIPANT_STATUS_UNSPECIFIED\x10\x00\x12\v\n" +
+	"\aPENDING\x10\x01\x12\f\n" +
+	"\bAPPROVED\x10\x02\x12\f\n" +
+	"\bREJECTED\x10\x03\x12\v\n" +
+	"\aREMOVED\x10\x04\x12\n" +
 	"\n" +
-	"\x06JOINED\x10\x04\x12\b\n" +
-	"\x04LEFT\x10\x05\x12\v\n" +
-	"\aREMOVED\x10\x06\x12\x10\n" +
-	"\fDISCONNECTED\x10\a*\x7f\n" +
-	"\rPaymentStatus\x12\x1e\n" +
-	"\x1aPAYMENT_STATUS_UNSPECIFIED\x10\x00\x12\x10\n" +
-	"\fNOT_REQUIRED\x10\x01\x12\v\n" +
-	"\aPENDING\x10\x02\x12\b\n" +
-	"\x04PAID\x10\x03\x12\x17\n" +
-	"\x13PAYMENTSTATUSFAILED\x10\x04\x12\f\n" +
-	"\bREFUNDED\x10\x05*\xdd\x01\n" +
+	"\x06JOINED\x10\x05\x12\b\n" +
+	"\x04LEFT\x10\x06*}\n" +
+	"\rPaymentStatus\x12\x1f\n" +
+	"\x1bPAYMENT_STATUS_NOT_REQUIRED\x10\x00\x12\x19\n" +
+	"\x15PaymentStatus_PENDING\x10\x01\x12\x16\n" +
+	"\x12PaymentStatus_PAID\x10\x02\x12\n" +
+	"\n" +
+	"\x06FAILED\x10\x03\x12\f\n" +
+	"\bREFUNDED\x10\x04*\xdd\x01\n" +
 	"\n" +
 	"JoinResult\x12\x1b\n" +
 	"\x17JOIN_RESULT_UNSPECIFIED\x10\x00\x12\x16\n" +

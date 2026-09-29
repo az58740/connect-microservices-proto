@@ -51,10 +51,17 @@ export declare type Session = Message<"session.Session"> & {
   facilityName: string;
 
   /**
+   * Reservation that created this session.
+   *
+   * @generated from field: uint64 reservation_id = 5;
+   */
+  reservationId: bigint;
+
+  /**
    * Business type of the session.
    * نوع جلسه.
    *
-   * @generated from field: session.SessionType type = 5;
+   * @generated from field: session.SessionType type = 6;
    */
   type: SessionType;
 
@@ -62,7 +69,7 @@ export declare type Session = Message<"session.Session"> & {
    * Current session status.
    * وضعیت فعلی جلسه.
    *
-   * @generated from field: session.SessionStatus status = 6;
+   * @generated from field: session.SessionStatus status = 7;
    */
   status: SessionStatus;
 
@@ -70,7 +77,7 @@ export declare type Session = Message<"session.Session"> & {
    * Session title.
    * عنوان جلسه.
    *
-   * @generated from field: string title = 7;
+   * @generated from field: string title = 8;
    */
   title: string;
 
@@ -78,7 +85,7 @@ export declare type Session = Message<"session.Session"> & {
    * Session description.
    * توضیحات جلسه.
    *
-   * @generated from field: string description = 8;
+   * @generated from field: string description = 9;
    */
   description: string;
 
@@ -86,7 +93,7 @@ export declare type Session = Message<"session.Session"> & {
    * Planned start time.
    * زمان شروع جلسه.
    *
-   * @generated from field: google.protobuf.Timestamp start_time = 9;
+   * @generated from field: google.protobuf.Timestamp start_time = 10;
    */
   startTime?: Timestamp | undefined;
 
@@ -94,7 +101,7 @@ export declare type Session = Message<"session.Session"> & {
    * Planned end time.
    * زمان پایان جلسه.
    *
-   * @generated from field: google.protobuf.Timestamp end_time = 10;
+   * @generated from field: google.protobuf.Timestamp end_time = 11;
    */
   endTime?: Timestamp | undefined;
 
@@ -102,7 +109,7 @@ export declare type Session = Message<"session.Session"> & {
    * Maximum number of participants.
    * حداکثر تعداد شرکت‌کنندگان.
    *
-   * @generated from field: uint32 max_participants = 11;
+   * @generated from field: uint32 max_participants = 12;
    */
   maxParticipants: number;
 
@@ -110,7 +117,7 @@ export declare type Session = Message<"session.Session"> & {
    * Policy for joining the session.
    * سیاست ورود به جلسه.
    *
-   * @generated from field: session.JoinPolicy join_policy = 12;
+   * @generated from field: session.JoinPolicy join_policy = 13;
    */
   joinPolicy: JoinPolicy;
 
@@ -118,7 +125,7 @@ export declare type Session = Message<"session.Session"> & {
    * Whether recording is enabled.
    * آیا ضبط جلسه فعال است یا خیر.
    *
-   * @generated from field: bool is_recorded = 13;
+   * @generated from field: bool is_recorded = 14;
    */
   isRecorded: boolean;
 
@@ -126,7 +133,7 @@ export declare type Session = Message<"session.Session"> & {
    * Session price.
    * هزینه شرکت در جلسه.
    *
-   * @generated from field: double price = 14;
+   * @generated from field: double price = 15;
    */
   price: number;
 
@@ -134,7 +141,7 @@ export declare type Session = Message<"session.Session"> & {
    * Currency code based on ISO-4217 (e.g. IRR, USD, EUR).
    * کد واحد پول بر اساس استاندارد ISO-4217 مانند IRR ،USD یا EUR.
    *
-   * @generated from field: string currency = 15;
+   * @generated from field: string currency = 16;
    */
   currency: string;
 
@@ -142,7 +149,7 @@ export declare type Session = Message<"session.Session"> & {
    * Creation timestamp.
    * زمان ایجاد.
    *
-   * @generated from field: google.protobuf.Timestamp created_at = 16;
+   * @generated from field: google.protobuf.Timestamp created_at = 17;
    */
   createdAt?: Timestamp | undefined;
 
@@ -150,7 +157,7 @@ export declare type Session = Message<"session.Session"> & {
    * Last update timestamp.
    * زمان آخرین ویرایش.
    *
-   * @generated from field: google.protobuf.Timestamp updated_at = 17;
+   * @generated from field: google.protobuf.Timestamp updated_at = 18;
    */
   updatedAt?: Timestamp | undefined;
 };
@@ -259,7 +266,7 @@ export declare type SessionParticipant = Message<"session.SessionParticipant"> &
 
   /**
    * Last update timestamp.
-   * زمان آخرین ویرایش رکورد.
+   * زمان آخرین به‌روزرسانی رکورد.
    *
    * @generated from field: google.protobuf.Timestamp updated_at = 12;
    */
@@ -336,8 +343,6 @@ export declare type Room = Message<"session.Room"> & {
 export declare const RoomSchema: GenMessage<Room>;
 
 /**
- * ================ Rquest and Responce Messeages ================
- *
  * @generated from message session.CreateSessionRequest
  */
 export declare type CreateSessionRequest = Message<"session.CreateSessionRequest"> & {
@@ -1072,20 +1077,20 @@ export enum SessionStatus {
   DRAFT = 1,
 
   /**
+   * Session published and ready for scheduling.
+   * جلسه منتشر شده و آماده زمان‌بندی است.
+   *
+   * @generated from enum value: PUBLISHED = 2;
+   */
+  PUBLISHED = 2,
+
+  /**
    * Published and waiting for start time.
    * منتشر شده و منتظر زمان شروع.
    *
-   * @generated from enum value: SCHEDULED = 2;
+   * @generated from enum value: SCHEDULED = 3;
    */
-  SCHEDULED = 2,
-
-  /**
-   * Room created and waiting for participants.
-   * اتاق ایجاد شده و منتظر ورود کاربران.
-   *
-   * @generated from enum value: WAITING = 3;
-   */
-  WAITING = 3,
+  SCHEDULED = 3,
 
   /**
    * Session is currently active.
@@ -1099,9 +1104,9 @@ export enum SessionStatus {
    * Session completed successfully.
    * جلسه با موفقیت پایان یافته است.
    *
-   * @generated from enum value: FINISHED = 5;
+   * @generated from enum value: ENDED = 5;
    */
-  FINISHED = 5,
+  ENDED = 5,
 
   /**
    * Session cancelled.
@@ -1110,14 +1115,6 @@ export enum SessionStatus {
    * @generated from enum value: CANCELLED = 6;
    */
   CANCELLED = 6,
-
-  /**
-   * Session expired before starting.
-   * زمان جلسه گذشته و شروع نشده است.
-   *
-   * @generated from enum value: EXPIRED = 7;
-   */
-  EXPIRED = 7,
 }
 
 /**
@@ -1144,25 +1141,25 @@ export enum JoinPolicy {
    * Everyone can join immediately.
    * ورود برای همه آزاد است.
    *
-   * @generated from enum value: AUTO_ACCEPT = 1;
+   * @generated from enum value: OPEN = 1;
    */
-  AUTO_ACCEPT = 1,
+  OPEN = 1,
 
   /**
    * Host must approve participants.
    * ورود نیازمند تأیید برگزارکننده است.
    *
-   * @generated from enum value: HOST_APPROVAL = 2;
+   * @generated from enum value: APPROVAL = 2;
    */
-  HOST_APPROVAL = 2,
+  APPROVAL = 2,
 
   /**
-   * Only invited users may join.
-   * فقط کاربران دعوت شده می‌توانند وارد شوند.
+   * Payment is required before joining.
+   * برای ورود نیاز به پرداخت است.
    *
-   * @generated from enum value: INVITE_ONLY = 3;
+   * @generated from enum value: PAID = 3;
    */
-  INVITE_ONLY = 3,
+  PAID = 3,
 }
 
 /**
@@ -1241,52 +1238,28 @@ export enum ParticipantRole {
   PARTICIPANT_ROLE_UNSPECIFIED = 0,
 
   /**
+   * Normal participant.
+   * شرکت‌کننده عادی.
+   *
+   * @generated from enum value: ATTENDEE = 1;
+   */
+  ATTENDEE = 1,
+
+  /**
    * Session owner.
    * برگزارکننده جلسه.
    *
-   * @generated from enum value: HOST = 1;
+   * @generated from enum value: HOST = 2;
    */
-  HOST = 1,
-
-  /**
-   * Additional host.
-   * کمک برگزارکننده.
-   *
-   * @generated from enum value: CO_HOST = 2;
-   */
-  CO_HOST = 2,
-
-  /**
-   * Teacher or speaker.
-   * مدرس یا سخنران.
-   *
-   * @generated from enum value: SPEAKER = 3;
-   */
-  SPEAKER = 3,
+  HOST = 2,
 
   /**
    * Moderator.
    * مدیر جلسه.
    *
-   * @generated from enum value: MODERATOR = 4;
+   * @generated from enum value: MODERATOR = 3;
    */
-  MODERATOR = 4,
-
-  /**
-   * Normal participant.
-   * شرکت‌کننده عادی.
-   *
-   * @generated from enum value: PARTICIPANT = 5;
-   */
-  PARTICIPANT = 5,
-
-  /**
-   * Observer only.
-   * فقط مشاهده‌کننده.
-   *
-   * @generated from enum value: VIEWER = 6;
-   */
-  VIEWER = 6,
+  MODERATOR = 3,
 }
 
 /**
@@ -1307,20 +1280,20 @@ export enum ParticipantStatus {
   PARTICIPANT_STATUS_UNSPECIFIED = 0,
 
   /**
-   * Waiting for host approval.
+   * Waiting for approval.
    * منتظر تأیید برگزارکننده.
    *
-   * @generated from enum value: REQUESTED = 1;
+   * @generated from enum value: PENDING = 1;
    */
-  REQUESTED = 1,
+  PENDING = 1,
 
   /**
    * Approved by host.
    * توسط برگزارکننده تأیید شده است.
    *
-   * @generated from enum value: PARTICIPANTAPPROVED = 2;
+   * @generated from enum value: APPROVED = 2;
    */
-  PARTICIPANTAPPROVED = 2,
+  APPROVED = 2,
 
   /**
    * Rejected by host.
@@ -1331,36 +1304,28 @@ export enum ParticipantStatus {
   REJECTED = 3,
 
   /**
+   * Removed by host.
+   * توسط برگزارکننده از جلسه حذف شده است.
+   *
+   * @generated from enum value: REMOVED = 4;
+   */
+  REMOVED = 4,
+
+  /**
    * Joined the room.
    * وارد اتاق شده است.
    *
-   * @generated from enum value: JOINED = 4;
+   * @generated from enum value: JOINED = 5;
    */
-  JOINED = 4,
+  JOINED = 5,
 
   /**
    * Left voluntarily.
    * جلسه را ترک کرده است.
    *
-   * @generated from enum value: LEFT = 5;
+   * @generated from enum value: LEFT = 6;
    */
-  LEFT = 5,
-
-  /**
-   * Removed by host.
-   * توسط برگزارکننده از جلسه حذف شده است.
-   *
-   * @generated from enum value: REMOVED = 6;
-   */
-  REMOVED = 6,
-
-  /**
-   * Connection lost.
-   * ارتباط کاربر قطع شده است.
-   *
-   * @generated from enum value: DISCONNECTED = 7;
-   */
-  DISCONNECTED = 7,
+  LEFT = 6,
 }
 
 /**
@@ -1377,52 +1342,44 @@ export declare const ParticipantStatusSchema: GenEnum<ParticipantStatus>;
  */
 export enum PaymentStatus {
   /**
-   * Default value.
-   * مقدار پیش‌فرض.
-   *
-   * @generated from enum value: PAYMENT_STATUS_UNSPECIFIED = 0;
-   */
-  PAYMENT_STATUS_UNSPECIFIED = 0,
-
-  /**
    * Payment is not required.
    * جلسه رایگان است و نیازی به پرداخت نیست.
    *
-   * @generated from enum value: NOT_REQUIRED = 1;
+   * @generated from enum value: PAYMENT_STATUS_NOT_REQUIRED = 0;
    */
-  NOT_REQUIRED = 1,
+  PAYMENT_STATUS_NOT_REQUIRED = 0,
 
   /**
    * Waiting for payment.
    * در انتظار پرداخت.
    *
-   * @generated from enum value: PENDING = 2;
+   * @generated from enum value: PaymentStatus_PENDING = 1;
    */
-  PENDING = 2,
+  PaymentStatus_PENDING = 1,
 
   /**
    * Payment completed successfully.
    * پرداخت با موفقیت انجام شده است.
    *
-   * @generated from enum value: PAID = 3;
+   * @generated from enum value: PaymentStatus_PAID = 2;
    */
-  PAID = 3,
+  PaymentStatus_PAID = 2,
 
   /**
    * Payment failed.
    * پرداخت ناموفق بوده است.
    *
-   * @generated from enum value: PAYMENTSTATUSFAILED = 4;
+   * @generated from enum value: FAILED = 3;
    */
-  PAYMENTSTATUSFAILED = 4,
+  FAILED = 3,
 
   /**
    * Payment has been refunded.
    * مبلغ به کاربر بازگردانده شده است.
    *
-   * @generated from enum value: REFUNDED = 5;
+   * @generated from enum value: REFUNDED = 4;
    */
-  REFUNDED = 5,
+  REFUNDED = 4,
 }
 
 /**
