@@ -233,14 +233,13 @@ message Session {
   // Owner and creator of the session.
   // شناسه برگزارکننده و ایجادکننده جلسه.
   uint64 host_user_id = 2;
-
+   string host_user_name= 3;
   // Facility that owns this session.
   // شناسه مرکز زیبایی، کلینیک یا فروشگاه.
-  uint64 facility_id = 3;
-
-  string facility_name = 4;
+  uint64 facility_id = 4;
+  string facility_name = 5;
   // Reservation that created this session.
-    uint64 reservation_id = 5;
+    
 
   // Business type of the session.
   // نوع جلسه.

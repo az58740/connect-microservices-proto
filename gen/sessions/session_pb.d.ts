@@ -38,24 +38,24 @@ export declare type Session = Message<"session.Session"> & {
   hostUserId: bigint;
 
   /**
+   * @generated from field: string host_user_name = 3;
+   */
+  hostUserName: string;
+
+  /**
    * Facility that owns this session.
    * شناسه مرکز زیبایی، کلینیک یا فروشگاه.
    *
-   * @generated from field: uint64 facility_id = 3;
+   * @generated from field: uint64 facility_id = 4;
    */
   facilityId: bigint;
 
   /**
-   * @generated from field: string facility_name = 4;
-   */
-  facilityName: string;
-
-  /**
    * Reservation that created this session.
    *
-   * @generated from field: uint64 reservation_id = 5;
+   * @generated from field: string facility_name = 5;
    */
-  reservationId: bigint;
+  facilityName: string;
 
   /**
    * Business type of the session.

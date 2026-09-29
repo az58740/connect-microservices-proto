@@ -591,13 +591,12 @@ type Session struct {
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Owner and creator of the session.
 	// شناسه برگزارکننده و ایجادکننده جلسه.
-	HostUserId uint64 `protobuf:"varint,2,opt,name=host_user_id,json=hostUserId,proto3" json:"host_user_id,omitempty"`
+	HostUserId   uint64 `protobuf:"varint,2,opt,name=host_user_id,json=hostUserId,proto3" json:"host_user_id,omitempty"`
+	HostUserName string `protobuf:"bytes,3,opt,name=host_user_name,json=hostUserName,proto3" json:"host_user_name,omitempty"`
 	// Facility that owns this session.
 	// شناسه مرکز زیبایی، کلینیک یا فروشگاه.
-	FacilityId   uint64 `protobuf:"varint,3,opt,name=facility_id,json=facilityId,proto3" json:"facility_id,omitempty"`
-	FacilityName string `protobuf:"bytes,4,opt,name=facility_name,json=facilityName,proto3" json:"facility_name,omitempty"`
-	// Reservation that created this session.
-	ReservationId uint64 `protobuf:"varint,5,opt,name=reservation_id,json=reservationId,proto3" json:"reservation_id,omitempty"`
+	FacilityId   uint64 `protobuf:"varint,4,opt,name=facility_id,json=facilityId,proto3" json:"facility_id,omitempty"`
+	FacilityName string `protobuf:"bytes,5,opt,name=facility_name,json=facilityName,proto3" json:"facility_name,omitempty"` // Reservation that created this session.
 	// Business type of the session.
 	// نوع جلسه.
 	Type SessionType `protobuf:"varint,6,opt,name=type,proto3,enum=session.SessionType" json:"type,omitempty"`
@@ -685,6 +684,13 @@ func (x *Session) GetHostUserId() uint64 {
 	return 0
 }
 
+func (x *Session) GetHostUserName() string {
+	if x != nil {
+		return x.HostUserName
+	}
+	return ""
+}
+
 func (x *Session) GetFacilityId() uint64 {
 	if x != nil {
 		return x.FacilityId
@@ -697,13 +703,6 @@ func (x *Session) GetFacilityName() string {
 		return x.FacilityName
 	}
 	return ""
-}
-
-func (x *Session) GetReservationId() uint64 {
-	if x != nil {
-		return x.ReservationId
-	}
-	return 0
 }
 
 func (x *Session) GetType() SessionType {
@@ -2597,15 +2596,15 @@ var File_sessions_session_proto protoreflect.FileDescriptor
 
 const file_sessions_session_proto_rawDesc = "" +
 	"\n" +
-	"\x16sessions/session.proto\x12\asession\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd6\x05\n" +
+	"\x16sessions/session.proto\x12\asession\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd5\x05\n" +
 	"\aSession\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12 \n" +
 	"\fhost_user_id\x18\x02 \x01(\x04R\n" +
-	"hostUserId\x12\x1f\n" +
-	"\vfacility_id\x18\x03 \x01(\x04R\n" +
+	"hostUserId\x12$\n" +
+	"\x0ehost_user_name\x18\x03 \x01(\tR\fhostUserName\x12\x1f\n" +
+	"\vfacility_id\x18\x04 \x01(\x04R\n" +
 	"facilityId\x12#\n" +
-	"\rfacility_name\x18\x04 \x01(\tR\ffacilityName\x12%\n" +
-	"\x0ereservation_id\x18\x05 \x01(\x04R\rreservationId\x12(\n" +
+	"\rfacility_name\x18\x05 \x01(\tR\ffacilityName\x12(\n" +
 	"\x04type\x18\x06 \x01(\x0e2\x14.session.SessionTypeR\x04type\x12.\n" +
 	"\x06status\x18\a \x01(\x0e2\x16.session.SessionStatusR\x06status\x12\x14\n" +
 	"\x05title\x18\b \x01(\tR\x05title\x12 \n" +
