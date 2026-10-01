@@ -201,10 +201,15 @@ export declare type SessionParticipant = Message<"session.SessionParticipant"> &
   userId: bigint;
 
   /**
+   * @generated from field: string Participant_name = 4;
+   */
+  ParticipantName: string;
+
+  /**
    * Participant role in the session.
    * نقش کاربر در جلسه.
    *
-   * @generated from field: session.ParticipantRole role = 4;
+   * @generated from field: session.ParticipantRole role = 5;
    */
   role: ParticipantRole;
 
@@ -212,7 +217,7 @@ export declare type SessionParticipant = Message<"session.SessionParticipant"> &
    * Current participant status.
    * وضعیت فعلی شرکت‌کننده.
    *
-   * @generated from field: session.ParticipantStatus status = 5;
+   * @generated from field: session.ParticipantStatus status = 6;
    */
   status: ParticipantStatus;
 
@@ -220,7 +225,7 @@ export declare type SessionParticipant = Message<"session.SessionParticipant"> &
    * Participant payment status.
    * وضعیت پرداخت شرکت‌کننده.
    *
-   * @generated from field: session.PaymentStatus payment_status = 6;
+   * @generated from field: session.PaymentStatus payment_status = 7;
    */
   paymentStatus: PaymentStatus;
 
@@ -228,7 +233,7 @@ export declare type SessionParticipant = Message<"session.SessionParticipant"> &
    * Indicates whether the participant's microphone is muted.
    * مشخص می‌کند میکروفون شرکت‌کننده بی‌صدا است یا خیر.
    *
-   * @generated from field: bool is_muted = 7;
+   * @generated from field: bool is_muted = 8;
    */
   isMuted: boolean;
 
@@ -236,7 +241,7 @@ export declare type SessionParticipant = Message<"session.SessionParticipant"> &
    * Indicates whether the participant's camera is enabled.
    * مشخص می‌کند دوربین شرکت‌کننده روشن است یا خیر.
    *
-   * @generated from field: bool is_camera_enabled = 8;
+   * @generated from field: bool is_camera_enabled = 9;
    */
   isCameraEnabled: boolean;
 
@@ -244,7 +249,7 @@ export declare type SessionParticipant = Message<"session.SessionParticipant"> &
    * Time when the participant joined the session.
    * زمان ورود شرکت‌کننده به جلسه.
    *
-   * @generated from field: google.protobuf.Timestamp joined_at = 9;
+   * @generated from field: google.protobuf.Timestamp joined_at = 10;
    */
   joinedAt?: Timestamp | undefined;
 
@@ -252,7 +257,7 @@ export declare type SessionParticipant = Message<"session.SessionParticipant"> &
    * Time when the participant left the session.
    * زمان خروج شرکت‌کننده از جلسه.
    *
-   * @generated from field: google.protobuf.Timestamp left_at = 10;
+   * @generated from field: google.protobuf.Timestamp left_at = 11;
    */
   leftAt?: Timestamp | undefined;
 
@@ -260,7 +265,7 @@ export declare type SessionParticipant = Message<"session.SessionParticipant"> &
    * Creation timestamp.
    * زمان ایجاد رکورد.
    *
-   * @generated from field: google.protobuf.Timestamp created_at = 11;
+   * @generated from field: google.protobuf.Timestamp created_at = 12;
    */
   createdAt?: Timestamp | undefined;
 
@@ -268,7 +273,7 @@ export declare type SessionParticipant = Message<"session.SessionParticipant"> &
    * Last update timestamp.
    * زمان آخرین به‌روزرسانی رکورد.
    *
-   * @generated from field: google.protobuf.Timestamp updated_at = 12;
+   * @generated from field: google.protobuf.Timestamp updated_at = 13;
    */
   updatedAt?: Timestamp | undefined;
 };

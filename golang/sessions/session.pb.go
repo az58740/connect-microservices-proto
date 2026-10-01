@@ -809,34 +809,35 @@ type SessionParticipant struct {
 	SessionId uint64 `protobuf:"varint,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	// User identifier.
 	// شناسه کاربر.
-	UserId uint64 `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId          uint64 `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	ParticipantName string `protobuf:"bytes,4,opt,name=Participant_name,json=ParticipantName,proto3" json:"Participant_name,omitempty"`
 	// Participant role in the session.
 	// نقش کاربر در جلسه.
-	Role ParticipantRole `protobuf:"varint,4,opt,name=role,proto3,enum=session.ParticipantRole" json:"role,omitempty"`
+	Role ParticipantRole `protobuf:"varint,5,opt,name=role,proto3,enum=session.ParticipantRole" json:"role,omitempty"`
 	// Current participant status.
 	// وضعیت فعلی شرکت‌کننده.
-	Status ParticipantStatus `protobuf:"varint,5,opt,name=status,proto3,enum=session.ParticipantStatus" json:"status,omitempty"`
+	Status ParticipantStatus `protobuf:"varint,6,opt,name=status,proto3,enum=session.ParticipantStatus" json:"status,omitempty"`
 	// Participant payment status.
 	// وضعیت پرداخت شرکت‌کننده.
-	PaymentStatus PaymentStatus `protobuf:"varint,6,opt,name=payment_status,json=paymentStatus,proto3,enum=session.PaymentStatus" json:"payment_status,omitempty"`
+	PaymentStatus PaymentStatus `protobuf:"varint,7,opt,name=payment_status,json=paymentStatus,proto3,enum=session.PaymentStatus" json:"payment_status,omitempty"`
 	// Indicates whether the participant's microphone is muted.
 	// مشخص می‌کند میکروفون شرکت‌کننده بی‌صدا است یا خیر.
-	IsMuted bool `protobuf:"varint,7,opt,name=is_muted,json=isMuted,proto3" json:"is_muted,omitempty"`
+	IsMuted bool `protobuf:"varint,8,opt,name=is_muted,json=isMuted,proto3" json:"is_muted,omitempty"`
 	// Indicates whether the participant's camera is enabled.
 	// مشخص می‌کند دوربین شرکت‌کننده روشن است یا خیر.
-	IsCameraEnabled bool `protobuf:"varint,8,opt,name=is_camera_enabled,json=isCameraEnabled,proto3" json:"is_camera_enabled,omitempty"`
+	IsCameraEnabled bool `protobuf:"varint,9,opt,name=is_camera_enabled,json=isCameraEnabled,proto3" json:"is_camera_enabled,omitempty"`
 	// Time when the participant joined the session.
 	// زمان ورود شرکت‌کننده به جلسه.
-	JoinedAt *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=joined_at,json=joinedAt,proto3" json:"joined_at,omitempty"`
+	JoinedAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=joined_at,json=joinedAt,proto3" json:"joined_at,omitempty"`
 	// Time when the participant left the session.
 	// زمان خروج شرکت‌کننده از جلسه.
-	LeftAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=left_at,json=leftAt,proto3" json:"left_at,omitempty"`
+	LeftAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=left_at,json=leftAt,proto3" json:"left_at,omitempty"`
 	// Creation timestamp.
 	// زمان ایجاد رکورد.
-	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Last update timestamp.
 	// زمان آخرین به‌روزرسانی رکورد.
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -890,6 +891,13 @@ func (x *SessionParticipant) GetUserId() uint64 {
 		return x.UserId
 	}
 	return 0
+}
+
+func (x *SessionParticipant) GetParticipantName() string {
+	if x != nil {
+		return x.ParticipantName
+	}
+	return ""
 }
 
 func (x *SessionParticipant) GetRole() ParticipantRole {
@@ -2623,24 +2631,25 @@ const file_sessions_session_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x12 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xa8\x04\n" +
+	"updated_at\x18\x12 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xd3\x04\n" +
 	"\x12SessionParticipant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x02 \x01(\x04R\tsessionId\x12\x17\n" +
-	"\auser_id\x18\x03 \x01(\x04R\x06userId\x12,\n" +
-	"\x04role\x18\x04 \x01(\x0e2\x18.session.ParticipantRoleR\x04role\x122\n" +
-	"\x06status\x18\x05 \x01(\x0e2\x1a.session.ParticipantStatusR\x06status\x12=\n" +
-	"\x0epayment_status\x18\x06 \x01(\x0e2\x16.session.PaymentStatusR\rpaymentStatus\x12\x19\n" +
-	"\bis_muted\x18\a \x01(\bR\aisMuted\x12*\n" +
-	"\x11is_camera_enabled\x18\b \x01(\bR\x0fisCameraEnabled\x127\n" +
-	"\tjoined_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\x123\n" +
-	"\aleft_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\x06leftAt\x129\n" +
+	"\auser_id\x18\x03 \x01(\x04R\x06userId\x12)\n" +
+	"\x10Participant_name\x18\x04 \x01(\tR\x0fParticipantName\x12,\n" +
+	"\x04role\x18\x05 \x01(\x0e2\x18.session.ParticipantRoleR\x04role\x122\n" +
+	"\x06status\x18\x06 \x01(\x0e2\x1a.session.ParticipantStatusR\x06status\x12=\n" +
+	"\x0epayment_status\x18\a \x01(\x0e2\x16.session.PaymentStatusR\rpaymentStatus\x12\x19\n" +
+	"\bis_muted\x18\b \x01(\bR\aisMuted\x12*\n" +
+	"\x11is_camera_enabled\x18\t \x01(\bR\x0fisCameraEnabled\x127\n" +
+	"\tjoined_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\x123\n" +
+	"\aleft_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\x06leftAt\x129\n" +
 	"\n" +
-	"created_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xf3\x01\n" +
+	"updated_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xf3\x01\n" +
 	"\x04Room\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n" +
 	"\n" +
