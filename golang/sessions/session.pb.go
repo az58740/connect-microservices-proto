@@ -1897,16 +1897,17 @@ type CreateParticipantRequest struct {
 	SessionId uint64 `protobuf:"varint,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	// Participant user identifier.
 	// شناسه کاربر.
-	UserId uint64 `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId          uint64 `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	ParticipantName string `protobuf:"bytes,3,opt,name=Participant_name,json=ParticipantName,proto3" json:"Participant_name,omitempty"`
 	// Participant role.
 	// نقش شرکت‌کننده.
-	Role ParticipantRole `protobuf:"varint,3,opt,name=role,proto3,enum=session.ParticipantRole" json:"role,omitempty"`
+	Role ParticipantRole `protobuf:"varint,4,opt,name=role,proto3,enum=session.ParticipantRole" json:"role,omitempty"`
 	// Initial participant status.
 	// وضعیت اولیه شرکت‌کننده.
-	ParticipantStatus ParticipantStatus `protobuf:"varint,4,opt,name=participant_status,json=participantStatus,proto3,enum=session.ParticipantStatus" json:"participant_status,omitempty"`
+	ParticipantStatus ParticipantStatus `protobuf:"varint,5,opt,name=participant_status,json=participantStatus,proto3,enum=session.ParticipantStatus" json:"participant_status,omitempty"`
 	// Initial payment status.
 	// وضعیت اولیه پرداخت.
-	PaymentStatus PaymentStatus `protobuf:"varint,5,opt,name=payment_status,json=paymentStatus,proto3,enum=session.PaymentStatus" json:"payment_status,omitempty"`
+	PaymentStatus PaymentStatus `protobuf:"varint,6,opt,name=payment_status,json=paymentStatus,proto3,enum=session.PaymentStatus" json:"payment_status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1953,6 +1954,13 @@ func (x *CreateParticipantRequest) GetUserId() uint64 {
 		return x.UserId
 	}
 	return 0
+}
+
+func (x *CreateParticipantRequest) GetParticipantName() string {
+	if x != nil {
+		return x.ParticipantName
+	}
+	return ""
 }
 
 func (x *CreateParticipantRequest) GetRole() ParticipantRole {
@@ -2710,14 +2718,15 @@ const file_sessions_session_proto_rawDesc = "" +
 	"\n" +
 	"session_id\x18\x01 \x01(\x04R\tsessionId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\x04R\x06userId\"\x16\n" +
-	"\x14LeaveSessionResponse\"\x8a\x02\n" +
+	"\x14LeaveSessionResponse\"\xb5\x02\n" +
 	"\x18CreateParticipantRequest\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\x04R\tsessionId\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\x04R\x06userId\x12,\n" +
-	"\x04role\x18\x03 \x01(\x0e2\x18.session.ParticipantRoleR\x04role\x12I\n" +
-	"\x12participant_status\x18\x04 \x01(\x0e2\x1a.session.ParticipantStatusR\x11participantStatus\x12=\n" +
-	"\x0epayment_status\x18\x05 \x01(\x0e2\x16.session.PaymentStatusR\rpaymentStatus\"Z\n" +
+	"\auser_id\x18\x02 \x01(\x04R\x06userId\x12)\n" +
+	"\x10Participant_name\x18\x03 \x01(\tR\x0fParticipantName\x12,\n" +
+	"\x04role\x18\x04 \x01(\x0e2\x18.session.ParticipantRoleR\x04role\x12I\n" +
+	"\x12participant_status\x18\x05 \x01(\x0e2\x1a.session.ParticipantStatusR\x11participantStatus\x12=\n" +
+	"\x0epayment_status\x18\x06 \x01(\x0e2\x16.session.PaymentStatusR\rpaymentStatus\"Z\n" +
 	"\x19CreateParticipantResponse\x12=\n" +
 	"\vparticipant\x18\x01 \x01(\v2\x1b.session.SessionParticipantR\vparticipant\"\x96\x02\n" +
 	"\x1eUpdateParticipantStatusRequest\x12\x1d\n" +

@@ -692,10 +692,15 @@ export declare type CreateParticipantRequest = Message<"session.CreateParticipan
   userId: bigint;
 
   /**
+   * @generated from field: string Participant_name = 3;
+   */
+  ParticipantName: string;
+
+  /**
    * Participant role.
    * نقش شرکت‌کننده.
    *
-   * @generated from field: session.ParticipantRole role = 3;
+   * @generated from field: session.ParticipantRole role = 4;
    */
   role: ParticipantRole;
 
@@ -703,7 +708,7 @@ export declare type CreateParticipantRequest = Message<"session.CreateParticipan
    * Initial participant status.
    * وضعیت اولیه شرکت‌کننده.
    *
-   * @generated from field: session.ParticipantStatus participant_status = 4;
+   * @generated from field: session.ParticipantStatus participant_status = 5;
    */
   participantStatus: ParticipantStatus;
 
@@ -711,7 +716,7 @@ export declare type CreateParticipantRequest = Message<"session.CreateParticipan
    * Initial payment status.
    * وضعیت اولیه پرداخت.
    *
-   * @generated from field: session.PaymentStatus payment_status = 5;
+   * @generated from field: session.PaymentStatus payment_status = 6;
    */
   paymentStatus: PaymentStatus;
 };

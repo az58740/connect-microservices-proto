@@ -310,7 +310,8 @@ message SessionParticipant {
   // User identifier.
   // شناسه کاربر.
   uint64 user_id = 3;
-   string Participant_name = 4;
+
+  string Participant_name = 4;
 
   // Participant role in the session.
   // نقش کاربر در جلسه.
@@ -544,17 +545,19 @@ message CreateParticipantRequest {
   // شناسه کاربر.
   uint64 user_id = 2;
 
+ string Participant_name = 3;
+ 
   // Participant role.
   // نقش شرکت‌کننده.
-  ParticipantRole role = 3;
+  ParticipantRole role = 4;
 
   // Initial participant status.
   // وضعیت اولیه شرکت‌کننده.
-  ParticipantStatus participant_status = 4;
+  ParticipantStatus participant_status = 5;
 
   // Initial payment status.
   // وضعیت اولیه پرداخت.
-  PaymentStatus payment_status = 5;
+  PaymentStatus payment_status = 6;
 }
 
 message CreateParticipantResponse {
